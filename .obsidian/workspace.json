@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "463c563cfe8e83cd",
+        "id": "fb7437c86becfdb2",
         "type": "tabs",
         "children": [
           {
-            "id": "cb0044794b4cb4ce",
+            "id": "b579b9342b65fc8a",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Linux/Первичные настройки.md",
+                "file": "Video/ffmpeg - полезные скрипты.md",
                 "mode": "preview",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Linux/Первичные настройки.md",
+                "file": "Video/ffmpeg - полезные скрипты.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Linux/Первичные настройки.md",
+                "file": "Video/ffmpeg - полезные скрипты.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Linux/Первичные настройки.md"
+                "file": "Video/ffmpeg - полезные скрипты.md"
               }
             }
           },
@@ -161,8 +161,11 @@
       "publish:Публикация изменений": true
     }
   },
-  "active": "cb0044794b4cb4ce",
+  "active": "b579b9342b65fc8a",
   "lastOpenFiles": [
+    "Video/DaVinci Resolve Studio патчи.md",
+    "README.md",
+    "Linux/Первичные настройки.md",
     "Android/LineAgeOS.md",
     "Сheatsheet/Docker Command Cheat Sheet HD.png",
     "Сheatsheet/Docker.md",
@@ -172,12 +175,10 @@
     "Сheatsheet/Алгоритмы - большая шпаргалка.md",
     "Без названия",
     "Сheatsheet/Awesome Privacy.md",
-    "README.md",
     "Сheatsheet/OSI model.gif",
     "Linux/Arch - yay пропуск проверки контрольной суммы.md",
     "Linux/AUR - исправления источника для недоступного ресурса.md",
     "Linux/Arch - принудительная перезапись пакета.md",
-    "Linux/Первичные настройки.md",
     "Linux/Цветные иконки emoji в терминале и не только.md",
     "Linux/TOR - установка.md",
     "Linux/TOR - torctl.md",
