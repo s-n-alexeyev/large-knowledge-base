@@ -1,0 +1,16 @@
+{
+  "showUnsupportedFiles": false,
+  "spellcheckLanguages": null,
+  "defaultViewMode": "preview",
+  "trashOption": "local",
+  "newFileLocation": "current",
+  "attachmentFolderPath": "./",
+  "readableLineLength": false,
+  "pdfExportSettings": {
+    "pageSize": "Letter",
+    "landscape": false,
+    "margin": "0",
+    "downscalePercent": 100
+  },
+  "showInlineTitle": true
+}
