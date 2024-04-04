@@ -6,7 +6,7 @@ yay -S noto-color-emoji-fontconfig noto-fonts-emoji
 fc-cache -vf
 ```
 
->Альтернатива для ARCH значки от MacOS
+>Альтернатива для ARCH значки от macOS
 ```shell
 yay -S ttf-apple-emoji
 ```
