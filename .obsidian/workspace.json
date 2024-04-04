@@ -4,19 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "12d7b8463b947342",
+        "id": "463c563cfe8e83cd",
         "type": "tabs",
         "children": [
           {
-            "id": "c4e2adc3032af917",
+            "id": "cb0044794b4cb4ce",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Сheatsheet/Docker.md",
-                "mode": "preview",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -85,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Сheatsheet/Docker.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Сheatsheet/Docker.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -124,9 +118,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Сheatsheet/Docker.md"
-              }
+              "state": {}
             }
           },
           {
@@ -161,15 +153,19 @@
       "publish:Публикация изменений": false
     }
   },
-  "active": "c4e2adc3032af917",
+  "active": "cb0044794b4cb4ce",
   "lastOpenFiles": [
+    "Сheatsheet/Awesome Hacker Search Engines.md",
+    "Сheatsheet/test.md",
+    "Сheatsheet/Как загрузить проект на github новичку за 2 минуты.mp4",
+    "Сheatsheet/Алгоритмы - большая шпаргалка.md",
+    "Без названия",
+    "Сheatsheet/Docker.md",
     "Сheatsheet/Awesome Privacy.md",
     "Android/LineAgeOS.md",
     "README.md",
     "Сheatsheet/OSI model.gif",
     "Linux/Arch - yay пропуск проверки контрольной суммы.md",
-    "Сheatsheet/Как загрузить проект на github новичку за 2 минуты.mp4",
-    "Сheatsheet/test.md",
     "Linux/AUR - исправления источника для недоступного ресурса.md",
     "Linux/Arch - принудительная перезапись пакета.md",
     "Linux/Первичные настройки.md",
@@ -190,14 +186,10 @@
     "Linux/Решение общих проблем.md",
     "Сheatsheet/API Security.gif",
     "Сheatsheet/Docker Command Cheat Sheet HD.png",
-    "Сheatsheet/Docker.md",
     "Сheatsheet/kuber.jpg",
     "Сheatsheet/kali-linux.md",
     "Сheatsheet/Kafka.gif",
-    "Сheatsheet/Hashcat.md",
     "Сheatsheet/git.jpg",
-    "Linux/NPM - донат.md",
-    "Linux/pgAdmin4 как установить  на Manjaro Linux.md",
     "Keenetic",
     "Android",
     "SQL/SQL.pdf",
@@ -208,7 +200,6 @@
     "Books/DevOps/Kubernetes_на_практике.pdf",
     "Graphics",
     "Books/Java/Thymeleaf+spring.pdf",
-    "Books/Other/Wireshark.pdf",
     "Без названия.canvas"
   ]
 }
