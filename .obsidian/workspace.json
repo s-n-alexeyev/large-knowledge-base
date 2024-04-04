@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "fc599c1a6d95d3c9",
+        "id": "5a1f35e36e84c083",
         "type": "tabs",
         "children": [
           {
-            "id": "2a65b604a595fbc0",
+            "id": "71716da592eb3eec",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -81,6 +81,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Сheatsheet/kali-linux.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +98,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Сheatsheet/kali-linux.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +120,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Сheatsheet/kali-linux.md"
+              }
             }
           },
           {
@@ -153,7 +157,7 @@
       "publish:Публикация изменений": true
     }
   },
-  "active": "2a65b604a595fbc0",
+  "active": "6bbaac3f003adaee",
   "lastOpenFiles": [
     "Video/ffmpeg - полезные скрипты.md",
     "Video/DaVinci Resolve Studio патчи.md",
