@@ -2,19 +2,19 @@
 
 14 October 2023 · 10 min
 
-Table of Contents
+[Оригинальная статья](https://itdog.info/podnimaem-na-openwrt-klient-proksi-vless-shadowsocks-shadowsocks2022-nastrojka-sing-box-i-tun2socks/)
 
+Содержание
 - [[#tun2socks]]
-    - [[#Установка un2socks]]
-    - [Автозапуск](https://itdog.info/podnimaem-na-openwrt-klient-proksi-vless-shadowsocks-shadowsocks2022-nastrojka-sing-box-i-tun2socks/#%d0%b0%d0%b2%d1%82%d0%be%d0%b7%d0%b0%d0%bf%d1%83%d1%81%d0%ba)
-    - [Тестирование работоспособности и поиск ошибок](https://itdog.info/podnimaem-na-openwrt-klient-proksi-vless-shadowsocks-shadowsocks2022-nastrojka-sing-box-i-tun2socks/#%d1%82%d0%b5%d1%81%d1%82%d0%b8%d1%80%d0%be%d0%b2%d0%b0%d0%bd%d0%b8%d0%b5-%d1%80%d0%b0%d0%b1%d0%be%d1%82%d0%be%d1%81%d0%bf%d0%be%d1%81%d0%be%d0%b1%d0%bd%d0%be%d1%81%d1%82%d0%b8-%d0%b8-%d0%bf%d0%be%d0%b8%d1%81%d0%ba-%d0%be%d1%88%d0%b8%d0%b1%d0%be%d0%ba)
-- [Sing-box](https://itdog.info/podnimaem-na-openwrt-klient-proksi-vless-shadowsocks-shadowsocks2022-nastrojka-sing-box-i-tun2socks/#sing-box)
-    - [Установка](https://itdog.info/podnimaem-na-openwrt-klient-proksi-vless-shadowsocks-shadowsocks2022-nastrojka-sing-box-i-tun2socks/#%d1%83%d1%81%d1%82%d0%b0%d0%bd%d0%be%d0%b2%d0%ba%d0%b0-1)
-    - [Настройка](https://itdog.info/podnimaem-na-openwrt-klient-proksi-vless-shadowsocks-shadowsocks2022-nastrojka-sing-box-i-tun2socks/#%d0%bd%d0%b0%d1%81%d1%82%d1%80%d0%be%d0%b9%d0%ba%d0%b0)
-    - [Тестирование работоспособности и поиск ошибок](https://itdog.info/podnimaem-na-openwrt-klient-proksi-vless-shadowsocks-shadowsocks2022-nastrojka-sing-box-i-tun2socks/#%d1%82%d0%b5%d1%81%d1%82%d0%b8%d1%80%d0%be%d0%b2%d0%b0%d0%bd%d0%b8%d0%b5-%d1%80%d0%b0%d0%b1%d0%be%d1%82%d0%be%d1%81%d0%bf%d0%be%d1%81%d0%be%d0%b1%d0%bd%d0%be%d1%81%d1%82%d0%b8-%d0%b8-%d0%bf%d0%be%d0%b8%d1%81%d0%ba-%d0%be%d1%88%d0%b8%d0%b1%d0%be%d0%ba-1)
-- [Применение на роутерах](https://itdog.info/podnimaem-na-openwrt-klient-proksi-vless-shadowsocks-shadowsocks2022-nastrojka-sing-box-i-tun2socks/#%d0%bf%d1%80%d0%b8%d0%bc%d0%b5%d0%bd%d0%b5%d0%bd%d0%b8%d0%b5-%d0%bd%d0%b0-%d1%80%d0%be%d1%83%d1%82%d0%b5%d1%80%d0%b0%d1%85)
-    - [Pbr](https://itdog.info/podnimaem-na-openwrt-klient-proksi-vless-shadowsocks-shadowsocks2022-nastrojka-sing-box-i-tun2socks/#pbr)
-    - [Ручная настройка](https://itdog.info/podnimaem-na-openwrt-klient-proksi-vless-shadowsocks-shadowsocks2022-nastrojka-sing-box-i-tun2socks/#%d1%80%d1%83%d1%87%d0%bd%d0%b0%d1%8f-%d0%bd%d0%b0%d1%81%d1%82%d1%80%d0%be%d0%b9%d0%ba%d0%b0)
+    - [[#Установка tun2socks]]
+    - [[#Автозапуск tun2socks]]
+    - [[#Тестирование работоспособности и поиск ошибок tun2socks]]
+- [[#Sing-box]]
+    - [[#Установка Sing-box]]
+    - [[#Настройка Sing-box]]
+    - [[#Тестирование работоспособности и поиск ошибок Sing-box]]
+- [[#Применение на роутерах]]
+    - [[#Ручная настройка]]
 
 Обучающее руководство описывающее, как поднять на роутере Shadowsocks, VMess, VLESS, Trojan и даже SOCKS5 proxy и ходить к нему через сетевой интерфейс.
 
@@ -42,7 +42,7 @@ Sing-box умеет всё то, что умеет tun2socks и даже бол�
 
 Он цепляется к сетевому интерфейсу tun и переводит трафик в прокси. Что только не сделаешь, чтобы обойти китайский firewall.
 
-## Установка
+## Установка tun2socks
 
 Пакета tun2socks нет в репозиториях OpenWrt, поэтому его нужно скачивать с [гитхаба проекта](https://github.com/xjasonlyu/tun2socks/releases) . Благо он собирается под множество архитектур, в том числе MIPS и ARM.
 
@@ -144,7 +144,7 @@ config forwarding
 service network restart
 ```
 
-## Автозапуск
+## Автозапуск tun2socks
 
 Накидал простой сценарий, кладём его в `/etc/init.d/tun2socks`
 
@@ -221,7 +221,7 @@ ln -s ../init.d/tun2socks /etc/rc.d/S40tun2socks
 service tun2socks start
 ```
 
-## Тестирование работоспособности и поиск ошибок
+## Тестирование работоспособности и поиск ошибок tun2socks
 
 Глянуть логи приложения
 
@@ -263,7 +263,7 @@ Curl должен отдать IP-адрес вашего прокси-серв�
 
 Объем распакованного пакета 21.5MB.
 
-## Установка
+## Установка Sing-box
 
 Для OpenWrt 23.05 всё просто
 
@@ -285,7 +285,7 @@ opkg update && opkg install sing-box
  * pkg_hash_check_unresolved: cannot find dependency kmod-inet-diag for sing-box
 ```
 
-## Настройка
+## Настройка Sing-box
 
 Если до этого вы использовали интерфейс tun0 (например, OpenVPN использует tun), то остановите сначала другой туннель, либо используйте tun1 в конфигурации.
 
@@ -462,7 +462,7 @@ service sing-box start
 
 При рестарте роутера туннель будет подниматься автоматически: при установке пакета автоматически проставляется симлинк в `/etc/rc.d/`.
 
-## Тестирование работоспособности и поиск ошибок
+## Тестирование работоспособности и поиск ошибок Sing-box
 
 Глянуть логи приложения
 
