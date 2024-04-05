@@ -1,29 +1,28 @@
 
 12 January 2024 · 6 min
+[Оригинальная статья](https://itdog.info/klienty-vless-shadowsocks-trojan-xray-sing-box-dlya-windows-android-ios-macos-linux/)
 
-Table of Contents
-
+Содержание
 - [[#Логика работы]]
 - [[#Android]]
     - [[#v2rayNG]]
     - [[#NekoBox]]
 - [[#iOS]]
-    - [[#Streisand]]
-    - [[#FoXray]]
+    - [[#Streisand iOS]]
+    - [[#FoXray iOS]]
     - [[#Shadowrocket]]
     - [[#V2Box - V2ray Client]]
 - [[#Windows]]
-    - [Furious](https://itdog.info/klienty-vless-shadowsocks-trojan-xray-sing-box-dlya-windows-android-ios-macos-linux/#furious)
-    - [InvisibleMan-XRayClient](https://itdog.info/klienty-vless-shadowsocks-trojan-xray-sing-box-dlya-windows-android-ios-macos-linux/#invisibleman-xrayclient)
-    - [Nekoray](https://itdog.info/klienty-vless-shadowsocks-trojan-xray-sing-box-dlya-windows-android-ios-macos-linux/#nekoray)
-- [MacOS](https://itdog.info/klienty-vless-shadowsocks-trojan-xray-sing-box-dlya-windows-android-ios-macos-linux/#macos)
-    - [V2Box - V2ray Client](https://itdog.info/klienty-vless-shadowsocks-trojan-xray-sing-box-dlya-windows-android-ios-macos-linux/#v2box---v2ray-client-1)
-    - [FoXray](https://itdog.info/klienty-vless-shadowsocks-trojan-xray-sing-box-dlya-windows-android-ios-macos-linux/#foxray-1)
-    - [Streisand](https://itdog.info/klienty-vless-shadowsocks-trojan-xray-sing-box-dlya-windows-android-ios-macos-linux/#streisand-1)
-    - [V2RayXS](https://itdog.info/klienty-vless-shadowsocks-trojan-xray-sing-box-dlya-windows-android-ios-macos-linux/#v2rayxs)
-    - [NekoRay/NekoBox for macOS](https://itdog.info/klienty-vless-shadowsocks-trojan-xray-sing-box-dlya-windows-android-ios-macos-linux/#nekoraynekobox-for-macos)
-    - [Furious](https://itdog.info/klienty-vless-shadowsocks-trojan-xray-sing-box-dlya-windows-android-ios-macos-linux/#furious-1)
-- [Linux](https://itdog.info/klienty-vless-shadowsocks-trojan-xray-sing-box-dlya-windows-android-ios-macos-linux/#linux)
+    - [[#Furious]]
+    - [[#InvisibleMan-XRayClient]]
+    - [[#Nekoray]]
+- [[#macOS]]
+    - [[#FoXray  macOS]]
+    - [[#Streisand macOS]]
+    - [[#V2RayXS]]
+    - [[#NekoRay/NekoBox for macOS]]
+    - [[#Furious macOS]]
+- [[#Linux]]
 
 Клиенты, которые можно настроить через clipboard строку и QR-код. На выходе получаем стандартный VPN, который пускает весь трафик через туннель. Либо получаем proxy, который можно использовать в приложениях.
 
@@ -96,7 +95,7 @@ ss://MjAyMi1ibGFrZTMtYWVzLTEyOC1nY206b25hRzU5RlVYTXFNUG94MmhPaWltZz09Cg==@itdog.
 
 # iOS
 
-## Streisand
+## Streisand iOS
 
 Доступно для iOS, iPadOS, MacOS
 
@@ -108,7 +107,7 @@ ss://MjAyMi1ibGFrZTMtYWVzLTEyOC1nY206b25hRzU5RlVYTXFNUG94MmhPaWltZz09Cg==@itdog.
 
 На мой взгляд лучший бесплатный клиент.
 
-## FoXray
+## FoXray iOS
 
 Доступно для iOS, MacOS, iPadOS
 
@@ -194,7 +193,7 @@ UI не по мне и надписи “premium” мозолят глаза. �
 - Можно редактировать конфиги
 - Поддерживает и SS2022 и VLESS+reality
 
-# MacOS
+# macOS
 
 У меня нет MacOS. Поэтому отзывы на MacOS привествуются особенно.
 
@@ -204,13 +203,13 @@ UI не по мне и надписи “premium” мозолят глаза. �
 
 Рабочее решение. Рекламы, кстати, в версии для MacOS у него нет.
 
-## FoXray
+## FoXray  macOS
 
 [https://apps.apple.com/ru/app/foxray/id6448898396](https://apps.apple.com/ru/app/foxray/id6448898396)
 
 Рабочее решение. UI, как и для iOS, специфичный.
 
-## Streisand
+## Streisand macOS
 
 [https://apps.apple.com/ru/app/streisand/id6450534064](https://apps.apple.com/ru/app/streisand/id6450534064)
 
@@ -226,7 +225,7 @@ UI не по мне и надписи “premium” мозолят глаза. �
 
 Рабочее решение
 
-## Furious
+## Furious macOS
 
 [https://github.com/LorenEteval/Furious/](https://github.com/LorenEteval/Furious/)
 
