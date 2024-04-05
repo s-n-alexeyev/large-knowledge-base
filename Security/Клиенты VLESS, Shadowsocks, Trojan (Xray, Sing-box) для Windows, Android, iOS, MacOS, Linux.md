@@ -3,16 +3,16 @@
 
 Table of Contents
 
-- [Логика работы](https://itdog.info/klienty-vless-shadowsocks-trojan-xray-sing-box-dlya-windows-android-ios-macos-linux/#%d0%bb%d0%be%d0%b3%d0%b8%d0%ba%d0%b0-%d1%80%d0%b0%d0%b1%d0%be%d1%82%d1%8b)
-- [Android](https://itdog.info/klienty-vless-shadowsocks-trojan-xray-sing-box-dlya-windows-android-ios-macos-linux/#android)
-    - [v2rayNG](https://itdog.info/klienty-vless-shadowsocks-trojan-xray-sing-box-dlya-windows-android-ios-macos-linux/#v2rayng)
-    - [NekoBox](https://itdog.info/klienty-vless-shadowsocks-trojan-xray-sing-box-dlya-windows-android-ios-macos-linux/#nekobox)
-- [iOS](https://itdog.info/klienty-vless-shadowsocks-trojan-xray-sing-box-dlya-windows-android-ios-macos-linux/#ios)
-    - [Streisand](https://itdog.info/klienty-vless-shadowsocks-trojan-xray-sing-box-dlya-windows-android-ios-macos-linux/#streisand)
-    - [FoXray](https://itdog.info/klienty-vless-shadowsocks-trojan-xray-sing-box-dlya-windows-android-ios-macos-linux/#foxray)
-    - [Shadowrocket](https://itdog.info/klienty-vless-shadowsocks-trojan-xray-sing-box-dlya-windows-android-ios-macos-linux/#shadowrocket)
-    - [V2Box - V2ray Client](https://itdog.info/klienty-vless-shadowsocks-trojan-xray-sing-box-dlya-windows-android-ios-macos-linux/#v2box---v2ray-client)
-- [Windows](https://itdog.info/klienty-vless-shadowsocks-trojan-xray-sing-box-dlya-windows-android-ios-macos-linux/#windows)
+- [[#Логика работы]]
+- [[#Android]]
+    - [[#v2rayNG]]
+    - [[#NekoBox]]
+- [[#iOS]]
+    - [[#Streisand]]
+    - [[#FoXray]]
+    - [[#Shadowrocket]]
+    - [[#V2Box - V2ray Client]]
+- [[#Windows]]
     - [Furious](https://itdog.info/klienty-vless-shadowsocks-trojan-xray-sing-box-dlya-windows-android-ios-macos-linux/#furious)
     - [InvisibleMan-XRayClient](https://itdog.info/klienty-vless-shadowsocks-trojan-xray-sing-box-dlya-windows-android-ios-macos-linux/#invisibleman-xrayclient)
     - [Nekoray](https://itdog.info/klienty-vless-shadowsocks-trojan-xray-sing-box-dlya-windows-android-ios-macos-linux/#nekoray)
