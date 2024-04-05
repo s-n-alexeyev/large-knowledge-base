@@ -1,6 +1,7 @@
 # Настройка клиента OpenVPN на OpenWrt
 
 22 June 2023 · 5 min
+
 [Оригинальная статья](https://itdog.info/nastrojka-klienta-openvpn-na-openwrt/)
 
 Содержание
