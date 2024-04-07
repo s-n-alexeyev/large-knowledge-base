@@ -89,9 +89,9 @@ dh_bits = 2048
 ```shell
 certtool --generate-dh-params --load-privkey dh.conf --outfile dh.pem
 ```
-### 6. Теперь создаем АККАУНТЫ VPN
+### 6. Теперь создаем клиентов VPN
 
-Создаем директорию с кофигами внутри ~/ocserv/src
+Создаем директорию с конфигурациями внутри ~/ocserv/src
 
 ```shell
 mkdir ./clients
