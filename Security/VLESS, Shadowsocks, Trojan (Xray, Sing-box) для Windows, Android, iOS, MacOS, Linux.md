@@ -3,7 +3,7 @@
 [Оригинальная статья](https://itdog.info/klienty-vless-shadowsocks-trojan-xray-sing-box-dlya-windows-android-ios-macos-linux/)
 
 Содержание
-- [[#Логика работы]]
+- ()[[#Логика работы]]
 - [[#Android]]
     - [[#v2rayNG]]
     - [[#NekoBox]]
