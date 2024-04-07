@@ -1,6 +1,6 @@
 2024-01-12
 
-[Оригинальная статья](https://itdog.info/klienty-vless-shadowsocks-trojan-xray-sing-box-dlya-windows-android-ios-macos-linux/)
+[Оригинальная статья](https://itdog.info/klienty-vless-shadowsocks-trojan-xray-sing-box-dlya-windows-android-ios-MacOS-linux/)
 
 Содержание
 - [[#Логика работы]]
@@ -17,11 +17,11 @@
     - [[#InvisibleMan-XRayClient]]
     - [[#Nekoray]]
 - [[#MacOS]]
-    - [[#FoXray  macOS]]
-    - [[#Streisand macOS]]
+    - [[#FoXray  MacOS]]
+    - [[#Streisand MacOS]]
     - [[#V2RayXS]]
-    - [[#NekoRay/NekoBox for macOS]]
-    - [[#Furious macOS]]
+    - [[#NekoRay/NekoBox for MacOS]]
+    - [[#Furious MacOS]]
 - [[#Linux]]
 
 Клиенты, которые можно настроить через clipboard строку и QR-код. На выходе получаем стандартный VPN, который пускает весь трафик через туннель. Либо получаем proxy, который можно использовать в приложениях.
@@ -179,12 +179,12 @@ UI не по мне и надписи “premium” мозолят глаза. �
 [https://apps.apple.com/ru/app/v2box-v2ray-client/id6446814690](https://apps.apple.com/ru/app/v2box-v2ray-client/id6446814690)
 
 Рабочее решение. Рекламы, кстати, в версии для MacOS у него нет.
-## FoXray  macOS
+## FoXray  MacOS
 
 [https://apps.apple.com/ru/app/foxray/id6448898396](https://apps.apple.com/ru/app/foxray/id6448898396)
 
 Рабочее решение. UI, как и для iOS, специфичный.
-## Streisand macOS
+## Streisand MacOS
 
 [https://apps.apple.com/ru/app/streisand/id6450534064](https://apps.apple.com/ru/app/streisand/id6450534064)
 
@@ -192,12 +192,12 @@ UI не по мне и надписи “premium” мозолят глаза. �
 ## V2RayXS
 
 [https://github.com/tzmax/V2RayXS](https://github.com/tzmax/V2RayXS)
-## NekoRay/NekoBox for macOS
+## NekoRay/NekoBox for MacOS
 
-[https://github.com/abbasnaqdi/nekoray-macos](https://github.com/abbasnaqdi/nekoray-macos)
+[https://github.com/abbasnaqdi/nekoray-MacOS](https://github.com/abbasnaqdi/nekoray-MacOS)
 
 Рабочее решение
-## Furious macOS
+## Furious MacOS
 
 [https://github.com/LorenEteval/Furious/](https://github.com/LorenEteval/Furious/)
 
