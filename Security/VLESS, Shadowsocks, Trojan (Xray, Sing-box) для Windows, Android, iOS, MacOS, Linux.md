@@ -47,6 +47,7 @@ ss://MjAyMi1ibGFrZTMtYWVzLTEyOC1nY206b25hRzU5RlVYTXFNUG94MmhPaWltZz09Cg==@itdog.
 ## v2rayNG
 
 [Google Play](https://play.google.com/store/apps/details?id=com.v2ray.ang)
+
 [GitHub](https://github.com/2dust/v2rayNG)
 
 Поддерживает: Vmess, VLESS, Shadowsocks, Shadowsocks2022, Socks, Trojan.
@@ -66,7 +67,9 @@ ss://MjAyMi1ibGFrZTMtYWVzLTEyOC1nY206b25hRzU5RlVYTXFNUG94MmhPaWltZz09Cg==@itdog.
 ## NekoBox
 
 [Google Play](https://play.google.com/store/apps/details?id=moe.nb4a)
+
 [GitHub](https://github.com/MatsuriDayo/NekoBoxForAndroid)
+
 [Подробный мануал по установке и настройке NekoBox](https://itdog.info/ustanovka-nekobox-na-android-iz-apk-fajla-nastrojka-podklyuchenij/)
 
 Поддерживает: Vmess, VLESS, Shadowsocks, Shadowsocks2022, Socks, Trojan, Trojan Go, Http, NaïveProxy, Hysteria, TUIC, WireGuard, ShadowTLS, SSH. Также можно настроить цепочку прокси прям в приложении.
