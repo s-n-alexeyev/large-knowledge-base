@@ -5,9 +5,9 @@ sudo pacman -S curlftpfs
 ## Создаем файл паролей
 ```shell
 sudo cat<<EOF>>/root/.netrc
-machine nakakal.duckdns.org
+machine 192.168.1.1
 login root
-password PvBsPvBy12345!
+password <<YOUR PASSWORD>>
 EOF
 ```
 ## Тестируем монтирование файловой системы
@@ -20,15 +20,18 @@ sudo fusermount -u /run/media/user/ftp
 ## Настраиваем автомонтирование
 
 - Создаем файл с точкой монтирования для systemd:
-```bash
-sudo cat<<EOF>>/etc/systemd/system/run-media-ftp.mount
+```shell
+sudo cat<<EOF>>/etc/systemd/system/run-media-user-ftp.mount
 [Unit]
-Description=FTP nakakal.duckdns.org
+Description=FTP 192.168.1.1
 After=network.target remote-fs.target
 
+[Service]
+ExecStartPre=/bin/mkdir -p /run/media/user/ftp
+
 [Mount]
-What=curlftpfs#nakakal.duckdns.org
-Where=run/media/ftp
+What=curlftpfs#192.168.1.1
+Where=run/media/user/ftp
 Type=fuse
 Options=rw,nosuid,uid=1000,gid=1000,allow_other
 
@@ -38,13 +41,16 @@ WantedBy=multi-user.target
 EOF
 ```
 - Создаем сервис для автомонтирования:
-```bash
-sudo cat<<EOF>>/etc/systemd/system/run-media-ftp.automount
+```shell
+sudo cat<<EOF>>/etc/systemd/system/run-media-user-ftp.automount
 [Unit]
-Description=Automount nanakal.duckdns.org
+Description=Automount 192.168.1.1
+
+[Service]
+ExecStartPre=/bin/mkdir -p /run/media/user/ftp
 
 [Automount]
-Where=/run/media/ftp
+Where=/run/media/user/ftp
 TimeoutIdleSec=10
 
 [Install]
@@ -54,11 +60,11 @@ EOF
 ```
 
 ## Включаем и проверяем автомонтирование
-```bash
+```shell
 systemctl daemon-reload
-sudo systemctl enable run-media-ftp.mount
-sudo systemctl enable run-media-ftp.automount
-sudo systemctl start run-media-ftp.automount
-sudo ls /run/media/ftp
-sudo mount | grep /run/media/ftp
+sudo systemctl enable run-media-user-ftp.mount
+sudo systemctl enable run-media-user-ftp.automount
+sudo systemctl start run-media-user-ftp.automount
+sudo ls /run/media/user/ftp
+sudo mount | grep /run/media/user/ftp
 ```
