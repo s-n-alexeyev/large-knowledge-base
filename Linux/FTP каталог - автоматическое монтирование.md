@@ -13,7 +13,7 @@ EOF
 ## Тестируем монтирование файловой системы
 ```shell
 sudo mkdir /run/media/user/ftp
-sudo curlftpfs -o allow_other nakakal.duckdns.org /run/media/user/ftp  
+sudo curlftpfs -o allow_other 192.168.1.1 /run/media/user/ftp  
 sudo ls /run/media/user/ftp
 sudo fusermount -u /run/media/user/ftp
 ```
