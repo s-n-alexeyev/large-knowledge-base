@@ -47,16 +47,12 @@ sudo cat<<EOF>>/etc/systemd/system/run-media-user-ftp.automount
 [Unit]
 Description=Automount 192.168.1.1
 
-[Service]
-ExecStartPre=/bin/mkdir -p /run/media/user/ftp
-
 [Automount]
 Where=/run/media/user/ftp
 TimeoutIdleSec=10
 
 [Install]
 WantedBy=multi-user.target
-
 EOF
 ```
 
