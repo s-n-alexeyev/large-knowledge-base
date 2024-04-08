@@ -1,9 +1,9 @@
 ## Устанавливаем curlftpfs
-```bash
+```shell
 sudo pacman -S curlftpfs
 ```
 ## Создаем файл паролей
-```bash
+```shell
 sudo cat<<EOF>>/root/.netrc
 machine nakakal.duckdns.org
 login root
@@ -11,11 +11,11 @@ password PvBsPvBy12345!
 EOF
 ```
 ## Тестируем монтирование файловой системы
-```bash
-mkdir /run/media/user/ftp
-sudo curlftpfs -o allow_other nakakal.duckdns.org /run/media/ftp  
+```shell
+sudo mkdir /run/media/user/ftp
+sudo curlftpfs -o allow_other nakakal.duckdns.org /run/media/user/ftp  
 sudo ls /run/media/user/ftp
-sudo fusermount -u /run/media/ftp
+sudo fusermount -u /run/media/user/ftp
 ```
 ## Настраиваем автомонтирование
 
