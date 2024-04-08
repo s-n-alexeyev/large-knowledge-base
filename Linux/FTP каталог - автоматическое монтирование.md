@@ -40,6 +40,7 @@ WantedBy=remote-fs.target
 WantedBy=multi-user.target
 EOF
 ```
+
 - Создаем сервис для автомонтирования:
 ```shell
 sudo cat<<EOF>>/etc/systemd/system/run-media-user-ftp.automount
