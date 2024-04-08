@@ -62,7 +62,7 @@ EOF
 
 ## Включаем и проверяем автомонтирование
 ```shell
-systemctl daemon-reload
+sudo systemctl daemon-reload
 sudo systemctl enable run-media-user-ftp.mount
 sudo systemctl enable run-media-user-ftp.automount
 sudo systemctl start run-media-user-ftp.automount
