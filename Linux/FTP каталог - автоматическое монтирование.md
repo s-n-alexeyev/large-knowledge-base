@@ -2,6 +2,11 @@
 ```shell
 sudo pacman -S curlftpfs
 ```
+
+- чтобы корректно распознавались пробелы в именах надо ставить
+```shell
+yay curlftpfs-ng
+```
 ## Создаем файл паролей
 ```shell
 sudo cat<<EOF>>/root/.netrc
