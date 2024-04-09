@@ -11,7 +11,7 @@ sudo apt-get install tor tor-geoipdb privoxy
 
 >ARCH
 ```shell
-sudo pacman -S tor privoxy geoip-database
+sudo pacman -S tor privoxy geoip-database
 ```
 
 При необходимости получения последней версии Tor (к примеру, для обфускации трафика) нужно установить пакеты из официальных репозиториев согласно данной инструкции.

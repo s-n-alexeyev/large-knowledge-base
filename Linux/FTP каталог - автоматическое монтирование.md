@@ -5,7 +5,7 @@ sudo pacman -S curlftpfs
 
 - чтобы корректно распознавались пробелы в именах надо ставить
 ```shell
-yay curlftpfs-ng
+yay -S curlftpfs-ng
 ```
 ## Создаем файл паролей
 ```shell
