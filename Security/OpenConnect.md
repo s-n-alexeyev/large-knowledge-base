@@ -8,7 +8,7 @@ sudo apt update && sudo apt install -y vim nano git build-essential libgnutls28-
 
 ТУТ можно в теории не ставить iperf3 haproxy freeradius, но я ставлю все, чтобы собралось без проблем
 ```
-### 2. Клонируем репозитори последней версии [https://gitlab.com/openconnect/ocserv](https://gitlab.com/openconnect/ocserv) (можно перейти и посмотреть в браузере по тегу какая последняя версия, сейчас 1.2.4)
+### 2. Клонируем репозиторий последней версии [https://gitlab.com/openconnect/ocserv](https://gitlab.com/openconnect/ocserv) (можно перейти и посмотреть в браузере по тегу какая последняя версия, сейчас 1.2.4)
 
 ```shell
 cd ~ && git clone -b 1.2.4 https://gitlab.com/openconnect/ocserv 
