@@ -2,7 +2,7 @@
 - cfdisk - псевдографическая утилита
 - fdisk
 - gdisk - для автоматической разметке в таблице GPT
-- 
+
 К примеру gdisk
 gdisk /dev/sdX
 Ключ на создание раздела: n (gpt)
@@ -40,27 +40,59 @@ arch-chroot /mnt
 После этого ставится пароль root
 passwd
 
-Даем машине имя
+- Даем машине имя
+```shell
 nano /etc/hostname
-Настраиваем временную зону
-ln -sf /usr/share/zoneinfo/Asia/Vladivostok /etc/localtime
-Открыть локали
+```
+
+- Настраиваем временную зону
+```shell
+ln -sf /usr/share/zoneinfo/Asia/Almaty /etc/localtime
+```
+
+- Открыть локали
+```shell
 nano /etc/locale.gen
-Сгенерировать локали
+```
+
+- Сгенерировать локали
+```shell
 locale-gen
-Настройка языка консоли, добавление Кириллицы
+```
+
+- Настройка языка консоли, добавление Кириллицы
+```shell
 nano /etc/vconsole.conf
+```
+
+```ini
 KEYMAP=ru
 FONT=cyr-sun16
-Установка языка системы по умолчанию
+```
+
+- Установка языка системы по умолчанию
+```shell
 nano /etc/locale.conf
+```
+
+```ini
 LANG="ru_RU.UTF-8"
-Запуск пакетного менеджера
+```
+
+- Запуск пакетного менеджера
+```shell
 pacman-key --init
-Загрузка популярных ключей
+```
+
+- Загрузка популярных ключей
+```shell
 pacman-key --populate archlinux
-Открыть multilib-репозиторий
+```
+
+- Открыть multilib-репозиторий
+```shell
 nano /etc/pacman.conf
+```
 (multilib-раскоментировать)
 
 pacman -Sy
