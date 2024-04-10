@@ -24,9 +24,9 @@ btrfs su cr /mnt/@snapshots
 umount /mnt
 mount -o noatime,compress=lzo,space_cache,ssd,subvol=@ /dev/sda3 /mnt
 mkdir -p /mnt/{home,boot,var,.snapshots}
-mount -o noatime,compress=lzo,space_cache,ssd,subvol=@var /dev/sda3 /mnt/var
-mount -o noatime,compress=lzo,space_cache,ssd,subvol=@home /dev/sda3 /mnt/home
-mount -o noatime,compress=lzo,space_cache,ssd,subvol=@snapshots /dev/sda3 /mnt/.snapshots
+mount -o noatime,compress=lzo,space_cache=V2,ssd,subvol=@var /dev/sda3 /mnt/var
+mount -o noatime,compress=lzo,space_cache=V2,ssd,subvol=@home /dev/sda3 /mnt/home
+mount -o noatime,compress=lzo,space_cache=V2,ssd,subvol=@snapshots /dev/sda3 /mnt/.snapshots
 mount /dev/sda1 /mnt/boot
 Настройка зеркала
 nano /etc/pacman.d/mirrorlist
