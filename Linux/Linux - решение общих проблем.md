@@ -3,14 +3,14 @@
 yay -S rtl8761usb
 ```
 
-----------
+---
 ## Xbox one Controller
 >ARCH
 ```shell
 yay -S xpadneo-dkms
 ```
 
-----------
+---
 ## PS4 Gamepad
 >для работы с датчиками
 ```shell
@@ -18,7 +18,7 @@ pipx install https://github.com/TheDrHax/ds4drv-cemuhook/archive/master.zip
 ds4drv --hidraw --udp
 ```
 
-----------
+---
 ## Замена имени домашней директории и поддиректорий обратно на английский
 >Откройте терминал и запустите
 ```shell
@@ -28,7 +28,7 @@ LANG=C xdg-user-dirs-update --force
 Выйдите и войдите снова, чтобы применить новую конфигурацию.
 Это просто настроит и создаст новые папки, но не затронет ваши старые папки и не скопирует файлы. Вы должны сами переместить файлы из старых папок в новые.
 
-----------
+---
 ## Импорт ключа
 публичные сервера
 http://keyserver.ubuntu.com/
@@ -37,16 +37,16 @@ http://keys.gnupg.net/
 https://pgp.mit.edu/
 
 > arch, manjaro
-```sh
+```shell
 sudo gpg --keyserver keys.gnupg.net --recv-keys <ключ>
 ```
 
 > ubuntu, kali
-```sh
+```shell
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys <ключ>
 ```
 
-----------
+---
 ## Игнорировать обновление pacman
 ```shell
 sudo nano/etc/pacman.conf
@@ -57,22 +57,18 @@ sudo nano/etc/pacman.conf
 IgnorePkg = vlc
 ```
 
-----------
-## 1С Предприятие
-зависимость enchant1.6
-
-----------
+---
 ## При отправки картинки в Librewolf дает полосатую картинку
 отключить параметр 
 - [ ] Enable ResistFingerprinting
 
-----------
+---
 ## Синхронизация времени
 ```shell
 sudo ntpdate pool.ntp.org
 ```
 
-----------
+---
 ## Установка репозиторя yandex browser
 
 > заходим от администратора
@@ -81,23 +77,23 @@ sudo su
 ```
 
 > создаем репозиторий и добавляем запись
-```sh
+```shell
 cat<<EOF>>/etc/apt/sources.list.d/yandex-browser.list
 deb [arch=amd64] http://repo.yandex.ru/yandex-browser/deb stable main
 EOF
 ```
 
 > добавляем ключ
-```sh
+```shell
 wget https://repo.yandex.ru/yandex-browser/YANDEX-BROWSER-KEY.GPG && sudo apt-key add YANDEX-BROWSER-KEY.GPG && rm YANDEX-BROWSER-KEY.GPG
 ```
 
 > устанавливаем
-```sh
+```shell
 sudo apt update && sudo apt install yandex-browser-stable
 ```
 
-----------
+---
 ## Установка нескольких раскладок клавиатуры
 ### X11
 ```shell
@@ -121,17 +117,17 @@ BACKSPACE="guess"
 gsettings set org.gnome.desktop.wm.keybindings switch-input-source "['<Super>space', 'Caps_Lock','XF86Keyboard']"
 ```
 
-----------
+---
 ## Обновление системы (DEB)
 ```shell
 sudo apt update && sudo apt full-upgrade -y &
 ```
 
-----------
+---
 ## Замена видеокарты
 Достаточно удалить в директории */etc/X11/xorg.conf.d/* конфиг отвечающий за настройку видеокарты, перегрузить, система сама подберет видеодрайвер.
 
-----------
+---
 ## Пропал звук (dummy output) DEB
 Kind of Excellent question. I think your linux sound is not working. First check if your audio speaker is working or not. Is your audio output fine? Then if audio output is disable then enable it. If it is enabled then keep sure to check if your device is mute by the mute key. Hmm! If you have voice that you can up and down then let's go to another alternate. Open the terminal and:
 
@@ -165,14 +161,14 @@ sudo grub-update
 sudo grub-install /dev/sda
 ``` 
 #Notice: /dev/sda is the disk your "/" is mounted.
-```sh
+```shell
 reboot
 ```
 ## Librewolf (Firefox) не запускается
 Ошибка Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
 Также браузер запускается при удалении строки user_pref("media.ffmpeg.vaapi.enabled", true); из файла prefs.js из каталога профиля firefox.
 
-----------
+---
 ## Разгон монитора X11 (нестрандарные частоты Nvidia)
 Статья с [wiki.archlinux.org](https://wiki.archlinux.org/title/Qnix_QX2710#Fixing_X11_with_Nvidia)
 По умолчанию в некоторых графических драйверах QX2710 переходит в режим отладки и переключает цвета при запуске X. Причина этого заключается в том, что у драйвера возникают проблемы с считыванием EDID с монитора.
@@ -225,7 +221,7 @@ EOF
 ```
 Сохраните файл, затем перезапустите X сервер. Теперь ваш монитор должен работать.
 
-----------
+---
 ## Русский шрифт в терминале вместо квадратов
 Каждый раз setfont cyr-sun16
 или:
@@ -244,7 +240,7 @@ FONT="cyr-sun16"
 USECOLOR="yes"
 ```
 
-----------
+---
 ## Отключаем действие крышки ноутбука
 ```shell
 gedit /etc/systemd/logind.conf
@@ -256,20 +252,20 @@ HandleLidSwitchExternalPower=ignore
 HandleLidSwitchDocked=ignore
 ```
 
-----------
+---
 ## Очистка кэша DNS
 ```shell
 sudo systemctl restart nscd
 ```
 
-----------
+---
 ## Запуск с русской локалью (квадратики)
 >перед запуском программы необходимо указать переменную окружения указывающую на русскую локаль например:
 ```shell
 env LC_ALL=ru_RU.UTF-8 man
 ```
 
-----------
+---
 ## MONO импорт сертификата SSL
 ```shell
 p11-kit extract --format=pem-bundle --filter=ca-anchors --comment --purpose server-auth ./tls-ca-bundle.$(date -d "today" +"%Y%m%d%H%M").pem
@@ -285,7 +281,7 @@ cert-sync --user ./tls-ca-bundle.$(date -d "today" +"%Y%m%d%H%M").pem
 sudo cert-sync ./tls-ca-bundle.$(date -d "today" +"%Y%m%d%H%M").pem
 ```
 
-----------
+---
 ## Переключение версий JAVA в Arch/Manjaro
 
 >Проверка установленных версий
@@ -298,14 +294,14 @@ archlinux-java status
 sudo archlinux-java set java-11-openjdk
 ```
 
-----------
+---
 ## Компиляция CH340/CH341 для ядра 6.1
 драйвер с github с инструкцией
 https://github.com/juliagoda/CH341SER
 Обновленный драйвер
 https://elixir.bootlin.com/linux/v6.1.1/source/drivers/usb/serial/ch341.c
 
-----------
+---
 ## Автозагрузка скрипта от root
 нужно добавить пользователя в группу users (если это еще не сделано) — sudo gpasswd -a имя_пользователя users
 настроить crontab — sudo crontab -e и в конце добавить запись @reboot полный_путь_до_скрипта
@@ -313,7 +309,7 @@ https://elixir.bootlin.com/linux/v6.1.1/source/drivers/usb/serial/ch341.c
 Чтобы после перезагрузки настройки не сбивались — echo export EDITOR=«nano» >> ~/.bashrc
 или просто воспользуйтесь командой sudo EDITOR=nano crontab -e
 
-----------
+---
 ##  Manjaro (KDE) - Отключение открытия Меню в запуска приложений клавишей Super (Win)
 ```shell
 kwriteconfig5 --file kwinrc --group ModifierOnlyShortcuts --key Meta ""
@@ -324,7 +320,7 @@ kwriteconfig5 --file ~/.config/kwinrc --group ModifierOnlyShortcuts --key Meta "
 qdbus org.kde.KWin /KWin reconfigure
 ```
 
-----------
+---
 ## Монтирование ntfs разделов без запроса пароля root
 ```shell
 sudo su
@@ -335,14 +331,14 @@ usermod -a -G plugdev <ИМЯ>
 gpasswd -a <ИМЯ> plugdev
 ```
 
-----------
+---
 ## Проблема с opencl и onettb
 ```shell
 sudo pacman -Rc intel-oneapi-tbb
 yay -S tbb2020
 ```
 
-----------
+---
 ## Удаление проблемного пакета (DEB)
 >Для удаления проблемного пакета используйте следующую команду:
 ```shell
@@ -355,19 +351,19 @@ sudo dpkg -i --force-overwrite /var/cache/apt/archives/*.deb
 sudo apt-get --fix-broken install
 ```
 
-----------
+---
 ## Обновление ключей Yandex Браузера
 ```shell
 wget https://repo.yandex.ru/yandex-browser/YANDEX-BROWSER-KEY.GPG -O- | sudo apt-key add -
 ```
 
-----------
+---
 ## Пропал звук в - рестарт pulseaudio.service
 ```shell
 systemctl --user restart pulseaudio.service
 ```
 
-----------
+---
 ## Очистка грязного бита в NTFS
 При появлении ошибки *bad superblock on /dev/sdb2, missing codepage or helper program, or other error*, возможной причиной является "Грязный бит" который можно очистить командой:
 ```shell
@@ -375,7 +371,7 @@ sudo ntfsfix -d /dev/sdb2
 ```
 Где sdb2 ваш раздел с NTFS
 
-----------
+---
 ## Использование iPhone как USB-модема (DEB)
  в Ubuntu. Для настройки работу iPhone в качестве модема через USB, необходимо установить свежие версии libimobiledevice, ipheth (iPhone USB Ethernet Driver) и gvfs из PPA-репозитория
  ```shell
@@ -384,7 +380,7 @@ sudo aptitude update
 sudo aptitude install libimobiledevice libimobiledevice-utils ipheth-utils gvfs
 ```
 
-----------
+---
 ## Установка python приложений в общую среду
 необходимо добавить параметр *--break-system-packages*
 
@@ -393,16 +389,16 @@ sudo aptitude install libimobiledevice libimobiledevice-utils ipheth-utils gvfs
 pip install diffusers==0.23.0 --break-system-packages
 ```
 
-----------
+---
 ## xterm - русские буквы
 >В *~/.Xresources* добавить строки  
-```
+```ini
 XTerm*VT100*utf8Title: true
 XTerm*VT100*faceName: Mono
 ```
 
 >Выставить размер шрифта (например 8)
-```shell
+```ini
 xterm*faceSize: 8
 ```
 
@@ -413,7 +409,7 @@ xrdb ~/.Xresources
 
 -----
 ## Tomcat conf permission (Arch, Manjaro)
-```bash
+```shell
 sudo chmod -R 755 /usr/share/tomcat8/conf/
 ```
 
@@ -465,7 +461,7 @@ ln -s /usr/lib/x86_64-linux-gnu/libexec/kf5/kdesu /usr/bin/kdesu
 ---
 ## Если забыли пароль root
 
-При загрузке GRUB жмете E на пункте arch/manjaro  
+При загрузке GRUB жмете `E` на пункте arch/manjaro  
 добавляете к опциям ядра после rw  
 `systemd.unit=rescue.target`
 грузитесь и получите  root с пустым паролем, можете поменять пароль если надо

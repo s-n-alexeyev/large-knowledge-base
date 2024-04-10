@@ -184,10 +184,6 @@ papirus-folders -Ru
 ```
 
 ---
-## Fluent gtk theme
-https://www.gnome-look.org/p/1477941/
-
----
 ## Тема для GRUB Fallout
 ```bash
 wget -O - https://github.com/shvchk/fallout-grub-theme/raw/master/install.sh
