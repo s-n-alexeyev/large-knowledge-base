@@ -10,29 +10,53 @@ gdisk /dev/sdX
 200M - EFI EF00
 2G - swap 8200
 остальное под файловую систему линукс 8300
-Форматирование
-Boot-раздел - mkfs.fat -F32 /dev/sda1
-SWAP mkswap -L swap /dev/sda2
-Включить swap swapon /dev/sda2
-Создание тома и подтомов (субволумов)
+
+- Форматирование
+```shell
+#boot
+mkfs.fat -F32 /dev/sda1
+#swap
+mkswap -L swap /dev/sda2
+#btrfs
 mkfs.btrfs -L arch /dev/sda3 -f
+```
+
+- Включить swap 
+```shell
+swapon /dev/sda2
+```
+
+- Создание тома и подтомов (субволумов)
+```shell
 mount /dev/sda3 /mnt
 btrfs su cr /mnt/@
 btrfs su cr /mnt/@var
 btrfs su cr /mnt/@home
 btrfs su cr /mnt/@snapshots
 umount /mnt
-mount -o noatime,compress=lzo,space_cache,ssd,subvol=@ /dev/sda3 /mnt
+```
+
+- Монтируем разделы
+```shell
+mount -o noatime,compress=lzo,space_cache=v2,ssd,subvol=@ /dev/sda3 /mnt
 mkdir -p /mnt/{home,boot,var,.snapshots}
-mount -o noatime,compress=lzo,space_cache=V2,ssd,subvol=@var /dev/sda3 /mnt/var
-mount -o noatime,compress=lzo,space_cache=V2,ssd,subvol=@home /dev/sda3 /mnt/home
-mount -o noatime,compress=lzo,space_cache=V2,ssd,subvol=@snapshots /dev/sda3 /mnt/.snapshots
+mount -o noatime,compress=lzo,space_cache=v2,ssd,subvol=@var /dev/sda3 /mnt/var
+mount -o noatime,compress=lzo,space_cache=v2,ssd,subvol=@home /dev/sda3 /mnt/home
+mount -o noatime,compress=lzo,space_cache=v2,ssd,subvol=@snapshots /dev/sda3 /mnt/.snapshots
 mount /dev/sda1 /mnt/boot
-Настройка зеркала
+```
+
+Настройка зеркала (опционально)
+```shell
 nano /etc/pacman.d/mirrorlist
-Https://ftp.jaist.ac.jp/pub/Linux/ArchLinux/$repo/os/$arch
-Установка базовой части системы
+```
+
+`Https://ftp.jaist.ac.jp/pub/Linux/ArchLinux/$repo/os/$arch`
+
+- Установка базовой части системы
+```shell
 pacstrap /mnt base base-devel linux linux-firmware nano
+```
 Генерируем fstab
 genfstab -pU /mnt >> /mnt/etc/fstab
 После того, как первая часть отработала, лезем в chroot
