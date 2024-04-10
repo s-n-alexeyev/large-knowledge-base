@@ -93,27 +93,48 @@ pacman-key --populate archlinux
 ```shell
 nano /etc/pacman.conf
 ```
-(multilib-раскоментировать)
+`multilib раскоментировать`
 
+```shell
 pacman -Sy
-pacman -S mc bash-completion openssh arch-install-scripts networkmanager sudo git wget htop
-neofetch xdg-user-dirs ntfs-3g
+pacman -S mc bash-completion openssh arch-install-scripts networkmanager sudo git wget htop neofetch xdg-user-dirs ntfs-3g
 mkinitcpio -p linux
-Настройка пользователей
-nano /etc/sudoers - раскоментировать wheel после root
-useradd -m -g users -G wheel (имя_пользователя)
-passwd (имя пользователя)
-Старт сетевого менеджера
-systemctl enable NetworkManager.service
-Ставим загрузчик
-pacman -S grub efibootmgr grub-btrfs os-prober
-grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
-grub-mkconfig -o /boot/grub/grub.cfg
+```
 
-Выход с chroot
-Ctrl+D
+- Настройка пользователей
+```
+nano /etc/sudoers
+```
+`раскоментировать wheel после root`
+
+- Создаем пользователя
+```shell
+useradd -m -g users -G wheel <<имя_пользователя>>
+```
+
+- Задаем пароль пользователю
+```shell
+passwd <<имя_пользователя>>
+```
+
+- Старт сетевого менеджера
+```shell
+systemctl enable NetworkManager.service
+```
+
+- Ставим загрузчик
+```shell
+pacman -S grub efibootmgr grub-btrfs os-prober
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=Arch
+grub-mkconfig -o /boot/grub/grub.cfg
+```
+
+- Выход с chroot
+`Ctrl+D`
+```shell
 umount -R /mnt
 reboot
+```
 Получаем root
 Поднимаем иксы и графику nvidia
 sudo pacman -S (для виртуальной машины xf86-video-vesa, для процессора intel: xf86-video-intel)
