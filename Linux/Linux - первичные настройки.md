@@ -1,22 +1,20 @@
 # __Утилиты__
 - stacer - мультитул
-- vidalia сперва qt4-bin
 - anydesk - удаленный доступ
 - rustdesk - альтернатива anуdesk
 - hoptodesk - альтернатива anуdesk, fork rustdesk
 - portproton - [реализация wine от valve](https://portwine-linux.ru/port-proton-linux/)
-- nclayer - [для электронного правительства КЗ](https://pki.gov.kz/ncalayer/)
 - smplayer - альтернатива VLC player
 - onlyoffice - офис похожий на Microsoft
-- turtl - [мультиплатформенные заметки](https://turtlapp.com/)() проблемы в работе из-за русской локализаций, удаляем папку /opt/turtl/locales либо уставить не из репозитория, а [отсюда](https://turtlapp.com/download/)  установить зависимость из репозитория gconf)
-- obsidian - еще заметки
+- qbittorent - клиент torrent
+- obsidian - заметки
+- keepassxc - менеджер паролей
 - inkscape - векторный редактор
 - gimp - графический редактор
 - krita - графический редактор, ориентированный на художников
 # __Месенджеры__
 - telegram - telegram
 - skypeforlinux - skype
-- jami - jamu
 - whatsie - whatsapp
 
 ---
@@ -34,7 +32,6 @@
  - widget.use-xdg-desktop-portal  = 1 //было 2 (открытие файлов через Dolphin в Firefox/Librewolf)
 
  about:support -- просмотр поддержек
-
 ## плагины для браузера
   - canvas blocker - [блокировщик холста](https://addons.mozilla.org/en-US/firefox/addon/canvasblocker/)
   - popup blocker  - [блокировщик всплывающих окон](https://addons.mozilla.org/en-US/firefox/addon/popup-blocker/)
@@ -58,7 +55,6 @@ sudo ln -s /usr/lib/mozilla/native-messaging-hosts /usr/lib/librewolf/native-mes
 ### фильтры для
   - ublock origin - [борьба с рекламой](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/)
   - adguard - [и еще борьба с рекламой](https://addons.mozilla.org/en-US/firefox/addon/adguard-adblocker/)
- `https://raw.github.com/reek/anti-adblock-killer/master/anti-adblock-killer-filters.txt`
  `https://raw.githubusercontent.com/bogachenko/fuckfuckadblock/master/fuckfuckadblock.txt`
 
 ### скрипт для
@@ -66,7 +62,7 @@ sudo ln -s /usr/lib/mozilla/native-messaging-hosts /usr/lib/librewolf/native-mes
 1. голосовой перевод от Яндекс - https://raw.githubusercontent.com/ilyhalight/voice-over-translation/master/dist/vot.user.js
 2. отключение Ambient для Youtube - https://greasyfork.org/scripts/453801-disable-youtube-glow-ambilight/code/Disable%20YouTube%20GlowAmbilight.user.js
 3. запрет предупреждения об отключении рекламодавки на Youtube - https://github.com/TheRealJoelmatic/RemoveAdblockThing/raw/main/Youtube-Ad-blocker-Reminder-Remover.user.js
-4. возвращение дислайков Youtube - https://greasyfork.org/en/scripts/436115-return-youtube-dislike/code
+4. возвращение дизлайков Youtube - https://greasyfork.org/en/scripts/436115-return-youtube-dislike/code
 5. установка Youtube в full HD по умолчанию - https://greasyfork.org/en/scripts/23661-youtube-hd
 6. запрет возрастных ограничений Youtube - https://github.com/zerodytrash/Simple-YouTube-Age-Restriction-Bypass/raw/main/dist/Simple-YouTube-Age-Restriction-Bypass.user.js
 ### плагины особенные
