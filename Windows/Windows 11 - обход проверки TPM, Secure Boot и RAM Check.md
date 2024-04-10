@@ -7,7 +7,7 @@ Windows 11 проверяет наличие TPM и сохраняет, суще
 2. Следуйте инструкциям мастера установки до тех пор, пока не увидите сообщение об ошибке "невозможно установить".
 3. Находясь на экране ошибки, нажмите “Shift + F10”.
 4. Вставьте следующую команду в приглашение.  
-```r
+```powershell
 REG ADD HKLM\SYSTEM\Setup\LabConfig /v BypassTPMCheck /t REG_DWORD /d 1
 REG ADD HKLM\SYSTEM\Setup\LabConfig /v BypassSecureBootCheck /t REG_DWORD /d 1
 REG ADD HKLM\SYSTEM\Setup\LabConfig /v BypassRAMCheck /t REG_DWORD /d 1
