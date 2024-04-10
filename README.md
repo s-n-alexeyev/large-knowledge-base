@@ -1,1 +1,1 @@
-# Моя база знаний  по Linux, Windows, Java, SQL и т.д. в формате Obsidian
+# Моя база знаний  по Develop, DevOps, Linux, Windows, Java, SQL и т.д. в формате Obsidian
