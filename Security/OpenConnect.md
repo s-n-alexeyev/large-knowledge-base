@@ -286,6 +286,6 @@ sudo systemctl status ocserv.service
 ```
 ### Дополнительные материалы:
 
-[OpenConnect VPN server](https://ocserv.openconnect-vpn.net/ocserv.8.html)
-[Set Up OpenConnect VPN Server (ocserv) on Ubuntu 20.04](https://www.linuxbabe.com/ubuntu/openconnect-vpn-server-ocserv-ubuntu-20-04-lets-encrypt)
-[Set up Certificate Authentication in OpenConnect VPN Server (ocserv)](https://www.linuxbabe.com/ubuntu/certificate-authentication-openconnect-vpn-server-ocserv)
+[OpenConnect VPN server](https://ocserv.openconnect-vpn.net/ocserv.8.html)  
+[Set Up OpenConnect VPN Server (ocserv) on Ubuntu 20.04](https://www.linuxbabe.com/ubuntu/openconnect-vpn-server-ocserv-ubuntu-20-04-lets-encrypt)  
+[Set up Certificate Authentication in OpenConnect VPN Server (ocserv)](https://www.linuxbabe.com/ubuntu/certificate-authentication-openconnect-vpn-server-ocserv)  
