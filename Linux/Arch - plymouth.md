@@ -24,7 +24,10 @@ sudo nano /etc/mkinitcpio.conf
 ```ini
 HOOKS=(base udev autodetect kms modconf block keyboard keymap consolefont plymouth resume filesystems)
 
-#nvidia - добавить модули
+#в случае intel 
+MODULES=(i915)
+
+#в случае nvidia
 MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)
 ```
 
