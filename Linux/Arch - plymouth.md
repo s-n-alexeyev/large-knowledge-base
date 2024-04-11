@@ -106,4 +106,12 @@ DeviceScale=_коэффициент-масштабирования_
 
 и пересоберите initrd.
 
+Для абсолютно чистой загрузки правим на свой риск и страх
+```shell
+sudo nano /etc/grub.d/10_linix
+```
 
+в функции `linux_entry ()` находим `echo	'$(echo "$message" | grub_quote)` и удаляем, после чего заново обновляем Grub
+```shell
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+```
