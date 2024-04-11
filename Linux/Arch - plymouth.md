@@ -121,7 +121,7 @@ DeviceScale=_коэффициент-масштабирования_
 sudo nano /etc/grub.d/10_linux
 ```
 
-в функции `linux_entry ()` находим `'echo	'$(echo "$message" | grub_quote)'` и удаляем
+в функции `linux_entry ()` находим `'echo '$(echo "$message" | grub_quote)'` и удаляем
 
 - Проделать изменение можно скриптом запущенным от root
 ```shell
