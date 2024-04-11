@@ -108,7 +108,7 @@ DeviceScale=_коэффициент-масштабирования_
 
 Для абсолютно чистой загрузки правим на свой риск и страх
 ```shell
-sudo nano /etc/grub.d/10_linix
+sudo nano /etc/grub.d/10_linux
 ```
 
 в функции `linux_entry ()` находим `echo	'$(echo "$message" | grub_quote)` и удаляем, после чего заново обновляем Grub
