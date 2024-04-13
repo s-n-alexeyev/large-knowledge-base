@@ -1,4 +1,6 @@
-> Добавление редактора групповой политики (gpedit.msc) в Windows 11 Home
+## Добавление редактора групповой политики (gpedit.msc) в Windows 11 Home
+
+>Выполняем следующие команды в оболочке powershell
 ```powershell
 @echo off
 pushd "%~dp0"
@@ -7,7 +9,11 @@ dir /b %SystemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools
 for /f %%i in ('findstr /i . List.txt 2^>nul') do dism /online /norestart /add-package:"%SystemRoot%\servicing\Packages\%%i"
 pause
 ```
+
+---
 ## Local User and Group Management
+
+Скачиваем стороннюю утилиту для управления пользователями и группами  
 https://github.com/akruhler/AccountManagement/releases/download/1.6.3/lusrmgr.exe  
 или  
  ![Local User and Group Management](../Files/lusrmgr.exe)
