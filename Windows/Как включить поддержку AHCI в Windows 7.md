@@ -7,15 +7,15 @@
 Внимание! Данную последовательность действий необходимо выполнить ДО включения AHCI в настройках BIOS, иначе система перестанет загружаться!
 
 1. Откройте редактор реестра, набрав RegEdit в панели Пуск.
-1. На запрос UAC “Do you want to allow the following program to make changes to this computer?”, отвечаем Yes.
-1. В редакторе реестра перейдите к следующей ветке: `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\msahci`
-1. В правой панели выберите ключ Start и отредактируйте его (Modify). Включаем AHCI в Windows7
-1. Задайте параметру Start значение 0, и нажмите OK. Как включить AHCI в Windows7 значение по умолчанию (поддержка ACHI отключена): 3
-1. Закройте редактор реестра.
-1. Перезагрузите компьютер.
-1. Зайдите в BIOS, активируйте поддержку AHCI на вашей материнской плате. Сохраните изменения и перезагрузите компьютер еще раз.
-1. После загрузки, Windows 7 автоматически установит драйвера устройств AHCI. После окончания их установки, Windows перегрузится еще один раз.
-1. После загрузки системы жесткие диски будут поддерживать стандарт AHCI.
+2. На запрос UAC “Do you want to allow the following program to make changes to this computer?”, отвечаем Yes.
+3. В редакторе реестра перейдите к следующей ветке: `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\msahci`
+4. В правой панели выберите ключ Start и отредактируйте его (Modify). Включаем AHCI в Windows7
+5. Задайте параметру Start значение 0, и нажмите OK. Как включить AHCI в Windows7 значение по умолчанию (поддержка ACHI отключена): 3
+6. Закройте редактор реестра.
+7. Перезагрузите компьютер.
+8. Зайдите в BIOS, активируйте поддержку AHCI на вашей материнской плате. Сохраните изменения и перезагрузите компьютер еще раз.
+9. После загрузки, Windows 7 автоматически установит драйвера устройств AHCI. После окончания их установки, Windows перегрузится еще один раз.
+10. После загрузки системы жесткие диски будут поддерживать стандарт AHCI.
 
 Для пользователей Windows 8 инструкция по включению AHCI будет отличаться. Подробности в статье: Как в Windows 8 включить AHCI без переустановки системы.
 Как проверить включена ли AHCI в Windows
@@ -23,9 +23,9 @@
 Если вы не уверены, включена или нет поддержка AHCI в вашей Windows 7, то следуя этой инструкции, вы сможете установить этот факт.
 
 1. Откройте диспетчер устройств ( в меню Пуск наберите Device Manager ).
-1. На появившийся запрос UAC “Do you want to allow the following program to make changes to this computer?” ответьте Yes.
-1. Откройте секцию IDE ATA/ATAPI controllers .
-1. Если в Windows установлен драйвер AHCI, то в списке устройств будет присутствовать что-то вроде Standard AHCI 1.0 Serial ATA Controller или Intel(R) 5 Series 6 Port SATA AHCI Controller.
+2. На появившийся запрос UAC “Do you want to allow the following program to make changes to this computer?” ответьте Yes.
+3. Откройте секцию IDE ATA/ATAPI controllers .
+4. Если в Windows установлен драйвер AHCI, то в списке устройств будет присутствовать что-то вроде Standard AHCI 1.0 Serial ATA Controller или Intel(R) 5 Series 6 Port SATA AHCI Controller.
 
 Проверка поддержки AHCI в Windows 7
 

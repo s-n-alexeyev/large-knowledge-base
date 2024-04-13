@@ -1,4 +1,4 @@
-## Добавление редактора групповой политики (gpedit.msc) в Windows 11 Home
+> Добавление редактора групповой политики (gpedit.msc) в Windows 11 Home
 ```powershell
 @echo off
 pushd "%~dp0"
@@ -8,4 +8,6 @@ for /f %%i in ('findstr /i . List.txt 2^>nul') do dism /online /norestart /add-p
 pause
 ```
 ## Local User and Group Management
-https://github.com/akruhler/AccountManagement/releases/download/1.6.3/lusrmgr.exe
+https://github.com/akruhler/AccountManagement/releases/download/1.6.3/lusrmgr.exe  
+или  
+ ![Local User and Group Management](../Files/lusrmgr.exe)
