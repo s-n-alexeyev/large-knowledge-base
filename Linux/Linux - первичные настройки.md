@@ -272,7 +272,7 @@ sudo pacman -S amd-ucode
 ```
 
 ---
-## Автоматическая очистка кеша пакетов (Arch)
+## Автоматическая очистка кэша пакетов (Arch)
 
 ```shell
 sudo pacman -S pacman-contrib

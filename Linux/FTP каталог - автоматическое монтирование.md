@@ -1,13 +1,17 @@
 ## Устанавливаем curlftpfs
+
+>ARCH
 ```shell
 sudo pacman -S curlftpfs
 ```
 
-- чтобы корректно распознавались пробелы в именах надо ставить
+>чтобы корректно распознавались пробелы в именах файлов на FTP необходимо ставить из AUR
 ```shell
 yay -S curlftpfs-ng
 ```
 ## Создаем файл паролей
+
+>возможно предварительно нужно будет войти в оболочку root (`sudo su`)
 ```shell
 sudo cat<<EOF>>/root/.netrc
 machine 192.168.1.1
@@ -16,6 +20,8 @@ password <<YOUR PASSWORD>>
 EOF
 ```
 ## Тестируем монтирование файловой системы
+
+>выполняем следующие команды
 ```shell
 sudo mkdir /run/media/user/ftp
 sudo curlftpfs -o allow_other 192.168.1.1 /run/media/user/ftp  
@@ -24,7 +30,7 @@ sudo fusermount -u /run/media/user/ftp
 ```
 ## Настраиваем автомонтирование
 
-- Создаем файл с точкой монтирования для systemd:
+>Создаем файл с точкой монтирования для systemd:
 ```shell
 sudo cat<<EOF>>/etc/systemd/system/run-media-user-ftp.mount
 [Unit]
@@ -46,7 +52,7 @@ WantedBy=multi-user.target
 EOF
 ```
 
-- Создаем сервис для автомонтирования:
+>Создаем сервис для автомонтирования:
 ```shell
 sudo cat<<EOF>>/etc/systemd/system/run-media-user-ftp.automount
 [Unit]
