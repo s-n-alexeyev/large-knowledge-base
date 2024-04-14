@@ -179,7 +179,8 @@ sudo pacman -S (для виртуальной машины xf86-video-vesa, дл
 
 xorg-server xorg-xinit xorg-drivers nvidia nvidia-utils lib32-nvidia-utils nvidia-settings nvidia-dkms
 ```
-- KDE: 
+
+>KDE: 
 ```
 sudo pacman -S plasma kde-applications sddm
 ```
@@ -190,7 +191,7 @@ sudo pacman -S plasma kde-applications sddm
 systemctl enable sddm
 ```
 
-	XFCE: 
+>XFCE: 
 ```shell
 pacman -S xfce4 xfce4-goodies lxdm ttf-liberation ttf-dejavu network-manager-applet ppp pulseaudio-alsa gvfs thunar-volman
 systemctl enable lxdm
