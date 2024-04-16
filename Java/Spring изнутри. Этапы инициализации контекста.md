@@ -1,3 +1,13 @@
+```table-of-contents
+title: Содержание:
+style: nestedList # TOC style (nestedList|inlineFirstLevel)
+minLevel: 0 # Include headings from the specified level
+maxLevel: 0 # Include headings up to the specified level
+includeLinks: true # Make headings clickable
+debugInConsole: false # Print debug info in Obsidian console
+```
+
+---
 
 Доброго времени суток уважаемые хабравчане. Уже 3 года я работаю на проекте в котором мы используем Spring. Мне всегда было интересно разобраться с тем, как он устроен внутри. Я поискал статьи про внутреннее устройство Spring, но, к сожалению, ничего не нашел.  
   

@@ -1,3 +1,13 @@
+```table-of-contents
+title: Содержание:
+style: nestedList # TOC style (nestedList|inlineFirstLevel)
+minLevel: 0 # Include headings from the specified level
+maxLevel: 0 # Include headings up to the specified level
+includeLinks: true # Make headings clickable
+debugInConsole: false # Print debug info in Obsidian console
+```
+---
+
 Язык программирования Java обеспечивал поддержку аннотаций с Java 5.0 и выше. Ведущие платформы Java быстро приняли аннотации, и Spring Framework начал использовать аннотации из версии 2.5. Благодаря тому, как они определены, аннотации предоставляют много контекста в их объявлении.
 
 До аннотаций поведение Spring Framework в основном контролировалось с помощью конфигурации XML. Сегодня использование аннотаций предоставляет нам огромные возможности в настройке поведения Spring Framework.
