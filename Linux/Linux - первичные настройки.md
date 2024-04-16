@@ -1,4 +1,13 @@
-# __Утилиты__
+Содержание:
+```table-of-contents
+title: 
+style: nestedList # TOC style (nestedList|inlineFirstLevel)
+minLevel: 0 # Include headings from the specified level
+maxLevel: 0 # Include headings up to the specified level
+includeLinks: true # Make headings clickable
+debugInConsole: false # Print debug info in Obsidian console
+```
+# Утилиты
 - stacer - мультитул
 - anydesk - удаленный доступ
 - rustdesk - альтернатива anуdesk
@@ -12,15 +21,15 @@
 - inkscape - векторный редактор
 - gimp - графический редактор
 - krita - графический редактор, ориентированный на художников
-# __Месенджеры__
+# Месенджеры
 - telegram - telegram
 - skypeforlinux - skype
 - whatsie - whatsapp
 
 ---
-# __Браузеры__
+# Браузеры
 
-## __librewolf__
+## librewolf
 
  about:config -- настройки
  - gfx.webrender.all = TRUE
@@ -32,7 +41,7 @@
  - widget.use-xdg-desktop-portal  = 1 //было 2 (открытие файлов через Dolphin в Firefox/Librewolf)
 
  about:support -- просмотр поддержек
-## плагины для браузера
+### плагины для браузера
   - canvas blocker - [блокировщик холста](https://addons.mozilla.org/en-US/firefox/addon/canvasblocker/)
   - popup blocker  - [блокировщик всплывающих окон](https://addons.mozilla.org/en-US/firefox/addon/popup-blocker/)
   - disconnect     - [борьба с поиском и историей просмотра](https://addons.mozilla.org/en-US/firefox/addon/disconnect/)
@@ -50,14 +59,14 @@ ln -s ~/.mozilla/native-messaging-hosts ~/.librewolf/native-messaging-hosts
 sudo ln -s /usr/lib/mozilla/native-messaging-hosts /usr/lib/librewolf/native-messaging-hosts
 ```
 ### настройка proxy для tor
-  - proxy switchyomega - [переключалка proxy](https://addons.mozilla.org/en-US/firefox/addon/switchyomega/)
+  - proxy switchyomega - [переключатель proxy](https://addons.mozilla.org/en-US/firefox/addon/switchyomega/)
 для TOR - SOCKS5 127.0.0.1:9050
-### фильтры для
+### фильтры против рекламы
   - ublock origin - [борьба с рекламой](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/)
   - adguard - [и еще борьба с рекламой](https://addons.mozilla.org/en-US/firefox/addon/adguard-adblocker/)
  `https://raw.githubusercontent.com/bogachenko/fuckfuckadblock/master/fuckfuckadblock.txt`
 
-### скрипт для
+### скрипты для tampermonkey
 - tampermonkey - [JS скрипты](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/)
 1. голосовой перевод от Яндекс - https://raw.githubusercontent.com/ilyhalight/voice-over-translation/master/dist/vot.user.js
 2. отключение Ambient для Youtube - https://greasyfork.org/scripts/453801-disable-youtube-glow-ambilight/code/Disable%20YouTube%20GlowAmbilight.user.js
@@ -81,11 +90,13 @@ yay -R thorium-browser-bin
 ```
 
 >включение плавного скролинга
-`chrome://flags/#smooth-scrolling`
+```q
+chrome://flags/#smooth-scrolling
+```
 -----
 ##  yandex browser
 
-### DEB
+### yandex browser DEB
 
 >заходим от администратора
 ```bash
@@ -108,7 +119,7 @@ wget https://repo.yandex.ru/yandex-browser/YANDEX-BROWSER-KEY.GPG && sudo apt-ke
 ```bash
 sudo apt update && sudo apt install yandex-browser-stable
 ```
-### RPM
+### yandex browser RPM
 
 >создаем репозиторий и добавляем запись
 ```bash
@@ -128,7 +139,7 @@ sudo dnf install yandex-browser-stable -y
 -----
 ##  librewolf
 
-### RPM
+### librewolf RPM
 
 >создаем репозиторий и добавляем запись
 ```bash
@@ -148,14 +159,23 @@ sudo dnf install --refresh librewolf
 ---
 ##  PortProton
 
-https://github.com/Castro-Fidel/PortWINE
+>установка универсальная
+```shell
+wget -c "https://github.com/Castro-Fidel/PortProton_ALT/raw/main/portproton" && sh portproton
+```
+
+>ARCH
+```shell
+yay -S portproton
+```
+
+Ссылка на github https://github.com/Castro-Fidel/PortWINE 
 
 ---
 # Украшательства
 ##  papirus -  самый популярный набор значков
   есть в репозитории manjaro
 https://github.com/PapirusDevelopmentTeam/papirus-folders
-
 ## papirus - folders
 
 > установка papirus-folders
