@@ -1,6 +1,3 @@
-
----
-
 ```table-of-contents
 title: Содержание:
 style: nestedList # TOC style (nestedList|inlineFirstLevel)
@@ -14,37 +11,37 @@ debugInConsole: false # Print debug info in Obsidian console
 
 Текстовая инструкция по настройке Wireguard к видео (https://www.youtube.com/watch?v=5Aql0V-ta8A).
 
-Обновляем сервер:
+>Обновляем сервер:
 ```shell
 apt update && apt upgrade -y
 ```
 
-Ставим wireguard:
+>Ставим wireguard:
 ```shell
 apt install -y wireguard
 ```
 
-Генерим ключи сервера:
+>Генерируем ключи сервера:
 ```shell
 wg genkey | tee /etc/wireguard/privatekey | wg pubkey | tee /etc/wireguard/publickey
 ```
 
-Проставляем права на приватный ключ:
+>Проставляем права на приватный ключ:
 ```shell
 chmod 600 /etc/wireguard/privatekey
 ```
 
-Проверим, как у вас называется сетевой интерфейс:
+>Проверим, как у вас называется сетевой интерфейс:
 ```shell
 ip a
 ```
 
-Скорее всего у вас сетевой интерфейс eth0, но возможно и другой, например, ens3 или как-то иначе. Это название интерфейса используется далее в конфиге /etc/wireguard/wg0.conf, который мы сейчас создадим:
+>Скорее всего у вас сетевой интерфейс eth0, но возможно и другой, например, ens3 или как-то иначе. Это название интерфейса используется далее в конфиге /etc/wireguard/wg0.conf, который мы сейчас создадим:
 ```shell
 nano /etc/wireguard/wg0.conf
 ```
 
-```shell
+```q
 [Interface]
 PrivateKey = <privatekey>
 Address = 10.0.0.1/24
@@ -53,27 +50,24 @@ PostUp = iptables -A FORWARD -i %i -j ACCEPT; iptables -t nat -A POSTROUTING -o 
 PostDown = iptables -D FORWARD -i %i -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
 ```
 
-Если не знаете текстовый редактор vim — откройте файл с nano, он проще в работе.
+Если не знаете текстовый редактор vim — откройте файл с nano, он проще в работе.  
+Обратите внимание — в строках PostUp и PostDown использован как раз сетевой интерфейс eth0. Если у вас другой — замените eth0 на ваш.  
+Вставляем вместо \<privatekey\> содержимое файла /etc/wireguard/privatekey  
 
-Обратите внимание — в строках PostUp и PostDown использован как раз сетевой интерфейс eth0. Если у вас другой — замените eth0 на ваш.
-
-Вставляем вместо \<privatekey\> содержимое файла /etc/wireguard/privatekey
-
-Настраиваем IP форвардинг:
-
+>Настраиваем IP форвардинг:
 ```shell
 echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf
 sysctl -p
 ```
 
-Включаем systemd демон с wireguard:
+>Включаем systemd демон с wireguard:
 ```shell
 systemctl enable wg-quick@wg0.service
 systemctl start wg-quick@wg0.service
 systemctl status wg-quick@wg0.service
 ```
 
-Создаём ключи клиента:
+>Создаём ключи клиента:
 ```shell
 wg genkey | tee /etc/wireguard/wg_alex_privatekey | wg pubkey | tee /etc/wireguard/wg_alex_publickey
 ```
@@ -91,14 +85,13 @@ AllowedIPs = 10.0.0.2/32
 
 Вместо \<wg_alex_publickey\>  — заменяем на содержимое файла /etc/wireguard/wg_alex_publickey
 
-Перезагружаем systemd сервис с wireguard:
+>Перезагружаем systemd сервис с wireguard:
 ```shell
 systemctl restart wg-quick@wg0
 systemctl status wg-quick@wg0
 ```
 
-На локальной машине (например, на ноутбуке) создаём текстовый файл с конфигом клиента:
-
+>На локальной машине (например, на ноутбуке) создаём текстовый файл с конфигурацией клиента:
 ```shell
 nano wg_alex.conf
 ```
@@ -120,6 +113,7 @@ PersistentKeepalive = 20
 
 Этот файл открываем в Wireguard клиенте (есть для всех операционных систем, в том числе мобильных) — и жмем в клиенте кнопку подключения.
 
+---
 # Скрипт для автоматической установки
 
 ## Установка своего VPN-сервера WireGuard на VPS-хостинге
