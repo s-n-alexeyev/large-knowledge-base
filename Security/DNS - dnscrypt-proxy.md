@@ -7,7 +7,7 @@ includeLinks: true # Make headings clickable
 debugInConsole: false # Print debug info in Obsidian console
 ```
 ---
-## Описание dnscrypt-proxy
+# Описание dnscrypt-proxy
 
 `dnscrypt-proxy` — это гибкий DNS-прокси с поддержкой современных зашифрованных DNS-протоколов, таких, как DNSCrypt v2, DNS-over-HTTPS и Anonymized DNSCrypt.  
 У программы открыт исходный код, также программа доступна в виде предварительно скомпилированных двоичных файлов для большинства операционных систем и архитектур.
@@ -60,7 +60,7 @@ debugInConsole: false # Print debug info in Obsidian console
 
 Ниже показан рабочий пример конфигурационного файла dnscrypt-proxy с пояснениями.
 ### Конфигурационный файл
-```ini
+```q
 #-------------------------------------------#
 #        конфигурация dnscrypt-proxy        #
 #-------------------------------------------#
