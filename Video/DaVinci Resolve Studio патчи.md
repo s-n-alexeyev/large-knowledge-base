@@ -1,5 +1,5 @@
 ## Патчи
-## 17
+##№ 17
 ```bash
 sudo perl -pi -e 's/\x74\x7b\xe8\x81/\xeb\x7b\xe8\x81/g' /opt/resolve/bin/resolve
 ```

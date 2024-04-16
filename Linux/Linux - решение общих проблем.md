@@ -476,26 +476,3 @@ faillock --user $USER --reset
 ```
 
 ---
-
-## Tomcat conf permission (Arch, Manjaro)
-```shell
-sudo chmod -R 755 /usr/share/tomcat8/conf/
-```
-
----
-## Arch - yay пропуск проверки контрольной суммы
-
->используем следующие ключи
-```shell
-yay -Syu --mflags --skipinteg
-```
-
-
-## Arch - принудительная перезапись пакета
-
-используем  `--owerwrite "*"` для принудительного обновления пакета или полного обновления применимо как для pacman, так и для yay
-
->например:
-```shell
-sudo pacman -Syyuu --overwrite "*"
-```
