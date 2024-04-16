@@ -1,4 +1,6 @@
 
+---
+
 ```table-of-contents
 title: Содержание:
 style: nestedList # TOC style (nestedList|inlineFirstLevel)
@@ -7,7 +9,7 @@ maxLevel: 0 # Include headings up to the specified level
 includeLinks: true # Make headings clickable
 debugInConsole: false # Print debug info in Obsidian console
 ```
-
+---
 # Ручная установка
 
 Текстовая инструкция по настройке Wireguard к видео (https://www.youtube.com/watch?v=5Aql0V-ta8A).
