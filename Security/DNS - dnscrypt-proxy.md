@@ -1,3 +1,12 @@
+```table-of-contents
+title: Содержание:
+style: nestedList # TOC style (nestedList|inlineFirstLevel)
+minLevel: 0 # Include headings from the specified level
+maxLevel: 0 # Include headings up to the specified level
+includeLinks: true # Make headings clickable
+debugInConsole: false # Print debug info in Obsidian console
+```
+---
 ## Описание dnscrypt-proxy
 
 `dnscrypt-proxy` — это гибкий DNS-прокси с поддержкой современных зашифрованных DNS-протоколов, таких, как DNSCrypt v2, DNS-over-HTTPS и Anonymized DNSCrypt.  

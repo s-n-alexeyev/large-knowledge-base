@@ -2,27 +2,17 @@
 
 [Оригинальная статья](https://itdog.info/klienty-vless-shadowsocks-trojan-xray-sing-box-dlya-windows-android-ios-macOS-linux/)
 
-Содержание
-- [[#Логика работы]]
-- [[#Android]]
-    - [[#v2rayNG]]
-    - [[#NekoBox]]
-- [[#iOS]]
-    - [[#Streisand iOS]]
-    - [[#FoXray iOS]]
-    - [[#Shadowrocket]]
-    - [[#V2Box - V2ray Client]]
-- [[#Windows]]
-    - [[#Furious]]
-    - [[#InvisibleMan-XRayClient]]
-    - [[#Nekoray]]
-- [[#macOS]]
-    - [[#FoXray  macOS]]
-    - [[#Streisand macOS]]
-    - [[#V2RayXS]]
-    - [[#NekoRay/NekoBox for macOS]]
-    - [[#Furious macOS]]
-- [[#Linux]]
+---
+```table-of-contents
+title: Содержание:
+style: nestedList # TOC style (nestedList|inlineFirstLevel)
+minLevel: 0 # Include headings from the specified level
+maxLevel: 0 # Include headings up to the specified level
+includeLinks: true # Make headings clickable
+debugInConsole: false # Print debug info in Obsidian console
+```
+
+---
 
 Клиенты, которые можно настроить через clipboard строку и QR-код. На выходе получаем стандартный VPN, который пускает весь трафик через туннель. Либо получаем proxy, который можно использовать в приложениях.
 # Логика работы

@@ -1,3 +1,11 @@
+```table-of-contents
+title: Содержание:
+style: nestedList # TOC style (nestedList|inlineFirstLevel)
+minLevel: 0 # Include headings from the specified level
+maxLevel: 0 # Include headings up to the specified level
+includeLinks: true # Make headings clickable
+debugInConsole: false # Print debug info in Obsidian console
+```
 # Бенчмарк  в попугаях
 Много лет назад на одном популярном англоязычном форуме, ныне покойном, предложили гениально простой способ нагреть проц и посчитать его скорость в попугаях.
 

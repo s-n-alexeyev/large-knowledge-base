@@ -1,13 +1,12 @@
-Содержание:
 ```table-of-contents
-title: 
+title: Содержание:
 style: nestedList # TOC style (nestedList|inlineFirstLevel)
 minLevel: 0 # Include headings from the specified level
 maxLevel: 0 # Include headings up to the specified level
 includeLinks: true # Make headings clickable
 debugInConsole: false # Print debug info in Obsidian console
 ```
-## Bluetooh 5.0 USB dongle realtek
+## Bluetooth 5.0 USB dongle realtek
 ```shell
 yay -S rtl8761usb
 ```

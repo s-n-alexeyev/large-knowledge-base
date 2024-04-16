@@ -1,4 +1,12 @@
-## `Предупреждение`!
+```table-of-contents
+title: Содержание:
+style: nestedList # TOC style (nestedList|inlineFirstLevel)
+minLevel: 0 # Include headings from the specified level
+maxLevel: 0 # Include headings up to the specified level
+includeLinks: true # Make headings clickable
+debugInConsole: false # Print debug info in Obsidian console
+```
+## Предупреждение!
 
 Будьте внимательны, делайте резервную копию! При неправильных действиях можно повредить загрузку системы!
 ## Правим Grub

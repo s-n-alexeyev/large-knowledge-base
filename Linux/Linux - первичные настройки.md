@@ -1,6 +1,5 @@
-Содержание:
 ```table-of-contents
-title: 
+title: Содержание:
 style: nestedList # TOC style (nestedList|inlineFirstLevel)
 minLevel: 0 # Include headings from the specified level
 maxLevel: 0 # Include headings up to the specified level

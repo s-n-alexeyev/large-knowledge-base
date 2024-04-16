@@ -1,7 +1,18 @@
 2024-04-06
 
 [Оригинальная статья](https://linuxlife.page/posts/25-openconnect-camouflage/)
-## 1. Ставим все необходимые пакеты для OpenConnect v1.2.4
+
+---
+```table-of-contents
+title: Содержание:
+style: nestedList # TOC style (nestedList|inlineFirstLevel)
+minLevel: 0 # Include headings from the specified level
+maxLevel: 0 # Include headings up to the specified level
+includeLinks: true # Make headings clickable
+debugInConsole: false # Print debug info in Obsidian console
+```
+---
+### 1. Ставим все необходимые пакеты для OpenConnect v1.2.4
 
 ```shell
 sudo apt update && sudo apt install -y vim nano git build-essential libgnutls28-dev libev-dev autoconf automake libtool libpam0g-dev liblz4-dev libseccomp-dev libreadline-dev libnl-route-3-dev libkrb5-dev libradcli-dev libcurl4-gnutls-dev libcjose-dev libjansson-dev liboath-dev libprotobuf-c-dev libtalloc-dev libhttp-parser-dev protobuf-c-compiler gperf iperf3 lcov libuid-wrapper libpam-wrapper libnss-wrapper libsocket-wrapper gss-ntlmssp haproxy iputils-ping freeradius gawk gnutls-bin iproute2 yajl-tools tcpdump
@@ -284,7 +295,7 @@ sudo systemctl enable ocserv.service
 sudo systemctl start ocserv.service
 sudo systemctl status ocserv.service
 ```
-### Дополнительные материалы:
+### Дополнительные материалы
 
 [OpenConnect VPN server](https://ocserv.openconnect-vpn.net/ocserv.8.html)  
 [Set Up OpenConnect VPN Server (ocserv) on Ubuntu 20.04](https://www.linuxbabe.com/ubuntu/openconnect-vpn-server-ocserv-ubuntu-20-04-lets-encrypt)  
