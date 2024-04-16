@@ -1,4 +1,4 @@
-```ini
+```q
 # Main options
 title-text: ""
 desktop-image: "background.png"
