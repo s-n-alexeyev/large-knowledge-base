@@ -1,3 +1,14 @@
+
+```table-of-contents
+title: Содержание:
+style: nestedList # TOC style (nestedList|inlineFirstLevel)
+minLevel: 0 # Include headings from the specified level
+maxLevel: 0 # Include headings up to the specified level
+includeLinks: true # Make headings clickable
+debugInConsole: false # Print debug info in Obsidian console
+```
+---
+
 LineageOS - это одна из самых популярных прошивок с открытым исходным кодом для Android-устройств, которая основана на исходном коде операционной системы Android. Вот несколько причин, по я считаю LineageOS лучшим выбором по сравнению с другими прошивками:
 
 - Свобода выбора: LineageOS предоставляет пользователям свободу выбора, которую не предоставляет официальная прошивка от производителя устройства. Вы можете устанавливать и настраивать прошивку по своему усмотрению.
@@ -61,9 +72,10 @@ _Это делать не обязательно_
 
 Пример вывода в консоль:
 
+```
 List of devices attached
-
 emulator-5554 device
+```
 
 Если в терминале устройство отобразилось, то все хорошо.
 
