@@ -100,7 +100,7 @@ locale-gen
 nano /etc/vconsole.conf
 ```
 
-```ini
+```q
 KEYMAP=ru
 FONT=cyr-sun16
 ```
@@ -110,7 +110,7 @@ FONT=cyr-sun16
 nano /etc/locale.conf
 ```
 
-```ini
+```q
 LANG="ru_RU.UTF-8"
 ```
 
@@ -181,7 +181,7 @@ xorg-server xorg-xinit xorg-drivers nvidia nvidia-utils lib32-nvidia-utils nvidi
 ```
 
 >KDE: 
-```
+```shell
 sudo pacman -S plasma kde-applications sddm
 ```
 (выполнить дважды)
@@ -203,7 +203,7 @@ sudo nano /etc/fstab
 ```
 
 >убираем в строках слова
-```ini
+```q
 subvolid=***
 ```
 Сохраняем, выходим.

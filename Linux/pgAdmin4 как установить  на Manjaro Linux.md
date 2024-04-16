@@ -1,14 +1,13 @@
 **pgAdmin4** - это клиент для баз данных PostgreSQL, в то время как PostgreSQL - это продвинутая объектно-реляционная система управления базами данных. **pgAdmin4** упрощает управление PostgreSQL, предоставляя визуальный интерфейс. Применение инструмента **pgAdmin4** заключается в выполнении запросов, чтении результатов, обновлении данных и создании баз данных.
 
 Инструмент **pgAdmin4** можно установить в Linux, macOS и Windows с веб-сайта проекта. Однако доступная поддержка установки не может быть использована для установки **pgAdmin4** в Manjaro Linux. В этой статье мы собрали руководство по установке и использованию **pgAdmin4** на Manjaro.
-
 ## Необходимые условия
 
 Поскольку pgAdmin4 предназначен для использования в качестве графического интерфейса для управления базами данных Postgres. Это означает, что необходимо выполнить установку и настройку PostgreSQL. Для этого выполните действия, описанные ниже.
 
 **Шаг 1:** Установите сервер PostgreSQL на Manjaro, так как это необходимо для запуска pgAdmin4 в вашей системе.
 
-```bash
+```shell
 sudo pacman -S postgresql
 ```
 
@@ -16,7 +15,7 @@ sudo pacman -S postgresql
 
 **Шаг 2:** Войдите в систему как пользователь postgres с помощью команды, приведенной ниже.
 
-```bash
+```shell
 sudo -u postgres -i
 ```
 
@@ -24,7 +23,7 @@ sudo -u postgres -i
 
 После входа в postgres вам необходимо создать кластер PostgreSQL, выполнив приведенную ниже команду.
 
-```bash
+```shell
 initdb --locale $LANG -E UTF8 -D '/var/lib/postgres/data/'
 ```
 
@@ -32,7 +31,7 @@ initdb --locale $LANG -E UTF8 -D '/var/lib/postgres/data/'
 
 **Шаг 3:** Перезагрузите свой терминал, а затем используйте следующую команду, чтобы включить службу postgres.
 
-```bash
+```shell
 sudo systemctl enable postgresql
 ```
 
@@ -40,7 +39,7 @@ sudo systemctl enable postgresql
 
 После включения проверьте статус службы, чтобы убедиться, запущена она или нет.
 
-```bash
+```shell
 sudo systemctl status postgresql
 ```
 
@@ -48,7 +47,7 @@ sudo systemctl status postgresql
 
 **Шаг 4:** Этот шаг содержит несколько команд, которые связаны с настройками безопасности postgres.
 
-```bash
+```shell
 psql -U postgres
 ```
 
@@ -81,7 +80,7 @@ sudo mkdir /var/log/pgadmin
 
 **Шаг 2 :** Измените владельца файлов с помощью приведенных ниже команд.
 
-```bash
+```shell
 sudo chown $USER /var/lib/pgadmin  
   
 sudo chown $USER /var/log/pgadmin
@@ -91,7 +90,7 @@ sudo chown $USER /var/log/pgadmin
 
 **Шаг 3.** Создайте виртуальную среду на основе Python, введя команду, описанную ниже.
 
-```bash
+```shell
 python3 -m venv pgadmin4
 ```
 
@@ -99,7 +98,7 @@ python3 -m venv pgadmin4
 
 Активируйте среду с помощью команды, написанной ниже.
 
-```bash
+```shell
 source pgadmin4/bin/activate
 ```
 
@@ -107,7 +106,7 @@ source pgadmin4/bin/activate
 
 **Шаг 4 :** Теперь выполните следующую команду, чтобы установить pgAdmin4.
 
-```bash
+```shell
 pip install pgadmin4
 ```
 
@@ -115,7 +114,7 @@ pip install pgadmin4
 
 **Шаг 5 :** Перейдите к pgAdmin4 и запустите службу pgAdmin4 с помощью приведенной ниже команды.
 
-```bash
+```shell
 cd pgadmin4
 ```
 
@@ -123,7 +122,7 @@ cd pgadmin4
 
 После выполнения указанной ниже команды вам будет предложено ввести адрес электронной почты и пароль, которые будут использоваться для входа в веб-интерфейс.
 
-```bash
+```shell
 pgadmin4
 ```
 

@@ -61,7 +61,7 @@ tide configure
 ~/.config/fish/functions/tide/configure/choices/all/icons.fish
 
 >Сами значки в obsidian не отображаются, копируем содержимое, затем повторно выполняем `tide configure`
-```ini
+```q
 function icons
     _tide_title Icons
 

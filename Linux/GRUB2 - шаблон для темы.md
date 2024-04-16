@@ -62,5 +62,4 @@ terminal-border: "0"
   color = "#ffffff"
   font = "Terminus Regular 14"
 }
-
 ```
