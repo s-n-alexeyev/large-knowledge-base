@@ -1,14 +1,14 @@
-устанавливаем пакет для работы от root
+>устанавливаем пакет для работы от root
 ```sh
 sudo apt install gksu
 ```
 
-создаем папку, если таковой нет
+>создаем папку, если таковой нет
 ```sh
 mkdir -p ~/.local/share/file-manager/actions/
 ```
 
-- открыть папку от root
+>открыть папку от root
 ```
 cat<<EOF>>~/.local/share/file-manager/actions/open-folder-as-root.desktop
 [Desktop Entry]
@@ -25,7 +25,8 @@ Exec=gksu /usr/bin/pcmanfm %u
 Name=Default profile
 EOF
 ```
-- открыть папку или текстовый файл (в leafpad) как root
+
+>открыть папку или текстовый файл (в leafpad) как root
 ```
 cat<<EOF>>~/.local/share/file-manager/actions/open-as-root.desktop
 [Desktop Entry]
@@ -68,7 +69,7 @@ Name[C]=Edit File As Root
 EOF
 ```
 
-- установить в качестве обоев
+>установить в качестве обоев
 ```
 cat<<EOF>>~/.local/share/file-manager/actions/set-as-wallpaper.desktop
 [Desktop Entry]
