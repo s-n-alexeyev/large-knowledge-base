@@ -1,94 +1,94 @@
-[Автор оригинала: ByteByteGo]([https|]://github.com/ByteByteGoHq/system-design-101)
+[Автор оригинала: ByteByteGo](https://github.com/ByteByteGoHq/system-design-101)
 
-![]([https|]://habrastorage.org/r/w1560/webt/ma/po/lv/mapolvqq4uunxfqoaviv3g9km9y.jpeg)  
+![](https://habrastorage.org/r/w1560/webt/ma/po/lv/mapolvqq4uunxfqoaviv3g9km9y.jpeg)  
 
 О сложных системах простыми словами.
 
 В шпаргалке на высоком уровне рассматриваются такие вещи, как протоколы коммуникации, DevOps, CI/CD, архитектурные паттерны, базы данных, кэширование, микросервисы (и монолиты), платежные системы, Git, облачные сервисы etc. Особую ценность представляют диаграммы — рекомендую уделить им пристальное внимание. Полагаю, шпаргалка будет интересна всем, кто хоть как-то связан с разработкой программного обеспечения и, прежде всего, веб-приложений. Буду признателен за помощь в уточнении/исправлении понятий, терминологии, логики/алгоритмов работы систем (в рамках того, что по этому поводу содержится в оригинале), а также в обнаружении очепяток.
 
-Выражаю благодарность [Анне Неустроевой]([https|]://t.me/Anna_Neva) за помощь в редактировании материала.
+Выражаю благодарность [Анне Неустроевой](https://t.me/Anna_Neva) за помощь в редактировании материала.
 
-Возможно, [немного другой формат шпаргалки]([https|]://my-js.org/docs/cheatsheet/system-design-101) покажется вам более удобным.
+Возможно, [немного другой формат шпаргалки](https://my-js.org/docs/cheatsheet/system-design-101) покажется вам более удобным.
 
-[System Design (сборник на английском языке).]([https|]://my-js.org/assets/files/system_design-89ea3329b17dd21409f625db90073fb4.pdf)
+[System Design (сборник на английском языке).](https://my-js.org/assets/files/system_design-89ea3329b17dd21409f625db90073fb4.pdf)
 
-- [Протоколы]([https|]://habr.com/ru/articles/770564/#%D0%BF%D1%80%D0%BE%D1%82%D0%BE%D0%BA%D0%BE%D0%BB%D1%8B)  
-    - [REST и GraphQL]([https|]://habr.com/ru/articles/770564/#rest-%D0%B8-graphql)
-    - [gRPC]([https|]://habr.com/ru/articles/770564/#[grpc|])
-    - [Webhook]([https|]://habr.com/ru/articles/770564/#[webhook|])
-    - [Производительность API]([https|]://habr.com/ru/articles/770564/#%D0%BF%D1%80%D0%BE%D0%B8%D0%B7%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D1%8C-api)
-    - [HTTP 1.0 -> HTTP 1.1 -> HTTP 2.0 -> HTTP 3.0 (QUIC)]([https|]://habr.com/ru/articles/770564/#http-10---http-11---http-20---http-30-quic)
-    - [SOAP, REST, GraphQL и RPC]([https|]://habr.com/ru/articles/770564/#soap-rest-graphql-%D0%B8-rpc)
-    - [Сначала код и сначала API]([https|]://habr.com/ru/articles/770564/#%D1%81%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%B0-%D0%BA%D0%BE%D0%B4-%D0%B8-%D1%81%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%B0-api)
-    - [Коды статусов HTTP]([https|]://habr.com/ru/articles/770564/#%D0%BA%D0%BE%D0%B4%D1%8B-%D1%81%D1%82%D0%B0%D1%82%D1%83%D1%81%D0%BE%D0%B2-http)
-    - [Шлюз API]([https|]://habr.com/ru/articles/770564/#%D1%88%D0%BB%D1%8E%D0%B7-api)
-    - [Эффективное и безопасное API]([https|]://habr.com/ru/articles/770564/#%D1%8D%D1%84%D1%84%D0%B5%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D0%BE%D0%B5-%D0%B8-%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D0%B5-api)
-    - [Инкапсуляция TCP/IP]([https|]://habr.com/ru/articles/770564/#%D0%B8%D0%BD%D0%BA%D0%B0%D0%BF%D1%81%D1%83%D0%BB%D1%8F%D1%86%D0%B8%D1%8F-tcpip)
-    - [Почему NGINX называют "обратным" прокси?]([https|]://habr.com/ru/articles/770564/#%D0%BF%D0%BE%D1%87%D0%B5%D0%BC%D1%83-nginx-%D0%BD%D0%B0%D0%B7%D1%8B%D0%B2%D0%B0%D1%8E%D1%82-%D0%BE%D0%B1%D1%80%D0%B0%D1%82%D0%BD%D1%8B%D0%BC-%D0%BF%D1%80%D0%BE%D0%BA%D1%81%D0%B8)
-    - [Алгоритмы балансировки нагрузки]([https|]://habr.com/ru/articles/770564/#%D0%B0%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC%D1%8B-%D0%B1%D0%B0%D0%BB%D0%B0%D0%BD%D1%81%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B8-%D0%BD%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%BA%D0%B8)
-    - [URL, URI и URN]([https|]://habr.com/ru/articles/770564/#url-uri-%D0%B8-urn)
-- [CI/CD]([https|]://habr.com/ru/articles/770564/#cicd)  
-    - [CI/CD простыми словами]([https|]://habr.com/ru/articles/770564/#cicd-%D0%BF%D1%80%D0%BE%D1%81%D1%82%D1%8B%D0%BC%D0%B8-%D1%81%D0%BB%D0%BE%D0%B2%D0%B0%D0%BC%D0%B8)
-    - [Технический стек Netflix (конвейер CI/CD)]([https|]://habr.com/ru/articles/770564/#%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9-%D1%81%D1%82%D0%B5%D0%BA-netflix-%D0%BA%D0%BE%D0%BD%D0%B2%D0%B5%D0%B9%D0%B5%D1%80-cicd)
-- [Архитектурные паттерны]([https|]://habr.com/ru/articles/770564/#%D0%B0%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%BD%D1%8B%D0%B5-%D0%BF%D0%B0%D1%82%D1%82%D0%B5%D1%80%D0%BD%D1%8B)  
-    - [MVC, MVP, MVVM, MVVM-C и VIPER]([https|]://habr.com/ru/articles/770564/#mvc-mvp-mvvm-mvvm-c-%D0%B8-viper)
-    - [18 основных архитектурных паттернов]([https|]://habr.com/ru/articles/770564/#18-%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%BD%D1%8B%D1%85-%D0%B0%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%BD%D1%8B%D1%85-%D0%BF%D0%B0%D1%82%D1%82%D0%B5%D1%80%D0%BD%D0%BE%D0%B2)
-- [База данных]([https|]://habr.com/ru/articles/770564/#%D0%B1%D0%B0%D0%B7%D0%B0-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85)  
-    - [8 структур данных, улучшающих работу баз данных]([https|]://habr.com/ru/articles/770564/#8-%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%82%D1%83%D1%80-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85-%D1%83%D0%BB%D1%83%D1%87%D1%88%D0%B0%D1%8E%D1%89%D0%B8%D1%85-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%83-%D0%B1%D0%B0%D0%B7-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85)
-    - [Выполнение инструкции SQL в базе данных]([https|]://habr.com/ru/articles/770564/#%D0%B2%D1%8B%D0%BF%D0%BE%D0%BB%D0%BD%D1%8F%D1%8E%D1%82%D1%81%D1%8F-%D0%B8%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D0%B8%D0%B8-sql-%D0%B2-%D0%B1%D0%B0%D0%B7%D0%B5-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85)
-    - [Теорема CAP]([https|]://habr.com/ru/articles/770564/#%D1%82%D0%B5%D0%BE%D1%80%D0%B5%D0%BC%D0%B0-cap)
-    - [Типы памяти и хранилищ данных]([https|]://habr.com/ru/articles/770564/#%D1%82%D0%B8%D0%BF%D1%8B-%D0%BF%D0%B0%D0%BC%D1%8F%D1%82%D0%B8-%D0%B8-%D1%85%D1%80%D0%B0%D0%BD%D0%B8%D0%BB%D0%B8%D1%89-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85)
-    - [Визуализация запроса SQL]([https|]://habr.com/ru/articles/770564/#%D0%B2%D0%B8%D0%B7%D1%83%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F-%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81%D0%B0-sql)
-    - [Язык SQL]([https|]://habr.com/ru/articles/770564/#%D1%8F%D0%B7%D1%8B%D0%BA-sql)
-- [Кэш]([https|]://habr.com/ru/articles/770564/#%D0%BA%D1%8D%D1%88)  
-    - [Кэширование данных]([https|]://habr.com/ru/articles/770564/#%D0%BA%D1%8D%D1%88%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85)
-    - [Причины высокой производительности Redis]([https|]://habr.com/ru/articles/770564/#%D0%BF%D1%80%D0%B8%D1%87%D0%B8%D0%BD%D1%8B-%D0%B2%D1%8B%D1%81%D0%BE%D0%BA%D0%BE%D0%B9-%D0%BF%D1%80%D0%BE%D0%B8%D0%B7%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D0%B8-redis)
-    - [Случаи использования Redis]([https|]://habr.com/ru/articles/770564/#%D1%81%D0%BB%D1%83%D1%87%D0%B0%D0%B8-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F-redis)
-    - [Стратегии кэширования]([https|]://habr.com/ru/articles/770564/#%D1%81%D1%82%D1%80%D0%B0%D1%82%D0%B5%D0%B3%D0%B8%D0%B8-%D0%BA%D1%8D%D1%88%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F)
-- [Микросервисная архитектура]([https|]://habr.com/ru/articles/770564/#%D0%BC%D0%B8%D0%BA%D1%80%D0%BE%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D0%BD%D0%B0%D1%8F-%D0%B0%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0)  
-    - [Типичная микросервисная архитектура]([https|]://habr.com/ru/articles/770564/#%D1%82%D0%B8%D0%BF%D0%B8%D1%87%D0%BD%D0%B0%D1%8F-%D0%BC%D0%B8%D0%BA%D1%80%D0%BE%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D0%BD%D0%B0%D1%8F-%D0%B0%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0)
-    - [Лучшие практики микросервисов]([https|]://habr.com/ru/articles/770564/#%D0%BB%D1%83%D1%87%D1%88%D0%B8%D0%B5-%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B8-%D0%BC%D0%B8%D0%BA%D1%80%D0%BE%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D0%BE%D0%B2)
-    - [Типичный технический стек микросервисов]([https|]://habr.com/ru/articles/770564/#%D1%82%D0%B8%D0%BF%D0%B8%D1%87%D0%BD%D1%8B%D0%B9-%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9-%D1%81%D1%82%D0%B5%D0%BA-%D0%BC%D0%B8%D0%BA%D1%80%D0%BE%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D0%BE%D0%B2)
-    - [Причины высокой производительности Kafka]([https|]://habr.com/ru/articles/770564/#%D0%BF%D1%80%D0%B8%D1%87%D0%B8%D0%BD%D1%8B-%D0%B2%D1%8B%D1%81%D0%BE%D0%BA%D0%BE%D0%B9-%D0%BF%D1%80%D0%BE%D0%B8%D0%B7%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D0%B8-kafka)
-- [Платежные системы]([https|]://habr.com/ru/articles/770564/#%D0%BF%D0%BB%D0%B0%D1%82%D0%B5%D0%B6%D0%BD%D1%8B%D0%B5-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D1%8B)  
-    - [Почему кредитную карту называют "самым выгодным продуктом банка"? Как VISA/Mastercard делают деньги?]([https|]://habr.com/ru/articles/770564/#%D0%BF%D0%BE%D1%87%D0%B5%D0%BC%D1%83-%D0%BA%D1%80%D0%B5%D0%B4%D0%B8%D1%82%D0%BD%D1%83%D1%8E-%D0%BA%D0%B0%D1%80%D1%82%D1%83-%D0%BD%D0%B0%D0%B7%D1%8B%D0%B2%D0%B0%D1%8E%D1%82-%D1%81%D0%B0%D0%BC%D1%8B%D0%BC-%D0%B2%D1%8B%D0%B3%D0%BE%D0%B4%D0%BD%D1%8B%D0%BC-%D0%BF%D1%80%D0%BE%D0%B4%D1%83%D0%BA%D1%82%D0%BE%D0%BC-%D0%B1%D0%B0%D0%BD%D0%BA%D0%B0-%D0%BA%D0%B0%D0%BA-visamastercard-%D0%B4%D0%B5%D0%BB%D0%B0%D1%8E%D1%82-%D0%B4%D0%B5%D0%BD%D1%8C%D0%B3%D0%B8)
-    - [Принцип работы VISA]([https|]://habr.com/ru/articles/770564/#%D0%BF%D1%80%D0%B8%D0%BD%D1%86%D0%B8%D0%BF-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B-visa)
-- [DevOps]([https|]://habr.com/ru/articles/770564/#devops)  
-    - [DevOps, SRE и Platform Engineering]([https|]://habr.com/ru/articles/770564/#devops-sre-%D0%B8-platform-engineering)
-    - [Что такое Kubernetes?]([https|]://habr.com/ru/articles/770564/#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-kubernetes)
-    - [Docker и Kubernetes]([https|]://habr.com/ru/articles/770564/#[docker|]-%D0%B8-kubernetes)
-    - [Принцип работы Docker]([https|]://habr.com/ru/articles/770564/#%D0%BF%D1%80%D0%B8%D0%BD%D1%86%D0%B8%D0%BF-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B-[docker|])
-- [Git]([https|]://habr.com/ru/articles/770564/#git)  
-    - [Принцип работы команд Git]([https|]://habr.com/ru/articles/770564/#%D0%BF%D1%80%D0%B8%D0%BD%D1%86%D0%B8%D0%BF-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B-%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4-git)
-    - [Принцип работы Git]([https|]://habr.com/ru/articles/770564/#%D0%BF%D1%80%D0%B8%D0%BD%D1%86%D0%B8%D0%BF-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B-git)
-    - [Git merge и git rebase]([https|]://habr.com/ru/articles/770564/#git-merge-%D0%B8-git-rebase)
-- [Облачные сервисы]([https|]://habr.com/ru/articles/770564/#%D0%BE%D0%B1%D0%BB%D0%B0%D1%87%D0%BD%D1%8B%D0%B5-%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D1%8B)  
-    - [Популярные облачные сервисы по состоянию на 2023 год]([https|]://habr.com/ru/articles/770564/#%D0%BF%D0%BE%D0%BF%D1%83%D0%BB%D1%8F%D1%80%D0%BD%D1%8B%D0%B5-%D0%BE%D0%B1%D0%BB%D0%B0%D1%87%D0%BD%D1%8B%D0%B5-%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D1%8B-%D0%BF%D0%BE-%D1%81%D0%BE%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D1%8E-%D0%BD%D0%B0-2023-%D0%B3%D0%BE%D0%B4)
-    - [Облачная нативность]([https|]://habr.com/ru/articles/770564/#%D0%BE%D0%B1%D0%BB%D0%B0%D1%87%D0%BD%D0%B0%D1%8F-%D0%BD%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D0%BE%D1%81%D1%82%D1%8C)
-- [Инструменты, повышающие продуктивность разработки]([https|]://habr.com/ru/articles/770564/#%D0%B8%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D1%8B-%D0%BF%D0%BE%D0%B2%D1%8B%D1%88%D0%B0%D1%8E%D1%89%D0%B8%D0%B5-%D0%BF%D1%80%D0%BE%D0%B4%D1%83%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D0%BE%D1%81%D1%82%D1%8C-%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B8)  
-    - [Визуализация файлов JSON]([https|]://habr.com/ru/articles/770564/#%D0%B2%D0%B8%D0%B7%D1%83%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F-%D1%84%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2-json)
-    - [Автоматические преобразование кода в архитектурные диаграммы]([https|]://habr.com/ru/articles/770564/#%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B5-%D0%BF%D1%80%D0%B5%D0%BE%D0%B1%D1%80%D0%B0%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D0%BA%D0%BE%D0%B4%D0%B0-%D0%B2-%D0%B0%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%BD%D1%8B%D0%B5-%D0%B4%D0%B8%D0%B0%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%8B)
-- [Linux]([https|]://habr.com/ru/articles/770564/#linux)  
-    - [Файловая система Linux]([https|]://habr.com/ru/articles/770564/#%D1%84%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2%D0%B0%D1%8F-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0-linux)
-    - [18 основных команд Linux]([https|]://habr.com/ru/articles/770564/#18-%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%BD%D1%8B%D1%85-%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4-linux)
-- [Безопасность]([https|]://habr.com/ru/articles/770564/#%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D1%8C)  
-    - [Принцип работы HTTPS]([https|]://habr.com/ru/articles/770564/#%D0%BF%D1%80%D0%B8%D0%BD%D1%86%D0%B8%D0%BF-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B-[https|])
-    - [OAuth 2.0 простыми словами]([https|]://habr.com/ru/articles/770564/#oauth-20-%D0%BF%D1%80%D0%BE%D1%81%D1%82%D1%8B%D0%BC%D0%B8-%D1%81%D0%BB%D0%BE%D0%B2%D0%B0%D0%BC%D0%B8)
-    - [4 наиболее распространенных механизмов аутентификации]([https|]://habr.com/ru/articles/770564/#4-%D0%BD%D0%B0%D0%B8%D0%B1%D0%BE%D0%BB%D0%B5%D0%B5-%D1%80%D0%B0%D1%81%D0%BF%D1%80%D0%BE%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B5%D0%BD%D0%BD%D1%8B%D1%85-%D0%BC%D0%B5%D1%85%D0%B0%D0%BD%D0%B8%D0%B7%D0%BC%D0%BE%D0%B2-%D0%B0%D1%83%D1%82%D0%B5%D0%BD%D1%82%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D0%B8)
-    - [Сессия, куки, JWT, SSO и OAuth]([https|]://habr.com/ru/articles/770564/#%D1%81%D0%B5%D1%81%D1%81%D0%B8%D1%8F-%D0%BA%D1%83%D0%BA%D0%B8-[jwt|]-sso-%D0%B8-oauth)
-    - [Безопасное хранение паролей в базе данных и их валидация]([https|]://habr.com/ru/articles/770564/#%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D0%B5-%D1%85%D1%80%D0%B0%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BF%D0%B0%D1%80%D0%BE%D0%BB%D0%B5%D0%B9-%D0%B2-%D0%B1%D0%B0%D0%B7%D0%B5-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85-%D0%B8-%D0%B8%D1%85-%D0%B2%D0%B0%D0%BB%D0%B8%D0%B4%D0%B0%D1%86%D0%B8%D1%8F)
-    - [JWT (JSON Web Token) простыми словами]([https|]://habr.com/ru/articles/770564/#[jwt|]-json-web-token-%D0%BF%D1%80%D0%BE%D1%81%D1%82%D1%8B%D0%BC%D0%B8-%D1%81%D0%BB%D0%BE%D0%B2%D0%B0%D0%BC%D0%B8)
-    - [Принцип работы Google Authenticator и других типов двухфакторной аутентификации]([https|]://habr.com/ru/articles/770564/#%D0%BF%D1%80%D0%B8%D0%BD%D1%86%D0%B8%D0%BF-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B-google-authenticator-%D0%B8-%D0%B4%D1%80%D1%83%D0%B3%D0%B8%D1%85-%D1%82%D0%B8%D0%BF%D0%BE%D0%B2-%D0%B4%D0%B2%D1%83%D1%85%D1%84%D0%B0%D0%BA%D1%82%D0%BE%D1%80%D0%BD%D0%BE%D0%B9-%D0%B0%D1%83%D1%82%D0%B5%D0%BD%D1%82%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D0%B8)
-- [Реальные системы]([https|]://habr.com/ru/articles/770564/#%D1%80%D0%B5%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D1%8B)  
-    - [Технический стек Netflix]([https|]://habr.com/ru/articles/770564/#%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9-%D1%81%D1%82%D0%B5%D0%BA-netflix)
-    - [Архитектура Twitter по состоянию на 2022 год]([https|]://habr.com/ru/articles/770564/#%D0%B0%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0-twitter-%D0%BF%D0%BE-%D1%81%D0%BE%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D1%8E-%D0%BD%D0%B0-2022-%D0%B3%D0%BE%D0%B4)
-    - [Эволюция архитектуры Airbnb в течение последних 15 лет]([https|]://habr.com/ru/articles/770564/#%D1%8D%D0%B2%D0%BE%D0%BB%D1%8E%D1%86%D0%B8%D1%8F-%D0%B0%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D1%8B-airbnb-%D0%B2-%D1%82%D0%B5%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BF%D0%BE%D1%81%D0%BB%D0%B5%D0%B4%D0%BD%D0%B8%D1%85-15-%D0%BB%D0%B5%D1%82)
-    - [Монорепозиторий и микрорепозитории]([https|]://habr.com/ru/articles/770564/#%D0%BC%D0%BE%D0%BD%D0%BE%D1%80%D0%B5%D0%BF%D0%BE%D0%B7%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D0%B9-%D0%B8-%D0%BC%D0%B8%D0%BA%D1%80%D0%BE%D1%80%D0%B5%D0%BF%D0%BE%D0%B7%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D0%B8)
-    - [Архитектура Stack Overflow]([https|]://habr.com/ru/articles/770564/#%D0%B0%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0-stack-overflow)
-    - [Почему Amazon Prime Video Monitoring перешел с бессерверной архитектуры на монолит? Как это может сэкономить 90% стоимости?]([https|]://habr.com/ru/articles/770564/#%D0%BF%D0%BE%D1%87%D0%B5%D0%BC%D1%83-amazon-prime-video-monitoring-%D0%BF%D0%B5%D1%80%D0%B5%D1%88%D0%B5%D0%BB-%D1%81-%D0%B1%D0%B5%D1%81%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80%D0%BD%D0%BE%D0%B9-%D0%B0%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D1%8B-%D0%BD%D0%B0-%D0%BC%D0%BE%D0%BD%D0%BE%D0%BB%D0%B8%D1%82-%D0%BA%D0%B0%D0%BA-%D1%8D%D1%82%D0%BE-%D0%BC%D0%BE%D0%B6%D0%B5%D1%82-%D1%81%D1%8D%D0%BA%D0%BE%D0%BD%D0%BE%D0%BC%D0%B8%D1%82%D1%8C-90-%D1%81%D1%82%D0%BE%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D0%B8)
-    - [Как Disney Hotstar удалось собрать 5 миллиардов смайлов во время турнира?]([https|]://habr.com/ru/articles/770564/#%D0%BA%D0%B0%D0%BA-disney-hotstar-%D1%83%D0%B4%D0%B0%D0%BB%D0%BE%D1%81%D1%8C-%D1%81%D0%BE%D0%B1%D1%80%D0%B0%D1%82%D1%8C-5-%D0%BC%D0%B8%D0%BB%D0%BB%D0%B8%D0%B0%D1%80%D0%B4%D0%BE%D0%B2-%D1%81%D0%BC%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2-%D0%B2%D0%BE-%D0%B2%D1%80%D0%B5%D0%BC%D1%8F-%D1%82%D1%83%D1%80%D0%BD%D0%B8%D1%80%D0%B0)
-    - [Как Discord хранит триллионы сообщений?]([https|]://habr.com/ru/articles/770564/#%D0%BA%D0%B0%D0%BA-discord-%D1%85%D1%80%D0%B0%D0%BD%D0%B8%D1%82-%D1%82%D1%80%D0%B8%D0%BB%D0%BB%D0%B8%D0%BE%D0%BD%D1%8B-%D1%81%D0%BE%D0%BE%D0%B1%D1%89%D0%B5%D0%BD%D0%B8%D0%B9)
-    - [Как работают прямые видеотрансляции на YouTube, TikTok Live или Twitch?]([https|]://habr.com/ru/articles/770564/#%D0%BA%D0%B0%D0%BA-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D1%8E%D1%82-%D0%BF%D1%80%D1%8F%D0%BC%D1%8B%D0%B5-%D0%B2%D0%B8%D0%B4%D0%B5%D0%BE%D1%82%D1%80%D0%B0%D0%BD%D1%81%D0%BB%D1%8F%D1%86%D0%B8%D0%B8-%D0%BD%D0%B0-youtube-tiktok-live-%D0%B8%D0%BB%D0%B8-twitch)
+- [Протоколы](https://habr.com/ru/articles/770564/#%D0%BF%D1%80%D0%BE%D1%82%D0%BE%D0%BA%D0%BE%D0%BB%D1%8B)  
+    - [REST и GraphQL](https://habr.com/ru/articles/770564/#rest-%D0%B8-graphql)
+    - [gRPC](https://habr.com/ru/articles/770564/#grpc)
+    - [Webhook](https://habr.com/ru/articles/770564/#webhook)
+    - [Производительность API](https://habr.com/ru/articles/770564/#%D0%BF%D1%80%D0%BE%D0%B8%D0%B7%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D1%8C-api)
+    - [HTTP 1.0 -> HTTP 1.1 -> HTTP 2.0 -> HTTP 3.0 (QUIC)](https://habr.com/ru/articles/770564/#http-10---http-11---http-20---http-30-quic)
+    - [SOAP, REST, GraphQL и RPC](https://habr.com/ru/articles/770564/#soap-rest-graphql-%D0%B8-rpc)
+    - [Сначала код и сначала API](https://habr.com/ru/articles/770564/#%D1%81%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%B0-%D0%BA%D0%BE%D0%B4-%D0%B8-%D1%81%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%B0-api)
+    - [Коды статусов HTTP](https://habr.com/ru/articles/770564/#%D0%BA%D0%BE%D0%B4%D1%8B-%D1%81%D1%82%D0%B0%D1%82%D1%83%D1%81%D0%BE%D0%B2-http)
+    - [Шлюз API](https://habr.com/ru/articles/770564/#%D1%88%D0%BB%D1%8E%D0%B7-api)
+    - [Эффективное и безопасное API](https://habr.com/ru/articles/770564/#%D1%8D%D1%84%D1%84%D0%B5%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D0%BE%D0%B5-%D0%B8-%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D0%B5-api)
+    - [Инкапсуляция TCP/IP](https://habr.com/ru/articles/770564/#%D0%B8%D0%BD%D0%BA%D0%B0%D0%BF%D1%81%D1%83%D0%BB%D1%8F%D1%86%D0%B8%D1%8F-tcpip)
+    - [Почему NGINX называют "обратным" прокси?](https://habr.com/ru/articles/770564/#%D0%BF%D0%BE%D1%87%D0%B5%D0%BC%D1%83-nginx-%D0%BD%D0%B0%D0%B7%D1%8B%D0%B2%D0%B0%D1%8E%D1%82-%D0%BE%D0%B1%D1%80%D0%B0%D1%82%D0%BD%D1%8B%D0%BC-%D0%BF%D1%80%D0%BE%D0%BA%D1%81%D0%B8)
+    - [Алгоритмы балансировки нагрузки](https://habr.com/ru/articles/770564/#%D0%B0%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC%D1%8B-%D0%B1%D0%B0%D0%BB%D0%B0%D0%BD%D1%81%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B8-%D0%BD%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%BA%D0%B8)
+    - [URL, URI и URN](https://habr.com/ru/articles/770564/#url-uri-%D0%B8-urn)
+- [CI/CD](https://habr.com/ru/articles/770564/#cicd)  
+    - [CI/CD простыми словами](https://habr.com/ru/articles/770564/#cicd-%D0%BF%D1%80%D0%BE%D1%81%D1%82%D1%8B%D0%BC%D0%B8-%D1%81%D0%BB%D0%BE%D0%B2%D0%B0%D0%BC%D0%B8)
+    - [Технический стек Netflix (конвейер CI/CD)](https://habr.com/ru/articles/770564/#%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9-%D1%81%D1%82%D0%B5%D0%BA-netflix-%D0%BA%D0%BE%D0%BD%D0%B2%D0%B5%D0%B9%D0%B5%D1%80-cicd)
+- [Архитектурные паттерны](https://habr.com/ru/articles/770564/#%D0%B0%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%BD%D1%8B%D0%B5-%D0%BF%D0%B0%D1%82%D1%82%D0%B5%D1%80%D0%BD%D1%8B)  
+    - [MVC, MVP, MVVM, MVVM-C и VIPER](https://habr.com/ru/articles/770564/#mvc-mvp-mvvm-mvvm-c-%D0%B8-viper)
+    - [18 основных архитектурных паттернов](https://habr.com/ru/articles/770564/#18-%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%BD%D1%8B%D1%85-%D0%B0%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%BD%D1%8B%D1%85-%D0%BF%D0%B0%D1%82%D1%82%D0%B5%D1%80%D0%BD%D0%BE%D0%B2)
+- [База данных](https://habr.com/ru/articles/770564/#%D0%B1%D0%B0%D0%B7%D0%B0-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85)  
+    - [8 структур данных, улучшающих работу баз данных](https://habr.com/ru/articles/770564/#8-%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%82%D1%83%D1%80-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85-%D1%83%D0%BB%D1%83%D1%87%D1%88%D0%B0%D1%8E%D1%89%D0%B8%D1%85-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%83-%D0%B1%D0%B0%D0%B7-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85)
+    - [Выполнение инструкции SQL в базе данных](https://habr.com/ru/articles/770564/#%D0%B2%D1%8B%D0%BF%D0%BE%D0%BB%D0%BD%D1%8F%D1%8E%D1%82%D1%81%D1%8F-%D0%B8%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D0%B8%D0%B8-sql-%D0%B2-%D0%B1%D0%B0%D0%B7%D0%B5-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85)
+    - [Теорема CAP](https://habr.com/ru/articles/770564/#%D1%82%D0%B5%D0%BE%D1%80%D0%B5%D0%BC%D0%B0-cap)
+    - [Типы памяти и хранилищ данных](https://habr.com/ru/articles/770564/#%D1%82%D0%B8%D0%BF%D1%8B-%D0%BF%D0%B0%D0%BC%D1%8F%D1%82%D0%B8-%D0%B8-%D1%85%D1%80%D0%B0%D0%BD%D0%B8%D0%BB%D0%B8%D1%89-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85)
+    - [Визуализация запроса SQL](https://habr.com/ru/articles/770564/#%D0%B2%D0%B8%D0%B7%D1%83%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F-%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81%D0%B0-sql)
+    - [Язык SQL](https://habr.com/ru/articles/770564/#%D1%8F%D0%B7%D1%8B%D0%BA-sql)
+- [Кэш](https://habr.com/ru/articles/770564/#%D0%BA%D1%8D%D1%88)  
+    - [Кэширование данных](https://habr.com/ru/articles/770564/#%D0%BA%D1%8D%D1%88%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85)
+    - [Причины высокой производительности Redis](https://habr.com/ru/articles/770564/#%D0%BF%D1%80%D0%B8%D1%87%D0%B8%D0%BD%D1%8B-%D0%B2%D1%8B%D1%81%D0%BE%D0%BA%D0%BE%D0%B9-%D0%BF%D1%80%D0%BE%D0%B8%D0%B7%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D0%B8-redis)
+    - [Случаи использования Redis](https://habr.com/ru/articles/770564/#%D1%81%D0%BB%D1%83%D1%87%D0%B0%D0%B8-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F-redis)
+    - [Стратегии кэширования](https://habr.com/ru/articles/770564/#%D1%81%D1%82%D1%80%D0%B0%D1%82%D0%B5%D0%B3%D0%B8%D0%B8-%D0%BA%D1%8D%D1%88%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F)
+- [Микросервисная архитектура](https://habr.com/ru/articles/770564/#%D0%BC%D0%B8%D0%BA%D1%80%D0%BE%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D0%BD%D0%B0%D1%8F-%D0%B0%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0)  
+    - [Типичная микросервисная архитектура](https://habr.com/ru/articles/770564/#%D1%82%D0%B8%D0%BF%D0%B8%D1%87%D0%BD%D0%B0%D1%8F-%D0%BC%D0%B8%D0%BA%D1%80%D0%BE%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D0%BD%D0%B0%D1%8F-%D0%B0%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0)
+    - [Лучшие практики микросервисов](https://habr.com/ru/articles/770564/#%D0%BB%D1%83%D1%87%D1%88%D0%B8%D0%B5-%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B8-%D0%BC%D0%B8%D0%BA%D1%80%D0%BE%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D0%BE%D0%B2)
+    - [Типичный технический стек микросервисов](https://habr.com/ru/articles/770564/#%D1%82%D0%B8%D0%BF%D0%B8%D1%87%D0%BD%D1%8B%D0%B9-%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9-%D1%81%D1%82%D0%B5%D0%BA-%D0%BC%D0%B8%D0%BA%D1%80%D0%BE%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D0%BE%D0%B2)
+    - [Причины высокой производительности Kafka](https://habr.com/ru/articles/770564/#%D0%BF%D1%80%D0%B8%D1%87%D0%B8%D0%BD%D1%8B-%D0%B2%D1%8B%D1%81%D0%BE%D0%BA%D0%BE%D0%B9-%D0%BF%D1%80%D0%BE%D0%B8%D0%B7%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D0%B8-kafka)
+- [Платежные системы](https://habr.com/ru/articles/770564/#%D0%BF%D0%BB%D0%B0%D1%82%D0%B5%D0%B6%D0%BD%D1%8B%D0%B5-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D1%8B)  
+    - [Почему кредитную карту называют "самым выгодным продуктом банка"? Как VISA/Mastercard делают деньги?](https://habr.com/ru/articles/770564/#%D0%BF%D0%BE%D1%87%D0%B5%D0%BC%D1%83-%D0%BA%D1%80%D0%B5%D0%B4%D0%B8%D1%82%D0%BD%D1%83%D1%8E-%D0%BA%D0%B0%D1%80%D1%82%D1%83-%D0%BD%D0%B0%D0%B7%D1%8B%D0%B2%D0%B0%D1%8E%D1%82-%D1%81%D0%B0%D0%BC%D1%8B%D0%BC-%D0%B2%D1%8B%D0%B3%D0%BE%D0%B4%D0%BD%D1%8B%D0%BC-%D0%BF%D1%80%D0%BE%D0%B4%D1%83%D0%BA%D1%82%D0%BE%D0%BC-%D0%B1%D0%B0%D0%BD%D0%BA%D0%B0-%D0%BA%D0%B0%D0%BA-visamastercard-%D0%B4%D0%B5%D0%BB%D0%B0%D1%8E%D1%82-%D0%B4%D0%B5%D0%BD%D1%8C%D0%B3%D0%B8)
+    - [Принцип работы VISA](https://habr.com/ru/articles/770564/#%D0%BF%D1%80%D0%B8%D0%BD%D1%86%D0%B8%D0%BF-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B-visa)
+- [DevOps](https://habr.com/ru/articles/770564/#devops)  
+    - [DevOps, SRE и Platform Engineering](https://habr.com/ru/articles/770564/#devops-sre-%D0%B8-platform-engineering)
+    - [Что такое Kubernetes?](https://habr.com/ru/articles/770564/#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-kubernetes)
+    - [Docker и Kubernetes](https://habr.com/ru/articles/770564/#docker-%D0%B8-kubernetes)
+    - [Принцип работы Docker](https://habr.com/ru/articles/770564/#%D0%BF%D1%80%D0%B8%D0%BD%D1%86%D0%B8%D0%BF-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B-docker)
+- [Git](https://habr.com/ru/articles/770564/#git)  
+    - [Принцип работы команд Git](https://habr.com/ru/articles/770564/#%D0%BF%D1%80%D0%B8%D0%BD%D1%86%D0%B8%D0%BF-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B-%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4-git)
+    - [Принцип работы Git](https://habr.com/ru/articles/770564/#%D0%BF%D1%80%D0%B8%D0%BD%D1%86%D0%B8%D0%BF-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B-git)
+    - [Git merge и git rebase](https://habr.com/ru/articles/770564/#git-merge-%D0%B8-git-rebase)
+- [Облачные сервисы](https://habr.com/ru/articles/770564/#%D0%BE%D0%B1%D0%BB%D0%B0%D1%87%D0%BD%D1%8B%D0%B5-%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D1%8B)  
+    - [Популярные облачные сервисы по состоянию на 2023 год](https://habr.com/ru/articles/770564/#%D0%BF%D0%BE%D0%BF%D1%83%D0%BB%D1%8F%D1%80%D0%BD%D1%8B%D0%B5-%D0%BE%D0%B1%D0%BB%D0%B0%D1%87%D0%BD%D1%8B%D0%B5-%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D1%8B-%D0%BF%D0%BE-%D1%81%D0%BE%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D1%8E-%D0%BD%D0%B0-2023-%D0%B3%D0%BE%D0%B4)
+    - [Облачная нативность](https://habr.com/ru/articles/770564/#%D0%BE%D0%B1%D0%BB%D0%B0%D1%87%D0%BD%D0%B0%D1%8F-%D0%BD%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D0%BE%D1%81%D1%82%D1%8C)
+- [Инструменты, повышающие продуктивность разработки](https://habr.com/ru/articles/770564/#%D0%B8%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D1%8B-%D0%BF%D0%BE%D0%B2%D1%8B%D1%88%D0%B0%D1%8E%D1%89%D0%B8%D0%B5-%D0%BF%D1%80%D0%BE%D0%B4%D1%83%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D0%BE%D1%81%D1%82%D1%8C-%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B8)  
+    - [Визуализация файлов JSON](https://habr.com/ru/articles/770564/#%D0%B2%D0%B8%D0%B7%D1%83%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F-%D1%84%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2-json)
+    - [Автоматические преобразование кода в архитектурные диаграммы](https://habr.com/ru/articles/770564/#%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B5-%D0%BF%D1%80%D0%B5%D0%BE%D0%B1%D1%80%D0%B0%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D0%BA%D0%BE%D0%B4%D0%B0-%D0%B2-%D0%B0%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%BD%D1%8B%D0%B5-%D0%B4%D0%B8%D0%B0%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%8B)
+- [Linux](https://habr.com/ru/articles/770564/#linux)  
+    - [Файловая система Linux](https://habr.com/ru/articles/770564/#%D1%84%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2%D0%B0%D1%8F-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0-linux)
+    - [18 основных команд Linux](https://habr.com/ru/articles/770564/#18-%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%BD%D1%8B%D1%85-%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4-linux)
+- [Безопасность](https://habr.com/ru/articles/770564/#%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D1%8C)  
+    - [Принцип работы HTTPS](https://habr.com/ru/articles/770564/#%D0%BF%D1%80%D0%B8%D0%BD%D1%86%D0%B8%D0%BF-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B-https)
+    - [OAuth 2.0 простыми словами](https://habr.com/ru/articles/770564/#oauth-20-%D0%BF%D1%80%D0%BE%D1%81%D1%82%D1%8B%D0%BC%D0%B8-%D1%81%D0%BB%D0%BE%D0%B2%D0%B0%D0%BC%D0%B8)
+    - [4 наиболее распространенных механизмов аутентификации](https://habr.com/ru/articles/770564/#4-%D0%BD%D0%B0%D0%B8%D0%B1%D0%BE%D0%BB%D0%B5%D0%B5-%D1%80%D0%B0%D1%81%D0%BF%D1%80%D0%BE%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B5%D0%BD%D0%BD%D1%8B%D1%85-%D0%BC%D0%B5%D1%85%D0%B0%D0%BD%D0%B8%D0%B7%D0%BC%D0%BE%D0%B2-%D0%B0%D1%83%D1%82%D0%B5%D0%BD%D1%82%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D0%B8)
+    - [Сессия, куки, JWT, SSO и OAuth](https://habr.com/ru/articles/770564/#%D1%81%D0%B5%D1%81%D1%81%D0%B8%D1%8F-%D0%BA%D1%83%D0%BA%D0%B8-jwt-sso-%D0%B8-oauth)
+    - [Безопасное хранение паролей в базе данных и их валидация](https://habr.com/ru/articles/770564/#%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D0%B5-%D1%85%D1%80%D0%B0%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BF%D0%B0%D1%80%D0%BE%D0%BB%D0%B5%D0%B9-%D0%B2-%D0%B1%D0%B0%D0%B7%D0%B5-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85-%D0%B8-%D0%B8%D1%85-%D0%B2%D0%B0%D0%BB%D0%B8%D0%B4%D0%B0%D1%86%D0%B8%D1%8F)
+    - [JWT (JSON Web Token) простыми словами](https://habr.com/ru/articles/770564/#jwt-json-web-token-%D0%BF%D1%80%D0%BE%D1%81%D1%82%D1%8B%D0%BC%D0%B8-%D1%81%D0%BB%D0%BE%D0%B2%D0%B0%D0%BC%D0%B8)
+    - [Принцип работы Google Authenticator и других типов двухфакторной аутентификации](https://habr.com/ru/articles/770564/#%D0%BF%D1%80%D0%B8%D0%BD%D1%86%D0%B8%D0%BF-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B-google-authenticator-%D0%B8-%D0%B4%D1%80%D1%83%D0%B3%D0%B8%D1%85-%D1%82%D0%B8%D0%BF%D0%BE%D0%B2-%D0%B4%D0%B2%D1%83%D1%85%D1%84%D0%B0%D0%BA%D1%82%D0%BE%D1%80%D0%BD%D0%BE%D0%B9-%D0%B0%D1%83%D1%82%D0%B5%D0%BD%D1%82%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D0%B8)
+- [Реальные системы](https://habr.com/ru/articles/770564/#%D1%80%D0%B5%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D1%8B)  
+    - [Технический стек Netflix](https://habr.com/ru/articles/770564/#%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9-%D1%81%D1%82%D0%B5%D0%BA-netflix)
+    - [Архитектура Twitter по состоянию на 2022 год](https://habr.com/ru/articles/770564/#%D0%B0%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0-twitter-%D0%BF%D0%BE-%D1%81%D0%BE%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D1%8E-%D0%BD%D0%B0-2022-%D0%B3%D0%BE%D0%B4)
+    - [Эволюция архитектуры Airbnb в течение последних 15 лет](https://habr.com/ru/articles/770564/#%D1%8D%D0%B2%D0%BE%D0%BB%D1%8E%D1%86%D0%B8%D1%8F-%D0%B0%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D1%8B-airbnb-%D0%B2-%D1%82%D0%B5%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BF%D0%BE%D1%81%D0%BB%D0%B5%D0%B4%D0%BD%D0%B8%D1%85-15-%D0%BB%D0%B5%D1%82)
+    - [Монорепозиторий и микрорепозитории](https://habr.com/ru/articles/770564/#%D0%BC%D0%BE%D0%BD%D0%BE%D1%80%D0%B5%D0%BF%D0%BE%D0%B7%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D0%B9-%D0%B8-%D0%BC%D0%B8%D0%BA%D1%80%D0%BE%D1%80%D0%B5%D0%BF%D0%BE%D0%B7%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D0%B8)
+    - [Архитектура Stack Overflow](https://habr.com/ru/articles/770564/#%D0%B0%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0-stack-overflow)
+    - [Почему Amazon Prime Video Monitoring перешел с бессерверной архитектуры на монолит? Как это может сэкономить 90% стоимости?](https://habr.com/ru/articles/770564/#%D0%BF%D0%BE%D1%87%D0%B5%D0%BC%D1%83-amazon-prime-video-monitoring-%D0%BF%D0%B5%D1%80%D0%B5%D1%88%D0%B5%D0%BB-%D1%81-%D0%B1%D0%B5%D1%81%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80%D0%BD%D0%BE%D0%B9-%D0%B0%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D1%8B-%D0%BD%D0%B0-%D0%BC%D0%BE%D0%BD%D0%BE%D0%BB%D0%B8%D1%82-%D0%BA%D0%B0%D0%BA-%D1%8D%D1%82%D0%BE-%D0%BC%D0%BE%D0%B6%D0%B5%D1%82-%D1%81%D1%8D%D0%BA%D0%BE%D0%BD%D0%BE%D0%BC%D0%B8%D1%82%D1%8C-90-%D1%81%D1%82%D0%BE%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D0%B8)
+    - [Как Disney Hotstar удалось собрать 5 миллиардов смайлов во время турнира?](https://habr.com/ru/articles/770564/#%D0%BA%D0%B0%D0%BA-disney-hotstar-%D1%83%D0%B4%D0%B0%D0%BB%D0%BE%D1%81%D1%8C-%D1%81%D0%BE%D0%B1%D1%80%D0%B0%D1%82%D1%8C-5-%D0%BC%D0%B8%D0%BB%D0%BB%D0%B8%D0%B0%D1%80%D0%B4%D0%BE%D0%B2-%D1%81%D0%BC%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2-%D0%B2%D0%BE-%D0%B2%D1%80%D0%B5%D0%BC%D1%8F-%D1%82%D1%83%D1%80%D0%BD%D0%B8%D1%80%D0%B0)
+    - [Как Discord хранит триллионы сообщений?](https://habr.com/ru/articles/770564/#%D0%BA%D0%B0%D0%BA-discord-%D1%85%D1%80%D0%B0%D0%BD%D0%B8%D1%82-%D1%82%D1%80%D0%B8%D0%BB%D0%BB%D0%B8%D0%BE%D0%BD%D1%8B-%D1%81%D0%BE%D0%BE%D0%B1%D1%89%D0%B5%D0%BD%D0%B8%D0%B9)
+    - [Как работают прямые видеотрансляции на YouTube, TikTok Live или Twitch?](https://habr.com/ru/articles/770564/#%D0%BA%D0%B0%D0%BA-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D1%8E%D1%82-%D0%BF%D1%80%D1%8F%D0%BC%D1%8B%D0%B5-%D0%B2%D0%B8%D0%B4%D0%B5%D0%BE%D1%82%D1%80%D0%B0%D0%BD%D1%81%D0%BB%D1%8F%D1%86%D0%B8%D0%B8-%D0%BD%D0%B0-youtube-tiktok-live-%D0%B8%D0%BB%D0%B8-twitch)
 
 ```table-of-contents
 title: 
@@ -101,7 +101,7 @@ debugInConsole: false # Print debug info in Obsidian console
 ## Протоколы
 
 Архитектура (дизайн) определяет, как разные компоненты приложения взаимодействуют друг с другом. Она обеспечивает эффективность, надежность и легкость интеграции с другими системами путем предоставления стандартного подхода к проектированию и разработке API. Наиболее популярными архитектурами являются следующие:
-![|600]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[api-architecture-styles|].png)  
+![|600]([api-architecture-styles|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/api-architecture-styles.png))  
 
 - SOAP:  
     - зрелый, всесторонний, основанный на XML
@@ -124,13 +124,13 @@ debugInConsole: false # Print debug info in Obsidian console
 ### REST и GraphQL
 
 Сравнение REST и GraphQL:
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[graphQL|].jpg)
+![|800]([graphQL|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/graphQL.jpg))
 
 - GraphQL – это язык запросов для API, разработанный Meta. Он предоставляет полное описание данных в API и позволяет клиенту запрашивать только то, что ему нужно
 - сервер GraphQL является посредником между клиентом и сервером. GraphQL может агрегировать несколько запросов REST в один запрос (и request, и query в переводе на русский означают "запрос"). Сервер GraphQL организует ресурсы в граф (отсюда и название)
 - GraphQL поддерживает запросы, мутации (модификация ресурсов) и подписки (получение уведомлений о модификациях)
 ### gRPC
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[grpc|].jpg)
+![|800]([grpc|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/grpc.jpg))
 
 RPC (Remote Procedure Call – удаленный вызов процедур) называется "удаленным", поскольку обеспечивает взаимодействие между удаленными сервисами, когда они находятся на разных серверах в микросервисной архитектуре. С точки зрения пользователя это выглядит, как вызов локальной функции.
 
@@ -145,7 +145,7 @@ RPC (Remote Procedure Call – удаленный вызов процедур) �
 ### Webhook
 
 Сравнение Polling (опроса) и Webhook:
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[webhook|].jpeg)
+![|800]([webhook|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/webhook.jpeg))
 
 
 Предположим, что у нас есть электронный магазин. Клиенты отправляют заказы в сервис заказов через шлюз API (API Gateway), а сервис заказов обращается к сервису оплаты для выполнения денежных транзакций. Сервис оплаты, в свою очередь, обращается к внешнему провайдеру сервиса оплаты (Payment Service Provider, PSP) для завершения транзакции.
@@ -178,7 +178,7 @@ RPC (Remote Procedure Call – удаленный вызов процедур) �
 ### Производительность API
 
 5 распространенных способов улучшения производительности API:
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[api-performance|].jpg)  
+![|800]([api-performance|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/api-performance.jpg))  
 
 _Пагинация_
 
@@ -201,7 +201,7 @@ _Пул подключений_
 При доступе к ресурсам нам часто приходится загружать данные из БД. Открытие нового подключения к БД – дорогая операция, с точки зрения производительности, поэтому для доступа к БД следует использовать пул открытых (набор существующих) подключений (connection pool). Пул подключений отвечает за управление жизненным циклом соединений.
 
 ### HTTP 1.0 -> HTTP 1.1 -> HTTP 2.0 -> HTTP 3.0 (QUIC)
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[http3|].jpg)  
+![|800]([http3|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/http3.jpg))  
 
 - HTTP 1.0 был завершен и полностью задокументирован в 1996. Каждый запрос к серверу требует отдельного соединения TCP
 - HTTP 1.1 был опубликован в 1997. TCP-соединение может оставаться открытым для повторного использования (постоянное подключение), но проблема блокировки HOL (head-of-line) остается. Блокировка HOL означает, что когда исчерпан лимит параллельных запросов, новые запросы ждут завершения предыдущих
@@ -213,12 +213,12 @@ QUIC основан на UDP. Он обеспечивает первокласс
 ### SOAP, REST, GraphQL и RPC
 
 Существуют разные архитектурные стили API, каждый со своими паттернами и стандартами обмена данными:
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/SOAP%20vs%20REST%20vs%20GraphQL%20vs%20RPC.jpeg)  
+![|800]([SOAP_vs_REST_vs_GraphQL_vs_RPC|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/SOAP%20vs%20REST%20vs%20GraphQL%20vs%20RPC.jpeg))  
 
 ### Сначала код и сначала API
 
 Разница между подходами к разработке "Сначала код" и "Сначала API" (Code First, API First):
-![|600]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[api_first|].jpg)  
+![|600]([api_first|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/api_first.jpg))  
 
 - Микросервисы повышают сложность системы. Разные функции системы обслуживаются отдельными сервисами. Хотя такая архитектура облегчает разделение обязанностей, реализация взаимодействия между сервисами является дополнительным вызовом.
 
@@ -237,7 +237,7 @@ QUIC основан на UDP. Он обеспечивает первокласс
 Наличие спроектированного API позволяет писать тесты, не дожидаясь разработки. Отсюда один шаг к разработке на основе тестов (Test Driven Design, TDD).
 
 ### Коды статусов HTTP
-![|600]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[http-status-code|].jpg)  
+![|600]([http-status-code|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/http-status-code.jpg))  
 
 Коды ответов(статусов) HTTP делятся на 5 категорий:
 
@@ -247,10 +247,10 @@ QUIC основан на UDP. Он обеспечивает первокласс
 4. Коды ошибок на стороне клиента (400-499).
 5. Коды ошибок на стороне сервера (500-599).
 
-[Коды ответов HTTP на MDN.]([https|]://developer.mozilla.org/ru/docs/Web/HTTP/Status)
+[Коды ответов HTTP на MDN.](https://developer.mozilla.org/ru/docs/Web/HTTP/Status)
 
 ### Шлюз API
-![|600]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[api_gateway|].jpg)  
+![|600]([api_gateway|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/api_gateway.jpg))  
 
 1. Клиент отправляет запрос HTTP в шлюз API (API Gateway).
 2. Шлюз разбирает (парсит) и проверяет атрибуты запроса.
@@ -264,14 +264,14 @@ QUIC основан на UDP. Он обеспечивает первокласс
 ### Эффективное и безопасное API
 
 Типичные проекты/схемы API на примере корзины товаров:
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[safe-apis|].jpg)  
+![|800]([safe-apis|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/safe-apis.jpg))  
 
 _Обратите внимание_, что дизайн API – это не только дизайн URL. Необходимо правильно выбирать названия ресурсов, идентификаторы и паттерны путей (path patterns). Также важно устанавливать правильные заголовки HTTP и эффективные правила ограничения частоты запросов (rate limit).
 
 ### Инкапсуляция TCP/IP
 
 Как данные передаются по сети? Почему в сетевой модели OSI (Open Systems Interconnection – взаимосвязь открытых систем) так много уровней?
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/osi%20model.jpeg)  
+![|800]([osi_model|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/osi%20model.jpeg))  
 
 На диаграмме показано, как данные инкапсулируются и распаковываются при передаче по сети.
 
@@ -287,7 +287,7 @@ _Обратите внимание_, что дизайн API – это не т�
 ### Почему NGINX называют "обратным" прокси?
 
 Разница между прямым (forward) и обратным (reverse) прокси:
-![|600]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/Forward%20Proxy%20v.s.%20Reverse%20Proxy2x.jpg)
+![|600]([Forward_Proxy_v.s._Reverse_Proxy2x|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/Forward%20Proxy%20v.s.%20Reverse%20Proxy2x.jpg))
 
 Прямой прокси – это сервер, находящийся между пользователем и Интернетом.
 
@@ -309,7 +309,7 @@ _Обратите внимание_, что дизайн API – это не т�
 ### Алгоритмы балансировки нагрузки
 
 6 наиболее распространенных алгоритмов балансировки нагрузки:
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[lb-algorithms|].jpg)  
+![|800]([lb-algorithms|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/lb-algorithms.jpg))  
 
 _Статические алгоритмы_
 
@@ -326,14 +326,14 @@ _Динамические алгоритмы_
 ### URL, URI и URN
 
 Сравнение URL, URI и URN:
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[url-uri-urn|].jpg)  
+![|800]([url-uri-urn|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/url-uri-urn.jpg))  
 
 _URI_
 
 URI расшифровывается как Uniform Resource Identifier (единый идентификатор ресурса). Он определяет логический или физический ресурс в вебе. URL и URN являются подтипами URI. URL определяет локацию (местонахождения) ресурса, а URN — название ресурса.
 
 URI состоит из следующих частей:
-![|800]([https|]://habrastorage.org/r/w1560/files/373/2b3/3fd/[3732b33fd43043049c18e3c108bc9d1a|].jpg)  
+![|800]([3732b33fd43043049c18e3c108bc9d1a|](https://habrastorage.org/r/w1560/files/373/2b3/3fd/3732b33fd43043049c18e3c108bc9d1a.jpg))  
 
 _URL_
 
@@ -343,12 +343,12 @@ _URN_
 
 URN расшифровывается как Uniform Resource Name (единое имя ресурса). URN не могут использоваться для локализации ресурса. Простым примером является сочетание пространства имен (namespace) и специфичной для него строки.
 
-[URIs, URLs, and URNs: Clarifications and Recommendations 1.0.]([https|]://www.w3.org/TR/uri-clarification/)
+[URIs, URLs, and URNs: Clarifications and Recommendations 1.0.](https://www.w3.org/TR/uri-clarification/)
 
 ## CI/CD
 
 ### CI/CD простыми словами
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[ci-cd-pipeline|].jpg)  
+![|800]([ci-cd-pipeline|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/ci-cd-pipeline.jpg))  
 
 _SDLC с CI/CD_
 
@@ -375,7 +375,7 @@ _Конвейер CI/CD_
 - система CD разворачивает утвержденные изменения в продакшне
 
 ### Технический стек Netflix (конвейер CI/CD)
-![|600]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[netflix-ci-cd|].jpg)  
+![|600]([netflix-ci-cd|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/netflix-ci-cd.jpg))  
 
 Планирование: инженеры Netflix используют JIRA для планирования и Confluence для документации.
 
@@ -396,7 +396,7 @@ _Конвейер CI/CD_
 ## Архитектурные паттерны
 
 ### MVC, MVP, MVVM, MVVM-C и VIPER
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/client%20arch%20patterns.png)  
+![|800]([client_arch_patterns|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/client%20arch%20patterns.png))  
 
 - MVC, самый старый паттерн, появился почти 50 лет назад
 - каждый паттерн имеет "view" (V), отвечающий за отображение содержимого и обработку пользовательского ввода
@@ -406,7 +406,7 @@ _Конвейер CI/CD_
 ### 18 основных архитектурных паттернов
 
 Паттерны – это многократно используемые решения распространенных проблем дизайна, обеспечивающие более плавный и эффективный процесс разработки. Они являются проектами/схемами для разработки лучших структур ПО. Наиболее популярными паттернами являются следующие:
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[18-oo-patterns|].png)  
+![|800]([18-oo-patterns|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/18-oo-patterns.png))  
 
 - Abstract Factory (абстрактная фабрика): создатель семьи – создает группы связанных элементов
 - Builder (строитель): мастер лего – создает объекты поэтапно, разделяет создание и отображение
@@ -428,7 +428,7 @@ _Конвейер CI/CD_
 - Visitor (посетитель): умелый гость – добавляет новые операции в класс без его модификации
 
 ## База данных
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[cloud-dbs2|].png)  
+![|800]([cloud-dbs2|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/cloud-dbs2.png))  
 
 Выбор правильной БД для проекта – задача не из простых. Изучение огромного количества возможностей БД, рассчитанных на решение конкретных задач, может быстро утомить.  
 Надеемся, что наша диаграмма, как минимум, облегчит начало вашего пути в этом направлении.
@@ -436,7 +436,7 @@ _Конвейер CI/CD_
 ### 8 структур данных, улучшающих работу баз данных
 
 Ответ на этот вопрос зависит от того, как БД используется. Индексы данных могут храниться в памяти или на диске. Форматы данных могут быть разными: числа, строки, географические координаты etc. Система может часто читаться или писаться (write-heavy, read-heavy). Все эти факторы влияют на выбор формата индексов БД.
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[8-ds-db|].jpg)  
+![|800]([8-ds-db|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/8-ds-db.jpg))  
 
 Наиболее популярные структуры данных, использующиеся для индексации:
 
@@ -452,7 +452,7 @@ _Конвейер CI/CD_
 ### Выполнение инструкции SQL в базе данных
 
 Разные БД имеют разную архитектуру. Некоторые общие подходы:
-![|600]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/sql%20execution%20order%20in%20db.jpeg)
+![|600]([sql_execution_order_in_db|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/sql%20execution%20order%20in%20db.jpeg))
 
 1. Инструкция SQL отправляется в БД через транспортный протокол (например, TCP).
 2. Инструкция передается парсеру команды (command parser), который выполняет ее синтаксический и семантический анализ и генерирует дерево запроса (query tree).
@@ -466,7 +466,7 @@ _Конвейер CI/CD_
 ### Теорема CAP
 
 Теорема CAP является одним из самых известных терминов в компьютерной науке, но разные разработчики понимают ее по-разному.
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/cap%20theorem.jpeg)  
+![|800]([cap_theorem|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/cap%20theorem.jpeg))  
 
 Теорема CAP утверждает, что распределенная система не может одновременно соответствовать всем трем критериям.
 
@@ -487,10 +487,10 @@ _Является ли теорема CAP полезной?_
 Я думаю, что да, поскольку она открывает дискуссию о компромиссах, но это лишь часть всей истории. При выборе БД нам необходимо погружаться в детали с точки зрения функционала приложения.
 
 ### Типы памяти и хранилищ данных
-![|600]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[Types_of_Memory_and_Storage|].jpeg)  
+![|600]([Types_of_Memory_and_Storage|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/Types_of_Memory_and_Storage.jpeg))  
 
 ### Визуализация запроса SQL
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[sql-execution-order|].jpg)  
+![|800]([sql-execution-order|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/sql-execution-order.jpg))  
 
 Инструкции SQL выполняются БД следующим образом:
 
@@ -509,7 +509,7 @@ _Является ли теорема CAP полезной?_
 ### Язык SQL
 
 SQL (Structured Query Language – язык структурированных запросов) был стандартизирован в 1986. В течение следующих 40 лет он стал доминирующим языком для систем управления реляционными базами данных. Последний стандарт называется ANSI SQL 2016.
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[how-to-learn-sql|].jpg)  
+![|800]([how-to-learn-sql|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/how-to-learn-sql.jpg))  
 
 SQL включает в себя 5 основных компонентов:
 
@@ -526,7 +526,7 @@ SQL включает в себя 5 основных компонентов:
 ### Кэширование данных
 
 Кэширование данных в типичной архитектуре:
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/where%20do%20we%20cache%20data.jpeg)  
+![|800]([where_do_we_cache_data|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/where%20do%20we%20cache%20data.jpeg))  
 
 Кэширование данных выполняется на нескольких уровнях:
 
@@ -545,7 +545,7 @@ SQL включает в себя 5 основных компонентов:
     - журнал репликации (Replication Log) – фиксация состояния репликации кластера БД
 
 ### Причины высокой производительности Redis
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[why_redis_fast|].jpeg)  
+![|800]([why_redis_fast|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/why_redis_fast.jpeg))  
 
 1. Redis – это хранилище данных, основанное на RAM. Доступ к оперативной памяти как минимум в 1000 раз быстрее доступа к диску.
 2. Для повышения эффективности выполнения запросов в Redis используется мультиплексирование ввода/вывода и однопоточный цикл выполнения.
@@ -554,7 +554,7 @@ SQL включает в себя 5 основных компонентов:
 Другим популярным решением для хранения данных в памяти является Memcached.
 
 ### Случаи использования Redis
-![|600]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[top-redis-use-cases|].jpg)
+![|600]([top-redis-use-cases|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/top-redis-use-cases.jpg))
 
 Redis может использоваться не только для кэширования.
 
@@ -572,12 +572,12 @@ Redis может использоваться не только для кэши�
 ### Стратегии кэширования
 
 Проектирование крупномасштабных систем обычно предполагает правильных выбор стратегии кэширования. Топ-5 самых популярных стратегий:
-![|600]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[top_caching_strategy|].jpeg)  
+![|600]([top_caching_strategy|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/top_caching_strategy.jpeg))  
 
 ## Микросервисная архитектура
 
 ### Типичная микросервисная архитектура
-![|600]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[typical-microservice-arch|].jpg)  
+![|600]([typical-microservice-arch|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/typical-microservice-arch.jpg))  
 
 Типичная микросервисная архитектура состоит из следующих частей:
 
@@ -598,7 +598,7 @@ _Преимущества микросервисов_
 ### Лучшие практики микросервисов
 
 9 лучших практик разработки микросервисов:
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[microservice-best-practices|].jpeg)  
+![|800]([microservice-best-practices|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/microservice-best-practices.jpeg))  
 
 1. У каждого микросервиса должно быть свое хранилище данных.
 2. Код каждого сервиса должен быть примерно на одном уровне завершенности.
@@ -611,7 +611,7 @@ _Преимущества микросервисов_
 9. Окрестрация сервисов.
 
 ### Типичный технический стек микросервисов
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[microservice-tech|].jpeg)  
+![|800]([microservice-tech|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/microservice-tech.jpeg))  
 
 _Препродакшн_
 
@@ -631,7 +631,7 @@ _Продакшн_
 ### Причины высокой производительности Kafka
 
 На производительность Kafka влияет множество архитектурных решений. 2 основных:
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[why_is_kafka_fast|].jpeg)  
+![|800]([why_is_kafka_fast|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/why_is_kafka_fast.jpeg))  
 
 1. Последовательный ввод/вывод (Sequential IO).
 2. Принцип нулевого копирования (Zero Copy Principle).
@@ -654,12 +654,12 @@ _Продакшн_
 Нулевое копирование — это сохранение нескольких копий данных в контекстах приложения и ядра (kernel).
 
 ## Платежные системы
-![|1000]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[learn-payments|].jpg)  
+![|1000]([learn-payments|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/learn-payments.jpg))  
 
 ### Почему кредитную карту называют "самым выгодным продуктом банка"? Как VISA/Mastercard делают деньги?
 
 Экономическая составляющая оплаты товара с помощью кредитной карты:
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/how%20does%20visa%20makes%20money.jpg)  
+![|800]([how_does_visa_makes_money|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/how%20does%20visa%20makes%20money.jpg))  
 
 1. Держатель карты платит 100$ за товар.
 2. Продавец получает более высокие продажи и должен компенсировать банку-эмитенту (банку, выпустившему карту) и карточной сети (card network) расходы на обеспечение сервиса оплаты. Банк-эквайер (банк, которому принадлежит платежный терминал) устанавливает продавцу комиссию, которая называется "комиссией за скидку продавца" (merchant discount fee).  
@@ -672,7 +672,7 @@ _Продакшн_
 - эмитент несет другие операциональные расходы, такие как управление аккаунтами потребителей, предоставление инструкций, обнаружение мошенничества, управление рисками, клиринг и расчеты etc.
 
 ### Принцип работы VISA
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[visa_payment|].jpeg)  
+![|800]([visa_payment|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/visa_payment.jpeg))  
 
 VISA, Mastercard и American Express выступают в роли карточных сетей (card networks) для клиринга и расчета средств. Банк-эквайер и банк-эмитент могут быть (и часто являются) разными банками. Если бы банки выполняли транзакции одну за другой без посредника, каждый банк должен был бы устанавливать транзакцию с другими банками. Это неэффективно.
 
@@ -697,7 +697,7 @@ _Захват и расчеты_
 ## DevOps
 
 ### DevOps, SRE и Platform Engineering
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[devops-sre-platform|].jpg)  
+![|800]([devops-sre-platform|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/devops-sre-platform.jpg))  
 
 Концепция DevOps была представлена в 2009 Patrick Debois и Andrew Shafer на конференции "Agile". Они стремились сократить разрыв между разработкой ПО и его эксплуатацией, продвигая культуру сотрудничества и общую ответственность за весь жизненный цикл разработки ПО.
 
@@ -710,7 +710,7 @@ Platform Engineering (разработка платформ) — это боле
 ### Что такое Kubernetes?
 
 Kubernetes (K8s) – это система оркестрации контейнеров. Она используется для деплоя и управления контейнерами. Ее дизайн во многом вдохновлен Borg – внутренней системой Google.
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[k8s|].jpeg)  
+![|800]([k8s|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/k8s.jpeg))  
 
 Кластер (cluster) K8s состоит из набора рабочих машин (worker machines), называющихся узлами (nodes), которые запускают контейнеризованные приложения. Каждый кластер имеет хотя бы один рабочий узел.
 
@@ -730,7 +730,7 @@ _Узлы_
 3. Kube Proxy – сетевой прокси, запускающийся в каждом узле кластера. Он перенаправляет трафик, приходящий в узел из сервиса. Он перенаправляет запросы для обработки в нужные контейнеры.
 
 ### Docker и Kubernetes
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[docker|]-vs-[k8s|].jpg)  
+![|800]([docker-vs-k8s|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/docker-vs-k8s.jpg))  
 
 _Что такое Docker?_
 
@@ -750,8 +750,8 @@ Kubernetes действует на уровне кластера. Он упра�
 
 ### Принцип работы Docker
 
-На следующей диаграмме представлена архитектура Docker и то, что происходит при выполнении команд `[docker|] build`, `[docker|] pull` и `[docker|] run`:
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[docker|].jpg)  
+На следующей диаграмме представлена архитектура Docker и то, что происходит при выполнении команд `docker build`, `docker pull` и `docker run`:
+![|800]([docker|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/docker.jpg))  
 
 Архитектура Docker включает в себя 3 основных компонента:
 
@@ -759,7 +759,7 @@ Kubernetes действует на уровне кластера. Он упра�
 - хост (host) – демон регистрирует запросы API и управляет объектами, такими как образы (images), контейнеры, сети и тома (volumes)
 - реестр (registry) – место хранения образов. DockerHub — публичный/открытый реестр образов
 
-В качестве примера рассмотрим процесс выполнения команды `[docker|] run`:
+В качестве примера рассмотрим процесс выполнения команды `docker run`:
 
 1. Из реестра извлекается соответствующий образ.
 2. Создается контейнер.
@@ -772,7 +772,7 @@ Kubernetes действует на уровне кластера. Он упра�
 ### Принцип работы команд Git
 
 Важно, где хранится наш код. Обычно предполагается, что он хранится либо на удаленном сервере, таком как Github, либо на нашей локальной машине. Но это не совсем так. Git поддерживает 3 локальных хранилища на нашей машине, так что наш код может быть обнаружен в 4 местах:
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[git-commands|].png)  
+![|800]([git-commands|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/git-commands.png))  
 
 - Рабочая директория (working directory) – место редактирования файлов
 - промежуточная область (staging area) – временная локация для хранения файлов до следующей фиксации (commit)
@@ -782,7 +782,7 @@ Kubernetes действует на уровне кластера. Он упра�
 Большинство команд Git осуществляет перемещение кода из одной локации в другую.
 
 ### Принцип работы Git
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[git-workflow|].jpeg)  
+![|800]([git-workflow|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/git-workflow.jpeg))  
 
 Git – это распределенная система контроля версий.
 
@@ -795,7 +795,7 @@ Git – это распределенная система контроля ве
 ### Git merge и git rebase
 
 Разница между командами `git merge` и `git rebase`:
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[git-merge-git-rebase|].jpeg)  
+![|800]([git-merge-git-rebase|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/git-merge-git-rebase.jpeg))  
 
 Когда мы вливаем (merge) изменения из одной ветки (branch) в другую, мы можем использовать `git merge` или `git rebase`.
 
@@ -816,12 +816,12 @@ Rebase перемещает историю функциональной ветк
 ## Облачные сервисы
 
 ### Популярные облачные сервисы по состоянию на 2023 год
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[cloud-compare|].jpg)  
+![|800]([cloud-compare|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/cloud-compare.jpg))  
 
 ### Облачная нативность
 
 Диаграмма показывает эволюцию архитектуры и процессов с 1980-х:
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[cloud-native|].jpeg)  
+![|800]([cloud-native|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/cloud-native.jpeg))  
 
 Организации могут создавать и запускать масштабируемые приложения в публичных, приватных и гибридных облаках с помощью нативных облачных (cloud native) технологий.
 
@@ -843,11 +843,11 @@ Rebase перемещает историю функциональной ветк
 JsonCrack генерирует граф данных на основе файла JSON, что сильно облегчает изучение его структуры.
 
 Сгенерированные диаграммы можно скачивать в виде изображений.
-![|1000]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[json-cracker|].jpeg)  
+![|1000]([json-cracker|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/json-cracker.jpeg))  
 
 ### Автоматические преобразование кода в архитектурные диаграммы
 
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[diagrams_as_code|].jpeg)  
+![|800]([diagrams_as_code|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/diagrams_as_code.jpeg))  
 
 Возможности Diagrams:
 
@@ -859,7 +859,7 @@ JsonCrack генерирует граф данных на основе файл�
 
 ### Файловая система Linux
 
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[linux-file-systems|].jpg)  
+![|800]([linux-file-systems|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/linux-file-systems.jpg))  
 
 Файловая система Linux раньше напоминала неорганизованный город, где люди строили свои дома там, где им заблагорассудится. Однако в 1994 был введен стандарт иерархии файловой системы (Filesystem Hierarchy Standard, FHS) Linux.
 
@@ -870,7 +870,7 @@ JsonCrack генерирует граф данных на основе файл�
 Команды Linux – это инструкции для взаимодействия с операционной системой. Они помогают управлять файлами, директориями, системными процессами и другими аспектами системы. Для эффективной работы с основанными на Linux системами необходимо уверенно владеть этими командами.
 
 Популярные команды Linux:
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/18%20Most-Used%20Linux%20Commands%20You%20Should%20Know-01.jpeg)  
+![|800]([18_Most-Used_Linux_Commands_You_Should_Know-01|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/18%20Most-Used%20Linux%20Commands%20You%20Should%20Know-01.jpeg))  
 
 - `ls` – показывает список файлов и директорий
 - `cd` – меняет текущую директорию
@@ -895,13 +895,13 @@ JsonCrack генерирует граф данных на основе файл�
 ### Принцип работы HTTPS
 
 Hypertext Transfer Protocol Secure (безопасный протокол передачи гипертекста, HTTPS) – это расширение Hypertext Transfer Protocol (протокола передачи гипертекста, HTTP). HTTPS передает зашифрованные данные с помощью Transport Layer Security (безопасность транспортного уровня, TLS). Если данные будут перехвачены, все, что получит злоумышленник, — это двоичный код.
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[https|].jpg)  
+![|800]([https|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/https.jpg))  
 
 _Как шифруются и расшифровываются данные?_
 
 1. Клиент и сервер устанавливают соединение TCP.
 2. Клиент отправляет серверу приветствие (client hello). Сообщение содержит необходимые алгоритмы шифрования (наборы шифров – cipher suites) и последнюю поддерживаемую версию TLS. Сервер отвечает приветствием (server hello), сообщающим, поддерживает ли он данные алгоритмы и версию TLS. Затем сервер отправляет клиенту сертификат SSL. Сертификат содержит открытый ключ, название хоста, дату истечения срока действия etc. Клиент валидирует сертификат.
-3. После проверки сертификата SSL клиент генерирует ключ сессии ([session|] key) и шифрует его с помощью открытого ключа. Сервер получает зашифрованный ключ и расшифровывает его с помощью закрытого ключа.
+3. После проверки сертификата SSL клиент генерирует ключ сессии (session key) и шифрует его с помощью открытого ключа. Сервер получает зашифрованный ключ и расшифровывает его с помощью закрытого ключа.
 4. Теперь, когда клиент и сервер имеют один и тот же ключ сессии (симметричное шифрование), данные могут передаются по защищенному двунаправленному каналу.
 
 _Почему HTTPS переключается на симметричное шифрование при передаче данных?_
@@ -914,7 +914,7 @@ _Почему HTTPS переключается на симметричное ш�
 ### OAuth 2.0 простыми словами
 
 OAuth 2.0 — это мощная и безопасная платформа, которая позволяет приложениям безопасно взаимодействовать друг с другом от имени пользователей без передачи их конфиденциальных учетных данных:
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[oAuth2|].jpg)  
+![|800]([oAuth2|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/oAuth2.jpg))  
 
 Сущностями, участвующими в OAuth, являются пользователь, сервер и поставщик удостоверений/провайдер идентификации (Identity Provider, IDP).
 
@@ -929,7 +929,7 @@ _Токен OAuth_
 OAuth 2.0 предназначен для обеспечения безопасности данных пользователя, а также обеспечения бесперебойной и легкой работы с различными приложениями и сервисами.
 
 ### 4 наиболее распространенных механизмов аутентификации
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[top4-most-used-auth|].jpg)  
+![|800]([top4-most-used-auth|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/top4-most-used-auth.jpg))  
 
 1. Ключи SSH – криптографические ключи, которые используются для безопасного доступа к удаленным системам и серверам.
 2. Токены OAuth – токены, предоставляющие ограниченный доступ к пользовательским данным сторонним приложениям.
@@ -939,7 +939,7 @@ OAuth 2.0 предназначен для обеспечения безопас�
 ### Сессия, куки, JWT, SSO и OAuth
 
 Все эти термины относятся к управлению идентификацией пользователей. При посещении сайта мы указываем, кто мы (идентификация). Наша личность проверяется (аутентификация), и нам предоставляются определенные разрешения (авторизация). На сегодняшний день существует множество решений и этот список продолжает расти.
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[session|].jpeg)  
+![|800]([session|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/session.jpeg))  
 
 - WWW-аутентификация – самый простой метод. Браузер запрашивает имя пользователя и пароль. Из-за невозможности контролировать жизненный цикл авторизации сегодня этот способ используется редко
 - контроль жизненного цикла авторизации выполняется с помощью файлов куки (cookie), содержащих данные сессии. Сервер поддерживает хранилище сессий, а браузер сохраняет идентификатор сессии. Файлы куки обычно не подходят для мобильных приложений
@@ -950,13 +950,13 @@ OAuth 2.0 предназначен для обеспечения безопас�
 
 ### Безопасное хранение паролей в базе данных и их валидация
 
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[salt|].jpg)  
+![|800]([salt|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/salt.jpg))  
 
 _Плохие практики_
 
 - хранение паролей в виде обычного текста – плохая идея, поскольку любой, у кого есть внутренний доступ, может их увидеть
 - непосредственное хранения хэшей паролей является недостаточным с точки зрения безопасности, поскольку оно подвержено атакам с предварительными вычислениями (precomputation attacks), таким как радужные таблицы (rainbow tables)
-- для смягчения атаки с предварительным вычислением при хэшировании паролей используется соль ([salt|])
+- для смягчения атаки с предварительным вычислением при хэшировании паролей используется соль (salt)
 
 _Соль_
 
@@ -965,7 +965,7 @@ _Соль_
 _Хранение пароля и соли_
 
 1. Результат хэширования должен быть уникальным для каждого пароля.
-2. В БД записывается результат выполнения функции `hash(password + [salt|])`.
+2. В БД записывается результат выполнения функции `hash(password + salt)`.
 
 _Валидация пароля_
 
@@ -976,7 +976,7 @@ _Валидация пароля_
 
 ### JWT (JSON Web Token) простыми словами
 
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[jwt|].jpg)  
+![|800]([jwt|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/jwt.jpg))  
 
 Представьте, что у нас есть специальная коробка под названием JWT. Внутри этой коробки лежит три вещи: заголовок (header), полезная нагрузка (payload) и подпись (signature).
 
@@ -993,7 +993,7 @@ _Валидация пароля_
 Google Authenticator используется для входа в учетную запись, когда включена двухфакторная аутентификация.
 
 Google Authenticator – это программный аутентификатор, реализующий службу двухэтапной проверки.
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[google_authenticate|].jpeg)  
+![|800]([google_authenticate|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/google_authenticate.jpeg))  
 
 Данный процесс состоит из 2 этапов:
 
@@ -1025,7 +1025,7 @@ _Может ли хакер угадать шестизначный пароль
 ### Технический стек Netflix
 
 Диаграмма основана на исследованиях многих инженерных блогов Netflix и проектов с открытым исходным кодом.
-![|600]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/netflix%20tech%20stack.png)  
+![|600]([netflix_tech_stack|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/netflix%20tech%20stack.png))  
 
 Для разработки нативных мобильных приложений используется Swift и Kotlin, для разработки веб-приложений – React.  
 Для взаимодействия клиента и сервера используется GraphQL.  
@@ -1038,12 +1038,12 @@ _Может ли хакер угадать шестизначный пароль
 ### Архитектура Twitter по состоянию на 2022 год
 
 Это настоящая архитектура Твиттера. Она опубликована Илоном Маском и перерисована нами для лучшей читабельности.
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[twitter-arch|].jpeg)
+![|800]([twitter-arch|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/twitter-arch.jpeg))
 
 ### Эволюция архитектуры Airbnb в течение последних 15 лет
 
 Архитектура Airbnb прошла через 3 основных стадии:
-![|800]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[airbnb_arch|].jpeg)  
+![|800]([airbnb_arch|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/airbnb_arch.jpeg))  
 
 _Монолит (2008-2017)_
 
@@ -1076,7 +1076,7 @@ _Микро- и макросервисы (2020-настоящее время)_
 ### Монорепозиторий и микрорепозитории
 
 Что лучше? Почему разные компании выбирают разные варианты?
-![|600]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[monorepo-microrepo|].jpg)  
+![|600]([monorepo-microrepo|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/monorepo-microrepo.jpg))  
 
 Концепция монорепозитория не нова; Linux и Windows были разработаны с использованием этой концепции. Чтобы улучшить масштабируемость и скорость сборки, Google разработал специальную внутреннюю цепочку инструментов и строгие стандарты качества кодирования, чтобы обеспечить единообразие разработки и деплоя.  
 Amazon и Netflix являются основными представителями философии микросервисов. При таком подходе код сервиса естественным образом разделяется на отдельные репозитории. Он масштабируется быстрее, но в дальнейшем могут возникнуть проблемы с управлением многочисленными сервисами.  
@@ -1092,7 +1092,7 @@ Amazon и Netflix являются основными представителя
 Какая архитектура реализована в Stack Overflow?
 
 Если ваш ответ – локальные серверы и монолит, вы, скорее всего, провалите собеседование, но именно так оно и устроено!
-![|600]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[stackoverflow|].jpg)  
+![|600]([stackoverflow|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/stackoverflow.jpg))  
 
 _Ожидание_
 
@@ -1109,7 +1109,7 @@ Stack Overflow обрабатывает весь трафик с помощью 
 ### Почему Amazon Prime Video Monitoring перешел с бессерверной архитектуры на монолит? Как это может сэкономить 90% стоимости?
 
 Сравнение архитектуры до и после перехода:
-![|600]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[serverless-to-monolithic|].jpeg)  
+![|600]([serverless-to-monolithic|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/serverless-to-monolithic.jpeg))  
 
 _Что такое служба видеомониторинга Amazon Prime?_
 
@@ -1131,7 +1131,7 @@ _Монолит экономит 90% стоимости_
 Бывший вице-президент Amazon по устойчивому развитию Адриан Кокрофт: "Команда Prime Video следовала по пути, который я называю "Сначала бессерверные"… Я не сторонник только бессерверных технологий".
 ### Как Disney Hotstar удалось собрать 5 миллиардов смайлов во время турнира?
 
-![|600]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[hotstar_emojis|].jpeg)  
+![|600]([hotstar_emojis|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/hotstar_emojis.jpeg))  
 
 1. Клиенты отправляют смайлы через стандартные HTTP-запросы. Вы можете думать о Golang Service как о типичном веб-сервере. Golang выбран потому, что он хорошо поддерживает параллелизм. Потоки в Golang легкие.
 2. Поскольку объем данных очень велик, в качестве буфера используется Kafka (брокер сообщений).
@@ -1144,7 +1144,7 @@ _Монолит экономит 90% стоимости_
 ### Как Discord хранит триллионы сообщений?
 
 Эволюция хранения сообщений в Discord:
-![|600]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[discord-store-messages|].jpg)  
+![|600]([discord-store-messages|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/discord-store-messages.jpg))  
 
 MongoDB ➡️ Cassandra ➡️ ScyllaDB.
 
@@ -1166,7 +1166,7 @@ ScyllaDB – это база данных, совместимая с Cassandra, 
 Прямая трансляция отличается от обычной потоковой передачи данных, поскольку видеоконтент отправляется по сети в режиме реального времени, обычно с задержкой всего в несколько секунд.
 
 Вот что делает это возможным:
-![|600]([https|]://github.com/ByteByteGoHq/system-design-101/raw/main/images/[live_streaming_updated|].jpg)
+![|600]([live_streaming_updated|](https://github.com/ByteByteGoHq/system-design-101/raw/main/images/live_streaming_updated.jpg))
 
 
 1. Необработанные (raw) видеоданные захватываются микрофоном и камерой. Данные передаются на сервер.

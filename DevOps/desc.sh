@@ -29,8 +29,11 @@ while IFS= read -r link; do
     # Заменяем пробелы и %20 на подчеркивания
     file_name=$(echo "$file_name" | sed 's/ /_/g' | sed 's/%20/_/g')
 
+    # Заменяем пробелы в ссылке на дефисы
+    new_link=$(echo "$link" | sed 's/ /-/g')
+
     # Добавляем описание файла к ссылке
-    sed -i "s|\($file_name\)|\[$file_name\|${BASH_REMATCH[1]}\]|g" "$file"
+    sed -i "s|\($link\)|\[$file_name\|${BASH_REMATCH[1]}\]($new_link)|g" "$file"
 done <<< "$external_links"
 
 echo "Descriptions added to external links in $file"
