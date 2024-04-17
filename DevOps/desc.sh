@@ -33,11 +33,11 @@ while IFS= read -r link; do
     width=$(echo "$link" | grep -oP '\|\K\d+')
 
     # Удаляем ширину изображения из ссылки
-    new_link=$(echo "$link" | sed 's/|\d\+//')
+    new_link=$(echo "$link" | sed 's|/|\&|' | sed 's|\|\d\+||')
 
     # Добавляем описание файла и ширину к ссылке
     sed -i "s|\($link\)|\[$file_name\|$width\]|g" "$file"
-    sed -i "s|\]\($link\)|\]($new_link)|g" "$file"
+    sed -i "s|\[$file_name\|$width\]\($link\)|\[$file_name|$width\]($new_link)|g" "$file"
 done <<< "$external_links"
 
 echo "Descriptions and width added to external links in $file"
