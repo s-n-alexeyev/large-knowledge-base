@@ -1,43 +1,26 @@
 #!/bin/bash
 
-# Проверяем, передан ли файл как аргумент командной строки
+# Проверяем, что передан аргумент с именем файла
 if [ $# -eq 0 ]; then
-    echo "Usage: $0 <file>"
+    echo "Usage: $0 filename"
     exit 1
 fi
 
-# Переменная, содержащая имя файла
-file="$1"
+# Перебираем строки файла и обрабатываем каждую
+while IFS= read -r line; do
+    # Проверяем, что строка содержит ссылку на изображение
+    if [[ $line =~ \!\[\|\[0-9]+ ]]; then
+        # Извлекаем имя файла из ссылки
+        filename=$(echo "$line" | sed -n 's/.*(\(.*\))/\1/p')
 
-# Проверяем, существует ли указанный файл
-if [ ! -f "$file" ]; then
-    echo "File $file not found"
-    exit 1
-fi
+        # Извлекаем описание и размер из строки
+        description=$(echo "$line" | sed -n 's/.*\[\(.*\)\](.*)/\1/p')
+        size=$(echo "$description" | sed -n 's/.*|\([0-9]*\)/\1/p')
 
-# Ищем внешние ссылки в файле
-external_links=$(grep -oP '\!\[\|.*?\]\(\K[^)]+' "$file")
+        # Формируем новую строку с описанием и размером
+        new_line="![${filename}|${size}]($filename)"
 
-# Обрабатываем каждую найденную внешнюю ссылку
-while IFS= read -r link; do
-    # Получаем имя файла из ссылки
-    file_name=$(basename "$link")
-
-    # Удаляем расширение из имени файла
-    file_name="${file_name%.*}"
-
-    # Заменяем пробелы и %20 на подчеркивания
-    file_name=$(echo "$file_name" | sed 's/ /_/g' | sed 's/%20/_/g')
-
-    # Получаем ширину изображения
-    width=$(echo "$link" | grep -oP '\|\K\d+')
-
-    # Удаляем ширину изображения из ссылки
-    new_link=$(echo "$link" | sed 's|/|\&|' | sed 's|\|\d\+||')
-
-    # Добавляем описание файла и ширину к ссылке
-    sed -i "s|\($link\)|\[$file_name\|$width\]|g" "$file"
-    sed -i "s|\[$file_name\|$width\]\($link\)|\[$file_name|$width\]($new_link)|g" "$file"
-done <<< "$external_links"
-
-echo "Descriptions and width added to external links in $file"
+        # Заменяем строку в файле
+        sed -i "s@$line@$new_line@" "$1"
+    fi
+done < "$1"
