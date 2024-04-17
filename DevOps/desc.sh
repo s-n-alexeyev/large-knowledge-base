@@ -16,7 +16,7 @@ if [ ! -f "$file" ]; then
 fi
 
 # Ищем внешние ссылки в файле
-external_links=$(grep -oP '\!\[\|\d+\]\(\K[^)]+' "$file")
+external_links=$(grep -oP '\!\[\|.*?\]\(\K[^)]+' "$file")
 
 # Обрабатываем каждую найденную внешнюю ссылку
 while IFS= read -r link; do
@@ -35,8 +35,9 @@ while IFS= read -r link; do
     # Удаляем ширину изображения из ссылки
     new_link=$(echo "$link" | sed 's/|\d\+//')
 
-    # Добавляем описание файла к ссылке
-    sed -i "s|\($link\)|\[$file_name\|$width\]($new_link)|g" "$file"
+    # Добавляем описание файла и ширину к ссылке
+    sed -i "s|\($link\)|\[$file_name\|$width\]|g" "$file"
+    sed -i "s|\]\($link\)|\]($new_link)|g" "$file"
 done <<< "$external_links"
 
-echo "Descriptions added to external links in $file"
+echo "Descriptions and width added to external links in $file"
