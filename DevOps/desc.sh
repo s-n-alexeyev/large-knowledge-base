@@ -29,11 +29,14 @@ while IFS= read -r link; do
     # Заменяем пробелы и %20 на подчеркивания
     file_name=$(echo "$file_name" | sed 's/ /_/g' | sed 's/%20/_/g')
 
-    # Заменяем пробелы в ссылке на дефисы
-    new_link=$(echo "$link" | sed 's/ /-/g')
+    # Получаем ширину изображения
+    width=$(echo "$link" | grep -oP '\|\K\d+')
+
+    # Удаляем ширину изображения из ссылки
+    new_link=$(echo "$link" | sed 's/|\d\+//')
 
     # Добавляем описание файла к ссылке
-    sed -i "s|\($link\)|\[$file_name\|${BASH_REMATCH[1]}\]($new_link)|g" "$file"
+    sed -i "s|\($link\)|\[$file_name\|$width\]($new_link)|g" "$file"
 done <<< "$external_links"
 
 echo "Descriptions added to external links in $file"
