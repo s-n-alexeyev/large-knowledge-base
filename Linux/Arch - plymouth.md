@@ -1,3 +1,5 @@
+2024-04-04
+
 ```table-of-contents
 title: Содержание:
 style: nestedList # TOC style (nestedList|inlineFirstLevel)
@@ -9,7 +11,7 @@ debugInConsole: false # Print debug info in Obsidian console
 ## Предупреждение!
 
 Будьте внимательны, делайте резервную копию! При неправильных действиях можно повредить загрузку системы!
-## Правим Grub
+## Правим grub
 
 ```shell
 sudo nano /etc/default/grub
