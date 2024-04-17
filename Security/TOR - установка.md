@@ -403,5 +403,5 @@ sudo tbcli -a
 ```
 
 ## Альтернативная утилита для смены bridges
-![Tor Bridges Updater](../Files/TorBridgesUpdater_v0.1.6_Linux.zip)
+![Tor Bridges Updater](../Media/Files/TorBridgesUpdater_v0.1.6_Linux.zip)
 
