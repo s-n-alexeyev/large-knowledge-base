@@ -14,7 +14,6 @@ sudo apt install fish
 chsh -s /bin/fish $USER
 # или
 usermod -s /bin/fish $USER
-
 ```
 
 >Перегружаем
