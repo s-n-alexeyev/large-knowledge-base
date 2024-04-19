@@ -2,7 +2,7 @@
 
 Олег Вознесенский
 
-[Оригинальная статья 1](https://habr.com/ru/companies/gazprombank/articles/788978/)
+[Оригинальная статья 1](https://habr.com/ru/companies/gazprombank/articles/788978/)  
 [Оригинальная статья 2](https://habr.com/ru/companies/gazprombank/articles/789404/)
 ```table-of-contents
 title: Содержание
