@@ -1,7 +1,7 @@
 2023-10-30
 
 [Автор оригинала: ByteByteGo](https://github.com/ByteByteGoHq/system-design-101)  
-[Автор перевода](https://habr.com/ru/articles/770564/)  
+[Автор перевода: Igor Agapov](https://habr.com/ru/articles/770564/)  
 [System Design (сборник на английском языке).](https://my-js.org/assets/files/system_design-89ea3329b17dd21409f625db90073fb4.pdf)
 
 О сложных системах простыми словами.
