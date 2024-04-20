@@ -55,17 +55,6 @@ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys <ключ>
 ```
 
 ---
-## Игнорировать обновление pacman
-```shell
-sudo nano/etc/pacman.conf
-```
-
->пример
-```
-IgnorePkg = vlc
-```
-
----
 ## При отправки картинки в Librewolf дает полосатую картинку
 отключить параметр 
 - [ ] Enable ResistFingerprinting

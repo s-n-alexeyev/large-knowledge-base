@@ -185,4 +185,14 @@ makepkg -si
 `--skipinteg`
 
 ---
+## Игнорировать обновление pacman
+```shell
+sudo nano/etc/pacman.conf
+```
 
+>пример
+```
+IgnorePkg = vlc
+```
+
+---
