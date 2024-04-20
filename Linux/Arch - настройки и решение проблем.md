@@ -7,7 +7,7 @@ includeLinks: true # Make headings clickable
 debugInConsole: false # Print debug info in Obsidian console
 ```
 ---
-## Tomcat conf permission (Arch, Manjaro)
+## Tomcat conf permission
 ```shell
 sudo chmod -R 755 /usr/share/tomcat8/conf/
 ```
@@ -196,3 +196,28 @@ IgnorePkg = vlc
 ```
 
 ---
+## Микрокод процессора
+
+>intel
+```shell
+sudo pacman -S intel-ucode
+```
+
+>AMD
+```shell
+sudo pacman -S amd-ucode
+```
+
+---
+## Автоматическая очистка кэша пакетов
+
+```shell
+sudo pacman -S pacman-contrib
+sudo systemctl enable paccache.timer
+```
+
+---
+## Автоматическое резервное копирование перед обновлением пакетов
+```shell
+yay -S timeshift-autosnap
+```

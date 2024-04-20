@@ -278,28 +278,3 @@ sudo pacman -S noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-liberation
 ```
 
 ---
-## Микрокод процессора (Arch)
-
->intel
-```shell
-sudo pacman -S intel-ucode
-```
-
->AMD
-```shell
-sudo pacman -S amd-ucode
-```
-
----
-## Автоматическая очистка кэша пакетов (Arch)
-
-```shell
-sudo pacman -S pacman-contrib
-sudo systemctl enable paccache.timer
-```
-
----
-## Автоматическое резервное копирование перед обновлением пакетов (Arch)
-```shell
-yay -S timeshift-autosnap
-```
