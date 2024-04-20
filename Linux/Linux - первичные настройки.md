@@ -272,9 +272,3 @@ udp://tracker4.infohash.org:80/announce
 ```
 
 ---
-## Шрифты
-```shell
-sudo pacman -S noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-liberation
-```
-
----

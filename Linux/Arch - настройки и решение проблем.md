@@ -221,3 +221,11 @@ sudo systemctl enable paccache.timer
 ```shell
 yay -S timeshift-autosnap
 ```
+
+---
+## Шрифты
+```shell
+sudo pacman -S noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-liberation
+```
+
+---
