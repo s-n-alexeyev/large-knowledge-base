@@ -1,4 +1,4 @@
-2022-05-03
+2022-05-03  
 [Оригинальная статья](https://css-tricks.com/adding-custom-github-badges-to-your-repo/)
 
 ```table-of-contents
