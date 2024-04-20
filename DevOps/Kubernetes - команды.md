@@ -66,12 +66,12 @@ kubectl config get-contexts
 
 ### Пространства имен
 
->Получить все пространства имен
+>Показать все пространства имен
 ```shell
 kubectl get namespaces
 ```
 
->Получить информацию о пространстве имен в формате yaml
+>Показать информацию о пространстве имен в формате yaml
 ```shell
 kubectl get namespaces -...o yaml
 ```
@@ -93,7 +93,7 @@ kubectl delete namespace my-namespace
 
 ### Модули
 
->Получить модули из текущего пространства имен
+>Показать модули из текущего пространства имен
 ```shell
 kubectl get pods
 ```
@@ -128,12 +128,12 @@ kubectl run my-pod-2 --image=nginx:latest --namespace=my-namespace
 kubectl run nginx --image=nginx -l --labels=app=test
 ```
 
->Получить все pod с выводом меток
+>Показать все pod с выводом меток
 ```shell
 kubectl get pods...-show-labels
 ```
 
->Получить pods с расширенным/широким выводом
+>Показать pods с расширенным/широким выводом
 ```shell
 kubectl get pods -o wide
 ```
@@ -195,17 +195,17 @@ kubectl get deployments --namespace=my-пространство имен
 kubectl create deployment my-deployment-1 --image=nginx
 ```
 
->Получить указанное развертывание
+>Показать указанное развертывание
 ```shell
 kubectl get deployment my-deployment-1
 ```
 
->Получить указанное развертывание с его метками
+>Показать указанное развертывание с его метками
 ```shell
 kubectl get deployment my-deployment-1 --show-labels
 ```
 
->Опишите указанное развертывание
+>Описание указанного развертывания
 ```shell
 kubectl describe deployments my-deployment-1
 ```
@@ -215,7 +215,7 @@ kubectl describe deployments my-deployment-1
 kubectl get deployment my-deployment-1 -o yaml
 ```
 
->Измените образ в существующем развертывании
+>Изменение образа в существующем развертывании
 ```shell
 kubectl set image deployment my-deployment-1 nginx=nginx:1.16.1
 ```
@@ -281,17 +281,17 @@ kubectl expose pod my-pod --port=80 --name nginx-service --type=NodePort --dry-r
 kubectl create service nodeport nginx --tcp=80:80 --node-port=30080 --dry-run=client -o yaml
 ```
 
->Получить службы из текущего контекста
+>Показать службы из текущего контекста
 ```shell
 kubectl get service
 ```
 
->Получить подробную информацию о службах
+>Показать подробную информацию о службах
 ```shell
 kubectl get service -o wide
 ```
 
->Получить службы с метками на них
+>Показать службы с метками на них
 ```shell
 kubectl get service --show-labels
 ```
