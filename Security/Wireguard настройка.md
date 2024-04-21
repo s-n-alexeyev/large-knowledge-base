@@ -9,7 +9,10 @@ debugInConsole: false # Print debug info in Obsidian console
 ---
 # Ручная установка
 
-Текстовая инструкция по настройке Wireguard к видео (https://www.youtube.com/watch?v=5Aql0V-ta8A).
+
+<iframe width=800 height=600 frameborder="0" scrolling="no" allowfullscreen src="https://www.youtube.com/embed/5Aql0V-ta8A"></iframe>
+
+Текстовая инструкция по настройке Wireguard
 
 >Обновляем сервер:
 ```shell
