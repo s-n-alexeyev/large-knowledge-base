@@ -2,6 +2,8 @@
 
 [Оригинальная статья](https://linuxlife.page/posts/25-openconnect-camouflage/)
 
+<iframe src="https://youtu.be/KzEvOQyxVZQ"></iframe>
+
 ---
 ```table-of-contents
 title: Содержание:
