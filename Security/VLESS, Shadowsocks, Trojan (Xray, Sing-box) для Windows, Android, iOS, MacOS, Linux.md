@@ -1,6 +1,6 @@
 2024-01-12
 
-[Оригинальная статья](https://itdog.info/klienty-vless-shadowsocks-trojan-xray-sing-box-dlya-windows-android-ios-macOS-linux/)
+[Оригинальная статья](https://itdog.info/klienty-vless-shadowsocks-trojan-xray-sing-box-dlya-windows-android-ios-macos-linux/)
 
 ---
 ```table-of-contents
