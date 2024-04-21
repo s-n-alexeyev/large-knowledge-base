@@ -2,7 +2,7 @@
 
 [Оригинальная статья](https://linuxlife.page/posts/25-openconnect-camouflage/)
 
-<iframe width=800 height=600 src="https://www.youtube.com/embed/KzEvOQyxVZQ"></iframe>
+<iframe width=800 height=600 frameborder="0" scrolling="no" allowfullscreen src="https://www.youtube.com/embed/KzEvOQyxVZQ"></iframe>
 
 ---
 ```table-of-contents
