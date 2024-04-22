@@ -19,9 +19,8 @@ debugInConsole: false # Print debug info in Obsidian console
 
 ```shell
 sudo apt update && sudo apt install -y vim nano git build-essential libgnutls28-dev libev-dev autoconf automake libtool libpam0g-dev liblz4-dev libseccomp-dev libreadline-dev libnl-route-3-dev libkrb5-dev libradcli-dev libcurl4-gnutls-dev libcjose-dev libjansson-dev liboath-dev libprotobuf-c-dev libtalloc-dev libhttp-parser-dev protobuf-c-compiler gperf iperf3 lcov libuid-wrapper libpam-wrapper libnss-wrapper libsocket-wrapper gss-ntlmssp haproxy iputils-ping freeradius gawk gnutls-bin iproute2 yajl-tools tcpdump
-
-ТУТ можно в теории не ставить iperf3 haproxy freeradius, но я ставлю все, чтобы собралось без проблем
 ```
+- ТУТ можно в теории не ставить iperf3 haproxy freeradius, но я ставлю все, чтобы собралось без проблем
 ### 2. Клонируем репозиторий последней версии [https://gitlab.com/openconnect/ocserv](https://gitlab.com/openconnect/ocserv) (можно перейти и посмотреть в браузере по тегу какая последняя версия, сейчас 1.2.4)
 
 ```shell
