@@ -2,7 +2,7 @@
 [Оригинальная статья](https://css-tricks.com/adding-custom-github-badges-to-your-repo/)
 
 ```table-of-contents
-title: Содержание
+title: Содержание:
 style: nestedList # TOC style (nestedList|inlineFirstLevel)
 minLevel: 0 # Include headings from the specified level
 maxLevel: 0 # Include headings up to the specified level
