@@ -12,7 +12,7 @@ includeLinks: true # Make headings clickable
 debugInConsole: false # Print debug info in Obsidian console
 ```
 ---
-### 0. Инструкция по установки на YouTube
+### 0. Инструкция по установке на YouTube
 
 ![OpenConnect](https://www.youtube.com/embed/KzEvOQyxVZQ)
 ### 1. Ставим все необходимые пакеты для OpenConnect v1.2.4
