@@ -2,8 +2,6 @@
 
 [Оригинальная статья](https://linuxlife.page/posts/25-openconnect-camouflage/)
 
-<iframe width=800 height=600 frameborder="0" scrolling="no" allowfullscreen src="https://www.youtube.com/embed/KzEvOQyxVZQ"></iframe>
-
 ---
 ```table-of-contents
 title: Содержание:
@@ -14,6 +12,9 @@ includeLinks: true # Make headings clickable
 debugInConsole: false # Print debug info in Obsidian console
 ```
 ---
+### 0. Инструкция по установки на YouTube
+
+![OpenConnect](https://www.youtube.com/embed/KzEvOQyxVZQ)
 ### 1. Ставим все необходимые пакеты для OpenConnect v1.2.4
 
 ```shell
