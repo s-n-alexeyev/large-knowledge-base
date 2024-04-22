@@ -22,7 +22,7 @@ sudo pacman -S ntfs-3g
 
 Затем вновь попробуйте смонтировать диск — вполне возможно, что в этом случае он будет доступен с правами записи.
 Если вновь возникла проблема, то отмонтируйте диск и запустите команду вида:
-sudo ntfsfix /ПУТЬ/ДО/ДИСКА
+`sudo ntfsfix /ПУТЬ/ДО/ДИСКА`
 
 >Пример команды для проверки и исправления проблемы с диском /dev/sdb4:
 ```shell
@@ -43,8 +43,8 @@ sudo mount -t ntfs-3g -o remove_hiberfile /dev/sda2 /mnt/spide
 sudo ntfsfix /dev/sdb4
 ```
 ### Очистка грязного бита в NTFS
-При появлении ошибки *bad superblock on /dev/sdb2, missing codepage or helper program, or other error*, возможной причиной является "Грязный бит" который можно очистить командой:
+При появлении ошибки `bad superblock on /dev/sdb3, missing codepage or helper program, or other error`, возможной причиной является "Грязный бит" который можно очистить командой:
 ```shell
-sudo ntfsfix -d /dev/sdb2
+sudo ntfsfix -d /dev/sdb3
 ```
 Где sdb2 ваш раздел с NTFS
