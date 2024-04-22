@@ -12,6 +12,7 @@ debugInConsole: false # Print debug info in Obsidian console
 
 <iframe width=800 height=600 frameborder="0" scrolling="no" allowfullscreen src="https://www.youtube.com/embed/5Aql0V-ta8A"></iframe>
 
+[](https://www.youtube.com/embed/5Aql0V-ta8A)
 Текстовая инструкция по настройке Wireguard
 
 >Обновляем сервер:
