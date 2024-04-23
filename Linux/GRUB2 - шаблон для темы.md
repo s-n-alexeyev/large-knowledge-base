@@ -1,3 +1,10 @@
+
+устанавливаем тему из AUR, например 
+```shell
+yay -S grub-theme-msi
+```
+
+
 ```q
 # Main options
 title-text: ""
