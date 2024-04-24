@@ -239,12 +239,12 @@ swapon /dev/sda3
 
 >Форматирование btrfs
 ```
-mkfs.btrfs -L arch /dev/sda3 -f
+mkfs.btrfs -L arch /dev/sda4 -f
 ```
 
 >Создание тома и подтомов (субволумов)
 ```shell
-mount /dev/sda3 /mnt
+mount /dev/sda4 /mnt
 btrfs su cr /mnt/@
 btrfs su cr /mnt/@var
 btrfs su cr /mnt/@home
