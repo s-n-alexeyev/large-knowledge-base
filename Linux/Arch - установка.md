@@ -276,6 +276,8 @@ nano /etc/pacman.d/mirrorlist
 pacstrap /mnt base base-devel linux linux-firmware nano
 ```
 
+
+
 >Генерируем fstab
 ```shell
 genfstab -pU /mnt >> /mnt/etc/fstab
