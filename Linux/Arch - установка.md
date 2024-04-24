@@ -96,7 +96,7 @@ PING ya.ru (5.255.255.242) 56(84) bytes of data.
 3 packets transmitted, 3 received, 0% packet loss, time 2003ms  
 rtt min/avg/max/mdev = 71.363/71.792/72.475/0.487 ms
 ```
-# Разбивка диска
+# Работа с диском
 
 ## Находим наш диск
 
@@ -124,7 +124,7 @@ nvme0n1 disk Viper M.2 VPN110 1024GB VPN110EBBB2208190124 42BBT9BB nvme     
 nvme1n1 disk KINGSTON SNV2S1000G     50026B77857A8C32     SBM02103 nvme       255   8
 ```
 
-## Разбивка диска:
+## Разбивка диска
 
 В распоряжении имеются следующие утилиты для разбивки диска:
 - `cfdisk`
@@ -219,32 +219,27 @@ The partition table has been altered.
 Calling ioctl() to re-read partition table.
 Syncing disks.
 ```
+# Форматирование разделов
 
-
-Ключ на создание раздела: `n` (gpt)
-Далее согласиться с разделами по умолчанию. Создаётся их при BTRFS 3
-200M - EFI EF00
-2G - swap 8200
-остальное под файловую систему linux 8300
-
-
-
-
-
-
->Форматирование
+>Форматирование EFI
 ```shell
-#boot
 mkfs.fat -F32 /dev/sda1
-#swap
-mkswap -L swap /dev/sda2
-#btrfs
-mkfs.btrfs -L arch /dev/sda3 -f
 ```
 
->Включить swap 
-```shell
-swapon /dev/sda2
+>Форматирование boot
+```
+mkfs.ext4 -L boot /dev/sda2
+```
+
+>Форматирование и включение swap
+```
+mkswap -L swap /dev/sda3
+swapon /dev/sda3
+```
+
+>Форматирование btrfs
+```
+mkfs.btrfs -L arch /dev/sda3 -f
 ```
 
 >Создание тома и подтомов (субволумов)
