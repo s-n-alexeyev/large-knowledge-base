@@ -1,6 +1,14 @@
-Настройка беспроводной сети
+```table-of-contents
+title: 
+style: nestedList # TOC style (nestedList|inlineFirstLevel)
+minLevel: 0 # Include headings from the specified level
+maxLevel: 0 # Include headings up to the specified level
+includeLinks: true # Make headings clickable
+debugInConsole: false # Print debug info in Obsidian console
+```
 
->Проверяем не заблокирован ли WiFi
+# Настройка беспроводной сети
+## Проверяем не заблокирован ли WiFi
 ```shell
 rfkill
 ```
@@ -24,41 +32,61 @@ ID TYPE      DEVICE      SOFT      HARD
 1 wlan      phy0   unblocked unblocked
 ```
 
- >Утилита для работы с wifi
-```
+## Утилита `iwctl` для работы с WiFi
+```shell
 iwctl
 ```
 
-в самой утилите вводим команды
+В самой утилите вводим команды
 
->смотрим ваши WiFi сетевые карты
+>смотрим ваши WiFi сетевые карты:
 ```
-device list
+[iwd]# device list
 ```
 - `wlan0`
 
->сканируем доступные сети
+>сканируем доступные сети:
 ```
-station wlan0 scan
-```
-
->выводим список доступных сетей
-
-```
-station wlan0 scan
+[iwd]# station wlan0 scan
 ```
 
- ```
-[iwd]# device list
->wlan0
->[iwd]# station wlan0 scan
->[iwd]# station wlan0 get-networks
->Telecom-58321801
->38AB-Beeline и прочие сети ваших соседей [iwd]# station wlan0 connect Telecom-58321801 ↵ и вводим пароль ************* ↵ # Мы в сети, либо ошибка. Чаще всего из-за неверного набора пароля. [iwd]# exit 
-```Проверяем соединение пингом ping 8.8.8.8
+>выводим список доступных сетей:
+```
+[iwd]# station wlan0 get-networks
+```
 
+>например получаем такое, видим там свою сеть:
+```
+                              Available networks
+--------------------------------------------------------------------------------
+  Network name                    Security          Signal
+--------------------------------------------------------------------------------
+  Ace                             psk               ****
+  Nazok                           psk               ***
+  Artem                           psk               ***
+```
 
+>соединяемся с нашей сетью:
+```
+[iwd]# station wlan0 connect Ace
+```
 
+>вводим пароль
+```
+Type the network passphrase for Ace psk.
+Passphrase: ********
+```
+
+>выходим из `iwctl`
+```
+[iwd]# exit
+```
+
+Проверяем работу сети
+```
+ping ya.ru
+```
+# Разбивка диска
 
 Утилиты разбивки:
 - `cfdisk` - псевдографическая утилита
