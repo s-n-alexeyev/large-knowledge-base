@@ -134,7 +134,17 @@ nvme1n1 disk KINGSTON SNV2S1000G     50026B77857A8C32     SBM02103 nvme 
 fdisk /dev/sdX
 ```
 
+Будем создавать 4 раздела 
+1. EFI
+2. BOOT
+3. SWAP
+4. BTRSF
+
 `g` - создание нового GPT раздела, старый раздел будет удален
+
+Command (m for help): `g`
+Command (m for help): **==g==**
+Created a new GPT disklabel (GUID: 73749F7E-1B28-874D-94AE-DED4CE70D269)
 
 
 
