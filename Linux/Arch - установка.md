@@ -98,6 +98,30 @@ rtt min/avg/max/mdev = 71.363/71.792/72.475/0.487 ms
 ```
 # Разбивка диска
 
+Находим наш диск
+
+>команда для просмотра SATA дисков
+```shell
+lsblk --scsi
+```
+
+```
+NAME HCTL       TYPE VENDOR   MODEL                          REV SERIAL               TRAN
+sda  0:0:0:0    disk ATA      Apacer AS340 240GB            V4.7 J28485R004707        sata
+sdb  1:0:0:0    disk ATA      Samsung SSD 840 EVO 250GB EXT0DB6Q S1DBNSAFB46994Z      sata
+sdc  6:0:0:0    disk Multi    Flash Reader                  1.00 058F63666471         usb
+```
+
+>команда для просмотра NVME дисков
+```shell
+lsblk --nvme
+```
+
+```
+NAME    TYPE MODEL                   SERIAL                    REV TRAN   RQ-SIZE  MQ  
+nvme0n1 disk Viper M.2 VPN110 1024GB VPN110EBBB2208190124 42BBT9BB nvme      1023   8  
+nvme1n1 disk KINGSTON SNV2S1000G     50026B77857A8C32     SBM02103 nvme       255   8
+```
 Утилиты разбивки:
 - `cfdisk` - псевдографическая утилита
 - `fdisk`
