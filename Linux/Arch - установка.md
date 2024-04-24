@@ -1,15 +1,65 @@
 Настройка беспроводной сети
 
->Просмотр интерфейсов
+>Проверяем не заблокирован ли WiFi
 ```shell
-iwconfig
+rfkill
 ```
-- например видим `wlan0`
 
-Активируем наш интерфейс `wlan0`
-```shell
-ip link set wlan0 up
+>Если видим что что заблокирован wlan,
 ```
+ID TYPE      DEVICE      SOFT      HARD  
+0 bluetooth hci0   unblocked unblocked  
+1 wlan      phy0     blocked unblocked
+```
+
+>то выполняем команду
+```shell
+rfkill unblock wifi
+```
+
+>теперь все OK
+```
+ID TYPE      DEVICE      SOFT      HARD  
+0 bluetooth hci0   unblocked unblocked  
+1 wlan      phy0   unblocked unblocked
+```
+
+ >Утилита для работы с wifi
+```
+iwctl
+```
+
+в самой утилите вводим команды
+
+>смотрим ваши WiFi сетевые карты
+```
+device list
+```
+- `wlan0`
+
+>сканируем доступные сети
+```
+station wlan0 scan
+```
+
+>выводим список доступных сетей
+
+```
+station wlan0 scan
+```
+
+ ```
+[iwd]# device list
+>wlan0
+>[iwd]# station wlan0 scan
+>[iwd]# station wlan0 get-networks
+>Telecom-58321801
+>38AB-Beeline и прочие сети ваших соседей [iwd]# station wlan0 connect Telecom-58321801 ↵ и вводим пароль ************* ↵ # Мы в сети, либо ошибка. Чаще всего из-за неверного набора пароля. [iwd]# exit 
+```Проверяем соединение пингом ping 8.8.8.8
+
+
+
+
 Утилиты разбивки:
 - `cfdisk` - псевдографическая утилита
 - `fdisk`
