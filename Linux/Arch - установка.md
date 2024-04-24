@@ -426,6 +426,7 @@ sudo pacman -S plasma kdeconnect konsole sddm
 - kscreen
 - kde-gtk-config
 - breeze-gtk
+- kwalletmanager
 ```
 (выполнить дважды)
 
