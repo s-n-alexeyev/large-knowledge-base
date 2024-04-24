@@ -150,47 +150,47 @@ Command (m for help): `g`
 
 Команда  `n` - создание раздела
 
-- раздел EFI (300M)
-Command (m for help): `n`
-Partition number (1-128, default 1):`↵`
-First sector (2048-500118158, default 2048):`↵`
-Last sector, +/-sectors or +/-size{K,M,G,T,P} (2048-500118158, default 500117503): `+300M`
-`Created a new partition 1 of type 'Linux filesystem' and of size 300 MiB.`
+- раздел EFI (300M)  
+Command (m for help): `n`  
+Partition number (1-128, default 1):`↵`  
+First sector (2048-500118158, default 2048):`↵`  
+Last sector, +/-sectors or +/-size{K,M,G,T,P} (2048-500118158, default 500117503): `+300M`  
+`Created a new partition 1 of type 'Linux filesystem' and of size 300 MiB.`  
 
-- раздел BOOT (1G)
-Command (m for help): `n`
-Partition number (2-128, default 2):`↵`
-First sector (616448-500118158, default 616448):`↵`
-Last sector, +/-sectors or +/-size{K,M,G,T,P} (616448-500118158, default 500117503): `+1G`
-`Created a new partition 1 of type 'Linux filesystem' and of size 1 GiB.`
+- раздел BOOT (1G)  
+Command (m for help): `n`  
+Partition number (2-128, default 2):`↵`  
+First sector (616448-500118158, default 616448):`↵`  
+Last sector, +/-sectors or +/-size{K,M,G,T,P} (616448-500118158, default 500117503): `+1G`  
+`Created a new partition 1 of type 'Linux filesystem' and of size 1 GiB.`  
 
-- раздел SWAP (8G) размер выбираем равным оперативной памяти
-Command (m for help): `n`
-Partition number (3-128, default 3):`↵`
-First sector (2713600-500118158, default 2713600):`↵`
-Last sector, +/-sectors or +/-size{K,M,G,T,P} (2713600-500118158, default 500117503): `+8G`
-`Created a new partition 1 of type 'Linux filesystem' and of size 8 GiB.`
+- раздел SWAP (8G) размер выбираем равным оперативной памяти  
+Command (m for help): `n`  
+Partition number (3-128, default 3):`↵`  
+First sector (2713600-500118158, default 2713600):`↵`  
+Last sector, +/-sectors or +/-size{K,M,G,T,P} (2713600-500118158, default 500117503): `+8G`  
+`Created a new partition 1 of type 'Linux filesystem' and of size 8 GiB.`  
 
-- раздел BTRFS (отдаем оставшееся место)
-Command (m for help): `n`
-Partition number (4-128, default 4):`↵`
-First sector (19490816-500118158, default 19490816):`↵`
-Last sector, +/-sectors or +/-size{K,M,G,T,P} (19490816-500118158, default 500117503): ):`↵`
-`Created a new partition 1 of type 'Linux filesystem' and of size 229.2 GiB.`
+- раздел BTRFS (отдаем оставшееся место)  
+Command (m for help): `n`  
+Partition number (4-128, default 4):`↵`  
+First sector (19490816-500118158, default 19490816):`↵`  
+Last sector, +/-sectors or +/-size{K,M,G,T,P} (19490816-500118158, default 500117503): ):`↵`  
+`Created a new partition 1 of type 'Linux filesystem' and of size 229.2 GiB.`  
 
 Команда `t` - задать тип раздела, если не задавать то по умолчанию тип 20 `Linux filesystem`
 
-- задаем тип EFI разделу
-Command (m for help): `t`
-Partition number (1-4, default 4): `1`
-Partition type or alias (type L to list all): `1`
-Changed type if partition 'Linux filesystem' to 'EFI filesystem'.
+- задаем тип EFI разделу  
+Command (m for help): `t`  
+Partition number (1-4, default 4): `1`  
+Partition type or alias (type L to list all): `1`  
+Changed type if partition 'Linux filesystem' to 'EFI filesystem'.  
 
-- задаем тип SWAP разделу
-Command (m for help): `t`
-Partition number (1-4, default 4): `3`
-Partition type or alias (type L to list all): `19`
-Changed type if partition 'Linux filesystem' to 'Linux swap'.
+- задаем тип SWAP разделу  
+Command (m for help): `t`  
+Partition number (1-4, default 4): `3`  
+Partition type or alias (type L to list all): `19`  
+Changed type if partition 'Linux filesystem' to 'Linux swap'.  
 
 - остальные разделы не трогаем
 
