@@ -24,6 +24,7 @@ debugInConsole: false # Print debug info in Obsidian console
 - telegram - telegram
 - skypeforlinux - skype
 - whatsie - whatsapp
+- Whatstron - whatsapp
 
 ---
 # Браузеры
