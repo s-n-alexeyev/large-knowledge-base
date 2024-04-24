@@ -83,7 +83,7 @@ Passphrase: ********
 ```
 ## Проверяем работу сети
 ```shell
-ping  ya.ru -c3
+ping ya.ru -c3
 ```
 
 ```
