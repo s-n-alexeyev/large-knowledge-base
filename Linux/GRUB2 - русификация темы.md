@@ -139,7 +139,8 @@ terminal-border: "0"
   text = "Используйте клавиши ↑ и ↓ для изменения выбора, Enter для подтверждения"
   color = "#ffffff"
   font = "Terminus Regular 14"
-}```
+}
+```
 
 >Обновляем GRUB
 ```shell
