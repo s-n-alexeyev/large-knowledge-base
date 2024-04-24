@@ -427,6 +427,8 @@ sudo pacman -S plasma kdeconnect konsole sddm
 - kde-gtk-config
 - breeze-gtk
 - kwalletmanager
+- gwenview
+- okular
 ```
 (выполнить дважды)
 
