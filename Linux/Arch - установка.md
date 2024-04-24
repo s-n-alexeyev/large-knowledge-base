@@ -81,10 +81,20 @@ Passphrase: ********
 ```
 [iwd]# exit
 ```
-
-Проверяем работу сети
+## Проверяем работу сети
+```shell
+ping  ya.ru -c3
 ```
-ping ya.ru
+
+```
+PING ya.ru (5.255.255.242) 56(84) bytes of data.  
+64 bytes from ya.ru (5.255.255.242): icmp_seq=1 ttl=51 time=72.5 ms  
+64 bytes from ya.ru (5.255.255.242): icmp_seq=2 ttl=51 time=71.4 ms  
+64 bytes from ya.ru (5.255.255.242): icmp_seq=3 ttl=51 time=71.5 ms  
+  
+--- ya.ru ping statistics ---  
+3 packets transmitted, 3 received, 0% packet loss, time 2003ms  
+rtt min/avg/max/mdev = 71.363/71.792/72.475/0.487 ms
 ```
 # Разбивка диска
 
