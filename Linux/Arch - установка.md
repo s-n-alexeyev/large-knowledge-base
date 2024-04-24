@@ -369,7 +369,11 @@ mkinitcpio -p linux
 ```
 nano /etc/sudoers
 ```
-`раскоментировать wheel после root`
+
+>раскоментировать
+```
+%wheel ALL=(ALL:ALL) ALL
+```
 
 >Создаем пользователя
 ```shell
