@@ -416,7 +416,7 @@ xorg-server xorg-xinit xorg-drivers nvidia nvidia-utils lib32-nvidia-utils nvidi
 
 >KDE: 
 ```shell
-sudo pacman -S plasma kde-applications sddm
+sudo pacman -S plasma kdeconnect konsole sddm
 ```
 (выполнить дважды)
 
