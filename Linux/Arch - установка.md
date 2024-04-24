@@ -417,6 +417,15 @@ pacman-contrib kate xorg-server xorg-xinit xorg-drivers nvidia nvidia-utils lib3
 >KDE: 
 ```shell
 sudo pacman -S plasma kdeconnect konsole sddm
+- plasma-nm
+- dolphin
+- konsole
+- alsa-utils
+- plasma-pa
+- powerdevil
+- kscreen
+- kde-gtk-config
+- breeze-gtk
 ```
 (выполнить дважды)
 
