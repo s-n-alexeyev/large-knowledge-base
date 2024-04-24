@@ -409,6 +409,8 @@ reboot
 ```shell
 sudo pacman -S (для виртуальной машины xf86-video-vesa, для процессора intel: xf86-video-intel)
 
+sudo pacman -S lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader
+
 xorg-server xorg-xinit xorg-drivers nvidia nvidia-utils lib32-nvidia-utils nvidia-settings nvidia-dkms
 ```
 
