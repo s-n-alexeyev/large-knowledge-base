@@ -301,17 +301,24 @@ nano /etc/hostname
 ln -sf /usr/share/zoneinfo/Asia/Almaty /etc/localtime
 ```
 
->Открыть локали
+>Открываем локали
 ```shell
 nano /etc/locale.gen
 ```
 
->Создать локали
+>Раскоментируем 
+```q
+ru_RU.UTF8 UTF8
+en_US.UTF8 UTF8
+```
+- остальные на ваше усмотрение
+
+>Создаем локали
 ```shell
 locale-gen
 ```
 
->Настройка языка консоли, добавление Кириллицы
+>Настраиваем язык консоли, добавляем кириллицу
 ```shell
 nano /etc/vconsole.conf
 ```
