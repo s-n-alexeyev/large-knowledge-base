@@ -124,15 +124,18 @@ nvme0n1 disk Viper M.2 VPN110 1024GB VPN110EBBB2208190124 42BBT9BB nvme     
 nvme1n1 disk KINGSTON SNV2S1000G     50026B77857A8C32     SBM02103 nvme       255   8
 ```
 
-## Утилиты разбивки:
-- `cfdisk` - псевдографическая утилита
-- `fdisk`
-- `gdisk` - для автоматической разметке в таблице GPT
+## Разбивка диска:
 
->К примеру `fdisk`
+В распоряжении имеются следующие утилиты для разбивки диска:
+- `cfdisk`
+- `fdisk`
+- `gdisk` 
+
+>Используем `fdisk`
 ```shell
 fdisk /dev/sdX
 ```
+- где `sdX` ваш диск
 
 Будем создавать 4 раздела 
 1. EFI
@@ -140,12 +143,12 @@ fdisk /dev/sdX
 3. SWAP
 4. BTRSF
 
-`g` - создание нового GPT раздела, старый раздел будет удален
+Команда `g` - создание нового GPT раздела, старый раздел будет удален
 
 Command (m for help): `g`
 `Created a new GPT disklabel (GUID: 73749F7E-1B28-874D-94AE-DED4CE70D269)`
 
-`n` - создание раздела
+Команда  `n` - создание раздела
 
 - раздел EFI (300M)
 Command (m for help): `n`
@@ -175,13 +178,48 @@ First sector (19490816-500118158, default 19490816):`↵`
 Last sector, +/-sectors or +/-size{K,M,G,T,P} (19490816-500118158, default 500117503): ):`↵`
 `Created a new partition 1 of type 'Linux filesystem' and of size 229.2 GiB.`
 
-`t` - задать тип раздела, если не задавать то по умолчанию тип 20 `Linux filesystem`
+Команда `t` - задать тип раздела, если не задавать то по умолчанию тип 20 `Linux filesystem`
 
 - задаем тип EFI разделу
 Command (m for help): `t`
 Partition number (1-4, default 4): `1`
-Partition type or alias (type L to list all): `EFI`
-Type of partition 1 is unchanged
+Partition type or alias (type L to list all): `1`
+Changed type if partition 'Linux filesystem' to 'EFI filesystem'.
+
+- задаем тип SWAP разделу
+Command (m for help): `t`
+Partition number (1-4, default 4): `3`
+Partition type or alias (type L to list all): `19`
+Changed type if partition 'Linux filesystem' to 'Linux swap'.
+
+- остальные разделы не трогаем
+
+Команда  `p` - отобразить информацию о разделах
+
+```
+Disk /dev/sdb: 238.47 GiB, 256060514304 bytes, 5001118192 sectors
+Disk model: Apacer AS340 240GB     
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 4096 bytes / 4096 bytes
+Disklabel type: gpt
+Disk identifier: 73749F7E-1B28-874D-94AE-DED4CE70D269
+
+Device         Start       End   Sectors   Size Type
+/dev/sdb1       2048    616447    614400   300M EFI System
+/dev/sdb2     616448   2713599   2097152     1G Linux filesystem
+/dev/sdb3    2713600  19490815  16777216     8G Linux swap
+/dev/sdb4   19490816 500117503 480626688 229.2G Linux filesystem
+```
+
+Команда `w` - сохранить таблицу разделов
+
+```
+The partition table has been altered.
+Calling ioctl() to re-read partition table.
+Syncing disks.
+```
+
 
 Ключ на создание раздела: `n` (gpt)
 Далее согласиться с разделами по умолчанию. Создаётся их при BTRFS 3
