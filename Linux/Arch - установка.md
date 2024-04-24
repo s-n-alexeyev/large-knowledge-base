@@ -460,3 +460,6 @@ git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 ```
 
 yay -S timeshift-autosnap
+ yay -S onlyoffice-bin
+  yay -S ttf-ms-fonts
+  yay -S ttf-hack-nerd
