@@ -347,16 +347,21 @@ pacman-key --init
 pacman-key --populate archlinux
 ```
 
->Открыть multilib-репозиторий
+>Открыть multilib-репозиторий, 
 ```shell
 nano /etc/pacman.conf
 ```
-`multilib раскоментировать`
+
+>Раскоментировать
+```q
+[multilib]
+Include = /etc/pacman.d.mirrorlist
+```
 
 > Обновляем, устанавливаем необходимое
 ```shell
 pacman -Sy
-pacman -S mc bash-completion openssh arch-install-scripts networkmanager sudo git wget htop neofetch xdg-user-dirs ntfs-3g
+pacman -S mc bash-completion openssh arch-install-scripts networkmanager sudo git wget curl htop neofetch xdg-user-dirs ntfs-3g
 mkinitcpio -p linux
 ```
 
