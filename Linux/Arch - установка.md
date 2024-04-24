@@ -145,8 +145,8 @@ fdisk /dev/sdX
 
 Команда `g` - создание нового GPT раздела, старый раздел будет удален
 
-Command (m for help): `g`
-`Created a new GPT disklabel (GUID: 73749F7E-1B28-874D-94AE-DED4CE70D269)`
+Command (m for help): `g`  
+`Created a new GPT disklabel (GUID: 73749F7E-1B28-874D-94AE-DED4CE70D269)`  
 
 Команда  `n` - создание раздела
 
