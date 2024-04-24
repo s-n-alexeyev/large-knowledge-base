@@ -256,9 +256,9 @@ umount /mnt
 ```shell
 mount -o noatime,compress=lzo,space_cache=v2,ssd,subvol=@ /dev/sda4 /mnt
 mkdir -p /mnt/{home,boot,var,.snapshots}
-mount -o noatime,compress=lzo,space_cache=v2,ssd,subvol=@var /dev/sda3 /mnt/var
-mount -o noatime,compress=lzo,space_cache=v2,ssd,subvol=@home /dev/sda3 /mnt/home
-mount -o noatime,compress=lzo,space_cache=v2,ssd,subvol=@snapshots /dev/sda3 /mnt/.snapshots
+mount -o noatime,compress=lzo,space_cache=v2,ssd,subvol=@var /dev/sda4 /mnt/var
+mount -o noatime,compress=lzo,space_cache=v2,ssd,subvol=@home /dev/sda4 /mnt/home
+mount -o noatime,compress=lzo,space_cache=v2,ssd,subvol=@snapshots /dev/sda4 /mnt/.snapshots
 mount /dev/sda1 /mnt/boot
 ```
 
