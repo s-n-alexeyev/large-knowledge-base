@@ -517,6 +517,11 @@ yay -S ttf-ms-fonts
 yay -S ttf-hack-nerd
 ```
 
+>Stacer - мультиинструмент, очистка диска
+```shell
+yay -S stacer-bin
+```
+
 >Portproton - wine от Valve
 ```shell
 yay -S portproton
