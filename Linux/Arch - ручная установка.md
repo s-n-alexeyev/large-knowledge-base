@@ -514,7 +514,7 @@ yay -S ttf-ms-fonts
 
 >Основной шрифт с дополнительными значками 
 ```shell
-  yay -S ttf-hack-nerd
+yay -S ttf-hack-nerd
 ```
 
 >Portproton - wine от Valve
