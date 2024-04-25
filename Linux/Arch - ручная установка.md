@@ -270,7 +270,6 @@ mount /dev/sda2 /mnt/boot
 mkdir /mnt/boot/efi
 mount /dev/sda1 /mnt/boot/efi
 ```
-
 # Начальная настройка
 
 >Настраиваем зеркала (опционально)
@@ -481,12 +480,16 @@ sudo nano /etc/fstab
 ```q
 subvolid=***
 ```
-
 # Дополнительные настройки/установки
 
 >Пакетный менеджер `yay` для пользовательского репозитория AUR
 ```shell
 git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
+```
+
+>Pamac - графическая оболочка для Pacman, AUR, Flatpak и Snap от разработчиков Manjaro
+```shell
+yay -S pamac-all
 ```
 
 >Timeshift - система резервного копирования
@@ -514,7 +517,7 @@ yay -S ttf-ms-fonts
   yay -S ttf-hack-nerd
 ```
 
->Pamac - графическая оболочка для Pacman, AUR, Flatpak и Snap от разработчиков Manjaro
+>Portproton - wine от Valve
 ```shell
-yay -S pamac-all
+yay -S portproton
 ```
