@@ -21,12 +21,12 @@ ID TYPE      DEVICE      SOFT      HARD
 1 wlan      phy0     blocked unblocked
 ```
 
->то выполняем команду
+>... то выполняем команду
 ```shell
 rfkill unblock wifi
 ```
 
->теперь все OK
+>Теперь все OK
 ```
 ID TYPE      DEVICE      SOFT      HARD  
 0 bluetooth hci0   unblocked unblocked  
@@ -99,7 +99,7 @@ rtt min/avg/max/mdev = 71.363/71.792/72.475/0.487 ms
 ```
 # Работа с диском
 
-## Находим наш диск
+## Определяем наш диск
 
 >Команда для просмотра SATA/USB дисков
 ```shell
