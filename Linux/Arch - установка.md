@@ -97,7 +97,7 @@ PING ya.ru (5.255.255.242) 56(84) bytes of data.
 3 packets transmitted, 3 received, 0% packet loss, time 2003ms  
 rtt min/avg/max/mdev = 71.363/71.792/72.475/0.487 ms
 ```
-# Работа с диском
+# Работа с носителем
 
 ## Определяем наш диск
 
