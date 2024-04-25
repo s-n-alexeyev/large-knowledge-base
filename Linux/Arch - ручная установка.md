@@ -514,7 +514,7 @@ yay -S ttf-ms-fonts
   yay -S ttf-hack-nerd
 ```
 
->Pamac - графическая оболочка для pacman от разработчиков Manjaro
+>Pamac - графическая оболочка для Pacman, AUR, Flatpak и Snap от разработчиков Manjaro
 ```shell
 yay -S pamac-all
 ```
