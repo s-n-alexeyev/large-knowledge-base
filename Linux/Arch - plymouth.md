@@ -1,5 +1,4 @@
 2024-04-04
-
 ```table-of-contents
 title: Содержание:
 style: nestedList # TOC style (nestedList|inlineFirstLevel)
@@ -17,7 +16,7 @@ debugInConsole: false # Print debug info in Obsidian console
 sudo nano /etc/default/grub
 ```
 
-```ini
+```q
 GRUB_CMDLINE_LINUX_DEFAULT="quiet loglevel=3 systemd.show_status=auto splash rd.udev.log_priority=3 vt.global_cursor_default=0"
 
 #nvidia - добавть nvidia-drm.modeset=1
@@ -34,7 +33,7 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 sudo nano /etc/mkinitcpio.conf
 ```
 
-```ini
+```q
 HOOKS=(base udev autodetect kms modconf block keyboard keymap consolefont plymouth resume filesystems)
 
 #в случае intel 
@@ -76,7 +75,7 @@ sudo nano /etc/plymouth/plymouthd.conf
 ```
 
 >Например
-```ini
+```q
 [Daemon]
 Theme=fade-in
 ```
@@ -106,7 +105,7 @@ ls /usr/share/plymouth/themes
 sudo nano /etc/plymouth/plymouthd.conf
 ```
 
-```ini
+```q
 [Daemon]
 ShowDelay=5
 ```
@@ -119,7 +118,7 @@ ShowDelay=5
 sudo nano /etc/plymouth/plymouthd.conf
 ```
 
-```ini
+```q
 DeviceScale=_коэффициент-масштабирования_
 ```
 
