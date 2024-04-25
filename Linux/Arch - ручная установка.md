@@ -513,3 +513,8 @@ yay -S ttf-ms-fonts
 ```shell
   yay -S ttf-hack-nerd
 ```
+
+>Pamac - графическая оболочка для pacman от разработчиков Manjaro
+```shell
+yay -S pamac-all
+```
