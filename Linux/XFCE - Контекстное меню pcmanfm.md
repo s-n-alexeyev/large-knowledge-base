@@ -1,15 +1,15 @@
 >устанавливаем пакет для работы от root
-```sh
+```shell
 sudo apt install gksu
 ```
 
 >создаем папку, если таковой нет
-```sh
+```shell
 mkdir -p ~/.local/share/file-manager/actions/
 ```
 
 >открыть папку от root
-```
+```shell
 cat<<EOF>>~/.local/share/file-manager/actions/open-folder-as-root.desktop
 [Desktop Entry]
 Type=Action
@@ -27,7 +27,7 @@ EOF
 ```
 
 >открыть папку или текстовый файл (в leafpad) как root
-```
+```shell
 cat<<EOF>>~/.local/share/file-manager/actions/open-as-root.desktop
 [Desktop Entry]
 Type=Action
@@ -70,7 +70,7 @@ EOF
 ```
 
 >установить в качестве обоев
-```
+```shell
 cat<<EOF>>~/.local/share/file-manager/actions/set-as-wallpaper.desktop
 [Desktop Entry]
 Type=Action
