@@ -123,9 +123,16 @@ NAME    TYPE MODEL                   SERIAL        �
 nvme0n1 disk Viper M.2 VPN110 1024GB VPN110EBBB2208190124 42BBT9BB nvme      1023   8  
 nvme1n1 disk KINGSTON SNV2S1000G     50026B77857A8C32     SBM02103 nvme       255   8
 ```
+## План разделов
 
+| №   | Раздел | Формат | Размер    | Назначение           |
+| --- | ------ | ------ | --------- | -------------------- |
+| 1   | efi    | FAT32  | 300MiB    | Для загрузочного efi |
+| 2   | boot   | EXT4   | 1 GiB     | Для образов ядер     |
+| 3   | swap   | SWAP   | 8 GiB     | Для раздела подкачки |
+| 4   | root   | BTRFS  | 229.2 GiB | Для системы, данных  |
+- при использовании btfrs, если не разделить efi и boot на разные разделы, не получится настроить grub для автоматической загрузки последнего удачного входа
 ## Разбивка диска
-
 В распоряжении имеются следующие утилиты для разбивки диска:
 - `cfdisk`
 - `fdisk`
@@ -136,12 +143,6 @@ nvme1n1 disk KINGSTON SNV2S1000G     50026B77857A8C32     SBM02103 nvme 
 fdisk /dev/sdX
 ```
 - где `sdX` ваш диск
-
-Будем создавать 4 раздела 
-1. EFI
-2. BOOT
-3. SWAP
-4. BTRSF
 
 Команда `g` - создание нового GPT раздела, старый раздел будет удален
 
@@ -171,7 +172,7 @@ First sector (2713600-500118158, default 2713600):`↵`
 Last sector, +/-sectors or +/-size{K,M,G,T,P} (2713600-500118158, default 500117503): `+8G`  
 `Created a new partition 1 of type 'Linux filesystem' and of size 8 GiB.`  
 
-- раздел BTRFS (отдаем оставшееся место)  
+- раздел ROOT (отдаем оставшееся место)  
 Command (m for help): `n`  
 Partition number (4-128, default 4):`↵`  
 First sector (19490816-500118158, default 19490816):`↵`  
@@ -219,7 +220,7 @@ The partition table has been altered.
 Calling ioctl() to re-read partition table.
 Syncing disks.
 ```
-# Форматирование разделов
+## Форматирование разделов
 
 >Форматирование EFI
 ```shell
@@ -237,7 +238,7 @@ mkswap -L swap /dev/sda3
 swapon /dev/sda3
 ```
 
->Форматирование btrfs
+>Форматирование root
 ```
 mkfs.btrfs -L arch /dev/sda4 -f
 ```
@@ -271,9 +272,14 @@ nano /etc/pacman.d/mirrorlist
 
 `Https://ftp.jaist.ac.jp/pub/Linux/ArchLinux/$repo/os/$arch`
 
->Установка базовой части системы
+>Установка базовой части системы для новых поколений ПК, самое новое ядро
 ```shell
-pacstrap /mnt base base-devel linux linux-firmware nano
+pacstrap /mnt base base-devel linux linux-headers linux-firmware nano
+```
+
+>Установка базовой части системы для ядра с длительной поддержкой (lts)
+```shell
+pacstrap /mnt base base-devel linux-lts linux-lts-headers linux-firmware nano
 ```
 
 >Генерируем fstab
@@ -361,7 +367,7 @@ Include = /etc/pacman.d.mirrorlist
 > Обновляем, устанавливаем необходимое
 ```shell
 pacman -Sy
-pacman -S mc bash-completion openssh arch-install-scripts networkmanager sudo git wget curl htop neofetch xdg-user-dirs ntfs-3g
+pacman -S bash-completion openssh arch-install-scripts networkmanager sudo git wget curl htop neofetch xdg-user-dirs pacman-contrib ntfs-3g
 mkinitcpio -p linux
 ```
 
@@ -370,7 +376,7 @@ mkinitcpio -p linux
 nano /etc/sudoers
 ```
 
->раскоментировать
+>Раскоментировать
 ```
 %wheel ALL=(ALL:ALL) ALL
 ```
@@ -379,6 +385,7 @@ nano /etc/sudoers
 ```shell
 useradd -m -g users -G wheel <<имя_пользователя>>
 ```
+- где `<<имя_пользователя>>` непосредственно заданное имя, например `user`
 
 >Задаем пароль пользователю
 ```shell
@@ -390,7 +397,7 @@ passwd <<имя_пользователя>>
 systemctl enable NetworkManager.service
 ```
 
->Ставим загрузчик
+>Ставим загрузчик Grub
 ```shell
 pacman -S grub efibootmgr grub-btrfs os-prober
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=Arch
@@ -404,46 +411,45 @@ umount -R /mnt
 reboot
 ```
 Получаем root
+# Установка графических драйверов
 
->Поднимаем иксы и графику nvidia
+>xorg сервер
 ```shell
-sudo pacman -S (для виртуальной машины xf86-video-vesa, для процессора intel: xf86-video-intel)
+xorg-server xorg-xinit xorg-drivers
+```
 
+>Графические драйвера Intel
+```shell
+sudo pacman -S xf86-video-intel
+#для виртуальной машины xf86-video-vesa, для процессора intel
+```
+
+>AMD
+```shell
 sudo pacman -S lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader
-
-pacman-contrib kate xorg-server xorg-xinit xorg-drivers nvidia nvidia-utils lib32-nvidia-utils nvidia-settings nvidia-dkms
 ```
 
->KDE: 
+>NVIDIA
 ```shell
-sudo pacman -S plasma kdeconnect konsole sddm
-- plasma-nm
-- dolphin
-- konsole
-- alsa-utils
-- plasma-pa
-- powerdevil
-- kscreen
-- kde-gtk-config
-- breeze-gtk
-- kwalletmanager
-- gwenview
-- okular
+sudo pacman -S nvidia nvidia-utils lib32-nvidia-utils nvidia-settings nvidia-dkms
 ```
-(выполнить дважды)
+# Среды рабочего стола
 
->Запуск службы загрузчика, иначе графика не поднимется
+## KDE:
 ```shell
-systemctl enable sddm
+sudo pacman -S sddm plasma kdeconnect konsole  plasma-nm dolphin konsole kate plasma-pa powerdevil kwalletmanager gwenview okular
+
+#Запуск службы загрузчика sddm
+sudo systemctl enable sddm
 ```
-
->XFCE: 
+## XFCE
 ```shell
-pacman -S xfce4 xfce4-goodies lxdm ttf-liberation ttf-dejavu network-manager-applet ppp pulseaudio-alsa gvfs thunar-volman
+pacman -S lxdm xfce4 xfce4-goodies ttf-liberation ttf-dejavu network-manager-applet ppp pulseaudio-alsa gvfs thunar-volman
+#Запуск службы загрузчика lxdm
 systemctl enable lxdm
 ```
 
-> ВАЖНО: в конце установки надо поправить fstab
+> ВАЖНО: в конце установки надо поправить fstab (может быть неактуально уже)
 ```shell
 sudo nano /etc/fstab
 ```
@@ -459,6 +465,7 @@ subvolid=***
 git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 ```
 
+>
 yay -S timeshift-autosnap
  yay -S onlyoffice-bin
   yay -S ttf-ms-fonts

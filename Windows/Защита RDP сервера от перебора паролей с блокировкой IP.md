@@ -1,5 +1,5 @@
 2024-02-15
-[Оригиналная статья](https://winitpro.ru/index.php/2019/10/02/blokirovka-rdp-atak-firewall-powershell/)
+[Оригинальная статья](https://winitpro.ru/index.php/2019/10/02/blokirovka-rdp-atak-firewall-powershell/)
 
 Tags: [PowerShell](https://winitpro.ru/index.php/category/powershell/), [Windows 10](https://winitpro.ru/index.php/category/windows-10/), [Windows Server 2019](https://winitpro.ru/index.php/category/windows-server-2019/), [Windows Server 2022](https://winitpro.ru/index.php/category/windows-server-2022/)
 
