@@ -384,7 +384,7 @@ mkinitcpio -p linux
 mkinitcpio -p linux-lts
 ```
 
->Разрешаем пользователю применять права администратора
+>Разрешаем пользователю применять права root
 ```shell
 nano /etc/sudoers
 ```
@@ -428,7 +428,7 @@ reboot
 ```
 # Установка графических драйверов
 
->xorg сервер нужен  для всех
+>xorg сервер нужен для всех графических адаптеров (если есть проблемы с wayland)
 ```shell
 sudo pacman -S xorg-server xorg-xinit xorg-drivers
 ```
@@ -436,7 +436,9 @@ sudo pacman -S xorg-server xorg-xinit xorg-drivers
 >Графические драйвера Intel
 ```shell
 sudo pacman -S xf86-video-intel
-#для виртуальной машины xf86-video-vesa, для процессора intel
+
+#для виртуальной машины c процессором intel
+sudo pacman -S xf86-video-vesa
 ```
 
 >AMD
