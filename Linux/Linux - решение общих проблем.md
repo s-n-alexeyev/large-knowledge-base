@@ -97,7 +97,7 @@ sudo apt update && sudo apt install yandex-browser-stable
 sudo nano /etc/default/keyboard
 ```
 
-```
+```q
 #KEYBOARD CONFIGURATION FILE
 
 #Consult the keyboard(5) manual page.
