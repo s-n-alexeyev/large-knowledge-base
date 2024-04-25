@@ -1,3 +1,4 @@
+2024-04-24
 ```table-of-contents
 title: Содержание:
 style: nestedList # TOC style (nestedList|inlineFirstLevel)
@@ -138,11 +139,11 @@ nvme1n1 disk KINGSTON SNV2S1000G     50026B77857A8C32     SBM02103 nvme 
 - `fdisk`
 - `gdisk` 
 
->Используем `fdisk`
+>Будем использовать `fdisk`
 ```shell
 fdisk /dev/sdX
 ```
-- где `sdX` ваш диск
+- где `sdX` ваш диск, в качестве примера везде будет `sda`
 
 Команда `g` - создание нового GPT раздела, старый раздел будет удален
 
@@ -198,7 +199,7 @@ Changed type if partition 'Linux filesystem' to 'Linux swap'.
 Команда  `p` - отобразить информацию о разделах
 
 ```
-Disk /dev/sdb: 238.47 GiB, 256060514304 bytes, 5001118192 sectors
+Disk /dev/sda: 238.47 GiB, 256060514304 bytes, 5001118192 sectors
 Disk model: Apacer AS340 240GB     
 Units: sectors of 1 * 512 = 512 bytes
 Sector size (logical/physical): 512 bytes / 4096 bytes
@@ -222,7 +223,7 @@ Syncing disks.
 ```
 ## Форматирование разделов
 
->Форматирование EFI
+>Форматирование efi
 ```shell
 mkfs.fat -F32 /dev/sda1
 ```
@@ -243,7 +244,7 @@ swapon /dev/sda3
 mkfs.btrfs -L arch /dev/sda4 -f
 ```
 
->Создание тома и подтомов (субволумов)
+>Создание тома и подтомов (subvolumes)
 ```shell
 mount /dev/sda4 /mnt
 btrfs su cr /mnt/@
@@ -265,6 +266,8 @@ mkdir /mnt/boot/efi
 mount /dev/sda1 /mnt/boot/efi
 ```
 
+# Начальная настройка
+
 >Настройка зеркала (опционально)
 ```shell
 nano /etc/pacman.d/mirrorlist
@@ -272,12 +275,13 @@ nano /etc/pacman.d/mirrorlist
 
 `Https://ftp.jaist.ac.jp/pub/Linux/ArchLinux/$repo/os/$arch`
 
->Установка базовой части системы для новых поколений ПК, самое новое ядро
+>Устанавливаем базовую часть системы для новых поколений ПК, самое новое ядро
 ```shell
 pacstrap /mnt base base-devel linux linux-headers linux-firmware nano
 ```
 
->Установка базовой части системы для ядра с длительной поддержкой (lts)
+>Устанавливаем базовую часть системы для ядра с длительной поддержкой (lts)
+>Актуально для не очень новых ПК
 ```shell
 pacstrap /mnt base base-devel linux-lts linux-lts-headers linux-firmware nano
 ```
@@ -287,12 +291,12 @@ pacstrap /mnt base base-devel linux-lts linux-lts-headers linux-firmware nano
 genfstab -pU /mnt >> /mnt/etc/fstab
 ```
 
->После того, как первая часть отработала, лезем в chroot
+>Меняем корневой каталог на /mnt
 ```shell
 arch-chroot /mnt
 ```
 
->После этого ставится пароль root
+>Задаем пароль root
 ```shell
 passwd
 ```
@@ -307,12 +311,12 @@ nano /etc/hostname
 ln -sf /usr/share/zoneinfo/Asia/Almaty /etc/localtime
 ```
 
->Открываем локали
+>Открываем файл с локалями
 ```shell
 nano /etc/locale.gen
 ```
 
->Раскоментируем 
+>Раскомментируем в содержимом файла `locale.gen`
 ```q
 ru_RU.UTF8 UTF8
 en_US.UTF8 UTF8
@@ -343,7 +347,7 @@ nano /etc/locale.conf
 LANG="ru_RU.UTF-8"
 ```
 
->Запуск пакетного менеджера
+>Инициализация пакетного менеджера
 ```shell
 pacman-key --init
 ```
@@ -353,12 +357,12 @@ pacman-key --init
 pacman-key --populate archlinux
 ```
 
->Открыть multilib-репозиторий, 
+>Включение multilib-репозитория
 ```shell
 nano /etc/pacman.conf
 ```
 
->Раскоментировать
+>Раскомментируем в содержимом файла `pacman.conf`
 ```q
 [multilib]
 Include = /etc/pacman.d.mirrorlist
@@ -368,16 +372,24 @@ Include = /etc/pacman.d.mirrorlist
 ```shell
 pacman -Sy
 pacman -S bash-completion openssh arch-install-scripts networkmanager sudo git wget curl htop neofetch xdg-user-dirs pacman-contrib ntfs-3g
+```
+
+>Создаем начальный загрузочный диск
+```shell
 mkinitcpio -p linux
 ```
 
->Настройка пользователей
+>В случае lts ядра
+```shell
+mkinitcpio -p linux-lts
+```
+
+>Разрешение пользователю применять права администратора
 ```
 nano /etc/sudoers
 ```
-
->Раскоментировать
-```
+>Раскомментируем в содержимом файла `sudoers`
+```q
 %wheel ALL=(ALL:ALL) ALL
 ```
 
@@ -400,22 +412,27 @@ systemctl enable NetworkManager.service
 >Ставим загрузчик Grub
 ```shell
 pacman -S grub efibootmgr grub-btrfs os-prober
-grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=Arch
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=Arch
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
 >Выход с chroot
-`Ctrl+D`
+```
+Ctrl+D
+```
+
+>Рекурсивно размонтируем `/mnt`, перегружаемся
 ```shell
 umount -R /mnt
 reboot
 ```
-Получаем root
 # Установка графических драйверов
+
+Загружаемся в установленную систему
 
 >xorg сервер
 ```shell
-xorg-server xorg-xinit xorg-drivers
+sudo pacman -S xorg-server xorg-xinit xorg-drivers
 ```
 
 >Графические драйвера Intel
@@ -435,7 +452,7 @@ sudo pacman -S nvidia nvidia-utils lib32-nvidia-utils nvidia-settings nvidia-dkm
 ```
 # Среды рабочего стола
 
-## KDE:
+## KDE
 ```shell
 sudo pacman -S sddm plasma kdeconnect konsole  plasma-nm dolphin konsole kate plasma-pa powerdevil kwalletmanager gwenview okular
 
@@ -444,9 +461,10 @@ sudo systemctl enable sddm
 ```
 ## XFCE
 ```shell
-pacman -S lxdm xfce4 xfce4-goodies ttf-liberation ttf-dejavu network-manager-applet ppp pulseaudio-alsa gvfs thunar-volman
+sudo pacman -S lxdm xfce4 xfce4-goodies ttf-liberation ttf-dejavu network-manager-applet ppp pulseaudio-alsa gvfs thunar-volman
+
 #Запуск службы загрузчика lxdm
-systemctl enable lxdm
+sudo systemctl enable lxdm
 ```
 
 > ВАЖНО: в конце установки надо поправить fstab (может быть неактуально уже)
@@ -454,11 +472,11 @@ systemctl enable lxdm
 sudo nano /etc/fstab
 ```
 
->убираем в строках слова
+>Убираем в файле `fstab` такие строки
 ```q
 subvolid=***
 ```
-Сохраняем, выходим.
+
 
 >Установка AUR-yay
 ```shell
