@@ -87,7 +87,7 @@ Passphrase: ********
 ping ya.ru -c3
 ```
 
-```
+```q
 PING ya.ru (5.255.255.242) 56(84) bytes of data.  
 64 bytes from ya.ru (5.255.255.242): icmp_seq=1 ttl=51 time=72.5 ms  
 64 bytes from ya.ru (5.255.255.242): icmp_seq=2 ttl=51 time=71.4 ms  
@@ -106,7 +106,7 @@ rtt min/avg/max/mdev = 71.363/71.792/72.475/0.487 ms
 lsblk --scsi
 ```
 
-```
+```q
 NAME HCTL       TYPE VENDOR   MODEL                          REV SERIAL               TRAN
 sda  0:0:0:0    disk ATA      Apacer AS340 240GB            V4.7 J28485R004707        sata
 sdb  1:0:0:0    disk ATA      Samsung SSD 840 EVO 250GB EXT0DB6Q S1DBNSAFB46994Z      sata
@@ -119,7 +119,7 @@ sdd  8:0:0:0    disk Generic  Flash Disk                  
 lsblk --nvme
 ```
 
-```
+```q
 NAME    TYPE MODEL                   SERIAL                    REV TRAN   RQ-SIZE  MQ  
 nvme0n1 disk Viper M.2 VPN110 1024GB VPN110EBBB2208190124 42BBT9BB nvme      1023   8  
 nvme1n1 disk KINGSTON SNV2S1000G     50026B77857A8C32     SBM02103 nvme       255   8
@@ -198,7 +198,7 @@ Changed type if partition 'Linux filesystem' to 'Linux swap'.
 
 Команда  `p` - отобразить информацию о разделах
 
-```
+```q
 Disk /dev/sda: 238.47 GiB, 256060514304 bytes, 5001118192 sectors
 Disk model: Apacer AS340 240GB     
 Units: sectors of 1 * 512 = 512 bytes
@@ -216,7 +216,7 @@ Device         Start       End   Sectors   Size Type
 
 Команда `w` - сохранить таблицу разделов
 
-```
+```q
 The partition table has been altered.
 Calling ioctl() to re-read partition table.
 Syncing disks.
@@ -229,18 +229,18 @@ mkfs.fat -F32 /dev/sda1
 ```
 
 >Форматируем boot
-```
+```shell
 mkfs.ext4 -L boot /dev/sda2
 ```
 
 >Форматируем и включаем swap
-```
+```shell
 mkswap -L swap /dev/sda3
 swapon /dev/sda3
 ```
 
 >Форматируем root
-```
+```shell
 mkfs.btrfs -L arch /dev/sda4 -f
 ```
 
@@ -321,7 +321,7 @@ nano /etc/locale.gen
 ru_RU.UTF8 UTF8
 en_US.UTF8 UTF8
 ```
-- остальные на ваше усмотрение
+- остальные локали на ваше усмотрение
 
 >Создаем локали
 ```shell
@@ -385,7 +385,7 @@ mkinitcpio -p linux-lts
 ```
 
 >Разрешаем пользователю применять права администратора
-```
+```shell
 nano /etc/sudoers
 ```
 >Раскомментируем в содержимом файла `sudoers`
@@ -417,7 +417,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
 >Выходим с chroot
-```
+```q
 Ctrl+D
 ```
 
