@@ -47,7 +47,7 @@ cd ~/ocserv/src && wget https://gitlab.com/openconnect/ocserv/-/raw/master/doc/s
 nano ca-cert.cfg
 ```
 
-```ini
+```q
 # X.509 Certificate options
 
 # The organization of the subject.
@@ -91,7 +91,7 @@ certtool --generate-self-signed --load-privkey ocserv-key.pem --template ca-cert
 nano dh.conf
 ```
 
-```ini
+```q
 key_type = RSA
 key_bits = 2048
 dh_bits = 2048
@@ -135,7 +135,7 @@ nano ~/ocserv/src/sample.config
 
 ВСЕ ПАРАМЕТРЫ ПРОВЕРЯЕМ ПОИСКОМ ЧТОБЫ НЕ ДУБЛИРОВАЛИСЬ!
 
-```ini
+```q
 server-cert = /home/debian/ocserv/src/ocserv-cert.pem
 server-key = /home/debian/ocserv/src/ocserv-key.pem
 dh-params = /home/debian/ocserv/src/dh.pem
@@ -198,7 +198,7 @@ camouflage_secret = "mysecretkluch"
 nano ./clients/configs/dmitry
 ```
 
-```ini
+```q
 explicit-ipv4 = 10.18.18.24
 route = 10.17.17.0/24 (к примеру маршрут в соседнюю подсеть wireguard)
 ```
@@ -210,7 +210,7 @@ route = 10.17.17.0/24 (к примеру маршрут в соседнюю по
 sudo nano /etc/sysctl.conf
 ```
 
-```ini
+```q
 net.ipv4.ip_forward = 1
 sudo sysctl -p
 ```
@@ -220,7 +220,7 @@ sudo sysctl -p
 sudo nano /etc/systemd/system/ocserv-iptables.service
 ```
 
-```ini
+```q
 [Unit]
 Before=network.target
 [Service]
@@ -276,7 +276,7 @@ sudo openconnect https://142.54.160.100:28855/?mysecretkluch
 sudo nano /etc/systemd/system/ocserv.service
 ```
 
-```ini
+```q
 [Unit]
 After=network.target
 [Service]
