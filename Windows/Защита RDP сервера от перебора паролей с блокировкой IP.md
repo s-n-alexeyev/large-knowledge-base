@@ -1,10 +1,7 @@
 2024-02-15
 [Оригиналная статья](https://winitpro.ru/index.php/2019/10/02/blokirovka-rdp-atak-firewall-powershell/)
 
-
-
-![directory](https://winitpro.ru/wp-content/themes/lite/img/sloi_11.png) [PowerShell](https://winitpro.ru/index.php/category/powershell/), [Windows 10](https://winitpro.ru/index.php/category/windows-10/), [Windows Server 2019](https://winitpro.ru/index.php/category/windows-server-2019/), [Windows Server 2022](https://winitpro.ru/index.php/category/windows-server-2022/)
-
+Tags: [PowerShell](https://winitpro.ru/index.php/category/powershell/), [Windows 10](https://winitpro.ru/index.php/category/windows-10/), [Windows Server 2019](https://winitpro.ru/index.php/category/windows-server-2019/), [Windows Server 2022](https://winitpro.ru/index.php/category/windows-server-2022/)
 
 На любом хосте Windows, напрямую подключённом к Интернету, с открытым наружу портом RDP периодически будут фиксироваться попытки удаленного перебора паролей. Для эффективной защиты стандартного RDP порта `3389` от перебора паролей и эксплуатации уязвимостей рекомендуется разместить RDP сервер за VPN или [шлюзом RD Gateway](https://winitpro.ru/index.php/2022/03/17/nastrojka-shlyuza-remote-desktop-gateway-windows-server/). Если реализовать такую схему невозможно, нужно внедрять дополнительные средства для защиты RDP:
 
