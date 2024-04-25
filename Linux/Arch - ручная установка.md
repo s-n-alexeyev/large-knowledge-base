@@ -507,6 +507,11 @@ yay -S timeshift-autosnap
 yay -S onlyoffice-bin
 ```
 
+>Проверка орфографии
+```shell
+sudo pacman -S aspell aspell-en aspell-ru
+```
+
 >Шрифты от Microsoft
 ```shell
 yay -S ttf-ms-fonts
