@@ -419,16 +419,6 @@ pacman -S grub efibootmgr grub-btrfs os-prober
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=Arch
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
-
->Выходим с chroot
-```q
-Ctrl+D
-```
-
->Рекурсивно размонтируем `/mnt`
-```shell
-umount -R /mnt
-```
 # Установка графических драйверов
 
 >xorg сервер нужен для всех графических адаптеров (если есть проблемы с wayland)
@@ -478,6 +468,21 @@ sudo nano /etc/fstab
 >Убираем в файле `fstab` такие строки
 ```q
 subvolid=***
+```
+
+>Выходим с chroot
+```q
+Ctrl+D
+```
+
+>Рекурсивно размонтируем `/mnt`
+```shell
+umount -R /mnt
+```
+
+>Все настройки готовы, можно перегружаться
+```shell
+reboot
 ```
 # Дополнительные настройки/установки
 
