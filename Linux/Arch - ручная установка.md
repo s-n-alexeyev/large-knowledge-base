@@ -84,18 +84,18 @@ Passphrase: ********
 ```
 ## Проверяем работу сети
 ```shell
-ping ya.ru -c3
+ping archlinux.org -c3
 ```
 
 ```q
-PING ya.ru (5.255.255.242) 56(84) bytes of data.  
-64 bytes from ya.ru (5.255.255.242): icmp_seq=1 ttl=51 time=72.5 ms  
-64 bytes from ya.ru (5.255.255.242): icmp_seq=2 ttl=51 time=71.4 ms  
-64 bytes from ya.ru (5.255.255.242): icmp_seq=3 ttl=51 time=71.5 ms  
+PING archlinux.org (95.217.163.246) 56(84) bytes of data.  
+64 bytes from archlinux.org (95.217.163.246): icmp_seq=1 ttl=50 time=98.4 ms  
+64 bytes from archlinux.org (95.217.163.246): icmp_seq=2 ttl=50 time=98.3 ms  
+64 bytes from archlinux.org (95.217.163.246): icmp_seq=3 ttl=50 time=98.4 ms  
   
---- ya.ru ping statistics ---  
+--- archlinux.org ping statistics ---  
 3 packets transmitted, 3 received, 0% packet loss, time 2003ms  
-rtt min/avg/max/mdev = 71.363/71.792/72.475/0.487 ms
+rtt min/avg/max/mdev = 98.302/98.356/98.413/0.045 ms
 ```
 # Работа с носителем
 
