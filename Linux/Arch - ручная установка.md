@@ -350,7 +350,7 @@ nano /etc/pacman.d/mirrorlist
 pacstrap /mnt base base-devel linux linux-headers linux-firmware intel-ucode amd-ucode nano
 ```
 
->Устанавливаем базовую часть системы для ядра с длительной поддержкой (lts)
+>Устанавливаем базовую часть системы для ядра с длительной поддержкой (lts)  
 >Актуально для не очень новых ПК
 ```shell
 pacstrap /mnt base base-devel linux-lts linux-lts-headers linux-firmware intel-ucode amd-ucode nano
