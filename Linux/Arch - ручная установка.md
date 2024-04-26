@@ -474,7 +474,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 >Ставим загрузчик Grub для BIOS
 ```shell
 pacman -S grub grub-btrfs os-prober
-grub-install /dev/sda1
+grub-install /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 # Установка графических драйверов
