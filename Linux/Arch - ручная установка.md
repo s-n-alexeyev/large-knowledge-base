@@ -137,8 +137,7 @@ fdisk -l
 |   sda2 | boot     | EXT4   |    1 GiB | Ядра linux      |
 |   sda3 | swap     | SWAP   |    8 GiB | Раздел подкачки |
 |   sda4 | root     | BTRFS  | ~230 GiB | Система, данные |
-- при использовании btfrs, если не разделить efi и boot на разные разделы, не получится настроить grub для автоматической загрузки последнего удачного входа
-
+- *при использовании btfrs, если не разделить efi и boot на разные разделы, не получится настроить grub для автоматической загрузки последнего удачного входа*
 ## План разделов GPT для BIOS
 
 | Раздел | Название | Формат |   Размер | Назначение       |
@@ -147,7 +146,7 @@ fdisk -l
 |   sda2 | boot     | EXT4   |    1 GiB | Ядра linux       |
 |   sda3 | swap     | SWAP   |    8 GiB | Раздел подкачки  |
 |   sda4 | root     | BTRFS  | ~230 GiB | Система, данные  |
-- если на компьютере нет поддержки efi или по какой-то причине вам нужна legacy загрузка 
+- *если на компьютере нет поддержки efi или по какой-то причине вам нужна legacy загрузка* 
 ## Подготовка диска
 В распоряжении имеются следующие утилиты для разбивки диска:
 - `cfdisk`
@@ -249,27 +248,27 @@ Syncing disks.
 ```
 ### Разбивка для BIOS
 ---
-- раздел BIOS (32M)  
+- *раздел BIOS (32M)*  
 Command (m for help): `n`  
 Partition number (1-128, default 1):`↵`  
 First sector (2048-500118158, default 2048):`↵`  
 Last sector, +/-sectors or +/-size{K,M,G,T,P} (2048-500118158, default 500117503): `+1M`  
 `Created a new partition 1 of type 'Linux filesystem' and of size 1 MiB.`  
 
-- задаем тип BIOS разделу  
+- *задаем тип BIOS разделу*  
 Command (m for help): `t`  
 Partition number (1-4, default 4): `1`  
 Partition type or alias (type L to list all): `4`  
 Changed type if partition 'Linux filesystem' to 'BIOS boot'.  
 
-- Первый раздел создается под BIOS вместо EFI, остальные разделы создаются подобно EFI разбивке
+- *Первый раздел создается под BIOS вместо EFI, остальные разделы создаются подобно EFI разбивке*
 ## Форматируем разделы
 
 >Форматируем efi
 ```shell
 mkfs.fat -F32 /dev/sda1
 ```
-- В случае использования раздела BIOS форматировать ничего не надо
+- *в случае использования раздела BIOS форматировать ничего не надо*
 
 >Форматируем boot
 ```shell
