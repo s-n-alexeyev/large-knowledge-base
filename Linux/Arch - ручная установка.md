@@ -330,7 +330,7 @@ pacstrap /mnt base base-devel linux-lts linux-lts-headers linux-firmware nano
 genfstab -pU /mnt >> /mnt/etc/fstab
 ```
 
->Меняем корневой каталог на /mnt
+>Меняем корневой каталог на `/mnt`
 ```shell
 arch-chroot /mnt
 ```
