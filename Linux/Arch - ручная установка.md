@@ -347,7 +347,7 @@ nano /etc/pacman.d/mirrorlist
 
 >Устанавливаем базовую часть системы для новых поколений ПК, самое новое ядро
 ```shell
-pacstrap /mnt base base-devel linux linux-headers linux-firmware nano
+pacstrap /mnt base base-devel linux linux-headers linux-firmware intel-ucode amd-ucode nano
 ```
 
 >Устанавливаем базовую часть системы для ядра с длительной поддержкой (lts)
