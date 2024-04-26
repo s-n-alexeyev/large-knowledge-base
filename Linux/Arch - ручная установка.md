@@ -159,7 +159,8 @@ fdisk -l
 fdisk /dev/sdX
 ```
 - где `sdX` ваш диск, в качестве примера везде будет `sda`
-
+### Разбивка для EFI
+---
 Команда `g` - создание нового GPT раздела, старый раздел будет удален
 
 Command (m for help): `g`  
@@ -167,8 +168,6 @@ Command (m for help): `g`
 
 Команда  `n` - создание раздела
 
-### Разбивка для EFI
----
 - раздел EFI (300M)  
 Command (m for help): `n`  
 Partition number (1-128, default 1):`↵`  
@@ -225,10 +224,10 @@ Disklabel type: gpt
 Disk identifier: 73749F7E-1B28-874D-94AE-DED4CE70D269
 
 Device         Start       End   Sectors   Size Type
-/dev/sdb1       2048    616447    614400   300M EFI System
-/dev/sdb2     616448   2713599   2097152     1G Linux filesystem
-/dev/sdb3    2713600  19490815  16777216     8G Linux swap
-/dev/sdb4   19490816 500117503 480626688 229.2G Linux filesystem
+/dev/sda1       2048    616447    614400   300M EFI System
+/dev/sda2     616448   2713599   2097152     1G Linux filesystem
+/dev/sda3    2713600  19490815  16777216     8G Linux swap
+/dev/sda4   19490816 500117503 480626688 229.2G Linux filesystem
 ```
 
 Команда `w` - сохранить таблицу разделов
@@ -244,8 +243,8 @@ Syncing disks.
 Command (m for help): `n`  
 Partition number (1-128, default 1):`↵`  
 First sector (2048-500118158, default 2048):`↵`  
-Last sector, +/-sectors or +/-size{K,M,G,T,P} (2048-500118158, default 500117503): `+32M`  
-`Created a new partition 1 of type 'Linux filesystem' and of size 32 MiB.`  
+Last sector, +/-sectors or +/-size{K,M,G,T,P} (2048-500118158, default 500117503): `+1M`  
+`Created a new partition 1 of type 'Linux filesystem' and of size 1 MiB.`  
 
 - задаем тип BIOS разделу  
 Command (m for help): `t`  
