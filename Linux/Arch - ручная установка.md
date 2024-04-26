@@ -506,16 +506,21 @@ pacman -S nvidia nvidia-utils lib32-nvidia-utils nvidia-settings nvidia-dkms
 ## KDE
 ```shell
 pacman -S sddm dolphin kdeconnect konsole konsole kwalletmanager kate plasma plasma-nm plasma-pa powerdevil gwenview okular
-
-#Запуск службы загрузчика sddm
-systemctl enable sddm
 ```
 - соглашаемся на установку всех дополнительных пакетов
+
+>Запуск службы загрузчика sddm
+```
+systemctl enable sddm
+```
+
 ## XFCE
 ```shell
 pacman -S lxdm xfce4 xfce4-goodies ttf-liberation ttf-dejavu network-manager-applet ppp pulseaudio-alsa gvfs thunar-volman
+```
 
-#Запуск службы загрузчика lxdm
+>Запуск службы загрузчика lxdm
+```
 systemctl enable lxdm
 ```
 
