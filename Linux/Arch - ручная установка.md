@@ -285,7 +285,7 @@ Partition type or alias (type L to list all): `4`
 Changed type if partition 'Linux filesystem' to 'BIOS boot'.  
 
 - *Первый раздел создается под BIOS вместо EFI, остальные разделы создаются подобно EFI разбивке*
-## Форматируем разделы
+### Форматируем разделы
 
 >Форматируем efi
 ```shell
