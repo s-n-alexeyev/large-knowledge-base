@@ -464,10 +464,17 @@ passwd <<имя_пользователя>>
 systemctl enable NetworkManager.service
 ```
 
->Ставим загрузчик Grub
+>Ставим загрузчик Grub для EFI
 ```shell
 pacman -S grub efibootmgr grub-btrfs os-prober
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=Arch
+grub-mkconfig -o /boot/grub/grub.cfg
+```
+
+>Ставим загрузчик Grub для BIOS
+```shell
+pacman -S grub grub-btrfs os-prober
+grub-install /dev/sda1
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 # Установка графических драйверов
