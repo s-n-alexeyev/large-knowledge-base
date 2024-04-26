@@ -261,6 +261,7 @@ Changed type if partition 'Linux filesystem' to 'BIOS boot'.
 ```shell
 mkfs.fat -F32 /dev/sda1
 ```
+- В случае использования раздела BIOS форматировать ничего не надо
 
 >Форматируем boot
 ```shell
