@@ -23,6 +23,8 @@ debugInConsole: false # Print debug info in Obsidian console
 
 Руководство на Habr как записать образ на флеш-накопитель с помощью [Ventoy](https://habr.com/ru/companies/ruvds/articles/584670/)  
 Видео на YouTube по использованию [Ventoy](https://www.youtube.com/watch?v=UJ1D_MByDu0)
+
+Если вы пользуетесь проводным соединением, то пропускаем настройку беспроводной сети и переходим к [[# Работа с носителем]]
 # Настройка беспроводной сети
 ## Проверяем не заблокирован ли WiFi
 ```shell
