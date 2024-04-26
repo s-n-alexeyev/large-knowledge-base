@@ -148,8 +148,6 @@ fdisk -l
 | 3   | swap   | SWAP   | 8 GiB     | Раздел подкачки  |
 | 4   | root   | BTRFS  | 229.2 GiB | Система, данные  |
 - если на компьютере нет поддержки efi или по какой-то причине вам нужна legacy загрузка 
-
-
 ## Утилиты разбивки диска
 В распоряжении имеются следующие утилиты для разбивки диска:
 - `cfdisk`
@@ -217,22 +215,6 @@ Changed type if partition 'Linux filesystem' to 'Linux swap'.
 
 Команда  `p` - отобразить информацию о разделах
 
-### Разбивка для BIOS
----
-- раздел BIOS (32M)  
-Command (m for help): `n`  
-Partition number (1-128, default 1):`↵`  
-First sector (2048-500118158, default 2048):`↵`  
-Last sector, +/-sectors or +/-size{K,M,G,T,P} (2048-500118158, default 500117503): `+32M`  
-`Created a new partition 1 of type 'Linux filesystem' and of size 32 MiB.`  
-
-- задаем тип BIOS разделу  
-Command (m for help): `t`  
-Partition number (1-4, default 4): `1`  
-Partition type or alias (type L to list all): `1`  
-Changed type if partition 'Linux filesystem' to 'EFI filesystem'.  
-- Первый раздел создается под BIOS вместо EFI, остальные разделы создаются подобно EFI разбивке
-
 ```q
 Disk /dev/sda: 238.47 GiB, 256060514304 bytes, 5001118192 sectors
 Disk model: Apacer AS340 240GB     
@@ -256,6 +238,23 @@ The partition table has been altered.
 Calling ioctl() to re-read partition table.
 Syncing disks.
 ```
+### Разбивка для BIOS
+---
+- раздел BIOS (32M)  
+Command (m for help): `n`  
+Partition number (1-128, default 1):`↵`  
+First sector (2048-500118158, default 2048):`↵`  
+Last sector, +/-sectors or +/-size{K,M,G,T,P} (2048-500118158, default 500117503): `+32M`  
+`Created a new partition 1 of type 'Linux filesystem' and of size 32 MiB.`  
+
+- задаем тип BIOS разделу  
+Command (m for help): `t`  
+Partition number (1-4, default 4): `1`  
+Partition type or alias (type L to list all): `4`  
+Changed type if partition 'Linux filesystem' to 'BIOS boot'.  
+
+- Первый раздел создается под BIOS вместо EFI, остальные разделы создаются подобно EFI разбивке
+
 ## Форматируем разделы
 
 >Форматируем efi
