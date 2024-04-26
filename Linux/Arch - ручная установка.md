@@ -21,7 +21,7 @@ debugInConsole: false # Print debug info in Obsidian console
 - Windows - [Rufus](https://rufus.ie/ru/)  
 - Кроссплатформенный [Ventoy](https://ventoy.net/en/download.html) (рекомендовано)
 
-Руководство на Habr как записать образ на флеш-накопитель с помощью [Ventoy](https://habr.com/ru/companies/ruvds/articles/584670/)
+Руководство на Habr как записать образ на флеш-накопитель с помощью [Ventoy](https://habr.com/ru/companies/ruvds/articles/584670/)  
 Видео на YouTube по использованию [Ventoy](https://www.youtube.com/watch?v=UJ1D_MByDu0)
 # Настройка беспроводной сети
 ## Проверяем не заблокирован ли WiFi
