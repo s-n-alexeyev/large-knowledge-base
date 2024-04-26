@@ -13,6 +13,7 @@ debugInConsole: false # Print debug info in Obsidian console
 ```
 ---
 # Подготовка к установке
+
 Скачиваем образ дистрибутива [Arch Linux](https://archlinux.org/download/)
 
 Утилиты для записи образа на флеш-накопитель:
@@ -20,6 +21,7 @@ Linux - [balenaEtcher](https://etcher.balena.io/)
 Windows - [Rufus](https://rufus.ie/ru/)  
 Кроссплатформенный [Ventoy](https://ventoy.net/en/download.html) (рекомендовано)
 Руководство как записать образ на флеш-накопитель с помощью [Ventoy](https://habr.com/ru/companies/ruvds/articles/584670/)
+Видео на YouTube по использованию [Ventoy](https://www.youtube.com/watch?v=UJ1D_MByDu0)
 # Настройка беспроводной сети
 ## Проверяем не заблокирован ли WiFi
 ```shell
