@@ -131,24 +131,24 @@ fdisk -l
 ```
 ## План разделов GPT для EFI
 
-| №   | Раздел | Формат | Размер    | Назначение      |
-| --- | ------ | ------ | --------- | --------------- |
-| 1   | efi    | FAT32  | 300MiB    | Загрузочный efi |
-| 2   | boot   | EXT4   | 1 GiB     | Ядра linux      |
-| 3   | swap   | SWAP   | 8 GiB     | Раздел подкачки |
-| 4   | root   | BTRFS  | 229.2 GiB | Система, данные |
+| №   | Раздел | Формат |   Размер | Назначение      |
+| --- | ------ | ------ | -------: | --------------- |
+| 1   | efi    | FAT32  |  300 MiB | Загрузочный efi |
+| 2   | boot   | EXT4   |    1 GiB | Ядра linux      |
+| 3   | swap   | SWAP   |    8 GiB | Раздел подкачки |
+| 4   | root   | BTRFS  | ~230 GiB | Система, данные |
 - при использовании btfrs, если не разделить efi и boot на разные разделы, не получится настроить grub для автоматической загрузки последнего удачного входа
 
 ## План разделов GPT для BIOS
 
-| №   | Раздел | Формат | Размер    | Назначение       |
-| --- | ------ | ------ | --------- | ---------------- |
-| 1   | bios   | BIOS   | 32MiB     | Загрузочный bios |
-| 2   | boot   | EXT4   | 1 GiB     | Ядра linux       |
-| 3   | swap   | SWAP   | 8 GiB     | Раздел подкачки  |
-| 4   | root   | BTRFS  | 229.2 GiB | Система, данные  |
+|   № | Раздел | Формат |   Размер | Назначение       |
+| --: | ------ | ------ | -------: | ---------------- |
+|   1 | bios   | BIOS   |    1 MiB | Загрузочный bios |
+|   2 | boot   | EXT4   |    1 GiB | Ядра linux       |
+|   3 | swap   | SWAP   |    8 GiB | Раздел подкачки  |
+|   4 | root   | BTRFS  | ~230 GiB | Система, данные  |
 - если на компьютере нет поддержки efi или по какой-то причине вам нужна legacy загрузка 
-## Утилиты разбивки диска
+## Подготовка диска
 В распоряжении имеются следующие утилиты для разбивки диска:
 - `cfdisk`
 - `fdisk`
@@ -254,7 +254,6 @@ Partition type or alias (type L to list all): `4`
 Changed type if partition 'Linux filesystem' to 'BIOS boot'.  
 
 - Первый раздел создается под BIOS вместо EFI, остальные разделы создаются подобно EFI разбивке
-
 ## Форматируем разделы
 
 >Форматируем efi
@@ -278,6 +277,7 @@ swapon /dev/sda3
 ```shell
 mkfs.btrfs -L arch /dev/sda4 -f
 ```
+# Монтируем разделы
 
 >Создаем тома и подтома (subvolumes)
 ```shell
@@ -289,7 +289,7 @@ btrfs su cr /mnt/@snapshots
 umount /mnt
 ```
 
->Монтируем разделы
+>Монтируем разделы для BIOS и EFI
 ```shell
 mount -o noatime,compress=lzo,space_cache=v2,ssd,subvol=@ /dev/sda4 /mnt
 mkdir -p /mnt/{home,boot,var,.snapshots}
@@ -297,6 +297,11 @@ mount -o noatime,compress=lzo,space_cache=v2,ssd,subvol=@var /dev/sda4 /mnt/var
 mount -o noatime,compress=lzo,space_cache=v2,ssd,subvol=@home /dev/sda4 /mnt/home
 mount -o noatime,compress=lzo,space_cache=v2,ssd,subvol=@snapshots /dev/sda4 /mnt/.snapshots
 mount /dev/sda2 /mnt/boot
+```
+- для загрузки BIOS этого достаточно
+
+>Для EFI загрузки добавляем следующее
+```shell
 mkdir /mnt/boot/efi
 mount /dev/sda1 /mnt/boot/efi
 ```
