@@ -564,7 +564,13 @@ sudo pacman -S timeshift
 ```shell
 yay -S timeshift-autosnap
 ```
- 
+
+>Автоматическая очистка кэша пакетов
+```shell
+sudo pacman -S pacman-contrib
+sudo systemctl enable paccache.timer
+```
+
  >Onlyoffice - офис внешне похожий на Microsoft Office
 ```shell
 yay -S onlyoffice-bin
@@ -584,6 +590,7 @@ yay -S ttf-ms-fonts
 ```shell
 yay -S ttf-hack-nerd
 ```
+
 
 >Stacer - мультиинструмент, очистка диска
 ```shell
