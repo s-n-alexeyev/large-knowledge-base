@@ -407,6 +407,18 @@ nano /etc/pacman.conf
 Include = /etc/pacman.d.mirrorlist
 ```
 
+>Опционально можно включить следующие опции в секции `# Misc options`,  
+>`color` - цветная подсветка pacman,  
+>`ParallelDownloads` - количество параллельных загрузок, рекомендую не ниже 8  
+>`ILoveCandy` - можно добавить забавный прогрессбар загрузки пакетов в стиле игры Pacman 
+```q
+Color
+ParallelDownloads = 10
+ILoveCandy
+```
+
+
+
 > Обновляем, устанавливаем необходимое
 ```shell
 pacman -Sy
