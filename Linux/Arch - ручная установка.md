@@ -513,7 +513,7 @@ pacman -S sddm dolphin kdeconnect konsole konsole kwalletmanager kate plasma pla
 ```
 - *соглашаемся на установку всех дополнительных пакетов*
 
->Запуск службы загрузчика sddm
+>Запуск службы загрузчика `sddm`
 ```
 systemctl enable sddm
 ```
@@ -522,7 +522,7 @@ systemctl enable sddm
 pacman -S lxdm xfce4 xfce4-goodies ttf-liberation ttf-dejavu network-manager-applet ppp pulseaudio-alsa gvfs thunar-volman
 ```
 
->Запуск службы загрузчика lxdm
+>Запуск службы загрузчика `lxdm`
 ```
 systemctl enable lxdm
 ```
