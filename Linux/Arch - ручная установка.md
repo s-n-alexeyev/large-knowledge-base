@@ -129,7 +129,7 @@ nvme1n1 disk KINGSTON SNV2S1000G     50026B77857A8C32     SBM02103 nvme 
 ```shell
 fdisk -l
 ```
-## План разделов GPT
+## План разделов GPT для EFI
 
 | №   | Раздел | Формат | Размер    | Назначение      |
 | --- | ------ | ------ | --------- | --------------- |
@@ -138,7 +138,19 @@ fdisk -l
 | 3   | swap   | SWAP   | 8 GiB     | Раздел подкачки |
 | 4   | root   | BTRFS  | 229.2 GiB | Система, данные |
 - при использовании btfrs, если не разделить efi и boot на разные разделы, не получится настроить grub для автоматической загрузки последнего удачного входа
-## Разбивка диска
+
+## План разделов GPT для BIOS
+
+| №   | Раздел | Формат | Размер    | Назначение       |
+| --- | ------ | ------ | --------- | ---------------- |
+| 1   | bios   | BIOS   | 32MiB     | Загрузочный bios |
+| 2   | boot   | EXT4   | 1 GiB     | Ядра linux       |
+| 3   | swap   | SWAP   | 8 GiB     | Раздел подкачки  |
+| 4   | root   | BTRFS  | 229.2 GiB | Система, данные  |
+- если на компьютере нет поддержки efi или по какой-то причине вам нужна legacy загрузка 
+
+
+## Утилиты разбивки диска
 В распоряжении имеются следующие утилиты для разбивки диска:
 - `cfdisk`
 - `fdisk`
@@ -157,6 +169,8 @@ Command (m for help): `g`
 
 Команда  `n` - создание раздела
 
+### Разбивка для EFI
+---
 - раздел EFI (300M)  
 Command (m for help): `n`  
 Partition number (1-128, default 1):`↵`  
@@ -202,6 +216,22 @@ Changed type if partition 'Linux filesystem' to 'Linux swap'.
 - остальные разделы не трогаем
 
 Команда  `p` - отобразить информацию о разделах
+
+### Разбивка для BIOS
+---
+- раздел BIOS (32M)  
+Command (m for help): `n`  
+Partition number (1-128, default 1):`↵`  
+First sector (2048-500118158, default 2048):`↵`  
+Last sector, +/-sectors or +/-size{K,M,G,T,P} (2048-500118158, default 500117503): `+32M`  
+`Created a new partition 1 of type 'Linux filesystem' and of size 32 MiB.`  
+
+- задаем тип BIOS разделу  
+Command (m for help): `t`  
+Partition number (1-4, default 4): `1`  
+Partition type or alias (type L to list all): `1`  
+Changed type if partition 'Linux filesystem' to 'EFI filesystem'.  
+- Первый раздел создается под BIOS вместо EFI, остальные разделы создаются подобно EFI разбивке
 
 ```q
 Disk /dev/sda: 238.47 GiB, 256060514304 bytes, 5001118192 sectors
