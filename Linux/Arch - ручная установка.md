@@ -479,11 +479,6 @@ grub-mkconfig -o /boot/grub/grub.cfg
 ```
 # Установка графических драйверов
 
->xorg сервер нужен для всех графических адаптеров (если есть проблемы с wayland)
-```shell
-pacman -S xorg-server xorg-xinit xorg-drivers
-```
-
 >Графические драйвера Intel
 ```shell
 pacman -S xf86-video-intel
@@ -501,7 +496,7 @@ pacman -S lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-v
 ```shell
 pacman -S nvidia nvidia-utils lib32-nvidia-utils nvidia-settings nvidia-dkms
 ```
-# Среды рабочего стола
+# Установка среды рабочего стола
 
 ## KDE
 ```shell
@@ -513,7 +508,6 @@ pacman -S sddm dolphin kdeconnect konsole konsole kwalletmanager kate plasma pla
 ```
 systemctl enable sddm
 ```
-
 ## XFCE
 ```shell
 pacman -S lxdm xfce4 xfce4-goodies ttf-liberation ttf-dejavu network-manager-applet ppp pulseaudio-alsa gvfs thunar-volman
