@@ -394,7 +394,7 @@ nano /etc/locale.conf
 LANG="ru_RU.UTF-8"
 ```
 
->Инициализируем пакетный менеджер
+>Инициализируем пакетный менеджер pacman
 ```shell
 pacman-key --init
 ```
@@ -404,7 +404,7 @@ pacman-key --init
 pacman-key --populate archlinux
 ```
 
->Включаем multilib-репозиторий
+>Настраиваем pacman
 ```shell
 nano /etc/pacman.conf
 ```
