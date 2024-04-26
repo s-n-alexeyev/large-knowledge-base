@@ -481,46 +481,47 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 >xorg сервер нужен для всех графических адаптеров (если есть проблемы с wayland)
 ```shell
-sudo pacman -S xorg-server xorg-xinit xorg-drivers
+pacman -S xorg-server xorg-xinit xorg-drivers
 ```
 
 >Графические драйвера Intel
 ```shell
-sudo pacman -S xf86-video-intel
+pacman -S xf86-video-intel
 
 #для виртуальной машины c процессором intel
-sudo pacman -S xf86-video-vesa
+pacman -S xf86-video-vesa
 ```
 
 >AMD
 ```shell
-sudo pacman -S lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader
+pacman -S lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader
 ```
 
 >NVIDIA
 ```shell
-sudo pacman -S nvidia nvidia-utils lib32-nvidia-utils nvidia-settings nvidia-dkms
+pacman -S nvidia nvidia-utils lib32-nvidia-utils nvidia-settings nvidia-dkms
 ```
 # Среды рабочего стола
 
 ## KDE
 ```shell
-sudo pacman -S sddm plasma kdeconnect konsole plasma-nm dolphin konsole kate plasma-pa powerdevil kwalletmanager gwenview okular
+pacman -S sddm dolphin kdeconnect konsole konsole kwalletmanager kate plasma plasma-nm plasma-pa powerdevil gwenview okular
 
 #Запуск службы загрузчика sddm
-sudo systemctl enable sddm
+systemctl enable sddm
 ```
+- соглашаемся на установку всех дополнительных пакетов
 ## XFCE
 ```shell
-sudo pacman -S lxdm xfce4 xfce4-goodies ttf-liberation ttf-dejavu network-manager-applet ppp pulseaudio-alsa gvfs thunar-volman
+pacman -S lxdm xfce4 xfce4-goodies ttf-liberation ttf-dejavu network-manager-applet ppp pulseaudio-alsa gvfs thunar-volman
 
 #Запуск службы загрузчика lxdm
-sudo systemctl enable lxdm
+systemctl enable lxdm
 ```
 
 > ВАЖНО: в конце установки надо поправить fstab (может быть неактуально уже)
 ```shell
-sudo nano /etc/fstab
+nano /etc/fstab
 ```
 
 >Убираем в файле `fstab` такие строки
@@ -528,9 +529,10 @@ sudo nano /etc/fstab
 subvolid=***
 ```
 
->Выходим с chroot
-```q
-Ctrl+D
+>Выходим с chroot `Ctrl+D`
+```shell
+#или по старинке
+exit
 ```
 
 >Рекурсивно размонтируем `/mnt`
