@@ -158,61 +158,71 @@ fdisk -l
 ```shell
 fdisk /dev/sdX
 ```
-- где `sdX` ваш диск, в качестве примера везде будет `sda`
+- *где `sdX` ваш диск, в качестве примера везде будет `sda`*
 ### Разбивка для EFI
 ---
-Команда `g` - создание нового GPT раздела, старый раздел будет удален
+**Команда `g` - создание нового GPT раздела, старый раздел будет удален**
 
 Command (m for help): `g`  
-`Created a new GPT disklabel (GUID: 73749F7E-1B28-874D-94AE-DED4CE70D269)`  
+```
+Created a new GPT disklabel (GUID: 73749F7E-1B28-874D-94AE-DED4CE70D269)
+```
 
-Команда  `n` - создание раздела
+**Команда  `n` - создание раздела**
 
-- раздел EFI (300M)  
+- *раздел EFI (300M)*  
 Command (m for help): `n`  
 Partition number (1-128, default 1):`↵`  
 First sector (2048-500118158, default 2048):`↵`  
 Last sector, +/-sectors or +/-size{K,M,G,T,P} (2048-500118158, default 500117503): `+300M`  
-`Created a new partition 1 of type 'Linux filesystem' and of size 300 MiB.`  
+```
+Created a new partition 1 of type 'Linux filesystem' and of size 300 MiB. 
+```
 
-- раздел BOOT (1G)  
+- *раздел BOOT (1G)*  
 Command (m for help): `n`  
 Partition number (2-128, default 2):`↵`  
 First sector (616448-500118158, default 616448):`↵`  
 Last sector, +/-sectors or +/-size{K,M,G,T,P} (616448-500118158, default 500117503): `+1G`  
-`Created a new partition 1 of type 'Linux filesystem' and of size 1 GiB.`  
+```
+Created a new partition 1 of type 'Linux filesystem' and of size 1 GiB.
+```
 
-- раздел SWAP (8G) размер выбираем равным оперативной памяти  
+- *раздел SWAP (8G) размер выбираем равным оперативной памяти*  
 Command (m for help): `n`  
 Partition number (3-128, default 3):`↵`  
 First sector (2713600-500118158, default 2713600):`↵`  
 Last sector, +/-sectors or +/-size{K,M,G,T,P} (2713600-500118158, default 500117503): `+8G`  
-`Created a new partition 1 of type 'Linux filesystem' and of size 8 GiB.`  
+```
+Created a new partition 1 of type 'Linux filesystem' and of size 8 GiB.
+```
 
-- раздел ROOT (отдаем оставшееся место)  
+- *раздел ROOT (отдаем оставшееся место)*  
 Command (m for help): `n`  
 Partition number (4-128, default 4):`↵`  
 First sector (19490816-500118158, default 19490816):`↵`  
 Last sector, +/-sectors or +/-size{K,M,G,T,P} (19490816-500118158, default 500117503): ):`↵`  
-`Created a new partition 1 of type 'Linux filesystem' and of size 229.2 GiB.`  
+```
+Created a new partition 1 of type 'Linux filesystem' and of size 229.2 GiB.
+```
 
-Команда `t` - задать тип раздела, если не задавать то по умолчанию тип 20 `Linux filesystem`
+**Команда `t` - задать тип раздела, если не задавать то по умолчанию тип 20 `Linux filesystem`**
 
-- задаем тип EFI разделу  
+- *задаем тип EFI разделу*  
 Command (m for help): `t`  
 Partition number (1-4, default 4): `1`  
 Partition type or alias (type L to list all): `1`  
 Changed type if partition 'Linux filesystem' to 'EFI filesystem'.  
 
-- задаем тип SWAP разделу  
+- *задаем тип SWAP разделу*  
 Command (m for help): `t`  
 Partition number (1-4, default 4): `3`  
 Partition type or alias (type L to list all): `19`  
 Changed type if partition 'Linux filesystem' to 'Linux swap'.  
 
-- остальные разделы не трогаем
+- *остальные разделы не трогаем*
 
-Команда  `p` - отобразить информацию о разделах
+**Команда  `p` - отобразить информацию о разделах**
 
 ```q
 Disk /dev/sda: 238.47 GiB, 256060514304 bytes, 5001118192 sectors
@@ -230,7 +240,7 @@ Device         Start       End   Sectors   Size Type
 /dev/sda4   19490816 500117503 480626688 229.2G Linux filesystem
 ```
 
-Команда `w` - сохранить таблицу разделов
+**Команда `w` - сохранить таблицу разделов**
 
 ```q
 The partition table has been altered.
@@ -297,7 +307,7 @@ mount -o noatime,compress=lzo,space_cache=v2,ssd,subvol=@home /dev/sda4 /mnt/hom
 mount -o noatime,compress=lzo,space_cache=v2,ssd,subvol=@snapshots /dev/sda4 /mnt/.snapshots
 mount /dev/sda2 /mnt/boot
 ```
-- для загрузки BIOS этого достаточно
+- *для загрузки BIOS этого достаточно*
 
 >Для EFI загрузки добавляем следующее
 ```shell
@@ -359,7 +369,7 @@ nano /etc/locale.gen
 ru_RU.UTF8 UTF8
 en_US.UTF8 UTF8
 ```
-- остальные локали на ваше усмотрение
+- *остальные локали на ваше усмотрение*
 
 >Создаем локали
 ```shell
@@ -421,7 +431,7 @@ ILoveCandy
 pacman -Sy
 pacman -S bash-completion openssh arch-install-scripts networkmanager git wget htop neofetch xdg-user-dirs pacman-contrib ntfs-3g
 ```
-- чтобы заработал `bash-completion` при использовании `TAB`, необходимо выйти из `chroot` (`Ctrl+D`) и войти снова `arch-chroot /mnt`
+- *чтобы заработал `bash-completion` при использовании `TAB`, необходимо выйти из `chroot` (`Ctrl+D`) и войти снова `arch-chroot /mnt`*
 
 >Создаем начальный загрузочный диск
 ```shell
@@ -452,7 +462,7 @@ nano /etc/sudoers
 ```shell
 useradd -mg users -G wheel <<имя_пользователя>>
 ```
-- где `<<имя_пользователя>>` непосредственно заданное имя, например `user`
+- *где `<<имя_пользователя>>` непосредственно заданное имя, например `user`*
 
 >Задаем пароль пользователю (рекомендуется отличный от пароля root)
 ```shell
@@ -502,7 +512,7 @@ pacman -S nvidia nvidia-utils lib32-nvidia-utils nvidia-settings nvidia-dkms
 ```shell
 pacman -S sddm dolphin kdeconnect konsole konsole kwalletmanager kate plasma plasma-nm plasma-pa powerdevil gwenview okular
 ```
-- соглашаемся на установку всех дополнительных пакетов
+- *соглашаемся на установку всех дополнительных пакетов*
 
 >Запуск службы загрузчика sddm
 ```
@@ -516,16 +526,6 @@ pacman -S lxdm xfce4 xfce4-goodies ttf-liberation ttf-dejavu network-manager-app
 >Запуск службы загрузчика lxdm
 ```
 systemctl enable lxdm
-```
-
-> ВАЖНО: в конце установки надо поправить fstab (может быть неактуально уже)
-```shell
-nano /etc/fstab
-```
-
->Убираем в файле `fstab` такие строки
-```q
-subvolid=***
 ```
 
 >Выходим с chroot `Ctrl+D`
