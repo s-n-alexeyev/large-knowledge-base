@@ -609,6 +609,12 @@ cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
 sudo rankmirrors -n 6 /etc/pacman.d/mirrorlist.bak > /etc/pacman.d/mirrorlist
 ```
 ## Еще из полезного
+
+>Firefox - известный браузер
+```shell
+sudo pacman -S firefox
+```
+
  >Onlyoffice - офис внешне похожий на Microsoft Office
 ```shell
 yay -S onlyoffice-bin
