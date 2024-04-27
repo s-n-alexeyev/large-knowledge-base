@@ -229,3 +229,10 @@ sudo pacman -S noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-liberation
 ```
 
 ---
+# Зеркала
+[Статья на wiki](https://wiki.archlinux.org/title/Mirrors_(%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9)
+
+sudo pacman -S pacman-contrib
+sudo su
+cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
+sudo rankmirrors -n 6 /etc/pacman.d/mirrorlist.bak > /etc/pacman.d/mirrorlist
