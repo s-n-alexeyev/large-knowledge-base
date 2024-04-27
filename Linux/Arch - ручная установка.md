@@ -561,6 +561,7 @@ pacman -S gdm gnome gnome-extra network-manager-applet
 ```shell
 systemctl enable gdm
 ```
+# Финиш
 
 >Выходим с chroot `Ctrl+D`
 ```shell
