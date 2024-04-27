@@ -114,7 +114,7 @@ PING archlinux.org (95.217.163.246) 56(84) bytes of data.
 3 packets transmitted, 3 received, 0% packet loss, time 2003ms  
 rtt min/avg/max/mdev = 98.302/98.356/98.413/0.045 ms
 ```
-Если видите подобное, двигаемся дальше, в противном случае решаем проблему доступа к Internet
+- *Если видите подобное, двигаемся дальше, в противном случае решаем проблему доступа к Internet*
 # Работа с носителем
 
 ## Определяем наш диск
@@ -159,7 +159,7 @@ fdisk -l
 |   sda3 | swap     | SWAP   |    8 GiB | Раздел подкачки |
 |   sda4 | root     | BTRFS  | ~230 GiB | Система, данные |
 - *при использовании `btfrs`, если не разделить `efi` и `boot` на разные разделы, не получится настроить `grub` для автоматической загрузки последнего удачного входа, будет загружаться всегда пункт меню по умолчанию*  
-- а именно эти параметры файла `/etc/default/grub`:
+- а именно не будут работать эти параметры в файле `/etc/default/grub`:
 `GRUB_DEFAULT=saved`
 `GRUB_SAVEDEFAULT=true`
 ## План разделов GPT для BIOS
@@ -568,7 +568,9 @@ umount -R /mnt
 ```shell
 reboot
 ```
-# Дополнительные настройки/установки
+# Дополнительно
+
+## Очень полезные настройки
 
 >Пакетный менеджер `yay` для пользовательского репозитория AUR
 ```shell
@@ -595,7 +597,18 @@ yay -S timeshift-autosnap
 sudo pacman -S pacman-contrib
 sudo systemctl enable paccache.timer
 ```
+## Зеркала
+[Статья на wiki](https://wiki.archlinux.org/title/Mirrors_(%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9)
+Если возникают проблемы с доступом к репозиториям или/и хотим оптимизировать скорость доступа то есть решение
 
+>Делаем резервную копию `/etc/pacman.d/mirrorlist`, находим самые быстрые зеркала и сохраняем первые 6
+```shell
+sudo pacman -S pacman-contrib
+sudo su
+cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
+sudo rankmirrors -n 6 /etc/pacman.d/mirrorlist.bak > /etc/pacman.d/mirrorlist
+```
+## Еще из полезного
  >Onlyoffice - офис внешне похожий на Microsoft Office
 ```shell
 yay -S onlyoffice-bin
