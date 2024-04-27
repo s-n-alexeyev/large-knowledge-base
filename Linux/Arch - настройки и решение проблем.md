@@ -229,7 +229,7 @@ sudo pacman -S noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-liberation
 ```
 
 ---
-# Зеркала
+## Зеркала
 [Статья на wiki](https://wiki.archlinux.org/title/Mirrors_(%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9)
 
 Делаем резервную копию `/etc/pacman.d/mirrorlist`, находим самые быстрые зеркала и сохраняем
