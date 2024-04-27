@@ -552,6 +552,15 @@ pacman -S lxdm xfce4 xfce4-goodies ttf-liberation ttf-dejavu network-manager-app
 ```
 systemctl enable lxdm
 ```
+## GNOME
+```shell
+pacman -S gdm gnome gnome-extra network-manager-applet 
+```
+
+>Запуск службы загрузчика `gdm`
+```shell
+systemctl enable gdm
+```
 
 >Выходим с chroot `Ctrl+D`
 ```shell
