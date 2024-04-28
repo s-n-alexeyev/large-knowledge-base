@@ -176,6 +176,11 @@ yay -S portproton
 ##  papirus -  самый популярный набор значков
   есть в репозитории manjaro
 https://github.com/PapirusDevelopmentTeam/papirus-folders
+
+>установка темы papirus
+```shell
+wget -qO- https://git.io/papirus-icon-theme-install | sh
+```
 ## papirus - folders
 
 > установка papirus-folders
