@@ -47,7 +47,7 @@ __505M clip03.mov__
 -----
 ## Ошибка */usr/lib/libpango-1.0.so.0: undefined symbol: g_string_free_and_steal*
 
-*/opt/resolve/bin/resolve: symbol lookup error: /usr/lib/libpango-1.0.so.0: undefined symbol: g_string_free_and_steal*
+`/opt/resolve/bin/resolve: symbol lookup error: /usr/lib/libpango-1.0.so.0: undefined symbol: g_string_free_and_steal`
 
 Решение:
 ```shell
@@ -60,7 +60,8 @@ LD_PRELOAD=/usr/lib64/libglib-2.0.so /opt/resolve/bin/resolve
 
 ---
 ## Ошибка */usr/lib/libgdk_pixbuf-2.0.so.0: undefined symbol: g_task_set_static_name*
-/opt/resolve/bin/resolve: symbol lookup error: /usr/lib/libgdk_pixbuf-2.0.so.0: undefined symbol: g_task_set_static_name
+
+`/opt/resolve/bin/resolve: symbol lookup error: /usr/lib/libgdk_pixbuf-2.0.so.0: undefined symbol: g_task_set_static_name`
 
 Решение:
 ```shell
