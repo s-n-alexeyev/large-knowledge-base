@@ -274,7 +274,7 @@ Syncing disks.
 ```
 ### Разбивка для BIOS
 
-- *раздел BIOS (32M)*  
+- *раздел BIOS (1M)*  
 Command (m for help): `n`  
 Partition number (1-128, default 1):`↵`  
 First sector (2048-500118158, default 2048):`↵`  
