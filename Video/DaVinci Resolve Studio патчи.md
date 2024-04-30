@@ -9,30 +9,30 @@ debugInConsole: false # Print debug info in Obsidian console
 ---
 ## Патчи
 ### 17
-```bash
+```shell
 sudo perl -pi -e 's/\x74\x7b\xe8\x81/\xeb\x7b\xe8\x81/g' /opt/resolve/bin/resolve
 ```
 ### 18
-```bash
+```shell
 sudo perl -pi -e 's/\x74\x7b\xe8\x41\x20/\xeb\x7b\xe8\x41\x20/g' /opt/resolve/bin/resolve
 ```
 ### 18.1
-```bash
+```shell
 sudo perl -pi -e 's/\x74\x7b\xe8\x31\x1f\x00\x00/\xeb\x7b\xe8\x31\x1f\x00\x00/g' /opt/resolve/bin/resolve
 ```
 
 ### 18.1.1
-```bash
+```shell
 sudo perl -pi -e 's/\x74\x7b\xe8\x21\x1f\x00\x00/\xeb\x7b\xe8\x21\x1f\x00\x00/g' /opt/resolve/bin/resolve
 ```
 
 ### 18.5
-```bash
+```shell
 sudo perl -pi -e 's/\x74\x7b\xe8\x51\x26\x00\x00/\xeb\x7b\xe8\x51\x26\x00\x00/g' /opt/resolve/bin/resolve
 ```
 
 ### 18.6.3
-```bash
+```shell
 sudo perl -pi -e 's/\x74\x7b\xe8\x61\x26\x00\x00/\xeb\x7b\xe8\x61\x26\x00\x00/g' /opt/resolve/bin/resolve
 ```
 
@@ -45,16 +45,28 @@ __505M clip03.mov__
 Как видите разница огромная. Поэтому рекомендую поэкспериментировать один раз и подобрать приемлемые параметры для Вас.
 
 -----
-## Ошибка *undefined symbol: g_string_free_and_steal*
+## Ошибка */usr/lib/libpango-1.0.so.0: undefined symbol: g_string_free_and_steal*
 
 */opt/resolve/bin/resolve: symbol lookup error: /usr/lib/libpango-1.0.so.0: undefined symbol: g_string_free_and_steal*
 
 Решение:
-```sh
+```shell
 sudo cp /lib64/libglib-2.0.* /opt/resolve/libs/
 ```
 или
-```sh
+```shell
 LD_PRELOAD=/usr/lib64/libglib-2.0.so /opt/resolve/bin/resolve
 ```
 
+---
+## Ошибка */usr/lib/libgdk_pixbuf-2.0.so.0: undefined symbol: g_task_set_static_name*
+/opt/resolve/bin/resolve: symbol lookup error: /usr/lib/libgdk_pixbuf-2.0.so.0: undefined symbol: g_task_set_static_name
+
+Решение:
+```shell
+cd /opt/resolve/libs
+sudo mkdir disabled-libraries
+sudo mvlibglib* disabled-libraries
+sudo mv libgio* disabled-libraries
+sudo mv libgmodule* disabled-libraries
+```
