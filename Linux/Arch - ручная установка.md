@@ -616,6 +616,7 @@ sudo systemctl enable paccache.timer
 sudo pacman -S pacman-contrib
 sudo su
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
+# команда может быть долгой, может показаться что терминал завис, ролсто ждите окончания
 sudo rankmirrors -n 6 /etc/pacman.d/mirrorlist.bak > /etc/pacman.d/mirrorlist
 exit
 ```
