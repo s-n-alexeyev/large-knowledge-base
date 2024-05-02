@@ -473,7 +473,7 @@ mkinitcpio -p linux-lts
 mkinitcpio -P
 ```
 
->Разрешаем пользователю применять права root
+>Разрешаем пользователю применять права `root`
 ```shell
 nano /etc/sudoers
 ```
