@@ -617,6 +617,7 @@ sudo pacman -S pacman-contrib
 sudo su
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
 sudo rankmirrors -n 6 /etc/pacman.d/mirrorlist.bak > /etc/pacman.d/mirrorlist
+exit
 ```
 ## Еще из полезного
 
