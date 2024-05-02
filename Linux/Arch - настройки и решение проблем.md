@@ -237,9 +237,11 @@ sudo pacman -S noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-liberation
 ```shell
 sudo pacman -S pacman-contrib
 sudo su
+
+# при повторном ранжировании зеркал резевную копию делать не нужно, просто переходим к следующей команде
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
 
-# команда может быть долгой, может показаться что терминал завис, ролсто ждите окончания
+# команда может быть долгой, может показаться что терминал завис, просто ждите окончания
 sudo rankmirrors -n 6 /etc/pacman.d/mirrorlist.bak > /etc/pacman.d/mirrorlist
 exit
 ```
