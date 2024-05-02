@@ -1,3 +1,5 @@
+[Оригинальная статья](https://kali.tools/?p=5964)
+
 ```table-of-contents
 title: Содержание:
 style: nestedList # TOC style (nestedList|inlineFirstLevel)
