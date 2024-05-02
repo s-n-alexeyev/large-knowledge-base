@@ -582,7 +582,7 @@ reboot
 
 ## Очень полезные дополнения
 
->Пакетный менеджер `yay` для пользовательского репозитория AUR
+>Пакетный менеджер `yay` для пользовательского репозитория AUR и ARCH
 ```shell
 git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 ```
