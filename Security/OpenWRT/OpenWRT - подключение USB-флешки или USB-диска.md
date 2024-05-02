@@ -1,3 +1,14 @@
+2015-04-21
+
+[Оригинальная статья](https://openwrtblog.blogspot.com/2015/03/openwrt-usb-usb.html)
+```table-of-contents
+title: Содержание:
+style: nestedList # TOC style (nestedList|inlineFirstLevel)
+minLevel: 0 # Include headings from the specified level
+maxLevel: 0 # Include headings up to the specified level
+includeLinks: true # Make headings clickable
+debugInConsole: false # Print debug info in Obsidian console
+```
 ## Подготовка прошивки OpenWRT к подключению USB-диска
 
 ### Поддержка USB прошивкой OpenWRT
@@ -22,7 +33,6 @@ opkg install kmod-usb2
 ```
 
 Есть еще третий способ — запихать поддержку прямо в ядро прошивки, но это в большинстве случаев лишнее.  
-
 ### Поддержка файловых систем прошивкой OpenWRT
 
 **OpenWRT**, в отличии от своего собрата **DD-WRT** в теории поддерживает все возможные файловые системы.  
@@ -39,7 +49,6 @@ opkg install kmod-fs-vfat
 
 и еще парочка других, но менее востребованных.  
 Тут всё так же — либо через веб-интерфейс LuCI, либо через терминал, либо намертво запихать в ядро. Не буду углубляться — разберетесь на примере предыдущего пункта. всё так же.  
-
 ## Подготовка USB-флешки/диска
 
 Если вы планируете использовать флешку как хранилище для файлов, то, в принципе, Вам подойдет любая файловая система. Однако будьте осторожны, в файловой системе **Fat32** ограничение по максимальному размеру файла составляет около 4гб. Этого не всегда достаточно. У остальных перечисленных файловых систем это ограничение на несколько порядков выше, что уже не создаст проблем.  
@@ -49,7 +58,6 @@ opkg install kmod-fs-vfat
 Раздел 1 / тип **swap** / размер 128 мб — раздел подкачки.  
 Раздел 2 / тип **ext4** / размер 1 гб — раздел для установки пакетов.  
 Раздел 3 / тип **ext4** / размер — вся оставшаяся область на диске — раздел для прочих файлов.  
-
 ### Разметка USB-флешки/диска в Linux
 
 В OpenWRT есть проблема с монтированием дисков в некоторых случаях, когда они размечены не от имени пользователя root, по-этому используем **sudo** с флагом **-i**  
@@ -67,7 +75,6 @@ sudo -i fdisk /dev/sdf
 3. **n** — создаем второй раздел. тип primary — **p**, номер раздела — по умолчанию, первый сектор — по умолчанию, последний сектор смещен на 1Гб — **+1G**
 4. **n** — создаем третий раздел. тип primary — **p**, номер раздела — по умолчанию, первый сектор — по умолчанию, последний сектор — по умолчанию
 5. **w** — сохраняем изменения
-
 ### Создание файловых систем на USB-флешке/диске
 
 Сначала завершим создание раздела подкачки:  
@@ -99,14 +106,12 @@ sudo -i mkfs.ext4 /dev/sdf3
 opkg update
 opkg install block-mount
 ```
-
 ## Монтирование USB-флешек/дисков в OpenWRT
 
 Монтировать можно через WEB-интерфейс LuCI, однако это скучно, неинтересно и, на данный момент, не дает всех возможностей.  
 Дело в том, что с недавнего момента логика монтирования в overlay поменялась, а LuCI до сих пор поддерживает старый стандарт.  
 Я Вам поведаю о монтирование через терминал.  
 Итак, подключаемся к устройству через SSH или Telnet и приступаем.  
-
 ### Настройка fstab в OpenWRT
 
 Настройки **fstab** в **OpenWRT** хранятся в файле **/etc/config/fstab** и, в отличии от десктопного Linux, придерживаются стандарта **uci**. Однако сложного в них ничего нет.  
@@ -118,29 +123,65 @@ block detect >> /etc/config/fstab
 
 Посмотрим, что у нас создалось по умолчанию:  
 
-|   |   |
-|---|---|
-|1<br><br>2<br><br>3<br><br>4<br><br>5<br><br>6<br><br>7<br><br>8<br><br>9<br><br>10<br><br>11<br><br>12<br><br>13<br><br>14<br><br>15<br><br>16<br><br>17<br><br>18<br><br>19<br><br>20<br><br>21|`config` `'global'`<br><br>        `option  anon_swap`       `'0'`<br><br>        `option  anon_mount`      `'0'`<br><br>        `option  auto_swap`       `'1'`<br><br>        `option  auto_mount`      `'1'`<br><br>        `option  delay_root`      `'5'`<br><br>        `option  check_fs`        `'0'`<br><br>`config` `'swap'`<br><br>        `option  device`  `'/dev/sda1'`<br><br>        `option  enabled` `'0'`<br><br>`config` `'mount'`<br><br>        `option  target`  `'/mnt/sda2'`<br><br>        `option  uuid`    `'25f9a5d2-8743-4fe0-b91c-c1088887b637'`<br><br>        `option  enabled` `'0'`<br><br>`config` `'mount'`<br><br>        `option  target`  `'/mnt/sda3'`<br><br>        `option  uuid`    `'7725b029-51ea-44e6-898f-2987e9b9bbd8'`<br><br>        `option  enabled` `'0'`|
+```q
+config 'global'
+        option  anon_swap       '0'
+        option  anon_mount      '0'
+        option  auto_swap       '1'
+        option  auto_mount      '1'
+        option  delay_root      '5'
+        option  check_fs        '0'
+
+config 'swap'
+        option  device  '/dev/sda1'
+        option  enabled '0'
+
+config 'mount'
+        option  target  '/mnt/sda2'
+        option  uuid    '25f9a5d2-8743-4fe0-b91c-c1088887b637'
+        option  enabled '0'
+
+config 'mount'
+        option  target  '/mnt/sda3'
+        option  uuid    '7725b029-51ea-44e6-898f-2987e9b9bbd8'
+        option  enabled` '0'
+```
 
 Для начала включим автомонтирование swap-раздела на USB-HDD/USB-флешке.  
 Для этого в блоке **global** присвоим опции **auto_swap** значение **1**.  
 А так же в блоке swap опции **enabled** значение **1**.  
 
-|                                                |                                                                                                                                                                                   |
-| ---------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1<br><br>2<br><br>3<br><br>4<br><br>5<br><br>6 | `config` `'global'`<br><br>        `option  auto_swap`       `'1'`<br><br>`config` `'swap'`<br><br>        `option  device`  `'/dev/sda1'`<br><br>        `option  enabled` `'1'` |
+```q
+config 'global'
+        option  auto_swap       '1'
+
+config 'swap'
+        option  device  '/dev/sda1'
+        option  enabled '1'
+```
 
 Далее настроим монтирование остальных разделов.  
 Второй раздел — в точку монтирования **/overlay**, для расширения памяти устройства для установки пакетов и прочих манипуляций.  
 Третий раздел — в точку монтирования **/mnt/_usb_** (вместо _usb_ может быть что угодно, называйте как хотите), для хранения ваших файлов.  
 Для этого в файл fstab вносим следующие правки  
 
-|   |   |
-|---|---|
-|1<br><br>2<br><br>3<br><br>4<br><br>5<br><br>6<br><br>7<br><br>8<br><br>9<br><br>10<br><br>11<br><br>12<br><br>13|`config` `'global'`<br><br>        `option  auto_mount`      `'1'`<br><br>        `option  delay_root`      `'5'`<br><br>`config` `'mount'`<br><br>        `option  target`  `'/overlay'`<br><br>        `option  uuid`    `'25f9a5d2-8743-4fe0-b91c-c1088887b637'`<br><br>        `option  enabled` `'1'`<br><br>`config` `'mount'`<br><br>        `option  target`  `'/mnt/usb'`<br><br>        `option  uuid`    `'7725b029-51ea-44e6-898f-2987e9b9bbd8'`<br><br>        `option  enabled` `'1'`|
+```q
+config 'global'
+        option  auto_mount      '1'
+        option  delay_root      '5'
+
+config 'mount'
+        option  target  '/overlay'
+        option  uuid    '25f9a5d2-8743-4fe0-b91c-c1088887b637'
+        option  enabled '1'
+
+config 'mount'
+        option  target  '/mnt/usb'
+        option  uuid    '7725b029-51ea-44e6-898f-2987e9b9bbd8'
+        option  enabled '1'
+```
 
 Сохраняем файл, но пока перезагружаться рано. Надо подготовить overlay-раздел на флешке.  
-
 ### Подготовка overlay-раздела на USB-диске
 
 Итак, мы будем использовать второй раздел на нашем USB-диске/флешке.  
@@ -150,17 +191,16 @@ block detect >> /etc/config/fstab
 mkdir /mnt/sda2
 mount /dev/sda2 /mnt/sda2
 ```
-Переносим содержимое каталога **/overlay** на подготавливаемый раздел  
 
+Переносим содержимое каталога **/overlay** на подготавливаемый раздел  
 ```shell
 tar -C /overlay -cvf - . | tar -C /mnt/sda2 -xf -
 ```
-И теперь можем смело перезагружаться.  
 
+И теперь можем смело перезагружаться
 ```shell
 reboot
 ```
-
 ### Проверка результатов работы fstab
 
 Если вы настроили всё верно, то команда df -h должна выдать примерно следующие результаты  
@@ -169,18 +209,13 @@ reboot
 df -h
 ```
 
-`Filesystem                Size      Used Available Use% Mounted on`
-
-`rootfs                  975.9M      1.4M    907.3M   0% /`
-
-`/dev/root`                 `5.5M      5.5M         0 100%` `/rom`
-
-`tmpfs                    14.4M    244.0K     14.2M   2%` `/tmp`
-
-`/dev/sda2`               `975.9M      1.4M    907.3M   0%` `/overlay`
-
-`overlayfs:``/overlay`      `975.9M      1.4M    907.3M   0% /`
-
-`tmpfs                   512.0K         0    512.0K   0%` `/dev`
-
-`/dev/sda3`                 `6.2G     14.4M      5.8G   0%` `/mnt/usb`
+```text
+Filesystem                Size      Used Available Use% Mounted on
+rootfs                  975.9M      1.4M    907.3M   0%
+/dev/root                 5.5M      5.5M         0 100% /rom
+tmpfs                    14.4M    244.0K     14.2M   2% /tmp
+/dev/sda2               975.9M      1.4M    907.3M   0% /overlay
+overlayfs:/overlay      975.9M      1.4M    907.3M   0% /
+tmpfs                   512.0K         0    512.0K   0% /dev
+/dev/sda3                 6.2G     14.4M      5.8G   0% /mnt/usb
+```
