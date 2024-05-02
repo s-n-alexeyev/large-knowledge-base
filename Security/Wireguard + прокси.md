@@ -13,7 +13,7 @@ umask 077 wg genkey | tee privatekey | wg pubkey > publickey
 Повторите этот шаг на Raspberry Pi для создания ключей как для сервера, так и для клиента.
    
 >**Настройка сервера:** Создайте конфигурационный файл для сервера, например, `wg0.conf`.
-```ini
+```q
 [Interface]
 PrivateKey = <приватный ключ сервера>
 Address = 10.0.0.1/24
@@ -35,7 +35,7 @@ sudo systemctl enable wg-quick@wg0
 ```
 
 >**Настройка клиента:** Создайте конфигурационный файл для клиента, например, `wg-client.conf`.  
-```ini
+```q
 [Interface]
 PrivateKey = <приватный ключ клиента>
 Address = 10.0.0.2/24

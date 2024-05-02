@@ -67,7 +67,7 @@ LD_PRELOAD=/usr/lib64/libglib-2.0.so /opt/resolve/bin/resolve
 ```shell
 cd /opt/resolve/libs
 sudo mkdir disabled-libraries
-sudo mvlibglib* disabled-libraries
+sudo mv libglib* disabled-libraries
 sudo mv libgio* disabled-libraries
 sudo mv libgmodule* disabled-libraries
 ```
