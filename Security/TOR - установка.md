@@ -384,7 +384,7 @@ https://github.com/devshashtag/TorBridge
 
 >зависимости (DEB)
 ```shell
-sudo apt install tor proxychains feh obfs4proxy
+sudo apt install tor proxychains4 feh obfs4proxy
 ```
 
 >зависимости (ARCH)
