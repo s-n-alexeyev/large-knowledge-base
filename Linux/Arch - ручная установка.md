@@ -247,8 +247,7 @@ Changed type if partition 'Linux filesystem' to 'Linux swap'.
 
 - *остальные разделы не трогаем*
 
-**Команда  `p` - отобразить информацию о разделах**
-
+**Команда  `p` - отобразить информацию о разделах**  
 ```q
 Disk /dev/sda: 238.47 GiB, 256060514304 bytes, 5001118192 sectors
 Disk model: Apacer AS340 240GB     
@@ -265,8 +264,7 @@ Device         Start       End   Sectors   Size Type
 /dev/sda4   19490816 500117503 480626688 229.2G Linux filesystem
 ```
 
-**Команда `w` - сохранить таблицу разделов**
-
+**Команда `w` - сохранить таблицу разделов**  
 ```q
 The partition table has been altered.
 Calling ioctl() to re-read partition table.
