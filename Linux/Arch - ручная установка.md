@@ -189,9 +189,8 @@ fdisk /dev/sdX
 **Команда `g` - создание нового GPT раздела, старый раздел будет удален**
 
 Command (m for help): `g`  
-```
-Created a new GPT disklabel (GUID: 73749F7E-1B28-874D-94AE-DED4CE70D269)
-```
+
+`Created a new GPT disklabel (GUID: 73749F7E-1B28-874D-94AE-DED4CE70D269)`
 
 **Команда  `n` - создание раздела**
 
@@ -200,36 +199,28 @@ Command (m for help): `n`
 Partition number (1-128, default 1):`↵`  
 First sector (2048-500118158, default 2048):`↵`  
 Last sector, +/-sectors or +/-size{K,M,G,T,P} (2048-500118158, default 500117503): `+300M`  
-```
-Created a new partition 1 of type 'Linux filesystem' and of size 300 MiB. 
-```
+`Created a new partition 1 of type 'Linux filesystem' and of size 300 MiB. `
 
 - *раздел BOOT (1G)*  
 Command (m for help): `n`  
 Partition number (2-128, default 2):`↵`  
 First sector (616448-500118158, default 616448):`↵`  
 Last sector, +/-sectors or +/-size{K,M,G,T,P} (616448-500118158, default 500117503): `+1G`  
-```
-Created a new partition 1 of type 'Linux filesystem' and of size 1 GiB.
-```
+`Created a new partition 1 of type 'Linux filesystem' and of size 1 GiB.`
 
 - *раздел SWAP (8G) размер выбираем равным оперативной памяти*  
 Command (m for help): `n`  
 Partition number (3-128, default 3):`↵`  
 First sector (2713600-500118158, default 2713600):`↵`  
 Last sector, +/-sectors or +/-size{K,M,G,T,P} (2713600-500118158, default 500117503): `+8G`  
-```
-Created a new partition 1 of type 'Linux filesystem' and of size 8 GiB.
-```
+`Created a new partition 1 of type 'Linux filesystem' and of size 8 GiB.`
 
 - *раздел ROOT (отдаем оставшееся место)*  
 Command (m for help): `n`  
 Partition number (4-128, default 4):`↵`  
 First sector (19490816-500118158, default 19490816):`↵`  
 Last sector, +/-sectors or +/-size{K,M,G,T,P} (19490816-500118158, default 500117503): ):`↵`  
-```
-Created a new partition 1 of type 'Linux filesystem' and of size 229.2 GiB.
-```
+`Created a new partition 1 of type 'Linux filesystem' and of size 229.2 GiB.`
 
 **Команда `t` - задать тип раздела, если не задавать то по умолчанию тип 20 `Linux filesystem`**
 
@@ -237,13 +228,13 @@ Created a new partition 1 of type 'Linux filesystem' and of size 229.2 GiB.
 Command (m for help): `t`  
 Partition number (1-4, default 4): `1`  
 Partition type or alias (type L to list all): `1`  
-Changed type if partition 'Linux filesystem' to 'EFI filesystem'.  
+`Changed type if partition 'Linux filesystem' to 'EFI filesystem'.`
 
 - *задаем тип SWAP разделу*  
 Command (m for help): `t`  
 Partition number (1-4, default 4): `3`  
 Partition type or alias (type L to list all): `19`  
-Changed type if partition 'Linux filesystem' to 'Linux swap'.  
+`Changed type if partition 'Linux filesystem' to 'Linux swap'.`
 
 - *остальные разделы не трогаем*
 
@@ -277,13 +268,14 @@ Command (m for help): `n`
 Partition number (1-128, default 1):`↵`  
 First sector (2048-500118158, default 2048):`↵`  
 Last sector, +/-sectors or +/-size{K,M,G,T,P} (2048-500118158, default 500117503): `+1M`  
-`Created a new partition 1 of type 'Linux filesystem' and of size 1 MiB.`  
+`Created a new partition 1 of type 'Linux filesystem' and of size 1 MiB.`
+
 
 - *задаем тип BIOS разделу*  
 Command (m for help): `t`  
 Partition number (1-4, default 4): `1`  
 Partition type or alias (type L to list all): `4`  
-Changed type if partition 'Linux filesystem' to 'BIOS boot'.  
+`Changed type if partition 'Linux filesystem' to 'BIOS boot'.`
 
 - *Первый раздел создается под BIOS вместо EFI, остальные разделы создаются подобно EFI разбивке*
 ### Форматируем разделы
