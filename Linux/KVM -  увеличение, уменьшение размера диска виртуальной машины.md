@@ -1,4 +1,4 @@
-2021-02-20
+2021-02-20  
 [Оригинальная статья](https://winitpro.ru/index.php/2019/10/01/kvm-uvelichit-umenshit-razmer-virt-diska/#h2_1)
 ```table-of-contents
 title: Содержание:
