@@ -342,7 +342,7 @@ ClientTransportPlugin obfs4 exec /usr/bin/obfs4proxy managed
 
 >Debian
 ```sh
-sudo apt install bfs4proxy
+sudo apt install obfs4proxy
 ```
 
 >Arch
