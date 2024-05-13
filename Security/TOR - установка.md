@@ -1,4 +1,3 @@
-
 ```table-of-contents
 title: Содержание:
 style: nestedList # TOC style (nestedList|inlineFirstLevel)
