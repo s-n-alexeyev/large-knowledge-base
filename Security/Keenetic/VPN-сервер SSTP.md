@@ -1,4 +1,3 @@
-
  2023-10-06
 [оригинальная статья](https://help.keenetic.com/hc/ru/articles/360000594640-VPN-%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80-SSTP)
 
