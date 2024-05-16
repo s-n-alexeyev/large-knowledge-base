@@ -7,7 +7,6 @@ maxLevel: 0 # Include headings up to the specified level
 includeLinks: true # Make headings clickable
 debugInConsole: false # Print debug info in Obsidian console
 ```
-
 ## Что такое KVM?
 
 KVM — это аббревиатура от Kernel-based Virtual Machine, это технологическое решение для виртуализации на основе модуля ядра Linux. KVM — это программное решение с открытым исходным кодом, работающее на машине Linux x86 с поддержкой расширений аппаратной виртуализации Intel VT или AMD-V. Модуль ядра KVM поставляется с ядром Linux, начиная с версии 2.6.20, и был портирован на другие операционные системы, такие как FreeBSD и Illumos, в виде загружаемых модулей ядра.
