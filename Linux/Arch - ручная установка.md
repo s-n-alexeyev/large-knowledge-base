@@ -570,11 +570,6 @@ reboot
 git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 ```
 
->Pamac - графическая оболочка для Pacman, AUR, Flatpak и Snap от разработчиков Manjaro
-```shell
-yay -S pamac-all
-```
-
 >Timeshift - система резервного копирования
 ```shell
 sudo pacman -S timeshift
@@ -611,6 +606,11 @@ exit
 >Firefox - известный браузер
 ```shell
 sudo pacman -S firefox
+```
+
+>Pamac - графическая оболочка для Pacman, AUR, Flatpak и Snap от разработчиков Manjaro
+```shell
+yay -S pamac-all
 ```
 
  >Onlyoffice - офис внешне похожий на Microsoft Office
