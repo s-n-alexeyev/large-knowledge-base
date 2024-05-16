@@ -11,7 +11,7 @@ debugInConsole: false # Print debug info in Obsidian console
 - anydesk - удаленный доступ
 - rustdesk - альтернатива anуdesk
 - hoptodesk - альтернатива anуdesk, fork rustdesk
-- portproton - [реализация wine от valve](https://portwine-linux.ru/port-proton-linux/)
+- portproton - реализация wine от valve
 - smplayer - альтернатива VLC player
 - onlyoffice - офис похожий на Microsoft
 - qbittorent - клиент torrent
