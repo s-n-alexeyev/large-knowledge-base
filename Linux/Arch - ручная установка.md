@@ -331,13 +331,6 @@ mount /dev/sda1 /mnt/boot/efi
 ```
 # Начальная настройка
 
->Настраиваем зеркала (опционально)
-```shell
-nano /etc/pacman.d/mirrorlist
-```
-
-`Https://ftp.jaist.ac.jp/pub/Linux/ArchLinux/$repo/os/$arch`
-
 >Устанавливаем базовую часть системы для новых поколений ПК, самое новое ядро
 ```shell
 pacstrap /mnt base base-devel linux linux-headers linux-firmware intel-ucode amd-ucode nano
