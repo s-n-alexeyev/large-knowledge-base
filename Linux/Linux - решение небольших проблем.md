@@ -8,7 +8,7 @@ debugInConsole: false # Print debug info in Obsidian console
 ```
 ## Bluetooth 5.0 USB dongle realtek
 ```shell
-yay -S rtl8761usb
+yay -S rtl8761usb-dkms
 ```
 
 ---
