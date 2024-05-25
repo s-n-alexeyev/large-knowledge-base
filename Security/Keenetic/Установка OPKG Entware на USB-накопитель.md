@@ -169,7 +169,9 @@ login as: **root
 New password: впишите свой пароль  
 Retype password: подтвердите пароль
 
-~ # **passwd**  
+```shell
+passwd
+```
 Changing password for root  
 New password:  
 Bad password: too weak  
@@ -181,7 +183,9 @@ passwd: password for root changed by root
 
 10. При успешной авторизации вы окажетесь в оболочке BusyBox v1.27.2 () built-in shell (ash). Теперь нужно обновить opkg-пакет, для этого введите команду **opkg update**:
 
-/ # **opkg update**  
+```shell
+opkg update
+```
 Downloading http://bin.entware.net/mipselsf-k3.4/Packages.gz  
 Updated list of available packages in /opt/var/opkg-lists/entware  
 Downloading http://bin.entware.net/mipselsf-k3.4/keenetic/Packages.gz  
