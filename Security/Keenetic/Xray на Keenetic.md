@@ -225,6 +225,7 @@ line 2: syntax error: unexpected redirection
 
 ```shell
 opkg install curl tar
+cd /tmp
 curl -s -L https://github.com/Skrill0/XKeen/releases/latest/download/xkeen.tar --output xkeen.tar && tar -xvf xkeen.tar -C /opt/sbin --overwrite > /dev/null && rm xkeen.tar
 xkeen -i
 ```
