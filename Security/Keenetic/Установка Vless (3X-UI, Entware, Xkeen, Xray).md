@@ -149,3 +149,12 @@ hoofsandhorns.freemyip.com:2053
 ssh -p222 root@192.168.1.1
 ```
 
+Установка скрипта `Xkeen`
+
+```shell
+opkg install curl tar
+cd /tmp
+curl -s -L https://github.com/Skrill0/XKeen/releases/latest/download/xkeen.tar --output xkeen.tar && tar -xvf xkeen.tar -C /opt/sbin --overwrite > /dev/null && rm xkeen.tar
+xkeen -i
+```
+
