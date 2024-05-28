@@ -2,4 +2,15 @@
 
 Заходим на свой сервер VDS по SSH
 
-Если 
+Первым делом обновляемся
+
+>Debian/Ubuntu
+```shel
+apt update && apt upgrade
+```
+
+>RHEL/CentOS
+```
+dnf check-update && dnf upgrade
+```
+
