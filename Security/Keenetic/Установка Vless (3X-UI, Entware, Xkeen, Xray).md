@@ -247,4 +247,5 @@ drwxr-xr-x    4 root     root          4096 May 25 20:47 ../
 -rwxrwxrwx    1 root     root           182 May 26 00:21 06_policy.json*
 ```
 
-Нас
+Нас интересуют только 2 файла `03_inbounds.json*` и `04_outbounds.json*`
+
