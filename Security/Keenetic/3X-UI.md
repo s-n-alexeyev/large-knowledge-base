@@ -14,3 +14,8 @@ apt update && apt upgrade
 dnf check-update && dnf upgrade
 ```
 
+Устанавливаем 3X-UI с помощью скрипта
+```
+bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
+```
+
