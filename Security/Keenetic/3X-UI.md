@@ -2,17 +2,20 @@
 
 Заходим на свой сервер VDS по SSH
 
-Первым делом обновляемся
+Первым делом обновляемся и устанавливаем `curl`
 
 >Debian/Ubuntu
 ```shel
-apt update && apt upgrade
+apt update && apt upgrade && apt install curl
 ```
 
 >RHEL/CentOS
 ```
-dnf check-update && dnf upgrade
+dnf check-update && dnf upgrade && dnf install curl
 ```
+
+
+
 
 Устанавливаем 3X-UI с помощью скрипта
 ```
