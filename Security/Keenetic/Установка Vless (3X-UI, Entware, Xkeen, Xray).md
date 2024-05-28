@@ -232,3 +232,19 @@ xkeen -i
  Перед использованием Xray настройте конфигураций по пути «/opt/etc/xray/configs»  
  Установка окончена
 ```
+
+Списик файлов конфигурации `xray`
+
+```
+╰─❯ ls -la /opt/etc/xray/configs/  
+drwxr-xr-x    4 root     root          4096 May 28 05:45 ./  
+drwxr-xr-x    4 root     root          4096 May 25 20:47 ../  
+-rw-rwxrwx    1 root     root           564 May 25 20:47 01_log.json*  
+-rw-rwxrwx    1 root     root           724 May 25 20:47 02_transport.json*  
+-rwxrwxrwx    1 root     root           383 May 28 02:13 03_inbounds.json*  
+-rwxrwxrwx    1 root     root           915 May 28 03:45 04_outbounds.json*  
+-rw-rwxrwx    1 root     root          1097 May 28 03:26 05_routing.json*  
+-rwxrwxrwx    1 root     root           182 May 26 00:21 06_policy.json*
+```
+
+Нас
