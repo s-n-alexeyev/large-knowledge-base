@@ -273,5 +273,59 @@ drwxr-xr-x    4 root     root          4096 May 25 20:47 ../
 }
 ```
 
-`listen` - ip-адрес вашего роутера
-`port` - произвольный порт (начиная с 2000-65)
+`listen` - ip-адрес вашего роутера  
+`port` - произвольный порт (2000-65535)  
+`protocol` - указываем "socks"  
+`tag` - тег соединения, пусть будет "socks-in"
+остальное как в примере
+
+>Конфигурационный файл `04_outbounds.json*`
+
+```json
+{  
+ "outbounds": [  
+   {  
+     "domainStrategy": "UseIPv4",  
+     "tag": "vless-reality",  
+     "protocol": "vless",  
+     "settings": {  
+       "vnext": [  
+         {  
+           "address": "hoofsandhorns.freemyip.com",  
+           "port": 443,  
+           "users": [  
+             {  
+               "id": "b1ef4bd7-0f93-41ae-90d7-477925a7f1e2",  
+               "encryption": "none",  
+               "flow": "xtls-rprx-vision",  
+               "level": 0  
+             }  
+           ]  
+         }  
+       ]  
+     },  
+     "streamSettings": {  
+       "network": "tcp",  
+       "security": "reality",  
+       "realitySettings": {  
+         "publicKey": "KYiIiE1hxkC2B8ZcFn-XCN0BryxKoyUQE7gVLln_Pyg",  
+         "fingerprint": "chrome",  
+         "serverName": "yandex.ru",  
+         "shortId": "e721dce2",  
+         "spiderX": "/"  
+       }  
+     }  
+   },  
+   {  
+     "tag": "dns",  
+     "protocol": "dns"  
+   }  
+ ]  
+}
+```
+
+`tag` - тег соединения, пусть будет "vless-reality"  
+`protocol` - обязательно "vless"
+`address` - тот что мы регистрировали, "hoofsandhorns.freemyip.com"
+`port` - "443"
+`id` - смотрим в настройках соедения на 3X-UI
