@@ -249,3 +249,29 @@ drwxr-xr-x    4 root     root          4096 May 25 20:47 ../
 
 Нас интересуют только 2 файла `03_inbounds.json*` и `04_outbounds.json*`
 
+
+>Конфигурационный файл `03_inbounds.json`
+```json
+{  
+ "inbounds": [  
+   {  
+     "listen": "192.168.0.1",  
+     "port": 2080,  
+     "protocol": "socks",  
+     "settings": {  
+       "auth": "noauth",  
+       "udp": false  
+     },  
+     "sniffing": {  
+       "destOverride": ["http", "tls"],  
+       "enabled": true,  
+       "metadataOnly": false  
+     },  
+     "tag": "socks-in"  
+   }  
+ ]  
+}
+```
+
+`listen` - ip-адрес вашего роутера
+`port` - произвольный порт (начиная с 2000-65)
