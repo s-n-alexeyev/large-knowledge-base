@@ -362,23 +362,23 @@ nano /opt/etc/xray/configs/05_routing.json
 
 ```json
 {
- "routing": {
-   "rules": [
-     // Прямые подключение  |  Доменные имена
-     {
-       "inboundTag": ["redirect", "tproxy"],
-       "domain": ["keenetic.com"],
-       "outboundTag": "direct",
-       "type": "field"
-     },
-     // VPS подключение  |  Основное
-     {
-       "inboundTag": ["socks-in"],
-       "outboundTag": "vless-reality",
-       "type": "field"
-     }
-   ]
- }
+"routing": {
+  "rules": [
+    // Прямые подключение  |  Доменные имена
+    {
+      "inboundTag": ["redirect", "tproxy"],
+      "domain": ["keenetic.com"],
+      "outboundTag": "direct",
+      "type": "field"
+    },
+    // VPS подключение  |  Основное
+    {
+      "inboundTag": ["socks-in"],
+      "outboundTag": "vless-reality",
+      "type": "field"
+    }
+  ]
+ }
 }
 ```
 
