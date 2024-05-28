@@ -280,7 +280,6 @@ drwxr-xr-x    4 root     root          4096 May 25 20:47 ../
 остальное как в примере
 
 >Конфигурационный файл `04_outbounds.json*`
-
 ```json
 {  
  "outbounds": [  
@@ -295,7 +294,7 @@ drwxr-xr-x    4 root     root          4096 May 25 20:47 ../
            "port": 443,  
            "users": [  
              {  
-               "id": "b1ef4bd7-0f93-41ae-90d7-477925a7f1e2",  
+               "id": "8bda3d23-262f-44ff-b8a3-f7dfc83cb705",  
                "encryption": "none",  
                "flow": "xtls-rprx-vision",  
                "level": 0  
@@ -328,4 +327,4 @@ drwxr-xr-x    4 root     root          4096 May 25 20:47 ../
 `protocol` - обязательно "vless"
 `address` - тот что мы регистрировали, "hoofsandhorns.freemyip.com"
 `port` - "443"
-`id` - смотрим в настройках соедения на 3X-UI
+`id`, `publicKey`, `shortId` - смотрим в инфо соединения на 3X-UI
