@@ -134,4 +134,8 @@ hoofsandhorns.freemyip.com:2053
 
 Перед установкой OPKG Entware необходимо подготовить Flash-накопитель на USB, подойдет минимальный объем (4-8 GB). Накопитель будет вставлен в USB порт постоянно, на нем будет находиться операционная система.  
 Делаем подготовку USB накопителя по ссылке [[EXT4 на USB-накопителях]] или [Оригинальная статья](https://help.keenetic.com/hc/ru/articles/115005875145-%D0%98%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D1%84%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2%D0%BE%D0%B9-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D1%8B-EXT4-%D0%BD%D0%B0-USB-%D0%BD%D0%B0%D0%BA%D0%BE%D0%BF%D0%B8%D1%82%D0%B5%D0%BB%D1%8F%D1%85)
-После того как имеем подготовленный носитель приступаем непосредственно к установке [[Установка OPKG Entware на USB-накопитель]] или 
+После того как имеем подготовленный носитель приступаем непосредственно к установке [[Установка OPKG Entware на USB-накопитель]] или [Оригинальная статья](https://docs.keenetic.com/eaeu/hopper/kn-3810/ru/20980-installing-the-entware-repository-on-a-usb-drive.html)
+## Настройка клиента `xray` с помощью скрипта `xkeen`
+
+**Для справки**
+[Ветка по теме xkeen на форуме keenetic](https://forum.keenetic.com/topic/16899-xray-%D0%BD%D0%B0-entware-xkeen/page/1/)
