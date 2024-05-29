@@ -130,7 +130,7 @@ hoofsandhorns.freemyip.com:2053
 
 ![|1000](../../media/Vless/3X-UI6.png)
 
-## Установка OPKG Entware
+## Установка OPKG Entware на маршрутизатор Keenetic
 
 **Для справки**  
 [**Entware**](https://www.ixbt.com/live/tv/dobavlyaem-podderzhku-repozitoriya-entware-na-android-bokse.html#:~:text=Entware%20%E2%80%94%20%D1%8D%D1%82%D0%BE%20%D0%BC%D0%B5%D0%BD%D0%B5%D0%B4%D0%B6%D0%B5%D1%80%20%D0%9F%D0%9E,%D0%BF%D0%BE%D0%B4%D0%B4%D0%B5%D1%80%D0%B6%D0%BA%D0%BE%D0%B9%20Entware%20%D0%BE%D0%B1%D0%BB%D0%B0%D0%B4%D0%B0%D1%8E%D1%82%20%D0%BF%D1%80%D0%BE%D0%B4%D0%B2%D0%B8%D0%BD%D1%83%D1%82%D1%8B%D0%B5%20%D0%BC%D0%B0%D1%80%D1%88%D1%80%D1%83%D1%82%D0%B8%D0%B7%D0%B0%D1%82%D0%BE%D1%80%D1%8B) — **это** менеджер ПО для встраиваемых систем, который открывает доступ к огромному количеству (более 1500) пакетов программ для Linux, расширяя возможности устройства, на котором он установлен. Чаще всего поддержкой **Entware** обладают продвинутые маршрутизаторы.
@@ -346,7 +346,7 @@ nano /opt/etc/xray/configs/04_outbounds.json
 `protocol` - обязательно "vless"  
 `address` - тот что мы регистрировали, "hoofsandhorns.freemyip.com"  
 `port` - "443"  
-`fingerprint` то что указывали в настройках 3X-UI "chrome"   
+`fingerprint` - то что указывали в настройках 3X-UI "chrome"   
 `serverName`  - тоже такие же как в 3X-UI "yandex.ru"  
 `id`, `publicKey`, `shortId` - смотрим в инфо соединения на 3X-UI в разделе URL
 
@@ -418,6 +418,7 @@ VPS подключение
 5. Добавляем клиента в политику `Xkeen` путем перетаскивания на него мышкой
 
 ![|500](../../media/Vless/Keenetic5.png)
+
 Все готово! Проверяем наш внешний ip адрес
 
 ![|800](../../media/Vless/Ifconfig.png)
