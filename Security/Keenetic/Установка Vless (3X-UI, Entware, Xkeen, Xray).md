@@ -151,7 +151,7 @@ hoofsandhorns.freemyip.com:2053
 
 **Для справки**  
 [Ветка по теме xkeen на форуме keenetic](https://forum.keenetic.com/topic/16899-xray-%D0%BD%D0%B0-entware-xkeen/page/1/)
-## Установка  скрипта
+## Установка скрипта
 
 >Заходим по `ssh` на ваш роутер, ip-адрес может отличаться, порт 222 по умолчанию
 ```
@@ -250,7 +250,6 @@ xkeen -i
 ```shell
 xkeen -ap 443,80
 ```
-
 ## Конфигурирование Xray
 
 >Список файлов конфигурации `Xray`
