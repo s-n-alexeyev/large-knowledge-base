@@ -80,7 +80,7 @@ x-ui uninstall    - Uninstall x-ui
 Переходим в браузере по адресу https://freemyip.com/
 
 >Регистрируем наши "рога и копыта", разумеется это для примера
-![|600](Media/Vless/freemyip1.png)
+![|600](/Media/Vless/freemyip1.png)
 
 >Убеждаемся что имя не занято, занимаем его `CLAIM IT!`
 ![|600](Media/Vless/freemyip2.png)
@@ -361,7 +361,7 @@ nano /opt/etc/xray/configs/04_outbounds.json
 
 Нажимаем сохранение `CRTL+O`, затем выходим из редактора `CTRL=X` 
 
-![|400](Media/Vless/3X-UI7.png)
+![|400](/Media/Vless/3X-UI7.png)
 
 >Конфигурационный файл `04_outbounds.json`
 ```shell
