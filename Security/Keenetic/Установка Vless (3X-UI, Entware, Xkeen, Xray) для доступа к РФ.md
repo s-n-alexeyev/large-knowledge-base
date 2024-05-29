@@ -416,7 +416,8 @@ VPS подключение
 - `Имя` - xray  
 - `Протокол` - SOCKS v5  
 - `Адрес` - ip адрес вашего роутера : `порт` тот что указан `03_inbounds.json` 2080
-![|800](../../media/Vless/Keenetic2.png)
+
+![|500](../../media/Vless/Keenetic2.png)
 
 3. Добавляем политику `Xkeen`
 
