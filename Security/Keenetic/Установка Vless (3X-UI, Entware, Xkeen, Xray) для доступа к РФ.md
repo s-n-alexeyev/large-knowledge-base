@@ -1,6 +1,18 @@
-2024-05-28
+2024-05-28 
+[Автор](https://github.com/s-n-alexeyev/)
+
+```table-of-contents
+title: Содержание:
+style: nestedList # TOC style (nestedList|inlineFirstLevel)
+minLevel: 0 # Include headings from the specified level
+maxLevel: 0 # Include headings up to the specified level
+includeLinks: true # Make headings clickable
+debugInConsole: false # Print debug info in Obsidian console
+```
 
 ## Установка 3X-UI на VDS сервер
+
+Российские VDS сервера можно арендовать по [ссылке](https://vps.today/)
 
 Заходим на свой сервер VDS по `ssh`
 ```shell
