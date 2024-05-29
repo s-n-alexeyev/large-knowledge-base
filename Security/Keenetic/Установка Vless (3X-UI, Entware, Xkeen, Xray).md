@@ -396,9 +396,9 @@ nano /opt/etc/xray/configs/05_routing.json
 }
 ```
 
-VPS подключение
-`inboundTag` - тег что что указывали в `03_inbounds.json` "socks-in"
-`outboundTag` - тег из `04_outbounds.json` "vless-reality"
+VPS подключение  
+`inboundTag` - тег что что указывали в `03_inbounds.json` "socks-in"  
+`outboundTag` - тег из `04_outbounds.json` "vless-reality"  
 Остальное можно сделать как в примере
 ## Настройка роутера для подключения
 
