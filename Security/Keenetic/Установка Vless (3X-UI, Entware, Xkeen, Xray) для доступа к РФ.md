@@ -1,6 +1,5 @@
 2024-05-28 
 [Автор](https://github.com/s-n-alexeyev/)
-
 ```table-of-contents
 title: Содержание:
 style: nestedList # TOC style (nestedList|inlineFirstLevel)
@@ -81,13 +80,13 @@ x-ui uninstall    - Uninstall x-ui
 Переходим в браузере по адресу https://freemyip.com/
 
 >Регистрируем наши "рога и копыта", разумеется это для примера
-![|700](../../media/Vless/freemyip1.png)
+![|600](../../media/Vless/freemyip1.png)
 
 >Убеждаемся что имя не занято, занимаем его `CLAIM IT!`
-![|700](../../media/Vless/freemyip2.png)
+![|600](../../media/Vless/freemyip2.png)
 
 >Обязательно сохраняем строку с токеном!
-![|700](../../media/Vless/freemyip3.png)
+![|600](../../media/Vless/freemyip3.png)
 
 >Возвращаемся на наш VDS и вводим полученную строку через `curl`
 ```shell
@@ -362,7 +361,7 @@ nano /opt/etc/xray/configs/04_outbounds.json
 
 Нажимаем сохранение `CRTL+O`, затем выходим из редактора `CTRL=X` 
 
-![|500](../../media/Vless/3X-UI7.png)
+![|400](../../media/Vless/3X-UI7.png)
 
 >Конфигурационный файл `04_outbounds.json`
 ```shell
@@ -408,7 +407,6 @@ VPS подключение
 
 ![|1000](../../media/Vless/Keenetic1.png)
 
-
 2. Настраиваем прокси подключение
 
 Путь: `Интернет` -> `Другие подключения` -> `Прокси подключения` -> `Добавить`
@@ -435,4 +433,4 @@ VPS подключение
 
 Все готово! Проверяем наш внешний ip адрес
 
-![|800](../../media/Vless/Ifconfig.png)
+![|700](../../media/Vless/Ifconfig.png)
