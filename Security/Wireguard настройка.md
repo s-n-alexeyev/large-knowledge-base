@@ -120,7 +120,7 @@ PersistentKeepalive = 20
 
 ## Установка своего VPN-сервера WireGuard на VPS-хостинге
 
-[![|300](/Media/Wireguard/image_1.png)](https://raw.githubusercontent.com/avenom/wireguard/main/Wireguard/wireguard-header1.png)
+![|300](/Media/Wireguard/image_1.png)
 
 [WireGuard](https://www.wireguard.com/) – самый актуальный и быстрый VPN-протокол на сегодняшний день. Обеспечивает максимальную скорость работы и надежную криптографическую защиту.
 ## 1. VPS-хостинг и клиенты
