@@ -374,7 +374,6 @@ nano /opt/etc/xray/configs/04_outbounds.json
 nano /opt/etc/xray/configs/05_routing.json
 ```
 
-
 ```json
 {  
  "routing": {
