@@ -234,7 +234,8 @@ ipset create unblocksh hash:net -exist
 ipset create unblocktor hash:net -exist
 ipset create unblocktroj hash:net -exist
 ipset create unblockvmess hash:net -exist
-#ipset create unblockvpn hash:net -exist #если нужно раскомментируемexit 0
+#ipset create unblockvpn hash:net -exist #если нужно раскомментируем
+exit 0
 ```
 
 - [Ссылка](https://github.com/tas-unn/bypass_keenetic/blob/main/100-ipset.sh) на скачивание (там будет храниться всегда актуальная информация).
