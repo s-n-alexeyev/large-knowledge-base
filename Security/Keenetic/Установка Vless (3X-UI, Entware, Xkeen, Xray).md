@@ -433,4 +433,4 @@ VPS подключение
 
 Все готово! Проверяем наш внешний ip адрес
 
-![|700](/Media/Vless/Ifconfig.png)
+![|700](/Media/Vless/ifconfig.png)
