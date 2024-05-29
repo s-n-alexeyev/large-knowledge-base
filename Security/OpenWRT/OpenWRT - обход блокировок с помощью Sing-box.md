@@ -9,7 +9,6 @@ maxLevel: 0 # Include headings up to the specified level
 includeLinks: true # Make headings clickable
 debugInConsole: false # Print debug info in Obsidian console
 ```
-
 # Обход блокировок на OpenWRT с помощью Sing-box (vless, vmess, trojan, ss2022) и баз GeoIP, Geosite
 
 В данном гайде будем устанавливать пакет **sing-box** на OpenWRT на примере стабильной **22.03.5 и 23.05.0**. Рекомендуется роутер **минимум с 128 МБ RAM (256 предпочтительно) и памятью более 16 Мб, так же будет описан способ установки sing-box в оперативную память (подходит для устройств с малым количеством ПЗУ <16 Мб)**
