@@ -45,273 +45,214 @@ debugInConsole: false # Print debug info in Obsidian console
 - Создаём папку install:
 
 
-![](https://habrastorage.org/r/w1560/getpro/habr/upload_files/3d7/55e/07f/3d755e07f304a0a2150d390e9e1595af.png)
+![|400](Media/Telegram_Bot/3d755e07f304a0a2150d390e9e1595af.png)
 
 - Ставим курсор на новую папку и импортируем туда файл mipsel с компьютера с помощью третьей иконки:
-    
 
-![](https://habrastorage.org/r/w1560/getpro/habr/upload_files/b71/806/385/b71806385c67d6577dff7990a5a50289.png)
+![|300](Media/Telegram_Bot/b71806385c67d6577dff7990a5a50289.png)
 
 - В настройках роутера заходим в раздел Управление – OPKG, выбираем нашу флешку и удаляем сценарий, если он есть и нажимаем кнопку Сохранить:
-    
 
-![](https://habrastorage.org/r/w1560/getpro/habr/upload_files/631/2b2/016/6312b2016b1e47daba0a472a372c7c21.png)
+![|500](Media/Telegram_Bot/6312b2016b1e47daba0a472a372c7c21.png)
 
 - Примерно спустя минуту заходим обратно в Управление – Приложения и выбираем нашу флешку. Видим, что у нас установился entware по наличию некоторого количества папок. Можно также в Диагностике посмотреть ход установки:
-    
 
-![](https://habrastorage.org/r/w1560/getpro/habr/upload_files/b18/77e/1b2/b1877e1b2a5a55fd3e8b19a3ae529b0a.png)
+![|500](Media/Telegram_Bot/b1877e1b2a5a55fd3e8b19a3ae529b0a.png)
 
 3. Установим необходимые компоненты роутера. В настройках роутера заходим в Общие настройки -> Изменить набор компоненты:
-    
 
-![](https://habrastorage.org/r/w1560/getpro/habr/upload_files/815/aec/88d/815aec88d281fde9df1e15c554c230d1.png)
+![|500](Media/Telegram_Bot/815aec88d281fde9df1e15c554c230d1.png)
 
 - Поиском ищем следующие компоненты "Прокси-сервер DNS-over-TLS", "Прокси-сервер DNS-over-HTTPS", "Протокол IPv6", "SSTP VPN-сервер", "Подготовка открытых пакетов OPKG" и "Сервер SSH" затем, после обновления и перезагрузки роутера ещё следующие компоненты: "Модули ядра подсистемы Netfilter", "Пакет расширения Xtables-addons для Netfilter" и ещё раз перезагружаем роутер.
-    
 - Заходим в "Сетевые правила" --> "Интернет-фильтр" и добавляем серверы DNS-over-TLS и DNS-over-HTTPS. У TLS адрес сервера **8.8.8.8:853**, доменное имя TLS **dns.google.** У HTTPS сервер dns **https://dns.google/dns-query**. Должно получиться как на картинке:
-    
 
-![](https://habrastorage.org/r/w1560/getpro/habr/upload_files/98c/c15/6db/98cc156dbaa4ac0c01f4a24e751d828e.png)
+![|800](Media/Telegram_Bot/98cc156dbaa4ac0c01f4a24e751d828e.png)
 
 - **UPD 02.01.2022:** я рекомендую добавить все dns-over-http и *-tls, указанные в [этой](https://help.keenetic.com/hc/ru/articles/360007687159-DNS-over-TLS-and-DNS-over-HTTPS-proxy-servers-for-DNS-requests-encryption) статье
-    
 - Скачиваем [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) (на данный момент актуально putty-64bit-0.76-installer.msi) и запускаем её. Простенькие настроечки (если что их можно сохранить кнопкой Save):
-    
 
-![](https://habrastorage.org/r/w1560/getpro/habr/upload_files/ba0/906/165/ba0906165d4ec16c894e8b8b2f6583e0.png)
+![|400](Media/Telegram_Bot/ba0906165d4ec16c894e8b8b2f6583e0.png)
 
 При возможных предупреждениях соглашаемся (кнопка Accept).
 
 - Вводим логин «root» (без кавычек), нажимаем Enter, пароль «keenetic» (также без кавычек) (при вводе пароля курсор не двигается – это нормально), также Enter. Должно отобразиться:
     
 
-![](https://habrastorage.org/r/w1560/getpro/habr/upload_files/e97/2ea/afb/e972eaafb3a737a125454758c516adfd.png)
+![|500](Media/Telegram_Bot/e972eaafb3a737a125454758c516adfd.png)
 
 > P.S. здесь и далее - для копирование команды в командную строку необходимо скопировать текст на этом сайте и вставить в командную строку с помощью правой кнопкой мыши
 
 - Вводим команду:
-    
-
-```
+```shell
 passwd
 ```
 
 и дважды вводим пароль. Курсор при вводе пароля также не двигается.
 
 - Обновим opkg:
-    
-
-```
+```shell
 opkg update
 ```
 
-![](https://habrastorage.org/r/w1560/getpro/habr/upload_files/da5/490/258/da5490258cbef8fc8fb30bdc2ffb231d.png)
-
+![|500](Media/Telegram_Bot/da5490258cbef8fc8fb30bdc2ffb231d.png)
 ## Установка необходимых компонентов
 
 1. Начинаем установку необходимых компонентов.
-    
 
 - Вводим команду для установки необходимых компонентов Entware.
-    
     Сначала устанавливаем необходимые пакеты opkg, затем скачиваем [pip](https://pypi.org/project/pip/) для python'a (почему-то он не устанавливается корректно через opkg) и устанавливаем с помощью скрипта. Некоторое время у Вас это займёт, дождитесь. В конце установим три пакета расширения python.
-    
 
-```
-opkg install mc tor tor-geoip bind-dig cron dnsmasq-full ipset iptables wget wget-ssl obfs4 shadowsocks-libev-ss-redir shadowsocks-libev-config python3 python3-pip v2ray trojanwget https://bootstrap.pypa.io/get-pip.py --no-check-certificatepython get-pip.pypip install pyTelegramBotAPIpip install telethon
+```shell
+opkg install mc tor tor-geoip bind-dig cron dnsmasq-full ipset iptables wget wget-ssl obfs4 shadowsocks-libev-ss-redir shadowsocks-libev-config python3 python3-pip v2ray trojan
+wget https://bootstrap.pypa.io/get-pip.py --no-check-certificatepython get-pip.py
+pip install pyTelegramBotAPI
+pip install telethon
 ```
 
 2. Устанавливаем и настраиваем бота. Он будет скачан с сайта [гитхаба](https://github.com/tas-unn/bypass_keenetic/blob/main/bot.py), это сделано для простоты обновления. Если что, [там](https://github.com/tas-unn/bypass_keenetic/blob/main/bot.py) всегда будет крайняя версия скрипта. Внутри установочника некоторые файлы будут также скачиваться с сайта (по той же причине), но об этом позже.
-    
 
-```
-wget https://raw.githubusercontent.com/tas-unn/bypass_keenetic/master/bot.py --no-check-certificate -O /opt/etc/bot.pymcedit /opt/etc/bot_config.py 
+```shell
+wget https://raw.githubusercontent.com/tas-unn/bypass_keenetic/master/bot.py --no-check-certificate -O /opt/etc/bot.py
+mcedit /opt/etc/bot_config.py 
 ```
 
 3. В редакторе нашего бота нам необходимо:
-    
 
 - Установить api ключ, который даст вам бот BotFather (в поиске телеграма его можно найти), спросить его команду /newbot, выбрать свободное имя и скопировать необходимый ключ в поле token
-    
 
-![](https://habrastorage.org/r/w1560/getpro/habr/upload_files/68d/789/b10/68d789b10ca57329e5db1e1660581126.png)
+![|300](Media/Telegram_Bot/68d789b10ca57329e5db1e1660581126.png)
 
 - Копируем Username (логин) телеграма. Он будет использоваться для администрирования. Можно добавить несколько администраторов:
-    
 
-![](https://habrastorage.org/r/w1560/getpro/habr/upload_files/355/983/1bb/3559831bbac5d20e3e72aadc166d9735.png)
+![|300](Media/Telegram_Bot/3559831bbac5d20e3e72aadc166d9735.png)
 
 - И последние две обязательные настроечки берутся с сайта [https://my.telegram.org/apps](https://my.telegram.org/apps):
-    
 
-![](https://habrastorage.org/r/w1560/getpro/habr/upload_files/b28/e1a/884/b28e1a884806a988a9158e8538d9dfda.png)
+![|600](Media/Telegram_Bot/b28e1a884806a988a9158e8538d9dfda.png)
 
 - Обратите внимание, все свои настройки Вы вбиваете и сохраняете на своём роутере. В конце концов код можете посмотреть сами, если умеете это делать.
-    
 - Все данные записываем в файл в нужные места:
-    
 
-![](https://habrastorage.org/r/w1560/getpro/habr/upload_files/5c8/847/aa5/5c8847aa57ada300c555272815de6061.png)
+![|800](Media/Telegram_Bot/5c8847aa57ada300c555272815de6061.png)
 
 - Это были необходимые минимальные настройки. Дело в том, что бот за Вас будет запрашивать мосты для ТОРа. Вам в телеграм будут лишь приходить уведомления (отключите звук и другие оповещения, чтоб они Вас не раздражали).
-    
 - Ключи для Shadowsocks, Vmess и Trojan необходимо устанавливать будет вручную
-    
 - Чуть ниже этих строк есть настройки, которые можно оставить по умолчанию, но на всякий случай просмотрите их.
-    
 
 4. Запускаем бота:
-    
 
-```
+```shell
 python /opt/etc/bot.py
 ```
 
 - Заходим в свой телеграм-бот, если необходимо нажимаем /start и выбираем сначала _Установку и удаление_, а затем _Установку \ переустановку_:
-    
 
-![](https://habrastorage.org/r/w1560/getpro/habr/upload_files/549/63b/b4d/54963bb4d49e7f79d64ec1dc143d117c.png)
+![|800](Media/Telegram_Bot/54963bb4d49e7f79d64ec1dc143d117c.png)
 
 - В программе Putty можете наблюдать внутренние команды, а в телеграм-боте ход установки, а также полученные ключи от двух ботов. **ВНИМАНИЕ**: при включенной двухфакторной авторизации телеграма, Вам необходимо будет ввести данные в Putty. Не пугайтесь, всё работает исключительно на Вашем роутере.
-    
 - После фразы, что установка завершена нам необходимо чуть-чуть донастроить роутер.
-    
-    5. Отключение штатного DNS-сервера и перезагрузка маршрутизатора.
-    
+
+5. Отключение штатного DNS-сервера и перезагрузка маршрутизатора.
 
 - Запускаем командную строку в Windows (открываем пуск и начинаем писать «Командная строка» или «cmd»).
-    
 - Пишем (ip роутера поменяете если другой).
-    
-    ```
-    telnet 192.168.1.1
-    ```
-    
-- Логин с паролем вводим от роутера, а не entware (скорее всего admin, а пароль лично Ваш).
-    
-- Вписываем поочерёдно 3 команды:
-    
 
-```
-opkg dns-overridesystem configuration savesystem reboot
+ ```shell
+telnet 192.168.1.1
+ ```
+
+- Логин с паролем вводим от роутера, а не entware (скорее всего admin, а пароль лично Ваш).
+- Вписываем поочерёдно 3 команды:
+
+```shell
+opkg dns-override
+system configuration save
+system reboot
 ```
 
 - Роутер перезагрузится и Вы сможете пользоваться ботом работы.
-    
 - **Внимание**: если захотите переустановить флешку с нуля, то Вам необходимо в Putty ввести следующие команды и после перезагрузки роутера приступать к созданию флешки:
-    
 
-```
-no opkg dns-overridesystem configuration savesystem reboot
+```shell
+no opkg dns-override
+system configuration save
+system reboot
 ```
 
 ## Описание работы телеграм-бота
 
 1. При старте бот имеет 3 кнопки "Установка и удаление", "Ключи и мосты "и "Списки обхода".
-    
 2. Первой кнопкой мы частично пользовались при установке.
-    
 3. Кнопка "Ключи и мосты" переустанавливает\устанавливает ключи Shadowsocks, Vmess, Trojan, а также мосты Tor. Для мостов Tor существует получение в автоматическом режиме с помощью телеграм.
-    
 4. В пункте меню "Списки обхода" создаются кнопки, соответствующие названием файла и папки /opt/etc/unblock/. При изначальной установке там находятся 4 файла shadowsocks.txt, trojan.txt, vmess.txt и tor.txt, поэтому у нас будет 4 кнопки
-    
-
 5. При нажатии на любую из них будет возможность показать конкретный список разблокировок, добавить сайт или ip адрес в список, либо его удалить оттуда.
-    
 
-![](https://habrastorage.org/r/w1560/getpro/habr/upload_files/f59/4d6/ee8/f594d6ee8aaf798ebaf1f8f50a2a2789.png)
+![|800](Media/Telegram_Bot/f594d6ee8aaf798ebaf1f8f50a2a2789.png)
 
 6. При добавлении существует возможность ЛИБО добавить обход блокировок соцсетей (скачивается вот [отсюда](https://github.com/tas-unn/bypass_keenetic/blob/main/socialnet.txt) и может редактироваться в случае необходимости), ЛИБО написать доменное имя сайта, либо IP-адрес боту:
     
 
-![](https://habrastorage.org/r/w1560/getpro/habr/upload_files/f7f/f52/dca/f7ff52dca76bc2f1d43ec9203c07e93e.png)
+![|800](Media/Telegram_Bot/f7ff52dca76bc2f1d43ec9203c07e93e.png)
 
 7. Для удаления просто вписываете необходимый адрес и отправляете его боту.
-    
-
 ## Подключение к своему роутеру, используя его как собственный VPN
 
 - На устройствах из дома (wifi, по проводу) всё уже работает, но существует возможность подключаться к вашему роутеру и пользоваться теми же сайтами, которые Вы указали в списках разблокировок.
-    
 - Для этого нужно воспользоваться вот [этой](https://help.keenetic.com/hc/ru/articles/360000594640-VPN-%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80-SSTP) инструкцией на сайте Keenetic.
-    
 - А потом можно подключаться через [Android](https://help.keenetic.com/hc/ru/articles/360019377479), [Windows](https://help.keenetic.com/hc/ru/articles/360000029659), [MacOS](https://help.keenetic.com/hc/ru/articles/4415732965394), [IOs](https://apps.apple.com/ru/app/sstp-connect/id1543667909) (только платный).
-    
-
 ## Установка обхода завершена! Можете пользоваться на здоровье!
 
 - Донаты приветствуются) куда переводить - можно найти в первых строчках бота в комментариях) но всё, естественно, по желанию.
-    
 - Пишите в комментариях чего Вы хотите в следующих версиях.
-    
-
 ## О чём будет следующая часть статьи:
 
 1. Рассказ о внутренних особенностях установленной системы. Если кто-то хочет покопаться, либо дать совет в настройке - милости просим.
-    
 2. Данный обход блокировок сейчас настроен на 2 сервиса - один [Hi!Load VPN](https://hi-l.im/) с помощью технологии [Shadowsocks](https://en.wikipedia.org/wiki/Shadowsocks), второй - [Тор](https://www.torproject.org/), но Вы можете сами настроить необходимые Вам сервисы вручную, подключив их к своему телеграм-боту и он также сможет работать!
-    
 3. Те люди, которые не хотят тратить на это время, могут этого не делать. Остальные - welcome :)
-    
 4. Для тех, кто до сих пор пользуется программой teamviewer, есть способ чтобы он продолжил работать.
-    
-
 ## Детальная настройка и всё что с этим связано
 
 1. Для установки VPN сервисов, которые поддерживаются роутером Keenetic ([OpenVPN](https://help.keenetic.com/hc/ru/articles/360000632239-%D0%9A%D0%BB%D0%B8%D0%B5%D0%BD%D1%82-OpenVPN), [Wireguard](https://help.keenetic.com/hc/ru/articles/360010592379-WireGuard-VPN), [IpSec](https://help.keenetic.com/hc/ru/articles/360000422620-IPSec-VPN-%D0%BA%D0%BB%D0%B8%D0%B5%D0%BD%D1%82-%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80), [PPTP](https://help.keenetic.com/hc/ru/articles/360000604720-VPN-%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80-PPTP), [L2TP](https://help.keenetic.com/hc/ru/articles/360000684919-VPN-%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80-L2TP-IPsec) воспользуйтесь инструкциями на официальном сайте Keenetic. Shadowsocks и Tor уже были настроены с помощью установочника телеграм-бота, здесь будет лишь отписание.
-    
-
 2. Через Putty заходим по SSH (см самое начало статьи).
-    
 3. Инициализируем ipset, создание множества IP-адресов unblock (100-ipset.sh).
-    
 
 - Проверьте, что в системе вашего маршрутизатора есть поддержка множества hash:net:
-    
-
-```
+```shell
 ipset create test hash:net
 ```
 
 - Если команда никаких ошибок и сообщений не выдала, значит поддержка есть, и просто следуйте инструкции дальше. В противном случае (есть ошибка) в следующем скрипте вам нужно заменить **hash:net** на **hash:ip**. При этом вы потеряете возможность разблокировки по диапазону и CIDR.
-    
     Скорее всего ошибок не будет у Вас.
-    
 - Создайте пустое множество адресов с именем unblock при загрузке маршрутизатора. Для этого создайте файл /opt/etc/ndm/fs.d/100-ipset.sh:
-    
 
 ```
 mcedit /opt/etc/ndm/fs.d/100-ipset.sh
 ```
 
 - Вставляем содержимое с помощью сочетания клавиш **Shift+Insert**. Далее в этой инструкции мы также будем использовать это сочетания клавиш.
-    
 - **Внимание**: _в данном файле мы создаём ровно столько множеств для обхода блокировок, сколько нам надо. В инструкции показано 3 обхода (shadowsocks, tor и какой-то VPN, подключенный исходя из инструкций на официальном сайте), но их может быть бесконечное множество. Если Вам нужно добавить ещё один обход VPN, то Вам нужно добавить ещё одну строку в следующем файле (по аналогии с 3-5 строками). Также можно удалить 1-2 строки, если будете использовать меньшее количество обходов_.
-    
-    ```
-    #!/bin/sh[ "$1" != "start" ] && exit 0ipset create unblocksh hash:net -existipset create unblocktor hash:net -existipset create unblocktroj hash:net -existipset create unblockvmess hash:net -exist#ipset create unblockvpn hash:net -exist #если нужно раскомментируемexit 0
-    ```
-    
+
+```shell
+#!/bin/sh
+[ "$1" != "start" ] && exit 0
+ipset create unblocksh hash:net -exist
+ipset create unblocktor hash:net -exist
+ipset create unblocktroj hash:net -exist
+ipset create unblockvmess hash:net -exist
+#ipset create unblockvpn hash:net -exist #если нужно раскомментируемexit 0
+```
 
 - [Ссылка](https://github.com/tas-unn/bypass_keenetic/blob/main/100-ipset.sh) на скачивание (там будет храниться всегда актуальная информация).
-    
 - После этого нажимаем сохранить (**клавиша F2**), соглашаемся (**Enter**) и выход (**клавиша F10**). Эти сочетания также будут использоваться далее.
-    
 - Дайте права на исполнение:
-    
 
-```
+```shell
 chmod +x /opt/etc/ndm/fs.d/100-ipset.sh
 ```
 
-4. Настройка Shadowsocks на примере [Highload-VPN](https://hi-l.im/). Не является рекламой. Пока там всё бесплатно, они обещают бесплатный доступ с небольшими ограничениями, а есть также платный доступ, доступ к российскому vpn (если например Вы из-за границы и хотите воспользоваться госуслугами или подобными сервисами). Вы можете использовать любой другой сервис, либо настроить самостоятельно Shadowsocks на своём сервере, например по [этой](https://www.youtube.com/watch?v=Ml6PKWpJunw) инструкции. За основу этого пункта взята [эта](https://telegra.ph/HighLoad-VPN-na-routere-Keenetic-s-Entware-03-21) инструкция.
-    
-
+4. Настройка Shadowsocks на примере [Highload-VPN](https://hi-l.im/). Не является рекламой. Пока там всё бесплатно, они обещают бесплатный доступ с небольшими ограничениями, а есть также платный доступ, доступ к российскому vpn (если например Вы из-за границы и хотите воспользоваться госуслугами или подобными сервисами). Вы можете использовать любой другой сервис, либо настроить самостоятельно Shadowsocks на своём сервере, например по [этой](https://www.youtube.com/watch?v=Ml6PKWpJunw) инструкции. За основу этого пункта взята [эта](https://telegra.ph/HighLoad-VPN-na-routere-Keenetic-s-Entware-03-21) инструкция
 - Используем [телеграм-бота](https://t.me/hlvpnbot) для получения ключа
-    
 - Через некоторое время Вам в телеграм придёт ключ вида:
-    
 
 ```
 ss:/password@serverip:port/?outline=1
@@ -319,7 +260,7 @@ ss:/password@serverip:port/?outline=1
 
 Есть 2 способа создать файл настроек. Первый через [python](https://onlinegdb.com/XKqOqf9Ho), вставив полученный ключ в переменную k. Второй "ручками":
 
-![](https://habrastorage.org/r/w1560/getpro/habr/upload_files/bdb/4f6/4bc/bdb4f64bca041447496934e707263694.png)
+![|](Media/Telegram_Bot/bdb4f64bca041447496934e707263694.png)
 
 - В данном ключе есть **3 позиции**, которые нам интересны: первая часть до значка собачки (красная), вторая - после собачки до двоеточия (синяя), третья цифры после двоеточия (зелёная).
     
@@ -349,7 +290,7 @@ mcedit /opt/etc/init.d/S22shadowsocks
 
 - Меняем ss-local на ss-redir:
 
-![](https://habrastorage.org/r/w1560/getpro/habr/upload_files/31c/65c/45e/31c65c45e2d0bfaf73c25ef0355faaa5.png)
+![](Media/Telegram_Bot/31c65c45e2d0bfaf73c25ef0355faaa5.png)
 
 Сохраняем и выходим.
 
@@ -522,7 +463,7 @@ cat /opt/etc/unblock.dnsmasq
 
 Картина будет примерно такая:
 
-![](https://habrastorage.org/r/w1560/getpro/habr/upload_files/451/1db/2ba/4511db2ba92d2bc0b2721758f82f9bd8.png)
+![](Media/Telegram_Bot/4511db2ba92d2bc0b2721758f82f9bd8.png)
 
 6. Скрипт ручного принудительного обновления системы после редактирования списка доменов (unblock_update.sh). [Создаём его](https://github.com/tas-unn/bypass_keenetic/edit/main/unblock_update.sh):
     

@@ -80,13 +80,13 @@ x-ui uninstall    - Uninstall x-ui
 Переходим в браузере по адресу https://freemyip.com/
 
 >Регистрируем наши "рога и копыта", разумеется это для примера
-![|600](../../media/Vless/freemyip1.png)
+![|600](Media/Vless/freemyip1.png)
 
 >Убеждаемся что имя не занято, занимаем его `CLAIM IT!`
-![|600](../../media/Vless/freemyip2.png)
+![|600](Media/Vless/freemyip2.png)
 
 >Обязательно сохраняем строку с токеном!
-![|600](../../media/Vless/freemyip3.png)
+![|600](Media/Vless/freemyip3.png)
 
 >Возвращаемся на наш VDS и вводим полученную строку через `curl`
 ```shell
@@ -106,13 +106,13 @@ hoofsandhorns.freemyip.com:2053
 ```
 
 >Выбираем русский язык и тему, вводим записанный наш логин и пароль
-![|700](../../media/Vless/3X-UI1.png)
+![|700](Media/Vless/3X-UI1.png)
 
 >Появляется страница со статусом
-![|1000](../../media/Vless/3X-UI2.png)
+![|1000](Media/Vless/3X-UI2.png)
 
 >Далее необходимо создать подключение, выбираем `Добавть подключение`, на вкладке `Подключения`
-![|900](../../media/Vless/3X-UI3.png)
+![|900](Media/Vless/3X-UI3.png)
 
 Заполняем подключение:  
 - Пишем название в поле `Примечание`, например **Ausweis**
@@ -124,7 +124,7 @@ hoofsandhorns.freemyip.com:2053
 - Генерируем пару ключей путем нажатия на `Get New Cert`
 - Сохраняем подключение кнопкой `Создать`
 
-![|380](../../media/Vless/3X-UI4.png)
+![|380](Media/Vless/3X-UI4.png)
 
 Усилим маскировку нашего соединения:  
 - Разворачиваем меню нашего соединения `+`
@@ -132,13 +132,13 @@ hoofsandhorns.freemyip.com:2053
 - В поле `Flow` выбираем **xtls-rprx-vision**
 - Сохраняем изменения
 
-![|1000](../../media/Vless/3X-UI5.png)
+![|1000](Media/Vless/3X-UI5.png)
 Готово!  
 Для проверки работоспособности можно воспользоваться телефоном установив на Android приложение [v2rayNG](https://play.google.com/store/apps/details?id=com.v2ray.ang&hl=ru), а на iOS [V2BOX](https://apps.apple.com/us/app/v2box-v2ray-client/id6446814690)  
 Нажимаем значок с QR-кодом и показываем его приложению в телефоне.
 
 
-![|1000](../../media/Vless/3X-UI6.png)
+![|1000](Media/Vless/3X-UI6.png)
 
 ## Установка OPKG Entware на маршрутизатор Keenetic
 
@@ -168,7 +168,7 @@ curl -s -L https://github.com/Skrill0/XKeen/releases/latest/download/xkeen.tar -
 xkeen -i
 ```
 
-![|800](../../media/Vless/install.gif)
+![|800](Media/Vless/install.gif)
 
 >GeoIP пропускаем (`0`)
 ```
@@ -361,7 +361,7 @@ nano /opt/etc/xray/configs/04_outbounds.json
 
 Нажимаем сохранение `CRTL+O`, затем выходим из редактора `CTRL=X` 
 
-![|400](../../media/Vless/3X-UI7.png)
+![|400](Media/Vless/3X-UI7.png)
 
 >Конфигурационный файл `04_outbounds.json`
 ```shell
@@ -405,7 +405,7 @@ VPS подключение
 
 Нажимаем `Обновить KeeneticOS`, маршрутизатор перезагрузиться
 
-![|1000](../../media/Vless/Keenetic1.png)
+![|1000](Media/Vless/Keenetic1.png)
 
 2. Настраиваем прокси подключение
 
@@ -415,22 +415,22 @@ VPS подключение
 - `Протокол` - SOCKS v5  
 - `Адрес` - ip адрес вашего роутера : `порт` тот что указан `03_inbounds.json` 2080
 
-![|500](../../media/Vless/Keenetic2.png)
+![|500](Media/Vless/Keenetic2.png)
 
 3. Добавляем политику `Xkeen`
 
 Путь: `Интернет` -> `Приоритеты подключений` -> `Добавить политику` -> `Xkeen`
 
-![|500](../../media/Vless/Keenetic3.png)
+![|500](Media/Vless/Keenetic3.png)
 
 4. Добавляем в политику `Xkeen` прокси `Xray`, нажимаем `сохранить`
 
-![|500](../../media/Vless/Keenetic4.png)
+![|500](Media/Vless/Keenetic4.png)
 
 5. Добавляем клиента в политику `Xkeen` путем перетаскивания на него мышкой
 
-![|500](../../media/Vless/Keenetic5.png)
+![|500](Media/Vless/Keenetic5.png)
 
 Все готово! Проверяем наш внешний ip адрес
 
-![|700](../../media/Vless/Ifconfig.png)
+![|700](Media/Vless/Ifconfig.png)
