@@ -1,5 +1,8 @@
 # Обход блокировок на  с помощью Passwall (v2ray, xray, trojan) и tun2socks
 
+2023-08-21  
+[Оригинальная статья](https://habr.com/ru/articles/755934/)
+
 В данном гайде будем собирать OpenWRT на базе стабильной **23.05.0 (ранее 22.03.5)** с дополнительными репозиториями [**Passwall**](https://github.com/xiaorouji/openwrt-passwall) и [**badvpn**](https://github.com/helmiau/helmiwrt-packages/tree/main/badvpn) **(badvpn-tun2socks)**. Рекомендуется роутер **минимум с 128 МБ RAM (256 предпочтительно) и памятью более 16 МБ**. (Можно использовать внешнюю память, например usb флэшку, об этом в конце статьи)
 
 **UPD 13.10.2023** рекомендую рассмотреть установку [HomeProxy](https://habr.com/ru/articles/760622/), пакет имеет схожий функционал, но требует меньше памяти для установки и поддерживает TUN
@@ -138,7 +141,7 @@ make -j9 V=s
 Для обновления существующей прошивки OpenWRT понадобится файл оканчивающийся на ***-sysupgrade.bin**  
 После чего заходим в интерфейс вашего роутера, переходим в **Система** - **Восстановление/обновление**  
 
-![](/Media/Passwall/d108e60a6fa09f1b0d930da9469853ea.png)
+![|700](/Media/Passwall/d108e60a6fa09f1b0d930da9469853ea.png)
 
 И загружаем собранный образ, галку сохранить настройки **убрать** (можно настройки сохранить, но возможно проблемы, не рекомендую).  
 **В случае вашего роутера могут быть отличия по способу прошивки, рекомендую посетить тему по вашему устройству на сайте OpenWRT** [**[OpenWrt Wiki] Table of Hardware**](https://openwrt.org/toh/start?dataflt%5BBrand*%7E%5D=mikrotik) **дабы случайно не получить кирпич вместо роутера.**
@@ -153,11 +156,11 @@ make -j9 V=s
 
 Переходим в пункт **Службы (Services) - PassWall 2 или Pass Wall**
 
-![](/Media/Passwall/32dc2b0dab28306ef726106cdff84720.png)
+![|800](/Media/Passwall/32dc2b0dab28306ef726106cdff84720.png)
 
 Далее **Node List**
 
-![](/Media/Passwall/b2befe68671b2b70512c1befce6a301b.png)
+![|800](/Media/Passwall/b2befe68671b2b70512c1befce6a301b.png)
 
 Здесь добавляем свою конфигурацию в виде ссылки через **Add the node via the link**
 
