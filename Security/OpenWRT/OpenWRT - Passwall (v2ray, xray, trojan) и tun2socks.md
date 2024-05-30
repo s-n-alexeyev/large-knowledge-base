@@ -138,7 +138,7 @@ make -j9 V=s
 Для обновления существующей прошивки OpenWRT понадобится файл оканчивающийся на ***-sysupgrade.bin**  
 После чего заходим в интерфейс вашего роутера, переходим в **Система** - **Восстановление/обновление**  
 
-![](Media/Passwall/d108e60a6fa09f1b0d930da9469853ea.png)
+![](/Media/Passwall/d108e60a6fa09f1b0d930da9469853ea.png)
 
 И загружаем собранный образ, галку сохранить настройки **убрать** (можно настройки сохранить, но возможно проблемы, не рекомендую).  
 **В случае вашего роутера могут быть отличия по способу прошивки, рекомендую посетить тему по вашему устройству на сайте OpenWRT** [**[OpenWrt Wiki] Table of Hardware**](https://openwrt.org/toh/start?dataflt%5BBrand*%7E%5D=mikrotik) **дабы случайно не получить кирпич вместо роутера.**
@@ -153,15 +153,15 @@ make -j9 V=s
 
 Переходим в пункт **Службы (Services) - PassWall 2 или Pass Wall**
 
-![](Media/Passwall/32dc2b0dab28306ef726106cdff84720.png)
+![](/Media/Passwall/32dc2b0dab28306ef726106cdff84720.png)
 
 Далее **Node List**
 
-![](Media/Passwall/b2befe68671b2b70512c1befce6a301b.png)
+![](/Media/Passwall/b2befe68671b2b70512c1befce6a301b.png)
 
 Здесь добавляем свою конфигурацию в виде ссылки через **Add the node via the link**
 
-![Passwall распознаёт ссылки почти всех форматов](Media/Passwall/Passwall_распознаёт_ссылки_почти_всех_форматов.png)
+![Passwall распознаёт ссылки почти всех форматов](/Media/Passwall/Passwall_распознаёт_ссылки_почти_всех_форматов.png)
 
 Passwall распознаёт ссылки почти всех форматов
 
@@ -169,7 +169,7 @@ Passwall распознаёт ссылки почти всех форматов
 
 При добавлении нескольких нодов можно настроить резервирование во вкладке **Auto Switch**
 
-![](Media/Passwall/d0b3106509e5bfdb74115e4bffa314bf.png)
+![](/Media/Passwall/d0b3106509e5bfdb74115e4bffa314bf.png)
 
 **How often to test** определяет периодичность проверки доступности прокси в минутах.
 
@@ -179,7 +179,7 @@ Passwall распознаёт ссылки почти всех форматов
 
 Переходим в **Basic Settings**
 
-![](Media/Passwall/ac756d55546607e2550ba41cd1c7cbe0.png)
+![](/Media/Passwall/ac756d55546607e2550ba41cd1c7cbe0.png)
 
 Здесь выбираем главный нод (прокси) и активируем подключение галкой **Main Switch**.
 
@@ -187,7 +187,7 @@ Passwall распознаёт ссылки почти всех форматов
 
 Проверяем соединение нажатием на кнопки: Baidu Connection, Google и Github
 
-![](Media/Passwall/45e8ceb7a3a881730abbc8ae8653a6e4.png)
+![](/Media/Passwall/45e8ceb7a3a881730abbc8ae8653a6e4.png)
 
 Далее переходим к настройке tun2socks.
 
@@ -201,7 +201,7 @@ badvpn-tun2socks --tundev tun0 --netif-ipaddr 10.0.0.2 --netif-netmask 255.255.2
 
 Запустится туннель с логированием:
 
-![](Media/Passwall/15ca3bfcad520d258e18ef65a2acbc5a.png)
+![](/Media/Passwall/15ca3bfcad520d258e18ef65a2acbc5a.png)
 
 Где tun0 наименование туннеля (если у вас запущен OpenVPN или другой туннель использующий kmod-tun, измените значение на tun1, tun2 и т.д.).
 
