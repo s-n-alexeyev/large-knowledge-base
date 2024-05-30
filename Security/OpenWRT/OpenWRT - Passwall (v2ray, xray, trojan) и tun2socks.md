@@ -1,8 +1,5 @@
 # Обход блокировок на  с помощью Passwall (v2ray, xray, trojan) и tun2socks
 
-
-![](Media/Passwall/22f6345e39bfc856836ccfc67923d38b.jpg)
-
 В данном гайде будем собирать OpenWRT на базе стабильной **23.05.0 (ранее 22.03.5)** с дополнительными репозиториями [**Passwall**](https://github.com/xiaorouji/openwrt-passwall) и [**badvpn**](https://github.com/helmiau/helmiwrt-packages/tree/main/badvpn) **(badvpn-tun2socks)**. Рекомендуется роутер **минимум с 128 МБ RAM (256 предпочтительно) и памятью более 16 МБ**. (Можно использовать внешнюю память, например usb флэшку, об этом в конце статьи)
 
 **UPD 13.10.2023** рекомендую рассмотреть установку [HomeProxy](https://habr.com/ru/articles/760622/), пакет имеет схожий функционал, но требует меньше памяти для установки и поддерживает TUN
