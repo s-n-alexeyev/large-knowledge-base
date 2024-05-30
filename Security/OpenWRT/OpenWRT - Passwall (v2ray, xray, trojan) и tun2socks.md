@@ -164,7 +164,7 @@ make -j9 V=s
 
 Здесь добавляем свою конфигурацию в виде ссылки через **Add the node via the link**
 
-![Passwall распознаёт ссылки почти всех форматов](/Media/Passwall/Passwall_распознаёт_ссылки_почти_всех_форматов.png)
+![|800](/Media/Passwall/6b34aa1010e6e4bc7447a446e82a1a52.png)
 
 Passwall распознаёт ссылки почти всех форматов
 
@@ -172,7 +172,7 @@ Passwall распознаёт ссылки почти всех форматов
 
 При добавлении нескольких нодов можно настроить резервирование во вкладке **Auto Switch**
 
-![](/Media/Passwall/d0b3106509e5bfdb74115e4bffa314bf.png)
+![|800](/Media/Passwall/d0b3106509e5bfdb74115e4bffa314bf.png)
 
 **How often to test** определяет периодичность проверки доступности прокси в минутах.
 
@@ -182,7 +182,7 @@ Passwall распознаёт ссылки почти всех форматов
 
 Переходим в **Basic Settings**
 
-![](/Media/Passwall/ac756d55546607e2550ba41cd1c7cbe0.png)
+![|800](/Media/Passwall/ac756d55546607e2550ba41cd1c7cbe0.png)
 
 Здесь выбираем главный нод (прокси) и активируем подключение галкой **Main Switch**.
 
@@ -190,10 +190,9 @@ Passwall распознаёт ссылки почти всех форматов
 
 Проверяем соединение нажатием на кнопки: Baidu Connection, Google и Github
 
-![](/Media/Passwall/45e8ceb7a3a881730abbc8ae8653a6e4.png)
+![|800](/Media/Passwall/45e8ceb7a3a881730abbc8ae8653a6e4.png)
 
 Далее переходим к настройке tun2socks.
-
 ## 3.Настройка badvpn-tun2socks
 
 Для проверки работы туннеля введём команду:
@@ -204,7 +203,7 @@ badvpn-tun2socks --tundev tun0 --netif-ipaddr 10.0.0.2 --netif-netmask 255.255.2
 
 Запустится туннель с логированием:
 
-![](/Media/Passwall/15ca3bfcad520d258e18ef65a2acbc5a.png)
+![|600](/Media/Passwall/15ca3bfcad520d258e18ef65a2acbc5a.png)
 
 Где tun0 наименование туннеля (если у вас запущен OpenVPN или другой туннель использующий kmod-tun, измените значение на tun1, tun2 и т.д.).
 
@@ -220,13 +219,13 @@ UPD 13.10.2023 Добавил команду ifconfig, т.к. без неё не
 
 _Подробная документация на badvpn-tun2socks есть на сайте_ [_проекта_](https://www.mankier.com/8/badvpn-tun2socks)
 
-```
+```shell
 ifconfig tun0 10.0.0.1 netmask 255.255.255.252ip route add 34.160.111.0/24 dev tun0
 ```
 
 Обращаемся к сайту и смотрим логи:
 
-```
+```shell
 wget -qO- http://ipecho.net/plain | xargs echo
 ```
 
@@ -234,7 +233,7 @@ wget -qO- http://ipecho.net/plain | xargs echo
 
 Можно закрывать badvpn-tun2socks и удалить маршрут:
 
-```
+```shell
 ip route del 34.160.111.0/24
 ```
 
@@ -244,8 +243,63 @@ _Здесь хочу выразить огромную благодарност�
 
 В файл **/etc/init.d/tun2socks** вносим следующее содержание, например при помощи **vi**:
 
-```
-#!/bin/sh /etc/rc.commonUSE_PROCD=1# starts after network startsSTART=40# stops before networking stopsSTOP=89PROG=/usr/bin/badvpn-tun2socksIF="tun2"HOST="127.0.0.1"PORT="1070"IPADDR="10.0.0.2"SUBNETADDR="10.0.0.1"NETMASK="255.255.255.252"start_program() {    procd_open_instance    procd_set_param command "$PROG" --tundev "$IF" --netif-ipaddr "$IPADDR" --netif-netmask "$NETMASK" --socks-server-addr "$HOST":"$PORT"    procd_set_param stdout 1    procd_set_param stderr 1    procd_set_param respawn ${respawn_threshold:-3600} ${respawn_timeout:-5} ${respawn_retry:-5}    procd_close_instance}configure_interface() {    procd_open_instance    echo "Setting 10.0.0.0/30 as subnet for tun2socks..."    # Set the IP and netmask    procd_set_param command ifconfig "$IF" "$SUBNETADDR" netmask "$NETMASK"	procd_set_param stdout 1    procd_set_param stderr 1    procd_set_param respawn ${respawn_threshold:-3600} ${respawn_timeout:-5} ${respawn_retry:-5}    procd_close_instance    echo "Set 10.0.0.0/30 as subnet for tun2socks!"}start_service() {    echo "Starting service..."    start_program	echo "badvpn-tun2socks service started."	configure_interface}stop_service() {    echo "Stopping service..."    service_stop /usr/bin/badvpn-tun2socks    echo "badvpn-tun2socks service stopped."}restart_service() {    stop_service    start_service}
+```shell
+#!/bin/sh /etc/rc.common
+
+USE_PROCD=1
+
+# starts after network starts
+START=40
+# stops before networking stops
+STOP=89
+
+PROG=/usr/bin/badvpn-tun2socks
+IF="tun2"
+HOST="127.0.0.1"
+PORT="1070"
+IPADDR="10.0.0.2"
+SUBNETADDR="10.0.0.1"
+NETMASK="255.255.255.252"
+
+start_program() {
+    procd_open_instance
+    procd_set_param command "$PROG" --tundev "$IF" --netif-ipaddr "$IPADDR" --netif-netmask "$NETMASK" --socks-server-addr "$HOST":"$PORT"
+    procd_set_param stdout 1
+    procd_set_param stderr 1
+    procd_set_param respawn ${respawn_threshold:-3600} ${respawn_timeout:-5} ${respawn_retry:-5}
+    procd_close_instance
+}
+
+configure_interface() {
+    procd_open_instance
+    echo "Setting 10.0.0.0/30 as subnet for tun2socks..."
+    # Set the IP and netmask
+    procd_set_param command ifconfig "$IF" "$SUBNETADDR" netmask "$NETMASK"
+	procd_set_param stdout 1
+    procd_set_param stderr 1
+    procd_set_param respawn ${respawn_threshold:-3600} ${respawn_timeout:-5} ${respawn_retry:-5}
+    procd_close_instance
+    echo "Set 10.0.0.0/30 as subnet for tun2socks!"
+}
+
+start_service() {
+    echo "Starting service..."
+    start_program
+	echo "badvpn-tun2socks service started."
+	configure_interface
+}
+
+
+stop_service() {
+    echo "Stopping service..."
+    service_stop /usr/bin/badvpn-tun2socks
+    echo "badvpn-tun2socks service stopped."
+}
+
+restart_service() {
+    stop_service
+    start_service
+}
 ```
 
 Где IF - интерфейс, в данном примере tun2 (вместо tun0) чтобы избежать конфликтов с существующими туннелями.
@@ -254,31 +308,31 @@ Port - порт Socks Passwall из п.2.
 
 Делаем файлы исполняемым:
 
-```
+```shell
 chmod +x /etc/init.d/tun2socks
 ```
 
 Делаем автозапуск:
 
-```
+```shell
 ln -s /etc/init.d/tun2socks /etc/rc.d/S90tun2socks
 ```
 
 Запускаем:
 
-```
+```shell
 /etc/init.d/tun2socks start
 ```
 
 Проверяем что интерфейс появился:
 
-```
+```shell
  ip a | grep 'tun2'
 ```
 
 Если заработал, выдаст подобный результат:
 
-```
+```shell
 tun2: <POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UNKNOWN group default qlen 500
 ```
 
