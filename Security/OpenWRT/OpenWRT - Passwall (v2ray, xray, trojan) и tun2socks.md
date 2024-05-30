@@ -2,7 +2,14 @@
 
 2023-08-21  
 [Оригинальная статья](https://habr.com/ru/articles/755934/)
-
+```table-of-contents
+title: Содержание:
+style: nestedList # TOC style (nestedList|inlineFirstLevel)
+minLevel: 0 # Include headings from the specified level
+maxLevel: 0 # Include headings up to the specified level
+includeLinks: true # Make headings clickable
+debugInConsole: false # Print debug info in Obsidian console
+```
 В данном гайде будем собирать OpenWRT на базе стабильной **23.05.0 (ранее 22.03.5)** с дополнительными репозиториями [**Passwall**](https://github.com/xiaorouji/openwrt-passwall) и [**badvpn**](https://github.com/helmiau/helmiwrt-packages/tree/main/badvpn) **(badvpn-tun2socks)**. Рекомендуется роутер **минимум с 128 МБ RAM (256 предпочтительно) и памятью более 16 МБ**. (Можно использовать внешнюю память, например usb флэшку, об этом в конце статьи)
 
 **UPD 13.10.2023** рекомендую рассмотреть установку [HomeProxy](https://habr.com/ru/articles/760622/), пакет имеет схожий функционал, но требует меньше памяти для установки и поддерживает TUN
@@ -197,7 +204,7 @@ Passwall распознаёт ссылки почти всех форматов
 
 Для проверки работы туннеля введём команду:
 
-```
+```shell
 badvpn-tun2socks --tundev tun0 --netif-ipaddr 10.0.0.2 --netif-netmask 255.255.255.0 --socks-server-addr 127.0.0.1:1070
 ```
 
