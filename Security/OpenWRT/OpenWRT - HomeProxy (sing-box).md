@@ -1,5 +1,15 @@
-# Обход блокировок на OpenWRT с помощью HomeProxy (sing-box)
 
+2023-09-13
+[Оригинальная статья](https://habr.com/ru/articles/760622/)
+```table-of-contents
+title: Содержание:
+style: nestedList # TOC style (nestedList|inlineFirstLevel)
+minLevel: 0 # Include headings from the specified level
+maxLevel: 0 # Include headings up to the specified level
+includeLinks: true # Make headings clickable
+debugInConsole: false # Print debug info in Obsidian console
+```
+# Обход блокировок на OpenWRT с помощью HomeProxy (sing-box)
 
 [HomeProxy](https://github.com/immortalwrt/homeproxy) или luci-app-homeproxy это часть проекта [ImmortalWRT](https://firmware-selector.immortalwrt.org/), графическая надстройка для [sing-box](https://habr.com/ru/articles/756178/) позволяющая настроить подключение к shadowsocks, xray, vless, vmess, trojan.
 
