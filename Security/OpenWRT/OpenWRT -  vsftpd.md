@@ -89,8 +89,8 @@ vim /etc/passwd
 Запустим FTP сервер и добавим его в автозагрузку:  
 
 ```shell
-/etc/inint.d/vsftpd start
-/etc/inint.d/vsftpd enable
+/etc/init.d/vsftpd start
+/etc/init.d/vsftpd enable
 ```
 
 Осталось добавить настройки firewall для возможности доступа к серверу из интернета. Я использовал для этого интерфейс Luci, но никто не мешает вам вручную добавить правила iptables в `/etc/firewall.user` и перезапустить демон.
