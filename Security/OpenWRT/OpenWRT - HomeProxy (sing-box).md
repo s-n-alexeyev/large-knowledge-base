@@ -38,7 +38,7 @@ echo "src/gz immortalwrt_base https://downloads.immortalwrt.org/releases/$VERSIO
 После чего обновляем список пакетов и устанавливаем luci-app-homeproxy
 
 ```shell
-opkg updateopkg install luci-app-homeproxy
+opkg update && opkg install luci-app-homeproxy
 ```
 
 Если установка прошла успешно, переходим к настройке.  
