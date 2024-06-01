@@ -118,6 +118,7 @@ hoofsandhorns.freemyip.com:2053
 x-ui
 ```
 
+>Выбираем пункт `16. SSL Certificate Management`
 ```
 The OS release is: debian  
   
@@ -160,7 +161,7 @@ xray state: Running
 Please enter your selection [0-23]:16
 ```
 
->Выбираем пункт `16. SSL Certificate Management`
+>Далее пункт `1. Get SSL`
 ```
 Please enter your selection [0-23]: 16  
        1. Get SSL  
@@ -170,42 +171,41 @@ Please enter your selection [0-23]: 16
 Choose an option:1
 ```
 
->Далее пункт `1. Get SSL`, после установки необходимых пакетов выйдет надпись:
+Вводим наш зарегистрированный домен `hoofsandhorns.freemyip.com`
 ```
 Please enter your domain name:hoofsandhorns.freemyip.com
 ```
 
-Вводим наш зарегистрированный домен  `hoofsandhorns.freemyip.com`
+>Соглашаемся с портом `80`
 ```
 please choose which port do you use,default will be 80 port:↵
 ```
 
-Соглашаемся с портом 80
-
+>Получаем ключи
 ```
 [ERR] your input  is invalid,will use default port    
 [INF] will use port: to issue certs,please make sure this port is open...    
-[Sun 02 Jun 2024 12:23:41 AM MSK] Changed default CA to: https://acme-v02.api.letsencrypt.org/directory  
-[Sun 02 Jun 2024 12:23:41 AM MSK] Using CA: https://acme-v02.api.letsencrypt.org/directory  
-[Sun 02 Jun 2024 12:23:41 AM MSK] Standalone mode.  
-[Sun 02 Jun 2024 12:23:42 AM MSK] Create account key ok.  
-[Sun 02 Jun 2024 12:23:42 AM MSK] Registering account: https://acme-v02.api.letsencrypt.org/directory  
-[Sun 02 Jun 2024 12:23:43 AM MSK] Registered  
-[Sun 02 Jun 2024 12:23:43 AM MSK] ACCOUNT_THUMBPRINT='DJ5g0VfLTC9OH9-IyctnEMscqenBrfulACbZGzeDkp4'  
-[Sun 02 Jun 2024 12:23:43 AM MSK] Creating domain key  
-[Sun 02 Jun 2024 12:23:43 AM MSK] The domain key is here: /root/.acme.sh/gritskevitch.freemyip.com_ecc/gritskevitch.freemyip.com.key  
-[Sun 02 Jun 2024 12:23:43 AM MSK] Single domain='gritskevitch.freemyip.com'  
-[Sun 02 Jun 2024 12:23:45 AM MSK] Getting webroot for domain='gritskevitch.freemyip.com'  
-[Sun 02 Jun 2024 12:23:45 AM MSK] Verifying: gritskevitch.freemyip.com  
-[Sun 02 Jun 2024 12:23:45 AM MSK] Standalone mode server  
-[Sun 02 Jun 2024 12:23:47 AM MSK] Pending, The CA is processing your order, please just wait. (1/30)  
-[Sun 02 Jun 2024 12:23:50 AM MSK] Success  
-[Sun 02 Jun 2024 12:23:50 AM MSK] Verify finished, start to sign.  
-[Sun 02 Jun 2024 12:23:50 AM MSK] Lets finalize the order.  
-[Sun 02 Jun 2024 12:23:50 AM MSK] Le_OrderFinalize='https://acme-v02.api.letsencrypt.org/acme/finalize/1758584822/274601066162'  
-[Sun 02 Jun 2024 12:23:51 AM MSK] Downloading cert.  
-[Sun 02 Jun 2024 12:23:51 AM MSK] Le_LinkCert='https://acme-v02.api.letsencrypt.org/acme/cert/04db8aa3f5403403649266624d72b3dbef80'  
-[Sun 02 Jun 2024 12:23:52 AM MSK] Cert success.  
+[Вс 02 июн 2024 12:23:41 AM MSK] Changed default CA to: https://acme-v02.api.letsencrypt.org/directory  
+[Вс 02 июн 2024 12:23:41 AM MSK] Using CA: https://acme-v02.api.letsencrypt.org/directory  
+[Вс 02 июн 2024 12:23:41 AM MSK] Standalone mode.  
+[Вс 02 июн 2024 12:23:42 AM MSK] Create account key ok.  
+[Вс 02 июн 2024 12:23:42 AM MSK] Registering account: https://acme-v02.api.letsencrypt.org/directory  
+[Вс 02 июн 2024 12:23:43 AM MSK] Registered  
+[Вс 02 июн 2024 12:23:43 AM MSK] ACCOUNT_THUMBPRINT='DJ5g0VfLTC9OH9-IyctnEMscqenBrfulACbZGzeDkp4'  
+[Вс 02 июн 2024 12:23:43 AM MSK] Creating domain key  
+[Вс 02 июн 2024 12:23:43 AM MSK] The domain key is here: /root/.acme.sh/hoofsandhorns.freemyip.com_ecc/hoofsandhorns.freemyip.com.key  
+[Вс 02 июн 2024 12:23:43 AM MSK] Single domain='hoofsandhorns.freemyip.com'  
+[Вс 02 июн 2024 12:23:45 AM MSK] Getting webroot for domain='hoofsandhorns.freemyip.com'  
+[Вс 02 июн 2024 12:23:45 AM MSK] Verifying: hoofsandhorns.freemyip.com 
+[Вс 02 июн 2024 12:23:45 AM MSK] Standalone mode server  
+[Вс 02 июн 2024 12:23:47 AM MSK] Pending, The CA is processing your order, please just wait. (1/30)  
+[Вс 02 июн 2024 12:23:50 AM MSK] Success  
+[Вс 02 июн 2024 12:23:50 AM MSK] Verify finished, start to sign.  
+[Вс 02 июн 2024 12:23:50 AM MSK] Lets finalize the order.  
+[Вс 02 июн 2024 12:23:50 AM MSK] Le_OrderFinalize='https://acme-v02.api.letsencrypt.org/acme/finalize/1758584822/274601066162'  
+[Вс 02 июн 2024 12:23:51 AM MSK] Downloading cert.  
+[Вс 02 июн 2024 12:23:51 AM MSK] Le_LinkCert='https://acme-v02.api.letsencrypt.org/acme/cert/04db8aa3f5403403649266624d72b3dbef80'  
+[Вс 02 июн 2024 12:23:52 AM MSK] Cert success.  
 -----BEGIN CERTIFICATE-----  
 MIIENTCCAx2gAwIBAgISBNuKo/VANANkkmZiTXKz2++AMA0GCSqGSIb3DQEBCwUA  
 MDIxCzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MQswCQYDVQQD  
@@ -231,17 +231,17 @@ f1jmd1HBpHgB/UCApDCESu2DQiOM+7ZcX9onEWZ0GrtCAQo7BNcyK2oiRLVHkhAN
 3NHQcjBVLR/4XDTikPdrLIfJPWExwU3xzxbFjykZ6R9vdJK18mD2t94kcrifHZJy  
 C6OPFlRir5ETrTvinDGw5hmOXWJgHrUNUQ==  
 -----END CERTIFICATE-----  
-[Sun 02 Jun 2024 12:23:52 AM MSK] Your cert is in: /root/.acme.sh/gritskevitch.freemyip.com_ecc/gritskevitch.freemyip.com.cer  
-[Sun 02 Jun 2024 12:23:52 AM MSK] Your cert key is in: /root/.acme.sh/gritskevitch.freemyip.com_ecc/gritskevitch.freemyip.com.key  
-[Sun 02 Jun 2024 12:23:52 AM MSK] The intermediate CA cert is in: /root/.acme.sh/gritskevitch.freemyip.com_ecc/ca.cer  
-[Sun 02 Jun 2024 12:23:52 AM MSK] And the full chain certs is there: /root/.acme.sh/gritskevitch.freemyip.com_ecc/fullchain.cer  
+[Вс 02 июн 2024 12:23:52 AM MSK] Your cert is in: /root/.acme.sh/hoofsandhorns.freemyip.com_ecc/hoofsandhorns.freemyip.com.cer  
+[Вс 02 июн 2024 12:23:52 AM MSK] Your cert key is in: /root/.acme.sh/hoofsandhorns.freemyip.com_ecc/hoofsandhorns.freemyip.com.key  
+[Вс 02 июн 2024 12:23:52 AM MSK] The intermediate CA cert is in: /root/.acme.sh/hoofsandhorns.freemyip.com_ecc/ca.cer  
+[Вс 02 июн 2024 12:23:52 AM MSK] And the full chain certs is there: /root/.acme.sh/hoofsandhorns.freemyip.com_ecc/fullchain.cer  
 [ERR] issue certs succeed,installing certs...    
-[Sun 02 Jun 2024 12:23:52 AM MSK] The domain 'gritskevitch.freemyip.com' seems to have a ECC cert already, lets use ecc cert.  
-[Sun 02 Jun 2024 12:23:52 AM MSK] Installing key to: /root/cert/gritskevitch.freemyip.com/privkey.pem  
-[Sun 02 Jun 2024 12:23:52 AM MSK] Installing full chain to: /root/cert/gritskevitch.freemyip.com/fullchain.pem  
+[Вс 02 июн 2024 12:23:52 AM MSK] The domain 'hoofsandhorns.freemyip.com' seems to have a ECC cert already, lets use ecc cert.  
+[Вс 02 июн 2024 12:23:52 AM MSK] Installing key to: /root/cert/hoofsandhorns.freemyip.com/privkey.pem  
+[Вс 02 июн 2024 12:23:52 AM MSK] Installing full chain to: /root/cert/hoofsandhorns.freemyip.com/fullchain.pem  
 [INF] install certs succeed,enable auto renew...    
-[Sun 02 Jun 2024 12:23:53 AM MSK] Already uptodate!  
-[Sun 02 Jun 2024 12:23:53 AM MSK] Upgrade success!  
+[Вс 02 июн 2024 12:23:53 AM MSK] Already uptodate!  
+[Вс 02 июн 2024 12:23:53 AM MSK] Upgrade success!  
 [INF] auto renew succeed, certs details:    
 total 16K  
 drwxr-xr-x 2 root root 4.0K Jun  2 00:23 .  
