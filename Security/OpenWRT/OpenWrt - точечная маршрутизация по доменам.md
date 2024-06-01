@@ -66,7 +66,6 @@ The rendered ruleset contains errors, not doing firewall restart.
 - Dnsmasq ipset - готовый конфиг для ipset+iptables (Для OpenWrt 21ой версии и более ранних)  
 - Dnsmasq nfset - готовый конфиг для nfset+nftables (Для OpenWrt начиная с 22ой версии)
 
-
 Сейчас они лежат просто в репозитории на GitHub:  
 [https://github.com/itdoginfo/allow-domains](https://github.com/itdoginfo/allow-domains)
 
