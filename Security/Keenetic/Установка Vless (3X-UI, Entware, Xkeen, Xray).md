@@ -111,12 +111,76 @@ hoofsandhorns.freemyip.com:2053
 >Появляется страница со статусом
 ![|1000](/Media/Vless/3X-UI2.png)
 
+Для того чтобы исчезла плашка о предупреждении безопасности необходимо получить SSL сертификат, после чего мы сможем безопасно входить в панель администрирования 3X-UI.
 
+>Для этого необходимо на нашем VDS сервере запустить скрипт настройки панели управления
+```shell
+x-ui
+```
 
+```
+The OS release is: debian  
+  
+ 3X-ui Panel Management Script  
+ 0. Exit Script  
+————————————————  
+ 1. Install  
+ 2. Update  
+ 3. Custom Version  
+ 4. Uninstall  
+————————————————  
+ 5. Reset Username & Password & Secret Token  
+ 6. Reset Settings  
+ 7. Change Port  
+ 8. View Current Settings  
+————————————————  
+ 9. Start  
+ 10. Stop  
+ 11. Restart  
+ 12. Check Status  
+ 13. Check Logs  
+————————————————  
+ 14. Enable Autostart  
+ 15. Disable Autostart  
+————————————————  
+ 16. SSL Certificate Management  
+ 17. Cloudflare SSL Certificate  
+ 18. IP Limit Management  
+ 19. WARP Management  
+ 20. Firewall Management  
+————————————————  
+ 21. Enable BBR    
+ 22. Update Geo Files  
+ 23. Speedtest by Ookla  
+  
+Panel state: Running  
+Start automatically: Yes  
+xray state: Running  
+  
+Please enter your selection [0-23]:16
+```
 
+>Выбираем пункт `16. SSL Certificate Management`
+```
+Please enter your selection [0-23]: 16  
+       1. Get SSL  
+       2. Revoke  
+       3. Force Renew  
+       0. Back to Main Menu  
+Choose an option:1
+```
 
+>Далее пункт `1. Get SSL`, после установки необходимых пакетов выйдет надпись:
+```
+Please enter your domain name:hoofsandhorns.freemyip.com
+```
 
+Вводим наш зарегистрированный домен  `hoofsandhorns.freemyip.com`
+```
+please choose which port do you use,default will be 80 port:↵
+```
 
+Соглашаемся с портом 80
 
 >Далее необходимо создать подключение, выбираем `Добавть подключение`, на вкладке `Подключения`
 ![|900](/Media/Vless/3X-UI3.png)
