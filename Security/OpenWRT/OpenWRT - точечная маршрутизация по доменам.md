@@ -1,7 +1,6 @@
 2023-10-14
-# Точечная маршрутизация по доменам на роутере с OpenWrt
-
 [Оригинальная статья](https://habr.com/ru/articles/767464/)
+# Точечная маршрутизация по доменам на роутере с OpenWrt
 ```table-of-contents
 title: Содержание
 style: nestedList # TOC style (nestedList|inlineFirstLevel)
