@@ -185,27 +185,27 @@ please choose which port do you use,default will be 80 port:↵
 ```
 [ERR] your input  is invalid,will use default port    
 [INF] will use port: to issue certs,please make sure this port is open...    
-[Вс 02 июн 2024 12:23:41 AM MSK] Changed default CA to: https://acme-v02.api.letsencrypt.org/directory  
-[Вс 02 июн 2024 12:23:41 AM MSK] Using CA: https://acme-v02.api.letsencrypt.org/directory  
-[Вс 02 июн 2024 12:23:41 AM MSK] Standalone mode.  
-[Вс 02 июн 2024 12:23:42 AM MSK] Create account key ok.  
-[Вс 02 июн 2024 12:23:42 AM MSK] Registering account: https://acme-v02.api.letsencrypt.org/directory  
-[Вс 02 июн 2024 12:23:43 AM MSK] Registered  
-[Вс 02 июн 2024 12:23:43 AM MSK] ACCOUNT_THUMBPRINT='DJ5g0VfLTC9OH9-IyctnEMscqenBrfulACbZGzeDkp4'  
-[Вс 02 июн 2024 12:23:43 AM MSK] Creating domain key  
-[Вс 02 июн 2024 12:23:43 AM MSK] The domain key is here: /root/.acme.sh/hoofsandhorns.freemyip.com_ecc/hoofsandhorns.freemyip.com.key  
-[Вс 02 июн 2024 12:23:43 AM MSK] Single domain='hoofsandhorns.freemyip.com'  
-[Вс 02 июн 2024 12:23:45 AM MSK] Getting webroot for domain='hoofsandhorns.freemyip.com'  
-[Вс 02 июн 2024 12:23:45 AM MSK] Verifying: hoofsandhorns.freemyip.com 
-[Вс 02 июн 2024 12:23:45 AM MSK] Standalone mode server  
-[Вс 02 июн 2024 12:23:47 AM MSK] Pending, The CA is processing your order, please just wait. (1/30)  
-[Вс 02 июн 2024 12:23:50 AM MSK] Success  
-[Вс 02 июн 2024 12:23:50 AM MSK] Verify finished, start to sign.  
-[Вс 02 июн 2024 12:23:50 AM MSK] Lets finalize the order.  
-[Вс 02 июн 2024 12:23:50 AM MSK] Le_OrderFinalize='https://acme-v02.api.letsencrypt.org/acme/finalize/1758584822/274601066162'  
-[Вс 02 июн 2024 12:23:51 AM MSK] Downloading cert.  
-[Вс 02 июн 2024 12:23:51 AM MSK] Le_LinkCert='https://acme-v02.api.letsencrypt.org/acme/cert/04db8aa3f5403403649266624d72b3dbef80'  
-[Вс 02 июн 2024 12:23:52 AM MSK] Cert success.  
+[Вс 26 май 2024 12:23:41 AM MSK] Changed default CA to: https://acme-v02.api.letsencrypt.org/directory  
+[Вс 26 май 2024 12:23:41 AM MSK] Using CA: https://acme-v02.api.letsencrypt.org/directory  
+[Вс 26 май 2024 12:23:41 AM MSK] Standalone mode.  
+[Вс 26 май 2024 12:23:42 AM MSK] Create account key ok.  
+[Вс 26 май 2024 12:23:42 AM MSK] Registering account: https://acme-v02.api.letsencrypt.org/directory  
+[Вс 26 май 2024 12:23:43 AM MSK] Registered  
+[Вс 26 май 2024 12:23:43 AM MSK] ACCOUNT_THUMBPRINT='DJ5g0VfLTC9OH9-IyctnEMscqenBrfulACbZGzeDkp4'  
+[Вс 26 май 2024 12:23:43 AM MSK] Creating domain key  
+[Вс 26 май 2024 12:23:43 AM MSK] The domain key is here: /root/.acme.sh/hoofsandhorns.freemyip.com_ecc/hoofsandhorns.freemyip.com.key  
+[Вс 26 май 2024 12:23:43 AM MSK] Single domain='hoofsandhorns.freemyip.com'  
+[Вс 26 май 2024 12:23:45 AM MSK] Getting webroot for domain='hoofsandhorns.freemyip.com'  
+[Вс 26 май 2024 12:23:45 AM MSK] Verifying: hoofsandhorns.freemyip.com 
+[Вс 26 май 2024 12:23:45 AM MSK] Standalone mode server  
+[Вс 26 май 2024 12:23:47 AM MSK] Pending, The CA is processing your order, please just wait. (1/30)  
+[Вс 26 май 2024 12:23:50 AM MSK] Success  
+[Вс 26 май 2024 12:23:50 AM MSK] Verify finished, start to sign.  
+[Вс 26 май 2024 12:23:50 AM MSK] Lets finalize the order.  
+[Вс 26 май 2024 12:23:50 AM MSK] Le_OrderFinalize='https://acme-v02.api.letsencrypt.org/acme/finalize/1758584822/274601066162'  
+[Вс 26 май 2024 12:23:51 AM MSK] Downloading cert.  
+[Вс 26 май 2024 12:23:51 AM MSK] Le_LinkCert='https://acme-v02.api.letsencrypt.org/acme/cert/04db8aa3f5403403649266624d72b3dbef80'  
+[Вс 26 май 2024 12:23:52 AM MSK] Cert success.  
 -----BEGIN CERTIFICATE-----  
 MIIENTCCAx2gAwIBAgISBNuKo/VANANkkmZiTXKz2++AMA0GCSqGSIb3DQEBCwUA  
 MDIxCzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MQswCQYDVQQD  
@@ -231,17 +231,17 @@ f1jmd1HBpHgB/UCApDCESu2DQiOM+7ZcX9onEWZ0GrtCAQo7BNcyK2oiRLVHkhAN
 3NHQcjBVLR/4XDTikPdrLIfJPWExwU3xzxbFjykZ6R9vdJK18mD2t94kcrifHZJy  
 C6OPFlRir5ETrTvinDGw5hmOXWJgHrUNUQ==  
 -----END CERTIFICATE-----  
-[Вс 02 июн 2024 12:23:52 AM MSK] Your cert is in: /root/.acme.sh/hoofsandhorns.freemyip.com_ecc/hoofsandhorns.freemyip.com.cer  
-[Вс 02 июн 2024 12:23:52 AM MSK] Your cert key is in: /root/.acme.sh/hoofsandhorns.freemyip.com_ecc/hoofsandhorns.freemyip.com.key  
-[Вс 02 июн 2024 12:23:52 AM MSK] The intermediate CA cert is in: /root/.acme.sh/hoofsandhorns.freemyip.com_ecc/ca.cer  
-[Вс 02 июн 2024 12:23:52 AM MSK] And the full chain certs is there: /root/.acme.sh/hoofsandhorns.freemyip.com_ecc/fullchain.cer  
+[Вс 26 май 2024 12:23:52 AM MSK] Your cert is in: /root/.acme.sh/hoofsandhorns.freemyip.com_ecc/hoofsandhorns.freemyip.com.cer  
+[Вс 26 май 2024 12:23:52 AM MSK] Your cert key is in: /root/.acme.sh/hoofsandhorns.freemyip.com_ecc/hoofsandhorns.freemyip.com.key  
+[Вс 26 май 2024 12:23:52 AM MSK] The intermediate CA cert is in: /root/.acme.sh/hoofsandhorns.freemyip.com_ecc/ca.cer  
+[Вс 26 май 2024 12:23:52 AM MSK] And the full chain certs is there: /root/.acme.sh/hoofsandhorns.freemyip.com_ecc/fullchain.cer  
 [ERR] issue certs succeed,installing certs...    
-[Вс 02 июн 2024 12:23:52 AM MSK] The domain 'hoofsandhorns.freemyip.com' seems to have a ECC cert already, lets use ecc cert.  
-[Вс 02 июн 2024 12:23:52 AM MSK] Installing key to: /root/cert/hoofsandhorns.freemyip.com/privkey.pem  
-[Вс 02 июн 2024 12:23:52 AM MSK] Installing full chain to: /root/cert/hoofsandhorns.freemyip.com/fullchain.pem  
+[Вс 26 май 2024 12:23:52 AM MSK] The domain 'hoofsandhorns.freemyip.com' seems to have a ECC cert already, lets use ecc cert.  
+[Вс 26 май 2024 12:23:52 AM MSK] Installing key to: /root/cert/hoofsandhorns.freemyip.com/privkey.pem  
+[Вс 26 май 2024 12:23:52 AM MSK] Installing full chain to: /root/cert/hoofsandhorns.freemyip.com/fullchain.pem  
 [INF] install certs succeed,enable auto renew...    
-[Вс 02 июн 2024 12:23:53 AM MSK] Already uptodate!  
-[Вс 02 июн 2024 12:23:53 AM MSK] Upgrade success!  
+[Вс 26 май 2024 12:23:53 AM MSK] Already uptodate!  
+[Вс 26 май 2024 12:23:53 AM MSK] Upgrade success!  
 [INF] auto renew succeed, certs details:    
 total 16K  
 drwxr-xr-x 2 root root 4.0K Jun  2 00:23 .  
