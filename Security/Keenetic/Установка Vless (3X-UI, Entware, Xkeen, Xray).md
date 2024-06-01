@@ -182,6 +182,74 @@ please choose which port do you use,default will be 80 port:↵
 
 Соглашаемся с портом 80
 
+```
+[ERR] your input  is invalid,will use default port    
+[INF] will use port: to issue certs,please make sure this port is open...    
+[Sun 02 Jun 2024 12:23:41 AM MSK] Changed default CA to: https://acme-v02.api.letsencrypt.org/directory  
+[Sun 02 Jun 2024 12:23:41 AM MSK] Using CA: https://acme-v02.api.letsencrypt.org/directory  
+[Sun 02 Jun 2024 12:23:41 AM MSK] Standalone mode.  
+[Sun 02 Jun 2024 12:23:42 AM MSK] Create account key ok.  
+[Sun 02 Jun 2024 12:23:42 AM MSK] Registering account: https://acme-v02.api.letsencrypt.org/directory  
+[Sun 02 Jun 2024 12:23:43 AM MSK] Registered  
+[Sun 02 Jun 2024 12:23:43 AM MSK] ACCOUNT_THUMBPRINT='DJ5g0VfLTC9OH9-IyctnEMscqenBrfulACbZGzeDkp4'  
+[Sun 02 Jun 2024 12:23:43 AM MSK] Creating domain key  
+[Sun 02 Jun 2024 12:23:43 AM MSK] The domain key is here: /root/.acme.sh/gritskevitch.freemyip.com_ecc/gritskevitch.freemyip.com.key  
+[Sun 02 Jun 2024 12:23:43 AM MSK] Single domain='gritskevitch.freemyip.com'  
+[Sun 02 Jun 2024 12:23:45 AM MSK] Getting webroot for domain='gritskevitch.freemyip.com'  
+[Sun 02 Jun 2024 12:23:45 AM MSK] Verifying: gritskevitch.freemyip.com  
+[Sun 02 Jun 2024 12:23:45 AM MSK] Standalone mode server  
+[Sun 02 Jun 2024 12:23:47 AM MSK] Pending, The CA is processing your order, please just wait. (1/30)  
+[Sun 02 Jun 2024 12:23:50 AM MSK] Success  
+[Sun 02 Jun 2024 12:23:50 AM MSK] Verify finished, start to sign.  
+[Sun 02 Jun 2024 12:23:50 AM MSK] Lets finalize the order.  
+[Sun 02 Jun 2024 12:23:50 AM MSK] Le_OrderFinalize='https://acme-v02.api.letsencrypt.org/acme/finalize/1758584822/274601066162'  
+[Sun 02 Jun 2024 12:23:51 AM MSK] Downloading cert.  
+[Sun 02 Jun 2024 12:23:51 AM MSK] Le_LinkCert='https://acme-v02.api.letsencrypt.org/acme/cert/04db8aa3f5403403649266624d72b3dbef80'  
+[Sun 02 Jun 2024 12:23:52 AM MSK] Cert success.  
+-----BEGIN CERTIFICATE-----  
+MIIENTCCAx2gAwIBAgISBNuKo/VANANkkmZiTXKz2++AMA0GCSqGSIb3DQEBCwUA  
+MDIxCzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MQswCQYDVQQD  
+EwJSMzAeFw0yNDA2MDEyMDIzNTFaFw0yNDA4MzAyMDIzNTBaMCQxIjAgBgNVBAMT  
+GWdyaXRza2V2aXRjaC5mcmVlbXlpcC5jb20wWTATBgcqhkjOPQIBBggqhkjOPQMB  
+BwNCAASplnt5M4J8TYJrcVb11KrZOAOxgHGW3tg5+cipYe8+0C2IMgVQ+teGUR2s  
+U3tmaf0SQ6tn36ZW5hfd8ruARFv7o4ICHDCCAhgwDgYDVR0PAQH/BAQDAgeAMB0G  
+A1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjAMBgNVHRMBAf8EAjAAMB0GA1Ud  
+DgQWBBRXhN9Hwlc+d2Oj6MIz4X8gLlBuPjAfBgNVHSMEGDAWgBQULrMXt1hWy65Q  
+CUDmH6+dixTCxjBVBggrBgEFBQcBAQRJMEcwIQYIKwYBBQUHMAGGFWh0dHA6Ly9y  
+My5vLmxlbmNyLm9yZzAiBggrBgEFBQcwAoYWaHR0cDovL3IzLmkubGVuY3Iub3Jn  
+LzAkBgNVHREEHTAbghlncml0c2tldml0Y2guZnJlZW15aXAuY29tMBMGA1UdIAQM  
+MAowCAYGZ4EMAQIBMIIBBQYKKwYBBAHWeQIEAgSB9gSB8wDxAHcASLDja9qmRzQP  
+5WoC+p0w6xxSActW3SyB2bu/qznYhHMAAAGP1a/8IAAABAMASDBGAiEAiZ7RwnZc  
+EBL9V2axNHz6MskuGVmDNrAHrzHDoMRqY7UCIQDY1mBhcBg10jATKqa3oIrymAno  
+DmRQgXPLR5QP11xYfAB2AD8XS0/XIkdYlB1lHIS+DRLtkDd/H4Vq68G/KIXs+GRu  
+AAABj9Wv/B8AAAQDAEcwRQIgJnNfg70UGKQ4sJOYuFkgRWn3fScSKd73C9vUMgPI  
+xuACIQDclXZhKGM7lnsyQOIdRPFGDXhYroz8SuRzqibkWAKhPjANBgkqhkiG9w0B  
+AQsFAAOCAQEAsQR78VLSNAa8TJx9p/UiVwLbuu5v4lpELR2rd+zQQP1AYg8eIjUt  
+zccP6133Ca2x2uBJba/Sv08FXiEo2u8N9JdFQJBBQplqoCFMTzcMBqjLvI2TL7D8  
+f1jmd1HBpHgB/UCApDCESu2DQiOM+7ZcX9onEWZ0GrtCAQo7BNcyK2oiRLVHkhAN  
+6SLdPPPCtET0xQChk54nUfhccYAByFg3QLrsycWKkdrV8RQUg6tFQ9V01c66nrzn  
+3NHQcjBVLR/4XDTikPdrLIfJPWExwU3xzxbFjykZ6R9vdJK18mD2t94kcrifHZJy  
+C6OPFlRir5ETrTvinDGw5hmOXWJgHrUNUQ==  
+-----END CERTIFICATE-----  
+[Sun 02 Jun 2024 12:23:52 AM MSK] Your cert is in: /root/.acme.sh/gritskevitch.freemyip.com_ecc/gritskevitch.freemyip.com.cer  
+[Sun 02 Jun 2024 12:23:52 AM MSK] Your cert key is in: /root/.acme.sh/gritskevitch.freemyip.com_ecc/gritskevitch.freemyip.com.key  
+[Sun 02 Jun 2024 12:23:52 AM MSK] The intermediate CA cert is in: /root/.acme.sh/gritskevitch.freemyip.com_ecc/ca.cer  
+[Sun 02 Jun 2024 12:23:52 AM MSK] And the full chain certs is there: /root/.acme.sh/gritskevitch.freemyip.com_ecc/fullchain.cer  
+[ERR] issue certs succeed,installing certs...    
+[Sun 02 Jun 2024 12:23:52 AM MSK] The domain 'gritskevitch.freemyip.com' seems to have a ECC cert already, lets use ecc cert.  
+[Sun 02 Jun 2024 12:23:52 AM MSK] Installing key to: /root/cert/gritskevitch.freemyip.com/privkey.pem  
+[Sun 02 Jun 2024 12:23:52 AM MSK] Installing full chain to: /root/cert/gritskevitch.freemyip.com/fullchain.pem  
+[INF] install certs succeed,enable auto renew...    
+[Sun 02 Jun 2024 12:23:53 AM MSK] Already uptodate!  
+[Sun 02 Jun 2024 12:23:53 AM MSK] Upgrade success!  
+[INF] auto renew succeed, certs details:    
+total 16K  
+drwxr-xr-x 2 root root 4.0K Jun  2 00:23 .  
+drwxr-xr-x 3 root root 4.0K Jun  2 00:23 ..  
+-rw-r--r-- 1 root root 3.3K Jun  2 00:23 fullchain.pem  
+-rw------- 1 root root  227 Jun  2 00:23 privkey.pem
+```
+
 >Далее необходимо создать подключение, выбираем `Добавть подключение`, на вкладке `Подключения`
 ![|900](/Media/Vless/3X-UI3.png)
 
