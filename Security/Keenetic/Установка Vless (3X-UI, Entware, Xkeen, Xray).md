@@ -249,16 +249,21 @@ drwxr-xr-x 3 root root 4.0K Jun  2 00:23 ..
 -rw------- 1 root root  227 Jun  2 00:23 privkey.pem
 ```
 
-Возвращаемся в браузер в панель 3X-UI, переходим в `настройки панели`
+Возвращаемся в браузер в панель 3X-UI, переходим в `Настройки панели`
 
 - В поле `Путь к файлу публичного ключа сертификата панели` вставляем путь из терминала `/root/.acme.sh/hoofsandhorns.freemyip.com_ecc/fullchain.cer` 
 - В поле `Путь к файлу приватного ключа сертификата панели` соответственно путь `/root/.acme.sh/hoofsandhorns.freemyip.com_ecc/hoofsandhorns.freemyip.com.key`
-- В поле `Корневой путь URL адреса панели` для большей безопасности вставляем  какое-нибудь секретное слово, например `pusti`
+- В поле `Корневой путь URL адреса панели` для большей безопасности вставляем  какое-нибудь секретное слово, например `/pusti`
 
+![|1100](/Media/Vless/3X-UI3.png)
 
+>Сохраняем и перезапускаем панель 3X-UI, наш адрес теперь
+```http
+https://hoofsandhorns.freemyip.com:2053/pusti/panel/settings
+```
 
 >Далее необходимо создать подключение, выбираем `Добавть подключение`, на вкладке `Подключения`
-![|900](/Media/Vless/3X-UI3.png)
+![|900](/Media/Vless/3X-UI4.png)
 
 Заполняем подключение:  
 - Пишем название в поле `Примечание`, например **Ausweis**
@@ -270,7 +275,7 @@ drwxr-xr-x 3 root root 4.0K Jun  2 00:23 ..
 - Генерируем пару ключей путем нажатия на `Get New Cert`
 - Сохраняем подключение кнопкой `Создать`
 
-![|380](/Media/Vless/3X-UI4.png)
+![|380](/Media/Vless/3X-UI5.png)
 
 Усилим маскировку нашего соединения:  
 - Разворачиваем меню нашего соединения `+`
@@ -278,13 +283,13 @@ drwxr-xr-x 3 root root 4.0K Jun  2 00:23 ..
 - В поле `Flow` выбираем **xtls-rprx-vision**
 - Сохраняем изменения
 
-![|1000](/Media/Vless/3X-UI5.png)
+![|1000](/Media/Vless/3X-UI6.png)
 Готово!  
 Для проверки работоспособности можно воспользоваться телефоном установив на Android приложение [v2rayNG](https://play.google.com/store/apps/details?id=com.v2ray.ang&hl=ru), а на iOS [V2BOX](https://apps.apple.com/us/app/v2box-v2ray-client/id6446814690)  
 Нажимаем значок с QR-кодом и показываем его приложению в телефоне.
 
 
-![|1000](/Media/Vless/3X-UI6.png)
+![|1000](/Media/Vless/3X-UI7.png)
 ## Установка OPKG Entware на маршрутизатор Keenetic
 
 **Для справки**  
@@ -513,7 +518,7 @@ nano /opt/etc/xray/configs/04_outbounds.json
 
 Нажимаем сохранение `CRTL+O`, затем выходим из редактора `CTRL=X` 
 
-![|400](/Media/Vless/3X-UI7.png)
+![|400](/Media/Vless/3X-UI8.png)
 
 >Конфигурационный файл `04_outbounds.json`
 ```shell
