@@ -170,14 +170,14 @@ opkg install curl
 Чтобы управлять трафиком, его нужно маркировать правилами фаервола и весь маркированный направлять в отдельную таблицу маршрутизации. А весь трафик, который проходит через эту таблицу, будет направляться в туннель.
 
 >Начнём с создания специальной таблицы маршрутизации. Можно командой
-```
+```shell
 echo '99 vpn' >> /etc/iproute2/rt_tables
 ```
 
 Можно добавить вручную строку `99 vpn` последней строкой в файл /etc/iproute2/rt_tables.
 
 >Добавим правило, чтоб весь маркированный трафик уходил в созданную таблицу. Через UCI:
-```
+```shell
 uci add network rule
 uci set network.@rule[-1].name='mark0x1'
 uci set network.@rule[-1].mark='0x1'
@@ -187,7 +187,7 @@ uci commit network
 ```
 
 >Либо добавляем это правило в файл `/etc/config/network`
-```
+```q
 config rule
 	option name 'mark0x1'
 	option mark '0x1'
@@ -333,7 +333,7 @@ crontab `crontab -e`
 ```
 
 >И вставляем строку
-```
+```q
 0 */8 * * * /etc/init.d/getdomains start
 ```
 
@@ -391,16 +391,14 @@ opkg update && opkg install dnscrypt-proxy2
 Его конфигурационный файл находится в `/etc/dnscrypt-proxy2/dnscrypt-proxy.toml`  
 Можно поменять используемые серверы в `server_names`.
 
-После этого нужен рестарт
-
+>После этого нужен рестарт
 ```shell
 service dnscrypt-proxy restart
 ```
 
 Получили резолвер, который шифрует свои запросы. Он висит по дефолту на `127.0.0.53:53`.
 
-Можно послать ему DNS-запрос прямо на роутере
-
+>Можно послать ему DNS-запрос прямо на роутере
 ```shell
 nslookup itdog.info 127.0.0.53:53
 ```
@@ -413,8 +411,7 @@ nslookup itdog.info 127.0.0.53:53
 - Добавить `option noresolv '1'`  
 - Добавить dnscrypt как сервер `list server '127.0.0.53#53'`
 
-Можно это сделать через команды UCI:
-
+>Можно это сделать через команды UCI:
 ```shell
 uci set dhcp.@dnsmasq[0].noresolv="1"
 uci -q delete dhcp.@dnsmasq[0].server
