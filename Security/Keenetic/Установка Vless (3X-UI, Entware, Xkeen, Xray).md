@@ -12,7 +12,7 @@ debugInConsole: false # Print debug info in Obsidian console
 
 Российские VDS сервера можно арендовать по [ссылке](https://vps.today/)
 
-Заходим на свой сервер VDS по `ssh`
+>Заходим на свой сервер VDS по `ssh`
 ```shell
 ssh root@yourserver.com
 ```
@@ -29,17 +29,16 @@ apt update && apt upgrade && apt install curl -y
 dnf check-update && dnf upgrade && dnf install curl
 ```
 
-Устанавливаем 3X-UI с помощью скрипта
+>Устанавливаем 3X-UI с помощью скрипта
 ```shell
 bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
 ```
 
->На запрос 
+>На запрос, отвечаем отрицательно `n`
 ```
 Install/update finished! For security it's recommended to modify panel settings    
 Do you want to continue with the modification [y/n]?:
 ```
-отвечаем отрицательно `n`
 
 >Готово, сервер автоматически поднялся на порте 2053, не забываем записать сгенерированные данные
 ```q
