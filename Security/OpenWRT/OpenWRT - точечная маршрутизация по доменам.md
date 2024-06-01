@@ -15,7 +15,8 @@ debugInConsole: false # Print debug info in Obsidian console
 Настроить роутер можно с помощью скрипта. Если вдруг не заведётся сразу, то другим скриптом можно найти, что не работает. Настройка с помощью Ansible никуда не делась, только модифицировалась и стала лучше.  
 Помимо инструкций по настройке туннелей Wireguard и OpenVPN, написал инструкцию по использованию технологий Shadowsocks, VLESS и прочими.  
 Эта инструкция написана под свежую OpenWrt 23.05 и скрипт работает только с ней. Но на предыдущих версиях можно также настроить всё вручную, либо с помощью [Ansible](https://github.com/itdoginfo/domain-routing-openwrt). На них всё работает, но есть свои особенности, которые описаны в первой [статье](https://habr.com/ru/articles/440030/).
-## [Видеоверсия](https://www.youtube.com/watch?v=Otv-kMzGOSU&t=515s)
+
+[Видеоверсия](https://www.youtube.com/watch?v=Otv-kMzGOSU&t=515s)
 
 ![](https://www.youtube.com/watch?v=Otv-kMzGOSU&t=515s)
 ## Зачем настраивать маршруты по спискам
