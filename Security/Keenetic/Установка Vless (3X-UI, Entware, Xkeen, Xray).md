@@ -12,6 +12,8 @@ debugInConsole: false # Print debug info in Obsidian console
 
 Российские VDS сервера можно арендовать по [ссылке](https://vps.today/)
 
+В качестве ssh клиента на Windows можно использовать Putti
+
 >Заходим на свой сервер VDS по `ssh`
 ```shell
 ssh root@yourserver.com
