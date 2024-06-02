@@ -175,7 +175,7 @@ Please enter your selection [0-23]: 16
 Choose an option:1
 ```
 
-Вводим наш зарегистрированный домен `hoofsandhorns.freemyip.com`
+>Вводим наш зарегистрированный домен `hoofsandhorns.freemyip.com`
 ```
 Please enter your domain name:hoofsandhorns.freemyip.com
 ```
