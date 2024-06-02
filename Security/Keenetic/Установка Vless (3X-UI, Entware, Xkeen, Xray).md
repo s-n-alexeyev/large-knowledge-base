@@ -256,6 +256,7 @@ drwxr-xr-x 3 root root 4.0K Jun  2 00:23 ..
 
 Возвращаемся в браузер в панель 3X-UI, переходим в `Настройки панели`
 
+- `Порт` меняем на нестандартный, например `54321`
 - В поле `Путь к файлу публичного ключа сертификата панели` вставляем путь из терминала `/root/.acme.sh/hoofsandhorns.freemyip.com_ecc/fullchain.cer` 
 - В поле `Путь к файлу приватного ключа сертификата панели` соответственно путь `/root/.acme.sh/hoofsandhorns.freemyip.com_ecc/hoofsandhorns.freemyip.com.key`
 - В поле `Корневой путь URL адреса панели` для большей безопасности вставляем  какое-нибудь секретное слово, например `/pusti`
@@ -264,7 +265,7 @@ drwxr-xr-x 3 root root 4.0K Jun  2 00:23 ..
 
 >Сохраняем и перезапускаем панель 3X-UI, наш адрес теперь
 ```http
-https://hoofsandhorns.freemyip.com:2053/pusti/panel/settings
+https://hoofsandhorns.freemyip.com:54321/pusti/panel/settings
 ```
 
 >Далее необходимо создать подключение, выбираем `Добавть подключение`, на вкладке `Подключения`
