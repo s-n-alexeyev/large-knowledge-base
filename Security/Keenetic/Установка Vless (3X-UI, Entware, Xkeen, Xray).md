@@ -10,9 +10,8 @@ debugInConsole: false # Print debug info in Obsidian console
 ```
 ## Установка 3X-UI на VDS сервер
 
-Российские VDS сервера можно арендовать по [ссылке](https://vps.today/)
-
-В качестве ssh клиента на Windows можно использовать [Putty](https://the.earth.li/~sgtatham/putty/latest/w64/putty.exe)
+Российские VDS сервера можно арендовать по [ссылке](https://vps.today/)  
+В качестве ssh-клиента на Windows можно использовать [Putty](https://the.earth.li/~sgtatham/putty/latest/w64/putty.exe)
 
 >Адрес 45.89.67.100 выбран для примера
 
