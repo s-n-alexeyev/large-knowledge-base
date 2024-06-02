@@ -39,7 +39,7 @@ dnf check-update && dnf upgrade && dnf install curl
 bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
 ```
 
->На запрос, отвечаем отрицательно `n`
+>На запрос, отвечаем отрицательно `n`, таким образом будет сгенерирован безопасный логин и пароль
 ```
 Install/update finished! For security it's recommended to modify panel settings    
 Do you want to continue with the modification [y/n]?:n
