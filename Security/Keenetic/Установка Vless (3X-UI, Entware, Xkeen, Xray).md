@@ -16,7 +16,7 @@ debugInConsole: false # Print debug info in Obsidian console
 
 >Адрес 45.89.67.100 выбран для примера
 
-![450](/Media/Vless/putti.png)
+![450](/Media/Vless/Putty1.png)
 
 >На Linux/macOS используем стандартную консоль
 ```shell
@@ -317,7 +317,11 @@ https://hoofsandhorns.freemyip.com:65456/pusti
 [Ветка по теме xkeen на форуме keenetic](https://forum.keenetic.com/topic/16899-xray-%D0%BD%D0%B0-entware-xkeen/page/1/)
 ## Установка скрипта
 
->Заходим по `ssh` на ваш роутер, ip-адрес может отличаться, порт 222 по умолчанию
+>На Windows используем Putty, заходим на ваш роутер, ip-адрес может отличаться, порт 222 по умолчанию
+
+![450](/Media/Vless/Putty2.png)
+
+>На Linux/macOS по `ssh`
 ```
 ssh -p222 root@192.168.1.1
 ```
