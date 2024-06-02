@@ -12,11 +12,14 @@ debugInConsole: false # Print debug info in Obsidian console
 
 Российские VDS сервера можно арендовать по [ссылке](https://vps.today/)
 
-В качестве ssh клиента на Windows можно использовать Putti
+В качестве ssh клиента на Windows можно использовать [Putti](https://the.earth.li/~sgtatham/putty/latest/w64/putty.exe)
 
->Заходим на свой сервер VDS по `ssh`
+
+![|500](/Media/Vless/putti.png)
+
+>На Linux/macOS используем стандартную консоль
 ```shell
-ssh root@yourserver.com
+ssh root@45.89.67.100
 ```
 
 Первым делом обновляемся и устанавливаем `curl`
