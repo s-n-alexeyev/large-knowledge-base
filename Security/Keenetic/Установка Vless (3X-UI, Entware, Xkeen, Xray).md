@@ -12,10 +12,11 @@ debugInConsole: false # Print debug info in Obsidian console
 
 Российские VDS сервера можно арендовать по [ссылке](https://vps.today/)
 
-В качестве ssh клиента на Windows можно использовать [Putti](https://the.earth.li/~sgtatham/putty/latest/w64/putty.exe)
+В качестве ssh клиента на Windows можно использовать [Putty](https://the.earth.li/~sgtatham/putty/latest/w64/putty.exe)
 
+>Адрес 45.89.67.100 выбран для примера
 
-![|500](/Media/Vless/putti.png)
+![450](/Media/Vless/putti.png)
 
 >На Linux/macOS используем стандартную консоль
 ```shell
