@@ -8,7 +8,7 @@ maxLevel: 0 # Include headings up to the specified level
 includeLinks: true # Make headings clickable
 debugInConsole: false # Print debug info in Obsidian console
 ```
-## Установка 3X-UI на VDS сервер
+# Установка 3X-UI на VDS сервер
 
 Российские VDS сервера можно арендовать по [ссылке](https://vps.today/)  
 В качестве ssh-клиента на Windows будем использовать [Putty](https://the.earth.li/~sgtatham/putty/latest/w64/putty.exe)
@@ -106,6 +106,7 @@ curl https://freemyip.com/update?token=f4782a18ef08fd3b3f8b33c4&domain=hoofsandh
 [4]   Завершён        curl https://freemyip.com/updatetoken=f4782a18ef08fd3b3f8b33c4  
 root@3X-UI:/home/user# OK
 ```
+# Панель администрирования 3X-UI
 
 >Возвращаемся в браузер заходим в административную панель 3X-UI уже по нашему адресу `hoofsandhorns.freemyip.com:2053`
 ```http
@@ -119,6 +120,7 @@ hoofsandhorns.freemyip.com:2053
 >Появляется страница со статусом
 
 ![|1000](/Media/Vless/3X-UI2.png)
+## Настройка безопасности в 3X-UI
 
 Чтобы исчезла плашка о предупреждении безопасности необходимо получить SSL сертификат, после чего мы сможем безопасно входить в панель администрирования 3X-UI.
 
@@ -272,6 +274,7 @@ drwxr-xr-x 3 root root 4.0K Jun  2 00:23 ..
 ```http
 https://hoofsandhorns.freemyip.com:65456/pusti
 ```
+## Настройка подключения
 
 >Далее необходимо создать подключение, выбираем `Добавть подключение`, на вкладке `Подключения`
 
@@ -302,7 +305,7 @@ https://hoofsandhorns.freemyip.com:65456/pusti
 
 
 ![|1000](/Media/Vless/3X-UI7.png)
-## Установка OPKG Entware на маршрутизатор Keenetic
+# Установка OPKG Entware на маршрутизатор Keenetic
 
 **Для справки**  
 [**Entware**](https://www.ixbt.com/live/tv/dobavlyaem-podderzhku-repozitoriya-entware-na-android-bokse.html#:~:text=Entware%20%E2%80%94%20%D1%8D%D1%82%D0%BE%20%D0%BC%D0%B5%D0%BD%D0%B5%D0%B4%D0%B6%D0%B5%D1%80%20%D0%9F%D0%9E,%D0%BF%D0%BE%D0%B4%D0%B4%D0%B5%D1%80%D0%B6%D0%BA%D0%BE%D0%B9%20Entware%20%D0%BE%D0%B1%D0%BB%D0%B0%D0%B4%D0%B0%D1%8E%D1%82%20%D0%BF%D1%80%D0%BE%D0%B4%D0%B2%D0%B8%D0%BD%D1%83%D1%82%D1%8B%D0%B5%20%D0%BC%D0%B0%D1%80%D1%88%D1%80%D1%83%D1%82%D0%B8%D0%B7%D0%B0%D1%82%D0%BE%D1%80%D1%8B) — **это** менеджер ПО для встраиваемых систем, который открывает доступ к огромному количеству (более 1500) пакетов программ для Linux, расширяя возможности устройства, на котором он установлен. Чаще всего поддержкой **Entware** обладают продвинутые маршрутизаторы.
@@ -310,7 +313,7 @@ https://hoofsandhorns.freemyip.com:65456/pusti
 Перед установкой OPKG Entware необходимо подготовить Flash-накопитель на USB, подойдет минимальный объем (4-8 GB). Накопитель будет вставлен в USB порт постоянно, на нем будет находиться операционная система.  
 Делаем подготовку USB накопителя по ссылке [[EXT4 на USB-накопителях]] или [Оригинальная статья](https://help.keenetic.com/hc/ru/articles/115005875145-%D0%98%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D1%84%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2%D0%BE%D0%B9-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D1%8B-EXT4-%D0%BD%D0%B0-USB-%D0%BD%D0%B0%D0%BA%D0%BE%D0%BF%D0%B8%D1%82%D0%B5%D0%BB%D1%8F%D1%85)
 После того как имеем подготовленный носитель, приступаем непосредственно к установке [[Установка OPKG Entware на USB-накопитель]] или [Оригинальная статья](https://docs.keenetic.com/eaeu/hopper/kn-3810/ru/20980-installing-the-entware-repository-on-a-usb-drive.html)
-## Настройка клиента `xray` с помощью скрипта `xkeen`
+# Настройка клиента `xray` с помощью скрипта `xkeen`
 
 **Для справки**  
 [Ветка по теме xkeen на форуме keenetic](https://forum.keenetic.com/topic/16899-xray-%D0%BD%D0%B0-entware-xkeen/page/1/)
