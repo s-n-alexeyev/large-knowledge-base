@@ -11,7 +11,7 @@ debugInConsole: false # Print debug info in Obsidian console
 ## Установка 3X-UI на VDS сервер
 
 Российские VDS сервера можно арендовать по [ссылке](https://vps.today/)  
-В качестве ssh-клиента на Windows можно использовать [Putty](https://the.earth.li/~sgtatham/putty/latest/w64/putty.exe)
+В качестве ssh-клиента на Windows будем использовать [Putty](https://the.earth.li/~sgtatham/putty/latest/w64/putty.exe)
 
 >Адрес 45.89.67.100 выбран для примера
 
@@ -42,7 +42,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.
 >На запрос, отвечаем отрицательно `n`
 ```
 Install/update finished! For security it's recommended to modify panel settings    
-Do you want to continue with the modification [y/n]?:
+Do you want to continue with the modification [y/n]?:n
 ```
 
 >Готово, сервер автоматически поднялся на порте 2053, не забываем записать сгенерированные данные
