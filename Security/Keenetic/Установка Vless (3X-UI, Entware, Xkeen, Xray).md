@@ -316,7 +316,8 @@ https://hoofsandhorns.freemyip.com:65456/pusti
 # Настройка клиента `xray` с помощью скрипта `xkeen`
 
 **Для справки**  
-[Ветка по теме xkeen на форуме keenetic](https://forum.keenetic.com/topic/16899-xray-%D0%BD%D0%B0-entware-xkeen/page/1/)
+[Ветка по теме xkeen на форуме keenetic](https://forum.keenetic.com/topic/16899-xray-%D0%BD%D0%B0-entware-xkeen/page/1/)  
+[Подробная инструкция по настройке](https://xskrill.notion.site/XKeen-c9f0f2a5018743b59eb81bd6fccdf25a)
 ## Установка скрипта
 
 >На Windows используем Putty, заходим на ваш роутер, ip-адрес может отличаться, порт 222 по умолчанию
