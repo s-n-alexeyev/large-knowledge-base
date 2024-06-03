@@ -56,7 +56,7 @@ wget https://github.com/xiaorouji/openwrt-passwall2/releases/download/1.28-1/luc
 ```
 
 ```
-opkg install luci-۲۳.۰۵_luci-app-passwall2_1.۲۸-۱_all.ipk
+opkg install luci-23.05_luci-app-passwall2_1.28-1_all.ipk
 ```
 
 ```
