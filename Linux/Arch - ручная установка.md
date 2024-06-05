@@ -451,7 +451,7 @@ mkinitcpio -p linux
 mkinitcpio -p linux-lts
 ```
 
-> ... для всех ядер (`P` - заглавная)
+>... или для всех ядер (`P` - заглавная)
 ```shell
 mkinitcpio -P
 ```
@@ -613,7 +613,7 @@ sudo pacman -S firefox
 yay -S pamac-all
 ```
 
- >Onlyoffice - офис внешне похожий на Microsoft Office
+>Onlyoffice - офис внешне похожий на Microsoft Office
 ```shell
 yay -S onlyoffice-bin
 ```
@@ -633,7 +633,7 @@ yay -S ttf-ms-fonts
 yay -S ttf-hack-nerd
 ```
 
-Шрифт для отображения иероглифического письма
+>Шрифт для отображения иероглифического письма
 ```shell
 sudo pacman -S noto-fonts-cjk
 ```
