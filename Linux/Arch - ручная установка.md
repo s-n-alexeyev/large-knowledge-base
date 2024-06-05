@@ -434,7 +434,7 @@ ParallelDownloads = 10
 ILoveCandy
 ```
 
-> Обновляем, устанавливаем необходимое
+>Обновляем, устанавливаем необходимое
 ```shell
 pacman -Sy
 pacman -S bash-completion openssh arch-install-scripts networkmanager git wget htop neofetch xdg-user-dirs pacman-contrib ntfs-3g
