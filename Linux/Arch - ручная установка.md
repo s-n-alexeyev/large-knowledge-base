@@ -39,7 +39,7 @@ ID TYPE      DEVICE      SOFT      HARD
 ```
 
 >... то выполняем команду
-```shell
+```bash
 rfkill unblock wifi
 ```
 
@@ -51,7 +51,7 @@ ID TYPE      DEVICE      SOFT      HARD
 ```
 
 ## Утилита `iwctl` для работы с WiFi
-```shell
+```bash
 iwctl
 ```
 
@@ -100,7 +100,7 @@ Passphrase: ********
 [iwd]# exit
 ```
 # Проверяем работу сети
-```shell
+```bash
 ping archlinux.org -c3
 ```
 
@@ -120,7 +120,7 @@ rtt min/avg/max/mdev = 98.302/98.356/98.413/0.045 ms
 ## Определяем наш диск
 
 >Команда для просмотра SATA/USB дисков
-```shell
+```bash
 lsblk --scsi
 ```
 
@@ -133,7 +133,7 @@ sdd  8:0:0:0    disk Generic  Flash Disk                  
 ```
 
 >Команда для просмотра NVME дисков
-```shell
+```bash
 lsblk --nvme
 ```
 
@@ -144,7 +144,7 @@ nvme1n1 disk KINGSTON SNV2S1000G     50026B77857A8C32     SBM02103 nvme 
 ```
 
 >Еще вариант просмотра информации о дисках
-```shell
+```bash
 fdisk -l
 ```
 - *в качестве примера будем использовать диск `sda`*
@@ -180,7 +180,7 @@ fdisk -l
 - `gdisk` 
 
 >Будем использовать `fdisk`
-```shell
+```bash
 fdisk /dev/sdX
 ```
 - *где `sdX` ваш диск, в качестве примера везде будет `sda`*
@@ -281,30 +281,30 @@ Partition type or alias (type L to list all): `4`
 ### Форматируем разделы
 
 >Форматируем efi
-```shell
+```bash
 mkfs.fat -F32 /dev/sda1
 ```
 - *в случае использования раздела `bios` форматировать `sda1` не нужно*
 
 >Форматируем boot
-```shell
+```bash
 mkfs.ext4 -L boot /dev/sda2
 ```
 
 >Форматируем и включаем swap
-```shell
+```bash
 mkswap -L swap /dev/sda3
 swapon /dev/sda3
 ```
 
 >Форматируем root
-```shell
+```bash
 mkfs.btrfs -L arch /dev/sda4 -f
 ```
 # Монтируем разделы
 
 >Создаем тома и подтома (subvolumes)
-```shell
+```bash
 mount /dev/sda4 /mnt
 btrfs su cr /mnt/@
 btrfs su cr /mnt/@var
@@ -314,7 +314,7 @@ umount /mnt
 ```
 
 >Монтируем разделы для BIOS и EFI
-```shell
+```bash
 mount -o noatime,compress=lzo,space_cache=v2,ssd,subvol=@ /dev/sda4 /mnt
 mkdir -p /mnt/{home,boot,var,.snapshots}
 mount -o noatime,compress=lzo,space_cache=v2,ssd,subvol=@var /dev/sda4 /mnt/var
@@ -325,50 +325,50 @@ mount /dev/sda2 /mnt/boot
 - *для загрузки BIOS этого достаточно*
 
 >Для EFI загрузки добавляем следующее
-```shell
+```bash
 mkdir /mnt/boot/efi
 mount /dev/sda1 /mnt/boot/efi
 ```
 # Начальная настройка
 
 >Устанавливаем базовую часть системы для новых поколений ПК, самое новое ядро
-```shell
+```bash
 pacstrap /mnt base base-devel linux linux-headers linux-firmware intel-ucode amd-ucode nano
 ```
 
 >Устанавливаем базовую часть системы для ядра с длительной поддержкой (lts)  
 >Актуально для не очень новых ПК
-```shell
+```bash
 pacstrap /mnt base base-devel linux-lts linux-lts-headers linux-firmware intel-ucode amd-ucode nano
 ```
 
 >Генерируем fstab
-```shell
+```bash
 genfstab -pU /mnt >> /mnt/etc/fstab
 ```
 
 >Меняем корневой каталог на `/mnt`
-```shell
+```bash
 arch-chroot /mnt
 ```
 
 >Задаем пароль root
-```shell
+```bash
 passwd
 ```
 
 >Даем имя ПК
-```shell
+```bash
 nano /etc/hostname
 ```
 
 >Настраиваем временную зону
-```shell
+```bash
 ln -sf /usr/share/zoneinfo/Asia/Almaty /etc/localtime
 ```
 
 >Открываем файл с локалями
-```shell
+```bash
 nano /etc/locale.gen
 ```
 
@@ -380,12 +380,12 @@ en_US.UTF8 UTF8
 - *остальные локали на ваше усмотрение*
 
 >Создаем локали
-```shell
+```bash
 locale-gen
 ```
 
 >Настраиваем язык консоли, добавляем кириллицу
-```shell
+```bash
 nano /etc/vconsole.conf
 ```
 
@@ -395,7 +395,7 @@ FONT=cyr-sun16
 ```
 
 >Устанавливаем язык системы по умолчанию
-```shell
+```bash
 nano /etc/locale.conf
 ```
 
@@ -404,17 +404,17 @@ LANG="ru_RU.UTF-8"
 ```
 
 >Инициализируем пакетный менеджер pacman
-```shell
+```bash
 pacman-key --init
 ```
 
 >Загружаем ключи
-```shell
+```bash
 pacman-key --populate archlinux
 ```
 
 >Настраиваем pacman
-```shell
+```bash
 nano /etc/pacman.conf
 ```
 
@@ -435,29 +435,29 @@ ILoveCandy
 ```
 
 >Обновляем, устанавливаем необходимое
-```shell
+```bash
 pacman -Sy
 pacman -S bash-completion openssh arch-install-scripts networkmanager git wget htop neofetch xdg-user-dirs pacman-contrib ntfs-3g
 ```
 - *чтобы заработал `bash-completion` при использовании `TAB`, необходимо выйти из `chroot` (`Ctrl+D`) и войти снова `arch-chroot /mnt`*
 
 >Создаем начальный загрузочный диск
-```shell
+```bash
 mkinitcpio -p linux
 ```
 
 >... в случае lts ядра
-```shell
+```bash
 mkinitcpio -p linux-lts
 ```
 
 >... или для всех ядер (`P` - заглавная)
-```shell
+```bash
 mkinitcpio -P
 ```
 
 >Разрешаем пользователю применять права `root`
-```shell
+```bash
 nano /etc/sudoers
 ```
 
@@ -467,30 +467,30 @@ nano /etc/sudoers
 ```
 
 >Создаем пользователя
-```shell
+```bash
 useradd -mg users -G wheel <<имя_пользователя>>
 ```
 - *где `<<имя_пользователя>>` непосредственно заданное имя, например `user`*
 
 >Задаем пароль пользователю (рекомендуется отличный от пароля root)
-```shell
+```bash
 passwd <<имя_пользователя>>
 ```
 
 >Добавляем в загрузку сетевой менеджер
-```shell
+```bash
 systemctl enable NetworkManager.service
 ```
 
 >Ставим загрузчик Grub для EFI
-```shell
+```bash
 pacman -S grub efibootmgr grub-btrfs os-prober
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=Arch
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
 >Ставим загрузчик Grub для BIOS
-```shell
+```bash
 pacman -S grub grub-btrfs os-prober
 grub-install /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
@@ -498,7 +498,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 # Установка графических драйверов
 
 >Графические драйвера Intel
-```shell
+```bash
 pacman -S xf86-video-intel
 
 #для виртуальной машины c процессором intel
@@ -506,18 +506,18 @@ pacman -S xf86-video-vesa
 ```
 
 >AMD
-```shell
+```bash
 pacman -S lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader
 ```
 
 >NVIDIA
-```shell
+```bash
 pacman -S nvidia nvidia-utils lib32-nvidia-utils nvidia-settings nvidia-dkms
 ```
 # Установка среды рабочего стола
 
 ## KDE
-```shell
+```bash
 pacman -S sddm dolphin kdeconnect konsole konsole kwalletmanager kate plasma plasma-nm plasma-pa powerdevil gwenview okular
 ```
 - *соглашаемся на установку всех дополнительных пакетов*
@@ -527,7 +527,7 @@ pacman -S sddm dolphin kdeconnect konsole konsole kwalletmanager kate plasma pla
 systemctl enable sddm
 ```
 ## XFCE
-```shell
+```bash
 pacman -S lxdm xfce4 xfce4-goodies ttf-liberation ttf-dejavu network-manager-applet ppp pulseaudio-alsa gvfs thunar-volman
 ```
 
@@ -536,29 +536,29 @@ pacman -S lxdm xfce4 xfce4-goodies ttf-liberation ttf-dejavu network-manager-app
 systemctl enable lxdm
 ```
 ## GNOME
-```shell
+```bash
 pacman -S gdm gnome gnome-extra network-manager-applet 
 ```
 
 >Запуск службы загрузчика `gdm`
-```shell
+```bash
 systemctl enable gdm
 ```
 # Финиш
 
 >Выходим с chroot `Ctrl+D`
-```shell
+```bash
 #или по старинке
 exit
 ```
 
 >Рекурсивно размонтируем `/mnt`
-```shell
+```bash
 umount -R /mnt
 ```
 
 >Все настройки готовы, можно перегружаться
-```shell
+```bash
 reboot
 ```
 # Дополнительно
@@ -566,22 +566,22 @@ reboot
 ## Очень полезные дополнения
 
 >Пакетный менеджер `yay` для пользовательского репозитория AUR и ARCH
-```shell
+```bash
 git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 ```
 
 >Timeshift - система резервного копирования
-```shell
+```bash
 sudo pacman -S timeshift
 ```
 
 >Скрипт автоматического резервного копирования при обновлениях
-```shell
+```bash
 yay -S timeshift-autosnap
 ```
 
 >Автоматическая очистка кэша пакетов
-```shell
+```bash
 sudo pacman -S pacman-contrib
 sudo systemctl enable paccache.timer
 ```
@@ -590,7 +590,7 @@ sudo systemctl enable paccache.timer
 Если возникают проблемы с доступом к репозиториям или/и хотим оптимизировать скорость доступа, то есть решение:
 
 >Делаем резервную копию `/etc/pacman.d/mirrorlist`, находим самые быстрые зеркала и сохраняем первые 6
-```shell
+```bash
 sudo pacman -S pacman-contrib
 sudo su
 
@@ -604,47 +604,47 @@ exit
 ## Еще из полезного
 
 >Firefox - известный браузер
-```shell
+```bash
 sudo pacman -S firefox
 ```
 
 >Pamac - графическая оболочка для Pacman, AUR, Flatpak и Snap от разработчиков Manjaro
-```shell
+```bash
 yay -S pamac-all
 ```
 
 >Onlyoffice - офис внешне похожий на Microsoft Office
-```shell
+```bash
 yay -S onlyoffice-bin
 ```
 
 >Проверка орфографии (английская и русская)
-```shell
+```bash
 sudo pacman -S aspell aspell-en aspell-ru
 ```
 
 >Шрифты от Microsoft
-```shell
+```bash
 yay -S ttf-ms-fonts
 ```
 
 >Основной шрифт с дополнительными значками 
-```shell
+```bash
 yay -S ttf-hack-nerd
 ```
 
 >Шрифт для отображения иероглифического письма
-```shell
+```bash
 sudo pacman -S noto-fonts-cjk
 ```
 
 >Stacer - мультиинструмент, очистка диска
-```shell
+```bash
 yay -S stacer-bin
 ```
 
 >Portproton - wine от Valve
-```shell
+```bash
 yay -S portproton
 ```
 
