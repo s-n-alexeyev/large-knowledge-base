@@ -618,7 +618,7 @@ yay -S pamac-all
 yay -S onlyoffice-bin
 ```
 
->Проверка орфографии
+>Проверка орфографии (английская и русская)
 ```shell
 sudo pacman -S aspell aspell-en aspell-ru
 ```
@@ -633,6 +633,11 @@ yay -S ttf-ms-fonts
 yay -S ttf-hack-nerd
 ```
 
+Шрифт для отображения иероглифического письма
+```shell
+sudo pacman -S noto-fonts-cjk
+```
+
 >Stacer - мультиинструмент, очистка диска
 ```shell
 yay -S stacer-bin
@@ -641,3 +646,5 @@ yay -S stacer-bin
 >Portproton - wine от Valve
 ```shell
 yay -S portproton
+```
+
