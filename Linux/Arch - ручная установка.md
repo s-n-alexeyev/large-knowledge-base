@@ -408,7 +408,7 @@ LANG="ru_RU.UTF-8"
 pacman-key --init
 ```
 
->Загружаем популярные ключи
+>Загружаем ключи
 ```shell
 pacman-key --populate archlinux
 ```
