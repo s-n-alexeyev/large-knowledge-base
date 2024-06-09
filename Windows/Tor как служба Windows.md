@@ -22,8 +22,8 @@ SocksPort 127.0.0.1:9050
 
 >Можно ввести по очереди в консоли эти 2 команды чтобы создать этот файл
 ```powershell
-echo DataDirectory %USERPROFILE%\.TOR\Data\ >> %USERPROFILE%\.TOR\Tor\torrc
-echo SocksPort 127.0.0.1:9050 >> %USERPROFILE%\.TOR\Tor\torrc
+echo DataDirectory %USERPROFILE%\.TOR\data\ >> %USERPROFILE%\.TOR\tor\torrc
+echo SocksPort 127.0.0.1:9050 >> %USERPROFILE%\.TOR\tor\torrc
 ```
 
 дальше нам нужно запустить `CMD` от имени Администратора и установить tor в качестве службы.
