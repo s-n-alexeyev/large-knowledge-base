@@ -8,8 +8,8 @@ https://www.torproject.org/ru/download/tor/
 ![Torbundle Windows](../Files/tor-expert-bundle-windows-x86_64-13.0.13.tar.gz)  
 
 >Скачиваем данный архив переходим в директорию нашего пользователя командой
-```shell
-%USERPROFILE%
+```cmd
+%mkdir %USERPROFILE%\.TOR
 ```
 
 Создаем папочку TOR и распаковываем туда содержимое скаченного архива.
@@ -22,7 +22,7 @@ SocksPort 127.0.0.1:9050
 
 >Можно ввести по очереди в консоли эти 2 команды чтобы создать этот файл
 ```powershell
-echo DataDirectory C:\Users\user\.TOR\Data\ >> %USERPROFILE%\.TOR\Tor\torrc
+echo DataDirectory %USERPROFILE%\.TOR\Data\ >> %USERPROFILE%\.TOR\Tor\torrc; echo SocksPort 127.0.0.1:9050 >> %USERPROFILE%\.TOR\Tor\torrc
 echo SocksPort 127.0.0.1:9050 >> %USERPROFILE%\.TOR\Tor\torrc
 ```
 * где *user* = название профиля вашего пользователя
