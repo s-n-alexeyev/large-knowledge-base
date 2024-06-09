@@ -35,7 +35,7 @@ sc create TOR binPath= ""%USERPROFILE%\.TOR\Tor\tor.exe" --nt-service -f "%USERP
 
 >добавляем в автозапуск
 ```powershell
-sc config TOR start=auto
+sc config TOR start= auto
 ```
 
 > запуск службы
