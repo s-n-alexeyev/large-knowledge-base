@@ -638,9 +638,9 @@ yay -S ttf-hack-nerd
 sudo pacman -S noto-fonts-cjk
 ```
 
->Stacer - мультиинструмент, очистка диска
+>Bleachbit — очистка диска
 ```bash
-yay -S stacer-bin
+sudo pacman -S bleachbit
 ```
 
 >Portproton - wine от Valve
