@@ -452,23 +452,73 @@ nano /opt/etc/xray/configs/03_inbounds.json
 
 ```json
 {  
- "inbounds": [  
-   {  
-     "listen": "192.168.1.1",  
-     "port": 2080,  
-     "protocol": "socks",  
-     "settings": {  
-       "auth": "noauth",  
-       "udp": false  
-     },  
-     "sniffing": {  
-       "destOverride": ["http", "tls", "quic"],  
-       "enabled": true,  
-       "metadataOnly": false  
-     },  
-     "tag": "socks-in"  
-   }  
- ]  
+ "inbounds": [  
+  
+   // Mixed TCP  
+   {  
+     "tag": "redirect",  
+     "port": 61219,  
+     "protocol": "dokodemo-door",  
+     "settings": {  
+       "network": "tcp",  
+       "followRedirect": true  
+     },  
+     "sniffing": {  
+       "enabled": true,  
+       "routeOnly": true,  
+       "destOverride": [  
+         "http",  
+         "tls",  
+         "quic"  
+       ]  
+     }  
+   },  
+  
+   // Mixed UDP  
+   {  
+     "tag": "tproxy",  
+     "port": 61219,  
+     "protocol": "dokodemo-door",  
+     "settings": {  
+       "network": "udp",  
+       "followRedirect": true  
+     },  
+     "streamSettings": {  
+       "sockopt": {  
+         "tproxy": "tproxy"  
+       }  
+     },  
+     "sniffing": {  
+       "enabled": true,  
+       "routeOnly": true,  
+       "destOverride": [  
+         "http",  
+         "tls",  
+         "quic"  
+       ]  
+     }  
+   },  
+  
+   // TUN  
+   { 
+     "tag": "socks",  
+     "port": 2080,  
+     "protocol": "socks",  
+     "settings": {  
+       "auth": "noauth",  
+       "udp": true  
+     },  
+     "sniffing": {  
+       "enabled": true,  
+       "routeOnly": true,  
+       "destOverride": [  
+         "http",  
+         "tls",  
+         "quic"  
+       ]  
+     }  
+   }  
+ ]  
 }
 ```
 **Внимание**  
