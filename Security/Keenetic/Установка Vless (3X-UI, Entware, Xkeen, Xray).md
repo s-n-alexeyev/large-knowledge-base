@@ -462,7 +462,7 @@ nano /opt/etc/xray/configs/03_inbounds.json
        "udp": false  
      },  
      "sniffing": {  
-       "destOverride": ["http", "tls"],  
+       "destOverride": ["http", "tls", "quic"],  
        "enabled": true,  
        "metadataOnly": false  
      },  
@@ -617,7 +617,23 @@ xkeen -restart
 ![|500](/Media/Vless/Keenetic5.png)
 
 6. Чтобы заработал UDP через TUN0 необходимо применить такое правило в WebUI 
+ Подключение к командной строке интернет-центра Keenetic из веб-конфигуратора
 
+Подключившись к веб-конфигуратору в адресной строке браузера вы увидите адрес вида **http://192.168.1.1/dashboard**  
+Сотрите слово **dashboard** и после символа косой черты **/** добавьте маленькую строчную букву **a** английского алфавита **http://192.168.1.1/a**
+
+В веб-интерфейсе откроется страница **Web cli**, с которой можно отправлять команды для роутера.
+```
+interface Proxy0 proxy socks5-udp
+```
+
+![|800](/Media/Vless/Keenetic6.png)
+
+```
+system configuration save 
+```
+
+![|800](/Media/Vless/Keenetic7.png)
 Все готово! Проверяем наш внешний IP-адрес.
 
 ![|600](/Media/Vless/ifconfig.png)
