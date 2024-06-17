@@ -623,7 +623,6 @@ nano /opt/etc/xray/configs/05_routing.json
    ]  
  }  
 }
-
 ```
 
 VPS подключение  
