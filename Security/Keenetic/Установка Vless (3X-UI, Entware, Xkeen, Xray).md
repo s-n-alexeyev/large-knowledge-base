@@ -538,45 +538,41 @@ nano /opt/etc/xray/configs/04_outbounds.json
 ```
 
 ```json
-{  
- "outbounds": [  
-   {  
-     "domainStrategy": "UseIPv4",  
-     "tag": "vless-reality",  
-     "protocol": "vless",  
-     "settings": {  
-       "vnext": [  
-         {  
-           "address": "hoofsandhorns.freemyip.com",  
-           "port": 443,  
-           "users": [  
-             {  
-               "id": "8bda3d23-262f-44ff-b8a3-f7dfc83cb705",  
-               "encryption": "none",  
-               "flow": "xtls-rprx-vision",  
-               "level": 0  
-             }  
-           ]  
-         }  
-       ]  
-     },  
-     "streamSettings": {  
-       "network": "tcp",  
-       "security": "reality",  
-       "realitySettings": {  
-         "publicKey": "Jf0f3n7elMH7PZNXpCKcKzT7Qx2_n1kvA6NIwn_eSk4",  
-         "fingerprint": "chrome",  
-         "serverName": "yandex.ru",  
-         "shortId": "d0c03b88",  
-         "spiderX": "/"  
-       }  
-     }  
-   },  
-   {  
-     "tag": "dns",  
-     "protocol": "dns"  
-   }  
- ]  
+{
+  "outbounds": [
+    {
+      "domainStrategy": "UseIPv4",
+      "tag": "vless-reality",
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "hoofsandhorns.freemyip.com",
+            "port": 443,
+            "users": [
+              {
+                "id": "8bda3d23-262f-44ff-b8a3-f7dfc83cb705",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision",
+                "level": 0
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "publicKey": "Jf0f3n7elMH7PZNXpCKcKzT7Qx2_n1kvA6NIwn_eSk4",
+          "fingerprint": "chrome",
+          "serverName": "yandex.ru",
+          "shortId": "d0c03b88",
+          "spiderX": "/"
+        }
+      }
+    }
+  ]
 }
 ```
 
