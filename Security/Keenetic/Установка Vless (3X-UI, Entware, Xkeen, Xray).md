@@ -616,6 +616,8 @@ xkeen -restart
 
 ![|500](/Media/Vless/Keenetic5.png)
 
+6. Чтобы заработал UDP через TUN0 необходимо применить такое правило в WebUI 
+
 Все готово! Проверяем наш внешний IP-адрес.
 
 ![|600](/Media/Vless/ifconfig.png)
