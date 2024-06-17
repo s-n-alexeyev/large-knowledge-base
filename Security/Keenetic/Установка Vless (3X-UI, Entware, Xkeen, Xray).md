@@ -601,6 +601,33 @@ nano /opt/etc/xray/configs/05_routing.json
 
 ```json
 {  
+ "routing": {  
+   "rules": [  
+  
+     // Блокируем соединение по уязвимым UDP портам  
+     {  
+       "inboundTag": ["redirect", "tproxy", "socks"],  
+       "outboundTag": "block",  
+       "type": "field",  
+       "network": "udp",  
+       "port": "135, 137, 138, 139"  
+     },  
+   
+     // Настройка 
+     {  
+       "inboundTag": ["redirect", "tproxy", "socks"],  
+       "outboundTag": "vless-reality",  
+       "type": "field"  
+     }  
+  
+   ]  
+ }  
+}
+
+
+
+
+{  
  "routing": {
    "rules": [
      // Прямые подключение  |  Доменные имена
