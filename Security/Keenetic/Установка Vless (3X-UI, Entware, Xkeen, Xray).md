@@ -451,74 +451,71 @@ nano /opt/etc/xray/configs/03_inbounds.json
 ```
 
 ```json
-{  
- "inbounds": [  
-  
-   // Mixed TCP  
-   {  
-     "tag": "redirect",  
-     "port": 61219,  
-     "protocol": "dokodemo-door",  
-     "settings": {  
-       "network": "tcp",  
-       "followRedirect": true  
-     },  
-     "sniffing": {  
-       "enabled": true,  
-       "routeOnly": true,  
-       "destOverride": [  
-         "http",  
-         "tls",  
-         "quic"  
-       ]  
-     }  
-   },  
-  
-   // Mixed UDP  
-   {  
-     "tag": "tproxy",  
-     "port": 61219,  
-     "protocol": "dokodemo-door",  
-     "settings": {  
-       "network": "udp",  
-       "followRedirect": true  
-     },  
-     "streamSettings": {  
-       "sockopt": {  
-         "tproxy": "tproxy"  
-       }  
-     },  
-     "sniffing": {  
-       "enabled": true,  
-       "routeOnly": true,  
-       "destOverride": [  
-         "http",  
-         "tls",  
-         "quic"  
-       ]  
-     }  
-   },  
-  
-   // TUN  
-   { 
-     "tag": "socks",  
-     "port": 2080,  
-     "protocol": "socks",  
-     "settings": {  
-       "auth": "noauth",  
-       "udp": true  
-     },  
-     "sniffing": {  
-       "enabled": true,  
-       "routeOnly": true,  
-       "destOverride": [  
-         "http",  
-         "tls",  
-         "quic"  
-       ]  
-     }  
-   }  
- ]  
+{
+  "inbounds": [
+    {
+    // Mixed TCP
+      "tag": "redirect",
+      "port": 61219,
+      "protocol": "dokodemo-door",
+      "settings": {
+        "network": "tcp",
+        "followRedirect": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "routeOnly": true,
+        "destOverride": [
+          "http",
+          "tls",
+          "quic"
+        ]
+      }
+    },
+    {
+    // Mixed UDP
+      "tag": "tproxy",
+      "port": 61219,
+      "protocol": "dokodemo-door",
+      "settings": {
+        "network": "udp",
+        "followRedirect": true
+      },
+      "streamSettings": {
+        "sockopt": {
+          "tproxy": "tproxy"
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "routeOnly": true,
+        "destOverride": [
+          "http",
+          "tls",
+          "quic"
+        ]
+      }
+    },
+    {
+    // TUN
+      "tag": "socks",
+      "port": 2080,
+      "protocol": "socks",
+      "settings": {
+        "auth": "noauth",
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "routeOnly": true,
+        "destOverride": [
+          "http",
+          "tls",
+          "quic"
+        ]
+      }
+    }
+  ]
 }
 ```
 **Внимание**  
@@ -596,28 +593,33 @@ nano /opt/etc/xray/configs/05_routing.json
 ```
 
 ```json
-{  
- "routing": {  
-   "rules": [  
-  
-     // Блокируем соединение по уязвимым UDP портам  
-     {  
-       "inboundTag": ["redirect", "tproxy", "socks"],  
-       "outboundTag": "block",  
-       "type": "field",  
-       "network": "udp",  
-       "port": "135, 137, 138, 139"  
-     },  
-   
-     // Настройка vless
-     {  
-       "inboundTag": ["redirect", "tproxy", "socks"],  
-       "outboundTag": "vless-reality",  
-       "type": "field"  
-     }  
-  
-   ]  
- }  
+{
+  "routing": {
+    "rules": [
+    // Блокируем соединение по уязвимым UDP портам
+      {
+        "inboundTag": [
+          "redirect",
+          "tproxy",
+          "socks"
+        ],
+        "outboundTag": "block",
+        "type": "field",
+        "network": "udp",
+        "port": "135, 137, 138, 139"
+      },
+    // Настройка vless
+      {
+        "inboundTag": [
+          "redirect",
+          "tproxy",
+          "socks"
+        ],
+        "outboundTag": "vless-reality",
+        "type": "field"
+      }
+    ]
+  }
 }
 ```
 
