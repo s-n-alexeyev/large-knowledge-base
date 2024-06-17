@@ -17,6 +17,11 @@ debugInConsole: false # Print debug info in Obsidian console
 
 ![450](/Media/Vless/Putty1.png)
 
+>Альтернативно на Windows начиная с Windows 8, можно подключатся из консоли Powershell, также как и на Linux/macOS
+```powershell
+ssh root@45.89.67.100
+```
+
 >На Linux/macOS используем стандартную консоль
 ```shell
 ssh root@45.89.67.100
