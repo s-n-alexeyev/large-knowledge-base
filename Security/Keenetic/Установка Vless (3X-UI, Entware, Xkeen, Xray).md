@@ -613,7 +613,7 @@ nano /opt/etc/xray/configs/05_routing.json
        "port": "135, 137, 138, 139"  
      },  
    
-     // Настройка 
+     // Настройка vless
      {  
        "inboundTag": ["redirect", "tproxy", "socks"],  
        "outboundTag": "vless-reality",  
@@ -624,28 +624,6 @@ nano /opt/etc/xray/configs/05_routing.json
  }  
 }
 
-
-
-
-{  
- "routing": {
-   "rules": [
-     // Прямые подключение  |  Доменные имена
-     {
-       "inboundTag": ["redirect", "tproxy"],
-       "domain": ["keenetic.com"],
-       "outboundTag": "direct",
-       "type": "field"
-     },
-     // VPS подключение  |  Основное
-     {
-       "inboundTag": ["socks-in"],
-       "outboundTag": "vless-reality",
-       "type": "field"
-     }
-   ]
- }
-}
 ```
 
 VPS подключение  
@@ -693,8 +671,7 @@ xkeen -restart
 
 ![|500](/Media/Vless/Keenetic5.png)
 
-6. Чтобы заработал UDP через TUN0 необходимо применить такое правило в WebUI 
- Подключение к командной строке интернет-центра Keenetic из веб-конфигуратора
+6.  Подключение к командной строке интернет-центра Keenetic из веб-конфигуратора
 
 Подключившись к веб-конфигуратору в адресной строке браузера вы увидите адрес вида **http://192.168.1.1/dashboard**  
 Сотрите слово **dashboard** и после символа косой черты **/** добавьте маленькую строчную букву **a** английского алфавита **http://192.168.1.1/a**
