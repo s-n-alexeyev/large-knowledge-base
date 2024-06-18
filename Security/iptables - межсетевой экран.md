@@ -253,7 +253,6 @@ sudo invoke-rc.d iptables-persistent save
 - удаление цепочки правил
 
 Все действия будем проводить в ОС [Ubuntu 20.04](https://releases.ubuntu.com/20.04/).
-
 ## Вывод списка правил iptables
 
 Утилита iptables позволяет нам выводить список правил в двух форматах – в построчном и табличном.
@@ -341,11 +340,14 @@ num  target     prot opt source               destination
 sudo iptables -L INPUT -v
 ```
 
-Вывод команды:
+>Вывод команды:
+```
+pkts bytes target     prot opt in     out     source               destination            
+17067 1005K TCP        tcp  --  any    any     anywhere             anywhere             tcp flags:FIN,SYN,RST,ACK/SYN ctstate NEW
+ 2410  154K ICMP       icmp --  any    any     anywhere             anywhere             ctstate NEW
+  396 63275 REJECT     udp  --  any    any     anywhere             anywhere             reject-with icmp-port-unreachable
+```
 
-![](/Media/iptables/outp2.png)
-
-  
 >Непосредственно сам сброс счетчиков выполняется командой:
 ```bash
 sudo iptables -Z INPUT
@@ -365,7 +367,6 @@ sudo iptables -Z
 ## Удаление правил iptables
 
 Приведем различные способы удаления правил iptables.
-
 ### Удаление по имени правила.
 
 >В этом случае используется ключ -D после которого следует имя правила в виде строки. Имя правила узнаем при помощи команды, рассмотренной выше:
@@ -386,7 +387,6 @@ iptables -D INPUT -i eth0 -p tcp --dport 443 -j ACCEPT
 ```
 
 Обратите внимание, что ключ -A при удалении правила не указывается.
-
 ### Удаление по номеру правила в цепочке.
 
 >Для удаления этим способом нам необходимо знать название цепочки, к которой принадлежит правило и его порядковый номер в ней. Все это определяется командой:
@@ -416,7 +416,6 @@ sudo iptables -D ИМЯ ЦЕПОЧКИ НОМЕР
 ```bash
 sudo iptables -D INPUT 5
 ```
-
 ### Удаление всех правил iptables
 
 >Мы можем удалить все правила в пределах одной цепи. Для этого используется ключ -F. Например, удалим все правила цепочки INPUT:
