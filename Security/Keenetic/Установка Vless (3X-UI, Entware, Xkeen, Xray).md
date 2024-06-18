@@ -115,7 +115,7 @@ root@3X-UI:/home/user# OK
 
 >Возвращаемся в браузер заходим в административную панель 3X-UI уже по нашему адресу `hoofsandhorns.freemyip.com:2053`
 ```http
-hoofsandhorns.freemyip.com:2053
+hoofsandhorns.freemyip.com:2053/mBDNYtiG
 ```
 
 >Выбираем русский язык и тему, вводим записанный наш логин и пароль
