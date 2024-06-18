@@ -691,5 +691,14 @@ system configuration save
 
 ![|800](/Media/Vless/Keenetic7.png)
 Все готово! Проверяем наш внешний IP-адрес.
+```http
+ifconfig.co
+
+# или
+ifconfig.me
+
+# или
+https://browserleaks.com/ip
+```
 
 ![|600](/Media/Vless/ifconfig.png)
