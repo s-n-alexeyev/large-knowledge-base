@@ -698,7 +698,7 @@ ifconfig.co
 ifconfig.me
 
 # или
-https://browserleaks.com/ip
+browserleaks.com/ip
 ```
 
 ![|600](/Media/Vless/ifconfig.png)
