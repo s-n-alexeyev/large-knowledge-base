@@ -691,7 +691,7 @@ system configuration save
 
 ![|800](/Media/Vless/Keenetic7.png)
 Все готово! Проверяем наш внешний IP-адрес.
-```http
+```q
 ifconfig.co
 
 # или
