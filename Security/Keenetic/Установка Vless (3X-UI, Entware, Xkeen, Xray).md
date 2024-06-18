@@ -325,7 +325,7 @@ https://hoofsandhorns.freemyip.com:65456/pusti
 [Подробная инструкция по настройке](https://xskrill.notion.site/XKeen-c9f0f2a5018743b59eb81bd6fccdf25a)
 ## Установка скрипта
 
->На Windows используем Putty, заходим на ваш роутер, ip-адрес может отличаться, порт 222 по умолчанию
+>На Windows используем Putty, заходим на ваш роутер, ip-адрес может отличаться, порт 222, если задействован SSH компонент в Keenetic OS, если нет, то стандартный 22
 
 ![450](/Media/Vless/Putty2.png)
 
