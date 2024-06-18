@@ -1,4 +1,4 @@
- 2021-08-13
+ 2021-08-13  
 [Оригинальная статья](https://ruvds.com/ru/helpcenter/iptables/)
 
 ```table-of-contents
@@ -425,6 +425,6 @@ sudo iptables -F INPUT
 ```
 
 >Для удаления правил во всех цепочках вводим команду:
-```
-user@ruvds-0hrc0:~# sudo iptables -F
+```bash
+sudo iptables -F
 ```
