@@ -92,3 +92,57 @@ echo UseBridges 1 >> >> %USERPROFILE%\.TOR\tor\torrc
 ```powershell
 @( "ClientTransportPlugin obfs4 exec $env:USERPROFILE\.TOR\tor\pluggable_transports\lyrebird.exe", "UseBridges 1" ) | ForEach-Object { Add-Content -Path "$env:USERPROFILE\.TOR\tor\torrc" -Value $_ }
 ```
+
+```powershell
+# URL каталога с дистрибутивами Tor
+$url = "https://tor.askapache.com/dist/torbrowser/13.0.16/"
+
+# Каталог для сохранения и распаковки
+$destinationFolder = "$env:USERPROFILE\test"
+
+# Убедитесь, что каталог назначения существует
+if (-not (Test-Path -Path $destinationFolder)) {
+    New-Item -ItemType Directory -Path $destinationFolder
+}
+
+# Отправка HTTP-запроса и получение HTML-контента
+$htmlContent = Invoke-WebRequest -Uri $url
+
+# Извлечение ссылок из HTML-контента
+$links = $htmlContent.Links | Where-Object { $_.href -match "tor-expert-bundle-windows-x86_64-.*\.tar\.gz$" } | Select-Object -ExpandProperty href
+
+# Извлечение версий из ссылок
+$versions = $links | ForEach-Object {
+    if ($_ -match "tor-expert-bundle-windows-x86_64-([0-9.]+)\.tar\.gz") {
+        [PSCustomObject]@{
+            Link = $_
+            Version = [Version]$matches[1]
+        }
+    }
+}
+
+# Определение последней версии
+$latestVersion = $versions | Sort-Object -Property Version -Descending | Select-Object -First 1
+
+# Полный URL последней версии
+$latestUrl = $url + $latestVersion.Link
+
+# Локальный путь для сохранения скачанного файла
+$localFile = "$destinationFolder\tor-expert-bundle-windows-x86_64-$($latestVersion.Version).tar.gz"
+
+# Скачивание файла
+Invoke-WebRequest -Uri $latestUrl -OutFile $localFile
+
+# Распаковка файла с использованием встроенной утилиты tar
+$tarPath = "tar.exe" # Убедитесь, что tar.exe доступен в PATH
+
+# Распаковка .tar.gz файла
+Start-Process -FilePath $tarPath -ArgumentList "-xzf `"$localFile`" -C `"$destinationFolder`"" -NoNewWindow -Wait
+
+# Удаление архива после распаковки
+Remove-Item -Path $localFile -Force
+
+Write-Output "Последняя версия ($($latestVersion.Version)) скачана и распакована в $destinationFolder"
+Write-Output "Архив $localFile был удалён после распаковки"
+
+```
