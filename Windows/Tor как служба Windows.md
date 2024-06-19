@@ -81,4 +81,5 @@ Bridge obfs4 207.188.129.151:9339 C16DA5F7C8FDC6BF2F3C3ABF59E8E3677914F172 cert=
 
 ```powershell
 echo ClientTransportPlugin obfs4 exec %USERPROFILE%\.TOR\tor\pluggable_transports\lyrebird.exe  >> %USERPROFILE%\.TOR\tor\torrc
+echo UseBridges 1 >> >> %USERPROFILE%\.TOR\tor\torrc
 ```
