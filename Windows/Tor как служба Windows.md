@@ -9,7 +9,7 @@ https://www.torproject.org/ru/download/tor/
 
 >Скачиваем данный архив переходим в директорию нашего пользователя командой
 ```cmd
-%mkdir %USERPROFILE%\.TOR
+mkdir %USERPROFILE%\.TOR
 ```
 
 Создаем папочку TOR и распаковываем туда содержимое скаченного архива.
