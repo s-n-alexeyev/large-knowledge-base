@@ -145,6 +145,6 @@ Remove-Item -Path $localFile -Force
 Write-Output "Последняя версия ($($latestVersion.Version)) скачана и распакована в $destinationFolder"
 Write-Output "Архив $localFile был удалён после распаковки"
 
-@( ""DataDirectory $env:USERPROFILE\.TOR\data\", "SocksPort 127.0.0.1:9050", ClientTransportPlugin obfs4 exec $env:USERPROFILE\.TOR\tor\pluggable_transports\lyrebird.exe", "UseBridges 1" ) | ForEach-Object { Add-Content -Path "$env:USERPROFILE\.TOR\tor\torrc" -Value $_ }
+@( "DataDirectory $env:USERPROFILE\.TOR\data\", "SocksPort 127.0.0.1:9050", "ClientTransportPlugin obfs4 exec $env:USERPROFILE\.TOR\tor\pluggable_transports\lyrebird.exe", "UseBridges 1" ) | ForEach-Object { Add-Content -Path "$env:USERPROFILE\.TOR\tor\torrc" -Value $_ }
 
 ```
