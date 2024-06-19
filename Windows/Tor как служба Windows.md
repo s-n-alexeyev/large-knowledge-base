@@ -23,6 +23,9 @@ SocksPort 127.0.0.1:9050
 >Можно ввести по очереди в консоли эти 2 команды чтобы создать этот файл
 ```powershell
 echo DataDirectory %USERPROFILE%\.TOR\data\ >> %USERPROFILE%\.TOR\tor\torrc
+```
+
+```powershell
 echo SocksPort 127.0.0.1:9050 >> %USERPROFILE%\.TOR\tor\torrc
 ```
 
