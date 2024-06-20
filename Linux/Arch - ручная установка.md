@@ -31,7 +31,7 @@ debugInConsole: false # Print debug info in Obsidian console
 rfkill
 ```
 
->Если видим что что заблокирован wlan,
+>Если видим что заблокирован wlan,
 ```
 ID TYPE      DEVICE      SOFT      HARD  
 0 bluetooth hci0   unblocked unblocked  
