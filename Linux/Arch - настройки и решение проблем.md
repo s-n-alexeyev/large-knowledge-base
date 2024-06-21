@@ -245,3 +245,9 @@ cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
 sudo rankmirrors -n 6 /etc/pacman.d/mirrorlist.bak > /etc/pacman.d/mirrorlist
 exit
 ```
+
+## arch a start job is running for /dev/tmprm0
+
+```bash
+systemctl mask dev-tpmrm0.device
+```
