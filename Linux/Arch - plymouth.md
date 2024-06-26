@@ -12,7 +12,7 @@ debugInConsole: false # Print debug info in Obsidian console
 Будьте внимательны, делайте резервную копию! При неправильных действиях можно повредить загрузку системы!
 ## Правим grub
 
-```shell
+```bash
 sudo nano /etc/default/grub
 ```
 
@@ -24,12 +24,12 @@ GRUB_CMDLINE_LINUX_DEFAULT="quiet loglevel=3 systemd.show_status=auto splash rd.
 ```
 
 > Обновляем Grub
-```shell
+```bash
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
 ## Правим mkinitcpio.conf
 
-```shell
+```bash
 sudo nano /etc/mkinitcpio.conf
 ```
 
@@ -44,12 +44,12 @@ MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)
 ```
 
 >Смотрим доступные ядра
-```shell
+```bash
 ls /etc/mkinitcpio.d/
 ```
 
 >Сборка ядра,  где `linux` - ваше ядро
-```shell
+```bash
 sudo mkinitcpio -p linux
 ```
 ## Выбор темы
@@ -70,7 +70,7 @@ Plymouth поставляется со следующими темами:
 10. _(**Details**: "Резервная тема с подробностями загрузки")_
 
 >По умолчанию используется тема **bgrt**. Чтобы выбрать другую, пропишите её в настройках
-```shell
+```bash
 sudo nano /etc/plymouth/plymouthd.conf
 ```
 
@@ -81,7 +81,7 @@ Theme=fade-in
 ```
 
 >Или выберите тему с помощью команды:
-```shell
+```bash
 plymouth-set-default-theme -R _тема_
 ```
 
@@ -91,7 +91,7 @@ plymouth-set-default-theme -R _тема_
 Дополнительные темы доступны в [AUR](https://wiki.archlinux.org/title/Arch_User_Repository_(%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9) "Arch User Repository (Русский)"). [[1]](https://aur.archlinux.org/packages?K=plymouth-theme-) Также [plymouth-kcm](https://archlinux.org/packages/?name=plymouth-kcm) добавляет интеграцию с настройками KDE Plasma и предлагает темы, отсутствующие в AUR.
 
 >Список установленных тем можно получить командой:
-```shell
+```bash
 plymouth-set-default-theme -l
 # или
 ls /usr/share/plymouth/themes
@@ -101,7 +101,7 @@ ls /usr/share/plymouth/themes
 ### Задержка отображения
 
 >Plymouth позволяет добавить задержку перед отображением графического экрана загрузки:
-```shell
+```bash
 sudo nano /etc/plymouth/plymouthd.conf
 ```
 
@@ -114,7 +114,7 @@ ShowDelay=5
 ### HiDPI
 
 >Пропишите коэффициент масштабирования (целое число) в настройках:
-```shell
+```bash
 sudo nano /etc/plymouth/plymouthd.conf
 ```
 
@@ -126,14 +126,14 @@ DeviceScale=_коэффициент-масштабирования_
 ## Дополнительно
 
 >Для абсолютно чистой загрузки правим на свой страх и риск
-```shell
+```bash
 sudo nano /etc/grub.d/10_linux
 ```
 
 в функции `linux_entry ()` находим `'echo '$(echo "$message" | grub_quote)'` и удаляем
 
 >Проделать изменение можно скриптом запущенным от root
-```shell
+```bash
 #!/bin/bash
 
 # Искомая строка
@@ -155,6 +155,6 @@ echo "Строка '$search_string' удалена из файла $file_path."
 ```
 
 >После чего заново обновляем Grub
-```shell
+```bash
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
