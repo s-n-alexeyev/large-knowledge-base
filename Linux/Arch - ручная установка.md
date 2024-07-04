@@ -580,6 +580,11 @@ sudo pacman -S timeshift
 yay -S timeshift-autosnap
 ```
 
+>Контекстное меню для Dolphin `Открыть от имени администратора`
+```bash
+sudo pacman -S kio-admin
+```
+
 >Автоматическая очистка кэша пакетов
 ```bash
 sudo pacman -S pacman-contrib
