@@ -54,6 +54,7 @@ debugInConsole: false # Print debug info in Obsidian console
   - youtube 4k downloader  - [загрузка видео](https://addons.mozilla.org/en-US/firefox/addon/youtube-4k-downloader/)
   - yet another smooth scrolling - [плавный скролинг](https://addons.mozilla.org/en-US/firefox/addon/yass-we/)
   - plasma integration - [воспроизведение в трее](https://addons.mozilla.org/en-US/firefox/addon/plasma-integration/)
+  - Control Panel for YouTube - [управление youtube](https://addons.mozilla.org/en-US/firefox/addon/control-panel-for-youtube/)
 ```bash
 ln -s ~/.mozilla/native-messaging-hosts ~/.librewolf/native-messaging-hosts
 sudo ln -s /usr/lib/mozilla/native-messaging-hosts /usr/lib/librewolf/native-messaging-hosts
