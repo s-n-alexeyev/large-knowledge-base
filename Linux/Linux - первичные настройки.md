@@ -29,7 +29,27 @@ debugInConsole: false # Print debug info in Obsidian console
 ---
 # Браузеры
 
-## librewolf
+### Librewolf ARCH
+
+```bash
+yay -S librewolf-bin
+```
+### Librewolf RPM
+
+>создаем репозиторий и добавляем запись
+```bash
+sudo dnf config-manager --add-repo https://rpm.librewolf.net
+```
+
+>добавляем ключ
+```bash
+sudo rpm --import https://keys.openpgp.org/vks/v1/by-fingerprint/034F7776EF5E0C613D2F7934D29FBD5F93C0CFC3
+```
+
+>устанавливаем
+```bash
+sudo dnf install --refresh librewolf
+```
 
  about:config -- настройки
  - gfx.webrender.all = TRUE
@@ -41,48 +61,47 @@ debugInConsole: false # Print debug info in Obsidian console
  - widget.use-xdg-desktop-portal  = 1 //было 2 (открытие файлов через Dolphin в Firefox/Librewolf)
 
  about:support -- просмотр поддержек
-### плагины для браузера
+### Плагины для браузера
 
-
-| Название | Адрес |
-| -------- | ----- |
-|          |       |
-
-  - Canvas Blocker - [блокировщик холста](https://addons.mozilla.org/en-US/firefox/addon/canvasblocker/)
-  - Popup Blocker  - [блокировщик всплывающих окон](https://addons.mozilla.org/en-US/firefox/addon/popup-blocker/)
-  - Disconnect  - [борьба с поиском и историей просмотра](https://addons.mozilla.org/en-US/firefox/addon/disconnect/)
-  - Dark Reader - [страницы в тёмных тонах](https://addons.mozilla.org/en-US/firefox/addon/darkreader/)
-  - Privacy Badger - [борьба с трекингом](https://addons.mozilla.org/en-US/firefox/addon/privacy-badger17/)
-  - Save Page We - [сохраниение страницы](https://addons.mozilla.org/en-US/firefox/addon/save-page-we/)
-  - Touch VPN - [VPN клиент](https://addons.mozilla.org/en-US/firefox/addon/touch-vpn/)
-  - Yet Another Smooth Scrolling - [плавный скролинг](https://addons.mozilla.org/en-US/firefox/addon/yass-we/)
-  - Plasma Integration - [воспроизведение в трее](https://addons.mozilla.org/en-US/firefox/addon/plasma-integration/)
-  - Control Panel for YouTube - [управление youtube](https://addons.mozilla.org/en-US/firefox/addon/control-panel-for-youtube/)
-  - Censor Tracker - [антиблокиратор сайтов РФ](https://addons.mozilla.org/ru-RU/firefox/addon/censor-tracker/)
-  - Kepassxc  - [компаньон для менеджера паролей - [ссылка](https://addons.mozilla.org/en-US/firefox/addon/keepassxc-browser/)
-  - Hacktools - [инструменты хакера](https://addons.mozilla.org/en-US/firefox/addon/hacktools/)
-  - User-agent Switcher - [переключалка user-agent](https://addons.mozilla.org/en-US/firefox/addon/user-agent-string-switcher/)
-  - Noscrypt - [блокировщик JS скриптов сайта](https://addons.mozilla.org/en-US/firefox/addon/noscript/)
-  - Flagfox - [информация о местоположении сайта](https://addons.mozilla.org/en-US/firefox/addon/flagfox/)
+| Название                     | Перевод/ссылка                                                                                                       |
+| ---------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Plasma Integration           | [воспроизведение в трее](https://addons.mozilla.org/en-US/firefox/addon/plasma-integration/)                         |
+| Dark Reader                  | [страницы в тёмных тонах](https://addons.mozilla.org/en-US/firefox/addon/darkreader/)                                |
+| Control Panel for YouTube    | [управление youtube](https://addons.mozilla.org/en-US/firefox/addon/control-panel-for-youtube/)                      |
+| Yet Another Smooth Scrolling | [плавный скролинг](https://addons.mozilla.org/en-US/firefox/addon/yass-we/)                                          |
+| Censor Tracker               | [антиблокиратор сайтов РФ](https://addons.mozilla.org/ru-RU/firefox/addon/censor-tracker/)                           |
+| Save Page We                 | [сохраниение страницы](https://addons.mozilla.org/en-US/firefox/addon/save-page-we/)                                 |
+| Kepassxc                     | [компаньон для менеджера паролей](https://addons.mozilla.org/en-US/firefox/addon/keepassxc-browser/)                 |
+| Touch VPN                    | [VPN клиент](https://addons.mozilla.org/en-US/firefox/addon/touch-vpn/)                                              |
+| User-agent Switcher          | [переключалка user-agent](https://addons.mozilla.org/en-US/firefox/addon/user-agent-string-switcher/)                |
+| Privacy Badger               | [борьба с трекингом](https://addons.mozilla.org/en-US/firefox/addon/privacy-badger17/)                               |
+| Noscrypt                     | [блокировщик JS скриптов сайта](https://addons.mozilla.org/en-US/firefox/addon/noscript/)                            |
+| Flagfox                      | [информация о местоположении сайта](https://addons.mozilla.org/en-US/firefox/addon/flagfox/)                         |
+| Disconnect                   | [борьба с поиском и историей просмотра](https://addons.mozilla.org/en-US/firefox/addon/disconnect/)                  |
+| Popup Blocker                | [блокировщик всплывающих окон](https://addons.mozilla.org/en-US/firefox/addon/popup-blocker/)                        |
+| Canvas Blocker               | [блокировщик холста](https://addons.mozilla.org/en-US/firefox/addon/canvasblocker/)                                  |
+| Hacktools                    | [инструменты хакера](https://addons.mozilla.org/en-US/firefox/addon/hacktools/)                                      |
+| Zero Omega                   | [переключатель прокси](https://addons.mozilla.org/en-US/firefox/addon/zeroomega/)<br>для TOR - SOCKS5 127.0.0.1:9050 |
+| Tampermonkey                 | [пользовательские скрипты JS](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/)                          |
 
 ```bash
 ln -s ~/.mozilla/native-messaging-hosts ~/.librewolf/native-messaging-hosts
 sudo ln -s /usr/lib/mozilla/native-messaging-hosts /usr/lib/librewolf/native-messaging-hosts
 ```
-### настройка proxy для tor
-  - proxy switchyomega - [переключатель proxy](https://addons.mozilla.org/en-US/firefox/addon/switchyomega/)
-для TOR - SOCKS5 127.0.0.1:9050
-### скрипты для tampermonkey
-**tampermonkey** - [JS скрипты](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/)
-- голосовой перевод от Яндекс - https://raw.githubusercontent.com/ilyhalight/voice-over-translation/master/dist/vot.user.js
-- отключение Ambient для Youtube - https://greasyfork.org/scripts/453801-disable-youtube-glow-ambilight/code/Disable%20YouTube%20GlowAmbilight.user.js
-- запрет предупреждения об отключении рекламодавки на Youtube - https://greasyfork.org/en/scripts/459541-youtube%E5%8E%BB%E5%B9%BF%E5%91%8A-youtube-ad-blocker
-- возвращение дизлайков Youtube - https://greasyfork.org/en/scripts/436115-return-youtube-dislike/code
--  запрет возрастных ограничений Youtube - https://github.com/zerodytrash/Simple-YouTube-Age-Restriction-Bypass/raw/main/dist/Simple-YouTube-Age-Restriction-Bypass.user.js
-- запрет YouTube Shorts - https://greasyfork.org/ru/scripts/437721-hide-youtube-shorts
+### Скрипты для Tampermonkey
 
------
-## thorium
+| Название                                           | Ссылка                                                                                                                           |
+| -------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| **сам плагин tampermonkey**                        |                                                                                                                                  |
+| - голосовой перевод от Яндекс                      | https://raw.githubusercontent.com/ilyhalight/voice-over-translation/master/dist/vot.user.js                                      |
+| - блокировка об отключении рекламодавки на Youtube | https://greasyfork.org/en/scripts/459541-youtube%E5%8E%BB%E5%B9%BF%E5%91%8A-youtube-ad-blocker                                   |
+| - возвращение дизлайков Youtube                    | https://greasyfork.org/en/scripts/436115-return-youtube-dislike/code                                                             |
+| - отключение Ambient для Youtube                   | https://greasyfork.org/scripts/453801-disable-youtube-glow-ambilight/code/Disable%20YouTube%20GlowAmbilight.user.js              |
+| - запрет возрастных ограничений Youtube            | https://github.com/zerodytrash/Simple-YouTube-Age-Restriction-Bypass/raw/main/dist/Simple-YouTube-Age-Restriction-Bypass.user.js |
+| - запрет YouTube Shorts                            | https://greasyfork.org/ru/scripts/437721-hide-youtube-shorts                                                                     |
+
+---
+## Thorium
 
 >отличный форк Chromium для использования в качестве альтернативы Google Chrome
 ```shell
@@ -93,10 +112,10 @@ yay -R thorium-browser-bin
 ```q
 chrome://flags/#smooth-scrolling
 ```
------
-##  yandex browser
+---
+##  Yandex browser
 
-### yandex browser DEB
+### Yandex browser DEB
 
 >заходим от администратора
 ```bash
@@ -119,7 +138,7 @@ wget https://repo.yandex.ru/yandex-browser/YANDEX-BROWSER-KEY.GPG && sudo apt-ke
 ```bash
 sudo apt update && sudo apt install yandex-browser-stable
 ```
-### yandex browser RPM
+### Yandex browser RPM
 
 >создаем репозиторий и добавляем запись
 ```bash
@@ -136,27 +155,8 @@ sudo rpmkeys --import https://repo.yandex.ru/yandex-browser/YANDEX-BROWSER-KEY.G
 sudo dnf install yandex-browser-stable -y
 ```
 
------
-##  librewolf
-
-### librewolf RPM
-
->создаем репозиторий и добавляем запись
-```bash
-sudo dnf config-manager --add-repo https://rpm.librewolf.net
-```
-
->добавляем ключ
-```bash
-sudo rpm --import https://keys.openpgp.org/vks/v1/by-fingerprint/034F7776EF5E0C613D2F7934D29FBD5F93C0CFC3
-```
-
->устанавливаем
-```bash
-sudo dnf install --refresh librewolf
-```
-
 ---
+
 ##  PortProton
 
 >установка универсальная
