@@ -62,20 +62,16 @@ sudo ln -s /usr/lib/mozilla/native-messaging-hosts /usr/lib/librewolf/native-mes
 ### настройка proxy для tor
   - proxy switchyomega - [переключатель proxy](https://addons.mozilla.org/en-US/firefox/addon/switchyomega/)
 для TOR - SOCKS5 127.0.0.1:9050
-### фильтры против рекламы
-  - ublock origin - [борьба с рекламой](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/)
-  - adguard - [и еще борьба с рекламой](https://addons.mozilla.org/en-US/firefox/addon/adguard-adblocker/)
- `https://raw.githubusercontent.com/bogachenko/fuckfuckadblock/master/fuckfuckadblock.txt`
-
 ### скрипты для tampermonkey
 - tampermonkey - [JS скрипты](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/)
 1. голосовой перевод от Яндекс - https://raw.githubusercontent.com/ilyhalight/voice-over-translation/master/dist/vot.user.js
-2. отключение Ambient для Youtube - https://greasyfork.org/scripts/453801-disable-youtube-glow-ambilight/code/Disable%20YouTube%20GlowAmbilight.user.js
-3. запрет предупреждения об отключении рекламодавки на Youtube - https://greasyfork.org/en/scripts/459541-youtube%E5%8E%BB%E5%B9%BF%E5%91%8A-youtube-ad-blocker
-4. возвращение дизлайков Youtube - https://greasyfork.org/en/scripts/436115-return-youtube-dislike/code
-5. установка YouTube в full HD по умолчанию - https://greasyfork.org/en/scripts/23661-youtube-hd
-6. запрет возрастных ограничений Youtube - https://github.com/zerodytrash/Simple-YouTube-Age-Restriction-Bypass/raw/main/dist/Simple-YouTube-Age-Restriction-Bypass.user.js
-7. запрет YouTube Shorts - https://greasyfork.org/ru/scripts/437721-hide-youtube-shorts
+2. антиблокиратор сайтов РФ - https://addons.mozilla.org/ru-RU/firefox/addon/censor-tracker/
+3. отключение Ambient для Youtube - https://greasyfork.org/scripts/453801-disable-youtube-glow-ambilight/code/Disable%20YouTube%20GlowAmbilight.user.js
+4. запрет предупреждения об отключении рекламодавки на Youtube - https://greasyfork.org/en/scripts/459541-youtube%E5%8E%BB%E5%B9%BF%E5%91%8A-youtube-ad-blocker
+5. возвращение дизлайков Youtube - https://greasyfork.org/en/scripts/436115-return-youtube-dislike/code
+6. установка YouTube в full HD по умолчанию - https://greasyfork.org/en/scripts/23661-youtube-hd
+7. запрет возрастных ограничений Youtube - https://github.com/zerodytrash/Simple-YouTube-Age-Restriction-Bypass/raw/main/dist/Simple-YouTube-Age-Restriction-Bypass.user.js
+8. запрет YouTube Shorts - https://greasyfork.org/ru/scripts/437721-hide-youtube-shorts
 ### плагины особенные
   - kepassxc  - [компаньон для менеджера паролей - [ссылка](https://addons.mozilla.org/en-US/firefox/addon/keepassxc-browser/)
   - hacktools - [инструменты хакера](https://addons.mozilla.org/en-US/firefox/addon/hacktools/)
