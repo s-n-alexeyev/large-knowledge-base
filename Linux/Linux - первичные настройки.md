@@ -52,8 +52,9 @@ sudo rpm --import https://keys.openpgp.org/vks/v1/by-fingerprint/034F7776EF5E0C6
 ```bash
 sudo dnf install --refresh librewolf
 ```
-
- about:config -- настройки
+#### Тонкие настройки
+ 
+ about:config -- вход с настройки браузера  
  - gfx.webrender.all = TRUE
  - webgl.disabled = FALSE
  - apz.gtk.kinetic_scroll.enabled = TRUE
