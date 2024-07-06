@@ -176,42 +176,7 @@ yay -S portproton
 
 ---
 # Украшательства
-##  papirus -  самый популярный набор значков
-  есть в репозитории manjaro
-https://github.com/PapirusDevelopmentTeam/papirus-folders
 
->установка темы papirus
-```shell
-wget -qO- https://git.io/papirus-icon-theme-install | sh
-```
-## papirus - folders
-
-> установка papirus-folders
-```bash
-wget -qO- https://git.io/papirus-folders-install | sh
-```
-### настройка
->показ текущего цвета папок Papirus-Dark
-```bash
-papirus-folders -l --theme Papirus-Dark
-```
-
->замена екущего цвета папок Papirus-Dark
-```bash
-papirus-folders -C yellow --theme Papirus-Dark
-```
-
->возврат на цвет по умолчанию Papirus-Dark
-```bash
-papirus-folders -D --theme Papirus-Dark
-```
-
->восстановление последнего цвета из config файла
-```bash
-papirus-folders -Ru
-```
-
----
 ## Тема для GRUB Fallout
 ```bash
 wget -O - https://github.com/shvchk/fallout-grub-theme/raw/master/install.sh
@@ -239,13 +204,13 @@ sudo apt install plasma-wallpapers-addons
 ```
 
 ---
-## Расширение Discord (Vencord)
+# Расширение Discord (Vencord)
 ```shell
 sh -c "$(curl -sS https://raw.githubusercontent.com/Vendicated/VencordInstaller/main/install.sh)"
 ```
 
 ---
-## Список трекеров для торрентов
+# Список трекеров для торрентов
 ```text
 http://7ece.co.uk:6969/announce
 http://bt.poletracker.org:2710/announce
