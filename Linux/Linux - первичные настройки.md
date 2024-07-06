@@ -29,6 +29,8 @@ debugInConsole: false # Print debug info in Obsidian console
 ---
 # Браузеры
 
+## Librewolf
+
 ### Librewolf ARCH
 
 ```bash
@@ -61,14 +63,15 @@ sudo dnf install --refresh librewolf
  - widget.use-xdg-desktop-portal  = 1 //было 2 (открытие файлов через Dolphin в Firefox/Librewolf)
 
  about:support -- просмотр поддержек
-### Плагины для браузера
+#### Плагины для браузера
 
 | Название                     | Перевод/ссылка                                                                                                       |
 | ---------------------------- | -------------------------------------------------------------------------------------------------------------------- |
 | Plasma Integration           | [воспроизведение в трее](https://addons.mozilla.org/en-US/firefox/addon/plasma-integration/)                         |
 | Dark Reader                  | [страницы в тёмных тонах](https://addons.mozilla.org/en-US/firefox/addon/darkreader/)                                |
 | Control Panel for YouTube    | [управление youtube](https://addons.mozilla.org/en-US/firefox/addon/control-panel-for-youtube/)                      |
-| Yet Another Smooth Scrolling | [плавный скролинг](https://addons.mozilla.org/en-US/firefox/addon/yass-we/)                                          |
+| SponsorBlock                 | [пропуск рекламы внутри видео youtube](https://addons.mozilla.org/en-US/firefox/addon/sponsorblock/)                 |
+| Yet Another Smooth Scrolling | [плавный скролинг страниц](https://addons.mozilla.org/en-US/firefox/addon/yass-we/)                                  |
 | Censor Tracker               | [антиблокиратор сайтов РФ](https://addons.mozilla.org/ru-RU/firefox/addon/censor-tracker/)                           |
 | Save Page We                 | [сохраниение страницы](https://addons.mozilla.org/en-US/firefox/addon/save-page-we/)                                 |
 | Kepassxc                     | [компаньон для менеджера паролей](https://addons.mozilla.org/en-US/firefox/addon/keepassxc-browser/)                 |
@@ -83,12 +86,12 @@ sudo dnf install --refresh librewolf
 | Hacktools                    | [инструменты хакера](https://addons.mozilla.org/en-US/firefox/addon/hacktools/)                                      |
 | Zero Omega                   | [переключатель прокси](https://addons.mozilla.org/en-US/firefox/addon/zeroomega/)<br>для TOR - SOCKS5 127.0.0.1:9050 |
 | Tampermonkey                 | [пользовательские скрипты JS](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/)                          |
-
+- для правильной работы Plasma Integration
 ```bash
 ln -s ~/.mozilla/native-messaging-hosts ~/.librewolf/native-messaging-hosts
 sudo ln -s /usr/lib/mozilla/native-messaging-hosts /usr/lib/librewolf/native-messaging-hosts
 ```
-### Скрипты для Tampermonkey
+#### Скрипты для Tampermonkey
 
 | Название                                         | Ссылка                                                                                                                           |
 | ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------- |
@@ -98,7 +101,6 @@ sudo ln -s /usr/lib/mozilla/native-messaging-hosts /usr/lib/librewolf/native-mes
 | отключение Ambient для Youtube                   | https://greasyfork.org/scripts/453801-disable-youtube-glow-ambilight/code/Disable%20YouTube%20GlowAmbilight.user.js              |
 | запрет возрастных ограничений Youtube            | https://github.com/zerodytrash/Simple-YouTube-Age-Restriction-Bypass/raw/main/dist/Simple-YouTube-Age-Restriction-Bypass.user.js |
 | запрет YouTube Shorts                            | https://greasyfork.org/ru/scripts/437721-hide-youtube-shorts                                                                     |
-
 
 ---
 ## Thorium
@@ -157,7 +159,7 @@ sudo dnf install yandex-browser-stable -y
 
 ---
 
-##  PortProton
+#  PortProton
 
 >установка универсальная
 ```shell
