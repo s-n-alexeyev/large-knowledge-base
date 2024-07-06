@@ -42,19 +42,29 @@ debugInConsole: false # Print debug info in Obsidian console
 
  about:support -- просмотр поддержек
 ### плагины для браузера
-  - canvas blocker - [блокировщик холста](https://addons.mozilla.org/en-US/firefox/addon/canvasblocker/)
-  - popup blocker  - [блокировщик всплывающих окон](https://addons.mozilla.org/en-US/firefox/addon/popup-blocker/)
-  - disconnect     - [борьба с поиском и историей просмотра](https://addons.mozilla.org/en-US/firefox/addon/disconnect/)
-  - dark reader    - [страницы в тёмных тонах](https://addons.mozilla.org/en-US/firefox/addon/darkreader/)
-  - privacy badger - [борьба с трекингом](https://addons.mozilla.org/en-US/firefox/addon/privacy-badger17/)
-  - save page we   - [сохраниение страницы](https://addons.mozilla.org/en-US/firefox/addon/save-page-we/)
-  - touch vpn      - [VPN клиент](https://addons.mozilla.org/en-US/firefox/addon/touch-vpn/)
-  - return youtube dislike - [показ дизлайков youtube](https://addons.mozilla.org/en-US/firefox/addon/return-youtube-dislikes/)
-  - ambient mode disabler - [принудительный запрет Ambient Mode](https://addons.mozilla.org/en-US/firefox/addon/ambient-mode-blocker/)
-  - youtube 4k downloader  - [загрузка видео](https://addons.mozilla.org/en-US/firefox/addon/youtube-4k-downloader/)
-  - yet another smooth scrolling - [плавный скролинг](https://addons.mozilla.org/en-US/firefox/addon/yass-we/)
-  - plasma integration - [воспроизведение в трее](https://addons.mozilla.org/en-US/firefox/addon/plasma-integration/)
+
+
+| Название | Адрес |
+| -------- | ----- |
+|          |       |
+
+  - Canvas Blocker - [блокировщик холста](https://addons.mozilla.org/en-US/firefox/addon/canvasblocker/)
+  - Popup Blocker  - [блокировщик всплывающих окон](https://addons.mozilla.org/en-US/firefox/addon/popup-blocker/)
+  - Disconnect  - [борьба с поиском и историей просмотра](https://addons.mozilla.org/en-US/firefox/addon/disconnect/)
+  - Dark Reader - [страницы в тёмных тонах](https://addons.mozilla.org/en-US/firefox/addon/darkreader/)
+  - Privacy Badger - [борьба с трекингом](https://addons.mozilla.org/en-US/firefox/addon/privacy-badger17/)
+  - Save Page We - [сохраниение страницы](https://addons.mozilla.org/en-US/firefox/addon/save-page-we/)
+  - Touch VPN - [VPN клиент](https://addons.mozilla.org/en-US/firefox/addon/touch-vpn/)
+  - Yet Another Smooth Scrolling - [плавный скролинг](https://addons.mozilla.org/en-US/firefox/addon/yass-we/)
+  - Plasma Integration - [воспроизведение в трее](https://addons.mozilla.org/en-US/firefox/addon/plasma-integration/)
   - Control Panel for YouTube - [управление youtube](https://addons.mozilla.org/en-US/firefox/addon/control-panel-for-youtube/)
+  - Censor Tracker - [антиблокиратор сайтов РФ](https://addons.mozilla.org/ru-RU/firefox/addon/censor-tracker/)
+  - Kepassxc  - [компаньон для менеджера паролей - [ссылка](https://addons.mozilla.org/en-US/firefox/addon/keepassxc-browser/)
+  - Hacktools - [инструменты хакера](https://addons.mozilla.org/en-US/firefox/addon/hacktools/)
+  - User-agent Switcher - [переключалка user-agent](https://addons.mozilla.org/en-US/firefox/addon/user-agent-string-switcher/)
+  - Noscrypt - [блокировщик JS скриптов сайта](https://addons.mozilla.org/en-US/firefox/addon/noscript/)
+  - Flagfox - [информация о местоположении сайта](https://addons.mozilla.org/en-US/firefox/addon/flagfox/)
+
 ```bash
 ln -s ~/.mozilla/native-messaging-hosts ~/.librewolf/native-messaging-hosts
 sudo ln -s /usr/lib/mozilla/native-messaging-hosts /usr/lib/librewolf/native-messaging-hosts
@@ -63,21 +73,13 @@ sudo ln -s /usr/lib/mozilla/native-messaging-hosts /usr/lib/librewolf/native-mes
   - proxy switchyomega - [переключатель proxy](https://addons.mozilla.org/en-US/firefox/addon/switchyomega/)
 для TOR - SOCKS5 127.0.0.1:9050
 ### скрипты для tampermonkey
-- tampermonkey - [JS скрипты](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/)
-1. голосовой перевод от Яндекс - https://raw.githubusercontent.com/ilyhalight/voice-over-translation/master/dist/vot.user.js
-2. антиблокиратор сайтов РФ - https://addons.mozilla.org/ru-RU/firefox/addon/censor-tracker/
-3. отключение Ambient для Youtube - https://greasyfork.org/scripts/453801-disable-youtube-glow-ambilight/code/Disable%20YouTube%20GlowAmbilight.user.js
-4. запрет предупреждения об отключении рекламодавки на Youtube - https://greasyfork.org/en/scripts/459541-youtube%E5%8E%BB%E5%B9%BF%E5%91%8A-youtube-ad-blocker
-5. возвращение дизлайков Youtube - https://greasyfork.org/en/scripts/436115-return-youtube-dislike/code
-6. установка YouTube в full HD по умолчанию - https://greasyfork.org/en/scripts/23661-youtube-hd
-7. запрет возрастных ограничений Youtube - https://github.com/zerodytrash/Simple-YouTube-Age-Restriction-Bypass/raw/main/dist/Simple-YouTube-Age-Restriction-Bypass.user.js
-8. запрет YouTube Shorts - https://greasyfork.org/ru/scripts/437721-hide-youtube-shorts
-### плагины особенные
-  - kepassxc  - [компаньон для менеджера паролей - [ссылка](https://addons.mozilla.org/en-US/firefox/addon/keepassxc-browser/)
-  - hacktools - [инструменты хакера](https://addons.mozilla.org/en-US/firefox/addon/hacktools/)
-  - user-agent switcher - [переключалка user-agent](https://addons.mozilla.org/en-US/firefox/addon/user-agent-string-switcher/)
-  - noscrypt - [блокировщик JS скриптов сайта](https://addons.mozilla.org/en-US/firefox/addon/noscript/)
-  - flagfox - [информация о местоположении сайта](https://addons.mozilla.org/en-US/firefox/addon/flagfox/)
+**tampermonkey** - [JS скрипты](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/)
+- голосовой перевод от Яндекс - https://raw.githubusercontent.com/ilyhalight/voice-over-translation/master/dist/vot.user.js
+- отключение Ambient для Youtube - https://greasyfork.org/scripts/453801-disable-youtube-glow-ambilight/code/Disable%20YouTube%20GlowAmbilight.user.js
+- запрет предупреждения об отключении рекламодавки на Youtube - https://greasyfork.org/en/scripts/459541-youtube%E5%8E%BB%E5%B9%BF%E5%91%8A-youtube-ad-blocker
+- возвращение дизлайков Youtube - https://greasyfork.org/en/scripts/436115-return-youtube-dislike/code
+-  запрет возрастных ограничений Youtube - https://github.com/zerodytrash/Simple-YouTube-Age-Restriction-Bypass/raw/main/dist/Simple-YouTube-Age-Restriction-Bypass.user.js
+- запрет YouTube Shorts - https://greasyfork.org/ru/scripts/437721-hide-youtube-shorts
 
 -----
 ## thorium
