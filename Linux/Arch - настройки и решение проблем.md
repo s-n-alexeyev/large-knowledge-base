@@ -257,3 +257,15 @@ systemctl mask dev-tpmrm0.device
 ```bash
 ❯ sudo pacman -Sdd $(pacman -Qnq)
 ```
+
+## Не отображается значок java приложения в wayland в сессии KDE окружения
+
+- достаточно указать переменную окружения `GDK_BACKEND=x11`, при наличии компонента `XWayland`
+```bash
+GDK_BACKEND=x11 java -jar your-application.jar
+```
+
+- компонент `XWayland`
+```bash
+sudo pacman -S xwaylandvideobridge
+```
