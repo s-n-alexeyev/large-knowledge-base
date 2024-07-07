@@ -255,7 +255,7 @@ systemctl mask dev-tpmrm0.device
 ## Принудительная переустановка всех пакетов
 
 ```bash
-❯ sudo pacman -Sdd $(pacman -Qnq)
+sudo pacman -Sdd $(pacman -Qnq)
 ```
 
 ## Не отображается значок java приложения в wayland в сессии KDE окружения
