@@ -95,7 +95,7 @@ echo UseBridges 1 >> >> %USERPROFILE%\.TOR\tor\torrc
 
 ```powershell
 # URL каталога с дистрибутивами Tor
-$url = "https://tor.askapache.com/dist/torbrowser/13.0.16/"
+$url = "https://tor.askapache.com/dist/torbrowser/13.5.1/"
 
 # Каталог для сохранения и распаковки
 $destinationFolder = "$env:USERPROFILE\.TOR"
