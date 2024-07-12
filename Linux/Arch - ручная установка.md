@@ -569,6 +569,15 @@ reboot
 ```bash
 git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 ```
+- Имеет смысл отключить сборку отладочных пакетов, включив `!debug`
+```bash
+kate /etc/makepkg.conf
+```
+
+```
+OPTIONS=(strip docs !libtool !staticlibs emptydirs zipman purge !debug lto)
+```
+
 
 >Timeshift - система резервного копирования
 ```bash
