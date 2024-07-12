@@ -269,3 +269,9 @@ GDK_BACKEND=x11 java -jar your-application.jar
 ```bash
 sudo pacman -S xwaylandvideobridge
 ```
+
+## Удаление всех отладочных пакетов
+
+```bash
+sudo pacman -Rns $(pacman -Qq | grep '\-debug$')
+```
