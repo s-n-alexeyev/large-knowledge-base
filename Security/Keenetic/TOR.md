@@ -1,6 +1,6 @@
 ```bash
 opkg update
-opkg install tor polipo
+opkg install tor obfs4 polipo
 ```
 
 >Редактируем файл `/opt/etc/tor/torrc` (пример базовой настройки)
