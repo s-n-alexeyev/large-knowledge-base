@@ -569,7 +569,7 @@ reboot
 ```bash
 git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 ```
-- Имеет смысл отключить сборку отладочных пакетов, выключив `!debug` и `!strip`
+- *Имеет смысл отключить сборку отладочных пакетов, выключив `!debug` и `!strip`*
 ```bash
 sudo sed -i.bak '/^OPTIONS=/s/strip/!strip/; /^OPTIONS=/s/debug/!debug/' /etc/makepkg.conf
 ```
