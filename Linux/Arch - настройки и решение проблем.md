@@ -101,7 +101,7 @@ sudo nano /etc/pacman.conf
 Сохраняем, из **mirrorlist’a** удаляем или комментируем **Server** с архивом, и снова обновляем систему, но уже без **mesa и libglvnd**
 
 ---
-## pipeware
+## Сервер звука pipeware
 
 Замена PulseAudio и ALSA на PipeWire
   
@@ -246,18 +246,28 @@ sudo rankmirrors -n 6 /etc/pacman.d/mirrorlist.bak > /etc/pacman.d/mirrorlist
 exit
 ```
 
+---
 ## arch a start job is running for /dev/tmprm0
 
 ```bash
 systemctl mask dev-tpmrm0.device
 ```
 
+---
 ## Принудительная переустановка всех пакетов
 
 ```bash
 sudo pacman -Sdd $(pacman -Qnq)
 ```
 
+---
+## Удаление всех отладочных пакетов
+
+```bash
+sudo pacman -Rns $(pacman -Qq | grep '\-debug$')
+```
+
+---
 ## Не отображается значок java приложения в wayland в сессии KDE окружения
 
 - достаточно указать переменную окружения `GDK_BACKEND=x11`, при наличии компонента `XWayland`
@@ -270,8 +280,8 @@ GDK_BACKEND=x11 java -jar your-application.jar
 sudo pacman -S xwaylandvideobridge
 ```
 
-## Удаление всех отладочных пакетов
-
+---
+## Открыть от директорию в dolphin от root 
 ```bash
-sudo pacman -Rns $(pacman -Qq | grep '\-debug$')
+sudo pacman -S kio-admin
 ```
