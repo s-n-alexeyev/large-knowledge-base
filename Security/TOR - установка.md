@@ -217,27 +217,33 @@ cat /var/log/tor/log|grep obfs4
 
 вы увидели подобное:
 
->Jul 17 20:01:37.000 [warn] Server managed proxy encountered a method error. (obfs4 Could not set up listener.)
+```
+Jul 17 20:01:37.000 [warn] Server managed proxy encountered a method error. (obfs4 Could not set up listener.)
+```
 
 не пугайтесь - obfs4proxy не был перезапущен и удерживает требуемый порт, все будет работать.
 
 Чтобы убедиться в правильности работы настроенного Tor, проверьте содержимое /var/log/tor/log на наличие следующих строк:
 
->Nov 05 16:40:45.000 [notice] We now have enough directory information to build circuits.
+```
+Nov 05 16:40:45.000 [notice] We now have enough directory information to build circuits.
 Nov 05 16:40:45.000 [notice] Bootstrapped 80%: Connecting to the Tor network.
 Nov 05 16:40:46.000 [notice] Bootstrapped 85%: Finishing handshake with first hop.
 Nov 05 16:40:46.000 [notice] Bootstrapped 90%: Establishing a Tor circuit.
 Nov 05 16:40:48.000 [notice] Tor has successfully opened a circuit. Looks like client functionality is working.
 Nov 05 16:40:48.000 [notice] Bootstrapped 100%: Done.
+```
 
 Использование мостов
 https://bridges.torproject.org/bridges?transport=obfs4
 
 Мосты мы будем использовать при настроенной обфускации трафика (смотри предыдущий пункт). Чтобы получить мосты, заходим сюда либо отправляем на адрес bridges@bridges.torproject.org письмо с темой get transport obfs4 и ждем в ответ список из трех адресов следующего вида:
 
->obfs4 111.111.111.113:2222 FF7652873C326B0AF41587409E88C8612B8FE654 cert=fP23efkIrlPawTerdcUpN3Uatrh9jQcP0UpnPkfcfge5WiPP1mVffEfgesGgAgnBO97lOA iat-mode=0
+```
+obfs4 111.111.111.113:2222 FF7652873C326B0AF41587409E88C8612B8FE654 cert=fP23efkIrlPawTerdcUpN3Uatrh9jQcP0UpnPkfcfge5WiPP1mVffEfgesGgAgnBO97lOA iat-mode=0
 obfs4 111.111.111.114:2222 FF7652873C326B0EFC1587409E88C8612B8FE654 cert=fP23efkIdfeawTerdcUpN3Uatrh9jQcP0UpnPkfcfge5WiPP1mVffEfgesGgAgnBO97lOA iat-mode=0
 obfs4 111.111.111.115:2222 FF7652873C326B0AFDF658409E88C8612B8FE654 cert=fP23efkIrlPawTerdcUpN3Uatrh9jQcP0UpnPkfcfge5WiPP1mVffEeftWGgAgnBO97lOA iat-mode=0
+```
 
 После этого остается изменить файл `/etc/tor/torrc `следующим образом: добавить в начало данные адреса в следующем формате:
 
@@ -272,7 +278,8 @@ sudo apt install miredo
 ping6 ipv6.google.com
 ```
 
->PING ipv6.google.com(waw02s08-in-x0e.1e100.net) 56 data bytes
+```shell
+PING ipv6.google.com(waw02s08-in-x0e.1e100.net) 56 data bytes
 64 bytes from waw02s08-in-x0e.1e100.net: icmp_seq=1 ttl=56 time=352 ms
 64 bytes from waw02s08-in-x0e.1e100.net: icmp_seq=2 ttl=56 time=111 ms
 64 bytes from waw02s08-in-x0e.1e100.net: icmp_seq=3 ttl=56 time=123 ms
@@ -282,6 +289,7 @@ ping6 ipv6.google.com
 --- ipv6.google.com ping statistics ---
 6 packets transmitted, 5 received, 16% packet loss, time 5007ms
 rtt min/avg/max/mdev = 111.319/170.281/352.361/92.092 ms
+```
 
 Теперь мы можем работать с IPv6. Остается небольшой шаг для настройки Tor. Если вы используете Tor Browser, вам нужно зайти в подкаталог /path/to/tor/tor-browser_en-US/Browser/TorBrowser/Data/Tor/ и отредактировать файл torrc. Смело удаляйте все содержимое конфигурационного файла и вставляйте туда единственную строку:
 
