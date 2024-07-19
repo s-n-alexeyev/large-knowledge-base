@@ -332,7 +332,8 @@ mount /dev/sda2 /mnt/boot
 ```
 - *для загрузки BIOS этого достаточно*
 
->Для EFI загрузки добавляем следующее
+>Для EFI загрузки добавляем следующее￼￼￼
+systemctl enable sddm
 ```bash
 mkdir /mnt/boot/efi
 mount /dev/sda1 /mnt/boot/efi
