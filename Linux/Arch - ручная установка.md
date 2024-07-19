@@ -25,6 +25,15 @@ debugInConsole: false # Print debug info in Obsidian console
 Видео на YouTube по использованию [Ventoy](https://www.youtube.com/watch?v=UJ1D_MByDu0)
 
 Если вы пользуетесь проводным соединением, то пропускаем настройку беспроводной сети и переходим к [[# Проверяем работу сети]]
+
+## Увеличение размера шрифта
+>Если шрифт мелкий выпо
+```bash
+setfont iso01-12x22.psfu.gz
+# или
+setfont ter-p24n
+```
+
 # Настройка беспроводной сети
 ## Проверяем не заблокирован ли WiFi
 ```bash
