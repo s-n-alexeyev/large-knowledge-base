@@ -12,6 +12,7 @@
 
 И так приступим, логинимся на роутер через web-интефрейс, авторизуемся из под root, далее заходим на страницу **System > Software**, на этой странице находится интерфейс пакетного менеджера.
 
+![[Pasted image 20240722224421.png]]
 Как попасть на пакетный менеджер
 
 Как не сложно догадаться откроется страница **Software**, на ней нас для начала интересует кнопка **Update lists...**, нажимаем на неё.
@@ -28,20 +29,13 @@
 
 Тут нам потребуется установить несколько пакетов:
 
-- _prometheus-node-exporter-lua_ - это основной пакет, он содержит в себе HTTP сервер и через плагины собирает информацию о железке, представляет из себя легковесную официальную версию node_exporter;
-    
-- _prometheus-node-exporter-lua-nat_traffic_ - плагин для сбора информацию о работе цепочек NAT;
-    
-- _prometheus-node-exporter-lua-netstat_ - плагин для сбора сетевой статистики;
-    
-- _prometheus-node-exporter-lua-openwrt_ - плагин для сбора общей информации об инсталляции OpenWRT;
-    
-- _prometheus-node-exporter-lua-uci_dhcp_host_ - плагин позволяющий получать информацию об IP-адресах выданных DHCP сервером;
-    
-- _prometheus-node-exporter-lua-wifi_ - плагин для сборка информация о вай-фай адаптерах;
-    
-- _prometheus-node-exporter-lua-wifi_stations_ - сбор инорфмации о пользователя подключенных по вай-фай.
-    
+- _prometheus-node-exporter-lua_ - это основной пакет, он содержит в себе HTTP сервер и через плагины собирает информацию о железке, представляет из себя легковесную официальную версию node_exporter;  
+- _prometheus-node-exporter-lua-nat_traffic_ - плагин для сбора информацию о работе цепочек NAT;  
+- _prometheus-node-exporter-lua-netstat_ - плагин для сбора сетевой статистики;  
+- _prometheus-node-exporter-lua-openwrt_ - плагин для сбора общей информации об инсталляции OpenWRT;  
+- _prometheus-node-exporter-lua-uci_dhcp_host_ - плагин позволяющий получать информацию об IP-адресах выданных DHCP сервером;  
+- _prometheus-node-exporter-lua-wifi_ - плагин для сборка информация о вай-фай адаптерах;  
+- _prometheus-node-exporter-lua-wifi_stations_ - сбор инорфмации о пользователя подключенных по вай-фай.  
 
 Прожмём кнопочку **Install...** возле каждого пакета из списка выше.
 
@@ -120,7 +114,7 @@
 
 [
 
-![](https://avatars.dzeninfra.ru/get-zen_brief_embed/271828/pub_6463da7542d68857ee15a653_65ef42486ccb0d2f27544ad3/smart_crop_600x300)
+![](/Media/OpenWRT_Grafana_Prometeus_Docker/smart_crop_600x300.jpg)
 
 Конфигурация docker-compose.yml для запуска Prometheus и Grafana (шаг 1)
 
@@ -143,7 +137,7 @@ gist.github.com
 
 [
 
-![](https://avatars.dzeninfra.ru/get-zen_brief_embed/271828/pub_6463da7542d68857ee15a653_65ef49326f8a3a564785c088/smart_crop_600x300)
+![](/Media/OpenWRT_Grafana_Prometeus_Docker/smart_crop_600x300.jpg)
 
 Конфигурация docker-compose.yml для запуска Prometheus и Grafana (шаг 2)
 
@@ -194,7 +188,7 @@ Grafana позволяет создавать красивые и информа
 
 [
 
-![](https://avatars.dzeninfra.ru/get-zen_brief_embed/271828/pub_6463da7542d68857ee15a653_65ef68435851e30b8ca1821c/smart_crop_600x300)
+![](/Media/OpenWRT_Grafana_Prometeus_Docker/smart_crop_600x300.jpg)
 
 Конфигурация docker-compose.yml для запуска Prometheus и Grafana (шаг 3)
 
