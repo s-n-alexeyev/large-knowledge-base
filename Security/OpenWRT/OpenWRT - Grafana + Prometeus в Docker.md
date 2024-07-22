@@ -1,254 +1,249 @@
-Давненько заготовка данной публикации лежала у меня в черновиках, но вот купив себе новенький [ASUS RT-AX1800U](https://dzen.ru/away?to=https%3A%2F%2Fwww.asus.com%2Fnetworking-iot-servers%2Fwifi-routers%2Fasus-wifi-routers%2Frt-ax1800u%2F) мне потребовалось повторить настройку [OpenWRT](https://dzen.ru/away?to=https%3A%2F%2Fopenwrt.org%2F) таким образом чтобы появилась возможность снимать с него метрики через [Prometheus](https://dzen.ru/away?to=https%3A%2F%2Fprometheus.io%2F). Так что на этот раз решил всё подробнейшим образом задокументировать и довести публикацию до релиза.
+[![logo](https://www.cloudrocket.at/logo_small.png)cloudrocket](https://www.cloudrocket.at/ "cloudrocket (Alt + H)")
 
-Сгенерированно при помощи DALL-E
+- [tags](https://www.cloudrocket.at/tags/ "tags")
+- [rss](https://www.cloudrocket.at/index.xml "rss")
+- [github](https://github.com/try2codesecure "github")
 
-В данной публикации мы для начала обсудим как выполнить установку и первоначальную настройку экспортера на роутере, далее на стороннем сервере при помощи Docker запустим сервис Prometheus, подключим к нему [Grafana](https://dzen.ru/away?to=https%3A%2F%2Fgrafana.com%2F) и настроим специальный [дашборд](https://dzen.ru/away?to=https%3A%2F%2Fgrafana.com%2Fgrafana%2Fdashboards%2F11147-openwrt%2F) для просмотра информации о нашей железке.
+# Monitor OpenWrt nodes with Prometheus
 
-Предполагается, что читателю упомянутые выше технологии знакомы, поэтому заострять на них внимания не будем, а продолжим и первым шагом будет...
+December 28, 2020 · 3 min · rainer
 
-## Установка пакетов на OpenWRT
+![promwrt](https://www.cloudrocket.at/images/2020/openwrt_prometheus.png)
 
-Предполагается, что у вас уже имеется роутер прошитый под OpenWR (и что вы знаете что такое OpenWRT;) на котором достаточно свободного места для установки экспортера (на всё про всё понадобится примерно 500 килобайт).
+Оглавление
 
-И так приступим, логинимся на роутер через web-интефрейс, авторизуемся из под root, далее заходим на страницу **System > Software**, на этой странице находится интерфейс пакетного менеджера.
+# мотивация
 
-![[Pasted image 20240722224421.png]]
-Как попасть на пакетный менеджер
+Я использую OpenWrt уже давно, и отслеживать их всегда было немного сложно. Это становится сложнее, если вы собираетесь использовать больше точек доступа. Это несложно, поскольку [существуют сценарии prometheus-node-exporter](https://openwrt.org/packages/table/start?dataflt%5BName_pkg-dependencies*~%5D=prometheus-node) .
 
-Как не сложно догадаться откроется страница **Software**, на ней нас для начала интересует кнопка **Update lists...**, нажимаем на неё.
+# настройка openwrt
 
-Обновление списка пакетов
+## установить скрипты
 
-Появится модальное окно, а в нём отладочные данные о процессе обновления списка пакетов, смотрим что всё хорошо, далее справа снизу жмём кнопку **Dismiss**.
+Вам следует начать с обновленного маршрутизатора OpenWrt. Установите скрипты экспорта узлов Prometheus:
 
-Список пакетов успешно обновлён
+- prometheus-node-exporter-lua
+- prometheus-node-exporter-lua-nat_traffic
+- prometheus-node-exporter-lua-netstat
+- prometheus-node-exporter-lua-openwrt
+- prometheus-node-exporter-lua-wifi
+- prometheus-node-exporter-lua-wifi_stations
 
-Теперь найдём необходимые пакеты, для этого в поле **Filter** пишем слово **exporter** и смотрим что получилось.
+[![пакеты](https://www.cloudrocket.at/images/2020/openwrt_prometheus_node_pkgs.png "Список пакетов OpenWrt")](https://openwrt.org/packages/table/start?dataflt%5BName_pkg-dependencies*~%5D=prometheus-node)
 
-Отфильтрованные пакеты по слову exporter
+## изменить интерфейс прослушивания
 
-Тут нам потребуется установить несколько пакетов:
+Если вы используете конфигурацию по умолчанию, экспортер узлов можно запросить только из интерфейса обратной связи.
 
-- _prometheus-node-exporter-lua_ - это основной пакет, он содержит в себе HTTP сервер и через плагины собирает информацию о железке, представляет из себя легковесную официальную версию node_exporter;  
-- _prometheus-node-exporter-lua-nat_traffic_ - плагин для сбора информацию о работе цепочек NAT;  
-- _prometheus-node-exporter-lua-netstat_ - плагин для сбора сетевой статистики;  
-- _prometheus-node-exporter-lua-openwrt_ - плагин для сбора общей информации об инсталляции OpenWRT;  
-- _prometheus-node-exporter-lua-uci_dhcp_host_ - плагин позволяющий получать информацию об IP-адресах выданных DHCP сервером;  
-- _prometheus-node-exporter-lua-wifi_ - плагин для сборка информация о вай-фай адаптерах;  
-- _prometheus-node-exporter-lua-wifi_stations_ - сбор инорфмации о пользователя подключенных по вай-фай.  
+```bash
+root@OpenWrt:/etc/config# cat prometheus-node-exporter-lua
+config prometheus-node-exporter-lua 'main'
+	option listen_interface 'loopback'
+	option listen_ipv6 '0'
+	option listen_port '9100'
+```
 
-Прожмём кнопочку **Install...** возле каждого пакета из списка выше.
+Для моей настройки я изменю его на сетевой интерфейс локальной сети:
 
-Установка пакета prometheus-node-exporter-lua
+```bash
+root@OpenWrt:/etc/config# sed -i.bak 's#loopback#lan#g' /etc/config/prometheus-node-exporter-lua
+```
 
-Либо, если вы ценитель командной строки, вот тоже самое через консоль:
+и перезапустите экспортер
 
-> opkg update
+```bash
+root@OpenWrt:/etc/config# /etc/init.d/prometheus-node-exporter-lua restart
+```
 
-> opkg install \  
-> _prometheus-node-exporter-lua \_  
-> _prometheus-node-exporter-lua-nat_traffic \_  
-> p_rometheus-node-exporter-lua-netstat \_  
-> _prometheus-node-exporter-lua-openwrt \_  
-> _prometheus-node-exporter-lua-uci_dhcp_host \_  
-> _prometheus-node-exporter-lua-wifi \_  
-> _prometheus-node-exporter-lua-wifi_stations_
+## (необязательно) отметьте
 
-Далее потребуется настроить _node_exporter_, по умолчанию он запускается только на интерфейсе _localhost_, но нам будет необходимо поменять это на интерфейс на _lan_.
+#### - запущен интерфейс экспортера
 
-Но этот раз нам в любом случае потребуется либо подключиться через ssh, либо установить расширение для web-интефрейса _luci-app-ttyd_, которое позволяет подключиться к консоли через браузер.
+```bash
+root@OpenWrt:/etc/config# netstat -tulpn | grep 9100
+tcp        0      0 YOUR_ROUTER_IP:9100        0.0.0.0:*               LISTEN      3469/lua
+```
 
-После установки luci-app-ttyd потребуется нажать F5, чтобы перезагрузить страницу, далее зайти Services / Terminal, а там уже авторизоваться из под пользователя root
+#### - запуск конфигурации экспортера
 
-Далее пишем в консоли следующую команду:
+```bash
+root@OpenWrt:/etc/config# ps | grep prometheus
+ 3469 root      1920 S    {prometheus-node} /usr/bin/lua /usr/bin/prometheus-node-exporter-lua --bind YOUR_ROUTER_IP --port 9100
+```
 
-> sed -r 's/loopback/lan/g' -i /etc/config/prometheus-node-exporter-lua
+#### - открыть порт с хоста в локальной сети
 
-Эта команда за вас отредактирует файл _/etc/config/prometheus-node-exporter-lua_ и заменит в нём слово _localhost_ на слово _lan_ (названия интерфейсов).
+```bash
+[user@HOST-IN-LAN ~]$ nmap YOUR_ROUTER_IP -p 9100
+9100/tcp open  jetdirect
+```
 
-Теперь потребуется либо перезагрузить роутер, либо выполнить следующую команду:
+#### - метрики от хоста в локальной сети
 
-> /etc/init.d/prometheus-node-exporter-lua restart
+```bash
+[user@HOST-IN-LAN ~]$ curl YOUR_ROUTER_IP:9100/metrics
+```
 
-Данная команда выполнит перезапуск сервера _node_exporter_, после чего он перечитает конфигурацию и станет доступен на интерфейсе lan.
+И вы должны увидеть здесь много показателей…
 
-Теперь проверим, что всё работает как надо, для этого выполним команду:
+# (необязательно) настройка prometheus
 
-> curl http://192.168.1.1:9100/metrics
+Теперь вы готовы настроить Prometheus. Если у вас уже есть экземпляр, вам просто нужно добавить [Scrape_config](https://www.cloudrocket.at/posts/monitor-openwrt-nodes-with-prometheus/#prometheus-config) . Если у вас его нет, не проблема =>
 
-Кстати, _192.168.1.1_ - это IP-адрес моего роутера, он является адресом по умолчанию на роутерах OpenWRT, но может быть другим если вы его меняли на своём роутере.
+## запустить новый экземпляр
 
-Энивей, если в ответе будет что-то типа примера ниже, то мы всё сделали правильно и можно двигаться к следующему шагу.
+Если вы знакомы с Docker и Compose, вы можете просто запустить новые экземпляры prometheus/grafana. **Используйте эту конфигурацию только для временного использования** :
 
-Метрики снятые с роутера
+```yaml
+version: '2.1'
 
-Далее мы настроим сервер Prometheus таким образом, чтобы он снимал показания с _node_exporter_ установленного на роутере, но для начала понадобится разобраться с тем...
-
-## Как запустить сервер Prometheus?
-
-Начнём с небольшого вступления, проект Prometheus - это специальный сервис по сбору метрик и аналитических данных с различных удалённых и не очень удалённых систем.
-
-Основная его задача в том чтобы собирать данные из экспортеров сформированные в виде временных рядов, которые затем можно визуализировать и проанализировать для получения информации о производительности и состоянии инфраструктуры в целом или отдельных подсистем в частности.
-
-В официальной [документации](https://dzen.ru/away?to=https%3A%2F%2Fprometheus.io%2Fdocs%2Fintroduction%2Foverview%2F) Prometheus можно почитать о данном проекте чуть подробнее.
-
-Существует множество вариантов установки Prometheus, со всеми ими можете ознакомиться в официальной документации Prometheus, в главе [Installation](https://dzen.ru/away?to=https%3A%2F%2Fprometheus.io%2Fdocs%2Fprometheus%2Flatest%2Finstallation%2F), но а лично я предпочитаю Docker-way.
-
-Кстати ранее я написал публикацию под названием "[Большая экскурсия в мир Docker](https://dzen.ru/a/YwlUoB1mJGQJf3Az)" и если вы не очень знакомы с тем как пользоваться Docker то рекомендую с ней ознакомиться, так как подробности установки [Docker Engine](https://dzen.ru/away?to=https%3A%2F%2Fdocs.docker.com%2Fengine%2Finstall%2F) и [Docker Compose](https://dzen.ru/away?to=https%3A%2F%2Fdocs.docker.com%2Fcompose%2Finstall%2F) я пропущу.
-
-При описании конфигураций прометеуса буду использовать конфигурации Docker Compose, так как с моей скромной точки зрения это намного удобнее чем ванильный Docker.
-
-И так, создадим пустую папку, назовём её скажем _docker-monitoring_, после чего перейдём в неё.
-
-> mkdir docker-monitoring  
-> cd docker-monitoring
-
-Теперь создадим в ней файл _docker-compose.yml_ и откроем его в редакторе _nano_ (хотя лично я предпочитаю _mcedit_).
-
-> touch docker-compose.yml  
-> nano docker-compose.yml
-
-Наполним его следущими содержимым:
-
-Базовая заготовка сервера Prometheus
-
-[
-
-![](/Media/OpenWRT_Grafana_Prometeus_Docker/smart_crop_600x300.jpg)
-
-Конфигурация docker-compose.yml для запуска Prometheus и Grafana (шаг 1)
-
-gist.github.com
-
-
-
-](https://dzen.ru/away?to=https%3A%2F%2Fgist.github.com%2FEvilFreelancer%2F0e66dc2659c6d3c282475c12b75081f3)
-
-Далее жмём комбинацию клавиш _[Ctrl]+[X]_, затем клавишу _[Y]_, затем клавижу _[Enter]_, это сохранит изменения которые мы выполнили в файле.
-
-Возможно вы уже обратили внимание на файл _prometheus.yml_ упомянутий в конфигурации, в нём содержатся настройки сервиса Prometheus, создим его, после чего откроем в редакторе:
-
-> touch prometheus.yml  
-> nano prometheus.yml
-
-Наполним его следующим содержимым:
-
-Конфигурация прометеуса
-
-[
-
-![](/Media/OpenWRT_Grafana_Prometeus_Docker/smart_crop_600x300.jpg)
-
-Конфигурация docker-compose.yml для запуска Prometheus и Grafana (шаг 2)
-
-gist.github.com
-
-
-
-](https://dzen.ru/away?to=https%3A%2F%2Fgist.github.com%2FEvilFreelancer%2F7a58fd6d98e4e901799b1cafa131ecac)
-
-Сохраним и выйдем.
-
-Далее создадим пустую папку _prometheus_data_ в которую сервис Prometheus будет сохранять своё состояние.
-
-> mkdir ./prometheus_data  
-> sudo chown 65534:65534 ./prometheus_data
-
-Теперь запустим контейнер с сервисом Prometheus и посмотрим что получилось:
-
-> docker-compose up -d
-
-Загрузка образа, создание сетевого интерфейса monitoring. создание и запуск контейнера
-
-Контейнер запущен и поэтому теперь можно зайти на web-интерфейс и убедиться в том, что Prometheus корректно работает, октроем следующую страницу в браузере [http://localhost:9090](https://dzen.ru/away?to=http%3A%2F%2Flocalhost%3A9090)
-
-Стартовая страница Prometheus
-
-Откроется страница с базовым интфрейсом Prometheus, который нам отчёливо показывает, что этот фронтенд писали бэкендеры, поэтому не пугайтесь, дальше мы подключим Grafana и будет в разы красивее, ну а пока что просто убедимся в том, что всё работает.
-
-Для этого, в поле **Expression** напишем скажем _wifi_station_transmit_packets_total_ (отобразить информацию о суммарном количестве пакетов, переданных подключенными к роутеру вай-фай станциями), далее нажмём кнопку _Execute_ и если всё настроено правильно, то мы увидим что-то типа этого:
-
-Метрика отображающее суммарное количество пакетов переданное станциями
-
-На самом деле вам станет понятно, что всё настроено правильно если в момент набора названия метрики будут вылезать подсказки названий других метрик.
-
-Чтож, на данном шаге предполагается, что сервер Prometheus запущен и настроен, а это значит мы можем перейти к следующему шагу и сделать так, чтобы информация полученная при помощи _node_exporter_ с нашего роутера отображалась красивыми графиками.
-
-Для этого воспользуемся проектом Grafana, а это значит потребуется разобраться с тем...
-
-## Как подружить Grafana и Prometheus?
-
-Прежде чем продолжим давайте немного поговорим о проекте Grafana, если в двух словах то этот проект представляет из себя мощный и интуитивно понятной инструмент для визуализации данных и аналитики.
-
-Grafana позволяет создавать красивые и информативные диаграммы, таблицы, графики и другие представления на основе данных из различных источников, включая Prometheus, InfluxDB, Elasticsearch и многих других.
-
-Установку Grafana также будем осуществлять с использованием Docker, для этого снова откроем _docker-compose.yml_ через редактор и добавим в него сервис _grafana_.
-
-Сервис grafana добавлен в композицию
-
-[
-
-![](/Media/OpenWRT_Grafana_Prometeus_Docker/smart_crop_600x300.jpg)
-
-Конфигурация docker-compose.yml для запуска Prometheus и Grafana (шаг 3)
-
-gist.github.com
-
-
-
-](https://dzen.ru/away?to=https%3A%2F%2Fgist.github.com%2FEvilFreelancer%2F8afe39f329ef34baf6d9b08f395cb4cd)
-
-Сохраним и выйдем.
-
-Далее создадим пустую папку _grafana_data_ в которую сервис Grafana будет сохранять своё состояние.
-
-> mkdir ./grafana_data  
-> sudo chown 472:0 ./grafana_data
-
-Затем запустим контейнер с Grafana:
-
-> docker-compose up -d
-
-Запуск контейнера grafana
-
-Теперь давайте подождём пару минут и откроем в браузере страницу [http://localhost:3000](https://dzen.ru/away?to=http%3A%2F%2Flocalhost%3A3000)
-
-Окно авторизации Grafana
-
-Тут пишем логин _admin_ и пароль _admin_, после чего откроектся админка и предложит сменить пароль, пропустим этот шаг нажам **Skip**.
-
-Ура, мы в админке
-
-Дальше слева сверху жмём на кнопку [≡] которая открывает менюшку, в менюшке идём в **Connection / Add new connection**.
-
-На открывшейся странице в поисковом блоке ввода пишем слово _prometheus_.
-
-Добавление сервиса Prometheus
-
-Нажимаем на **Prometheus**, далее в открывшимся меню жмём кнопку **Add new data source**.
-
-Подтверждаем
-
-Далее на следующей странице в поле ввода **Connection** пишем [http://prometheus:9090](https://dzen.ru/away?to=http%3A%2F%2Fprometheus%3A9090) (это адрес сервиса prometheus в пределах изолированной сети Docker), затем скролим вниз и жмём кнопку **Save**.
-
-Конфигурация сохранена успешно
-
-Теперь добавим дашборд, на котором будут собраны все графики о нашем роутере, для этого в менюшке выберем блок **Dashboards**, на этой странице справа сверху будет кнопка **New**, жмём её и выпадет менюшка, в ней нажмём кнопку **Import**.
-
-Страница создания дополнительного дашборда
-
-В поле **Dashboard ID** пишем число **11147** (это идентификатор дашборда [OpenWRT](https://dzen.ru/away?to=https%3A%2F%2Fgrafana.com%2Fgrafana%2Fdashboards%2F11147-openwrt%2F)), далее жмём кнопку **Load**, система подгрузит дашборд с серверов Grafana, далее в секции **Prometheus** выберем прометеус который мы добавляли ранее.
-
-Импорт дашборда OpenWRT
-
-И после нажатия на кнопку Import мы попадём на этот самый дашборд.
-
-Дашборд OpenWRT
-
-Вот в принципе и всё :)
-
-## Завершение
-
-И так, мы разобрались с тем как установить _node_exporter_ на роутер прошитый под OpenWRT и собрать метрики о работе сети. Также мы подружили сервис Prometheus с Grafana и построили красивые графики, которые позволят легко мониторить состояние роутера и сети в целом.
-
-Если вам понравилась эта публикация, не забудьте подписаться на мой [Telegram-канал](https://dzen.ru/away?to=https%3A%2F%2Ft.me%2Fevilfreelancer), где я делюсь своими мыслями, новостями и экспериментами. К тому же, если вы хотите поддержать мои усилия то можете сделать пожертвование на [CloudTips](https://dzen.ru/away?to=https%3A%2F%2Fpay.cloudtips.ru%2Fp%2F937f48ac). Ваша поддержка поможет мне продолжать свою работу и делиться новыми открытиями с вами.
+networks:
+  monitor-net:
+    driver: bridge
+
+volumes:
+    prometheus_data: {}
+    grafana_data: {}
+
+services:
+
+  prometheus:
+    image: prom/prometheus:v2.23.0
+    container_name: prometheus
+    volumes:
+      - ./prometheus:/etc/prometheus
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=200h'
+      - '--web.enable-lifecycle'
+    restart: unless-stopped
+    expose:
+      - 9090
+    ports:
+      - 9090:9090
+    networks:
+      - monitor-net
+    labels:
+      org.label-schema.group: "monitoring"
+
+  grafana:
+    image: grafana/grafana:7.3.6
+    container_name: grafana
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning
+    environment:
+      - GF_SECURITY_ADMIN_USER=${ADMIN_USER:-admin}
+      - GF_SECURITY_ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
+      - GF_USERS_ALLOW_SIGN_UP=false
+    restart: unless-stopped
+    expose:
+      - 3000
+    ports:
+      - 3000:3000
+    networks:
+      - monitor-net
+    labels:
+      org.label-schema.group: "monitoring"
+```
+
+Это урезанная и модифицированная версия от [Стефанпродана.](https://raw.githubusercontent.com/stefanprodan/dockprom/master/docker-compose.yml)
+
+## Конфигурация прометея
+
+Прежде чем запустить prometheus, вам необходимо изменить/добавить конфиг. Замените YOUR_ROUTER_IP:
+
+```bash
+[user@HOST-IN-LAN ~]$ vi prometheus/prometheus.yml 
+```
+
+```yaml
+global:
+  scrape_interval:     15s
+  evaluation_interval: 15s
+
+  # Attach these labels to any time series or alerts when communicating with
+  # external systems (federation, remote storage, Alertmanager).
+  external_labels:
+      monitor: 'docker-host-alpha'
+
+# Load and evaluate rules in this file every 'evaluation_interval' seconds.
+rule_files:
+  - "alert.rules"
+
+# A scrape configuration containing exactly one endpoint to scrape.
+scrape_configs:
+  - job_name: 'openwrt-router1'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['YOUR_ROUTER_IP:9100']
+```
+
+Структура каталогов должна быть примерно такой:
+
+```bash
+[user@HOST-IN-LAN dockprom]$ tree
+.
+├── docker-compose.yml
+├── grafana
+│   └── provisioning
+└── prometheus
+    └── prometheus.yml
+```
+
+## запустить контейнеры
+
+Теперь запустите докер-контейнеры в отключенном режиме:
+
+```bash
+[user@HOST-IN-LAN dockprom]$ docker-compose up -d
+```
+
+После получения изображений они должны запуститься через несколько секунд.
+
+```bash
+[user@HOST-IN-LAN dockprom]$ docker ps -a
+CONTAINER ID        IMAGE                       COMMAND                  CREATED             STATUS                       PORTS                    NAMES
+ea8419f267e5        prom/prometheus:v2.23.0     "/bin/prometheus --c…"   3 hours ago         Up 3 hours                   0.0.0.0:9090->9090/tcp   prometheus
+f17822ba6bcf        grafana/grafana:7.3.6       "/run.sh"                3 hours ago         Up 3 hours                   0.0.0.0:3000->3000/tcp   grafana
+```
+
+Откройте панель управления Grafana в браузере => [http://localhost:3000](http://localhost:3000) . Учетные данные по умолчанию — admin/admin. Вам будет предложено изменить его.
+
+# настроить графану
+
+## добавить источник данных Прометея
+
+Теперь добавьте новый экземпляр Prometheus в качестве источника данных в Grafana. Перейдите в [раздел «Конфигурация/Источники данных»](http://localhost:3000/datasources/new) , выберите источник данных Prometheus и настройте URL-адрес. Мы можем использовать здесь имя контейнера докеров, поскольку мы находимся в одной сети докеров. Если вы запускаете другую настройку, добавьте сюда IP-адрес вашего основного сервера Prometheus:
+
+![Источник данных](https://www.cloudrocket.at/images/2020/openwrt_grafana_datasource.png "Источник данных Prometheus в Grafana")
+
+## добавить панель управления OpenWrt
+
+Теперь вы можете [импортировать панель мониторинга](http://localhost:3000/dashboard/import) . Вы можете использовать мою [панель управления Grafana для OpenWrt (11147)](https://grafana.com/grafana/dashboards/11147) .
+
+[![Панель управления Графана](https://www.cloudrocket.at/images/2020/openwrt_grafana_dash1.png "Панель управления Графана")](https://grafana.com/grafana/dashboards/11147)
+
+Выберите вновь созданный источник данных Prometheus.
+
+![Панель управления Графана](https://www.cloudrocket.at/images/2020/openwrt_grafana_dash2.png "Панель управления Графана")
+
+# смотри волшебство
+
+[![Магия](https://www.cloudrocket.at/images/2020/openwrt_magic.gif "Это магия")](http://localhost:3000/d/fLi0yXAWk/openwrt?orgId=1&refresh=30s)
+
+- [openwrt](https://www.cloudrocket.at/tags/openwrt/)
+- [Прометей](https://www.cloudrocket.at/tags/prometheus/)
+- [графана](https://www.cloudrocket.at/tags/grafana/)
+
+[](https://twitter.com/intent/tweet/?text=Monitor%20OpenWrt%20nodes%20with%20Prometheus&url=https%3a%2f%2fwww.cloudrocket.at%2fposts%2fmonitor-openwrt-nodes-with-prometheus%2f&hashtags=openwrt%2cprometheus%2cgrafana)
+
+[](https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fwww.cloudrocket.at%2fposts%2fmonitor-openwrt-nodes-with-prometheus%2f&title=Monitor%20OpenWrt%20nodes%20with%20Prometheus&summary=Monitor%20OpenWrt%20nodes%20with%20Prometheus&source=https%3a%2f%2fwww.cloudrocket.at%2fposts%2fmonitor-openwrt-nodes-with-prometheus%2f)[](https://reddit.com/submit?url=https%3a%2f%2fwww.cloudrocket.at%2fposts%2fmonitor-openwrt-nodes-with-prometheus%2f&title=Monitor%20OpenWrt%20nodes%20with%20Prometheus)[](https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fwww.cloudrocket.at%2fposts%2fmonitor-openwrt-nodes-with-prometheus%2f)[](https://api.whatsapp.com/send?text=Monitor%20OpenWrt%20nodes%20with%20Prometheus%20-%20https%3a%2f%2fwww.cloudrocket.at%2fposts%2fmonitor-openwrt-nodes-with-prometheus%2f)[](https://telegram.me/share/url?text=Monitor%20OpenWrt%20nodes%20with%20Prometheus&url=https%3a%2f%2fwww.cloudrocket.at%2fposts%2fmonitor-openwrt-nodes-with-prometheus%2f)
+
+© 2021 [Cloudrocket](https://www.cloudrocket.at/) · Создано [Hugo](https://gohugo.io/) · Theme [PaperMod](https://git.io/hugopapermod)
+
+[](https://www.cloudrocket.at/posts/monitor-openwrt-nodes-with-prometheus/#top)
