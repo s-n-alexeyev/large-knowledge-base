@@ -1,9 +1,3 @@
-[![logo](https://www.cloudrocket.at/logo_small.png)cloudrocket](https://www.cloudrocket.at/ "cloudrocket (Alt + H)")
-
-- [tags](https://www.cloudrocket.at/tags/ "tags")
-- [rss](https://www.cloudrocket.at/index.xml "rss")
-- [github](https://github.com/try2codesecure "github")
-
 # Monitor OpenWrt nodes with Prometheus
 
 December 28, 2020 · 3 min · rainer
@@ -30,6 +24,19 @@ December 28, 2020 · 3 min · rainer
 - prometheus-node-exporter-lua-wifi_stations
 
 [![пакеты](https://www.cloudrocket.at/images/2020/openwrt_prometheus_node_pkgs.png "Список пакетов OpenWrt")](https://openwrt.org/packages/table/start?dataflt%5BName_pkg-dependencies*~%5D=prometheus-node)
+
+
+```bash
+opkg update
+opkg install \
+prometheus-node-exporter-lua \
+prometheus-node-exporter-lua-nat_traffic \
+prometheus-node-exporter-lua-netstat \
+prometheus-node-exporter-lua-openwrt \
+prometheus-node-exporter-lua-uci_dhcp_host \
+prometheus-node-exporter-lua-wifi \
+prometheus-node-exporter-lua-wifi_stations
+```
 
 ## изменить интерфейс прослушивания
 
