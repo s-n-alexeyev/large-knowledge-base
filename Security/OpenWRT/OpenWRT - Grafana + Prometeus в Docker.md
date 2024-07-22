@@ -155,32 +155,24 @@ services:
 
 ## Конфигурация прометея
 
-Прежде чем запустить prometheus, вам необходимо изменить/добавить конфиг. Замените YOUR_ROUTER_IP:
+Прежде чем запустить prometheus, вам необходимо изменить/добавить конфиг. Замените YOUR_ROUTER_IP, OpenWRT-ASUS_RT-AX53U в качестве примера:
 
 ```bash
-[user@HOST-IN-LAN ~]$ vi prometheus/prometheus.yml 
+nano prometheus/prometheus.yml 
 ```
 
 ```yaml
 global:
-  scrape_interval:     15s
-  evaluation_interval: 15s
-
-  # Attach these labels to any time series or alerts when communicating with
-  # external systems (federation, remote storage, Alertmanager).
-  external_labels:
-      monitor: 'docker-host-alpha'
-
-# Load and evaluate rules in this file every 'evaluation_interval' seconds.
-rule_files:
-  - "alert.rules"
-
-# A scrape configuration containing exactly one endpoint to scrape.
+  scrape_interval: 10s
 scrape_configs:
-  - job_name: 'openwrt-router1'
-    scrape_interval: 5s
+  - job_name: prometheus
     static_configs:
-      - targets: ['YOUR_ROUTER_IP:9100']
+     - targets:
+        - prometheus:9090
+  - job_name: OpenWRT-ASUS_RT-AX53U
+    static_configs:
+     - targets:
+        - YOUR_ROUTER_IP:9100
 ```
 
 Структура каталогов должна быть примерно такой:
