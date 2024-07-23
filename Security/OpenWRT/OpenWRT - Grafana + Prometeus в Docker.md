@@ -89,19 +89,156 @@ curl http://192.168.1.1:9100/metrics
  >В ответе должно быть что-то типа примера ниже
 ![[metrics.png]]
 
-## Как запустить сервер Prometheus?
 
-Начнём с небольшого вступления, проект Prometheus - это специальный сервис по сбору метрик и аналитических данных с различных удалённых и не очень удалённых систем.
+#### - запущен интерфейс экспортера
 
-Основная его задача в том чтобы собирать данные из экспортеров сформированные в виде временных рядов, которые затем можно визуализировать и проанализировать для получения информации о производительности и состоянии инфраструктуры в целом или отдельных подсистем в частности.
+```bash
+root@OpenWrt:/etc/config# netstat -tulpn | grep 9100
+tcp        0      0 YOUR_ROUTER_IP:9100        0.0.0.0:*               LISTEN      3469/lua
+```
 
-В официальной [документации](https://dzen.ru/away?to=https%3A%2F%2Fprometheus.io%2Fdocs%2Fintroduction%2Foverview%2F) Prometheus можно почитать о данном проекте чуть подробнее.
+#### - запуск конфигурации экспортера
 
-Существует множество вариантов установки Prometheus, со всеми ими можете ознакомиться в официальной документации Prometheus, в главе [Installation](https://dzen.ru/away?to=https%3A%2F%2Fprometheus.io%2Fdocs%2Fprometheus%2Flatest%2Finstallation%2F), но а лично я предпочитаю Docker-way.
+```bash
+root@OpenWrt:/etc/config# ps | grep prometheus
+ 3469 root      1920 S    {prometheus-node} /usr/bin/lua /usr/bin/prometheus-node-exporter-lua --bind YOUR_ROUTER_IP --port 9100
+```
 
-Кстати ранее я написал публикацию под названием "[Большая экскурсия в мир Docker](https://dzen.ru/a/YwlUoB1mJGQJf3Az)" и если вы не очень знакомы с тем как пользоваться Docker то рекомендую с ней ознакомиться, так как подробности установки [Docker Engine](https://dzen.ru/away?to=https%3A%2F%2Fdocs.docker.com%2Fengine%2Finstall%2F) и [Docker Compose](https://dzen.ru/away?to=https%3A%2F%2Fdocs.docker.com%2Fcompose%2Finstall%2F) я пропущу.
+#### - открыть порт с хоста в локальной сети
 
-При описании конфигураций прометеуса буду использовать конфигурации Docker Compose, так как с моей скромной точки зрения это намного удобнее чем ванильный Docker.
+```bash
+[user@HOST-IN-LAN ~]$ nmap YOUR_ROUTER_IP -p 9100
+9100/tcp open  jetdirect
+```
+
+#### - метрики от хоста в локальной сети
+
+```bash
+[user@HOST-IN-LAN ~]$ curl YOUR_ROUTER_IP:9100/metrics
+```
+
+И вы должны увидеть здесь много показателей…
+
+# (необязательно) настройка prometheus
+
+Теперь вы готовы настроить Prometheus. Если у вас уже есть экземпляр, вам просто нужно добавить [Scrape_config](https://www.cloudrocket.at/posts/monitor-openwrt-nodes-with-prometheus/#prometheus-config) . Если у вас его нет, не проблема =>
+
+## запустить новый экземпляр
+
+Если вы знакомы с Docker и Compose, вы можете просто запустить новые экземпляры prometheus/grafana. **Используйте эту конфигурацию только для временного использования** :
+
+```yaml
+version: '2.1'
+
+networks:
+  monitor-net:
+    driver: bridge
+
+volumes:
+    prometheus_data: {}
+    grafana_data: {}
+
+services:
+
+  prometheus:
+    image: prom/prometheus:v2.23.0
+    container_name: prometheus
+    volumes:
+      - ./prometheus:/etc/prometheus
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=200h'
+      - '--web.enable-lifecycle'
+    restart: unless-stopped
+    expose:
+      - 9090
+    ports:
+      - 9090:9090
+    networks:
+      - monitor-net
+    labels:
+      org.label-schema.group: "monitoring"
+
+  grafana:
+    image: grafana/grafana:7.3.6
+    container_name: grafana
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning
+    environment:
+      - GF_SECURITY_ADMIN_USER=${ADMIN_USER:-admin}
+      - GF_SECURITY_ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
+      - GF_USERS_ALLOW_SIGN_UP=false
+    restart: unless-stopped
+    expose:
+      - 3000
+    ports:
+      - 3000:3000
+    networks:
+      - monitor-net
+    labels:
+      org.label-schema.group: "monitoring"
+```
+
+Это урезанная и модифицированная версия от [Стефанпродана.](https://raw.githubusercontent.com/stefanprodan/dockprom/master/docker-compose.yml)
+
+## Конфигурация прометея
+
+Прежде чем запустить prometheus, вам необходимо изменить/добавить конфиг. Замените YOUR_ROUTER_IP, OpenWRT-ASUS_RT-AX53U в качестве примера:
+
+```bash
+nano prometheus/prometheus.yml 
+```
+
+```yaml
+global:
+  scrape_interval: 10s
+scrape_configs:
+  - job_name: prometheus
+    static_configs:
+     - targets:
+        - prometheus:9090
+  - job_name: OpenWRT-ASUS_RT-AX53U
+    static_configs:
+     - targets:
+        - YOUR_ROUTER_IP:9100
+```
+
+Структура каталогов должна быть примерно такой:
+
+```bash
+[user@HOST-IN-LAN dockprom]$ tree
+.
+├── docker-compose.yml
+├── grafana
+│   └── provisioning
+└── prometheus
+    └── prometheus.yml
+```
+
+## запустить контейнеры
+
+Теперь запустите докер-контейнеры в отключенном режиме:
+
+```bash
+[user@HOST-IN-LAN dockprom]$ docker-compose up -d
+```
+
+После получения изображений они должны запуститься через несколько секунд.
+
+```bash
+[user@HOST-IN-LAN dockprom]$ docker ps -a
+CONTAINER ID        IMAGE                       COMMAND                  CREATED             STATUS                       PORTS                    NAMES
+ea8419f267e5        prom/prometheus:v2.23.0     "/bin/prometheus --c…"   3 hours ago         Up 3 hours                   0.0.0.0:9090->9090/tcp   prometheus
+f17822ba6bcf        grafana/grafana:7.3.6       "/run.sh"                3 hours ago         Up 3 hours                   0.0.0.0:3000->3000/tcp   grafana
+```
+
+Откройте панель управления Grafana в браузере => [http://localhost:3000](http://localhost:3000) . Учетные данные по умолчанию — admin/admin. Вам будет предложено изменить его.
+
 # настроить графану
 
 ## добавить источник данных Прометея
