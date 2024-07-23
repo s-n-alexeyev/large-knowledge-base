@@ -243,7 +243,7 @@ scp -r root@185.87.49.134:/root/wg/ /home/user/Documents
 ```
 - где `/root/wg/` - директория конфигурационных файлов на сервере, `/home/user/Documents` - директория на локальном компьютере
 
->скрипт для установки/настройки Wireguard на случай если недоступен на GitHub
+> [!info ]- скрипт для установки/настройки Wireguard на случай если недоступен на GitHub
 ```bash
 #!/bin/bash
 
@@ -777,4 +777,17 @@ fi
 ```
 
 
-<details>
+> [!question]- How are you?
+> I'm good
+> - test
+> 	- asdasda
+> 	- asdasdad
+> - sdfsdf
+> - sdfsfsf
+> - sdfsfsf
+> - sldkjskdf
+> 1. sdfsd
+> 2. sdfdfhr
+> 3. rtyt
+> 4. jfdgdf
+> 5. hdf
