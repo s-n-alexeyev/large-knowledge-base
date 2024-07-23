@@ -31,15 +31,22 @@ December 28, 2020 · 3 min · rainer
 
 Тут нам потребуется установить несколько пакетов:
 
-|     |     |
+|Пакет|Назначение|
 | --- | --- |
-|prometheus-node-exporter-lua | это основной пакет, он содержит в себе HTTP сервер и через плагины собирает информацию о железке, представляет из себя легковесную официальную версию node_exporte|
-|prometheus-node-exporter-lua-nat_traffic | плагин для сбора информацию о работе цепочек NAT|
-|prometheus-node-exporter-lua-netstat | плагин для сбора сетевой статистики|
-|prometheus-node-exporter-lua-openwrt | плагин для сбора общей информации об инсталляции OpenWRT|
-|prometheus-node-exporter-lua-uci_dhcp_host | плагин позволяющий получать информацию об IP-адресах выданных DHCP сервером|
-|prometheus-node-exporter-lua-wifi | плагин для сборка информация о вай-фай адаптерах|
-|prometheus-node-exporter-lua-wifi_stations | сбор инорфмации о пользователя подключенных по вай-фай|
+|prometheus-node-exporter-lua |основной пакет, содержит HTTP сервер, представляет облегченную версию node_exporter|
+|prometheus-node-exporter-lua-nat_traffic |сбор информации о работе цепочек NAT|
+|prometheus-node-exporter-lua-netstat |сетевая статистика|
+|prometheus-node-exporter-lua-openwrt |сбор общей информации об инсталляции OpenWRT|
+|prometheus-node-exporter-lua-uci_dhcp_host |получает информацию об IP-адресах выданных DHCP сервером|
+|prometheus-node-exporter-lua-wifi |информации о wi-fi адаптерах|
+|prometheus-node-exporter-lua-wifi_stations |инорфмация о пользователях подключенных по wi-fi|
+Нажимаем **Install...** возле каждого пакета из списка выше.
+
+![[pacset.png]]
+
+
+
+> Установка тех же пакетов через консоль:
 
 ```bash
 opkg update
