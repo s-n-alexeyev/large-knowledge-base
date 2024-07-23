@@ -2,7 +2,7 @@
 
 December 28, 2020 · 3 min · rainer
 
-![promwrt](https://www.cloudrocket.at/images/2020/openwrt_prometheus.png)
+![promwrt](/Media/OpenWRT_Grafana_Prometeus_Docker/promwrt.png)
 
 Оглавление
 
@@ -23,7 +23,7 @@ December 28, 2020 · 3 min · rainer
 - prometheus-node-exporter-lua-wifi
 - prometheus-node-exporter-lua-wifi_stations
 
-[![пакеты](https://www.cloudrocket.at/images/2020/openwrt_prometheus_node_pkgs.png "Список пакетов OpenWrt")](https://openwrt.org/packages/table/start?dataflt%5BName_pkg-dependencies*~%5D=prometheus-node)
+![[Pasted image 20240723124907.png]]
 
 
 ```bash
