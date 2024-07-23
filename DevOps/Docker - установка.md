@@ -140,10 +140,10 @@ docker run hello-world
 >Запускаем эту команду для установки последней версии docker-compose, проверить какая версия является последней можно [тут](https://github.com/docker/compose/releases):
 ```bash
 mkdir -p ~/.docker/cli-plugins/
-curl -SL https://github.com/docker/compose/releases/download/\
-$(curl -s "https://api.github.com/repos/docker/compose/releases/latest" | \
-grep '"tag_name":' | \
-sed -E 's/.*"([^"]+)".*/\1/')/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose
+curl -SL https://github.com/docker/compose/releases/download/$(\
+curl -s "https://api.github.com/repos/docker/compose/releases/latest" | \
+grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')/\
+docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose
 ```
 
 >Делаем файл исполняемым:
@@ -158,5 +158,5 @@ docker compose version
 
 >Увидим примерно такое:
 ```q
-Docker Compose version v2.27.0
+Docker Compose version v2.29.0
 ```
