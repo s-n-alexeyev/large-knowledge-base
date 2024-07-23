@@ -244,7 +244,7 @@ scp -r root@185.87.49.134:/root/wg/ /home/user/Documents
 - где `/root/wg/` - директория конфигурационных файлов на сервере, `/home/user/Documents` - директория на локальном компьютере
 
 >скрипт для установки/настройки Wireguard на случай если недоступен на GitHub
-```spoiler
+```bash
 #!/bin/bash
 
 # Secure WireGuard server installer
