@@ -75,6 +75,7 @@ docker-ce:
 ```bash
 sudo apt install docker-ce
 ```
+
 ## Проверяем работает ли Docker
 
 >Для начала узнаем, что там с Docker’ом:
