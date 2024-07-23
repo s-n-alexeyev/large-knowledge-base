@@ -1,18 +1,12 @@
 # Monitor OpenWrt nodes with Prometheus
 
-December 28, 2020 · 3 min · rainer
+2020-12-28
 
-![promwrt](/Media/OpenWRT_Grafana_Prometeus_Docker/promwrt.png)
+![](https://www.cloudrocket.at/images/2020/openwrt_prometheus.png)
 
-Оглавление
+# Настройка openwrt
 
-# мотивация
-
-Я использую OpenWrt уже давно, и отслеживать их всегда было немного сложно. Это становится сложнее, если вы собираетесь использовать больше точек доступа. Это несложно, поскольку [существуют сценарии prometheus-node-exporter](https://openwrt.org/packages/table/start?dataflt%5BName_pkg-dependencies*~%5D=prometheus-node) .
-
-# настройка openwrt
-
-## установить скрипты
+## Установка пакетов
 
 ![[pacman.png]]
 
