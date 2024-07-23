@@ -775,3 +775,6 @@ else
 	installWireGuard
 fi
 ```
+
+
+<details>
