@@ -14,17 +14,32 @@ December 28, 2020 · 3 min · rainer
 
 ## установить скрипты
 
-Вам следует начать с обновленного маршрутизатора OpenWrt. Установите скрипты экспорта узлов Prometheus:
+![[pacman.png]]
 
-- prometheus-node-exporter-lua
-- prometheus-node-exporter-lua-nat_traffic
-- prometheus-node-exporter-lua-netstat
-- prometheus-node-exporter-lua-openwrt
-- prometheus-node-exporter-lua-wifi
-- prometheus-node-exporter-lua-wifi_stations
 
-![[Pasted image 20240723124907.png]]
+Как не сложно догадаться откроется страница **Software**, на ней нас для начала интересует кнопка **Update lists...**, нажимаем на неё.
 
+![[paclist.png]]
+
+Появится модальное окно, а в нём отладочные данные о процессе обновления списка пакетов, смотрим что всё хорошо, далее справа снизу жмём кнопку **Dismiss**.
+
+![[modal.png]]
+
+Теперь найдём необходимые пакеты, для этого в поле **Filter** пишем слово **exporter** и смотрим что получилось.
+![[filter.png]]
+
+
+Тут нам потребуется установить несколько пакетов:
+
+|     |     |
+| --- | --- |
+|prometheus-node-exporter-lua | это основной пакет, он содержит в себе HTTP сервер и через плагины собирает информацию о железке, представляет из себя легковесную официальную версию node_exporte|
+|prometheus-node-exporter-lua-nat_traffic | плагин для сбора информацию о работе цепочек NAT|
+|prometheus-node-exporter-lua-netstat | плагин для сбора сетевой статистики|
+|prometheus-node-exporter-lua-openwrt | плагин для сбора общей информации об инсталляции OpenWRT|
+|prometheus-node-exporter-lua-uci_dhcp_host | плагин позволяющий получать информацию об IP-адресах выданных DHCP сервером|
+|prometheus-node-exporter-lua-wifi | плагин для сборка информация о вай-фай адаптерах|
+|prometheus-node-exporter-lua-wifi_stations | сбор инорфмации о пользователя подключенных по вай-фай|
 
 ```bash
 opkg update
