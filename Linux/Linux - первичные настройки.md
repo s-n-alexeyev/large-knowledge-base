@@ -28,7 +28,7 @@ debugInConsole: false # Print debug info in Obsidian console
 
 ---
 # Браузеры
-## [Ссылка на добавление поисковых систем](https://mycroftproject.com/google-search-plugins.html)
+## [Ссылка на добавление поисковых систем](https://mycroftproject.com)
 ## Librewolf
 
 ### Librewolf ARCH
