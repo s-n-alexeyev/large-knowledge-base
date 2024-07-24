@@ -8,6 +8,8 @@
 
 ## Установка пакетов
 
+Если вы приверженец консоли, то можете пропустить установку пакетов через web-интерфейс, перейдя непосредственно к пункту 
+
 ![[pacman.png]]
 
 
@@ -38,9 +40,31 @@
 
 ![[pacset.png]]
 
+## Вход в консоль OpenWrt
 
-> Установка тех же пакетов через консоль:
+>[!warning] `192.168.1.1`- IP-адрес роутера по-умолчанию на роутерах OpenWRT, но может быть другим если вы его меняли на своём роутере.
 
+>Входим на роутер по ssh, в windows ssh можно запустить внутри powershell.
+```bash
+ssh root@192.168.1.1
+```
+
+>[!summary] Удачный вход
+>```
+>BusyBox v1.36.1 (2024-03-22 22:09:42 UTC) built-in shell (ash)
+>
+> _______                     ________        __
+>|       |.-----.-----.-----.|  |  |  |.----.|  |_
+>|   -   ||  _  |  -__|     ||  |  |  ||   _||   _|
+>|_______||   __|_____|__|__||________||__|  |____|
+>         |__| W I R E L E S S   F R E E D O M
+>-----------------------------------------------------
+>OpenWrt 23.05.3, r23809-234f1a2efa
+>-----------------------------------------------------
+>root@OpenWrt:~#
+>```
+
+> Установка необходимых пакетов, если вы устанавливали их через web-интерфейс, то пропускаем:
 ```bash
 opkg update
 opkg install \
@@ -55,17 +79,8 @@ prometheus-node-exporter-lua-wifi_stations
 
 Далее потребуется настроить _node_exporter_, по умолчанию он запускается только на интерфейсе _localhost_, но нам будет необходимо поменять это на интерфейс на _lan_.
 Но этот раз нам в любом случае потребуется либо подключиться через ssh, либо установить расширение для web-интерфейса _luci-app-ttyd_, которое позволяет подключиться к консоли через браузер.
-В windows ssh можно запустить внутри powershell.
 
->[!warning] `192.168.1.1`- IP-адрес роутера по-умолчанию на роутерах OpenWRT, но может быть другим если вы его меняли на своём роутере.
-
-```bash
-ssh root@192.168.1.1
-```
-
-![[terminal.png]]
-
->Далее пишем в консоли следующую команду, которая отредактирует файл _/etc/config/prometheus-node-exporter-lua_ и заменит в нём слово _localhost_ на слово _lan_.
+>Пишем в консоли следующую команду, которая отредактирует файл _/etc/config/prometheus-node-exporter-lua_ и заменит в нём слово _localhost_ на слово _lan_.
 ```bash
 sed -r 's/loopback/lan/g' -i /etc/config/prometheus-node-exporter-lua
 ```
@@ -81,7 +96,27 @@ curl http://192.168.1.1:9100/metrics
 ```
 
  >В ответе должно быть что-то типа примера ниже
-![[metrics.png]]
+
+>[!summary] В ответе должно быть что-то типа примера ниже
+>```
+># TYPE node_scrape_collector_duration_seconds gauge
+># TYPE node_scrape_collector_success gauge
+># TYPE node_nf_conntrack_entries gauge
+>node_nf_conntrack_entries 806
+># TYPE node_nf_conntrack_entries_limit gauge
+>node_nf_conntrack_entries_limit 31744
+>node_scrape_collector_duration_seconds{collector="conntrack"} 0.0016260147094727
+>node_scrape_collector_success{collector="conntrack"} 1
+># TYPE node_boot_time_seconds gauge
+>node_boot_time_seconds 1721742742
+># TYPE node_context_switches_total counter
+>node_context_switches_total 80612070
+># TYPE node_cpu_seconds_total counter
+>node_cpu_seconds_total{cpu="cpu0",mode="user"} 292.93
+>node_cpu_seconds_total{cpu="cpu0",mode="nice"} 0
+>node_cpu_seconds_total{cpu="cpu0",mode="system"} 498.31
+>node_cpu_seconds_total{cpu="cpu0",mode="idle"} 68699.17
+>```
 
 ## Как запустить сервер Prometheus?
 
