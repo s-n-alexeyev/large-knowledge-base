@@ -1,7 +1,6 @@
 >вход на SSH
 ```bash
 ssh -oHostKeyAlgorithms=+ssh-rsa root@192.168.1.1
-ssh -oHostKeyAlgorithms=+ssh-rsa root@nakakal.duckdns.org
 ```
 
 >обновление

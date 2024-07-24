@@ -158,5 +158,5 @@ docker compose version
 
 >Увидим примерно такое:
 ```q
-Docker Compose version v2.29.0
+Docker Compose version v2.29.1
 ```
