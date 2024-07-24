@@ -1,6 +1,6 @@
 >вход на SSH
 ```bash
-ssh -oHostKeyAlgorithms=+ssh-rsa root@192.168.1.1
+ssh root@192.168.1.1
 ```
 
 >обновление
