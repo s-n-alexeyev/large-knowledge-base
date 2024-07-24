@@ -83,22 +83,14 @@ curl http://192.168.1.1:9100/metrics
  >В ответе должно быть что-то типа примера ниже
 ![[metrics.png]]
 
-
 ## Как запустить сервер Prometheus?
 
-Начнём с небольшого вступления, проект Prometheus - это специальный сервис по сбору метрик и аналитических данных с различных удалённых и не очень удалённых систем.
+>[!info] Назначение Prometheus
+>Проект Prometheus - это специальный сервис по сбору метрик и аналитических данных с различных удалённых и не очень удалённых систем.
+>Основная его задача в том чтобы собирать данные из экспортеров сформированные в виде временных рядов, которые затем можно визуализировать и проанализировать для получения информации о производительности и состоянии инфраструктуры в целом или отдельных подсистем в частности.
 
-Основная его задача в том чтобы собирать данные из экспортеров сформированные в виде временных рядов, которые затем можно визуализировать и проанализировать для получения информации о производительности и состоянии инфраструктуры в целом или отдельных подсистем в частности.
-
-В официальной [документации](https://dzen.ru/away?to=https%3A%2F%2Fprometheus.io%2Fdocs%2Fintroduction%2Foverview%2F) Prometheus можно почитать о данном проекте чуть подробнее.
-
-Существует множество вариантов установки Prometheus, со всеми ими можете ознакомиться в официальной документации Prometheus, в главе [Installation](https://dzen.ru/away?to=https%3A%2F%2Fprometheus.io%2Fdocs%2Fprometheus%2Flatest%2Finstallation%2F), но а лично я предпочитаю Docker-way.
-
-Кстати ранее я написал публикацию под названием "[Большая экскурсия в мир Docker](https://dzen.ru/a/YwlUoB1mJGQJf3Az)" и если вы не очень знакомы с тем как пользоваться Docker то рекомендую с ней ознакомиться, так как подробности установки [Docker Engine](https://dzen.ru/away?to=https%3A%2F%2Fdocs.docker.com%2Fengine%2Finstall%2F) и [Docker Compose](https://dzen.ru/away?to=https%3A%2F%2Fdocs.docker.com%2Fcompose%2Finstall%2F) я пропущу.
-
-При описании конфигураций прометеуса буду использовать конфигурации Docker Compose, так как с моей скромной точки зрения это намного удобнее чем ванильный Docker.
-
-Переходим на наш Linux сервер на котором будем разворачивать Prometheus и Grafana
+Переходим на наш Linux сервер на котором будем разворачивать Prometheus и Grafana.
+На сервере уже должен быть развернут `Docker` c `Docker Compose`
 
 
 >И так, создадим пустую папку, назовём её скажем _docker-monitoring_, после чего перейдём в неё.
@@ -107,18 +99,69 @@ mkdir docker-monitoring
 cd docker-monitoring
 ```
 
-Теперь создадим в ней файл _docker-compose.yml_ и откроем его в редакторе _nano_ (хотя лично я предпочитаю _mcedit_).
-
+>Теперь создадим в ней файл _docker-compose.yml_ и откроем его в редакторе _nano_ (хотя лично я предпочитаю _mcedit_).
 ```bash
 touch docker-compose.yml  
 nano docker-compose.yml
 ```
 
-Наполним его следущими содержимым:
+>Заполняем его следующими содержимым:
+```yaml
+version: '3.9'
 
+services:
 
+  prometheus:
+    image: prom/prometheus
+    restart: unless-stopped
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus_data:/prometheus
+    networks:
+      - monitoring
+    ports:
+      - 9090:9090
 
+networks:
+  monitoring:
+    driver: bridge
 
+```
+Далее жмём комбинацию клавиш `CTRL+X`, затем клавишу `Y`, затем клавишу `Enter`, сохраняя изменения.
+
+>Возможно вы уже обратили внимание на файл _prometheus.yml_ упомянутий в конфигурации, в нём содержатся настройки сервиса Prometheus, создим его, после чего откроем в редакторе:
+```bash
+touch prometheus.yml  
+nano prometheus.yml
+```
+
+>Наполним его следующим содержимым:
+```yaml
+global:
+  scrape_interval: 10s
+scrape_configs:
+  - job_name: prometheus
+    static_configs:
+     - targets:
+        - prometheus:9090
+  - job_name: node
+    static_configs:
+     - targets:
+        - 192.168.1.1:9100
+```
+Сохраним и выйдем.
+
+>Далее создадим пустую папку _prometheus_data_ в которую сервис Prometheus будет сохранять своё состояние.
+```bash
+mkdir ./prometheus_data  
+sudo chown 65534:65534 ./prometheus_data
+```
+
+>Теперь запустим контейнер с сервисом Prometheus и посмотрим что получилось:
+
+```bash
+docker-compose up -d
+```
 # настроить графану
 
 ## добавить источник данных Прометея
