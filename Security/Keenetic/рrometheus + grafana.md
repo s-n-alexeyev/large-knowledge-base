@@ -470,7 +470,6 @@ opkg install prometheus-collectd-exporter
 ```
 
 >Добавляем в конфигурационный файл "/opt/etc/prometheus/prometheus.yml":
-
 ```yaml
   # collectd
   - job_name: "collectd"
@@ -608,120 +607,138 @@ node -ID: 1860
 
 Keenetic имеет netflow "искаропки" (если компонент "Сенсор NetFlow" установлен):
 
-! Если компонент не установлен и захотите его добавить, прошивка обновиться до актуальной версии (в зависимости от канала обновлений).
+>[!warning] Если компонент не установлен и захотите его добавить, прошивка обновиться до актуальной версии (в зависимости от канала обновлений).
 
-Активировать сервис, если не активен, нужно в CLI (telnet|SSH) или web:
+>Активируем сервис, если не активен, в CLI (telnet|SSH) или web:
 
-1. выбирать интерфейс (напр., "Bridge0") и вариант прослушки (входяший(ingress)|исходящий(egress)|оба-два(both)): `interface Bridge0 ip flow both`
+>Выбираем интерфейс (напр., "Bridge0") и вариант прослушки (входяший(ingress)|исходящий(egress)|оба-два(both)): 
+```telnet
+interface Bridge0 ip flow both
+```
 
-2. указать адрес (напр., 127.0.0.1) и порт - 2055 сервера для приёма: `ip flow-export destination 127.0.0.1 2055`
+>Указываем адрес (напр., 127.0.0.1) и порт - 2055 сервера для приёма:
+```telnet
+ip flow-export destination 127.0.0.1 2055
+```
 
-3. указать версию протокола netflow (для cnflegacy|csflow - 5 , для остальных - 9): `ip flow-export version 9`
+>Указываем версию протокола netflow (для cnflegacy|csflow - 5 , для остальных - 9):
+```telnet
+ip flow-export version 9
+```
 
-4. сохранить настройки: `system configuration save`
+>Сохраняем настройки: 
+```telnet
+system configuration save
+```
 
-Установить один из пакетов:
+>Устанавливаем один из пакетов:
+```bash
+opkg install cnetflow
 
-`opkg install cnetflow` или
+#или
+opkg install cnflegacy
 
-`opkg install cnflegacy` или
+#или
+opkg install csflow
 
-`opkg install csflow` или
+#или
+opkg install goflow
 
-`opkg install goflow` или
+#или
+opkg install netflow-exporter
+```
 
-`opkg install netflow-exporter`
+>Добавляем в конфигурационный файл "/opt/etc/prometheus/prometheus.yml":
 
-и отредактировать конфиг "/opt/etc/prometheus/prometheus.yml":
-
-(добавить в конфиг прометея)
-
+```yaml
   # goflow
   - job_name: "goflow"
     static_configs:
     - targets: ["192.168.1.1:8080"]
+```
 
-Скрытый текст
 
-# my global config
-global:
-  scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
-  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
-  # scrape_timeout is set to the global default (10s).
-
-# Alertmanager configuration
-alerting:
-  alertmanagers:
-    - static_configs:
-        - targets:
-          # - alertmanager:9093
-
-# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
-rule_files:
-  # - "first_rules.yml"
-  # - "second_rules.yml"
-
-# A scrape configuration containing exactly one endpoint to scrape:
-# Here it's Prometheus itself.
-scrape_configs:
-  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
-  - job_name: "prometheus"
-
-    # metrics_path defaults to '/metrics'
-    # scheme defaults to 'http'.
-
-    static_configs:
-      - targets: ["192.168.1.1:9090"]
-
-  # goflow
-  - job_name: "goflow"
-    static_configs:
-    - targets: ["192.168.1.1:8080"]
-
-или
-
-  # netflow
-  - job_name: "netflow"
-    static_configs:
-    - targets: ["192.168.1.1:9191"]
-
-Скрытый текст
-
-# my global config
-global:
-  scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
-  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
-  # scrape_timeout is set to the global default (10s).
-
-# Alertmanager configuration
-alerting:
-  alertmanagers:
-    - static_configs:
-        - targets:
-          # - alertmanager:9093
-
-# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
-rule_files:
-  # - "first_rules.yml"
-  # - "second_rules.yml"
-
-# A scrape configuration containing exactly one endpoint to scrape:
-# Here it's Prometheus itself.
-scrape_configs:
-  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
-  - job_name: "prometheus"
-
-    # metrics_path defaults to '/metrics'
-    # scheme defaults to 'http'.
-
-    static_configs:
-      - targets: ["192.168.1.1:9090"]
-
-  # netflow
-  - job_name: "netflow"
-    static_configs:
-    - targets: ["192.168.1.1:9191"]
-
+>[!example]- Готовый конфигурационный файл
+>
+># my global config
+>global:
+>  scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+>  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+>  # scrape_timeout is set to the global default (10s).
+>
+># Alertmanager configuration
+>alerting:
+>  alertmanagers:
+>    - static_configs:
+>        - targets:
+>          # - alertmanager:9093
+>
+># Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+>rule_files:
+>  # - "first_rules.yml"
+>  # - "second_rules.yml"
+>
+># A scrape configuration containing exactly one endpoint to scrape:
+># Here it's Prometheus itself.
+>scrape_configs:
+>  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+>  - job_name: "prometheus"
+>
+>    # metrics_path defaults to '/metrics'
+>    # scheme defaults to 'http'.
+>
+>    static_configs:
+>      - targets: ["192.168.1.1:9090"]
+>
+>  # goflow
+>  - job_name: "goflow"
+>    static_configs:
+>    - targets: ["192.168.1.1:8080"]
+>
+>или
+>
+>  # netflow
+>  - job_name: "netflow"
+>    static_configs:
+>    - targets: ["192.168.1.1:9191"]
+>
+>Скрытый текст
+>
+># my global config
+>global:
+>  scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+>  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+>  # scrape_timeout is set to the global default (10s).
+>
+># Alertmanager configuration
+>alerting:
+>  alertmanagers:
+>    - static_configs:
+>        - targets:
+>          # - alertmanager:9093
+>
+># Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+>rule_files:
+>  # - "first_rules.yml"
+>  # - "second_rules.yml"
+>
+># A scrape configuration containing exactly one endpoint to scrape:
+># Here it's Prometheus itself.
+>scrape_configs:
+>  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+>  - job_name: "prometheus"
+>
+>    # metrics_path defaults to '/metrics'
+>    # scheme defaults to 'http'.
+>
+>    static_configs:
+>      - targets: ["192.168.1.1:9090"]
+>
+>  # netflow
+>  - job_name: "netflow"
+>    static_configs:
+>    - targets: ["192.168.1.1:9191"]
+>
 !!! После правок конфига прометея, сервис перезапускать обязательно !!!
 
 `/opt/etc/init.d/S70prometheus restart`
