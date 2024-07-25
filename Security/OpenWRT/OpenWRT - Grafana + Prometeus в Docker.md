@@ -140,8 +140,6 @@ nano docker-compose.yml
 
 >Заполняем его следующими содержимым:
 ```yaml
-version: '3.9'
-
 services:
 
   prometheus:
@@ -193,7 +191,7 @@ sudo chown 65534:65534 ./prometheus_data
 >Теперь запустим контейнер с сервисом Prometheus и посмотрим что получилось:
 
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 # настроить графану
 
