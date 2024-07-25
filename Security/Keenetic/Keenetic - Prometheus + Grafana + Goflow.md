@@ -31,7 +31,11 @@ opkg install nano
 opkg install prometheus
 ```
 
-> Редактируем конфигурационный файл `/opt/etc/prometheus/prometheus.yml` (меняем "localhost" на адрес устройства):
+> Редактируем конфигурационный файл `prometheus.yml` (меняем `- targets: ["localhost:9090"]` на адрес устройства):
+```bash
+nano /opt/etc/prometheus/prometheus.yml
+```
+
 ```yaml
 # my global config
 global:
@@ -109,7 +113,11 @@ system configuration save
 opkg install prometheus-snmp-exporter
 ```
 
->Добавляем в конфигурационный файл "/opt/etc/prometheus/prometheus.yml":
+>Добавляем в конфигурационный файл `prometheus.yml`:
+```bash
+nano /opt/etc/prometheus/prometheus.yml
+```
+
 ```yaml
   # snmp
   - job_name: "snmp"
@@ -198,7 +206,11 @@ opkg install prometheus-snmp-exporter
 opkg install prometheus-node-exporter
 ```
 
->Добавляем в конфигурационный файл "/opt/etc/prometheus/prometheus.yml":
+>Добавляем в конфигурационный файл `prometheus.yml`:
+```bash
+nano /opt/etc/prometheus/prometheus.yml
+```
+
 ```yaml
   # node
   - job_name: "node"
@@ -482,7 +494,11 @@ frontend stats
 opkg install prometheus-collectd-exporter
 ```
 
->Добавляем в конфигурационный файл "/opt/etc/prometheus/prometheus.yml":
+>Добавляем в конфигурационный файл `prometheus.yml`:
+```bash
+nano /opt/etc/prometheus/prometheus.yml
+```
+
 ```yaml
   # collectd
   - job_name: "collectd"
@@ -533,12 +549,12 @@ opkg install prometheus-collectd-exporter
 /opt/etc/init.d/S70prometheus restart
 ```
 
->Изменяем конфигурационный файл collectd
+>Изменяем конфигурационный файл `collectd.conf`:
 ```bash
 nano /opt/etc/collecd.conf
 ```
 
-```
+```config
 LoadPlugin network
 <Plugin network>
   Server "127.0.0.1" "25826"
@@ -649,7 +665,11 @@ opkg install goflow
 opkg install netflow-exporter
 ```
 
->Добавляем в конфигурационный файл "/opt/etc/prometheus/prometheus.yml":
+>Добавляем в конфигурационный файл `prometheus.yml`:
+```bash
+nano /opt/etc/prometheus/prometheus.yml
+```
+
 ```yaml
   # goflow
   - job_name: "goflow"
