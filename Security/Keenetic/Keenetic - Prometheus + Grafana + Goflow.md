@@ -563,7 +563,7 @@ opkg install grafana
 
 >Запускаем сервис:
 ```bash
-/opt/etc/init.d/S80grafana-server start
+/opt/etc/init.d/S80grafana start
 ```
 
 В браузере переходим на адрес устройства и порт `3000`:
