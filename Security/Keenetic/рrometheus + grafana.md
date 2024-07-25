@@ -1,17 +1,17 @@
-~~Винни-Пух~~ Прометей и все-все-все (ну-у-у, почти), или Статистики много не бывает.
+2022-12-28
+[Оригинальная статя](https://forum.keenetic.com/topic/15533-prometheus/)
+## рrometheus
 
-**рrometheus**
-
-[https://prometheus.io/](https://prometheus.io/)
-
+[https://prometheus.io/](https://prometheus.io/)  
 [https://prometheus.io/docs/introduction/overview/](https://prometheus.io/docs/introduction/overview/)
 
-Установить пакет: `opkg install prometheus`
+> Установить пакет:
+```bash
+opkg install prometheus
+```
 
-и отредактировать конфиг "/opt/etc/prometheus/prometheus.yml" (заменить "localhost" на адрес устройства):
-
-Скрытый текст
-
+>и отредактировать конфиг "/opt/etc/prometheus/prometheus.yml" (заменить "localhost" на адрес устройства):
+```yaml
 # my global config
 global:
   scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
@@ -41,12 +41,14 @@ scrape_configs:
 
     static_configs:
       - targets: ["192.168.1.1:9090"]
+```
 
-Запустить сервис: `/opt/etc/init.d/S70prometheus start`
+>Запустить сервис:
+```bash
+ /opt/etc/init.d/S70prometheus start
+```
 
 В любимом браузере отправиться на адрес устройства и порт 9090:
-
-Скрытый текст
 
 ![screen_2022-12-28_16:42:44-prom-stat.png](https://content.invisioncic.com/r270260/monthly_2022_12/651408024_screen_2022-12-28_164244-prom-stat.png.83471c0efffc363a8f86fe7c78096feb.png)
 
@@ -55,8 +57,6 @@ scrape_configs:
 ![screen_2022-12-28_16:44:56-prom-metr.png](https://content.invisioncic.com/r270260/monthly_2022_12/769153535_screen_2022-12-28_164456-prom-metr.png.3f2aa574d68c694d700c401b1a884141.png)
 
 Прометей умеет в графики "искаропки":
-
-Скрытый текст
 
 [![screen_2022-12-28_16:53:20-prom-graf-w.png](https://content.invisioncic.com/r270260/monthly_2022_12/1713752090_screen_2022-12-28_165320-prom-graf-w.thumb.png.772122c64781ee411c3e5be733ed217e.png)](https://content.invisioncic.com/r270260/monthly_2022_12/201719792_screen_2022-12-28_165320-prom-graf-w.png.e256dbbc8d0a4334d8f047ea30b8392d.png)
 
@@ -68,46 +68,33 @@ scrape_configs:
 
 [![screen_2022-12-28_16:59:53-prom-graf-con.png](https://content.invisioncic.com/r270260/monthly_2022_12/1535652564_screen_2022-12-28_165953-prom-graf-con.thumb.png.1907ab37cd56c3ee250296226d717532.png)](https://content.invisioncic.com/r270260/monthly_2022_12/1847572730_screen_2022-12-28_165953-prom-graf-con.png.ff88a65574c0cdc968a504c420ec4dfd.png)
 
-_И всё?_
-
--  ![Thanks](https://content.invisioncic.com/r270260/reactions/thanks_120.png)1
--  ![Upvote](https://content.invisioncic.com/r270260/reactions/react_up_120.png)4
-
-### **[TheBB](https://forum.keenetic.com/profile/5608-thebb/ "Go to TheBB's profile")**
-
--  [![TheBB](https://content.invisioncic.com/r270260/monthly_2017_03/ava.thumb.jpg.926e47b040cadc55398e2f724c088c34.jpg)](https://forum.keenetic.com/profile/5608-thebb/ "Go to TheBB's profile")![Honored Flooder](https://content.invisioncic.com/r270260/set_resources_10/84c1e40ea0e759e3f1505eb1788ddf3c_default_rank.png "Rank: Honored Flooder (5/5)")
-    
-- Moderators
-- - [2.4k](https://forum.keenetic.com/profile/5608-thebb/content/ "2,413 posts")
-- **Keenetic:** DSL G2 O2 U2 VOX(exp.) | KO(KN-1410) KS(KN-1110) KDSL(KN-2010)
-
-- **Author**
-
-- [](https://forum.keenetic.com/topic/15533-prometheus/#elControls_157316_menu "More options...")
-
-[Posted December 28, 2022](https://forum.keenetic.com/topic/15533-prometheus/?do=findComment&comment=157316)
-
 _Что бы такого ~~сделать плохого~~ установить?_
 
-**snmp_exporter**
+## snmp_exporter
 
 [https://github.com/prometheus/snmp_exporter](https://github.com/prometheus/snmp_exporter)
 
 Keenetic умеет в snmp "искаропки" (если компонент "Сервер SNMP" установлен):
 
-! Если компонент не установлен и захотите его добавить, прошивка обновиться до актуальной версии (в зависимости от канала обновлений).
+>[!warning] Если компонент не установлен и захотите его добавить, прошивка обновиться до актуальной версии (в зависимости от канала обновлений).
 
-Активировать сервис, если не активен, нужно в CLI (telnet|SSH) или web: `service snmp`
-
-и сохранить настройки: `system configuration save`
-
-Установить пакет: `opkg install prometheus-snmp-exporter`
-
-и отредактировать конфиг "/opt/etc/prometheus/prometheus.yml":
-
-(добавить в конфиг прометея)
-
+>Активировать сервис, если не активен, нужно в CLI (telnet|SSH) или web:
+```telnet
+service snmp
 ```
+
+>и сохранить настройки:
+```telnet
+system configuration save
+```
+
+>Установить пакет: 
+```bash
+opkg install prometheus-snmp-exporter
+```
+
+>Добавить в конфигурационный файл "/opt/etc/prometheus/prometheus.yml":
+```yaml
   # snmp
   - job_name: "snmp"
     static_configs:
@@ -124,8 +111,7 @@ Keenetic умеет в snmp "искаропки" (если компонент "
       replacement: 192.168.1.1:9116
 ```
 
-Скрытый текст
-
+```yaml
 # my global config
 global:
   scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
@@ -170,16 +156,19 @@ scrape_configs:
       target_label: instance
     - target_label: __address__
       replacement: 192.168.1.1:9116
+```
 
-!!! После правок конфига прометея, сервис перезапускать обязательно !!!
+> После правок конфигурационного файла рrometheus, сервис перезапускать обязательно !!!
+```
+/opt/etc/init.d/S70prometheus restart
+```
 
-`/opt/etc/init.d/S70prometheus restart`
-
-Запустить сервис: `/opt/etc/init.d/S99snmp_exporter start`
+>Запускаем сервис:
+```bash
+/opt/etc/init.d/S99snmp_exporter start
+```
 
 В любимом браузере отправиться на адрес устройства и порт 9090:
-
-Скрытый текст
 
 [![screen_2022-12-28_17:25:54-snmp-targ.png](https://content.invisioncic.com/r270260/monthly_2022_12/876369806_screen_2022-12-28_172554-snmp-targ.thumb.png.b136b55ffd797ef893a39bab4353b889.png)](https://content.invisioncic.com/r270260/monthly_2022_12/2097240054_screen_2022-12-28_172554-snmp-targ.png.6ef0e08dc2e69376730369ea8fbcb33e.png)
 
