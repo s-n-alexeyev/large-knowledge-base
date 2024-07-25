@@ -50,22 +50,21 @@ scrape_configs:
 
 В любимом браузере отправиться на адрес устройства и порт 9090:
 
-![screen_2022-12-28_16:42:44-prom-stat.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_16!42!44-prom-stat.png)
+![screen_2022-12-28_16:42:44-prom-stat.png|600](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_16!42!44-prom-stat.png)
 
-![screen_2022-12-28_16:48:51-prom-targ.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_16!48!51-prom-targ.png)
+![screen_2022-12-28_16:48:51-prom-targ.png|700](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_16!48!51-prom-targ.png)
 
-
-![screen_2022-12-28_16:44:56-prom-metr.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_16!44!56-prom-metr.png)
+![screen_2022-12-28_16:44:56-prom-metr.png|600](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_16!44!56-prom-metr.png)
 
 Прометей умеет в графики "искаропки":
 
-![screen_2022-12-28_16:53:20-prom-graf-w.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_16!53!20-prom-graf-w.png)
+![screen_2022-12-28_16:53:20-prom-graf-w.png|700](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_16!53!20-prom-graf-w.png)
 
-![screen_2022-12-28_16:56:42-prom-graf-b.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_16!56!42-prom-graf-b.png)
+![screen_2022-12-28_16:56:42-prom-graf-b.png|700](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_16!56!42-prom-graf-b.png)
 
 или (IP:9090/consoles/prometheus.html):
 
-![screen_2022-12-28_16:59:53-prom-graf-con.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_16!59!53-prom-graf-con.png)
+![screen_2022-12-28_16:59:53-prom-graf-con.png|700](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_16!59!53-prom-graf-con.png)
 
 ## snmp_exporter
 
@@ -265,42 +264,43 @@ opkg install prometheus-haproxy-exporter
     - targets: ["192.168.1.1:8404"]
 ```
 
-```yaml
-# my global config
-global:
-  scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
-  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
-  # scrape_timeout is set to the global default (10s).
-
-# Alertmanager configuration
-alerting:
-  alertmanagers:
-    - static_configs:
-        - targets:
-          # - alertmanager:9093
-
-# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
-rule_files:
-  # - "first_rules.yml"
-  # - "second_rules.yml"
-
-# A scrape configuration containing exactly one endpoint to scrape:
-# Here it's Prometheus itself.
-scrape_configs:
-  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
-  - job_name: "prometheus"
-
-    # metrics_path defaults to '/metrics'
-    # scheme defaults to 'http'.
-
-    static_configs:
-      - targets: ["192.168.1.1:9090"]
-
-  # haproxy
-  - job_name: "haproxy"
-    static_configs:
-    - targets: ["192.168.1.1:8404"]
-```
+>[!example]- Готовый конфигурационный файл
+>```yaml
+># my global config
+>global:
+>  scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+>  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+>  # scrape_timeout is set to the global default (10s).
+>
+># Alertmanager configuration
+>alerting:
+>  alertmanagers:
+>    - static_configs:
+>        - targets:
+>          # - alertmanager:9093
+>
+># Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+>rule_files:
+>  # - "first_rules.yml"
+>  # - "second_rules.yml"
+>
+># A scrape configuration containing exactly one endpoint to scrape:
+># Here it's Prometheus itself.
+>scrape_configs:
+>  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+>  - job_name: "prometheus"
+>
+>    # metrics_path defaults to '/metrics'
+>    # scheme defaults to 'http'.
+>
+>    static_configs:
+>      - targets: ["192.168.1.1:9090"]
+>
+>  # haproxy
+>  - job_name: "haproxy"
+>    static_configs:
+>    - targets: ["192.168.1.1:8404"]
+>```
 
 >После правок конфигурационного файла рrometheus, сервис перезапускать обязательно !!!
 ```
