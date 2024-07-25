@@ -50,22 +50,22 @@ scrape_configs:
 
 В любимом браузере отправиться на адрес устройства и порт 9090:
 
-![screen_2022-12-28_16:42:44-prom-stat.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_16!42!44-prom-stat.png)
+![screen_2022-12-28_16:42:44-prom-stat.png](https://content.invisioncic.com/r270260/monthly_2022_12/651408024_screen_2022-12-28_164244-prom-stat.png.83471c0efffc363a8f86fe7c78096feb.png)
 
-![screen_2022-12-28_16:48:51-prom-targ.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_16!48!51-prom-targ.png)
+![screen_2022-12-28_16:48:51-prom-targ.png](https://content.invisioncic.com/r270260/monthly_2022_12/1329766478_screen_2022-12-28_164851-prom-targ.thumb.png.dba6b04f6e35841e9a77c0b389bb377c.png)
 
 
-![screen_2022-12-28_16:44:56-prom-metr.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_16!44!56-prom-metr.png)
+![screen_2022-12-28_16:44:56-prom-metr.png](https://content.invisioncic.com/r270260/monthly_2022_12/769153535_screen_2022-12-28_164456-prom-metr.png.3f2aa574d68c694d700c401b1a884141.png)
 
 Прометей умеет в графики "искаропки":
 
-![screen_2022-12-28_16:53:20-prom-graf-w.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_16!53!20-prom-graf-w.png)
+![screen_2022-12-28_16:53:20-prom-graf-w.png](https://content.invisioncic.com/r270260/monthly_2022_12/1713752090_screen_2022-12-28_165320-prom-graf-w.thumb.png.772122c64781ee411c3e5be733ed217e.png)
 
-![screen_2022-12-28_16:56:42-prom-graf-b.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_16!56!42-prom-graf-b.png)
-
+![screen_2022-12-28_16:56:42-prom-graf-b.png](https://content.invisioncic.com/r270260/monthly_2022_12/1662516311_screen_2022-12-28_165642-prom-graf-b.thumb.png.ef55958014386a8cebd3c771cf53b273.png)
 или (IP:9090/consoles/prometheus.html):
 
-![screen_2022-12-28_16:59:53-prom-graf-con.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_16!59!53-prom-graf-con.png)
+
+![screen_2022-12-28_16:59:53-prom-graf-con.png](https://content.invisioncic.com/r270260/monthly_2022_12/1535652564_screen_2022-12-28_165953-prom-graf-con.thumb.png.1907ab37cd56c3ee250296226d717532.png)
 
 ## snmp_exporter
 
@@ -75,22 +75,22 @@ Keenetic умеет в snmp "искаропки" (если компонент "
 
 >[!warning] Если компонент не установлен и захотите его добавить, прошивка обновиться до актуальной версии (в зависимости от канала обновлений).
 
->Активируем сервис, если не активен, в CLI (telnet|SSH) или web:
+>Активировать сервис, если не активен, нужно в CLI (telnet|SSH) или web:
 ```telnet
 service snmp
 ```
 
->Сохраняем настройки:
+>и сохранить настройки:
 ```telnet
 system configuration save
 ```
 
->Устанавливаем пакет: 
+>Установить пакет: 
 ```bash
 opkg install prometheus-snmp-exporter
 ```
 
->Добавляем в конфигурационный файл "/opt/etc/prometheus/prometheus.yml":
+>Добавить в конфигурационный файл "/opt/etc/prometheus/prometheus.yml":
 ```yaml
   # snmp
   - job_name: "snmp"
@@ -167,20 +167,20 @@ scrape_configs:
 
 В любимом браузере отправиться на адрес устройства и порт 9090:
 
-![screen_2022-12-28_17:25:54-snmp-targ.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_17!25!54-snmp-targ.png)
+![screen_2022-12-28_17:25:54-snmp-targ.png](https://content.invisioncic.com/r270260/monthly_2022_12/876369806_screen_2022-12-28_172554-snmp-targ.thumb.png.b136b55ffd797ef893a39bab4353b889.png)
 
-![screen_2022-12-28_17:37:07-snmp-graf.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_17!37!07-snmp-graf.png)
+![screen_2022-12-28_17:37:07-snmp-graf.png](https://content.invisioncic.com/r270260/monthly_2022_12/1498753427_screen_2022-12-28_173707-snmp-graf.thumb.png.f555d6dd78e9e88e199d61025a080dd5.png)
 
 ## node_exporter
 
 [https://github.com/prometheus/node_exporter](https://github.com/prometheus/node_exporter)
 
->Устанавливаем пакет:
+>Установить пакет:
 ```bash
 opkg install prometheus-node-exporter
 ```
 
->Добавляем в конфигурационный файл "/opt/etc/prometheus/prometheus.yml":
+>Добавить в конфигурационный файл "/opt/etc/prometheus/prometheus.yml":
 ```yaml
   # node
   - job_name: "node"
@@ -237,33 +237,34 @@ scrape_configs:
 
 В любимом браузере отправиться на адрес устройства и порт 9090:
 
-![screen_2022-12-28_17:52:16-node-targ.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_17!52!16-node-targ.png)
+![screen_2022-12-28_17:52:16-node-targ.png](https://content.invisioncic.com/r270260/monthly_2022_12/682615485_screen_2022-12-28_175216-node-targ.thumb.png.249042fe84177af1dcaa908067fd5baf.png)
 
-![screen_2022-12-28_17:56:00-node-graf.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_17!56!00-node-graf.png)
+![screen_2022-12-28_17:56:00-node-graf.png](https://content.invisioncic.com/r270260/monthly_2022_12/855965760_screen_2022-12-28_175600-node-graf.thumb.png.b2604900bc0f1c0876f273cb2ae2629c.png)
 
 
 или (IP:9090/consoles/node.html)
 
-![screen_2022-12-28_18:00:22-node-cons.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_18!00!22-node-cons.png)
+![screen_2022-12-28_18:00:22-node-cons.png](https://content.invisioncic.com/r270260/monthly_2022_12/224543046_screen_2022-12-28_180022-node-cons.thumb.png.dd0554b544c7b0d580df3525921d923d.png)
+
+
 
 ## haproxy_exporter
 
 [https://github.com/prometheus/haproxy_exporter](https://github.com/prometheus/haproxy_exporter)
 
->Устанавливаем пакет:
-```bash
-opkg install prometheus-haproxy-exporter
-```
+Установить пакет: `opkg install prometheus-haproxy-exporter`
 
->Добавляем в конфигурационный файл "/opt/etc/prometheus/prometheus.yml":
-```yaml
+и отредактировать конфиги "/opt/etc/prometheus/prometheus.yml" и "/opt/etc/haproxy.cfg":
+
+(добавить в конфиг прометея)
+
   # haproxy
   - job_name: "haproxy"
     static_configs:
     - targets: ["192.168.1.1:8404"]
-```
 
-```yaml
+Скрытый текст
+
 # my global config
 global:
   scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
@@ -298,16 +299,13 @@ scrape_configs:
   - job_name: "haproxy"
     static_configs:
     - targets: ["192.168.1.1:8404"]
-```
 
->После правок конфигурационного файла рrometheus, сервис перезапускать обязательно !!!
-```
-/opt/etc/init.d/S70prometheus restart
-```
+!!! После правок конфига прометея, сервис перезапускать обязательно !!!
+
+`/opt/etc/init.d/S70prometheus restart`
 
 (добавить в конфиг HAProxy и закомментировать или удалить строку "mode health")
 
-```
 # Prometheus
 frontend stats
   mode http
@@ -316,10 +314,9 @@ frontend stats
   stats enable
   stats uri /stats
   stats refresh 10s
-```
 
+Скрытый текст
 
-```yaml
 # Example configuration file for HAProxy 2.0, refer to the url below for
 # a full documentation and examples for configuration:
 # https://cbonte.github.io/haproxy-dconv/2.0/configuration.html
@@ -436,7 +433,6 @@ frontend stats
   stats enable
   stats uri /stats
   stats refresh 10s
-```
 
 Запустить сервисы: `/opt/etc/init.d/S99haproxy start && /opt/etc/init.d/S99haproxy_exporter start`
 
@@ -444,16 +440,16 @@ frontend stats
 
 Скрытый текст
 
-[![screen_2022-12-28_18:38:36-hap-targ.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_18!38!36-hap-targ.png)](https://content.invisioncic.com/r270260/monthly_2022_12/492757329_screen_2022-12-28_183836-hap-targ.png.5efc012ac4e324493d77e8973f7678af.png)
+[![screen_2022-12-28_18:38:36-hap-targ.png](https://content.invisioncic.com/r270260/monthly_2022_12/1529776252_screen_2022-12-28_183836-hap-targ.thumb.png.71fbc9f310e13d77efa5dc581145096f.png)](https://content.invisioncic.com/r270260/monthly_2022_12/492757329_screen_2022-12-28_183836-hap-targ.png.5efc012ac4e324493d77e8973f7678af.png)
 
-[![screen_2022-12-28_18:44:11-hap-graf.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_18!44!11-hap-graf.png)](https://content.invisioncic.com/r270260/monthly_2022_12/732089962_screen_2022-12-28_184411-hap-graf.png.d5e1aa4ce5f075c7f7c73359358a2b51.png)
+[![screen_2022-12-28_18:44:11-hap-graf.png](https://content.invisioncic.com/r270260/monthly_2022_12/1400611004_screen_2022-12-28_184411-hap-graf.thumb.png.62f289b7dc6437e8a3b614b4ef8dad8b.png)](https://content.invisioncic.com/r270260/monthly_2022_12/732089962_screen_2022-12-28_184411-hap-graf.png.d5e1aa4ce5f075c7f7c73359358a2b51.png)
 
--  ![Thanks](/Media/Keenetic_Prometeus_Grafana/Thanks.png)1
--  ![Upvote](/Media/Keenetic_Prometeus_Grafana/Upvote.png)1
+-  ![Thanks](https://content.invisioncic.com/r270260/reactions/thanks_120.png)1
+-  ![Upvote](https://content.invisioncic.com/r270260/reactions/react_up_120.png)1
 
 ### **[TheBB](https://forum.keenetic.com/profile/5608-thebb/ "Go to TheBB's profile")**
 
--  [![TheBB](/Media/Keenetic_Prometeus_Grafana/TheBB.jpg)](https://forum.keenetic.com/profile/5608-thebb/ "Go to TheBB's profile")![Honored Flooder](https://content.invisioncic.com/r270260/set_resources_10/84c1e40ea0e759e3f1505eb1788ddf3c_default_rank.png "Rank: Honored Flooder (5/5)")
+-  [![TheBB](https://content.invisioncic.com/r270260/monthly_2017_03/ava.thumb.jpg.926e47b040cadc55398e2f724c088c34.jpg)](https://forum.keenetic.com/profile/5608-thebb/ "Go to TheBB's profile")![Honored Flooder](https://content.invisioncic.com/r270260/set_resources_10/84c1e40ea0e759e3f1505eb1788ddf3c_default_rank.png "Rank: Honored Flooder (5/5)")
     
 - Moderators
 - - [2.4k](https://forum.keenetic.com/profile/5608-thebb/content/ "2,413 posts")
@@ -536,16 +532,16 @@ LoadPlugin network
 
 Скрытый текст
 
-[![screen_2022-12-28_18:59:16-coll-targ.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_18!59!16-coll-targ.png)](https://content.invisioncic.com/r270260/monthly_2022_12/725071347_screen_2022-12-28_185916-coll-targ.png.0cb8d18146bb1d464cae2887531c9128.png)
+[![screen_2022-12-28_18:59:16-coll-targ.png](https://content.invisioncic.com/r270260/monthly_2022_12/1732328321_screen_2022-12-28_185916-coll-targ.thumb.png.3f2a07b5eb89bab7b56e0ae402409193.png)](https://content.invisioncic.com/r270260/monthly_2022_12/725071347_screen_2022-12-28_185916-coll-targ.png.0cb8d18146bb1d464cae2887531c9128.png)
 
-[![screen_2022-12-28_19:02:29-coll-graf.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!02!29-coll-graf.png)](https://content.invisioncic.com/r270260/monthly_2022_12/1458317996_screen_2022-12-28_190229-coll-graf.png.7fd122698ee31195845579d36aa8a548.png)
+[![screen_2022-12-28_19:02:29-coll-graf.png](https://content.invisioncic.com/r270260/monthly_2022_12/995571727_screen_2022-12-28_190229-coll-graf.thumb.png.ea38f8a8d7567049c84589d8214af0eb.png)](https://content.invisioncic.com/r270260/monthly_2022_12/1458317996_screen_2022-12-28_190229-coll-graf.png.7fd122698ee31195845579d36aa8a548.png)
 
--  ![Thanks](/Media/Keenetic_Prometeus_Grafana/Thanks.png)1
--  ![Upvote](/Media/Keenetic_Prometeus_Grafana/Upvote.png)1
+-  ![Thanks](https://content.invisioncic.com/r270260/reactions/thanks_120.png)1
+-  ![Upvote](https://content.invisioncic.com/r270260/reactions/react_up_120.png)1
 
 ### **[TheBB](https://forum.keenetic.com/profile/5608-thebb/ "Go to TheBB's profile")**
 
--  [![TheBB](/Media/Keenetic_Prometeus_Grafana/TheBB.jpg)](https://forum.keenetic.com/profile/5608-thebb/ "Go to TheBB's profile")![Honored Flooder](https://content.invisioncic.com/r270260/set_resources_10/84c1e40ea0e759e3f1505eb1788ddf3c_default_rank.png "Rank: Honored Flooder (5/5)")
+-  [![TheBB](https://content.invisioncic.com/r270260/monthly_2017_03/ava.thumb.jpg.926e47b040cadc55398e2f724c088c34.jpg)](https://forum.keenetic.com/profile/5608-thebb/ "Go to TheBB's profile")![Honored Flooder](https://content.invisioncic.com/r270260/set_resources_10/84c1e40ea0e759e3f1505eb1788ddf3c_default_rank.png "Rank: Honored Flooder (5/5)")
     
 - Moderators
 - - [2.4k](https://forum.keenetic.com/profile/5608-thebb/content/ "2,413 posts")
@@ -575,19 +571,19 @@ grafana
 
 Скрытый текст
 
-![screen_2022-12-28_19:22:48-grafa-prom.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!22!48-grafa-prom.png)![screen_2022-12-28_19:23:54-grafa-prom-s.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!23!54-grafa-prom-s.png)
+![screen_2022-12-28_19:22:48-grafa-prom.png](https://content.invisioncic.com/r270260/monthly_2022_12/1739568594_screen_2022-12-28_192248-grafa-prom.png.8b84e6d325abb21657372f77fe3a8c31.png)![screen_2022-12-28_19:23:54-grafa-prom-s.png](https://content.invisioncic.com/r270260/monthly_2022_12/888868023_screen_2022-12-28_192354-grafa-prom-s.png.4bb4b1c7a53f24d407babfd0bd3539ef.png)
 
 "Искаропки" (очень простой)
 
 Скрытый текст
 
-[![screen_2022-12-28_19:58:15-grafa-stub.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!58!15-grafa-stub.png)](https://content.invisioncic.com/r270260/monthly_2022_12/713806523_screen_2022-12-28_195815-grafa-stub.png.2f9957de82c720ebf847005ca4efc63d.png)
+[![screen_2022-12-28_19:58:15-grafa-stub.png](https://content.invisioncic.com/r270260/monthly_2022_12/225464417_screen_2022-12-28_195815-grafa-stub.thumb.png.3d85f3dab52b787b776dcea0d478024c.png)](https://content.invisioncic.com/r270260/monthly_2022_12/713806523_screen_2022-12-28_195815-grafa-stub.png.2f9957de82c720ebf847005ca4efc63d.png)
 
 "Искаропки" (простой)
 
 Скрытый текст
 
-[![screen_2022-12-28_19:55:54-grafa-stub2.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!55!54-grafa-stub2.png)](https://content.invisioncic.com/r270260/monthly_2022_12/1670361398_screen_2022-12-28_195554-grafa-stub2.png.39657ac9c599f7ea9c113744fd043fec.png)
+[![screen_2022-12-28_19:55:54-grafa-stub2.png](https://content.invisioncic.com/r270260/monthly_2022_12/1380231109_screen_2022-12-28_195554-grafa-stub2.thumb.png.628c427ec065b562a531810447c2724d.png)](https://content.invisioncic.com/r270260/monthly_2022_12/1670361398_screen_2022-12-28_195554-grafa-stub2.png.39657ac9c599f7ea9c113744fd043fec.png)
 
  Дальше, строим самостоятельно или импортируем готовые [https://grafana.com/grafana/dashboards/](https://grafana.com/grafana/dashboards/)
 
@@ -595,32 +591,32 @@ SNMP - ID: 11169
 
 Скрытый текст
 
-[![screen_2022-12-28_19:36:37-grafa-snmp.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!36!37-grafa-snmp.png)](https://content.invisioncic.com/r270260/monthly_2022_12/474925245_screen_2022-12-28_193637-grafa-snmp.png.04cace1da2db37e6723dcf774f6cc4c6.png)
+[![screen_2022-12-28_19:36:37-grafa-snmp.png](https://content.invisioncic.com/r270260/monthly_2022_12/727421741_screen_2022-12-28_193637-grafa-snmp.thumb.png.d9970ac87b233329cc3bbe4f348c463e.png)](https://content.invisioncic.com/r270260/monthly_2022_12/474925245_screen_2022-12-28_193637-grafa-snmp.png.04cace1da2db37e6723dcf774f6cc4c6.png)
 
-[![screen_2022-12-28_19:37:32-grafa-snmp.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!37!32-grafa-snmp.png)](https://content.invisioncic.com/r270260/monthly_2022_12/291680015_screen_2022-12-28_193732-grafa-snmp.png.b0383ef36f745f362d11be521b888447.png)
+[![screen_2022-12-28_19:37:32-grafa-snmp.png](https://content.invisioncic.com/r270260/monthly_2022_12/1633982598_screen_2022-12-28_193732-grafa-snmp.thumb.png.a5a1966eb4e6b65b4a657b4854e4f4da.png)](https://content.invisioncic.com/r270260/monthly_2022_12/291680015_screen_2022-12-28_193732-grafa-snmp.png.b0383ef36f745f362d11be521b888447.png)
 
 SNMP - ID: 10523
 
 Скрытый текст
 
-[![screen_2022-12-28_19:43:36-grafa-snmp.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!43!36-grafa-snmp.png)](https://content.invisioncic.com/r270260/monthly_2022_12/351244913_screen_2022-12-28_194336-grafa-snmp.png.2416dbb0c90ee9ce09e512162d59d749.png)
+[![screen_2022-12-28_19:43:36-grafa-snmp.png](https://content.invisioncic.com/r270260/monthly_2022_12/803609563_screen_2022-12-28_194336-grafa-snmp.thumb.png.20230446e0a55620537f5db8fc71c7a6.png)](https://content.invisioncic.com/r270260/monthly_2022_12/351244913_screen_2022-12-28_194336-grafa-snmp.png.2416dbb0c90ee9ce09e512162d59d749.png)
 
 node -ID: 1860
 
 Скрытый текст
 
-[![screen_2022-12-28_19:47:13-grafa-node.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!47!13-grafa-node.png)](https://content.invisioncic.com/r270260/monthly_2022_12/86258080_screen_2022-12-28_194713-grafa-node.png.a89f045fa9b3cf39d0895e0f038d19c5.png)
+[![screen_2022-12-28_19:47:13-grafa-node.png](https://content.invisioncic.com/r270260/monthly_2022_12/455039732_screen_2022-12-28_194713-grafa-node.thumb.png.1a43286bc424caf6770a5557dd5e8e01.png)](https://content.invisioncic.com/r270260/monthly_2022_12/86258080_screen_2022-12-28_194713-grafa-node.png.a89f045fa9b3cf39d0895e0f038d19c5.png)
 
-[![screen_2022-12-28_19:52:02-grafa-node.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!52!02-grafa-node.png)](https://content.invisioncic.com/r270260/monthly_2022_12/1979522370_screen_2022-12-28_195202-grafa-node.png.8882564c7f16deb06aca9b0857ea5bc1.png)
+[![screen_2022-12-28_19:52:02-grafa-node.png](https://content.invisioncic.com/r270260/monthly_2022_12/2121481770_screen_2022-12-28_195202-grafa-node.thumb.png.c748f251f6300b8c97a7f836f7858c8b.png)](https://content.invisioncic.com/r270260/monthly_2022_12/1979522370_screen_2022-12-28_195202-grafa-node.png.8882564c7f16deb06aca9b0857ea5bc1.png)
 
-[![screen_2022-12-28_19:53:32-grafa-node.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!53!32-grafa-node.png)](https://content.invisioncic.com/r270260/monthly_2022_12/1939240073_screen_2022-12-28_195332-grafa-node.png.291a92c21bf8641110a72109bacc70bc.png)
+[![screen_2022-12-28_19:53:32-grafa-node.png](https://content.invisioncic.com/r270260/monthly_2022_12/1579404317_screen_2022-12-28_195332-grafa-node.thumb.png.58d6a8ef9eafb60c1d10763684b2f9b3.png)](https://content.invisioncic.com/r270260/monthly_2022_12/1939240073_screen_2022-12-28_195332-grafa-node.png.291a92c21bf8641110a72109bacc70bc.png)
 
--  ![Thanks](/Media/Keenetic_Prometeus_Grafana/Thanks.png)1
--  ![Upvote](/Media/Keenetic_Prometeus_Grafana/Upvote.png)1
+-  ![Thanks](https://content.invisioncic.com/r270260/reactions/thanks_120.png)1
+-  ![Upvote](https://content.invisioncic.com/r270260/reactions/react_up_120.png)1
 
 ### **[TheBB](https://forum.keenetic.com/profile/5608-thebb/ "Go to TheBB's profile")**
 
--  [![TheBB](/Media/Keenetic_Prometeus_Grafana/TheBB.jpg)](https://forum.keenetic.com/profile/5608-thebb/ "Go to TheBB's profile")![Honored Flooder](https://content.invisioncic.com/r270260/set_resources_10/84c1e40ea0e759e3f1505eb1788ddf3c_default_rank.png "Rank: Honored Flooder (5/5)")
+-  [![TheBB](https://content.invisioncic.com/r270260/monthly_2017_03/ava.thumb.jpg.926e47b040cadc55398e2f724c088c34.jpg)](https://forum.keenetic.com/profile/5608-thebb/ "Go to TheBB's profile")![Honored Flooder](https://content.invisioncic.com/r270260/set_resources_10/84c1e40ea0e759e3f1505eb1788ddf3c_default_rank.png "Rank: Honored Flooder (5/5)")
     
 - Moderators
 - - [2.4k](https://forum.keenetic.com/profile/5608-thebb/content/ "2,413 posts")
@@ -780,14 +776,14 @@ scrape_configs:
 
 Скрытый текст
 
-[![screen_2022-12-28_20:44:20-goflow-targ.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_20!44!20-goflow-targ.png)](https://content.invisioncic.com/r270260/monthly_2022_12/573106047_screen_2022-12-28_204420-goflow-targ.png.9d2bb2be217c6f2342b09483e30c92b3.png)
+[![screen_2022-12-28_20:44:20-goflow-targ.png](https://content.invisioncic.com/r270260/monthly_2022_12/110136480_screen_2022-12-28_204420-goflow-targ.thumb.png.0bb7134c21f99da6b5ee3daf90459a3d.png)](https://content.invisioncic.com/r270260/monthly_2022_12/573106047_screen_2022-12-28_204420-goflow-targ.png.9d2bb2be217c6f2342b09483e30c92b3.png)
 
-[![screen_2022-12-28_20:47:18-goflow-graf.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_20!47!18-goflow-graf.png)](https://content.invisioncic.com/r270260/monthly_2022_12/1761730773_screen_2022-12-28_204718-goflow-graf.png.262f1017a6b294a3fa93f08f6dca9dba.png)
+[![screen_2022-12-28_20:47:18-goflow-graf.png](https://content.invisioncic.com/r270260/monthly_2022_12/1348530438_screen_2022-12-28_204718-goflow-graf.thumb.png.08dbae90b9caf3c918164c443ea55f71.png)](https://content.invisioncic.com/r270260/monthly_2022_12/1761730773_screen_2022-12-28_204718-goflow-graf.png.262f1017a6b294a3fa93f08f6dca9dba.png)
 
 (netflow-exporter)
 
 Скрытый текст
 
-[![screen_2022-12-28_20:42:32-flow-targ.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_20!42!32-flow-targ.png)](https://content.invisioncic.com/r270260/monthly_2022_12/784883483_screen_2022-12-28_204232-flow-targ.png.7e3c101d52ece8746827d0caa80999a3.png)
+[![screen_2022-12-28_20:42:32-flow-targ.png](https://content.invisioncic.com/r270260/monthly_2022_12/2002887398_screen_2022-12-28_204232-flow-targ.thumb.png.ad9398848d5e358be801728ce3037838.png)](https://content.invisioncic.com/r270260/monthly_2022_12/784883483_screen_2022-12-28_204232-flow-targ.png.7e3c101d52ece8746827d0caa80999a3.png)
 
-[![screen_2022-12-28_20:40:28-flow-graf.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_20!40!28-flow-graf.png)](https://content.invisioncic.com/r270260/monthly_2022_12/1783350005_screen_2022-12-28_204028-flow-graf.png.70832955eb1a7eb0d1d03a280aa8dee1.png)
+[![screen_2022-12-28_20:40:28-flow-graf.png](https://content.invisioncic.com/r270260/monthly_2022_12/1872838181_screen_2022-12-28_204028-flow-graf.thumb.png.640ba92c0ec855bc0b303d93f4a397a3.png)](https://content.invisioncic.com/r270260/monthly_2022_12/1783350005_screen_2022-12-28_204028-flow-graf.png.70832955eb1a7eb0d1d03a280aa8dee1.png)
