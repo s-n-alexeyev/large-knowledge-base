@@ -52,23 +52,20 @@ scrape_configs:
 
 ![screen_2022-12-28_16:42:44-prom-stat.png](https://content.invisioncic.com/r270260/monthly_2022_12/651408024_screen_2022-12-28_164244-prom-stat.png.83471c0efffc363a8f86fe7c78096feb.png)
 
-[![screen_2022-12-28_16:48:51-prom-targ.png](https://content.invisioncic.com/r270260/monthly_2022_12/1329766478_screen_2022-12-28_164851-prom-targ.thumb.png.dba6b04f6e35841e9a77c0b389bb377c.png)](https://content.invisioncic.com/r270260/monthly_2022_12/673175164_screen_2022-12-28_164851-prom-targ.png.85db99793437e1da6994ec1c2399c005.png)
+![screen_2022-12-28_16:48:51-prom-targ.png](https://content.invisioncic.com/r270260/monthly_2022_12/1329766478_screen_2022-12-28_164851-prom-targ.thumb.png.dba6b04f6e35841e9a77c0b389bb377c.png)
+
 
 ![screen_2022-12-28_16:44:56-prom-metr.png](https://content.invisioncic.com/r270260/monthly_2022_12/769153535_screen_2022-12-28_164456-prom-metr.png.3f2aa574d68c694d700c401b1a884141.png)
 
 Прометей умеет в графики "искаропки":
 
-[![screen_2022-12-28_16:53:20-prom-graf-w.png](https://content.invisioncic.com/r270260/monthly_2022_12/1713752090_screen_2022-12-28_165320-prom-graf-w.thumb.png.772122c64781ee411c3e5be733ed217e.png)](https://content.invisioncic.com/r270260/monthly_2022_12/201719792_screen_2022-12-28_165320-prom-graf-w.png.e256dbbc8d0a4334d8f047ea30b8392d.png)
+![screen_2022-12-28_16:53:20-prom-graf-w.png](https://content.invisioncic.com/r270260/monthly_2022_12/1713752090_screen_2022-12-28_165320-prom-graf-w.thumb.png.772122c64781ee411c3e5be733ed217e.png)
 
-[![screen_2022-12-28_16:56:42-prom-graf-b.png](https://content.invisioncic.com/r270260/monthly_2022_12/1662516311_screen_2022-12-28_165642-prom-graf-b.thumb.png.ef55958014386a8cebd3c771cf53b273.png)](https://content.invisioncic.com/r270260/monthly_2022_12/753681094_screen_2022-12-28_165642-prom-graf-b.png.faa666bfe961eb60b519fa608217c3cb.png)
-
+![screen_2022-12-28_16:56:42-prom-graf-b.png](https://content.invisioncic.com/r270260/monthly_2022_12/1662516311_screen_2022-12-28_165642-prom-graf-b.thumb.png.ef55958014386a8cebd3c771cf53b273.png)
 или (IP:9090/consoles/prometheus.html):
 
-Скрытый текст
 
-[![screen_2022-12-28_16:59:53-prom-graf-con.png](https://content.invisioncic.com/r270260/monthly_2022_12/1535652564_screen_2022-12-28_165953-prom-graf-con.thumb.png.1907ab37cd56c3ee250296226d717532.png)](https://content.invisioncic.com/r270260/monthly_2022_12/1847572730_screen_2022-12-28_165953-prom-graf-con.png.ff88a65574c0cdc968a504c420ec4dfd.png)
-
-_Что бы такого ~~сделать плохого~~ установить?_
+![screen_2022-12-28_16:59:53-prom-graf-con.png](https://content.invisioncic.com/r270260/monthly_2022_12/1535652564_screen_2022-12-28_165953-prom-graf-con.thumb.png.1907ab37cd56c3ee250296226d717532.png)
 
 ## snmp_exporter
 
@@ -170,46 +167,28 @@ scrape_configs:
 
 В любимом браузере отправиться на адрес устройства и порт 9090:
 
-[![screen_2022-12-28_17:25:54-snmp-targ.png](https://content.invisioncic.com/r270260/monthly_2022_12/876369806_screen_2022-12-28_172554-snmp-targ.thumb.png.b136b55ffd797ef893a39bab4353b889.png)](https://content.invisioncic.com/r270260/monthly_2022_12/2097240054_screen_2022-12-28_172554-snmp-targ.png.6ef0e08dc2e69376730369ea8fbcb33e.png)
+![screen_2022-12-28_17:25:54-snmp-targ.png](https://content.invisioncic.com/r270260/monthly_2022_12/876369806_screen_2022-12-28_172554-snmp-targ.thumb.png.b136b55ffd797ef893a39bab4353b889.png)
 
-[![screen_2022-12-28_17:37:07-snmp-graf.png](https://content.invisioncic.com/r270260/monthly_2022_12/1498753427_screen_2022-12-28_173707-snmp-graf.thumb.png.f555d6dd78e9e88e199d61025a080dd5.png)](https://content.invisioncic.com/r270260/monthly_2022_12/1899580570_screen_2022-12-28_173707-snmp-graf.png.2a0e1a2ca9fc4f4795eec549873a80c6.png)
+![screen_2022-12-28_17:37:07-snmp-graf.png](https://content.invisioncic.com/r270260/monthly_2022_12/1498753427_screen_2022-12-28_173707-snmp-graf.thumb.png.f555d6dd78e9e88e199d61025a080dd5.png)
 
--  ![Thanks](https://content.invisioncic.com/r270260/reactions/thanks_120.png)1
--  ![Upvote](https://content.invisioncic.com/r270260/reactions/react_up_120.png)1
-
-### **[TheBB](https://forum.keenetic.com/profile/5608-thebb/ "Go to TheBB's profile")**
-
--  [![TheBB](https://content.invisioncic.com/r270260/monthly_2017_03/ava.thumb.jpg.926e47b040cadc55398e2f724c088c34.jpg)](https://forum.keenetic.com/profile/5608-thebb/ "Go to TheBB's profile")![Honored Flooder](https://content.invisioncic.com/r270260/set_resources_10/84c1e40ea0e759e3f1505eb1788ddf3c_default_rank.png "Rank: Honored Flooder (5/5)")
-    
-- Moderators
-- - [2.4k](https://forum.keenetic.com/profile/5608-thebb/content/ "2,413 posts")
-- **Keenetic:** DSL G2 O2 U2 VOX(exp.) | KO(KN-1410) KS(KN-1110) KDSL(KN-2010)
-
-- **Author**
-
-- [](https://forum.keenetic.com/topic/15533-prometheus/#elControls_157317_menu "More options...")
-
-[Posted December 28, 2022](https://forum.keenetic.com/topic/15533-prometheus/?do=findComment&comment=157317)
-
-_"Маловато будет! Маловато!"_ (из м/ф "Падал прошлогодний снег", СССР, 1983)
-
-**node_exporter**
+## node_exporter
 
 [https://github.com/prometheus/node_exporter](https://github.com/prometheus/node_exporter)
 
-Установить пакет: `opkg install prometheus-node-exporter`
+>Установить пакет:
+```bash
+opkg install prometheus-node-exporter
+```
 
-и отредактировать конфиг "/opt/etc/prometheus/prometheus.yml":
-
-(добавить в конфиг прометея)
-
+>Добавить в конфигурационный файл "/opt/etc/prometheus/prometheus.yml":
+```yaml
   # node
   - job_name: "node"
     static_configs:
     - targets: ["192.168.1.1:9100"]
+```
 
-Скрытый текст
-
+```yaml
 # my global config
 global:
   scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
@@ -244,47 +223,32 @@ scrape_configs:
   - job_name: "node"
     static_configs:
     - targets: ["192.168.1.1:9100"]
+```
 
-!!! После правок конфига прометея, сервис перезапускать обязательно !!!
+>После правок конфигурационного файла рrometheus, сервис перезапускать обязательно !!!
+```
+/opt/etc/init.d/S70prometheus restart
+```
 
-`/opt/etc/init.d/S70prometheus restart`
-
-Запустить сервис: `/opt/etc/init.d/S99node_exporter start`
+>Запускаем сервис:
+```bash
+/opt/etc/init.d/S99node_exporter start
+```
 
 В любимом браузере отправиться на адрес устройства и порт 9090:
 
-Скрытый текст
+![screen_2022-12-28_17:52:16-node-targ.png](https://content.invisioncic.com/r270260/monthly_2022_12/682615485_screen_2022-12-28_175216-node-targ.thumb.png.249042fe84177af1dcaa908067fd5baf.png)
 
-[![screen_2022-12-28_17:52:16-node-targ.png](https://content.invisioncic.com/r270260/monthly_2022_12/682615485_screen_2022-12-28_175216-node-targ.thumb.png.249042fe84177af1dcaa908067fd5baf.png)](https://content.invisioncic.com/r270260/monthly_2022_12/1364515533_screen_2022-12-28_175216-node-targ.png.590ade478eb9707ddbf8ab00066d2e9e.png)
+![screen_2022-12-28_17:56:00-node-graf.png](https://content.invisioncic.com/r270260/monthly_2022_12/855965760_screen_2022-12-28_175600-node-graf.thumb.png.b2604900bc0f1c0876f273cb2ae2629c.png)
 
-[![screen_2022-12-28_17:56:00-node-graf.png](https://content.invisioncic.com/r270260/monthly_2022_12/855965760_screen_2022-12-28_175600-node-graf.thumb.png.b2604900bc0f1c0876f273cb2ae2629c.png)](https://content.invisioncic.com/r270260/monthly_2022_12/416194194_screen_2022-12-28_175600-node-graf.png.2a5d89445f1110a41143d1ff9ec0eca6.png)
 
 или (IP:9090/consoles/node.html)
 
-Скрытый текст
+![screen_2022-12-28_18:00:22-node-cons.png](https://content.invisioncic.com/r270260/monthly_2022_12/224543046_screen_2022-12-28_180022-node-cons.thumb.png.dd0554b544c7b0d580df3525921d923d.png)
 
-[![screen_2022-12-28_18:00:22-node-cons.png](https://content.invisioncic.com/r270260/monthly_2022_12/224543046_screen_2022-12-28_180022-node-cons.thumb.png.dd0554b544c7b0d580df3525921d923d.png)](https://content.invisioncic.com/r270260/monthly_2022_12/797398534_screen_2022-12-28_180022-node-cons.png.37b6dbbcadbe45ab26b5756add86f11b.png)
 
--  ![Thanks](https://content.invisioncic.com/r270260/reactions/thanks_120.png)1
--  ![Upvote](https://content.invisioncic.com/r270260/reactions/react_up_120.png)2
 
-### **[TheBB](https://forum.keenetic.com/profile/5608-thebb/ "Go to TheBB's profile")**
-
--  [![TheBB](https://content.invisioncic.com/r270260/monthly_2017_03/ava.thumb.jpg.926e47b040cadc55398e2f724c088c34.jpg)](https://forum.keenetic.com/profile/5608-thebb/ "Go to TheBB's profile")![Honored Flooder](https://content.invisioncic.com/r270260/set_resources_10/84c1e40ea0e759e3f1505eb1788ddf3c_default_rank.png "Rank: Honored Flooder (5/5)")
-    
-- Moderators
-- - [2.4k](https://forum.keenetic.com/profile/5608-thebb/content/ "2,413 posts")
-- **Keenetic:** DSL G2 O2 U2 VOX(exp.) | KO(KN-1410) KS(KN-1110) KDSL(KN-2010)
-
-- **Author**
-
-- [](https://forum.keenetic.com/topic/15533-prometheus/#elControls_157318_menu "More options...")
-
-[Posted December 28, 2022](https://forum.keenetic.com/topic/15533-prometheus/?do=findComment&comment=157318)
-
-_Я требую ~~продолжения банкета~~ статистику HAProxy!_
-
-**haproxy_exporter**
+## haproxy_exporter
 
 [https://github.com/prometheus/haproxy_exporter](https://github.com/prometheus/haproxy_exporter)
 
