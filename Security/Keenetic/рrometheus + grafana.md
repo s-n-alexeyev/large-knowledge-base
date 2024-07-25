@@ -543,21 +543,25 @@ LoadPlugin network
 
 [https://grafana.com](https://grafana.com/)
 
-Установить пакет: `opkg install grafana`
+>Устанавливаем пакет
+```bash
+opkg install grafana
+```
 
-Запустить сервис: `/opt/etc/init.d/S80grafana-server start`
+Запускаем сервис:
+```bash
+/opt/etc/init.d/S80grafana-server start
+```
 
 В любимом браузере отправиться на адрес устройства и порт 3000:
 
 Подключаем прометея: "Configuration" => "Data source" => "Add data source" => "Prometheus" => "URL" <= адрес устройства и порт => ""Save & test"
 
-Скрытый текст
+![screen_2022-12-28_19:22:48-grafa-prom.png|400](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!22!48-grafa-prom.png)
 
-![screen_2022-12-28_19:22:48-grafa-prom.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!22!48-grafa-prom.png)![screen_2022-12-28_19:23:54-grafa-prom-s.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!23!54-grafa-prom-s.png)
+![screen_2022-12-28_19:23:54-grafa-prom-s.png|400](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!23!54-grafa-prom-s.png)
 
 "Искаропки" (очень простой)
-
-Скрытый текст
 
 [![screen_2022-12-28_19:58:15-grafa-stub.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!58!15-grafa-stub.png)](https://content.invisioncic.com/r270260/monthly_2022_12/713806523_screen_2022-12-28_195815-grafa-stub.png.2f9957de82c720ebf847005ca4efc63d.png)
 
@@ -593,30 +597,12 @@ node -ID: 1860
 
 [![screen_2022-12-28_19:53:32-grafa-node.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!53!32-grafa-node.png)](https://content.invisioncic.com/r270260/monthly_2022_12/1939240073_screen_2022-12-28_195332-grafa-node.png.291a92c21bf8641110a72109bacc70bc.png)
 
--  ![Thanks](/Media/Keenetic_Prometeus_Grafana/Thanks.png)1
--  ![Upvote](/Media/Keenetic_Prometeus_Grafana/Upvote.png)1
 
-### **[TheBB](https://forum.keenetic.com/profile/5608-thebb/ "Go to TheBB's profile")**
-
--  [![TheBB](/Media/Keenetic_Prometeus_Grafana/TheBB.jpg)](https://forum.keenetic.com/profile/5608-thebb/ "Go to TheBB's profile")![Honored Flooder](https://content.invisioncic.com/r270260/set_resources_10/84c1e40ea0e759e3f1505eb1788ddf3c_default_rank.png "Rank: Honored Flooder (5/5)")
-    
-- Moderators
-- - [2.4k](https://forum.keenetic.com/profile/5608-thebb/content/ "2,413 posts")
-- **Keenetic:** DSL G2 O2 U2 VOX(exp.) | KO(KN-1410) KS(KN-1110) KDSL(KN-2010)
-
-- **Author**
-
-- [](https://forum.keenetic.com/topic/15533-prometheus/#elControls_157321_menu "More options...")
-
-[Posted December 28, 2022](https://forum.keenetic.com/topic/15533-prometheus/?do=findComment&comment=157321)
-
-_А что там за flow такой?_
-
-goflow
+# goflow
 
 [https://github.com/cloudflare/goflow](https://github.com/cloudflare/goflow)
 
-netflow-exporter
+## netflow-exporter
 
 [https://github.com/AlfredArouna/netflow_exporter](https://github.com/AlfredArouna/netflow_exporter)
 
