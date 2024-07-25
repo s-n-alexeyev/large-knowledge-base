@@ -36,7 +36,8 @@ sudo chmod a+r /etc/apt/keyrings/docker.asc
 >Добавляем репозиторий Docker:
 ```bash
 sudo sh -c \
-'echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] \
+'echo "deb [arch=$(dpkg --print-architecture) \
+signed-by=/etc/apt/keyrings/docker.asc] \
 https://download.docker.com/linux/ubuntu \
 $(. /etc/os-release && echo $VERSION_CODENAME) stable" > \
 /etc/apt/sources.list.d/docker.list'
@@ -157,7 +158,7 @@ docker compose version
 ```
 
 >[!summary] Увидим примерно такое:
->```q
+>```
 >Docker Compose version v2.29.1
 >```
 
