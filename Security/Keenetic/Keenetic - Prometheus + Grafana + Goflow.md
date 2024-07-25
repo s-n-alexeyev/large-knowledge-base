@@ -568,7 +568,7 @@ opkg install grafana
 
 В браузере переходим на адрес устройства и порт `3000`:
 
-Подключаем Prometheus: `Configuration` -> `Data source` -> `Add data source` =-> `Prometheus` => `URL` <- `адрес устройства и порт` -> `Save & test`
+Подключаем Prometheus: `Connections` -> `Data source` -> `Add data source` =-> `Prometheus` => `URL` <- `адрес устройства и порт` -> `Save & test`
 
 ![screen_2022-12-28_19:22:48-grafa-prom.png|400](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!22!48-grafa-prom.png)
 
