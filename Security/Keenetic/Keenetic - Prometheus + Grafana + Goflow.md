@@ -273,7 +273,11 @@ opkg install prometheus-node-exporter
 opkg install prometheus-haproxy-exporter
 ```
 
->Добавляем в конфигурационный файл "/opt/etc/prometheus/prometheus.yml":
+>Добавляем в конфигурационный файл `prometheus.yml`:
+```bash
+nano /opt/etc/prometheus/prometheus.yml
+```
+
 ```yaml
   # haproxy
   - job_name: "haproxy"
@@ -324,8 +328,12 @@ opkg install prometheus-haproxy-exporter
 /opt/etc/init.d/S70prometheus restart
 ```
 
->Изменяем конфигурационный файл HAProxy: и закомментируем или удаляем строку "mode health"
-```ini
+>Изменяем конфигурационный файл `haproxy.cfg` и закомментировав или удалив строку "mode health":
+```bash
+nano /opt/etc/haproxy.cfg
+```
+
+```config
 # Prometheus
 frontend stats
   mode http
@@ -337,7 +345,7 @@ frontend stats
 ```
 
 >[!example]- Готовый конфигурационный файл
->```ini
+>```config
 ># Example configuration file for HAProxy 2.0, refer to the url below for
 ># a full documentation and examples for configuration:
 ># https://cbonte.github.io/haproxy-dconv/2.0/configuration.html
