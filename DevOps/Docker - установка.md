@@ -54,23 +54,23 @@ sudo apt update
 apt-cache policy docker-ce
 ```
 
->На выходе видим плюс минус такую картину:
-```q
-docker-ce:
-  Installed: (none)
-  Candidate: 5:26.1.1-1~ubuntu.24.04~noble
-  Version table:
-     5:26.1.1-1~ubuntu.24.04~noble 500
-        500 https://download.docker.com/linux/ubuntu noble/stable amd64 Packages
-     5:26.1.0-1~ubuntu.24.04~noble 500
-        500 https://download.docker.com/linux/ubuntu noble/stable amd64 Packages
-     5:26.0.2-1~ubuntu.24.04~noble 500
-        500 https://download.docker.com/linux/ubuntu noble/stable amd64 Packages
-     5:26.0.1-1~ubuntu.24.04~noble 500
-        500 https://download.docker.com/linux/ubuntu noble/stable amd64 Packages
-     5:26.0.0-1~ubuntu.24.04~noble 500
-        500 https://download.docker.com/linux/ubuntu noble/stable amd64 Packages
-```
+>[!summary] На выходе видим примерно следующее:
+>```
+>docker-ce:
+>  Installed: (none)
+>  Candidate: 5:26.1.1-1~ubuntu.24.04~noble
+>  Version table:
+>     5:26.1.1-1~ubuntu.24.04~noble 500
+>        500 https://download.docker.com/linux/ubuntu noble/stable amd64 Packages
+>     5:26.1.0-1~ubuntu.24.04~noble 500
+>        500 https://download.docker.com/linux/ubuntu noble/stable amd64 Packages
+>     5:26.0.2-1~ubuntu.24.04~noble 500
+>        500 https://download.docker.com/linux/ubuntu noble/stable amd64 Packages
+>     5:26.0.1-1~ubuntu.24.04~noble 500
+>        500 https://download.docker.com/linux/ubuntu noble/stable amd64 Packages
+>     5:26.0.0-1~ubuntu.24.04~noble 500
+>        500 https://download.docker.com/linux/ubuntu noble/stable amd64 Packages
+>```
 
 >Непосредственно устанавливаем Docker:
 ```bash
@@ -84,27 +84,27 @@ sudo apt install docker-ce
 sudo systemctl status docker
 ```
 
->На выходе:
-```q
-● docker.service - Docker Application Container Engine
-     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
-     Active: active (running) since Fri 2022-04-01 21:30:25 UTC; 22s ago
-TriggeredBy: ● docker.socket
-       Docs: https://docs.docker.com
-   Main PID: 7854 (dockerd)
-      Tasks: 7
-     Memory: 38.3M
-        CPU: 340ms
-     CGroup: /system.slice/docker.service
-             └─7854 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
-```
+>[!summary] На выходе:
+>```
+> ● docker.service - Docker Application Container Engine
+>      Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
+>      Active: active (running) since Fri 2022-04-01 21:30:25 UTC; 22s ago
+>TriggeredBy: ● docker.socket
+>        Docs: https://docs.docker.com
+>    Main PID: 7854 (dockerd)
+>       Tasks: 7
+>      Memory: 38.3M
+>         CPU: 340ms
+>      CGroup: /system.slice/docker.service
+>              └─7854 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+>```
 
 >Теперь давайте попробуем запустить какой нибудь контейнер:
 ```bash
 sudo docker run hello-world
 ```
 
->[!info] Если все хорошо, то на выходе увидим:
+>[!summary] Если все хорошо, то на выходе увидим:
 >```
 >Unable to find image 'hello-world:latest' locally
 l>atest: Pulling from library/hello-world
@@ -114,7 +114,7 @@ l>atest: Pulling from library/hello-world
 >
 >Hello from Docker!
 >This message shows that your installation appears to be working correctly.
-```
+>```
 
 ## Разрешаем не root пользователю запускать Docker
 
@@ -126,12 +126,12 @@ l>atest: Pulling from library/hello-world
 sudo usermod -aG docker ${USER}
 ```
 
->Перелогиваемся и смело выполняем:
+>Закрываем и открываем сессию пользователя заново, затем выполняем:
 ```bash
 docker run hello-world
 ```
 
->Удаляем тестовый контейнер
+>Удаляем тестовый контейнер:
 ```bash
 docker rmi -f hello-world
 ```
