@@ -9,7 +9,7 @@ maxLevel: 0 # Include headings up to the specified level
 includeLinks: true # Make headings clickable
 debugInConsole: false # Print debug info in Obsidian console
 ```
-# рrometheus
+# Prometheus
 
 [https://prometheus.io/](https://prometheus.io/)  
 [https://prometheus.io/docs/introduction/overview/](https://prometheus.io/docs/introduction/overview/)
@@ -57,23 +57,24 @@ scrape_configs:
  /opt/etc/init.d/S70prometheus start
 ```
 
-В любимом браузере отправиться на адрес устройства и порт 9090:
+В браузере переходим на адрес устройства и порт `9090`:
 
 ![screen_2022-12-28_16:42:44-prom-stat.png|600](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_16!42!44-prom-stat.png)
+>[!info]- Остальные скриншоты
+>![screen_2022-12-28_16:48:51-prom-targ.png|700](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_16!48!51-prom-targ.png)
+>
+>![screen_2022-12-28_16:44:56-prom-metr.png|500](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_16!44!56-prom-metr.png)
 
-![screen_2022-12-28_16:48:51-prom-targ.png|700](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_16!48!51-prom-targ.png)
-
-![screen_2022-12-28_16:44:56-prom-metr.png|500](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_16!44!56-prom-metr.png)
-
-Прометей умеет в графики "искаропки":
+Prometheus умеет в отображать графики:
 
 ![screen_2022-12-28_16:53:20-prom-graf-w.png|700](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_16!53!20-prom-graf-w.png)
 
-![screen_2022-12-28_16:56:42-prom-graf-b.png|700](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_16!56!42-prom-graf-b.png)
-
-или (IP:9090/consoles/prometheus.html):
-
-![screen_2022-12-28_16:59:53-prom-graf-con.png|700](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_16!59!53-prom-graf-con.png)
+>[!info]- Остальные скриншоты
+>![screen_2022-12-28_16:56:42-prom-graf-b.png|700](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_16!56!42-prom-graf-b.png)
+>
+>или (IP:9090/consoles/prometheus.html):
+>
+>![screen_2022-12-28_16:59:53-prom-graf-con.png|700](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_16!59!53-prom-graf-con.png)
 
 ## snmp_exporter
 
@@ -174,7 +175,7 @@ opkg install prometheus-snmp-exporter
 /opt/etc/init.d/S99snmp_exporter start
 ```
 
-В любимом браузере отправиться на адрес устройства и порт 9090:
+В браузере переходим на адрес устройства и порт `9090`:
 
 ![screen_2022-12-28_17:25:54-snmp-targ.png|700](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_17!25!54-snmp-targ.png)
 
@@ -245,16 +246,16 @@ opkg install prometheus-node-exporter
 /opt/etc/init.d/S99node_exporter start
 ```
 
-В любимом браузере отправиться на адрес устройства и порт 9090:
+В браузере переходим на адрес устройства и порт `9090`:
 
 ![screen_2022-12-28_17:52:16-node-targ.png|700](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_17!52!16-node-targ.png)
 
-![screen_2022-12-28_17:56:00-node-graf.png|700](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_17!56!00-node-graf.png)
-
-
-или (IP:9090/consoles/node.html)
-
-![screen_2022-12-28_18:00:22-node-cons.png|700](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_18!00!22-node-cons.png)
+>[!info]- Остальные скриншоты
+>![screen_2022-12-28_17:56:00-node-graf.png|700](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_17!56!00-node-graf.png)
+>
+>или (IP:9090/consoles/node.html)
+>
+>![screen_2022-12-28_18:00:22-node-cons.png|700](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_18!00!22-node-cons.png)
 
 ## haproxy_exporter
 
@@ -454,7 +455,7 @@ frontend stats
 /opt/etc/init.d/S99haproxy_exporter start
 ```
 
-В любимом браузере отправиться на адрес устройства и порт 9090:
+В браузере переходим на адрес устройства и порт `9090`:
 
 ![screen_2022-12-28_18:38:36-hap-targ.png|700](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_18!38!36-hap-targ.png)
 
@@ -532,13 +533,13 @@ LoadPlugin network
 /opt/etc/init.d/S99collectd_exporter start
 ````
 
-В любимом браузере отправиться на адрес устройства и порт 9090:
+В браузере переходим на адрес устройства и порт `9090`:
 
 ![screen_2022-12-28_18:59:16-coll-targ.png|700](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_18!59!16-coll-targ.png)
 
 ![screen_2022-12-28_19:02:29-coll-graf.png|700](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!02!29-coll-graf.png)
 
-# grafana
+# Grafana
 
 [https://grafana.com](https://grafana.com/)
 
@@ -547,46 +548,45 @@ LoadPlugin network
 opkg install grafana
 ```
 
-Запускаем сервис:
+>Запускаем сервис:
 ```bash
 /opt/etc/init.d/S80grafana-server start
 ```
 
-В любимом браузере отправиться на адрес устройства и порт 3000:
+В браузере переходим на адрес устройства и порт `3000`:
 
-Подключаем прометея: "Configuration" => "Data source" => "Add data source" => "Prometheus" => "URL" <= адрес устройства и порт => ""Save & test"
+Подключаем Prometheus: `Configuration` -> `Data source` -> `Add data source` =-> `Prometheus` => `URL` <- `адрес устройства и порт` -> `Save & test`
 
 ![screen_2022-12-28_19:22:48-grafa-prom.png|400](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!22!48-grafa-prom.png)
 
 ![screen_2022-12-28_19:23:54-grafa-prom-s.png|400](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!23!54-grafa-prom-s.png)
 
-"Искаропки" (очень простой)
+Встроенный Dashboard очень простой
 
 ![screen_2022-12-28_19:58:15-grafa-stub.png|700](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!58!15-grafa-stub.png)
-"Искаропки" (простой)
 
+![screen_2022-12-28_19:55:54-grafa-stub2.png|800](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!55!54-grafa-stub2.png)
+ 
+ Дальше, строим самостоятельно или импортируем готовые Dashboard [https://grafana.com/grafana/dashboards/](https://grafana.com/grafana/dashboards/)
 
-![screen_2022-12-28_19:55:54-grafa-stub2.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!55!54-grafa-stub2.png)
- Дальше, строим самостоятельно или импортируем готовые [https://grafana.com/grafana/dashboards/](https://grafana.com/grafana/dashboards/)
+>[!info]- SNMP - ID: 11169
+>
+>![screen_2022-12-28_19:36:37-grafa-snmp.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!36!37-grafa-snmp.png)
+>
+>![screen_2022-12-28_19:37:32-grafa-snmp.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!37!32-grafa-snmp.png)
 
-SNMP - ID: 11169
+>[!info]- SNMP - ID: 10523
+>
+>![screen_2022-12-28_19:43:36-grafa-snmp.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!43!36-grafa-snmp.png)
 
-![screen_2022-12-28_19:36:37-grafa-snmp.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!36!37-grafa-snmp.png)
-
-![screen_2022-12-28_19:37:32-grafa-snmp.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!37!32-grafa-snmp.png)
-
-SNMP - ID: 10523
-
-[![screen_2022-12-28_19:43:36-grafa-snmp.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!43!36-grafa-snmp.png)](https://content.invisioncic.com/r270260/monthly_2022_12/351244913_screen_2022-12-28_194336-grafa-snmp.png.2416dbb0c90ee9ce09e512162d59d749.png)
-
-node - ID: 1860
-
-![screen_2022-12-28_19:47:13-grafa-node.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!47!13-grafa-node.png)
-
-![screen_2022-12-28_19:52:02-grafa-node.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!52!02-grafa-node.png)
-
-![screen_2022-12-28_19:53:32-grafa-node.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!53!32-grafa-node.png)
-# goflow
+>[!info]- node - ID: 1860
+>
+>![screen_2022-12-28_19:47:13-grafa-node.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!47!13-grafa-node.png)
+>
+>![screen_2022-12-28_19:52:02-grafa-node.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!52!02-grafa-node.png)
+>
+>![screen_2022-12-28_19:53:32-grafa-node.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!53!32-grafa-node.png)
+# Goflow
 
 [https://github.com/cloudflare/goflow](https://github.com/cloudflare/goflow)
 
@@ -754,13 +754,13 @@ opkg install netflow-exporter
 /opt/etc/init.d/S99netflow_exporter start
 ```
 
-В любимом браузере отправиться на адрес устройства и порт 9090:
+В браузере переходим на адрес устройства и порт `9090`:
 
-[![screen_2022-12-28_20:44:20-goflow-targ.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_20!44!20-goflow-targ.png)](https://content.invisioncic.com/r270260/monthly_2022_12/573106047_screen_2022-12-28_204420-goflow-targ.png.9d2bb2be217c6f2342b09483e30c92b3.png)
+![screen_2022-12-28_20:44:20-goflow-targ.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_20!44!20-goflow-targ.png)
 
-[![screen_2022-12-28_20:47:18-goflow-graf.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_20!47!18-goflow-graf.png)](https://content.invisioncic.com/r270260/monthly_2022_12/1761730773_screen_2022-12-28_204718-goflow-graf.png.262f1017a6b294a3fa93f08f6dca9dba.png)
-
-
-[![screen_2022-12-28_20:42:32-flow-targ.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_20!42!32-flow-targ.png)](https://content.invisioncic.com/r270260/monthly_2022_12/784883483_screen_2022-12-28_204232-flow-targ.png.7e3c101d52ece8746827d0caa80999a3.png)
-
-[![screen_2022-12-28_20:40:28-flow-graf.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_20!40!28-flow-graf.png)](https://content.invisioncic.com/r270260/monthly_2022_12/1783350005_screen_2022-12-28_204028-flow-graf.png.70832955eb1a7eb0d1d03a280aa8dee1.png)
+>[!info]- Остальные скриншоты
+>![screen_2022-12-28_20:47:18-goflow-graf.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_20!47!18-goflow-graf.png)
+>
+>![screen_2022-12-28_20:42:32-flow-targ.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_20!42!32-flow-targ.png)
+>
+>![screen_2022-12-28_20:40:28-flow-graf.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_20!40!28-flow-graf.png)
