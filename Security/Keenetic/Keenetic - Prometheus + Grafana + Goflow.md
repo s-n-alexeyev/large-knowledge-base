@@ -571,28 +571,21 @@ opkg install grafana
 
 SNMP - ID: 11169
 
-Скрытый текст
+![screen_2022-12-28_19:36:37-grafa-snmp.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!36!37-grafa-snmp.png)
 
-[![screen_2022-12-28_19:36:37-grafa-snmp.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!36!37-grafa-snmp.png)](https://content.invisioncic.com/r270260/monthly_2022_12/474925245_screen_2022-12-28_193637-grafa-snmp.png.04cace1da2db37e6723dcf774f6cc4c6.png)
-
-[![screen_2022-12-28_19:37:32-grafa-snmp.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!37!32-grafa-snmp.png)](https://content.invisioncic.com/r270260/monthly_2022_12/291680015_screen_2022-12-28_193732-grafa-snmp.png.b0383ef36f745f362d11be521b888447.png)
+![screen_2022-12-28_19:37:32-grafa-snmp.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!37!32-grafa-snmp.png)
 
 SNMP - ID: 10523
 
-Скрытый текст
-
 [![screen_2022-12-28_19:43:36-grafa-snmp.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!43!36-grafa-snmp.png)](https://content.invisioncic.com/r270260/monthly_2022_12/351244913_screen_2022-12-28_194336-grafa-snmp.png.2416dbb0c90ee9ce09e512162d59d749.png)
 
-node -ID: 1860
+node - ID: 1860
 
-Скрытый текст
+![screen_2022-12-28_19:47:13-grafa-node.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!47!13-grafa-node.png)
 
-[![screen_2022-12-28_19:47:13-grafa-node.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!47!13-grafa-node.png)](https://content.invisioncic.com/r270260/monthly_2022_12/86258080_screen_2022-12-28_194713-grafa-node.png.a89f045fa9b3cf39d0895e0f038d19c5.png)
+![screen_2022-12-28_19:52:02-grafa-node.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!52!02-grafa-node.png)
 
-[![screen_2022-12-28_19:52:02-grafa-node.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!52!02-grafa-node.png)](https://content.invisioncic.com/r270260/monthly_2022_12/1979522370_screen_2022-12-28_195202-grafa-node.png.8882564c7f16deb06aca9b0857ea5bc1.png)
-
-[![screen_2022-12-28_19:53:32-grafa-node.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!53!32-grafa-node.png)](https://content.invisioncic.com/r270260/monthly_2022_12/1939240073_screen_2022-12-28_195332-grafa-node.png.291a92c21bf8641110a72109bacc70bc.png)
-
+![screen_2022-12-28_19:53:32-grafa-node.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!53!32-grafa-node.png)
 # goflow
 
 [https://github.com/cloudflare/goflow](https://github.com/cloudflare/goflow)
