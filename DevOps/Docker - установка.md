@@ -156,7 +156,9 @@ chmod +x ~/.docker/cli-plugins/docker-compose
 docker compose version
 ```
 
->Увидим примерно такое:
-```q
-Docker Compose version v2.29.1
-```
+>[!summary] Увидим примерно такое:
+>```q
+>Docker Compose version v2.29.1
+>```
+
+Все готово!
