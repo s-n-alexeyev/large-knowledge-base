@@ -104,21 +104,16 @@ TriggeredBy: ● docker.socket
 sudo docker run hello-world
 ```
 
->Если все хорошо, то на выходе увидим:
-```q
-Unable to find image 'hello-world:latest' locally
-latest: Pulling from library/hello-world
-2db29710123e: Pull complete
-Digest: sha256:bfea6278a0a267fad2634554f4f0c6f31981eea41c553fdf5a83e95a41d40c38
-Status: Downloaded newer image for hello-world:latest
-
-Hello from Docker!
-This message shows that your installation appears to be working correctly.
-```
-
->Удаляем тестовый контейнер
-```bash
-sudo docker rmi -f hello-world
+>[!info] Если все хорошо, то на выходе увидим:
+>```
+>Unable to find image 'hello-world:latest' locally
+l>atest: Pulling from library/hello-world
+>2db29710123e: Pull complete
+>Digest: sha256:bfea6278a0a267fad2634554f4f0c6f31981eea41c553fdf5a83e95a41d40c38
+>Status: Downloaded newer image for hello-world:latest
+>
+>Hello from Docker!
+>This message shows that your installation appears to be working correctly.
 ```
 
 ## Разрешаем не root пользователю запускать Docker
@@ -136,6 +131,10 @@ sudo usermod -aG docker ${USER}
 docker run hello-world
 ```
 
+>Удаляем тестовый контейнер
+```bash
+docker rmi -f hello-world
+```
 ## Устанавливаем Docker-compose
 
 >Запускаем эту команду для установки последней версии docker-compose, проверить какая версия является последней можно [тут](https://github.com/docker/compose/releases):
