@@ -1,16 +1,25 @@
 2022-12-28
-[Оригинальная статя](https://forum.keenetic.com/topic/15533-prometheus/)
-## рrometheus
+[Оригинальная статья](https://forum.keenetic.com/topic/15533-prometheus/)
+
+```table-of-contents
+title: Содержание
+style: nestedList # TOC style (nestedList|nestedOrderedList|inlineFirstLevel)
+minLevel: 0 # Include headings from the specified level
+maxLevel: 0 # Include headings up to the specified level
+includeLinks: true # Make headings clickable
+debugInConsole: false # Print debug info in Obsidian console
+```
+# рrometheus
 
 [https://prometheus.io/](https://prometheus.io/)  
 [https://prometheus.io/docs/introduction/overview/](https://prometheus.io/docs/introduction/overview/)
 
-> Установить пакет:
+> Устанавливаем пакет
 ```bash
 opkg install prometheus
 ```
 
->и отредактировать конфиг "/opt/etc/prometheus/prometheus.yml" (заменить "localhost" на адрес устройства):
+> Редактируем конфигурационный файл "/opt/etc/prometheus/prometheus.yml" (меняем "localhost" на адрес устройства):
 ```yaml
 # my global config
 global:
@@ -307,8 +316,7 @@ opkg install prometheus-haproxy-exporter
 /opt/etc/init.d/S70prometheus restart
 ```
 
-(добавить в конфиг HAProxy и закомментировать или удалить строку "mode health")
-
+>	Изменяем конфигурационный файл HAProxy: и закомментируем или удаляем строку "mode health"
 ```
 # Prometheus
 frontend stats
@@ -320,250 +328,218 @@ frontend stats
   stats refresh 10s
 ```
 
+>[!example]- Готовый конфигурационный файл
+>```
+># Example configuration file for HAProxy 2.0, refer to the url below for
+># a full documentation and examples for configuration:
+># https://cbonte.github.io/haproxy-dconv/2.0/configuration.html
+>
+>
+># Global parameters
+>global
+>
+>	# Log events to a remote syslog server at given address using the
+>	# specified facility and verbosity level. Multiple log options
+>	# are allowed.
+>	#log 10.0.0.1 daemon info
+>
+>	# Specifiy the maximum number of allowed connections.
+>	maxconn 32000
+>
+>	# Raise the ulimit for the maximum allowed number of open socket
+>	# descriptors per process. This is usually at least twice the
+>	# number of allowed connections (maxconn * 2 + nb_servers + 1) .
+>	ulimit-n 65535
+>
+>	# Drop privileges (setuid, setgid), default is "root" on OpenWrt.
+>	uid 0
+>	gid 0
+>
+>	# Perform chroot into the specified directory.
+>	#chroot /var/run/haproxy/
+>
+>	# Daemonize on startup
+>	daemon
+>
+>	nosplice
+>	# Enable debugging
+>	#debug
+>
+>	# Spawn given number of processes and distribute load among them,
+>	# used for multi-core environments or to circumvent per-process
+>	# limits like number of open file descriptors. Default is 1.
+>	#nbproc 2
+>
+># Default parameters
+>defaults
+>	# Default timeouts
+>	timeout connect 5000ms
+>	timeout client 50000ms
+>	timeout server 50000ms
+>
+>
+># Example HTTP proxy listener
+>listen my_http_proxy
+>
+>	# Bind to port 81 and 444 on all interfaces (0.0.0.0)
+>	bind :81,:444
+>
+>	# We're proxying HTTP here...
+>	mode http
+>
+>	# Simple HTTP round robin over two servers using the specified
+>	# source ip 192.168.1.1 .
+>	balance roundrobin
+>	server server01 192.168.1.10:80 source 192.168.1.1
+>	server server02 192.168.1.20:80 source 192.168.1.1
+>
+>	# Serve an internal statistics page on /stats:
+>	stats enable
+>	stats uri /stats
+>
+>	# Enable HTTP basic auth for the statistics:
+>	stats realm HA_Stats
+>	stats auth username:password
+>
+>
+># Example SMTP proxy listener
+>listen my_smtp_proxy
+>
+>	# Disable this instance without commenting out the section.
+>	disabled
+>
+>	# Bind to port 26 and 588 on localhost
+>	bind 127.0.0.1:26,127.0.0.1:588
+>
+>	# This is a TCP proxy
+>	mode tcp
+>
+>	# Round robin load balancing over two servers on port 123 forcing
+>	# the address 192.168.1.1 and port 25 as source.
+>	balance roundrobin
+>	#use next line for transparent proxy, so the servers can see the
+>	#original ip-address and remove source keyword in server definition
+>	#source 0.0.0.0 usesrc clientip
+>	server server01 192.168.1.10:123 source 192.168.1.1:25
+>	server server02 192.168.1.20:123 source 192.168.1.1:25
+>
+>
+># Special health check listener for integration with external load
+># balancers.
+>listen local_health_check
+>
+>	# Listen on port 60000
+>	bind :60000
+>
+>	# This is a health check
+>	#mode health <= или удалить
+>
+>	# Enable HTTP-style responses: "HTTP/1.0 200 OK"
+>	# else just print "OK".
+>	#option httpchk
+>
+># Prometheus
+>frontend stats
+>  mode http
+>  bind *:8404
+>  http-request use-service prometheus-exporter if { path /metrics }
+>  stats enable
+>  stats uri /stats
+>  stats refresh 10s
+>```
 
-```yaml
-# Example configuration file for HAProxy 2.0, refer to the url below for
-# a full documentation and examples for configuration:
-# https://cbonte.github.io/haproxy-dconv/2.0/configuration.html
-
-
-# Global parameters
-global
-
-	# Log events to a remote syslog server at given address using the
-	# specified facility and verbosity level. Multiple log options 
-	# are allowed.
-	#log 10.0.0.1 daemon info
-
-	# Specifiy the maximum number of allowed connections.
-	maxconn 32000
-
-	# Raise the ulimit for the maximum allowed number of open socket
-	# descriptors per process. This is usually at least twice the
-	# number of allowed connections (maxconn * 2 + nb_servers + 1) .
-	ulimit-n 65535
-
-	# Drop privileges (setuid, setgid), default is "root" on OpenWrt.
-	uid 0
-	gid 0
-
-	# Perform chroot into the specified directory.
-	#chroot /var/run/haproxy/
-
-	# Daemonize on startup
-	daemon
-
-	nosplice
-	# Enable debugging
-	#debug
-
-	# Spawn given number of processes and distribute load among them,
-	# used for multi-core environments or to circumvent per-process
-	# limits like number of open file descriptors. Default is 1.
-	#nbproc 2
-
-# Default parameters
-defaults
-	# Default timeouts
-	timeout connect 5000ms
-	timeout client 50000ms
-	timeout server 50000ms
-
-
-# Example HTTP proxy listener
-listen my_http_proxy
-
-	# Bind to port 81 and 444 on all interfaces (0.0.0.0)
-	bind :81,:444
-
-	# We're proxying HTTP here...
-	mode http
-
-	# Simple HTTP round robin over two servers using the specified
-	# source ip 192.168.1.1 .
-	balance roundrobin
-	server server01 192.168.1.10:80 source 192.168.1.1
-	server server02 192.168.1.20:80 source 192.168.1.1
-
-	# Serve an internal statistics page on /stats:
-	stats enable
-	stats uri /stats
-
-	# Enable HTTP basic auth for the statistics:
-	stats realm HA_Stats
-	stats auth username:password
-
-
-# Example SMTP proxy listener
-listen my_smtp_proxy
-
-	# Disable this instance without commenting out the section.
-	disabled
-
-	# Bind to port 26 and 588 on localhost
-	bind 127.0.0.1:26,127.0.0.1:588
-
-	# This is a TCP proxy
-	mode tcp
-
-	# Round robin load balancing over two servers on port 123 forcing
-	# the address 192.168.1.1 and port 25 as source.
-	balance roundrobin
-	#use next line for transparent proxy, so the servers can see the 
-	#original ip-address and remove source keyword in server definition
-	#source 0.0.0.0 usesrc clientip
-	server server01 192.168.1.10:123 source 192.168.1.1:25
-	server server02 192.168.1.20:123 source 192.168.1.1:25
-	
-
-# Special health check listener for integration with external load
-# balancers.
-listen local_health_check
-
-	# Listen on port 60000
-	bind :60000
-
-	# This is a health check
-	#mode health <= или удалить
-
-	# Enable HTTP-style responses: "HTTP/1.0 200 OK"
-	# else just print "OK".
-	#option httpchk
-
-# Prometheus
-frontend stats
-  mode http
-  bind *:8404
-  http-request use-service prometheus-exporter if { path /metrics }
-  stats enable
-  stats uri /stats
-  stats refresh 10s
+>Запускаем сервисы:
+```bash
+/opt/etc/init.d/S99haproxy start
+/opt/etc/init.d/S99haproxy_exporter start
 ```
-
-Запустить сервисы: `/opt/etc/init.d/S99haproxy start && /opt/etc/init.d/S99haproxy_exporter start`
 
 В любимом браузере отправиться на адрес устройства и порт 9090:
 
-Скрытый текст
+![screen_2022-12-28_18:38:36-hap-targ.png|700](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_18!38!36-hap-targ.png)
 
-[![screen_2022-12-28_18:38:36-hap-targ.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_18!38!36-hap-targ.png)](https://content.invisioncic.com/r270260/monthly_2022_12/492757329_screen_2022-12-28_183836-hap-targ.png.5efc012ac4e324493d77e8973f7678af.png)
+![screen_2022-12-28_18:44:11-hap-graf.png|700](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_18!44!11-hap-graf.png)
 
-[![screen_2022-12-28_18:44:11-hap-graf.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_18!44!11-hap-graf.png)](https://content.invisioncic.com/r270260/monthly_2022_12/732089962_screen_2022-12-28_184411-hap-graf.png.d5e1aa4ce5f075c7f7c73359358a2b51.png)
-
--  ![Thanks](/Media/Keenetic_Prometeus_Grafana/Thanks.png)1
--  ![Upvote](/Media/Keenetic_Prometeus_Grafana/Upvote.png)1
-
-### **[TheBB](https://forum.keenetic.com/profile/5608-thebb/ "Go to TheBB's profile")**
-
--  [![TheBB](/Media/Keenetic_Prometeus_Grafana/TheBB.jpg)](https://forum.keenetic.com/profile/5608-thebb/ "Go to TheBB's profile")![Honored Flooder](https://content.invisioncic.com/r270260/set_resources_10/84c1e40ea0e759e3f1505eb1788ddf3c_default_rank.png "Rank: Honored Flooder (5/5)")
-    
-- Moderators
-- - [2.4k](https://forum.keenetic.com/profile/5608-thebb/content/ "2,413 posts")
-- **Keenetic:** DSL G2 O2 U2 VOX(exp.) | KO(KN-1410) KS(KN-1110) KDSL(KN-2010)
-
-- **Author**
-
-- [](https://forum.keenetic.com/topic/15533-prometheus/#elControls_157319_menu "More options...")
-
-[Posted December 28, 2022](https://forum.keenetic.com/topic/15533-prometheus/?do=findComment&comment=157319)
-
-_А у вас нет такого же, но ~~с перламутровыми пуговицами~~ для collectd?_
-
-**collectd_exporter**
+## collectd_exporter
 
 [https://github.com/prometheus/collectd_exporter](https://github.com/prometheus/collectd_exporter/)
 
-Установить пакет: `opkg install prometheus-collectd-exporter`
+>Устанавливаем пакет
+```bash
+opkg install prometheus-collectd-exporter
+```
 
-и отредактировать конфиги "/opt/etc/prometheus/prometheus.yml" и "/opt/etc/collectd.conf":
+>Добавляем в конфигурационный файл "/opt/etc/prometheus/prometheus.yml":
 
-(добавить в конфиг прометея)
-
+```yaml
   # collectd
   - job_name: "collectd"
     static_configs:
     - targets: ["192.168.1.1:9103"]
+```
 
-Скрытый текст
+>[!example]- Готовый конфигурационный файл
+># my global config
+>global:
+>  scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+>  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+>  # scrape_timeout is set to the global default (10s).
+>
+># Alertmanager configuration
+>alerting:
+>  alertmanagers:
+>    - static_configs:
+>        - targets:
+>          # - alertmanager:9093
+>
+># Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+>rule_files:
+>  # - "first_rules.yml"
+>  # - "second_rules.yml"
+>
+># A scrape configuration containing exactly one endpoint to scrape:
+># Here it's Prometheus itself.
+>scrape_configs:
+>  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+>  - job_name: "prometheus"
+>
+>    # metrics_path defaults to '/metrics'
+>    # scheme defaults to 'http'.
+>
+>    static_configs:
+>      - targets: ["192.168.1.1:9090"]
+>
+>  # collectd
+>  - job_name: "collectd"
+>    static_configs:
+>    - targets: ["192.168.1.1:9103"]
 
-# my global config
-global:
-  scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
-  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
-  # scrape_timeout is set to the global default (10s).
+>После правок конфигурационного файла рrometheus, сервис перезапускать обязательно !!!
+```
+/opt/etc/init.d/S70prometheus restart
+```
 
-# Alertmanager configuration
-alerting:
-  alertmanagers:
-    - static_configs:
-        - targets:
-          # - alertmanager:9093
-
-# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
-rule_files:
-  # - "first_rules.yml"
-  # - "second_rules.yml"
-
-# A scrape configuration containing exactly one endpoint to scrape:
-# Here it's Prometheus itself.
-scrape_configs:
-  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
-  - job_name: "prometheus"
-
-    # metrics_path defaults to '/metrics'
-    # scheme defaults to 'http'.
-
-    static_configs:
-      - targets: ["192.168.1.1:9090"]
-
-  # collectd
-  - job_name: "collectd"
-    static_configs:
-    - targets: ["192.168.1.1:9103"]
-
-!!! После правок конфига прометея, сервис перезапускать обязательно !!!
-
-`/opt/etc/init.d/S70prometheus restart`
-
-(добавить в конфиг collectd)
-
+>Изменяем конфигурационный файл collectd
+```
 LoadPlugin network
 <Plugin network>
   Server "127.0.0.1" "25826"
 </Plugin>
+```
 
-Запустить сервисы: `/opt/etc/init.d/S70collectd start && /opt/etc/init.d/S99collectd_exporter start`
+>Запускаем сервисы:
+```bash
+/opt/etc/init.d/S70collectd start
+/opt/etc/init.d/S99collectd_exporter start
+````
 
 В любимом браузере отправиться на адрес устройства и порт 9090:
 
-Скрытый текст
+![screen_2022-12-28_18:59:16-coll-targ.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_18!59!16-coll-targ.png)
 
-[![screen_2022-12-28_18:59:16-coll-targ.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_18!59!16-coll-targ.png)](https://content.invisioncic.com/r270260/monthly_2022_12/725071347_screen_2022-12-28_185916-coll-targ.png.0cb8d18146bb1d464cae2887531c9128.png)
+![screen_2022-12-28_19:02:29-coll-graf.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!02!29-coll-graf.png)
 
-[![screen_2022-12-28_19:02:29-coll-graf.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!02!29-coll-graf.png)](https://content.invisioncic.com/r270260/monthly_2022_12/1458317996_screen_2022-12-28_190229-coll-graf.png.7fd122698ee31195845579d36aa8a548.png)
-
--  ![Thanks](/Media/Keenetic_Prometeus_Grafana/Thanks.png)1
--  ![Upvote](/Media/Keenetic_Prometeus_Grafana/Upvote.png)1
-
-### **[TheBB](https://forum.keenetic.com/profile/5608-thebb/ "Go to TheBB's profile")**
-
--  [![TheBB](/Media/Keenetic_Prometeus_Grafana/TheBB.jpg)](https://forum.keenetic.com/profile/5608-thebb/ "Go to TheBB's profile")![Honored Flooder](https://content.invisioncic.com/r270260/set_resources_10/84c1e40ea0e759e3f1505eb1788ddf3c_default_rank.png "Rank: Honored Flooder (5/5)")
-    
-- Moderators
-- - [2.4k](https://forum.keenetic.com/profile/5608-thebb/content/ "2,413 posts")
-- **Keenetic:** DSL G2 O2 U2 VOX(exp.) | KO(KN-1410) KS(KN-1110) KDSL(KN-2010)
-
-- **Author**
-
-- [](https://forum.keenetic.com/topic/15533-prometheus/#elControls_157320_menu "More options...")
-
-[Posted December 28, 2022](https://forum.keenetic.com/topic/15533-prometheus/?do=findComment&comment=157320)
-
-"Налетай, торопись, покупай живопись!" (из к/ф "Операция "Ы" и другие приключения Шурика", СССР, 1965)
-
-_или Красота спасёт мир!_
-
-grafana
+# grafana
 
 [https://grafana.com](https://grafana.com/)
 
