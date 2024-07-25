@@ -534,6 +534,10 @@ opkg install prometheus-collectd-exporter
 ```
 
 >Изменяем конфигурационный файл collectd
+```bash
+nano /opt/etc/collecd.conf
+```
+
 ```
 LoadPlugin network
 <Plugin network>
