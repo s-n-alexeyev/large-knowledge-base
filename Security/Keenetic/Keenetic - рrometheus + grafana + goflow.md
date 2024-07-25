@@ -176,9 +176,9 @@ opkg install prometheus-snmp-exporter
 
 В любимом браузере отправиться на адрес устройства и порт 9090:
 
-![screen_2022-12-28_17:25:54-snmp-targ.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_17!25!54-snmp-targ.png)
+![screen_2022-12-28_17:25:54-snmp-targ.png|700](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_17!25!54-snmp-targ.png)
 
-![screen_2022-12-28_17:37:07-snmp-graf.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_17!37!07-snmp-graf.png)
+![screen_2022-12-28_17:37:07-snmp-graf.png|700](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_17!37!07-snmp-graf.png)
 
 ## node_exporter
 
@@ -247,14 +247,14 @@ opkg install prometheus-node-exporter
 
 В любимом браузере отправиться на адрес устройства и порт 9090:
 
-![screen_2022-12-28_17:52:16-node-targ.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_17!52!16-node-targ.png)
+![screen_2022-12-28_17:52:16-node-targ.png|700](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_17!52!16-node-targ.png)
 
-![screen_2022-12-28_17:56:00-node-graf.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_17!56!00-node-graf.png)
+![screen_2022-12-28_17:56:00-node-graf.png|700](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_17!56!00-node-graf.png)
 
 
 или (IP:9090/consoles/node.html)
 
-![screen_2022-12-28_18:00:22-node-cons.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_18!00!22-node-cons.png)
+![screen_2022-12-28_18:00:22-node-cons.png|700](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_18!00!22-node-cons.png)
 
 ## haproxy_exporter
 
@@ -534,9 +534,9 @@ LoadPlugin network
 
 В любимом браузере отправиться на адрес устройства и порт 9090:
 
-![screen_2022-12-28_18:59:16-coll-targ.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_18!59!16-coll-targ.png)
+![screen_2022-12-28_18:59:16-coll-targ.png|700](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_18!59!16-coll-targ.png)
 
-![screen_2022-12-28_19:02:29-coll-graf.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!02!29-coll-graf.png)
+![screen_2022-12-28_19:02:29-coll-graf.png|700](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!02!29-coll-graf.png)
 
 # grafana
 
@@ -562,14 +562,11 @@ opkg install grafana
 
 "Искаропки" (очень простой)
 
-[![screen_2022-12-28_19:58:15-grafa-stub.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!58!15-grafa-stub.png)](https://content.invisioncic.com/r270260/monthly_2022_12/713806523_screen_2022-12-28_195815-grafa-stub.png.2f9957de82c720ebf847005ca4efc63d.png)
-
+![screen_2022-12-28_19:58:15-grafa-stub.png|700](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!58!15-grafa-stub.png)
 "Искаропки" (простой)
 
-Скрытый текст
 
-[![screen_2022-12-28_19:55:54-grafa-stub2.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!55!54-grafa-stub2.png)](https://content.invisioncic.com/r270260/monthly_2022_12/1670361398_screen_2022-12-28_195554-grafa-stub2.png.39657ac9c599f7ea9c113744fd043fec.png)
-
+![screen_2022-12-28_19:55:54-grafa-stub2.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!55!54-grafa-stub2.png)
  Дальше, строим самостоятельно или импортируем готовые [https://grafana.com/grafana/dashboards/](https://grafana.com/grafana/dashboards/)
 
 SNMP - ID: 11169
@@ -595,7 +592,6 @@ node -ID: 1860
 [![screen_2022-12-28_19:52:02-grafa-node.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!52!02-grafa-node.png)](https://content.invisioncic.com/r270260/monthly_2022_12/1979522370_screen_2022-12-28_195202-grafa-node.png.8882564c7f16deb06aca9b0857ea5bc1.png)
 
 [![screen_2022-12-28_19:53:32-grafa-node.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!53!32-grafa-node.png)](https://content.invisioncic.com/r270260/monthly_2022_12/1939240073_screen_2022-12-28_195332-grafa-node.png.291a92c21bf8641110a72109bacc70bc.png)
-
 
 # goflow
 
@@ -657,9 +653,8 @@ opkg install netflow-exporter
     - targets: ["192.168.1.1:8080"]
 ```
 
-
 >[!example]- Готовый конфигурационный файл
->
+>```
 ># my global config
 >global:
 >  scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
@@ -694,16 +689,19 @@ opkg install netflow-exporter
 >  - job_name: "goflow"
 >    static_configs:
 >    - targets: ["192.168.1.1:8080"]
->
->или
->
->  # netflow
->  - job_name: "netflow"
->    static_configs:
->    - targets: ["192.168.1.1:9191"]
->
->Скрытый текст
->
+>```
+
+или
+
+```yaml
+  # netflow
+  - job_name: "netflow"
+    static_configs:
+    - targets: ["192.168.1.1:9191"]
+```
+
+>[!example]- Готовый конфигурационный файл
+>```
 ># my global config
 >global:
 >  scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
@@ -738,36 +736,37 @@ opkg install netflow-exporter
 >  - job_name: "netflow"
 >    static_configs:
 >    - targets: ["192.168.1.1:9191"]
->
-!!! После правок конфига прометея, сервис перезапускать обязательно !!!
+>```
 
-`/opt/etc/init.d/S70prometheus restart`
 
-Запустить сервис (в зависимости от установленного пакета):
+>После правок конфигурационного файла рrometheus, сервис перезапускать обязательно !!!
+```
+/opt/etc/init.d/S70prometheus restart
+```
 
-`/opt/etc/init.d/S99cnetflow start` или
+>Запускаем сервис (в зависимости от установленного пакета):
+```bash
+/opt/etc/init.d/S99cnetflow start
 
-`/opt/etc/init.d/S99cnflegacy start` или
+#или
+/opt/etc/init.d/S99cnflegacy start
 
-`/opt/etc/init.d/S99csflow start` или
+#или
+/opt/etc/init.d/S99csflow start
 
-`/opt/etc/init.d/S99goflow start` или
+#или
+/opt/etc/init.d/S99goflow start
 
-`/opt/etc/init.d/S99netflow_exporter start`
+#или
+/opt/etc/init.d/S99netflow_exporter start
+```
 
 В любимом браузере отправиться на адрес устройства и порт 9090:
-
-(goflow)
-
-Скрытый текст
 
 [![screen_2022-12-28_20:44:20-goflow-targ.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_20!44!20-goflow-targ.png)](https://content.invisioncic.com/r270260/monthly_2022_12/573106047_screen_2022-12-28_204420-goflow-targ.png.9d2bb2be217c6f2342b09483e30c92b3.png)
 
 [![screen_2022-12-28_20:47:18-goflow-graf.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_20!47!18-goflow-graf.png)](https://content.invisioncic.com/r270260/monthly_2022_12/1761730773_screen_2022-12-28_204718-goflow-graf.png.262f1017a6b294a3fa93f08f6dca9dba.png)
 
-(netflow-exporter)
-
-Скрытый текст
 
 [![screen_2022-12-28_20:42:32-flow-targ.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_20!42!32-flow-targ.png)](https://content.invisioncic.com/r270260/monthly_2022_12/784883483_screen_2022-12-28_204232-flow-targ.png.7e3c101d52ece8746827d0caa80999a3.png)
 

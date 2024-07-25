@@ -42,7 +42,6 @@ dnsUseGethostbyname = yes
 /opt/etc/init.d/S35tor start
 ```
 
->
 >Настраиваем браузер (в примере FireFox)
 
-[![tor_003.png](https://content.invisioncic.com/r270260/monthly_2016_06/tor_003.png.1800b2c02ca993b2bc45ce76119a5754.png "Unavailable")](https://content.invisioncic.com/r270260/monthly_2016_06/tor_003.png.1800b2c02ca993b2bc45ce76119a5754.png "Увеличить изображение")
+![tor_003.png](https://content.invisioncic.com/r270260/monthly_2016_06/tor_003.png.1800b2c02ca993b2bc45ce76119a5754.png "Unavailable")
