@@ -108,52 +108,53 @@ opkg install prometheus-snmp-exporter
       replacement: 192.168.1.1:9116
 ```
 
-```yaml
-# my global config
-global:
-  scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
-  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
-  # scrape_timeout is set to the global default (10s).
-
-# Alertmanager configuration
-alerting:
-  alertmanagers:
-    - static_configs:
-        - targets:
-          # - alertmanager:9093
-
-# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
-rule_files:
-  # - "first_rules.yml"
-  # - "second_rules.yml"
-
-# A scrape configuration containing exactly one endpoint to scrape:
-# Here it's Prometheus itself.
-scrape_configs:
-  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
-  - job_name: "prometheus"
-
-    # metrics_path defaults to '/metrics'
-    # scheme defaults to 'http'.
-
-    static_configs:
-      - targets: ["192.168.1.1:9090"]
-
-  # snmp
-  - job_name: "snmp"
-    static_configs:
-    - targets: ["192.168.1.1"]
-    metrics_path: /snmp
-    params:
-      module: [if_mib]
-    relabel_configs:
-    - source_labels: [__address__]
-      target_label: __param_target
-    - source_labels: [__param_target]
-      target_label: instance
-    - target_label: __address__
-      replacement: 192.168.1.1:9116
-```
+>[!example]- Готовый конфигурационный файл
+>```yaml
+># my global config
+>global:
+>  scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+>  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+>  # scrape_timeout is set to the global default (10s).
+>
+># Alertmanager configuration
+>alerting:
+>  alertmanagers:
+>    - static_configs:
+>        - targets:
+>          # - alertmanager:9093
+>
+># Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+>rule_files:
+>  # - "first_rules.yml"
+>  # - "second_rules.yml"
+>
+># A scrape configuration containing exactly one endpoint to scrape:
+># Here it's Prometheus itself.
+>scrape_configs:
+>  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+>  - job_name: "prometheus"
+>
+>    # metrics_path defaults to '/metrics'
+>    # scheme defaults to 'http'.
+>
+>    static_configs:
+>      - targets: ["192.168.1.1:9090"]
+>
+>  # snmp
+>  - job_name: "snmp"
+>    static_configs:
+>    - targets: ["192.168.1.1"]
+>    metrics_path: /snmp
+>    params:
+>      module: [if_mib]
+>    relabel_configs:
+>    - source_labels: [__address__]
+>      target_label: __param_target
+>    - source_labels: [__param_target]
+>      target_label: instance
+>    - target_label: __address__
+>      replacement: 192.168.1.1:9116
+>```
 
 > После правок конфигурационного файла рrometheus, сервис перезапускать обязательно !!!
 ```
@@ -188,42 +189,43 @@ opkg install prometheus-node-exporter
     - targets: ["192.168.1.1:9100"]
 ```
 
-```yaml
-# my global config
-global:
-  scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
-  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
-  # scrape_timeout is set to the global default (10s).
-
-# Alertmanager configuration
-alerting:
-  alertmanagers:
-    - static_configs:
-        - targets:
-          # - alertmanager:9093
-
-# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
-rule_files:
-  # - "first_rules.yml"
-  # - "second_rules.yml"
-
-# A scrape configuration containing exactly one endpoint to scrape:
-# Here it's Prometheus itself.
-scrape_configs:
-  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
-  - job_name: "prometheus"
-
-    # metrics_path defaults to '/metrics'
-    # scheme defaults to 'http'.
-
-    static_configs:
-      - targets: ["192.168.1.1:9090"]
-
-  # node
-  - job_name: "node"
-    static_configs:
-    - targets: ["192.168.1.1:9100"]
-```
+>[!example]- Готовый конфигурационный файл
+>```yaml
+># my global config
+>global:
+>  scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+>  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+>  # scrape_timeout is set to the global default (10s).
+>
+># Alertmanager configuration
+>alerting:
+>  alertmanagers:
+>    - static_configs:
+>        - targets:
+>          # - alertmanager:9093
+>
+># Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+>rule_files:
+>  # - "first_rules.yml"
+>  # - "second_rules.yml"
+>
+># A scrape configuration containing exactly one endpoint to scrape:
+># Here it's Prometheus itself.
+>scrape_configs:
+>  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+>  - job_name: "prometheus"
+>
+>    # metrics_path defaults to '/metrics'
+>    # scheme defaults to 'http'.
+>
+>    static_configs:
+>      - targets: ["192.168.1.1:9090"]
+>
+>  # node
+>  - job_name: "node"
+>    static_configs:
+>    - targets: ["192.168.1.1:9100"]
+>```
 
 >После правок конфигурационного файла рrometheus, сервис перезапускать обязательно !!!
 ```
