@@ -9,10 +9,12 @@ maxLevel: 0 # Include headings up to the specified level
 includeLinks: true # Make headings clickable
 debugInConsole: false # Print debug info in Obsidian console
 ```
-# Prometheus
+# [Prometheus](https://prometheus.io/)  
+[Обзор](https://prometheus.io/docs/introduction/overview/)
 
-[https://prometheus.io/](https://prometheus.io/)  
-[https://prometheus.io/docs/introduction/overview/](https://prometheus.io/docs/introduction/overview/)
+>[!info]
+> Все команды для манипулирования пакетами необходимо производить из консоли ssh, подключаясь по IP адресу вашего [Entware](https://help.keenetic.com/hc/ru/articles/360021214160-%D0%A3%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D1%8B-%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%D0%BE%D0%B2-%D1%80%D0%B5%D0%BF%D0%BE%D0%B7%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D1%8F-Entware-%D0%BD%D0%B0-USB-%D0%BD%D0%B0%D0%BA%D0%BE%D0%BF%D0%B8%D1%82%D0%B5%D0%BB%D1%8C) роутера Keenetic.
+>Команды telnet можно производить через [CLI Keenetic](https://help.keenetic.com/hc/ru/articles/213965889-%D0%98%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81-%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%BD%D0%BE%D0%B9-%D1%81%D1%82%D1%80%D0%BE%D0%BA%D0%B8-CLI-%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82-%D1%86%D0%B5%D0%BD%D1%82%D1%80%D0%B0)? (например http://192.168.1.1/a).
 
 > Устанавливаем пакет
 ```bash
@@ -52,7 +54,7 @@ scrape_configs:
       - targets: ["192.168.1.1:9090"]
 ```
 
->Запустить сервис:
+>Запускаем сервис:
 ```bash
  /opt/etc/init.d/S70prometheus start
 ```
@@ -60,7 +62,7 @@ scrape_configs:
 В браузере переходим на адрес устройства и порт `9090`:
 
 ![screen_2022-12-28_16:42:44-prom-stat.png|600](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_16!42!44-prom-stat.png)
->[!info]- Остальные скриншоты
+>[!info]- Остальные изображения
 >![screen_2022-12-28_16:48:51-prom-targ.png|700](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_16!48!51-prom-targ.png)
 >
 >![screen_2022-12-28_16:44:56-prom-metr.png|500](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_16!44!56-prom-metr.png)
@@ -69,18 +71,16 @@ Prometheus умеет в отображать графики:
 
 ![screen_2022-12-28_16:53:20-prom-graf-w.png|700](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_16!53!20-prom-graf-w.png)
 
->[!info]- Остальные скриншоты
+>[!info]- Остальные изображения
 >![screen_2022-12-28_16:56:42-prom-graf-b.png|700](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_16!56!42-prom-graf-b.png)
 >
 >или (IP:9090/consoles/prometheus.html):
 >
 >![screen_2022-12-28_16:59:53-prom-graf-con.png|700](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_16!59!53-prom-graf-con.png)
 
-## snmp_exporter
+## [snmp_exporter](https://github.com/prometheus/snmp_exporter)
 
-[https://github.com/prometheus/snmp_exporter](https://github.com/prometheus/snmp_exporter)
-
-Keenetic умеет в snmp "искаропки" (если компонент "Сервер SNMP" установлен):
+Keenetic умеет работать с SNMP (если компонент "Сервер SNMP" установлен):
 
 >[!warning] Если компонент не установлен и захотите его добавить, прошивка обновиться до актуальной версии (в зависимости от канала обновлений).
 
@@ -165,7 +165,7 @@ opkg install prometheus-snmp-exporter
 >      replacement: 192.168.1.1:9116
 >```
 
-> После правок конфигурационного файла рrometheus, сервис перезапускать обязательно !!!
+>[!warning] После правок конфигурационного файла рrometheus, сервис перезапускать обязательно !!!
 ```
 /opt/etc/init.d/S70prometheus restart
 ```
@@ -181,9 +181,7 @@ opkg install prometheus-snmp-exporter
 
 ![screen_2022-12-28_17:37:07-snmp-graf.png|700](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_17!37!07-snmp-graf.png)
 
-## node_exporter
-
-[https://github.com/prometheus/node_exporter](https://github.com/prometheus/node_exporter)
+## [node_exporter](https://github.com/prometheus/node_exporter)
 
 >Устанавливаем пакет:
 ```bash
@@ -236,7 +234,7 @@ opkg install prometheus-node-exporter
 >    - targets: ["192.168.1.1:9100"]
 >```
 
->После правок конфигурационного файла рrometheus, сервис перезапускать обязательно !!!
+>[!warning] После правок конфигурационного файла рrometheus, сервис перезапускать обязательно !!!
 ```
 /opt/etc/init.d/S70prometheus restart
 ```
@@ -250,16 +248,14 @@ opkg install prometheus-node-exporter
 
 ![screen_2022-12-28_17:52:16-node-targ.png|700](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_17!52!16-node-targ.png)
 
->[!info]- Остальные скриншоты
+>[!info]- Остальные изображения
 >![screen_2022-12-28_17:56:00-node-graf.png|700](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_17!56!00-node-graf.png)
 >
 >или (IP:9090/consoles/node.html)
 >
 >![screen_2022-12-28_18:00:22-node-cons.png|700](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_18!00!22-node-cons.png)
 
-## haproxy_exporter
-
-[https://github.com/prometheus/haproxy_exporter](https://github.com/prometheus/haproxy_exporter)
+## [haproxy_exporter](https://github.com/prometheus/haproxy_exporter)
 
 >Устанавливаем пакет:
 ```bash
@@ -312,13 +308,13 @@ opkg install prometheus-haproxy-exporter
 >    - targets: ["192.168.1.1:8404"]
 >```
 
->После правок конфигурационного файла рrometheus, сервис перезапускать обязательно !!!
-```
+>[!warning] После правок конфигурационного файла рrometheus, сервис перезапускать обязательно !!!
+```bash
 /opt/etc/init.d/S70prometheus restart
 ```
 
->	Изменяем конфигурационный файл HAProxy: и закомментируем или удаляем строку "mode health"
-```
+>Изменяем конфигурационный файл HAProxy: и закомментируем или удаляем строку "mode health"
+```ini
 # Prometheus
 frontend stats
   mode http
@@ -330,7 +326,7 @@ frontend stats
 ```
 
 >[!example]- Готовый конфигурационный файл
->```
+>```ini
 ># Example configuration file for HAProxy 2.0, refer to the url below for
 ># a full documentation and examples for configuration:
 ># https://cbonte.github.io/haproxy-dconv/2.0/configuration.html
@@ -461,9 +457,7 @@ frontend stats
 
 ![screen_2022-12-28_18:44:11-hap-graf.png|700](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_18!44!11-hap-graf.png)
 
-## collectd_exporter
-
-[https://github.com/prometheus/collectd_exporter](https://github.com/prometheus/collectd_exporter/)
+## [collectd_exporter](https://github.com/prometheus/collectd_exporter/)
 
 >Устанавливаем пакет
 ```bash
@@ -479,6 +473,7 @@ opkg install prometheus-collectd-exporter
 ```
 
 >[!example]- Готовый конфигурационный файл
+>```yaml
 ># my global config
 >global:
 >  scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
@@ -513,8 +508,9 @@ opkg install prometheus-collectd-exporter
 >  - job_name: "collectd"
 >    static_configs:
 >    - targets: ["192.168.1.1:9103"]
+>```
 
->После правок конфигурационного файла рrometheus, сервис перезапускать обязательно !!!
+>[!warning] После правок конфигурационного файла рrometheus, сервис перезапускать обязательно !!!
 ```
 /opt/etc/init.d/S70prometheus restart
 ```
@@ -539,9 +535,7 @@ LoadPlugin network
 
 ![screen_2022-12-28_19:02:29-coll-graf.png|700](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!02!29-coll-graf.png)
 
-# Grafana
-
-[https://grafana.com](https://grafana.com/)
+# [Grafana](https://grafana.com/)
 
 >Устанавливаем пакет
 ```bash
@@ -586,15 +580,11 @@ opkg install grafana
 >![screen_2022-12-28_19:52:02-grafa-node.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!52!02-grafa-node.png)
 >
 >![screen_2022-12-28_19:53:32-grafa-node.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_19!53!32-grafa-node.png)
-# Goflow
+# [Goflow](https://github.com/cloudflare/goflow)
 
-[https://github.com/cloudflare/goflow](https://github.com/cloudflare/goflow)
+## [netflow-exporter](https://github.com/AlfredArouna/netflow_exporter)
 
-## netflow-exporter
-
-[https://github.com/AlfredArouna/netflow_exporter](https://github.com/AlfredArouna/netflow_exporter)
-
-Keenetic имеет netflow "искаропки" (если компонент "Сенсор NetFlow" установлен):
+Keenetic может работать с netflow (если компонент "Сенсор NetFlow" установлен):
 
 >[!warning] Если компонент не установлен и захотите его добавить, прошивка обновиться до актуальной версии (в зависимости от канала обновлений).
 
@@ -605,7 +595,7 @@ Keenetic имеет netflow "искаропки" (если компонент "
 interface Bridge0 ip flow both
 ```
 
->Указываем адрес (напр., 127.0.0.1) и порт - 2055 сервера для приёма:
+>Указываем адрес (напр., 127.0.0.1) и порт - `2055` сервера для приёма:
 ```telnet
 ip flow-export destination 127.0.0.1 2055
 ```
@@ -638,7 +628,6 @@ opkg install netflow-exporter
 ```
 
 >Добавляем в конфигурационный файл "/opt/etc/prometheus/prometheus.yml":
-
 ```yaml
   # goflow
   - job_name: "goflow"
@@ -684,8 +673,7 @@ opkg install netflow-exporter
 >    - targets: ["192.168.1.1:8080"]
 >```
 
-или
-
+>или
 ```yaml
   # netflow
   - job_name: "netflow"
@@ -732,7 +720,7 @@ opkg install netflow-exporter
 >```
 
 
->После правок конфигурационного файла рrometheus, сервис перезапускать обязательно !!!
+>[!warning] После правок конфигурационного файла рrometheus, сервис перезапускать обязательно !!!
 ```
 /opt/etc/init.d/S70prometheus restart
 ```
@@ -758,7 +746,7 @@ opkg install netflow-exporter
 
 ![screen_2022-12-28_20:44:20-goflow-targ.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_20!44!20-goflow-targ.png)
 
->[!info]- Остальные скриншоты
+>[!info]- Остальные изображения
 >![screen_2022-12-28_20:47:18-goflow-graf.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_20!47!18-goflow-graf.png)
 >
 >![screen_2022-12-28_20:42:32-flow-targ.png](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_20!42!32-flow-targ.png)
