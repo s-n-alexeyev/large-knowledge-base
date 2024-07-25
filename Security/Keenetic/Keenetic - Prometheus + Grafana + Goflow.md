@@ -466,7 +466,7 @@ frontend stats
 
 >Запускаем сервисы:
 ```bash
-/opt/etc/init.d/S99haproxy start
+/opt/etc/init.d/S99haproxy start 
 /opt/etc/init.d/S99haproxy_exporter start
 ```
 
