@@ -63,7 +63,7 @@ scrape_configs:
 
 ![screen_2022-12-28_16:48:51-prom-targ.png|700](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_16!48!51-prom-targ.png)
 
-![screen_2022-12-28_16:44:56-prom-metr.png|600](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_16!44!56-prom-metr.png)
+![screen_2022-12-28_16:44:56-prom-metr.png|500](/Media/Keenetic_Prometeus_Grafana/screen_2022-12-28_16!44!56-prom-metr.png)
 
 Прометей умеет в графики "искаропки":
 
