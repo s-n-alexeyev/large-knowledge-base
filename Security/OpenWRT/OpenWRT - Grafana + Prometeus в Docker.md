@@ -2,28 +2,36 @@
 
 2020-12-28
 
-![](https://www.cloudrocket.at/images/2020/openwrt_prometheus.png)
+![|400](/media/OpenWRT_Grafana_Prometeus_Docker/openwrt_prometheus.png)
 
-# Настройка openwrt
+
+```table-of-contents
+title: Содержание
+style: nestedList # TOC style (nestedList|nestedOrderedList|inlineFirstLevel)
+minLevel: 0 # Include headings from the specified level
+maxLevel: 0 # Include headings up to the specified level
+includeLinks: true # Make headings clickable
+debugInConsole: false # Print debug info in Obsidian console
+```
+# Настройка OpenWRT
 
 ## Установка пакетов
 
 Если вы приверженец консоли, то можете пропустить установку пакетов через web-интерфейс, перейдя непосредственно к пункту [Вход в консоль OpenWrt]
 
-![[pacman.png|400]]
-
+![|400](/media/OpenWRT_Grafana_Prometeus_Docker/pacman.png)
 
 Как не сложно догадаться откроется страница **Software**, на ней нас для начала интересует кнопка **Update lists...**, нажимаем на неё.
 
-![[paclist.png|800]]
+![800](/media/OpenWRT_Grafana_Prometeus_Docker/paclist.png)
 
 Появится модальное окно, а в нём отладочные данные о процессе обновления списка пакетов, смотрим что всё хорошо, далее справа снизу жмём кнопку **Dismiss**.
 
-![[modal.png|800]]
+![800](/media/OpenWRT_Grafana_Prometeus_Docker/modal.png)
 
 Теперь найдём необходимые пакеты, для этого в поле **Filter** пишем слово **exporter** и смотрим что получилось.
-![[filter.png|800]]
 
+![800](/media/OpenWRT_Grafana_Prometeus_Docker/filter.png)
 
 Тут нам потребуется установить несколько пакетов:
 
@@ -38,7 +46,7 @@
 |prometheus-node-exporter-lua-wifi_stations |инорфмация о пользователях подключенных по wi-fi|
 Нажимаем **Install...** возле каждого пакета из списка выше.
 
-![[pacset.png|800]]
+![800](/media/OpenWRT_Grafana_Prometeus_Docker/pacset.png)
 
 ## Вход в консоль OpenWrt
 
@@ -116,7 +124,7 @@ curl http://192.168.1.1:9100/metrics
 >node_cpu_seconds_total{cpu="cpu0",mode="idle"} 68699.17
 >```
 
-	## Как запустить сервер Prometheus?
+# Установка Prometheus и Grafana
 
 >[!info] Назначение Prometheus
 >Проект Prometheus - это специальный сервис по сбору метрик и аналитических данных с различных удалённых и не очень удалённых систем.
@@ -224,7 +232,7 @@ docker compose up -d
 
 ![|800](/media/OpenWRT_Grafana_Prometeus_Docker/targets.png)
 
-# Grafana
+# Настройка Grafana
 
 Прежде чем продолжим давайте немного поговорим о проекте Grafana, если в двух словах то этот проект представляет из себя мощный и интуитивно понятной инструмент для визуализации данных и аналитики.  
 Grafana позволяет создавать красивые и информативные диаграммы, таблицы, графики и другие представления на основе данных из различных источников, включая Prometheus, InfluxDB, Elasticsearch и многих других.  
@@ -294,40 +302,27 @@ docker compose up -d
 ```
 
 Теперь давайте подождём пару минут и откроем в браузере страницу по нашему IP адресу, например http://192.168.1.35:3000
+
 ![|800](/media/OpenWRT_Grafana_Prometeus_Docker/grafana.png)
 
+## Добавляем источник данных Prometheus
 
-
-## Добавить источник данных Prometheus
-
-Теперь добавьте новый экземпляр Prometheus в качестве источника данных в Grafana. Перейдите в [раздел «Конфигурация/Источники данных»](http://localhost:3000/datasources/new) , выберите источник данных Prometheus и настройте URL-адрес. Мы можем использовать здесь имя контейнера докеров, поскольку мы находимся в одной сети докеров. Если вы запускаете другую настройку, добавьте сюда IP-адрес вашего основного сервера Prometheus:
 Подключаем Prometheus: `Connections` -> `Data source` -> `Add data source` =-> `Prometheus` => `URL` <- `адрес устройства и порт` -> `Save & test`
 
+![|700](/media/OpenWRT_Grafana_Prometeus_Docker/grafana_data_sources.png))
 
-![|800](/media/OpenWRT_Grafana_Prometeus_Docker/grafana_data_sources.png))
+## Добавляем Dashboard OpenWRT
 
-## добавить панель управления OpenWrt
+Теперь добавим Dashboard, на котором будут собраны все графики о нашем роутере, для этого в меню выберем блок `Dashboards`, на этой странице справа сверху будет кнопка `New`, после нажмём кнопку `Import`.
 
-Теперь вы можете [импортировать панель мониторинга](http://localhost:3000/dashboard/import) . Вы можете использовать мою [панель управления Grafana для OpenWrt (11147)](https://grafana.com/grafana/dashboards/11147) .
+![|700](/media/OpenWRT_Grafana_Prometeus_Docker/dashboard_import.jpg)
 
-[![Панель управления Графана](https://www.cloudrocket.at/images/2020/openwrt_grafana_dash1.png "Панель управления Графана")](https://grafana.com/grafana/dashboards/11147)
+В поле `Dashboard ID` пишем число **11147** (это идентификатор Dashboard [OpenWRT](https://dzen.ru/away?to=https%3A%2F%2Fgrafana.com%2Fgrafana%2Fdashboards%2F11147-openwrt%2F)), далее жмём кнопку `Load`, система подгрузит Dashboard с серверов Grafana, далее в секции `Prometheus` выберем `prometheus` который мы добавляли ранее.
 
-Выберите вновь созданный источник данных Prometheus.
+![|700](/media/OpenWRT_Grafana_Prometeus_Docker/dashboard_import_confirm.jpg)
 
-![Панель управления Графана](https://www.cloudrocket.at/images/2020/openwrt_grafana_dash2.png "Панель управления Графана")
+И после нажатия на кнопку Import мы попадём на этот самый Dashboard.
 
-# смотри волшебство
+![|1000](/media/OpenWRT_Grafana_Prometeus_Docker/dashboard.jpg)
 
-[![Магия](https://www.cloudrocket.at/images/2020/openwrt_magic.gif "Это магия")](http://localhost:3000/d/fLi0yXAWk/openwrt?orgId=1&refresh=30s)
-
-- [openwrt](https://www.cloudrocket.at/tags/openwrt/)
-- [Прометей](https://www.cloudrocket.at/tags/prometheus/)
-- [графана](https://www.cloudrocket.at/tags/grafana/)
-
-[](https://twitter.com/intent/tweet/?text=Monitor%20OpenWrt%20nodes%20with%20Prometheus&url=https%3a%2f%2fwww.cloudrocket.at%2fposts%2fmonitor-openwrt-nodes-with-prometheus%2f&hashtags=openwrt%2cprometheus%2cgrafana)
-
-[](https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fwww.cloudrocket.at%2fposts%2fmonitor-openwrt-nodes-with-prometheus%2f&title=Monitor%20OpenWrt%20nodes%20with%20Prometheus&summary=Monitor%20OpenWrt%20nodes%20with%20Prometheus&source=https%3a%2f%2fwww.cloudrocket.at%2fposts%2fmonitor-openwrt-nodes-with-prometheus%2f)[](https://reddit.com/submit?url=https%3a%2f%2fwww.cloudrocket.at%2fposts%2fmonitor-openwrt-nodes-with-prometheus%2f&title=Monitor%20OpenWrt%20nodes%20with%20Prometheus)[](https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fwww.cloudrocket.at%2fposts%2fmonitor-openwrt-nodes-with-prometheus%2f)[](https://api.whatsapp.com/send?text=Monitor%20OpenWrt%20nodes%20with%20Prometheus%20-%20https%3a%2f%2fwww.cloudrocket.at%2fposts%2fmonitor-openwrt-nodes-with-prometheus%2f)[](https://telegram.me/share/url?text=Monitor%20OpenWrt%20nodes%20with%20Prometheus&url=https%3a%2f%2fwww.cloudrocket.at%2fposts%2fmonitor-openwrt-nodes-with-prometheus%2f)
-
-© 2021 [Cloudrocket](https://www.cloudrocket.at/) · Создано [Hugo](https://gohugo.io/) · Theme [PaperMod](https://git.io/hugopapermod)
-
-[](https://www.cloudrocket.at/posts/monitor-openwrt-nodes-with-prometheus/#top)
+Всё готово!
