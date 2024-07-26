@@ -224,7 +224,6 @@ docker compose up -d
 
 ![|800](/media/OpenWRT_Grafana_Prometeus_Docker/targets.png)
 
-
 # Grafana
 
 Прежде чем продолжим давайте немного поговорим о проекте Grafana, если в двух словах то этот проект представляет из себя мощный и интуитивно понятной инструмент для визуализации данных и аналитики.  
@@ -295,13 +294,14 @@ docker compose up -d
 ```
 
 Теперь давайте подождём пару минут и откроем в браузере страницу по нашему IP адресу, например http://192.168.1.35:3000
+![|800](/media/OpenWRT_Grafana_Prometeus_Docker/grafana.png)
 
 
 
-
-## добавить источник данных Прометея
+## Добавить источник данных Prometheus
 
 Теперь добавьте новый экземпляр Prometheus в качестве источника данных в Grafana. Перейдите в [раздел «Конфигурация/Источники данных»](http://localhost:3000/datasources/new) , выберите источник данных Prometheus и настройте URL-адрес. Мы можем использовать здесь имя контейнера докеров, поскольку мы находимся в одной сети докеров. Если вы запускаете другую настройку, добавьте сюда IP-адрес вашего основного сервера Prometheus:
+Подключаем Prometheus: `Connections` -> `Data source` -> `Add data source` =-> `Prometheus` => `URL` <- `адрес устройства и порт` -> `Save & test`
 
 ![Источник данных](https://www.cloudrocket.at/images/2020/openwrt_grafana_datasource.png "Источник данных Prometheus в Grafana")
 
