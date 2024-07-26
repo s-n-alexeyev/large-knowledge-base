@@ -218,9 +218,47 @@ docker compose up -d
 ```
 
 Контейнер запущен и поэтому теперь можно зайти на web-интерфейс и убедиться в том, что Prometheus корректно работает, откроем следующую страницу в браузере по вашему IP например http://192.168.1.35:9090
-![](/media/OpenWRT_Grafana_Prometeus_Docker/prometheus.jpg)
+![|700](/media/OpenWRT_Grafana_Prometeus_Docker/prometheus.png)
+
+Выбрав `status` -> `targets` видим что наш node имеет статус `UP`
+
+![|800](/media/OpenWRT_Grafana_Prometeus_Docker/targets.png)
+
 # Grafana
 
+
+Прежде чем продолжим давайте немного поговорим о проекте Grafana, если в двух словах то этот проект представляет из себя мощный и интуитивно понятной инструмент для визуализации данных и аналитики.  
+Grafana позволяет создавать красивые и информативные диаграммы, таблицы, графики и другие представления на основе данных из различных источников, включая Prometheus, InfluxDB, Elasticsearch и многих других.  
+Установку Grafana также будем осуществлять с использованием Docker, для этого снова откроем _docker-compose.yml_ через редактор и добавим в него сервис _grafana_.
+
+```yanl
+services:
+
+  prometheus:
+    image: prom/prometheus:main
+    restart: unless-stopped
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus_data:/prometheus
+    networks:
+      - monitoring
+    ports:
+      - 9090:9090
+
+  grafana:
+    image: grafana/grafana
+    restart: unless-stopped
+    volumes:
+      - ./grafana_data:/var/lib/grafana
+    networks:
+      - monitoring
+    ports:
+      - 3000:3000
+
+networks:
+  monitoring:
+    driver: bridge
+```
 ## добавить источник данных Прометея
 
 Теперь добавьте новый экземпляр Prometheus в качестве источника данных в Grafana. Перейдите в [раздел «Конфигурация/Источники данных»](http://localhost:3000/datasources/new) , выберите источник данных Prometheus и настройте URL-адрес. Мы можем использовать здесь имя контейнера докеров, поскольку мы находимся в одной сети докеров. Если вы запускаете другую настройку, добавьте сюда IP-адрес вашего основного сервера Prometheus:
