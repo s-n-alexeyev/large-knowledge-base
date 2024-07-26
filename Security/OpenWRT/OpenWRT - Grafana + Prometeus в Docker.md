@@ -239,7 +239,7 @@ Grafana позволяет создавать красивые и информа
 
 >Установку Grafana также будем осуществлять с использованием Docker, для этого снова откроем _docker-compose.yml_ через редактор и добавим в него сервис _grafana_.
 ```bash
-nano prometheus.yml
+nano docker-compose.yml
 ```
 
 ```yaml
