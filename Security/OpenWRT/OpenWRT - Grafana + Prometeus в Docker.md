@@ -294,8 +294,7 @@ docker compose up -d
  ✔ Container docker-monitoring-prometheus-1  Running
 ```
 
-
-
+Теперь давайте подождём пару минут и откроем в браузере страницу по нашему IP адресу, например http://192.168.1.35:3000
 
 
 
