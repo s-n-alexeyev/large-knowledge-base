@@ -193,7 +193,33 @@ sudo chown 65534:65534 ./prometheus_data
 ```bash
 docker compose up -d
 ```
-# настроить графану
+
+>[!summary] Успешная установка
+```
+user@ubuntu24:~/docker-monitoring$
+docker compose up -d  
+[+] Running 13/13  
+✔ prometheus Pulled                                                                                                                                                     16.0s    
+  ✔ 9fa9226be034 Pull complete                                                                                                                                           1.6s    
+  ✔ 1617e25568b2 Pull complete                                                                                                                                           2.1s    
+  ✔ ec307c9fbf62 Pull complete                                                                                                                                          10.2s    
+  ✔ d4e715947f0e Pull complete                                                                                                                                          11.5s    
+  ✔ c522420720c6 Pull complete                                                                                                                                          11.6s    
+  ✔ 18d28937c421 Pull complete                                                                                                                                          11.7s    
+  ✔ 873361efd54d Pull complete                                                                                                                                          11.7s    
+  ✔ dd44465db85c Pull complete                                                                                                                                          11.8s    
+  ✔ 0636908550c9 Pull complete                                                                                                                                          11.9s    
+  ✔ cd795675b8a2 Pull complete                                                                                                                                          12.0s    
+  ✔ 407f3c6e3260 Pull complete                                                                                                                                          12.0s    
+  ✔ 67fb76c620a2 Pull complete                                                                                                                                          12.1s    
+[+] Running 2/2  
+✔ Network docker-monitoring_monitoring      Created                                                                                                                      0.2s    
+✔ Container docker-monitoring-prometheus-1  Started
+```
+
+Контейнер запущен и поэтому теперь можно зайти на web-интерфейс и убедиться в том, что Prometheus корректно работает, откроем следующую страницу в браузере по вашему IP например http://192.168.1.35:9090
+![](/media/OpenWRT_Grafana_Prometeus_Docker/prometheus.jpg)
+# Grafana
 
 ## добавить источник данных Прометея
 
