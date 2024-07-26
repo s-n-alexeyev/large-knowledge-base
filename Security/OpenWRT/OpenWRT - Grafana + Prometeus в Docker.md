@@ -224,6 +224,7 @@ docker compose up -d
 
 ![|800](/media/OpenWRT_Grafana_Prometeus_Docker/targets.png)
 
+
 # Grafana
 
 Прежде чем продолжим давайте немного поговорим о проекте Grafana, если в двух словах то этот проект представляет из себя мощный и интуитивно понятной инструмент для визуализации данных и аналитики.  
@@ -272,6 +273,25 @@ sudo chown 472:0 ./grafana_data
 >Затем запустим контейнер с Grafana:
 ```bash
 docker compose up -d
+```
+
+>[!summary] Успешная установка
+```
+ [+] Running 11/11
+ ✔ grafana Pulled                                                                                                                                                        32.0s 
+   ✔ 4abcf2066143 Pull complete                                                                                                                                          11.4s 
+   ✔ 98999a963eb1 Pull complete                                                                                                                                          11.6s 
+   ✔ b180e2ca9e8f Pull complete                                                                                                                                          13.0s 
+   ✔ cac1080c172a Pull complete                                                                                                                                          13.5s 
+   ✔ bd82675e0b18 Pull complete                                                                                                                                          13.9s 
+   ✔ 738e7aa6d1a7 Pull complete                                                                                                                                          14.1s 
+   ✔ 23dc5704465b Pull complete                                                                                                                                          24.5s 
+   ✔ dacdf2ddd5ed Pull complete                                                                                                                                          28.4s 
+   ✔ 44e45a199224 Pull complete                                                                                                                                          28.5s 
+   ✔ 52722462a4a0 Pull complete                                                                                                                                          28.6s 
+[+] Running 2/2
+ ✔ Container docker-monitoring-grafana-1     Created   
+ ✔ Container docker-monitoring-prometheus-1  Running
 ```
 
 
