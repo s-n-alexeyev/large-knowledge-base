@@ -1,4 +1,4 @@
-# Monitor OpenWrt nodes with Prometheus
+# Мониторинг OpenWrt nodes с Prometheus на сервере с Docker
 
 2020-12-28
 
@@ -17,7 +17,7 @@ debugInConsole: false # Print debug info in Obsidian console
 
 ## Установка пакетов
 
-Если вы приверженец консоли, то можете пропустить установку пакетов через web-интерфейс, перейдя непосредственно к пункту [[#Вход в консоль OpenWrt]].
+Если Вы приверженец консоли, то можете пропустить установку пакетов через web-интерфейс, перейдя непосредственно к пункту [[#Вход в консоль OpenWrt]].
 
 ![|400](/media/OpenWRT_Grafana_Prometeus_Docker/pacman.png)
 
