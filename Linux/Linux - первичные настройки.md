@@ -61,7 +61,6 @@ sudo dnf install --refresh librewolf
  - mousewheel.default.delta_multiplier_x = 500
  - mousewheel.default.delta_multiplier_y = 500
  - mousewheel.default.delta_multiplier_z = 500
- - widget.use-xdg-desktop-portal  = 1 //было 2 (открытие файлов через Dolphin в Firefox/Librewolf)
 
  about:support -- просмотр поддержек
 #### Плагины для браузера
