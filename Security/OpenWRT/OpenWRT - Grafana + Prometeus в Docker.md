@@ -207,21 +207,21 @@ docker compose up -d
 user@ubuntu24:~/docker-monitoring$
 docker compose up -d  
 [+] Running 13/13  
-✔ prometheus Pulled                                                                                                                                                     16.0s    
-  ✔ 9fa9226be034 Pull complete                                                                                                                                           1.6s    
-  ✔ 1617e25568b2 Pull complete                                                                                                                                           2.1s    
-  ✔ ec307c9fbf62 Pull complete                                                                                                                                          10.2s    
-  ✔ d4e715947f0e Pull complete                                                                                                                                          11.5s    
-  ✔ c522420720c6 Pull complete                                                                                                                                          11.6s    
-  ✔ 18d28937c421 Pull complete                                                                                                                                          11.7s    
-  ✔ 873361efd54d Pull complete                                                                                                                                          11.7s    
-  ✔ dd44465db85c Pull complete                                                                                                                                          11.8s    
-  ✔ 0636908550c9 Pull complete                                                                                                                                          11.9s    
-  ✔ cd795675b8a2 Pull complete                                                                                                                                          12.0s    
-  ✔ 407f3c6e3260 Pull complete                                                                                                                                          12.0s    
-  ✔ 67fb76c620a2 Pull complete                                                                                                                                          12.1s    
+✔ prometheus Pulled                                     16.0s
+  ✔ 9fa9226be034 Pull complete                           1.6s
+  ✔ 1617e25568b2 Pull complete                           2.1s
+  ✔ ec307c9fbf62 Pull complete                          10.2s
+  ✔ d4e715947f0e Pull complete                          11.5s
+  ✔ c522420720c6 Pull complete                          11.6s
+  ✔ 18d28937c421 Pull complete                          11.7s
+  ✔ 873361efd54d Pull complete                          11.7s
+  ✔ dd44465db85c Pull complete                          11.8s
+  ✔ 0636908550c9 Pull complete                          11.9s
+  ✔ cd795675b8a2 Pull complete                          12.0s
+  ✔ 407f3c6e3260 Pull complete                          12.0s
+  ✔ 67fb76c620a2 Pull complete                          12.1s
 [+] Running 2/2  
-✔ Network docker-monitoring_monitoring      Created                                                                                                                      0.2s    
+✔ Network docker-monitoring_monitoring      Created      0.2s
 ✔ Container docker-monitoring-prometheus-1  Started
 ```
 
@@ -285,17 +285,17 @@ docker compose up -d
 >[!summary] Успешная установка
 ```
  [+] Running 11/11
- ✔ grafana Pulled                                                                                                                                                        32.0s 
-   ✔ 4abcf2066143 Pull complete                                                                                                                                          11.4s 
-   ✔ 98999a963eb1 Pull complete                                                                                                                                          11.6s 
-   ✔ b180e2ca9e8f Pull complete                                                                                                                                          13.0s 
-   ✔ cac1080c172a Pull complete                                                                                                                                          13.5s 
-   ✔ bd82675e0b18 Pull complete                                                                                                                                          13.9s 
-   ✔ 738e7aa6d1a7 Pull complete                                                                                                                                          14.1s 
-   ✔ 23dc5704465b Pull complete                                                                                                                                          24.5s 
-   ✔ dacdf2ddd5ed Pull complete                                                                                                                                          28.4s 
-   ✔ 44e45a199224 Pull complete                                                                                                                                          28.5s 
-   ✔ 52722462a4a0 Pull complete                                                                                                                                          28.6s 
+ ✔ grafana Pulled                                       32.0s
+   ✔ 4abcf2066143 Pull complete                         11.4s
+   ✔ 98999a963eb1 Pull complete                         11.6s
+   ✔ b180e2ca9e8f Pull complete                         13.0s
+   ✔ cac1080c172a Pull complete                         13.5s
+   ✔ bd82675e0b18 Pull complete                         13.9s
+   ✔ 738e7aa6d1a7 Pull complete                         14.1s
+   ✔ 23dc5704465b Pull complete                         24.5s
+   ✔ dacdf2ddd5ed Pull complete                         28.4s
+   ✔ 44e45a199224 Pull complete                         28.5s
+   ✔ 52722462a4a0 Pull complete                         28.6s
 [+] Running 2/2
  ✔ Container docker-monitoring-grafana-1     Created   
  ✔ Container docker-monitoring-prometheus-1  Running
@@ -309,7 +309,7 @@ docker compose up -d
 
 Подключаем Prometheus: `Connections` -> `Data source` -> `Add data source` =-> `Prometheus` => `URL` <- `адрес устройства и порт` -> `Save & test`
 
-![|700](/media/OpenWRT_Grafana_Prometeus_Docker/grafana_data_sources.png))
+![|700](/media/OpenWRT_Grafana_Prometeus_Docker/grafana_data_sources.png)
 
 ## Добавляем Dashboard OpenWRT
 
