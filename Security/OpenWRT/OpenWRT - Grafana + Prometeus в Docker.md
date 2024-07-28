@@ -1,4 +1,4 @@
-# Мониторинг OpenWrt nodes с Prometheus на сервере с Docker
+# Мониторинг OpenWrt nodes на сервере с  Prometheus и Grafana в Docker
 
 2020-12-28
 
