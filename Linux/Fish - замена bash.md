@@ -48,7 +48,7 @@ yay -S ttf-hack-nerd
 
 >Устанавливаем plugin `tide`
 ```shell
-fisher install IlanCosman/tide@v6
+fisher install IlanCosman/tide@v6.1.1
 ```
 
 >Конфигурация `tide`
