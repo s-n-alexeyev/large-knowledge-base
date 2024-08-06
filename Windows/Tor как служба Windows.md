@@ -148,3 +148,8 @@ Write-Output "Архив $localFile был удалён после распак�
 # Настройка конфигурации torrc
 @( "DataDirectory $env:USERPROFILE\.TOR\data\", "", "SocksPort 127.0.0.1:9050", "ClientTransportPlugin obfs4,webtunnel exec $env:USERPROFILE\.TOR\tor\pluggable_transports\lyrebird.exe", "UseBridges 1" ) | ForEach-Object { Add-Content -Path "$env:USERPROFILE\.TOR\tor\torrc" -Value $_ }
 ```
+
+```powershell
+Start-Process -FilePath "sc.exe" -ArgumentList "create TOR binPath= `"`"$env:USERPROFILE\.TOR\Tor\tor.exe`" --nt-service -f `"$env:USERPROFILE\.TOR\Tor\torrc`"`"" -NoNewWindow -Wait
+
+```
