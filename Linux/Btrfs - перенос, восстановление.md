@@ -1,8 +1,9 @@
 
 [Оригинальная статья](https://ctlos.github.io/wiki/btrfs/btrfs-part2/)
-[Смотреть на Youtube](https://www.youtube.com/watch?v=97ui81gWUcU).
 
-## Перенос на раздел[](https://ctlos.github.io/wiki/btrfs/btrfs-part2/#%d0%bf%d0%b5%d1%80%d0%b5%d0%bd%d0%be%d1%81-%d0%bd%d0%b0-%d1%80%d0%b0%d0%b7%d0%b4%d0%b5%d0%bb)
+![Смотреть на Youtube](https://www.youtube.com/watch?v=97ui81gWUcU).
+
+## Перенос на раздел
 
 ```bash
 pacman -S rsync btrfs-progs arch-install-scripts
