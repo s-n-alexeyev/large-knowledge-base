@@ -1,8 +1,19 @@
 
+2022-01-22
 [Оригинальная статья](https://ctlos.github.io/wiki/btrfs/btrfs-part2/)
+```table-of-contents
+title: Содержание
+style: nestedList # TOC style (nestedList|nestedOrderedList|inlineFirstLevel)
+minLevel: 0 # Include headings from the specified level
+maxLevel: 0 # Include headings up to the specified level
+includeLinks: true # Make headings clickable
+debugInConsole: false # Print debug info in Obsidian console
+```
+## Видео на Youtube
 
 ![Смотреть на Youtube](https://www.youtube.com/watch?v=97ui81gWUcU).
 
+---
 ## Перенос на раздел
 
 ```bash
@@ -312,7 +323,7 @@ umount /mnt/dump
 rmdir /mnt/{arch,dump}
 ```
 
-## Восстановление[](https://ctlos.github.io/wiki/btrfs/btrfs-part2/#%d0%b2%d0%be%d1%81%d1%81%d1%82%d0%b0%d0%bd%d0%be%d0%b2%d0%bb%d0%b5%d0%bd%d0%b8%d0%b5)
+## Восстановление
 
 > Восстановление, как и выше, грузимся с live-usb, или с другой системы. Монтируем раздел для восстановления, поврежденный и раздел с backup, восстанавливаем снапшоты.
 
