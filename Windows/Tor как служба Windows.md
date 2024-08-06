@@ -152,3 +152,7 @@ Write-Output "Архив $localFile был удалён после распак�
 ```powershell
 Start-Process -FilePath "sc.exe" -ArgumentList "create TOR binPath= `"`"$env:USERPROFILE\.TOR\Tor\tor.exe`" --nt-service -f `"$env:USERPROFILE\.TOR\Tor\torrc`"`"" -NoNewWindow -Wait
 ```
+
+```powershell
+Start-Process -FilePath "sc.exe" -ArgumentList "config TOR start= auto" -NoNewWindow -Wait
+```
