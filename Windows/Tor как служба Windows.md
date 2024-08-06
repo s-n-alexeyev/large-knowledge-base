@@ -95,7 +95,7 @@ echo UseBridges 1 >> >> %USERPROFILE%\.TOR\tor\torrc
 
 ```powershell
 # URL каталога с дистрибутивами Tor
-$url = "https://tor.askapache.com/dist/torbrowser/13.5.1/"
+$baseUrl = "https://tor.askapache.com/dist/torbrowser/"
 
 # Каталог для сохранения и распаковки
 $destinationFolder = "$env:USERPROFILE\.TOR"
@@ -105,17 +105,17 @@ if (-not (Test-Path -Path $destinationFolder)) {
     New-Item -ItemType Directory -Path $destinationFolder
 }
 
-# Отправка HTTP-запроса и получение HTML-контента
-$htmlContent = Invoke-WebRequest -Uri $url
+# Отправка HTTP-запроса и получение HTML-контента каталога
+$htmlContent = Invoke-WebRequest -Uri $baseUrl
 
-# Извлечение ссылок из HTML-контента
-$links = $htmlContent.Links | Where-Object { $_.href -match "tor-expert-bundle-windows-x86_64-.*\.tar\.gz$" } | Select-Object -ExpandProperty href
+# Извлечение каталогов из HTML-контента
+$dirs = $htmlContent.Links | Where-Object { $_.href -match "^[0-9]+\.[0-9]+\.[0-9]+\/$" } | Select-Object -ExpandProperty href
 
-# Извлечение версий из ссылок
-$versions = $links | ForEach-Object {
-    if ($_ -match "tor-expert-bundle-windows-x86_64-([0-9.]+)\.tar\.gz") {
+# Извлечение версий из каталогов
+$versions = $dirs | ForEach-Object {
+    if ($_ -match "^([0-9]+\.[0-9]+\.[0-9]+)\/$") {
         [PSCustomObject]@{
-            Link = $_
+            Directory = $_
             Version = [Version]$matches[1]
         }
     }
@@ -125,7 +125,7 @@ $versions = $links | ForEach-Object {
 $latestVersion = $versions | Sort-Object -Property Version -Descending | Select-Object -First 1
 
 # Полный URL последней версии
-$latestUrl = $url + $latestVersion.Link
+$latestUrl = $baseUrl + $latestVersion.Directory + "tor-expert-bundle-windows-x86_64-" + $latestVersion.Version + ".tar.gz"
 
 # Локальный путь для сохранения скачанного файла
 $localFile = "$destinationFolder\tor-expert-bundle-windows-x86_64-$($latestVersion.Version).tar.gz"
@@ -145,6 +145,8 @@ Remove-Item -Path $localFile -Force
 Write-Output "Последняя версия ($($latestVersion.Version)) скачана и распакована в $destinationFolder"
 Write-Output "Архив $localFile был удалён после распаковки"
 
+# Настройка конфигурации torrc
 @( "DataDirectory $env:USERPROFILE\.TOR\data\", "", "SocksPort 127.0.0.1:9050", "ClientTransportPlugin obfs4,webtunnel exec $env:USERPROFILE\.TOR\tor\pluggable_transports\lyrebird.exe", "UseBridges 1" ) | ForEach-Object { Add-Content -Path "$env:USERPROFILE\.TOR\tor\torrc" -Value $_ }
+
 
 ```
