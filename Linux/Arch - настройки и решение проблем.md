@@ -285,3 +285,9 @@ sudo pacman -S xwaylandvideobridge
 ```bash
 sudo pacman -S kio-admin
 ```
+
+---
+## Поддержка темных тем gnome 4 в KDE
+```bash
+ yay -S gsettings-desktop-schemas
+```
