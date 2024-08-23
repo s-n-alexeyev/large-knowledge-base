@@ -37,7 +37,16 @@ set -U fish_greeting
 
 >Устанавливаем plugin менеджер `fisher` и шрифты
 ```shell
+#Arch/Manjaro
 sudo pacman -S fisher
+
+#Other
+curl -sL \
+https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | \
+source && fisher install jorgebucaran/fisher
+```
+
+```
 # шрифты со значками, подойдут любые на вкус
 ttf-firacode-nerd
 # или
