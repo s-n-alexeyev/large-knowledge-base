@@ -491,3 +491,10 @@ npm config set fund false
 10. Набрать `reboot -f`, нажать `Enter`  
 11. Загрузиться как обычно, и войти с вновь установленным паролем. 
 12. Если так не получается придется идти через LiveCD и `chroot`.
+
+---
+## Перенос профиля Cromium/Chrome на другой компьютер
+
+удалить файл(ы) `SingletonLock` /home/юзер/.config/chromium/SingletonLock
+
+---
