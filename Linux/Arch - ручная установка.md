@@ -521,13 +521,13 @@ pacman -S lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-v
 
 >NVIDIA
 ```bash
-pacman -S nvidia nvidia-utils lib32-nvidia-utils nvidia-settings nvidia-dkms
+pacman -S nvidia nvidia-utils lib32-nvidia-utils nvidia-settings
 ```
 # Установка среды рабочего стола
 
 ## KDE
 ```bash
-pacman -S sddm dolphin kdeconnect konsole konsole kwalletmanager kate plasma plasma-nm plasma-pa powerdevil gwenview okular
+pacman -S sddm dolphin kdeconnect konsole kwalletmanager kate plasma plasma-nm plasma-pa powerdevil gwenview okular
 ```
 - *соглашаемся на установку всех дополнительных пакетов*
 
