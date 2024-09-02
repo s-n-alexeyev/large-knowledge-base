@@ -67,3 +67,8 @@ sudo systemctl enable dnf-automatic.timer
 ```
 
 ---
+# x11
+
+```bash
+sudo dnf install plasma-workspace-x11 kwin-x11
+```
