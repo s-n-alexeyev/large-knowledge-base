@@ -133,3 +133,17 @@ sudo dnf install akmod-nvidia instead
 #optional for cuda/nvdec/nvenc support
 sudo dnf install xorg-x11-drv-nvidia-cuda 
 ```
+
+# java Liberica
+
+```bash
+echo | sudo tee /etc/yum.repos.d/bellsoft.repo > /dev/null << EOF
+[BellSoft]
+name=BellSoft Repository
+baseurl=https://yum.bell-sw.com
+enabled=1
+gpgcheck=1
+gpgkey=https://download.bell-sw.com/pki/GPG-KEY-bellsoft
+priority=1
+EOF
+```
