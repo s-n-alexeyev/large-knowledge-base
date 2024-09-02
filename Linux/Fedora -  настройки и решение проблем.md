@@ -119,3 +119,17 @@ sudo dnf copr enable boria138/portproton
 
 sudo dnf install portproton
 ```
+
+# nVidia
+
+```bash
+
+# and reboot if you are not on the latest kernel
+sudo dnf update -y 
+
+# rhel/centos users can use kmod-nvidia 
+sudo dnf install akmod-nvidia instead
+
+#optional for cuda/nvdec/nvenc support
+sudo dnf install xorg-x11-drv-nvidia-cuda 
+```
