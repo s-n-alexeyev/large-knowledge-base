@@ -72,3 +72,13 @@ sudo systemctl enable dnf-automatic.timer
 ```bash
 sudo dnf install plasma-workspace-x11 kwin-x11
 ```
+
+---
+# RPM Fusion
+
+```bash
+sudo dnf install \
+  https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf install \
+  https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+```
