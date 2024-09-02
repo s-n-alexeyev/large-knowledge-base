@@ -119,11 +119,3 @@ sudo dnf copr enable boria138/portproton
 
 sudo dnf install portproton
 ```
-
-# Obsidian
-
-```bash
-sudo dnf copr enable alxhr0/Obsidian
-
-sudo dnf install obsidian
-```
