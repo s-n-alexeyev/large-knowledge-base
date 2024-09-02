@@ -40,12 +40,7 @@ yay -S librewolf-bin
 
 >создаем репозиторий и добавляем запись
 ```bash
-sudo dnf config-manager --add-repo https://rpm.librewolf.net
-```
-
->добавляем ключ
-```bash
-sudo rpm --import https://keys.openpgp.org/vks/v1/by-fingerprint/034F7776EF5E0C613D2F7934D29FBD5F93C0CFC3
+curl -fsSL https://rpm.librewolf.net/librewolf-repo.repo | pkexec tee /etc/yum.repos.d/librewolf.repo
 ```
 
 >устанавливаем
