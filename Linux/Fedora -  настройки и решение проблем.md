@@ -34,3 +34,36 @@ reboot
 ```
 
 ---
+# Настройка DNF
+
+Редактируем конфигурационный файл dnf
+```bash
+sudo nano /etc/dnf/dnf.conf
+```
+
+```
+fastestmirror=True
+max_parallel_downloads=10
+defaultyes=True
+keepcache=True
+```
+
+Для жителей РФ и СНГ параметр `fastestmirror=True` нужно попробовать включить и отключить и посмотреть как будет лучше. Некоторые пользователи заметили, что dnf пытается подключаться к серверам Yandex, а какие-то пакеты там могут отсутствовать и поэтому могут сыпаться различные ошибки.
+
+Далее выполняем:
+```bash
+sudo dnf autoremove && sudo dnf clean all
+```
+
+
+Добавляем автоматическое обновление зеркал в фоне (по идеи должно ускорить dnf)
+
+```
+sudo dnf install dnf-automatic
+```
+
+```
+sudo systemctl enable dnf-automatic.timer
+```
+
+---
