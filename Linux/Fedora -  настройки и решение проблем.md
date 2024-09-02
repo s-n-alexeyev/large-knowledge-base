@@ -82,3 +82,31 @@ sudo dnf install \
 sudo dnf install \
   https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 ```
+
+---
+# Installing ONLYOFFICE Desktop Editors from repository
+
+A better option to install desktop editors is to add their repository to your Linux OS. To do that:
+
+1. Add the yum repository with the following command:
+```bash
+sudo yum install https://download.onlyoffice.com/repo/centos/main/noarch/onlyoffice-repo.noarch.rpm
+```
+
+2. Add the EPEL repository with the following command:
+```bash
+sudo yum install epel-release
+```
+
+To install EPEL on RHEL, use the following commands:  
+```bash
+sudo subscription-manager repos --enable codeready-builder-for-rhel-$REV-$(arch)-rpms
+sudo yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-$REV.noarch.rpm
+```
+
+Change $REV to your OS version manually (7 for versions 7.x, 8 for versions 8.x, 9 for versions 9.x and so on).
+
+3. Now the editors can be easily installed using the following command:
+```bash
+sudo yum install onlyoffice-desktopeditors -y
+```
