@@ -110,3 +110,20 @@ Change $REV to your OS version manually (7 for versions 7.x, 8 for versions 8.x,
 ```bash
 sudo yum install onlyoffice-desktopeditors -y
 ```
+
+---
+# PortProton
+
+```bash
+sudo dnf copr enable boria138/portproton
+
+sudo dnf install portproton
+```
+
+# Obsidian
+
+```bash
+sudo dnf copr enable alxhr0/Obsidian
+
+sudo dnf install obsidian
+```
