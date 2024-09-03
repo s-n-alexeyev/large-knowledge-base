@@ -166,9 +166,17 @@ sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin dock
 sudo dnf update @multimedia --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
 ```
 
-# MS шрифты
+---
+# Шрифты
 
+Microsoft
 ```bash
 sudo dnf install msttcorefonts
 sudo fc-cache -f -v
+```
+
+hack-fonts
+```bash
+sudo dnf copr enable zawertun/hack-fonts
+sudo dnf install hack-fonts
 ```
