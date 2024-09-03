@@ -165,3 +165,9 @@ sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin dock
 ```bash
 sudo dnf update @multimedia --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
 ```
+
+# MS шрифты
+
+```bash
+sudo dnf install msttcorefonts
+```
