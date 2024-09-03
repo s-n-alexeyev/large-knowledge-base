@@ -147,3 +147,11 @@ gpgkey=https://download.bell-sw.com/pki/GPG-KEY-bellsoft
 priority=1
 EOF
 ```
+
+---
+
+# Docker
+
+```bash
+sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+```
