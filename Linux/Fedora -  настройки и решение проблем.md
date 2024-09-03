@@ -170,4 +170,5 @@ sudo dnf update @multimedia --setopt="install_weak_deps=False" --exclude=Package
 
 ```bash
 sudo dnf install msttcorefonts
+sudo fc-cache -f -v
 ```
