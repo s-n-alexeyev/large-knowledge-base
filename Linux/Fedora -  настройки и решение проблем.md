@@ -180,3 +180,11 @@ hack-fonts
 sudo dnf copr enable zawertun/hack-fonts
 sudo dnf install hack-fonts
 ```
+
+---
+# Syncthing Tray
+
+```bash
+dnf config-manager --add-repo https://download.opensuse.org/repositories/home:mkittler/Fedora_40/home:mkittler.repo
+dnf install syncthingtray
+```
