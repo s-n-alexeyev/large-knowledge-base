@@ -860,3 +860,23 @@ systemctl restart systemd-journald
 `journalctl -k -b -1` - предыдущая
 `journalctl -k -b -2` - предыдущая предыдущая
 `journalctl -k -b -n` - и т. д.
+
+# Узнаем количество строк в файле.
+
+Команда wc, которая считает количество переходов на новую строку, ранее упоминалась (https://t.me/os_linux_ru/228). 
+Рассмотрим еще три способа, как посчитать количество строк в файле с помощью команд:
+
+1. GREP
+```bash
+grep -c $ file_name
+```
+
+2. SED
+```bash
+sed -n \$= file_name
+```
+
+3. AWK
+```bash
+awk 'END{ print NR }' file_name
+```
