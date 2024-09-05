@@ -171,7 +171,7 @@ unix_sock_rw_perms = "0770"
 2. Затем добавьте своего пользователя в группу \libvirt\, используя следующую команду.
 
 ```shell
-sudo usermod -a -G libvirt username
+sudo usermod -a -G libvirt $USER
 ```
 
 3. После этого перезапустите службу libvirtd, чтобы применить новую конфигурацию.
