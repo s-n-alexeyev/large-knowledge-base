@@ -1,4 +1,4 @@
-```table-of-contents
+``table-of-contents
 title: Содержание:
 style: nestedList # TOC style (nestedList|inlineFirstLevel)
 minLevel: 0 # Include headings from the specified level
