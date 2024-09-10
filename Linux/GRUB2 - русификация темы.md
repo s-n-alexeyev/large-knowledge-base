@@ -1,5 +1,7 @@
 2024-04-23
 
+Репозиторй на [Github](https://github.com/AdisonCavani/distro-grub-themes/)
+
 В AUR очень много тем на любой вкус
 ```
 grub-theme-almalinux
