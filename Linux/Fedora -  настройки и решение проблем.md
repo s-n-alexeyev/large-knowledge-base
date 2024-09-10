@@ -188,3 +188,23 @@ sudo dnf install hack-fonts
 dnf config-manager --add-repo https://download.opensuse.org/repositories/home:mkittler/Fedora_40/home:mkittler.repo
 dnf install syncthingtray
 ```
+
+---
+# VS-Codium
+
+```bash
+sudo tee -a /etc/zypp/repos.d/vscodium.repo << 'EOF'
+[gitlab.com_paulcarroty_vscodium_repo]
+name=gitlab.com_paulcarroty_vscodium_repo
+baseurl=https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/rpms/
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg
+metadata_expire=1h
+EOF
+```
+
+```bash
+sudo dnf install codium
+```
