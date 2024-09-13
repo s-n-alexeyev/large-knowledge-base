@@ -208,3 +208,10 @@ EOF
 ```bash
 sudo dnf install codium
 ```
+
+---
+# Отсутствует libcrypt.so.1
+
+```bash
+sudo dnf install libxcrypt-compat
+```
