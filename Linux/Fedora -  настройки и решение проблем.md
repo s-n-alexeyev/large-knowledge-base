@@ -219,7 +219,7 @@ sudo dnf install libxcrypt-compat
 ```
 
 ---
-# Librewolf RPM
+# Librewolf
 
 >создаем репозиторий и добавляем запись
 ```bash
