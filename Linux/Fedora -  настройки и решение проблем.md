@@ -120,6 +120,7 @@ sudo dnf copr enable boria138/portproton
 sudo dnf install portproton
 ```
 
+---
 # nVidia
 
 ```bash
@@ -134,6 +135,7 @@ sudo dnf install akmod-nvidia instead
 sudo dnf install xorg-x11-drv-nvidia-cuda 
 ```
 
+---
 # java Liberica
 
 ```bash
