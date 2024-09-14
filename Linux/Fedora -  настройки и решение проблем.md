@@ -129,7 +129,7 @@ sudo dnf install portproton
 sudo dnf update -y 
 
 # rhel/centos users can use kmod-nvidia 
-sudo dnf install akmod-nvidia instead
+sudo dnf install akmod-nvidia
 
 #optional for cuda/nvdec/nvenc support
 sudo dnf install xorg-x11-drv-nvidia-cuda 
