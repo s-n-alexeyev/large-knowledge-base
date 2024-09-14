@@ -217,3 +217,16 @@ sudo dnf install codium
 ```bash
 sudo dnf install libxcrypt-compat
 ```
+
+---
+# Librewolf RPM
+
+>создаем репозиторий и добавляем запись
+```bash
+curl -fsSL https://rpm.librewolf.net/librewolf-repo.repo | pkexec tee /etc/yum.repos.d/librewolf.repo
+```
+
+>устанавливаем
+```bash
+sudo dnf install --refresh librewolf
+```
