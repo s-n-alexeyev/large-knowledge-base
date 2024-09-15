@@ -1,12 +1,50 @@
-## Arch
----
->Ставим шрифт и скрипт для правильного отображения
+# Шрифт Noto
+
+>Для Arch/manjaro шрифт и скрипт для правильного отображения
 ```shell
 yay -S noto-color-emoji-fontconfig noto-fonts-emoji
 fc-cache -vf
 ```
 
-значки от macOS
+>Для Debian/Ubuntu
+```shell
+sudo apt-get -y install fonts-noto-color-emoji
+```
+
+>Правим отображение
+```shell
+kate ~/.config/fontconfig/fonts.conf
+```
+
+>Содержимое
+```xml
+<?xml version="1.0"?>
+<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+<fontconfig>
+ <alias>
+   <family>sans-serif</family>
+   <prefer>
+     <family>Noto Sans</family>
+     <family>Twemoji</family>
+     <family>Noto Color Emoji</family>
+     <family>Noto Emoji</family>
+   </prefer> 
+ </alias>
+
+ <alias>
+   <family>serif</family>
+   <prefer>
+     <family>Noto Serif</family>
+     <family>Twemoji</family>
+     <family>Noto Color Emoji</family>
+     <family>Noto Emoji</family>
+   </prefer>
+ </alias>
+
+ <alias>
+```
+
+## Значки от macOS
 
 >Альтернатива для ARCH 
 ```shell
@@ -206,45 +244,8 @@ kate /etc/fonts/conf.d/75-apple-color-emoji.conf
 </fontconfig>
 ```
 
-##  Debian
----
->Шрифт
-```shell
-sudo apt-get -y install fonts-noto-color-emoji
-```
 
->Правим отображение
-```shell
-kate ~/.config/fontconfig/fonts.conf
-```
 
->Содержимое
-```xml
-<?xml version="1.0"?>
-<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
-<fontconfig>
- <alias>
-   <family>sans-serif</family>
-   <prefer>
-     <family>Noto Sans</family>
-     <family>Twemoji</family>
-     <family>Noto Color Emoji</family>
-     <family>Noto Emoji</family>
-   </prefer> 
- </alias>
-
- <alias>
-   <family>serif</family>
-   <prefer>
-     <family>Noto Serif</family>
-     <family>Twemoji</family>
-     <family>Noto Color Emoji</family>
-     <family>Noto Emoji</family>
-   </prefer>
- </alias>
-
- <alias>
-```
 
 >Текст со значками для проверки, просто вставляем в терминал, должны появиться значка как на картинке
 ```test
