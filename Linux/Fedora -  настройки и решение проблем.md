@@ -230,3 +230,18 @@ curl -fsSL https://rpm.librewolf.net/librewolf-repo.repo | pkexec tee /etc/yum.r
 ```bash
 sudo dnf install --refresh librewolf
 ```
+
+---
+# WhatSie
+
+```bash
+sudo dnf install qt5-qtwebengine-devel qt5-qtbase-devel
+```
+
+```bash
+git clone https://github.com/keshavbhatt/whatsie
+cd whatsie/src/
+qmake-qt5
+make -j4
+sudo make install
+```
