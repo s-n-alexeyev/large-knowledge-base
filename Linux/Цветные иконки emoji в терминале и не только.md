@@ -13,7 +13,9 @@ yay -S ttf-apple-emoji
 
 
 ```bash
+mkdir -p ~/.local/share/fonts && \
 curl -o ~/.local/share/fonts/AppleColorEmoji.ttf https://github.com/samuelngs/apple-emoji-linux/releases/latest/download/AppleColorEmoji.ttf
+
 fc-cache -f -v
 ```
 
