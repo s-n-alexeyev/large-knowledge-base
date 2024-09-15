@@ -73,7 +73,7 @@ tide configure
 Исправленные файлы со значками для корректного отображения значков из шрифта `ttf-firacode-nerd`
 ~/.config/fish/functions/tide/configure/choices/all/icons.fish
 
->Сами значки в obsidian не отображаются, копируем содержимое, затем повторно выполняем `tide configure`
+>Сами значки в obsidian не отображаются (если не настроен шрифт со значками), копируем содержимое, затем повторно выполняем `tide configure`
 ```q
 function icons
     _tide_title Icons
