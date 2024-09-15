@@ -9,6 +9,11 @@ sudo pacman -S fish
 sudo apt install fish
 ```
 
+> на Fedora
+```bash
+sudo dnf install fish
+```
+
 >Меняем оболочку с `bash` на `fish` и перегружаемся
 ```shell
 chsh -s /bin/fish $USER
