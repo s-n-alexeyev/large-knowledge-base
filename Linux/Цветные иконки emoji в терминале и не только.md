@@ -12,7 +12,14 @@ yay -S ttf-apple-emoji
 ```
 
 
+```bash
+curl -o ~/.local/share/fonts/AppleColorEmoji.ttf https://github.com/samuelngs/apple-emoji-linux/releases/latest/download/AppleColorEmoji.ttf
+fc-cache -f -v
+```
 
+- 🔗 Download the [latest release](https://github.com/samuelngs/apple-emoji-linux/releases/latest/download/AppleColorEmoji.ttf) of `AppleColorEmoji.ttf` from our [Release Page](https://github.com/samuelngs/apple-emoji-linux/releases)
+- 📁 Copy `AppleColorEmoji.ttf` to `~/.local/share/fonts`.
+- 🔄 Rebuild the font cache with `fc-cache -f -v`.
 
 
 >Правим файл `/etc/fonts/conf.d/75-apple-color-emoji.conf`
