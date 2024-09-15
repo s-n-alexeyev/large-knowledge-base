@@ -11,6 +11,10 @@ fc-cache -vf
 yay -S ttf-apple-emoji
 ```
 
+
+
+
+
 >Правим файл `/etc/fonts/conf.d/75-apple-color-emoji.conf`
 ```shell
 kate /etc/fonts/conf.d/75-apple-color-emoji.conf
