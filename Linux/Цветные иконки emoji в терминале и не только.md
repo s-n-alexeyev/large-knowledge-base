@@ -54,7 +54,7 @@ kate ~/.config/fontconfig/fonts.conf
  <alias>
 ```
 
-## Значки от macOS
+# Значки от macOS
 
 >Альтернатива для ARCH 
 ```shell
