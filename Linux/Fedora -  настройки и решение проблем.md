@@ -150,6 +150,10 @@ priority=1
 EOF
 ```
 
+```bash
+sudo dnf install bellsoft-java21-full
+```
+
 ---
 # Docker
 
