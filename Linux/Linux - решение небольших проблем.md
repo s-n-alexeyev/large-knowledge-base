@@ -307,7 +307,7 @@ https://elixir.bootlin.com/linux/v6.1.1/source/drivers/usb/serial/ch341.c
 или просто воспользуйтесь командой sudo EDITOR=nano crontab -e
 
 ---
-##  Manjaro (KDE) - Отключение открытия Меню в запуска приложений клавишей Super (Win)
+## Manjaro (KDE) - Отключение открытия Меню в запуска приложений клавишей Super (Win)
 ```shell
 kwriteconfig5 --file kwinrc --group ModifierOnlyShortcuts --key Meta ""
 ```
@@ -405,7 +405,7 @@ xrdb ~/.Xresources
 ```
 
 ---
-##  Монтирование раздела диска без ввода пароля
+## Монтирование раздела диска без ввода пароля
 [Ссылка на wiki](https://wiki.archlinux.org/title/Polkit#Allow_mounting_a_filesystem_on_a_system_device_for_a_group)
 
 >создаем правило
