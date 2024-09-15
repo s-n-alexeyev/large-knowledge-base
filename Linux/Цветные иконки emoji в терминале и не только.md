@@ -6,17 +6,18 @@ yay -S noto-color-emoji-fontconfig noto-fonts-emoji
 fc-cache -vf
 ```
 
->Альтернатива для ARCH значки от macOS
+значки от macOS
+
+>Альтернатива для ARCH 
 ```shell
 yay -S ttf-apple-emoji
 fc-cache -vf
 ```
 
-> Остальные значки от macOS
+> Для других сборок значки от macOS
 ```bash
 mkdir -p ~/.local/share/fonts && \
-curl -L -o ~/.local/share/fonts/AppleColorEmoji.ttf https://github.com/samuelngs/apple-emoji-linux/releases/latest/download/AppleColorEmoji.ttf
-
+curl -L -o ~/.local/share/fonts/AppleColorEmoji.ttf https://github.com/samuelngs/apple-emoji-linux/releases/latest/download/AppleColorEmoji.ttf && \
 fc-cache -vf
 ```
 
