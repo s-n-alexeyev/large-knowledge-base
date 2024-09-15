@@ -90,7 +90,7 @@ A better option to install desktop editors is to add their repository to your Li
 
 1. Add the yum repository with the following command:
 ```bash
-sudo yum install https://download.onlyoffice.com/repo/centos/main/noarch/onlyoffice-repo.noarch.rpm
+sudo yum install https://download.onlyoffice.com/repo/centos/main/noarch/onlyoffice-repo.noarch.rpm
 ```
 
 2. Add the EPEL repository with the following command:
