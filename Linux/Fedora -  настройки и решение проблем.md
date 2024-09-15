@@ -235,7 +235,7 @@ sudo dnf install --refresh librewolf
 # WhatSie
 
 ```bash
-sudo dnf install qt5-qtwebengine-devel qt5-qtbase-devel
+sudo dnf install qt5-qtbase-develqt5-qtwebengine-devel 
 ```
 
 ```bash
