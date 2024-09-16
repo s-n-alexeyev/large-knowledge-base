@@ -249,3 +249,12 @@ qmake-qt5
 make -j4
 sudo make install
 ```
+
+---
+# Videomass
+
+```bash
+sudo dnf install pip gtk3-devel gtk2-devel wxGTK-devel
+pip install --upgrade pip setuptools wheel
+pip install videomass
+```
