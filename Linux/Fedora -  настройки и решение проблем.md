@@ -258,3 +258,12 @@ sudo dnf install pip gtk3-devel gtk2-devel wxGTK-devel
 pip install --upgrade pip setuptools wheel
 pip install videomass
 ```
+
+---
+# Nekoray
+
+```bash
+sudo dnf copr enable yohane-shiro/nekoray
+sudo dnf install nekoray
+```
+
