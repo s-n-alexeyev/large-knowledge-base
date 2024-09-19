@@ -3,7 +3,7 @@
 git clone https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/lyrebird
 ```
 
->Устанавливаем GO
+>Устанавливаем язык GO
 ```bash
 #arch/manjaro
 sudo pacman -S golang
