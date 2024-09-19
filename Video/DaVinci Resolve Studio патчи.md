@@ -9,33 +9,44 @@ debugInConsole: false # Print debug info in Obsidian console
 ---
 ## Патчи
 ### 17
-```shell
+```bash
 sudo perl -pi -e 's/\x74\x7b\xe8\x81/\xeb\x7b\xe8\x81/g' /opt/resolve/bin/resolve
 ```
 ### 18
-```shell
+```bash
 sudo perl -pi -e 's/\x74\x7b\xe8\x41\x20/\xeb\x7b\xe8\x41\x20/g' /opt/resolve/bin/resolve
 ```
 ### 18.1
-```shell
+```bash
 sudo perl -pi -e 's/\x74\x7b\xe8\x31\x1f\x00\x00/\xeb\x7b\xe8\x31\x1f\x00\x00/g' /opt/resolve/bin/resolve
 ```
 
 ### 18.1.1
-```shell
+```bash
 sudo perl -pi -e 's/\x74\x7b\xe8\x21\x1f\x00\x00/\xeb\x7b\xe8\x21\x1f\x00\x00/g' /opt/resolve/bin/resolve
 ```
 
 ### 18.5
-```shell
+```bash
 sudo perl -pi -e 's/\x74\x7b\xe8\x51\x26\x00\x00/\xeb\x7b\xe8\x51\x26\x00\x00/g' /opt/resolve/bin/resolve
 ```
 
 ### 18.6
-```shell
+```bash
 sudo perl -pi -e 's/\x74\x7b\xe8\x61\x26\x00\x00/\xeb\x7b\xe8\x61\x26\x00\x00/g' /opt/resolve/bin/resolve
 ```
 
+### 19
+```bash
+sudo /usr/bin/perl -pi -e 's/\x74\x11\xe8\x21\x23\x00\x00/\xeb\x11\xe8\x21\x23\x00\x00/g' /opt/resolve/bin/resolve
+```
+### Other
+```bash
+cd /opt/resolve  
+sudo perl -pi -e 's/\x03\x00\x89\x45\xFC\x83\x7D\xFC\x00\x74\x11\x48\x8B\x45\xC8\x8B/\x03\x00\x89\x45\xFC\x83\x7D\xFC\x00\xEB\x11\x48\x8B\x45\xC8\x8B/g' bin/resolve  
+sudo perl -pi -e 's/\x74\x11\x48\x8B\x45\xC8\x8B\x55\xFC\x89\x50\x58\xB8\x00\x00\x00/\xEB\x11\x48\x8B\x45\xC8\x8B\x55\xFC\x89\x50\x58\xB8\x00\x00\x00/g' bin/resolve  
+sudo echo -e "LICENSE blackmagic davinciresolvestudio 009599 permanent uncounted\nhostid=ANY issuer=AHH customer=AHH issued=03-Apr-2024\n akey=3148-9267-1853-4920-8173_ck=00 sig=\"00\"\n" > .license/blackmagic.lic
+```
 -----
 ## Сжатие h264
 Можно почитать https://trac.ffmpeg.org/wiki/Encode/H.264
@@ -50,11 +61,11 @@ __505M clip03.mov__
 `/opt/resolve/bin/resolve: symbol lookup error: /usr/lib/libpango-1.0.so.0: undefined symbol: g_string_free_and_steal`
 
 Решение:
-```shell
+```bash
 sudo cp /lib64/libglib-2.0.* /opt/resolve/libs/
 ```
 или
-```shell
+```bash
 LD_PRELOAD=/usr/lib64/libglib-2.0.so /opt/resolve/bin/resolve
 ```
 
@@ -64,7 +75,7 @@ LD_PRELOAD=/usr/lib64/libglib-2.0.so /opt/resolve/bin/resolve
 `/opt/resolve/bin/resolve: symbol lookup error: /usr/lib/libgdk_pixbuf-2.0.so.0: undefined symbol: g_task_set_static_name`
 
 Решение:
-```shell
+```bash
 cd /opt/resolve/libs
 sudo mkdir disabled-libraries
 sudo mv libglib* disabled-libraries
