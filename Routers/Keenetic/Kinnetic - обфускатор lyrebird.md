@@ -11,7 +11,7 @@ sudo pacman -S golang
 #debian/ubuntu
 sudo apt install golang
 
-#fedora
+#fedora/centos
 sudo dnf install golang
 ```
 
