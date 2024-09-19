@@ -267,3 +267,24 @@ sudo dnf copr enable yohane-shiro/nekoray
 sudo dnf install nekoray
 ```
 
+---
+# DaVinci Studio Studio
+
+> Устанавливаем нужные пакеты
+```bash
+sudo dnf install libxcrypt-compat libcurl libcurl-devel mesa-libGLU
+```
+
+>Пропускаем проверку пакетов (актуально для 40)
+```bash
+sudo SKIP_PACKAGE_CHECK=1 ./DaVinci_Resolve_Studio_19.0.1_Linux.run
+```
+
+>Патчим до рабочего состояния
+```bash
+cd /opt/resolve/libs
+sudo mkdir disabled-libraries
+sudo mv libglib* disabled-libraries
+sudo mv libgio* disabled-libraries
+sudo mv libgmodule* disabled-libraries
+```
