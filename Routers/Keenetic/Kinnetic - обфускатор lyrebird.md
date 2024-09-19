@@ -1,6 +1,18 @@
-
+>клонируем проект lyrebird
 ```bash
 git clone https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/lyrebird
+```
+
+>устанавливаем GO
+```bash
+#arch/manjaro
+sudo pacman -S golang
+
+#debian/ubuntu
+sudo apt install golang
+
+#fedora
+sudo dnf install golang
 ```
 
 >Редактируем `Makefile`
@@ -34,3 +46,7 @@ clean:
 	rm -f $(OUTPUT)  # Remove the output binary, ignoring errors if it doesn't exist
 ```
 
+>компилируем под свою платформу, например компиляция под ARM
+```bash
+make build-arm
+```
