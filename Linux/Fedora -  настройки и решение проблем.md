@@ -294,3 +294,11 @@ sudo mv libgmodule* disabled-libraries
 sudo dnf copr enable karlisk/ventoy
 sudo dnf install ventoy
 ```
+
+---
+# Postman
+
+```bash
+sudo dnf copr enable coder966/postman
+sudo dnf install postman
+```
