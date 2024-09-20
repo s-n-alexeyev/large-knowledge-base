@@ -169,16 +169,21 @@ error: ../../grub-core/commands/loadenv.c:216:sparse file not allowed.
 
 This is because you did not create a separate ext4 /boot partition and instead included it in the btrfs system root. GRUB preboot writes to /boot/grub2/grubenv if the boot was successful. This error occurs because of the GRUB btrfs.mod driver, unlike ext4, is read-only. To resolve this, open the Gnome terminal and execute the following command.
 
-```
-$ sudo grub2-editenv - unset menu_auto_hide
+```bash
+sudo grub2-editenv - unset menu_auto_hide
 ```
 
 Set the btrfs volume label. I named the btrfs volume **FEDORA**, but you may name it whatever you want.
 
+```bash
+sudo btrfs filesystem label / FEDORA
 ```
-$ sudo btrfs filesystem label / FEDORA
 
-$ sudo btrfs filesystem show /
+```bash
+sudo btrfs filesystem show /
+```
+
+```
 Label: 'FEDORA'  uuid: 0fa2b51a-9876-4905-a36a-dbb2f40e7c12
 	Total devices 1 FS bytes used 6.60GiB
 	devid    1 size 127.41GiB used 10.02GiB path /dev/vda2
@@ -186,8 +191,11 @@ Label: 'FEDORA'  uuid: 0fa2b51a-9876-4905-a36a-dbb2f40e7c12
 
 Your setup should look something like this.
 
+```bash
+lsblk -p /dev/vda
 ```
-$ lsblk -p /dev/vda
+
+```
 NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
 /dev/vda    252:0    0   128G  0 disk 
 ├─/dev/vda1 252:1    0   600M  0 part /boot/efi
@@ -197,8 +205,11 @@ NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
 
 And the subvolumes will look like this.
 
+```bash
+sudo btrfs subvolume list /
 ```
-$ sudo btrfs subvolume list /
+
+```
 ID 256 gen 51 top level 5 path home
 ID 257 gen 46 top level 5 path var/lib/machines
 ```
@@ -207,8 +218,8 @@ In Fedora Workstation, systemd automatically creates the /var/lib/machines subvo
 
 Enable the fastest mirrors to speed up package downloads. Copy the command from sudo to EOF, paste it into your terminal, and hit [Enter].
 
-```
-$ sudo bash -c 'cat >> /etc/dnf/dnf.conf' <<EOF
+```bash
+sudo bash -c 'cat >> /etc/dnf/dnf.conf' <<EOF
 defaultyes=True
 fastestmirror=True
 max_parallel_downloads=10
@@ -217,27 +228,27 @@ EOF
 
 Clear all previous caches and update the local DNF metadata cache.
 
-```
-$ sudo dnf clean all
-$ sudo dnf makecache
+```bash
+sudo dnf clean all
+sudo dnf makecache
 ```
 
 Install the packages listed below.
 
-```
-$ sudo dnf install vim git inotify-tools make
+```bash
+sudo dnf install vim git inotify-tools make
 ```
 
 Now, update your operating system.
 
-```
-$ sudo dnf update
+```bash
+sudo dnf update
 ```
 
 And reboot your system.
 
-```
-$ sudo reboot
+```bash
+sudo reboot
 ```
 
 ## 3. Create the Additional Subvolumes
@@ -248,34 +259,34 @@ These subvolumes are created on the system root to avoid being included in the r
 
 Create the directory '/var/lib/libvirt'. Only applicable to other Fedora Spins; not required for Fedora Workstation.
 
-```
-$ sudo mkdir -vp /var/lib/libvirt
+```bash
+sudo mkdir -vp /var/lib/libvirt
 ```
 
 Get the UUID of your btrfs system root.
 
 ```
-$ ROOT_UUID="$(sudo grub2-probe --target=fs_uuid /)"
+ROOT_UUID="$(sudo grub2-probe --target=fs_uuid /)"
 
-$ echo ${ROOT_UUID}
+echo ${ROOT_UUID}
 0fa2b51a-9876-4905-a36a-dbb2f40e7c12
 ```
 
 Get the btrfs subvolume mount options from the /etc/fstab file.
 
 ```
-$ OPTIONS="$(grep '/home' /etc/fstab \
+OPTIONS="$(grep '/home' /etc/fstab \
     | awk '{print $4}' \
     | cut -d, -f2-)"
 
-$ echo ${OPTIONS}
+echo ${OPTIONS}
 compress=zstd:1
 ```
 
 Declare the remaining subvolumes you want to create in the 'SUBVOLUMES' bash array. Copy from 'SUBVOLUMES' to ')', paste into the terminal, and press [ENTER].
 
 ```
-$ SUBVOLUMES=(
+SUBVOLUMES=(
     "opt"
     "var/cache"
     "var/crash"
@@ -311,7 +322,7 @@ Similarly, if you use the SSH remote login client, you must create a subvolume t
 For this tutorial, however, I will only create the '.mozilla' subvolume in the user's home directory.
 
 ```
-$ printf '%s\n' "${SUBVOLUMES[@]}"
+printf '%s\n' "${SUBVOLUMES[@]}"
 opt
 var/cache
 var/crash
@@ -328,16 +339,16 @@ home/madhu/.mozilla
 Find the length of the longest element in the SUBVOLMES array.
 
 ```
-$ MAX_LEN="$(printf '/%s\n' "${SUBVOLUMES[@]}" | wc -L)"
+MAX_LEN="$(printf '/%s\n' "${SUBVOLUMES[@]}" | wc -L)"
 
-$ echo ${MAX_LEN}
+echo ${MAX_LEN}
 24
 ```
 
 Now, create subvolumes and also add them to the /etc/fstab file. Copy from 'for' to 'done', paste it in the terminal, and hit [ENTER].
 
 ```
-$ for dir in "${SUBVOLUMES[@]}" ; do
+for dir in "${SUBVOLUMES[@]}" ; do
     if [[ -d "/${dir}" ]] ; then
         sudo mv -v "/${dir}" "/${dir}-old"
         sudo btrfs subvolume create "/${dir}"
@@ -358,20 +369,20 @@ done
 
 Once you've finished creating subvolumes based on your needs, change the ownership of the directories in the user's home to your user name.
 
-```
-$ sudo chown -cR $USER:$USER /home/$USER/
+```bash
+sudo chown -cR $USER:$USER /home/$USER/
 ```
 
 If you have created subvolumes '.gnupg' and '.ssh', you must change their permissions.
 
-```
-$ sudo chmod -vR 0700 /home/$USER/{.gnupg,.ssh}
+```bash
+sudo chmod -vR 0700 /home/$USER/{.gnupg,.ssh}
 ```
 
 Examine your /etc/fstab file. This is what it should look like. The UUID and username will be unique to your system.
 
-```
-$ cat /etc/fstab
+```bash
+cat /etc/fstab
 ...
 UUID=0fa2b51a-9876-4905-a36a-dbb2f40e7c12 /                        btrfs defaults        0 0
 UUID=85A7-4DC2                            /boot/efi                vfat  umask=0077,shortname=winnt 0 2
@@ -391,10 +402,13 @@ UUID=0fa2b51a-9876-4905-a36a-dbb2f40e7c12 /home/madhu/.mozilla     btrfs subvol=
 
 Reload /etc/fstab to mount all the subvolumes.
 
-```
-$ sudo systemctl daemon-reload
+```bash
+sudo systemctl daemon-reload
 
-$ sudo mount -va
+sudo mount -va
+```
+
+```
 /                        : ignored
 /boot/efi                : already mounted
 /home                    : already mounted
@@ -413,8 +427,11 @@ $ sudo mount -va
 
 Check your subvolumes.
 
+```bash
+sudo btrfs subvolume list /
 ```
-$ sudo btrfs subvolume list /
+
+```
 ID 256 gen 95 top level 5 path home
 ID 257 gen 84 top level 5 path var/lib/machines
 ID 258 gen 88 top level 5 path opt
@@ -432,8 +449,11 @@ ID 268 gen 94 top level 256 path home/madhu/.mozilla
 
 Your setup should now look somewhat like this.
 
+```bash
+lsblk -p /dev/vda
 ```
-$ lsblk -p /dev/vda
+
+```
 NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
 /dev/vda    252:0    0   128G  0 disk 
 ├─/dev/vda1 252:1    0   600M  0 part /boot/efi
@@ -455,7 +475,7 @@ NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
 Now that everything appears to be in order, you can delete the old directories. Copy from 'for' to 'done', paste it into the terminal, and hit [Enter].
 
 ```
-$ for dir in "${SUBVOLUMES[@]}" ; do
+for dir in "${SUBVOLUMES[@]}" ; do
     if [[ -d "/${dir}-old" ]] ; then
         sudo rm -rvf "/${dir}-old"
     fi
@@ -466,15 +486,15 @@ done
 
 Install the snapper and python3-dnf-plugin-snapper packages. The python3-dnf-plugin-snapper package allows you to create pre and post snapshots every time you install a package on the system with the `dnf` package manager.
 
-```
-$ sudo dnf install snapper python3-dnf-plugin-snapper
+```bash
+sudo dnf install snapper python3-dnf-plugin-snapper
 ```
 
 Create new snapper configurations named root and home for the btrfs volume at / and /home, respectively.
 
-```
-$ sudo snapper -c root create-config /
-$ sudo snapper -c home create-config /home
+```bash
+sudo snapper -c root create-config /
+sudo snapper -c home create-config /home
 ```
 
 The snapper configuration files will be saved in the /etc/snapper/configs/ directory.
@@ -482,7 +502,7 @@ The snapper configuration files will be saved in the /etc/snapper/configs/ direc
 Verify the snapper configuration files have been created.
 
 ```
-$ sudo snapper list-configs
+sudo snapper list-configs
 Config | Subvolume
 -------+----------
 home   | /home    
@@ -491,15 +511,18 @@ root   | /
 
 Allow regular user to use `snapper` without requiring root privileges. Add your user name to the snapper's root and home configurations to set the ACL on the /.snapshots and /home/.snapshots directories.
 
-```
-$ sudo snapper -c root set-config ALLOW_USERS=$USER SYNC_ACL=yes
-$ sudo snapper -c home set-config ALLOW_USERS=$USER SYNC_ACL=yes
+```bash
+sudo snapper -c root set-config ALLOW_USERS=$USER SYNC_ACL=yes
+sudo snapper -c home set-config ALLOW_USERS=$USER SYNC_ACL=yes
 ```
 
 Add the newly created snapshot subvolumes to the /etc/fstab file.
 
+```bash
+sudo vim /etc/fstab
 ```
-$ sudo vim /etc/fstab
+
+```
 ...
 UUID=0fa2b51a-9876-4905-a36a-dbb2f40e7c12 /home/madhu/.mozilla     btrfs subvol=home/madhu/.mozilla,compress=zstd:1 0 0
 UUID=0fa2b51a-9876-4905-a36a-dbb2f40e7c12 /.snapshots              btrfs subvol=.snapshots,compress=zstd:1 0 0
@@ -508,15 +531,15 @@ UUID=0fa2b51a-9876-4905-a36a-dbb2f40e7c12 /home/.snapshots         btrfs subvol=
 
 Reload the /etc/fstab file.
 
-```
-$ sudo systemctl daemon-reload
-$ sudo mount -va
+```bash
+sudo systemctl daemon-reload
+sudo mount -va
 ```
 
 Your subvolumes will look like this:
 
 ```
-$ sudo btrfs subvolume list /
+sudo btrfs subvolume list /
 ...
 ID 268 gen 109 top level 256 path home/madhu/.mozilla
 ID 269 gen 135 top level 5 path .snapshots
@@ -525,34 +548,37 @@ ID 270 gen 135 top level 256 path home/.snapshots
 
 Disable the indexing of the .snapshots directories by updatedb. It is enabled by default, which can cause significant slowdown and excessive memory usage if you have a large number of snapshots.
 
-```
-$ echo 'PRUNENAMES = ".snapshots"' | sudo tee -a /etc/updatedb.conf
+```bash
+echo 'PRUNENAMES = ".snapshots"' | sudo tee -a /etc/updatedb.conf
 ```
 
 Enable snapshot booting by appending the SUSE_BTRFS_SNAPSHOT_BOOTING="true" option to the /etc/default/grub file.
 
-```
-$ echo 'SUSE_BTRFS_SNAPSHOT_BOOTING="true"' | sudo tee -a /etc/default/grub
+```bash
+echo 'SUSE_BTRFS_SNAPSHOT_BOOTING="true"' | sudo tee -a /etc/default/grub
 ```
 
 You must also make changes to the /boot/efi/EFI/fedora/grub.cfg file now that snapshot booting is enabled.
 
-```
-$ sudo sed -i '1i set btrfs_relative_path="yes"' /boot/efi/EFI/fedora/grub.cfg
+```bash
+sudo sed -i '1i set btrfs_relative_path="yes"' /boot/efi/EFI/fedora/grub.cfg
 ```
 
 Finally, update the grub.cfg file.
 
-```
-$ sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+```bash
+sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 ```
 
 Later, I'll enable snapper timeline snapshots. For now, the snapper configuration is complete.
 
 List the snapshots for / volume. For the root, you may use `snapper -c root ls` or simply `snapper ls`. Both provide the same output.
 
+```bash
+snapper ls
 ```
-$ snapper ls
+
+```
  # | Type   | Pre # | Date | User | Cleanup | Description | Userdata
 ---+--------+-------+------+------+---------+-------------+---------
 0  | single |       |      | root |         | current     |
@@ -560,8 +586,11 @@ $ snapper ls
 
 List the snapshots for /home subvolume.
 
+```bash
+snapper -c home ls
 ```
-$ snapper -c home ls
+
+```
  # | Type   | Pre # | Date | User | Cleanup | Description | Userdata
 ---+--------+-------+------+------+---------+-------------+---------
 0  | single |       |      | root |         | current     |
@@ -575,18 +604,18 @@ The [grub-btrfs](https://github.com/Antynea/grub-btrfs) package adds 'Fedora Lin
 
 Clone the grub-btrfs repository.
 
-```
-$ git clone https://github.com/Antynea/grub-btrfs
+```bash
+git clone https://github.com/Antynea/grub-btrfs
 ```
 
 The setup is pre-configured to work with Arch and Gentoo out of the box. You must make a few changes to the grub-btrfs config file to make it work with Fedora.
 
 Change the directory to 'grub-btrfs', copy from 'sed' to 'config', paste it into the terminal, and press [ENTER].
 
-```
-$ cd grub-btrfs
+```bash
+cd grub-btrfs
 
-$ sed -i \
+sed -i \
 -e '/#GRUB_BTRFS_SNAPSHOT_KERNEL_PARAMETERS/a \
 GRUB_BTRFS_SNAPSHOT_KERNEL_PARAMETERS="systemd.volatile=state"' \
 -e '/#GRUB_BTRFS_GRUB_DIRNAME/a \
@@ -600,24 +629,24 @@ config
 
 Then install it.
 
-```
-$ sudo make install
+```bash
+sudo make install
 ```
 
 Update grub.cfg and enable the grub-btrfsd.service.
 
-```
-$ sudo grub2-mkconfig -o /boot/grub2/grub.cfg
-$ sudo systemctl enable --now grub-btrfsd.service
+```bash
+sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+sudo systemctl enable --now grub-btrfsd.service
 ```
 
 You will receive the 'No snapshots found' error since you have not yet created any snapshots, but don't worry, it will function properly after you do.
 
 Your grub-btrfs installation is now complete. You may now delete the cloned grub-btrfs repository.
 
-```
-$ cd ..
-$ rm -rvf grub-btrfs
+```bash
+cd ..
+rm -rvf grub-btrfs
 ```
 
 ## 6. Create a System Root Snapshot and Set It as the Default
@@ -626,14 +655,14 @@ Now that everything in Fedora has been installed and configured, it is time to t
 
 Create a directory named '1' in the /.snapshots directory.
 
-```
-$ sudo mkdir -v /.snapshots/1
+```bash
+sudo mkdir -v /.snapshots/1
 ```
 
-Create an XML file called info.xml in the /.snapshots/1/ directory. Copy the following command from sudo to EOF, paste it into your terminal, and hit the <Enter> button.
+Create an XML file called info.xml in the /.snapshots/1/ directory. Copy the following command from sudo to EOF, paste it into your terminal, and hit the `<Enter>` button.
 
-```
-$ sudo bash -c "cat > /.snapshots/1/info.xml" <<EOF
+```bash
+sudo bash -c "cat > /.snapshots/1/info.xml" <<EOF
 <?xml version="1.0"?>
 <snapshot>
   <type>single</type>
@@ -646,8 +675,8 @@ EOF
 
 Verify that the date is set properly and is in the Coordinated Universal Time (UTC) format.
 
-```
-$ cat /.snapshots/1/info.xml
+```bash
+cat /.snapshots/1/info.xml
 <?xml version="1.0"?>
 <snapshot>
   <type>single</type>
@@ -659,42 +688,48 @@ $ cat /.snapshots/1/info.xml
 
 Now, create a read-write subvolume snapshot of the system root in the /.snapshots/1/ directory.
 
-```
-$ sudo btrfs subvolume snapshot / /.snapshots/1/snapshot
+```bash
+sudo btrfs subvolume snapshot / /.snapshots/1/snapshot
 ```
 
 Get the subvolid of the /.snapshots/1/snapshot subvolume.
 
-```
-$ SNAP_1_ID="$(sudo btrfs inspect-internal rootid /.snapshots/1/snapshot)"
+```bash
+SNAP_1_ID="$(sudo btrfs inspect-internal rootid /.snapshots/1/snapshot)"
 
-$ echo ${SNAP_1_ID}
+echo ${SNAP_1_ID}
 271
 ```
 
 Using this subvolume ID, set the /.snapshots/1/snapshot subvolume as the default subvolume for the root (/) filesystem.
 
-```
-$ sudo btrfs subvolume set-default ${SNAP_1_ID} /
+```bash
+sudo btrfs subvolume set-default ${SNAP_1_ID} /
 ```
 
 Confirm that the /.snapshots/1/snapshot subvolume has been set as the default for the / filesystem.
 
+```bash
+sudo btrfs subvolume get-default /
 ```
-$ sudo btrfs subvolume get-default /
+
+```
 ID 271 gen 170 top level 269 path .snapshots/1/snapshot
 ```
 
 Finally, reboot your system.
 
-```
-$ sudo reboot
+```bash
+sudo reboot
 ```
 
 After rebooting, check the snapshots in snapper.
 
+```bash
+snapper ls
 ```
-$ snapper ls
+
+```
  # | Type   | Pre # | Date                            | User | Cleanup | Description          | Userdata
 ---+--------+-------+---------------------------------+------+---------+----------------------+---------
 0  | single |       |                                 | root |         | current              |         
@@ -715,14 +750,17 @@ In this test, I will use the `dnf` package manager to install a small package na
 
 Install the ps_mem package. It displays the core memory used per program (not per process).
 
-```
-$ sudo dnf install ps_mem
+```bash
+sudo dnf install ps_mem
 ```
 
 Run the `ps_mem` program to see if it was installed successfully.
 
+```bash
+sudo ps_mem
 ```
-$ sudo ps_mem
+
+```
  Private  +   Shared  =  RAM used	Program
 
 148.0 KiB +  16.5 KiB = 164.5 KiB	fusermount3
@@ -739,8 +777,11 @@ $ sudo ps_mem
 
 Check the snapper for snapshots.
 
+```bash
+snapper ls
 ```
-$ snapper ls
+
+```
  # | Type   | Pre # | Date                            | User | Cleanup | Description                 | Userdata
 ---+--------+-------+---------------------------------+------+---------+-----------------------------+---------
 0  | single |       |                                 | root |         | current                     |         
@@ -753,8 +794,11 @@ As you can see, the ps_mem package has pre (#2) and post (#3) snapshots.
 
 Let's take a look at the changes it made to the system between snapshots #2 and #3.
 
+```bash
+snapper status 2..3
 ```
-$ snapper status 2..3
+
+```
 +..... /usr/bin/ps_mem
 c..... /usr/lib/sysimage/rpm/rpmdb.sqlite-shm
 c..... /usr/lib/sysimage/rpm/rpmdb.sqlite-wal
@@ -768,29 +812,38 @@ c..... /var/lib/dnf/history.sqlite-wal
 
 Now I'll undo the changes.
 
+```bash
+sudo snapper undochange 2..3
 ```
-$ sudo snapper undochange 2..3
+
+```
 create:1 modify:4 delete:4
 ```
 
 Check again to ensure that the ps_mem package was successfully uninstalled.
 
-```
-$ sudo ps_mem
+```bash
+sudo ps_mem
 sudo: ps_mem: command not found
 ```
 
 Cool! The undo was successful. But, because I want to keep the package ps_mem, I'll undo the changes again. This time between snapshots #3 and #2.
 
+```bash
+sudo snapper undochange 3..2
 ```
-$ sudo snapper undochange 3..2
+
+```
 create:4 modify:4 delete:1
 ```
 
 Now run ps_mem again to see if it exists.
 
+```bash
+sudo ps_mem
 ```
-$ sudo ps_mem
+
+```
  Private  +   Shared  =  RAM used	Program
 
 148.0 KiB +  16.5 KiB = 164.5 KiB	fusermount3
@@ -817,8 +870,11 @@ In this test, I will simply delete the last line of the /etc/hosts file. Then I'
 
 This is how the original /etc/hosts file looks.
 
+```bash
+cat /etc/hosts
 ```
-$ cat /etc/hosts
+
+```
 # Loopback entries; do not change.
 # For historical reasons, localhost precedes localhost.localdomain:
 127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
@@ -830,10 +886,13 @@ $ cat /etc/hosts
 
 Now I'll remove the last line.
 
-```
-$ sudo sed -i '$d' /etc/hosts
+```bash
+sudo sed -i '$d' /etc/hosts
 
-$ cat /etc/hosts
+cat /etc/hosts
+```
+
+```
 # Loopback entries; do not change.
 # For historical reasons, localhost precedes localhost.localdomain:
 127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
@@ -844,8 +903,11 @@ $ cat /etc/hosts
 
 Now that I have removed the last line, using the snapper tool, compare the /etc/hosts file with the one in snapshot #3.
 
+```bash
+snapper diff 3..0 /etc/hosts
 ```
-$ snapper diff 3..0 /etc/hosts
+
+```
 --- /.snapshots/3/snapshot/etc/hosts	2023-11-29 05:34:49.000000000 -0500
 +++ /etc/hosts	2024-04-26 11:29:39.238565474 -0400
 @@ -4,4 +4,3 @@
@@ -862,14 +924,14 @@ As you can see in the last line, the /etc/hosts file in the current snapshot is 
 To replace the /etc/hosts file with the one in snapshot #3, use the following command.
 
 ```
-$ sudo snapper undochange 3..0 /etc/hosts
+sudo snapper undochange 3..0 /etc/hosts
 create:0 modify:1 delete:0
 ```
 
 Check to see if the /etc/hosts file has indeed been rolled back.
 
 ```
-$ cat /etc/hosts
+cat /etc/hosts
 # Loopback entries; do not change.
 # For historical reasons, localhost precedes localhost.localdomain:
 127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
@@ -887,15 +949,18 @@ In this test, I will begin by creating manual 'pre' snapshots of the / and /home
 
 Create a manual 'pre' snapshot for both the / and /home directories.
 
-```
-$ snapper -c root create -t pre -c number -d 'Pre Color Picker'
-$ snapper -c home create -t pre -c number -d 'Pre Color Picker'
+```bash
+snapper -c root create -t pre -c number -d 'Pre Color Picker'
+snapper -c home create -t pre -c number -d 'Pre Color Picker'
 ```
 
 List the snapshots.
 
+```bash
+snapper ls
 ```
-$ snapper ls
+
+```
  # | Type   | Pre # | Date                            | User  | Cleanup | Description                 | Userdata
 ---+--------+-------+---------------------------------+-------+---------+-----------------------------+---------
 0  | single |       |                                 | root  |         | current                     |         
@@ -904,7 +969,7 @@ $ snapper ls
 3  | post   |     2 | Fri 26 Apr 2024 11:18:16 AM EDT | root  | number  | /usr/bin/dnf install ps_mem |         
 4  | pre    |       | Fri 26 Apr 2024 11:56:10 AM EDT | madhu | number  | Pre Color Picker            |         
 
-$ snapper -c home ls
+snapper -c home ls
  # | Type   | Pre # | Date                            | User  | Cleanup | Description      | Userdata
 ---+--------+-------+---------------------------------+-------+---------+------------------+---------
 0  | single |       |                                 | root  |         | current          |         
@@ -913,19 +978,19 @@ $ snapper -c home ls
 
 Install the pre-requisite packages before compiling the source file.
 
-```
-$ sudo dnf install meson gcc-c++ libhandy-devel libportal-devel \
+```bash
+sudo dnf install meson gcc-c++ libhandy-devel libportal-devel \
     libportal-gtk3-devel
 ```
 
 Compile the source.
 
-```
-$ git clone https://github.com/Hjdskes/gcolor3.git
-$ cd gcolor3
-$ meson setup build
-$ ninja-build -C build
-$ sudo ninja-build -C build install
+```bash
+git clone https://github.com/Hjdskes/gcolor3.git
+cd gcolor3
+meson setup build
+ninja-build -C build
+sudo ninja-build -C build install
 ```
 
 Make sure the Color Picker package has been installed properly. Enter `gcolor3` into the terminal and hit [ENTER]. The Color Picker app must be open and appear as shown.
@@ -935,14 +1000,14 @@ Make sure the Color Picker package has been installed properly. Enter `gcolor3` 
 Now that you have successfully installed the Color Picker application, close the application and create 'post' snapshots for the / and /home directories.
 
 ```
-$ snapper -c root create -t post --pre-number 4 -c number -d 'Post Color Picker'
-$ snapper -c home create -t post --pre-number 1 -c number -d 'Post Color Picker'
+snapper -c root create -t post --pre-number 4 -c number -d 'Post Color Picker'
+snapper -c home create -t post --pre-number 1 -c number -d 'Post Color Picker'
 ```
 
 List the snapshots.
 
 ```
-$ snapper -c root ls
+snapper -c root ls
  # | Type   | Pre # | Date                            | User  | Cleanup | Description                                                                            | Userdata
 ---+--------+-------+---------------------------------+-------+---------+----------------------------------------------------------------------------------------+---------
 0  | single |       |                                 | root  |         | current                                                                                |         
@@ -954,7 +1019,7 @@ $ snapper -c root ls
 6  | post   |     5 | Fri 26 Apr 2024 11:59:54 AM EDT | root  | number  | /usr/bin/dnf install meson gcc-c++ libhandy-devel libportal-devel libportal-gtk3-devel |         
 7  | post   |     4 | Fri 26 Apr 2024 12:02:24 PM EDT | madhu | number  | Post Color Picker                                                                      |         
 
-$ snapper -c home ls
+snapper -c home ls
  # | Type   | Pre # | Date                            | User  | Cleanup | Description       | Userdata
 ---+--------+-------+---------------------------------+-------+---------+-------------------+---------
 0  | single |       |                                 | root  |         | current           |         
@@ -965,7 +1030,7 @@ $ snapper -c home ls
 Review the changes made to the system between the pre and post snapshots.
 
 ```
-$ snapper -c root status 4..7
+snapper -c root status 4..7
 c..... /boot/grub2/grub-btrfs.cfg
 c..... /etc/cups/subscriptions.conf
 c..... /etc/cups/subscriptions.conf.O
@@ -974,7 +1039,7 @@ c..... /var/lib/dnf/history.sqlite-shm
 c..... /var/lib/dnf/history.sqlite-wal
 c..... /var/lib/PackageKit/transactions.db
 
-$ snapper -c home status 1..2
+snapper -c home status 1..2
 c..... /home/madhu/.cache/gnome-software/appstream/components.xmlb
 +..... /home/madhu/.config/gcolor3
 +..... /home/madhu/.config/gcolor3/config.ini
@@ -987,20 +1052,20 @@ c..... /home/madhu/.local/share/ibus-typing-booster/debug.log
 This is the total number of files added, removed, or modified.
 
 ```
-$ snapper -c root status 4..7 | wc -l
+snapper -c root status 4..7 | wc -l
 12771
 
-$ snapper -c home status 1..2 | wc -l
+snapper -c home status 1..2 | wc -l
 278
 ```
 
 I'll now undo the changes in the / and /home directories.
 
 ```
-$ sudo snapper -c root undochange 4..7
+sudo snapper -c root undochange 4..7
 create:0 modify:13 delete:12758
 
-$ sudo snapper -c home undochange 1..2
+sudo snapper -c home undochange 1..2
 create:1 modify:3 delete:274
 ```
 
@@ -1009,21 +1074,21 @@ The Color Picker package will be completely removed from the system.
 Log out and then log back in.
 
 ```
-$ gnome-session-quit
+gnome-session-quit
 ```
 
 Check again to see if the Color Picker has been completely removed.
 
 ```
-$ gcolor3
+gcolor3
 bash: gcolor3: command not found...
 ```
 
 Since you removed the Color Picker package, there is no reason to keep its pre-post snapshots if you do not intend to use it again. So you can delete those snapshots.
 
 ```
-$ snapper -c root delete 4-7
-$ snapper -c home delete 1-2
+snapper -c root delete 4-7
+snapper -c home delete 1-2
 ```
 
 Test 3 was successful.
@@ -1037,7 +1102,7 @@ Once I delete these files and directories, I will be unable to issue any command
 So, before I delete them, here's how they appear.
 
 ```
-$ sudo du -sch /boot /etc /usr
+sudo du -sch /boot /etc /usr
 307M	/boot
 34M	/etc
 6.1G	/usr
@@ -1047,7 +1112,7 @@ $ sudo du -sch /boot /etc /usr
 Now delete the files and directories.
 
 ```
-$ sudo rm -rvf /boot/{vmlinuz,initramfs}* /etc /usr
+sudo rm -rvf /boot/{vmlinuz,initramfs}* /etc /usr
 ```
 
 Boom!!! All critical files have been removed. Your Linux system is no longer operational.
@@ -1071,14 +1136,14 @@ Once you've finished booting, open the terminal.
 Check the '/' file system. Because you booted into the snapshot, the file system '/' will be read-only.
 
 ```
-$ sudo btrfs property get -ts /
+sudo btrfs property get -ts /
 ro=true
 ```
 
 Now that everything appears to be operating properly, it is time to roll back this snapshot in read-write mode.
 
 ```
-$ snapper ls
+snapper ls
  # | Type   | Pre # | Date                            | User | Cleanup | Description                 | Userdata
 ---+--------+-------+---------------------------------+------+---------+-----------------------------+---------
 0  | single |       |                                 | root |         | current                     |         
@@ -1090,7 +1155,7 @@ $ snapper ls
 As you can see from the output, snapshot #1 has a '+' symbol, indicating that it is the default subvolume, whereas snapshot #3 has a '-' symbol, indicating that it is the currently booted subvolume.
 
 ```
-$ sudo snapper rollback
+sudo snapper rollback
 Ambit is classic.
 Creating read-only snapshot of default subvolume. (Snapshot 4.)
 Creating read-write snapshot of current subvolume. (Snapshot 5.)
@@ -1100,7 +1165,7 @@ Setting default subvolume to snapshot 5.
 Now, reboot your system.
 
 ```
-$ sudo reboot
+sudo reboot
 ```
 
 This time, from the GRUB menu, boot normally. Also, notice that the Snapshots menu is missing. This is because of the rollback. We will fix it once we have booted into the operating system.
@@ -1112,7 +1177,7 @@ The first thing you should do after a rollback is to update the grub.cfg file so
 So, open the terminal and update the grub.cfg file.
 
 ```
-$ sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 Generating grub configuration file ...
 Adding boot menu entry for UEFI Firmware Settings ...
 Detecting snapshots ...
@@ -1129,16 +1194,16 @@ The GRUB Snapshot menu has now been recreated.
 Now, check the system once again.
 
 ```
-$ sudo du -sch /boot /etc /usr
+sudo du -sch /boot /etc /usr
 307M	/boot
 34M	/etc
 6.1G	/usr
 6.4G	total
 
-$ sudo btrfs property get -ts /
+sudo btrfs property get -ts /
 ro=false
 
-$ snapper ls
+snapper ls
  # | Type   | Pre # | Date                            | User | Cleanup | Description                 | Userdata     
 ---+--------+-------+---------------------------------+------+---------+-----------------------------+--------------
 0  | single |       |                                 | root |         | current                     |              
@@ -1148,7 +1213,7 @@ $ snapper ls
 4  | single |       | Fri 26 Apr 2024 12:26:34 PM EDT | root | number  | rollback backup of #1       | important=yes
 5* | single |       | Fri 26 Apr 2024 12:26:34 PM EDT | root |         | writable copy of #3         |
 
-$ sudo btrfs subvolume get-default /
+sudo btrfs subvolume get-default /
 ID 275 gen 338 top level 269 path .snapshots/5/snapshot
 ```
 
@@ -1163,7 +1228,7 @@ Now that you've tested the snapper undo and rollback features and are hopefully 
 But first, let me show you how to determine how much space each snapshot takes up on your disk.
 
 ```
-$ sudo btrfs filesystem du -s --human-readable /.snapshots/*/snapshot
+sudo btrfs filesystem du -s --human-readable /.snapshots/*/snapshot
      Total   Exclusive  Set shared  Filename
    1.87GiB       0.00B     1.87GiB  /.snapshots/1/snapshot
    6.18GiB    32.00KiB     6.12GiB  /.snapshots/2/snapshot
@@ -1179,7 +1244,7 @@ To find out how the 'Total' and 'Set shared' values are calculated, see the man 
 Now, let's return to making a snapshot the new system root.
 
 ```
-$ snapper ls
+snapper ls
  # | Type   | Pre # | Date                            | User | Cleanup | Description                 | Userdata     
 ---+--------+-------+---------------------------------+------+---------+-----------------------------+--------------
 0  | single |       |                                 | root |         | current                     |              
@@ -1197,10 +1262,10 @@ However, I will use snapshot #2 as the default because it is a 'pre' snapshot th
 So, first, delete all of the snapshots except #2. You cannot delete snapshot #5 because it is the active one.
 
 ```
-$ snapper delete 1
-$ snapper delete 3-4
+snapper delete 1
+snapper delete 3-4
 
-$ snapper ls
+snapper ls
  # | Type   | Pre # | Date                            | User | Cleanup | Description                 | Userdata
 ---+--------+-------+---------------------------------+------+---------+-----------------------------+---------
 0  | single |       |                                 | root |         | current                     |         
@@ -1211,19 +1276,19 @@ $ snapper ls
 Create a directory named '1' in the /.snapshots directory.
 
 ```
-$ sudo mkdir -v /.snapshots/1
+sudo mkdir -v /.snapshots/1
 ```
 
 Copy the info.xml file from /.snapshots/2/ to /.snapshots/1/.
 
 ```
-$ sudo cp -v /.snapshots/2/info.xml /.snapshots/1/
+sudo cp -v /.snapshots/2/info.xml /.snapshots/1/
 ```
 
 Edit the /.snapshots/1/info.xml file and change the content from this...
 
 ```
-$ sudo cat /.snapshots/1/info.xml
+sudo cat /.snapshots/1/info.xml
 <?xml version="1.0"?>
 <snapshot>
   <type>pre</type>
@@ -1237,7 +1302,7 @@ $ sudo cat /.snapshots/1/info.xml
 ...to this. Changes are in amber.
 
 ```
-$ sudo cat /.snapshots/1/info.xml
+sudo cat /.snapshots/1/info.xml
 <?xml version="1.0"?>
 <snapshot>
   <type>single</type>
@@ -1250,46 +1315,46 @@ $ sudo cat /.snapshots/1/info.xml
 Create a read-write subvolume snapshot of snapshot #2 in the /.snapshots/1/ directory.
 
 ```
-$ sudo btrfs subvolume snapshot /.snapshots/2/snapshot /.snapshots/1/snapshot
+sudo btrfs subvolume snapshot /.snapshots/2/snapshot /.snapshots/1/snapshot
 ```
 
 Get the subvolid of the /.snapshots/1/snapshot subvolume.
 
 ```
-$ sudo btrfs inspect-internal rootid /.snapshots/1/snapshot
+sudo btrfs inspect-internal rootid /.snapshots/1/snapshot
 276
 ```
 
 Using subvolid 276, set the /.snapshots/1/snapshot subvolume as the default subvolume for the root (/) filesystem.
 
 ```
-$ sudo btrfs subvolume set-default 276 /
+sudo btrfs subvolume set-default 276 /
 ```
 
 Then reboot.
 
 ```
-$ sudo reboot
+sudo reboot
 ```
 
 After rebooting, confirm that the /.snapshots/1/snapshot subvolume is indeed the default for the / filesystem.
 
 ```
-$ sudo btrfs subvolume get-default /
+sudo btrfs subvolume get-default /
 ID 276 gen 365 top level 269 path .snapshots/1/snapshot
 ```
 
 And is writable.
 
 ```
-$ sudo btrfs property get -ts /
+sudo btrfs property get -ts /
 ro=false
 ```
 
 Take a look at the snapper now.
 
 ```
-$ snapper ls
+snapper ls
  # | Type   | Pre # | Date                            | User | Cleanup | Description                 | Userdata
 ---+--------+-------+---------------------------------+------+---------+-----------------------------+---------
 0  | single |       |                                 | root |         | current                     |         
@@ -1301,15 +1366,15 @@ $ snapper ls
 As you can see, snapshot #1 is the default. You can now delete the remaining snapshots.
 
 ```
-$ snapper delete 2-5
+snapper delete 2-5
 
-$ snapper ls
+snapper ls
  # | Type   | Pre # | Date                            | User | Cleanup | Description        | Userdata
 ---+--------+-------+---------------------------------+------+---------+--------------------+---------
 0  | single |       |                                 | root |         | current            |         
 1* | single |       | Fri 26 Apr 2024 11:18:14 AM EDT | root |         | new root subvolume |         
 
-$ sudo btrfs filesystem du -s --human-readable /.snapshots/*/snapshot
+sudo btrfs filesystem du -s --human-readable /.snapshots/*/snapshot
      Total   Exclusive  Set shared  Filename
    6.18GiB   268.00KiB     6.12GiB  /.snapshots/1/snapshot
 ```
@@ -1317,7 +1382,7 @@ $ sudo btrfs filesystem du -s --human-readable /.snapshots/*/snapshot
 Update grub.cfg file.
 
 ```
-$ sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 ```
 
 You're done.
@@ -1329,15 +1394,15 @@ Now that you've finished everything, you can enable automatic timeline snapshots
 Automatic Timeline Snapshots are enabled by default in both root and home configurations. Enable it only for the system root and disable it for the home. See the Arch Wiki page on '[Automatic timeline snapshots](https://wiki.archlinux.org/title/snapper#Automatic_timeline_snapshots)' for more information.
 
 ```
-$ sudo snapper -c home set-config TIMELINE_CREATE=no
-$ sudo systemctl enable --now snapper-timeline.timer
-$ sudo systemctl enable --now snapper-cleanup.timer
+sudo snapper -c home set-config TIMELINE_CREATE=no
+sudo systemctl enable --now snapper-timeline.timer
+sudo systemctl enable --now snapper-cleanup.timer
 ```
 
 That's all. Every hour from now on, a 'single' snapshot will be created and cleaned up every other day.
 
 ```
-$ snapper ls
+snapper ls
  # | Type   | Pre # | Date                            | User | Cleanup  | Description        | Userdata
 ---+--------+-------+---------------------------------+------+----------+--------------------+---------
 0  | single |       |                                 | root |          | current            |         
@@ -1349,8 +1414,8 @@ $ snapper ls
 To stop timeline snapshots, disable the snapper timers.
 
 ```
-$ sudo systemctl disable --now snapper-timeline.timer
-$ sudo systemctl disable --now snapper-cleanup.timer
+sudo systemctl disable --now snapper-timeline.timer
+sudo systemctl disable --now snapper-cleanup.timer
 ```
 
 The installation of Fedora 40 with snapshot and rollback support is now complete.
@@ -1381,7 +1446,7 @@ To this:
 Then, on your keyboard, press Ctrl+x. You will be successfully booted into the operating system. Next, launch the terminal and execute the following command.
 
 ```
-$ sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 ```
 
 Reboot the computer to ensure the problem has been resolved.
@@ -1423,31 +1488,31 @@ If you've already followed an earlier version of this tutorial and installed Fed
 Update the local DNF metadata cache.
 
 ```
-$ sudo dnf makecache
+sudo dnf makecache
 ```
 
 Update your Fedora 39 release. This is important. **Do not skip this step**.
 
 ```
-$ sudo dnf upgrade --refresh
+sudo dnf upgrade --refresh
 ```
 
 After the updates have been installed, reboot your computer.
 
 ```
-$ sudo reboot
+sudo reboot
 ```
 
 After rebooting, open the terminal and run the following command to upgrade your Fedora 39 operating system to the most recent Fedora 40 version.
 
 ```
-$ sudo dnf system-upgrade download --releasever=40
+sudo dnf system-upgrade download --releasever=40
 ```
 
 Once the upgrades have been downloaded, trigger the upgrade process. This will immediately reboot your computer, with no countdown or confirmation. So, before issuing the following command, close all other programs and save your work.
 
 ```
-$ sudo dnf system-upgrade reboot
+sudo dnf system-upgrade reboot
 ```
 
 Once the upgrade process completes, your system will reboot again into the updated release version of Fedora 40.
