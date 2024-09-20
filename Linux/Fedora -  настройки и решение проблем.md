@@ -302,3 +302,9 @@ sudo dnf install ventoy
 sudo dnf copr enable coder966/postman
 sudo dnf install postman
 ```
+
+# Skype
+
+```bash
+sudo dnf config-manager --add-repo=https://repo.skype.com/rpm/stable/skype-stable.repo
+```
