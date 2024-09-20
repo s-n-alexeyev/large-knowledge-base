@@ -1,3 +1,6 @@
+2024-06-03
+[Оригинальная статья](https://sysguides.com/install-fedora-with-snapshot-and-rollback-support)
+
 Fedora Linux 40 has been released!
 
 In this guide, I will show you how to install Fedora with snapshot and rollback support.
@@ -6,25 +9,14 @@ As a result, if you make a mistake while modifying the system configuration, ins
 
 So let's get started.
 
-## Table of Contents
-
-- [1. Partitions and Subvolumes Layout](https://sysguides.com/install-fedora-with-snapshot-and-rollback-support#0-1-disk-and-subvolumes-layout-for-fedora-38)
-- [2. Install Fedora Workstation](https://sysguides.com/install-fedora-with-snapshot-and-rollback-support#1-2-install-fedora-38-workstation)
-- [3. Create the Additional Subvolumes](https://sysguides.com/install-fedora-with-snapshot-and-rollback-support#2-3-create-the-additional-subvolumes)
-- [4. Install and Configure Snapper](https://sysguides.com/install-fedora-with-snapshot-and-rollback-support#3-4-install-and-configure-snapper)
-- [5. Install and Configure Grub-Btrfs](https://sysguides.com/install-fedora-with-snapshot-and-rollback-support#4-5-install-and-configure-grub-btrfs)
-- [6. Create a System Root Snapshot and Set It as the Default](https://sysguides.com/install-fedora-with-snapshot-and-rollback-support#5-6-create-a-system-root-snapshot-and-set-it-as-the-default-)
-- [7. Snapper Tests](https://sysguides.com/install-fedora-with-snapshot-and-rollback-support#6-7-snapper-tests)
-    - [Test 1: Undo the Changes Made by the DNF Installer](https://sysguides.com/install-fedora-with-snapshot-and-rollback-support#7-test-1-undo-the-changes-made-by-the-dnf-installer-)
-    - [Test 2: Undo Any Changes Made to Individual Files](https://sysguides.com/install-fedora-with-snapshot-and-rollback-support#8-test-2-undo-any-changes-made-to-individual-files)
-    - [Test 3: Create Manual Pre-Post Snapshots and Undo the Changes](https://sysguides.com/install-fedora-with-snapshot-and-rollback-support#9-test-3-create-manual-pre-post-snapshots-and-undo-the-changes)
-    - [Test 4: Rollback to a Previous Snapshot from the GRUB Menu](https://sysguides.com/install-fedora-with-snapshot-and-rollback-support#10-test-4-rollback-to-a-previous-snapshot-from-the-grub-menu-)
-- [8. Make a Snapshot the New System Root](https://sysguides.com/install-fedora-with-snapshot-and-rollback-support#11-8-make-a-snapshot-the-new-system-root)
-- [9. Enable Automatic Timeline Snapshots](https://sysguides.com/install-fedora-with-snapshot-and-rollback-support#12-9-enable-automatic-timeline-snapshots-)
-- [10. Issues and Possible Solutions](https://sysguides.com/install-fedora-with-snapshot-and-rollback-support#10-issues-and-possible-solutions)
-- [11. Upgrade Fedora 39 to Fedora 40](https://sysguides.com/install-fedora-with-snapshot-and-rollback-support#11-upgrade-fedora-39-to-fedora-40)
-- [12. Watch on YouTube](https://sysguides.com/install-fedora-with-snapshot-and-rollback-support#13-watch-on-youtube-)
-
+```table-of-contents
+title: Содержание
+style: nestedList # TOC style (nestedList|nestedOrderedList|inlineFirstLevel)
+minLevel: 0 # Include headings from the specified level
+maxLevel: 0 # Include headings up to the specified level
+includeLinks: true # Make headings clickable
+debugInConsole: false # Print debug info in Obsidian console
+```
 ## 1. Partitions and Subvolumes Layout
 
 For this guide, I will use a hard disk with a capacity of 128 GiB.
@@ -124,27 +116,27 @@ You should now be on the **INSTALLATION DESTINATION** screen. To proceed, pick
 
 On the **BLIVET GUI PARTITIONING** screen, create the partitions, file systems, and btrfs subvolumes necessary to install the Fedora Workstation 40.
 
-[![Install Fedora with Snapshot and Rollback Support - Blivet GUI](https://sysguides.com/wp-content/uploads/2024/04/01-install-fedora-40-with-snapshot-and-rollback-support-blivet.webp)](https://sysguides.com/wp-content/uploads/2024/04/01-install-fedora-40-with-snapshot-and-rollback-support-blivet.webp)
+[![Install Fedora with Snapshot and Rollback Support - Blivet GUI](/Media/Fedora_40_btrfs_snapper/Install_Fedora_with_Snapshot_and_Rollback_Support_-_Blivet_GUI.webp)](https://sysguides.com/wp-content/uploads/2024/04/01-install-fedora-40-with-snapshot-and-rollback-support-blivet.webp)
 
 First, you need to create and mount the EFI partition. Select the **free space** and click the **+** sign to create a partition.
 
 Set the partition Size to **600** MiB, the Filesystem to **EFI System Partition**, and the Mountpoint to **/boot/efi**.
 
-[![Install Fedora with Snapshot and Rollback Support - EFI Partition](https://sysguides.com/wp-content/uploads/2024/04/02-install-fedora-40-with-snapshot-and-rollback-support-efi.webp)](https://sysguides.com/wp-content/uploads/2024/04/02-install-fedora-40-with-snapshot-and-rollback-support-efi.webp)
+[![Install Fedora with Snapshot and Rollback Support - EFI Partition](/Media/Fedora_40_btrfs_snapper/Install_Fedora_with_Snapshot_and_Rollback_Support_-_EFI_Partition.webp)](https://sysguides.com/wp-content/uploads/2024/04/02-install-fedora-40-with-snapshot-and-rollback-support-efi.webp)
 
 Then, you need to create a btrfs volume where you can create all the subvolumes needed to install Fedora Workstation 40.
 
 Select the free space again and click on the **+** sign to create a Btrfs volume. Set the Filesystem to **btrfs** and the Mountpoint to **/**. I used the entire remaining space. However, you can specify the size you want for the btrfs volume.
 
-[![Install Fedora with Snapshot and Rollback Support - BTRFS Partition](https://sysguides.com/wp-content/uploads/2024/04/03-install-fedora-40-with-snapshot-and-rollback-support-root.webp)](https://sysguides.com/wp-content/uploads/2024/04/03-install-fedora-40-with-snapshot-and-rollback-support-root.webp)
+[![Install Fedora with Snapshot and Rollback Support - BTRFS Partition](/Media/Fedora_40_btrfs_snapper/Install_Fedora_with_Snapshot_and_Rollback_Support_-_BTRFS_Partition.webp)](https://sysguides.com/wp-content/uploads/2024/04/03-install-fedora-40-with-snapshot-and-rollback-support-root.webp)
 
 Next, you must create a home subvolume. (1) Select the **Btrfs Volume** from the left panel, and (2) click on the **+** sign on the right panel.
 
-[![Install Fedora with Snapshot and Rollback Support - Create Subvolume](https://sysguides.com/wp-content/uploads/2024/04/04-install-fedora-40-with-snapshot-and-rollback-support-create-subvolume.webp)](https://sysguides.com/wp-content/uploads/2024/04/04-install-fedora-40-with-snapshot-and-rollback-support-create-subvolume.webp)
+[![Install Fedora with Snapshot and Rollback Support - Create Subvolume](/Media/Fedora_40_btrfs_snapper/Install_Fedora_with_Snapshot_and_Rollback_Support_-_Create_Subvolume.webp)](https://sysguides.com/wp-content/uploads/2024/04/04-install-fedora-40-with-snapshot-and-rollback-support-create-subvolume.webp)
 
 Create a home subvolume. Enter the Name as **home** and Mountpoint as **/home**. Click **OK** to finish.
 
-[![Install Fedora with Snapshot and Rollback Support - Home Subvolume](https://sysguides.com/wp-content/uploads/2024/04/05-install-fedora-40-with-snapshot-and-rollback-support-home-subvolume.webp)](https://sysguides.com/wp-content/uploads/2024/04/05-install-fedora-40-with-snapshot-and-rollback-support-home-subvolume.webp)
+[![Install Fedora with Snapshot and Rollback Support - Home Subvolume](/Media/Fedora_40_btrfs_snapper/Install_Fedora_with_Snapshot_and_Rollback_Support_-_Home_Subvolume.webp)](https://sysguides.com/wp-content/uploads/2024/04/05-install-fedora-40-with-snapshot-and-rollback-support-home-subvolume.webp)
 
 I will create the remaining subvolumes when the installation is finished. This is because the Anaconda installer does not allow you to create subvolumes with slashes (/) in their names, such as var/log.
 
@@ -152,11 +144,11 @@ For now, click **Done** to finish creating subvolumes.
 
 On the **SUMMARY OF CHANGES** screen, double-check that everything is properly defined. To finalize the changes, click the **Accept Changes** button.
 
-[![Install Fedora with Snapshot and Rollback Support - Summary](https://sysguides.com/wp-content/uploads/2024/04/06-install-fedora-40-with-snapshot-and-rollback-support-summary.webp)](https://sysguides.com/wp-content/uploads/2024/04/06-install-fedora-40-with-snapshot-and-rollback-support-summary.webp)
+[![Install Fedora with Snapshot and Rollback Support - Summary](/Media/Fedora_40_btrfs_snapper/Install_Fedora_with_Snapshot_and_Rollback_Support_-_Summary.webp)](https://sysguides.com/wp-content/uploads/2024/04/06-install-fedora-40-with-snapshot-and-rollback-support-summary.webp)
 
 You will be returned to the **INSTALLATION SUMMARY** screen. Press the **Begin Installation** button to start the installation process. The installation process will start. Just sit back and relax.
 
-[![Install Fedora with Snapshot and Rollback Support - Installation](https://sysguides.com/wp-content/uploads/2024/04/07-install-fedora-40-with-snapshot-and-rollback-support-installation.webp)](https://sysguides.com/wp-content/uploads/2024/04/07-install-fedora-40-with-snapshot-and-rollback-support-installation.webp)
+[![Install Fedora with Snapshot and Rollback Support - Installation](/Media/Fedora_40_btrfs_snapper/Install_Fedora_with_Snapshot_and_Rollback_Support_-_Installation.webp)](https://sysguides.com/wp-content/uploads/2024/04/07-install-fedora-40-with-snapshot-and-rollback-support-installation.webp)
 
 When the installation is finished, click the **Finish Installation** button and restart the system.
 
@@ -164,7 +156,7 @@ The last phase of the installation process will start. Click the **Start Setup*
 
 You will then be logged into the Fedora Workstation 40 with the all-new Gnome 46 desktop interface.
 
-[![Install Fedora with Snapshot and Rollback Support - GNOME 46](https://sysguides.com/wp-content/uploads/2024/04/08-install-fedora-40-with-snapshot-and-rollback-support-gnome-46.webp)](https://sysguides.com/wp-content/uploads/2024/04/08-install-fedora-40-with-snapshot-and-rollback-support-gnome-46.webp)
+[![Install Fedora with Snapshot and Rollback Support - GNOME 46](/Media/Fedora_40_btrfs_snapper/Install_Fedora_with_Snapshot_and_Rollback_Support_-_GNOME_46.webp)](https://sysguides.com/wp-content/uploads/2024/04/08-install-fedora-40-with-snapshot-and-rollback-support-gnome-46.webp)
 
 When booting your system, you may have noticed the following error message.
 
@@ -933,7 +925,7 @@ $ sudo ninja-build -C build install
 
 Make sure the Color Picker package has been installed properly. Enter `gcolor3` into the terminal and hit [ENTER]. The Color Picker app must be open and appear as shown.
 
-![Install Fedora with Snapshot and Rollback Support - Gcolor 3](https://sysguides.com/wp-content/uploads/2024/04/09-install-fedora-40-with-snapshot-and-rollback-support-gcolor3.webp)
+![Install Fedora with Snapshot and Rollback Support - Gcolor 3](/Media/Fedora_40_btrfs_snapper/Install_Fedora_with_Snapshot_and_Rollback_Support_-_Gcolor_3.webp)
 
 Now that you have successfully installed the Color Picker application, close the application and create 'post' snapshots for the / and /home directories.
 
@@ -1059,15 +1051,15 @@ Reboot the system.
 
 Your system should now fail to boot and display something like this.
 
-![Install Fedora with Snapshot and Rollback Support - Grub Error](https://sysguides.com/wp-content/uploads/2024/04/10-install-fedora-40-with-snapshot-and-rollback-support-grub-error.webp)
+![Install Fedora with Snapshot and Rollback Support - Grub Error](/Media/Fedora_40_btrfs_snapper/Install_Fedora_with_Snapshot_and_Rollback_Support_-_Grub_Error.webp)
 
 Return to the GRUB menu, and this time boot from snapshot #3.
 
-![Install Fedora with Snapshot and Rollback Support - Grub Snapshots Menu](https://sysguides.com/wp-content/uploads/2024/04/11-install-fedora-40-with-snapshot-and-rollback-support-grub-snapshots-menu.webp)
+![Install Fedora with Snapshot and Rollback Support - Grub Snapshots Menu](/Media/Fedora_40_btrfs_snapper/Install_Fedora_with_Snapshot_and_Rollback_Support_-_Grub_Snapshots_Menu.webp)
 
-![Install Fedora with Snapshot and Rollback Support - Select Snapshot No 3](https://sysguides.com/wp-content/uploads/2024/04/12-install-fedora-40-with-snapshot-and-rollback-support-grub-snapshots-item-3.webp)
+![Install Fedora with Snapshot and Rollback Support - Select Snapshot No 3](/Media/Fedora_40_btrfs_snapper/Install_Fedora_with_Snapshot_and_Rollback_Support_-_Select_Snapshot_No_3.webp)
 
-![Install Fedora with Snapshot and Rollback Support - Select Latest Kernel](https://sysguides.com/wp-content/uploads/2024/04/13-install-fedora-40-with-snapshot-and-rollback-support-grub-snapshots-latest-kernel.webp)
+![Install Fedora with Snapshot and Rollback Support - Select Latest Kernel](/Media/Fedora_40_btrfs_snapper/Install_Fedora_with_Snapshot_and_Rollback_Support_-_Select_Latest_Kernel.webp)
 
 Once you've finished booting, open the terminal.
 
@@ -1108,7 +1100,7 @@ $ sudo reboot
 
 This time, from the GRUB menu, boot normally. Also, notice that the Snapshots menu is missing. This is because of the rollback. We will fix it once we have booted into the operating system.
 
-![Install Fedora with Snapshot and Rollback Support - Grub Rollback](https://sysguides.com/wp-content/uploads/2024/04/14-install-fedora-40-with-snapshot-and-rollback-support-grub-rollback.webp)
+![Install Fedora with Snapshot and Rollback Support - Grub Rollback](/Media/Fedora_40_btrfs_snapper/Install_Fedora_with_Snapshot_and_Rollback_Support_-_Grub_Rollback.webp)
 
 The first thing you should do after a rollback is to update the grub.cfg file so that the GRUB menu snapshots are always in sync.
 
@@ -1375,11 +1367,11 @@ Go to the line that starts with the word 'linux', and move the parameter '{extra
 
 From this:
 
-![Install Fedora with Snapshot and Rollback Support - Issue 1](https://sysguides.com/wp-content/uploads/2023/11/14-install-fedora-with-snapshot-and-rollback-support-issue1-1.webp)
+![Install Fedora with Snapshot and Rollback Support - Issue 1](/Media/Fedora_40_btrfs_snapper/Install_Fedora_with_Snapshot_and_Rollback_Support_-_Issue_1.webp)
 
 To this:
 
-![Install Fedora with Snapshot and Rollback Support - Solution 1](https://sysguides.com/wp-content/uploads/2023/11/15-install-fedora-with-snapshot-and-rollback-support-solution1-1.webp)
+![Install Fedora with Snapshot and Rollback Support - Solution 1](/Media/Fedora_40_btrfs_snapper/Install_Fedora_with_Snapshot_and_Rollback_Support_-_Solution_1.webp)
 
 Then, on your keyboard, press Ctrl+x. You will be successfully booted into the operating system. Next, launch the terminal and execute the following command.
 
@@ -1469,7 +1461,7 @@ Tags: [BtrFS](https://sysguides.com/tag/btrfs) [Fedora](https://sysguides.com/ta
 
 Subscribe
 
-![guest](https://secure.gravatar.com/avatar/09a1a04d4e2a87165bbc18c0c6045468?s=56&d=mm&r=g)
+![guest](/Media/Fedora_40_btrfs_snapper/guest.jpg)
 
 109 Comments
 
