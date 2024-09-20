@@ -9,6 +9,7 @@ As a result, if you make a mistake while modifying the system configuration, ins
 
 So let's get started.
 
+
 ```table-of-contents
 title: Содержание
 style: nestedList # TOC style (nestedList|nestedOrderedList|inlineFirstLevel)
@@ -27,19 +28,22 @@ Fedora also creates a [SwapOnZRAM](https://fedoraproject.org/wiki/Changes/SwapO
 
 This is how the disk partition looks:
 
-**NAME         SIZE  FSTYPE  PARTTYPENAME      MOUNTPOINT**  
+```
+NAME         SIZE  FSTYPE  PARTTYPENAME      MOUNTPOINT
 /dev/vda     128G                           
 /dev/vda1    600M  vfat    EFI System        /boot/efi  
 /dev/vda2  127.4G  btrfs   Linux filesystem  /
+```
 
 On the Linux partition (/dev/vda2), I'll create a btrfs file system. Then, on the btrfs file system, I'll create the following subvolumes to keep them out of root file system snapshots.
 
-**NAME             MOUNTPOINT                 TYPE**  
+```
+NAME             MOUNTPOINT                 TYPE  
 [main]           /                          mainvolume  
 home             /home                      subvolume  
-opt                         /opt                       subvolume  
-cache                    /var/cache                 subvolume  
-crash                     /var/crash                 subvolume  
+opt              /opt                       subvolume  
+cache            /var/cache                 subvolume  
+crash            /var/crash                 subvolume  
 AccountsService  /var/lib/AccountsService   subvolume  
 gdm              /var/lib/gdm               subvolume  
 images           /var/lib/libvirt/images    subvolume  
@@ -50,6 +54,7 @@ www              /var/www                   subvolume
 .mozilla         /home/$USER/.mozilla       subvolume  
 .snapshots       /.snapshots                subvolume  
 .snapshots       /home/.snapshots           subvolume
+```
 
 The directories for which subvolumes are created and the reasons for doing so are listed below. For more information, visit [this website](https://refspecs.linuxfoundation.org/FHS_3.0/fhs/index.html).
 
