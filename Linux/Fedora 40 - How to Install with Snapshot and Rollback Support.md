@@ -37,9 +37,9 @@ On the Linux partition (/dev/vda2), I'll create a btrfs file system. Then, on th
 **NAME             MOUNTPOINT                 TYPE**  
 [main]           /                          mainvolume  
 home             /home                      subvolume  
-opt              /opt                       subvolume  
-cache            /var/cache                 subvolume  
-crash            /var/crash                 subvolume  
+opt                         /opt                       subvolume  
+cache                    /var/cache                 subvolume  
+crash                     /var/crash                 subvolume  
 AccountsService  /var/lib/AccountsService   subvolume  
 gdm              /var/lib/gdm               subvolume  
 images           /var/lib/libvirt/images    subvolume  
