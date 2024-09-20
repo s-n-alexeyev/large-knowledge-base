@@ -29,7 +29,7 @@ SELINUXTYPE=targeted
 ```
 
 >Save the change, and restart your system:
-``` bash
+```bash
 reboot
 ```
 
@@ -58,11 +58,11 @@ sudo dnf autoremove && sudo dnf clean all
 
 Добавляем автоматическое обновление зеркал в фоне (по идеи должно ускорить dnf)
 
-```
+```bash
 sudo dnf install dnf-automatic
 ```
 
-```
+```bash
 sudo systemctl enable dnf-automatic.timer
 ```
 
@@ -116,7 +116,6 @@ sudo yum install onlyoffice-desktopeditors -y
 
 ```bash
 sudo dnf copr enable boria138/portproton
-
 sudo dnf install portproton
 ```
 
@@ -124,7 +123,6 @@ sudo dnf install portproton
 # nVidia
 
 ```bash
-
 # and reboot if you are not on the latest kernel
 sudo dnf update -y 
 
@@ -287,4 +285,12 @@ sudo mkdir disabled-libraries
 sudo mv libglib* disabled-libraries
 sudo mv libgio* disabled-libraries
 sudo mv libgmodule* disabled-libraries
+```
+
+---
+# Ventoy
+
+```bash
+sudo dnf copr enable karlisk/ventoy
+sudo dnf install ventoy
 ```
