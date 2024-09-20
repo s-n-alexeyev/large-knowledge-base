@@ -923,8 +923,11 @@ As you can see in the last line, the /etc/hosts file in the current snapshot is 
 
 To replace the /etc/hosts file with the one in snapshot #3, use the following command.
 
-```
+```bash
 sudo snapper undochange 3..0 /etc/hosts
+```
+
+```
 create:0 modify:1 delete:0
 ```
 
