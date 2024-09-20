@@ -1,0 +1,961 @@
+# Пакетный менеджер и установка пакетов[](https://russianfedora.github.io/FAQ/package-manager.html#package-manager "Permalink to this heading")
+
+
+```table-of-contents
+title: Содержание
+style: nestedList # TOC style (nestedList|nestedOrderedList|inlineFirstLevel)
+minLevel: 0 # Include headings from the specified level
+maxLevel: 0 # Include headings up to the specified level
+includeLinks: true # Make headings clickable
+debugInConsole: false # Print debug info in Obsidian console
+```
+
+## Какой менеджер пакетов используется в настоящее время?
+
+Dnf, являющийся, в свою очередь, форком Yum.
+
+## Могу ли я использовать Yum в Fedora?
+
+Начиная с Fedora 24, yum присутствует в Fedora лишь как символическая ссылка на dnf, сохранённая для обратной совместимости.
+
+## Что такое Flatpak пакеты?
+
+Flatpak – это современный прогрессивный формат самодостаточных пакетов для GNU/Linux. Он поддерживает рантаймы, изоляцию внутри песочниц, установку без наличия прав суперпользователя и многое другое.
+
+## Какие преимущества и недостатки у Flatpak пакетов?[](https://russianfedora.github.io/FAQ/package-manager.html#flatpak-advantages "Permalink to this heading")
+
+Преимущества:
+
+> - поддерживает динамическую линковку с большим количеством библиотек из рантаймов, что решает проблемы с лицензированием, их поддержкой в актуальном состоянии и исправлением в них ошибок, а также уязвимостей;
+>     
+> - библиотеки, для которых нет рантаймов, могут быть упакованы непосредственно внутрь флатпака и подгружаться по мере необходимости;
+>     
+> - Flatpak позволяет установить разные версии приложений одновременно;
+>     
+> - для установки не требуются права суперпользователя;
+>     
+> - поддерживается контейнерная изоляция приложения внутри собственной песочницы;
+>     
+> - приложению могут быть выданы только необходимые права доступа и разрешения;
+>     
+> - могут использоваться на любом дистрибутиве GNU/Linux без перекомпиляции и перекомпоновки;
+>     
+> - лёгкое создание и хостинг собственных репозиториев.
+>     
+
+Недостатки:
+
+> - из-за того, что Flatpak пакеты по определению должны запускаться на разных дистрибутивах, они содержат в себе все зависимости либо в виде рантаймов, либо внутри флатпака;
+>     
+> - в публичных репозиториях (например Flathub) мейнтейнеры не занимаются обновлением своих пакетов до актуальных рантаймов, из-за чего уже при установке нескольких приложений в системе появится куча различных версий одних и тех же рантаймов, что тратит очень много места на диске впустую;
+>     
+> - из-за использования разных рантаймов полноценно не используется разделяемая память библиотек, т.е. каждое приложение загружает все свои зависимости в собственное адресное пространство;
+>     
+> - отсутствует возможность использования общесистемных настроек среды для контейнеризированных приложений;
+>     
+> - отсутствует возможность использования уже установленных в системе библиотек.
+>     
+
+## Можно ли устанавливать программы посредством make install?
+
+Категорически не рекомендуется, ибо:
+
+> 1. make install порождает в системе кучу никем и ничем не отслеживаемых файлов: бинарников, конфигов, прочих файлов. Это в большинстве случаев приведёт к множеству проблем при обновлении или удалении;
+>     
+> 2. make install не учитывает файлы других пакетов и может запросто перезаписать или удалить в системе что-то важное, т.к. действие выполняется с правами суперпользователя;
+>     
+> 3. make install не ведёт никакого журнала действий, поэтому всё, что оно произвело, невозможно полноценно откатить;
+>     
+> 4. установленные через make install приложения очень часто невозможно удалить вообще, т.к. многие разработчики не делают правило make uninstall, что, в принципе, верно ибо оно не нужно большинству, а если и делают, то оно способно лишь удалить скопированные файлы. Изменения конфигов, других файлов и пр. откатить оно не способно.
+>     
+
+Установка пакетов штатным пакетным менеджеров имеет множество преимуществ:
+
+> 1. при установке пакетный менеджер разрешает все зависимости, добавляет нужные, устраняет конфликты;
+>     
+> 2. перед выполнением установки пакетный менеджер проверяет, чтобы устанавливаемый пакет не вмешивался в работу других, а также самой системы. Если это так, он не будет установлен;
+>     
+> 3. во время установки все изменения, сделанные пакетом, вносятся в специальную базу данных пакетного менеджера и при удалении или обновлении будут учтены;
+>     
+> 4. при удалении пакета производится полный откат действий, предпринятых при установке (даже если были изменены какие-то конфиги, эти действия будут откачены полностью, т.к. хранится diff внутри базы ПМ);
+>     
+> 5. при обновлении перезаписываются только изменённые файлы. Более того, может быть скачан и установлен только дифф. изменений;
+>     
+> 6. если при обновлении пакета возникает конфликт какого-то конфига, он не будет молча перезаписан, а будет применён патч на существующий, либо, если это невозможно, будет запрошено действие у пользователя.
+>     
+
+## Можно ли использовать PIP или NPM для установки программ и модулей?
+Нет. Глобальная установка чего-либо через pip (pip2, pip3) либо npm по своей деструктивности аналогична [make install](https://russianfedora.github.io/FAQ/package-manager.html#make-install).
+
+## Нужной Python библиотеки нет в репозиториях. Как можно безопасно использовать PIP?
+
+В таком случае рекомендуется либо локальная установка модулей посредством pip с параметром `--user`, либо использование [Python Virtual Environment](https://russianfedora.github.io/FAQ/package-manager.html#python-venv):
+
+pip3 --user install foo-bar
+
+Установленные таким способом модули будут размещены в домашнем каталоге пользователя и не помешают работе системы.
+
+## Как правильно применять Python Virtual Environment?
+
+Установим пакеты **python3-virtualenv** и **python3-setuptools**:
+
+sudo dnf install python3-setuptools python3-virtualenv
+
+Создадим виртуальное окружение:
+
+python3 -m venv foo-bar
+
+Запустим его:
+
+source foo-bar/bin/activate
+
+Теперь внутри него допускается использовать любые механизмы установки пакетов Python: pip, install.py и т.д.
+
+Здесь **foo-bar** – название venv контейнера. Допускается создавать неограниченное их количество.
+
+## Как удалить установленные пакеты из Python Virtual Environment?
+Запустим [Python Virtual Environment](https://russianfedora.github.io/FAQ/package-manager.html#python-venv):
+
+source foo-bar/bin/activate
+
+Создадим и экспортируем в файл `foo-bar-installed.txt` список установленных пакетов из PIP:
+
+pip3 freeze > foo-bar-installed.txt
+
+Удалим данные пакеты:
+
+pip3 uninstall -y -r foo-bar-installed.txt
+rm -f foo-bar-installed.txt
+
+## Как правильно обновлять систему?[](https://russianfedora.github.io/FAQ/package-manager.html#dnf-update "Permalink to this heading")
+
+Fedora поддерживает два вида обновлений: через консоль средствами пакетного [менеджера dnf](https://russianfedora.github.io/FAQ/package-manager.html#pkg-manager), либо через графические менеджеры, основанные на PackageKit.
+
+Обновление системы средствами dnf:
+
+sudo dnf upgrade --refresh
+
+При этом [настоятельно не рекомендуется](https://russianfedora.github.io/FAQ/package-manager.html#dnf-gui-updates) запускать процесс в эмуляторах терминала графической среды.
+
+## Как часто следует устанавливать обновления системы?[](https://russianfedora.github.io/FAQ/package-manager.html#update-interval "Permalink to this heading")
+
+Чем чаще устанавливаются обновления, тем меньше проблем будет при этом за счёт плавной миграции между файлами конфигурации приложений, сервисов и т.д.
+
+Мы рекомендуем устанавливать [обновления системы](https://russianfedora.github.io/FAQ/package-manager.html#dnf-update) ежедневно.
+
+## Можно ли автоматизировать установку критических обновлений?[](https://russianfedora.github.io/FAQ/package-manager.html#update-auto "Permalink to this heading")
+
+Да. Установим специальный сервис для автоматической проверки и установки обновлений:
+
+sudo dnf install dnf-automatic
+
+Активируем systemd-таймер:
+
+sudo systemctl enable dnf-automatic.timer
+
+Все параметры могут быть тонко настроены в конфигурационном файле `/etc/dnf/automatic.conf`.
+
+## Как мне обновить Fedora до новой версии?[](https://russianfedora.github.io/FAQ/package-manager.html#fedora "Permalink to this heading")
+
+Процесс обновления стандартен и максимально безопасен:
+
+sudo dnf upgrade --refresh
+sudo dnf install dnf-plugin-system-upgrade
+sudo dnf system-upgrade download --releasever=$(($(rpm -E %fedora) + 1))
+sudo dnf system-upgrade reboot
+
+Весь процесс установки будет выполнен во время следующей загрузки системы.
+
+Если произошёл какой-то конфликт, то рекомендуется очистить все кэши dnf:
+
+sudo dnf clean all
+
+## Возможно ли сделать откат к предыдущей версии Fedora?[](https://russianfedora.github.io/FAQ/package-manager.html#dist-downgrade "Permalink to this heading")
+
+Нет, это действие официально не поддерживается.
+
+Для отката на предыдущую версию необходимо восстановить созданную ранее резервную копию.
+
+## Как мне обновить Fedora до Rawhide?[](https://russianfedora.github.io/FAQ/package-manager.html#fedora-rawhide "Permalink to this heading")
+
+Допускается обновление с любой поддерживаемой версии Fedora до Rawhide. Следует помнить, что это действие необратимо. Пути назад на стабильный выпуск без полной переустановки системы уже не будет.
+
+sudo dnf upgrade --refresh
+sudo dnf install dnf-plugin-system-upgrade
+sudo dnf system-upgrade download --releasever=rawhide
+sudo dnf system-upgrade reboot
+
+Весь процесс установки будет выполнен во время следующей загрузки системы.
+
+## Возможно ли откатиться с Rawhide назад на обычный релиз?[](https://russianfedora.github.io/FAQ/package-manager.html#rawhide "Permalink to this heading")
+
+Нет.
+
+## Можно ли обновляться через несколько версий?[](https://russianfedora.github.io/FAQ/package-manager.html#upgrade-jump "Permalink to this heading")
+
+Официально поддерживается лишь [обновление](https://russianfedora.github.io/FAQ/package-manager.html#dist-upgrade) с текущей на следующую версию. Если требуется выполнить обновление сразу через несколько релизов дистрибутива, то настоятельно рекомендуется делать это последовательно (например F27 -> F28 -> F29 -> F30 и т.д.).
+
+## Когда лучше выполнять обновление при выходе новой версии дистрибутива?[](https://russianfedora.github.io/FAQ/package-manager.html#upgrade-time "Permalink to this heading")
+
+Рекомендуется [обновлять систему](https://russianfedora.github.io/FAQ/package-manager.html#dist-upgrade) до новой версии Fedora в течение месяца после её официального релиза.
+
+## При обновлении dnf ругается на дубликаты пакетов.[](https://russianfedora.github.io/FAQ/package-manager.html#dnf "Permalink to this heading")
+
+Установим утилиту **package-cleanup**:
+
+sudo dnf install dnf-utils
+
+Удалим дубликаты и повреждённые пакеты:
+
+sudo package-cleanup --cleandupes
+
+## База RPM оказалась повреждена. Как восстановить?[](https://russianfedora.github.io/FAQ/package-manager.html#rpm "Permalink to this heading")
+
+Для запуска пересборки базы данных RPM следует выполнить:
+
+sudo rpm --rebuilddb
+
+Настоятельно рекомендуется сделать резервную копию каталога `/var/lib/rpm` перед этим действием.
+
+## Dnf сохраняет старые ядра. Это нормально?[](https://russianfedora.github.io/FAQ/package-manager.html#dnf-kernel-store "Permalink to this heading")
+
+Да. По умолчанию dnf сохраняет 3 последних ядра, чтобы в случае сбоя была возможность загрузки в более старое для разрешения проблем и восстановления работы системы.
+
+## Как можно уменьшить количество сохраняемых ядер?[](https://russianfedora.github.io/FAQ/package-manager.html#dnf-kernel-change "Permalink to this heading")
+
+Откроем файл `/etc/dnf/dnf.conf` в текстовом редакторе:
+
+sudoedit /etc/dnf/dnf.conf
+
+Изменим значение переменной `installonly_limit`:
+
+installonly_limit=2
+
+Минимально допустимое значение – **2** (будут сохраняться два ядра: текущее и предыдущее).
+
+## Как настроить работу dnf через прокси?[](https://russianfedora.github.io/FAQ/package-manager.html#dnf-proxy "Permalink to this heading")
+
+Откроем файл `/etc/dnf/dnf.conf` в текстовом редакторе:
+
+sudoedit /etc/dnf/dnf.conf
+
+Изменим значение переменной `proxy` (при отсутствии добавим):
+
+proxy=socks5://localhost:8080
+
+Поддерживаются HTTP, HTTPS и SOCKS.
+
+Если используемый прокси-сервер требует проверки подлинности (аутентификации), то укажем также и авторизационные данные для подключения:
+
+proxy_username=LOGIN
+proxy_password=PASSWORD
+
+Здесь **LOGIN** – логин пользователя на прокси-сервере, а **PASSWORD** – его пароль.
+
+Обычно DNF корректно определяет тип авторизации, используемый прокси-сервером, но иногда (в случае HTTP-прокси) этот механизм работает некорретно. В этом случае достаточно указать ее тип:
+
+proxy_auth_method=METHOD
+
+Здесь **METHOD** – название метода аутентификации, используемого прокси-сервером.
+
+Список часто используемых методов:
+
+> - `basic` – базовая HTTP аутентификация, вероятно вы используете именно этот метод;
+>     
+> - `digest` – HTTP дайджест-аутентификация;
+>     
+> - `ntlm` – NTLM HTTP аутентификация, активно применяется в среде продуктов Microsoft.
+>     
+
+Подробнее о поддерживаемых методах аутентификации см. [в документации](https://dnf.readthedocs.io/en/latest/conf_ref.html#options-for-both-main-and-repo).
+
+## Как отключить установку слабых зависимостей?[](https://russianfedora.github.io/FAQ/package-manager.html#dnf-weakdeps "Permalink to this heading")
+
+Откроем файл `/etc/dnf/dnf.conf` в текстовом редакторе:
+
+sudoedit /etc/dnf/dnf.conf
+
+Изменим значение переменной `install_weak_deps` (при отсутствии добавим):
+
+install_weak_deps=0
+
+## Как мне запретить установку обновлений для ряда пакетов?[](https://russianfedora.github.io/FAQ/package-manager.html#dnf-exclude "Permalink to this heading")
+
+### Классический способ[](https://russianfedora.github.io/FAQ/package-manager.html#id18 "Permalink to this heading")
+
+Откроем файл `/etc/dnf/dnf.conf` в текстовом редакторе:
+
+sudoedit /etc/dnf/dnf.conf
+
+Изменим значение переменной `exclude` (при отсутствии добавим):
+
+exclude=kernel* PackageKit*
+
+Здесь вместо примера укажем нужные пакеты, разделяя их пробелом. Допускаются стандартные символы подстановки.
+
+### Современный способ[](https://russianfedora.github.io/FAQ/package-manager.html#id19 "Permalink to this heading")
+
+Установим плагин [versionlock](https://dnf-plugins-core.readthedocs.io/en/latest/versionlock.html) для dnf:
+
+sudo dnf install python3-dnf-plugin-versionlock
+
+Отметим пакеты, версии которых будут закреплены:
+
+sudo dnf versionlock add kernel
+
+Отметим пакеты, которые будут игнорироваться в любых транзакциях:
+
+sudo dnf versionlock exclude PackageKit
+
+## Что такое Delta RPM?[](https://russianfedora.github.io/FAQ/package-manager.html#delta-rpm "Permalink to this heading")
+
+Технология Delta RPM позволяет сократить расход трафика при _регулярной_ установке обновлений за счёт того, что скачиваться будет не новая версия целиком, а лишь разница между ней и установленной в системе.
+
+К сожалению, на медленных устройствах: HDD, eMMC, SD и т.д., это значительно замедляет процесс [установки обновлений](https://russianfedora.github.io/FAQ/package-manager.html#dnf-update), поэтому функцию можно [отключить](https://russianfedora.github.io/FAQ/package-manager.html#drpm-disable).
+
+## Как отключить использование Delta RPM?[](https://russianfedora.github.io/FAQ/package-manager.html#drpm-disable "Permalink to this heading")
+
+Откроем файл `/etc/dnf/dnf.conf` в текстовом редакторе:
+
+sudoedit /etc/dnf/dnf.conf
+
+Изменим значение переменной `deltarpm` (при отсутствии добавим):
+
+deltarpm=0
+
+## Как можно вручную удалить старое ядро?[](https://russianfedora.github.io/FAQ/package-manager.html#dnf-kernel-remove "Permalink to this heading")
+
+Для ручного удаления старого ядра можно выполнить:
+
+sudo dnf remove kernel-6.0.8* kernel-core-6.0.8* kernel-modules-6.0.8* kernel-devel-6.0.8*
+
+Здесь **6.0.8** – это версия удаляемого ядра.
+
+## Какие сторонние репозитории лучше всего подключать?[](https://russianfedora.github.io/FAQ/package-manager.html#rd-repositories "Permalink to this heading")
+
+См. [здесь](https://www.easycoding.org/2017/03/24/poleznye-storonnie-repozitorii-dlya-fedora.html).
+
+## Как работать с Flatpak пакетами в Fedora?[](https://russianfedora.github.io/FAQ/package-manager.html#flatpak-fedora "Permalink to this heading")
+
+См. [здесь](https://www.easycoding.org/2018/07/25/rabotaem-s-flatpak-paketami-v-fedora.html).
+
+## В системе нет кодеков мультимедиа. Как их установить?[](https://russianfedora.github.io/FAQ/package-manager.html#multimedia-codecs "Permalink to this heading")
+
+Для начала следует подключить репозиторий [RPM Fusion](https://russianfedora.github.io/FAQ/generic-info.html#rpmfusion), после чего установить кодеки из группы **multimedia** и **sound-and-video**:
+
+sudo dnf groupupdate multimedia sound-and-video
+
+## Как отключить автообновление кэшей dnf?[](https://russianfedora.github.io/FAQ/package-manager.html#dnf-caches "Permalink to this heading")
+
+См. [здесь](https://www.easycoding.org/2016/01/27/otklyuchaem-avto-obnovlenie-v-dnf-pod-fedora-22.html).
+
+## Что лучше: dkms или akmods?[](https://russianfedora.github.io/FAQ/package-manager.html#dkms-akmods "Permalink to this heading")
+
+Конечно akmods, т.к. он автоматически собирает и устанавливает полноценные RPM пакеты.
+
+## Каким способом можно обновить пакет из тестовых репозиториев?[](https://russianfedora.github.io/FAQ/package-manager.html#updates-testing "Permalink to this heading")
+
+Чтобы установить обновление из Fedora Testing, необходимо временно подключить соответствующий репозиторий:
+
+sudo dnf upgrade --refresh foo-bar* --enablerepo=updates-testing
+
+Репозиторий **updates-testing** подключается однократно только для данного сеанса работы dnf.
+
+## Как получить список файлов установленного пакета?[](https://russianfedora.github.io/FAQ/package-manager.html#dnf-list-contents "Permalink to this heading")
+
+sudo dnf repoquery -l foo-bar
+
+## Как узнать в каком пакете находится конкретный файл?[](https://russianfedora.github.io/FAQ/package-manager.html#dnf-find-file "Permalink to this heading")
+
+Для этого можно воспользоваться плагином dnf repoquery:
+
+sudo dnf repoquery -f */имя_файла
+
+Для поиска бинарников и динамических библиотек можно применять альтернативный метод:
+
+sudo dnf provides */имя_бинарника
+
+## Можно ли установить несколько версий Java в систему?[](https://russianfedora.github.io/FAQ/package-manager.html#java "Permalink to this heading")
+
+Да, это возможно. В настоящее время поддерживаются следующие версии Java. Допускается их одновременная установка.
+
+Java 8:
+
+sudo dnf install java-1.8.0-openjdk
+
+Java 11:
+
+sudo dnf install java-11-openjdk
+
+Java 17:
+
+sudo dnf install java-17-openjdk
+
+После установки укажем необходимую версию [Java по умолчанию](https://russianfedora.github.io/FAQ/administration.html#alternatives-java).
+
+## Как вывести список пакетов из определённого репозитория?[](https://russianfedora.github.io/FAQ/package-manager.html#dnf-repo-contents "Permalink to this heading")
+
+Вывод полного списка пакетов из репозитория (на примере rpmfusion-free):
+
+sudo dnf repo-pkgs rpmfusion-free list
+
+Вывод полного списка установленных пакетов из репозитория (также на примере rpmfusion-free):
+
+sudo dnf repo-pkgs rpmfusion-free list installed
+
+## Как вывести список пакетов, установленных не из репозиториев, либо удалённых из них?[](https://russianfedora.github.io/FAQ/package-manager.html#dnf-repo-orphans "Permalink to this heading")
+
+Выполним в терминале:
+
+sudo dnf list extras
+
+## Как очистить журнал транзакций dnf?[](https://russianfedora.github.io/FAQ/package-manager.html#dnf-transactions-cleanup "Permalink to this heading")
+
+Для очистки журнала транзакций `dnf history`, выполним:
+
+sudo rm -f /var/lib/dnf/history.sql*
+
+## Как сохранить список установленных пакетов, чтобы легко установить их после переустановки системы?[](https://russianfedora.github.io/FAQ/package-manager.html#dnf-list-export "Permalink to this heading")
+
+Экспортируем список установленных вручную пакетов:
+
+sudo dnf repoquery --qf "%{name}" --userinstalled > ~/packages.lst
+
+Копируем любым способом получившийся файл **~/packages.lst** на другое устройство.
+
+Устанавливаем отсутствующие пакеты:
+
+sudo dnf install $(cat ~/packages.lst)
+
+## Можно ли скачать, но не устанавливать пакет из репозитория?[](https://russianfedora.github.io/FAQ/package-manager.html#dnf-download-only "Permalink to this heading")
+
+Скачивание пакета foo-bar в текущий рабочий каталог:
+
+dnf download foo-bar
+
+Скачивание пакета foo-bar в текущий рабочий каталог вместе со всеми его зависимостями, отсутствующими в системе в настоящий момент:
+
+dnf download --resolve foo-bar
+
+Скачивание пакета foo-bar вместе со всеми зависимостями в указанный каталог:
+
+dnf download --resolve foo-bar --downloaddir ~/mypkg
+
+Для работы плагина dnf-download права суперпользователя не требуются.
+
+## Как правильно включать или отключать репозитории?[](https://russianfedora.github.io/FAQ/package-manager.html#dnf-manage-repo "Permalink to this heading")
+
+Включить репозиторий постоянно (на примере _foo-bar_):
+
+sudo dnf config-manager --set-enabled foo-bar
+
+Отключить репозиторий постоянно:
+
+sudo dnf config-manager --set-disabled foo-bar
+
+Временно подключить репозиторий и установить пакет из него:
+
+sudo dnf install --refresh foo-bar --enablerepo=foo-bar
+
+Опциональный параметр `--refresh` добавляется для принудительного обновления кэшей dnf.
+
+## Что такое модульные репозитории?[](https://russianfedora.github.io/FAQ/package-manager.html#dnf-modular "Permalink to this heading")
+
+Репозитории Fedora Modular позволяют установить в систему несколько различных версий определённых пакетов. Они включены по умолчанию начиная с Fedora 29. Поддержка модулей объявлена устаревшей с Fedora 33.
+
+Вывод списка доступных модулей:
+
+sudo dnf module list
+
+Установка пакета в виде модуля (на примере _nodejs_):
+
+sudo dnf module install nodejs:6/default
+
+Более подробную информацию о модулях можно найти [здесь](https://docs.fedoraproject.org/en-US/modularity/using-modules/).
+
+## Мне не нужна поддержка модулей. Как их можно отключить?[](https://russianfedora.github.io/FAQ/package-manager.html#dnf-disable-modules "Permalink to this heading")
+
+Отключим все модули:
+
+sudo dnf module reset '*'
+
+Удалим пакет с модульными репозиториями:
+
+sudo dnf remove fedora-repos-modular
+
+Произведём синхронизацию:
+
+sudo dnf distro-sync
+
+## Можно ли устанавливать обновления через dnf из графического режима?[](https://russianfedora.github.io/FAQ/package-manager.html#dnf-gui-updates "Permalink to this heading")
+
+Устанавливать обновления посредством dnf из графического режима конечно же возможно, однако мы настоятельно не рекомендуем этого делать. В случае любого сбоя и падения приложения с эмулятором терминала, упадёт и менеджер пакетов, после чего ваша система может быть серьёзно повреждена и станет непригодной для использования.
+
+Для установки обновлений посредством dnf рекомендуется два варианта:
+
+> - переключение в консоль фреймбуфера посредством нажатия комбинации **Ctrl+Alt+F3** (для возврата в графический режим – **Ctrl+Alt+F1**), выполнение в ней нового входа в систему и запуск процесса обновления;
+>     
+> - использование screen сессии. Тогда, в случае падения эмулятора терминала, процесс не будет прерван.
+>     
+
+## Безопасно ли использовать основанные на PackageKit модули обновления из графического режима?[](https://russianfedora.github.io/FAQ/package-manager.html#packagekit "Permalink to this heading")
+
+Да, использование Gnome Software, Apper, Discover и других, основанных на PackageKit, для обновления системы из графического режима полностью безопасно, т.к. они сначала скачивают файлы обновлений в свой кэш, а для непосредственной установки уже используют специальный сервис. В случае падения GUI приложения, никаких повреждений не будет.
+
+## Как правильно тестировать новые версии пакетов в Fedora?[](https://russianfedora.github.io/FAQ/package-manager.html#fedora-bodhi "Permalink to this heading")
+
+Все обновления сначала попадают в [тестовые репозитории](https://russianfedora.github.io/FAQ/package-manager.html#updates-testing), поэтому их сначала нужно [установить](https://russianfedora.github.io/FAQ/package-manager.html#dnf-advisory).
+
+По результатам тестирования следует перейти в [Fedora Bodhi](https://bodhi.fedoraproject.org/), выбрать соответствующее обновление и либо добавить ему карму (работает исправно), либо отнять (возникли какие-то проблемы), а также опционально составить краткий отчёт (особенно если обновление работает не так, как ожидалось).
+
+Также для упрощения работы тестировщиков была создана утилита [Fedora Easy Karma](https://fedoraproject.org/wiki/Fedora_Easy_Karma), позволяющая работать с Bodhi из командной строки.
+
+## Как проще установить определённое обновление из тестового репозитория?[](https://russianfedora.github.io/FAQ/package-manager.html#dnf-advisory "Permalink to this heading")
+
+Проще всего найти данное обновление в [Bodhi](https://russianfedora.github.io/FAQ/package-manager.html#fedora-bodhi), затем выполнить:
+
+sudo dnf upgrade --refresh --enablerepo=updates-testing --advisory=FEDORA-2018-XXXXXXXXX
+
+Здесь **FEDORA-2018-XXXXXXXXX** – уникальный идентификатор обновления из Bodhi.
+
+## Как скачать определённую сборку пакета из Koji?[](https://russianfedora.github.io/FAQ/package-manager.html#koji "Permalink to this heading")
+
+Для начала установим клиент [Koji](https://russianfedora.github.io/FAQ/development.html#koji-about):
+
+sudo dnf install koji
+
+Выведем список всех успешно завершённых сборок пакета **kernel** за последнюю неделю:
+
+koji list-builds --package=kernel --after=$(($(date +%s) - 604800)) --state=COMPLETE
+
+Скачаем выбранную сборку для используемой архитектуры:
+
+koji download-build kernel-6.0.8-300.fc38.x86_64 --arch=$(uname -m)
+
+## Почему некоторые пакеты в Fedora не обновляют до новейших версий?[](https://russianfedora.github.io/FAQ/package-manager.html#package-version "Permalink to this heading")
+
+Согласно [Fedora updates policy](https://docs.fedoraproject.org/en-US/fesco/Updates_Policy/#stable-releases), запрещается обновлять пакеты в пределах стабильного выпуска Fedora до новых мажорных версий кроме тех, для которых было выдано [специальное разрешение](https://russianfedora.github.io/FAQ/package-manager.html#upgrades-allowed) от [FESCo](https://russianfedora.github.io/FAQ/generic-info.html#fesco).
+
+## Какие пакеты разрешено обновлять до новых версий в пределах стабильного выпуска?[](https://russianfedora.github.io/FAQ/package-manager.html#upgrades-allowed "Permalink to this heading")
+
+В настоящее время [определён список пакетов](https://docs.fedoraproject.org/en-US/fesco/Updates_Policy/#exceptions-list), для которых разрешены обновления до новых версий в пределах стабильного выпуска Fedora:
+
+> - ядро Linux;
+>     
+> - весь KDE стек (включая Qt);
+>     
+> - веб-браузеры и почтовые клиенты.
+>     
+
+## При запуске dnf без прав суперпользователя он заново загружает и обновляет кэши. Это нормально?[](https://russianfedora.github.io/FAQ/package-manager.html#dnf-user "Permalink to this heading")
+
+Да. Если необходимо, чтобы dnf использовал глобальные общесистемные кэши репозиториев, следует применять параметр `-C`, например:
+
+dnf -C search foo
+
+## Как удалить все установленные в системе 32-битные пакеты?[](https://russianfedora.github.io/FAQ/package-manager.html#dnf-remove-32bit "Permalink to this heading")
+
+Удаление всех 32-битных пакетов из системы:
+
+sudo dnf remove "*.i686"
+
+## Как вывести список установленных пакетов, от которых никто не зависит?[](https://russianfedora.github.io/FAQ/package-manager.html#dnf-leaves "Permalink to this heading")
+
+Установим пакет с плагином **dnf-leaves**:
+
+sudo dnf install python3-dnf-plugin-leaves
+
+Выведем список установленных пакетов, от которых никто не зависит:
+
+dnf -C leaves
+
+## Можно ли создать собственное зеркало репозиториев Fedora?[](https://russianfedora.github.io/FAQ/package-manager.html#dnf-mirror "Permalink to this heading")
+
+Да, см. [здесь](https://fedoraproject.org/wiki/Infrastructure/Mirroring).
+
+## Безопасно ли устанавливать обновления через небезопасные соединения?[](https://russianfedora.github.io/FAQ/package-manager.html#dnf-signatures "Permalink to this heading")
+
+Да. Все пакеты в репозиториях Fedora подписываются цифровыми подписями GnuPG, которые в обязательном порядке проверяются перед установкой и обновлением.
+
+В случае если пакет был заменён, он не сможет быть установлен, т.к. его ЭЦП не будет соответстствовать подписи репозитория.
+
+## Безопасно ли использовать COPR репозитории?[](https://russianfedora.github.io/FAQ/package-manager.html#copr "Permalink to this heading")
+
+Т.к. все пакеты в [COPR](https://russianfedora.github.io/FAQ/generic-info.html#copr) создаются простыми пользователями, их качество значительно отличается. Есть как хорошие репозитории, так и те, что способны вывести систему из строя.
+
+Перед подключением мы рекомендуем проверить является ли владелец репозитория мейнтейнером Fedora или нет и, если нет, отказаться от этого.
+
+## Можно ли использовать в Fedora Snap пакеты?[](https://russianfedora.github.io/FAQ/package-manager.html#fedora-snap "Permalink to this heading")
+
+Установим пакет **snapd**:
+
+sudo dnf install snapd
+
+Для работы некоторых приложений требуется наличие символической ссылки `/snap`, поэтому создадим её:
+
+sudo ln -s /var/lib/snapd/snap /snap
+
+Установим приложение **foo-bar** из [Snap Store](https://snapcraft.io/store):
+
+sudo snap install foo-bar
+
+Внимание! Вне Ubuntu все Snap-пакеты выполняются без какой-либо изоляции из-за отсутствия поддержки AppArmor. Более подробно об этом можно прочитать в [сравнении самодостаточных пакетов](https://russianfedora.github.io/FAQ/package-manager.html#flatpak-vs-snap).
+
+## Безопасно ли устанавливать и удалять пакеты группами?[](https://russianfedora.github.io/FAQ/package-manager.html#dnf-groups "Permalink to this heading")
+
+[Устанавливать](https://russianfedora.github.io/FAQ/package-manager.html#dnf-group-install) пакеты группами абсолютно безопасно, однако [удалять](https://russianfedora.github.io/FAQ/package-manager.html#dnf-group-remove) – нет, т.к. это приведёт к удалению всех её членов, что может привести к полной неработоспособности системы из-за удаления важных компонентов, таких как графическое окружение, менеджер входа в систему и т.д.
+
+Вывод списка доступных групп:
+
+sudo dnf grouplist
+
+## Как установить группу пакетов?[](https://russianfedora.github.io/FAQ/package-manager.html#dnf-group-install "Permalink to this heading")
+
+Установка группы **Fedora Workstation**:
+
+sudo dnf groupinstall 'Fedora Workstation'
+
+## Как удалить группу пакетов?[](https://russianfedora.github.io/FAQ/package-manager.html#dnf-group-remove "Permalink to this heading")
+
+Удаление группы **Fedora Workstation**:
+
+sudo dnf groupremove 'Fedora Workstation'
+
+Настоятельно [не рекомендуется](https://russianfedora.github.io/FAQ/package-manager.html#dnf-groups) удалять группы таким способом.
+
+## Как автоматически удалить не нужные более пакеты?[](https://russianfedora.github.io/FAQ/package-manager.html#dnf-autoremove "Permalink to this heading")
+
+Dnf автоматически удаляет зависимости, не нужные более для работы установленных пакетов, однако этот процесс можно инициировать и вручную:
+
+sudo dnf autoremove
+
+Следует соблюдать максимальную осторожность при использовании данной команды, т.к. это может повлечь за собой удаление важных, но автоматически установленных компонентов рабочей среды.
+
+Если какие-либо из кандидатов необходимы для дальнейшей работы, их лучше всего пометить как [установленные пользователем](https://russianfedora.github.io/FAQ/package-manager.html#dnf-mark).
+
+## Как отметить пакет в качестве установленного пользователем?[](https://russianfedora.github.io/FAQ/package-manager.html#dnf-mark "Permalink to this heading")
+
+Отметим пакет **foo-bar** в качестве установленного пользователем:
+
+sudo dnf mark install foo-bar
+
+После этого пакет не будет автоматически помечаться в качестве [кандидата на удаление](https://russianfedora.github.io/FAQ/package-manager.html#dnf-autoremove).
+
+## Как запретить автоматически удалять не нужные более зависимости?[](https://russianfedora.github.io/FAQ/package-manager.html#dnf-noautoremove "Permalink to this heading")
+
+Откроем файл `/etc/dnf/dnf.conf` в текстовом редакторе:
+
+sudoedit /etc/dnf/dnf.conf
+
+Изменим значение переменной `clean_requirements_on_remove` (при отсутствии добавим):
+
+clean_requirements_on_remove=True
+
+## Как однократно передать dnf параметр?[](https://russianfedora.github.io/FAQ/package-manager.html#dnf-param "Permalink to this heading")
+
+Для однократной передачи параметра воспользуемся опцией `--setopt`.
+
+Например в качестве примера удалим пакет **foo-bar**, сохранив при этом его [зависимости](https://russianfedora.github.io/FAQ/package-manager.html#dnf-noautoremove):
+
+sudo dnf remove foo-bar --setopt=clean_requirements_on_remove=True
+
+## Как dnf определяет зеркала, с которых будет загружать пакеты?[](https://russianfedora.github.io/FAQ/package-manager.html#dnf-mirrors "Permalink to this heading")
+
+По умолчанию в актуальных версиях Fedora применяется [технология metalink](https://www.metalinker.org/), при помощи которой на основе внешнего IP-адреса сервер определяет ближайшие зеркала по географическому признаку и отдаёт результат в виде отсортированного списка с указанием приоритетов.
+
+Также существует альтернативная реализация в виде [плагина fastestmirror](https://russianfedora.github.io/FAQ/package-manager.html#dnf-fastestmirror), который определяет самое быстрое зеркало локально при помощи ICMP PING. Реальных замеров скорости при этом не производится, поэтому их качество остаётся на достаточно низком уровне.
+
+## Как включить в dnf использование плагина fastestmirror?[](https://russianfedora.github.io/FAQ/package-manager.html#dnf-fastestmirror "Permalink to this heading")
+
+Откроем файл `/etc/dnf/dnf.conf` в текстовом редакторе:
+
+sudoedit /etc/dnf/dnf.conf
+
+Изменим значение переменной `fastestmirror` (при отсутствии добавим):
+
+fastestmirror=1
+
+## Как очистить кэш плагина dnf fastestmirror?[](https://russianfedora.github.io/FAQ/package-manager.html#fastestmirror-clear "Permalink to this heading")
+
+Удалим файл с кэшем плагина fastestmirror:
+
+sudo rm -f /var/cache/dnf/fastestmirror.cache
+
+## Почему dnf не проверяет подписи локально устанавливаемых пакетов?[](https://russianfedora.github.io/FAQ/package-manager.html#dnf-local-verify "Permalink to this heading")
+
+По умолчанию это отключено, т.к. предполагается, что большинство локально собранных RPM пакетов не имеют GnuPG подписей.
+
+При необходимости данная функция [может быть включена](https://russianfedora.github.io/FAQ/package-manager.html#dnf-local-enable).
+
+## Как включить проверку подписей для локально устанавливаемых пакетов?[](https://russianfedora.github.io/FAQ/package-manager.html#dnf-local-enable "Permalink to this heading")
+
+Откроем файл `/etc/dnf/dnf.conf` в текстовом редакторе:
+
+sudoedit /etc/dnf/dnf.conf
+
+Изменим значение переменной `localpkg_gpgcheck` (при отсутствии добавим):
+
+localpkg_gpgcheck=1
+
+## Какой вид самодостаточных пакетов является лучшим?[](https://russianfedora.github.io/FAQ/package-manager.html#flatpak-vs-snap "Permalink to this heading")
+
+См. [здесь](https://www.easycoding.org/2019/10/14/sravnenie-samodostatochnyx-paketov.html).
+
+## Как вывести список пакетов из другой установки?[](https://russianfedora.github.io/FAQ/package-manager.html#rpm-packages-other "Permalink to this heading")
+
+Выведем список установленных пакетов другой инсталляции Fedora:
+
+rpm -qa --dbpath /path/to/other/var/lib/rpm
+
+Здесь **/path/to/other/var/lib/rpm** – полный путь к базе RPM.
+
+## Как мне переустановить пакет?[](https://russianfedora.github.io/FAQ/package-manager.html#rpm-reinstall-package "Permalink to this heading")
+
+Для переустановки пакета или пакетов можем воспользоваться штатной функцией **reinstall** dnf.
+
+Переустановим пакет **foo-bar**:
+
+sudo dnf reinstall "foo-bar*"
+
+Переустановим все установленные в системе пакеты:
+
+sudo dnf reinstall "*"
+
+## Как определить какому пакету принадлежит файл?[](https://russianfedora.github.io/FAQ/package-manager.html#rpm-check-file "Permalink to this heading")
+
+Воспрользуемся прямым вызовом **rpm** для получения информации о принадлежности файла какому-либо _установленному_ пакету (для не установленных существует [иной способ](https://russianfedora.github.io/FAQ/package-manager.html#dnf-find-file)):
+
+rpm -qf /path/to/file
+
+Здесь **/path/to/file** – абсолютный путь к файлу, который необходимо проверить.
+
+Если принадлежность установлена, будет выдано полное имя пакета. В противном случае – сообщение об ошибке.
+
+## Как проверить какие файлы в системе были изменены?[](https://russianfedora.github.io/FAQ/package-manager.html#rpm-check-system "Permalink to this heading")
+
+Воспрользуемся прямым вызовом **rpm** для выполнения полной проверки и вывода информации о результатах:
+
+sudo rpm -qVa --nomtime
+
+Далеко не всё является ошибкой. Например сообщение об изменённых файлах конфигурации является абсолютно нормальным явлением.
+
+## Что такое fedora-cisco-openh264?[](https://russianfedora.github.io/FAQ/package-manager.html#fedora-cisco-openh264 "Permalink to this heading")
+
+Репозиторий **fedora-cisco-openh264** представляет специальную бинарную сборку библиотеки openh264, которая применяется в браузере Mozilla Firefox для аудио/видео вызовов, для США и Австралии (т.е. стран, где действуют патенты на алгоритмы).
+
+Пользователям из всех остальных стран мы рекомендуем использовать [ffmpeg-libs](https://russianfedora.github.io/FAQ/using-applications.html#browser-codecs) из репозитория [RPM Fusion](https://russianfedora.github.io/FAQ/generic-info.html#rpmfusion), который предоставляет все доступные кодеки мультимедиа без каких-либо ограничений.
+
+Отключим данный репозиторий:
+
+sudo dnf config-manager --set-disabled fedora-cisco-openh264
+
+Удалим установленные из него пакеты:
+
+sudo dnf remove openh264 mozilla-openh264 gstreamer1-plugin-openh264
+
+## Как запретить цвета в выводе dnf?[](https://russianfedora.github.io/FAQ/package-manager.html#dnf-no-color "Permalink to this heading")
+
+Откроем файл `/etc/dnf/dnf.conf` в текстовом редакторе:
+
+sudoedit /etc/dnf/dnf.conf
+
+Изменим значение переменной `color` (при отсутствии создадим):
+
+color=never
+
+Сохраним изменения в файле.
+
+## Как отключить использование zchunk в dnf?[](https://russianfedora.github.io/FAQ/package-manager.html#zchunk-dnf "Permalink to this heading")
+
+Откроем главный конфигурационный файл dnf:
+
+sudoedit /etc/dnf/dnf.conf
+
+Добавим в самый конец следующую строку:
+
+zchunk=False
+
+Сохраним изменения в файле.
+
+## Как отключить телеметрию в dnf?[](https://russianfedora.github.io/FAQ/package-manager.html#dnf-disable-telemetry "Permalink to this heading")
+
+По умолчанию для основных репозиториев Fedora, начиная с версии 32, один раз в неделю dnf отправляет beacon, чтобы можно было оценить количество пользователей дистрибутива.
+
+Для отключения откроем главный конфигурационный файл dnf:
+
+sudoedit /etc/dnf/dnf.conf
+
+Добавим в самый конец следующую строку:
+
+countme=False
+
+Сохраним изменения в файле.
+
+## Как вывести список пакетов, использующих при сборке определённый?[](https://russianfedora.github.io/FAQ/package-manager.html#check-build-deps "Permalink to this heading")
+
+Однократно подключим репозитории с исходниками и при помощи dnf выведем список пакетов, для сборки которых необходим **foo-bar-devel**:
+
+dnf repoquery -q  --releasever=rawhide --disablerepo="*" --qf="%{name}" --enablerepo=fedora-source --enablerepo=updates-source --enablerepo=updates-testing-source --archlist=src --whatrequires="foo-bar-devel"
+
+## Как удалить все пакеты из определённого репозитория?[](https://russianfedora.github.io/FAQ/package-manager.html#dnf-remove-packages-repository "Permalink to this heading")
+
+Удалим все пакеты, установленнные из репозитория **foo-bar**
+
+sudo dnf repository-packages --installed foo-bar remove
+
+## Как удалить все пакеты с отладочной информацией?[](https://russianfedora.github.io/FAQ/package-manager.html#dnf-remove-debuginfo "Permalink to this heading")
+
+Удалим все пакеты с отладочной информацией, установленные из основных репозиториев Fedora:
+
+sudo dnf repository-packages --installed fedora-debuginfo remove
+sudo dnf repository-packages --installed updates-debuginfo remove
+sudo dnf repository-packages --installed updates-testing-debuginfo remove
+
+## Как изменить количество одновременно загружаемых пакетов?[](https://russianfedora.github.io/FAQ/package-manager.html#dnf-parallel-downloads "Permalink to this heading")
+
+Откроем файл `/etc/dnf/dnf.conf` в текстовом редакторе:
+
+sudoedit /etc/dnf/dnf.conf
+
+Добавим переменную `max_parallel_downloads` с необходимым значением, например **10** (по умолчанию _3_, максимум _20_):
+
+max_parallel_downloads=10
+
+## Как установить порог скорости до выбора другого зеркала?[](https://russianfedora.github.io/FAQ/package-manager.html#dnf-download-threshold "Permalink to this heading")
+
+Откроем файл `/etc/dnf/dnf.conf` в текстовом редакторе:
+
+sudoedit /etc/dnf/dnf.conf
+
+Добавим переменную `minrate` с необходимым значением, например **200k** (по умолчанию _1000_; допускаются суффиксы **k** (килобайты в секунду) и **M** (мегабайты в секунду)):
+
+minrate=200k
+
+## GNOME Software при установке выбирает Flatpak вместо RPM. Как исправить?[](https://russianfedora.github.io/FAQ/package-manager.html#gnome-software-flatpak-rpm "Permalink to this heading")
+
+GNOME Software в конфигурации по умолчанию отдаёт предпочтение Flatpak-пакетам перед стандартными RPM при совпадении ID.
+
+Исправим это, изменив приоритет опцией **packaging-format-preference**:
+
+gsettings set org.gnome.software packaging-format-preference "['RPM', 'flatpak']"
+
+## Как извлечь файлы из RPM-пакета без его установки?[](https://russianfedora.github.io/FAQ/package-manager.html#rpm-extract "Permalink to this heading")
+
+### Способ 1. Классический.[](https://russianfedora.github.io/FAQ/package-manager.html#id74 "Permalink to this heading")
+
+Воспользуемся **rpm2cpio** для преобразования RPM-пакета в CPIO-архив и при помощи одноимённого архиватора распакуем его:
+
+mkdir /tmp/foo-bar
+pushd /tmp/foo-bar
+rpm2cpio /path/to/foo-bar-1.0.0-1.fc38.x86_64.rpm | cpio -idmv
+popd
+
+### Способ 2. Современный.[](https://russianfedora.github.io/FAQ/package-manager.html#id75 "Permalink to this heading")
+
+Конвертируем RPM в стандартный tarball утилитой **rpm2archive** и осуществим извлечение файлов из него:
+
+mkdir /tmp/foo-bar
+cat /path/to/foo-bar-1.0.0-1.fc38.x86_64.rpm | rpm2archive - | tar -xz -C /tmp/foo-bar
+
+### Навигация
+
+- [Основная информация](https://russianfedora.github.io/FAQ/generic-info.html)
+- [Установка системы](https://russianfedora.github.io/FAQ/installation.html)
+- [Пакетный менеджер и установка пакетов](https://russianfedora.github.io/FAQ/package-manager.html#)
+    - [Какой менеджер пакетов используется в настоящее время?](https://russianfedora.github.io/FAQ/package-manager.html#pkg-manager)
+    - [Могу ли я использовать Yum в Fedora?](https://russianfedora.github.io/FAQ/package-manager.html#yum-fedora)
+    - [Что такое Flatpak пакеты?](https://russianfedora.github.io/FAQ/package-manager.html#flatpak)
+    - [Какие преимущества и недостатки у Flatpak пакетов?](https://russianfedora.github.io/FAQ/package-manager.html#flatpak-advantages)
+    - [Можно ли устанавливать программы посредством make install?](https://russianfedora.github.io/FAQ/package-manager.html#make-install)
+    - [Можно ли использовать PIP или NPM для установки программ и модулей?](https://russianfedora.github.io/FAQ/package-manager.html#pip-npm)
+    - [Нужной Python библиотеки нет в репозиториях. Как можно безопасно использовать PIP?](https://russianfedora.github.io/FAQ/package-manager.html#python-pip)
+    - [Как правильно применять Python Virtual Environment?](https://russianfedora.github.io/FAQ/package-manager.html#python-virtual-environment)
+    - [Как удалить установленные пакеты из Python Virtual Environment?](https://russianfedora.github.io/FAQ/package-manager.html#python-venv-remove)
+    - [Как правильно обновлять систему?](https://russianfedora.github.io/FAQ/package-manager.html#dnf-update)
+    - [Как часто следует устанавливать обновления системы?](https://russianfedora.github.io/FAQ/package-manager.html#update-interval)
+    - [Можно ли автоматизировать установку критических обновлений?](https://russianfedora.github.io/FAQ/package-manager.html#update-auto)
+    - [Как мне обновить Fedora до новой версии?](https://russianfedora.github.io/FAQ/package-manager.html#fedora)
+    - [Возможно ли сделать откат к предыдущей версии Fedora?](https://russianfedora.github.io/FAQ/package-manager.html#dist-downgrade)
+    - [Как мне обновить Fedora до Rawhide?](https://russianfedora.github.io/FAQ/package-manager.html#fedora-rawhide)
+    - [Возможно ли откатиться с Rawhide назад на обычный релиз?](https://russianfedora.github.io/FAQ/package-manager.html#rawhide)
+    - [Можно ли обновляться через несколько версий?](https://russianfedora.github.io/FAQ/package-manager.html#upgrade-jump)
+    - [Когда лучше выполнять обновление при выходе новой версии дистрибутива?](https://russianfedora.github.io/FAQ/package-manager.html#upgrade-time)
+    - [При обновлении dnf ругается на дубликаты пакетов.](https://russianfedora.github.io/FAQ/package-manager.html#dnf)
+    - [База RPM оказалась повреждена. Как восстановить?](https://russianfedora.github.io/FAQ/package-manager.html#rpm)
+    - [Dnf сохраняет старые ядра. Это нормально?](https://russianfedora.github.io/FAQ/package-manager.html#dnf-kernel-store)
+    - [Как можно уменьшить количество сохраняемых ядер?](https://russianfedora.github.io/FAQ/package-manager.html#dnf-kernel-change)
+    - [Как настроить работу dnf через прокси?](https://russianfedora.github.io/FAQ/package-manager.html#dnf-proxy)
+    - [Как отключить установку слабых зависимостей?](https://russianfedora.github.io/FAQ/package-manager.html#dnf-weakdeps)
+    - [Как мне запретить установку обновлений для ряда пакетов?](https://russianfedora.github.io/FAQ/package-manager.html#dnf-exclude)
+    - [Что такое Delta RPM?](https://russianfedora.github.io/FAQ/package-manager.html#delta-rpm)
+    - [Как отключить использование Delta RPM?](https://russianfedora.github.io/FAQ/package-manager.html#drpm-disable)
+    - [Как можно вручную удалить старое ядро?](https://russianfedora.github.io/FAQ/package-manager.html#dnf-kernel-remove)
+    - [Какие сторонние репозитории лучше всего подключать?](https://russianfedora.github.io/FAQ/package-manager.html#rd-repositories)
+    - [Как работать с Flatpak пакетами в Fedora?](https://russianfedora.github.io/FAQ/package-manager.html#flatpak-fedora)
+    - [В системе нет кодеков мультимедиа. Как их установить?](https://russianfedora.github.io/FAQ/package-manager.html#multimedia-codecs)
+    - [Как отключить автообновление кэшей dnf?](https://russianfedora.github.io/FAQ/package-manager.html#dnf-caches)
+    - [Что лучше: dkms или akmods?](https://russianfedora.github.io/FAQ/package-manager.html#dkms-akmods)
+    - [Каким способом можно обновить пакет из тестовых репозиториев?](https://russianfedora.github.io/FAQ/package-manager.html#updates-testing)
+    - [Как получить список файлов установленного пакета?](https://russianfedora.github.io/FAQ/package-manager.html#dnf-list-contents)
+    - [Как узнать в каком пакете находится конкретный файл?](https://russianfedora.github.io/FAQ/package-manager.html#dnf-find-file)
+    - [Можно ли установить несколько версий Java в систему?](https://russianfedora.github.io/FAQ/package-manager.html#java)
+    - [Как вывести список пакетов из определённого репозитория?](https://russianfedora.github.io/FAQ/package-manager.html#dnf-repo-contents)
+    - [Как вывести список пакетов, установленных не из репозиториев, либо удалённых из них?](https://russianfedora.github.io/FAQ/package-manager.html#dnf-repo-orphans)
+    - [Как очистить журнал транзакций dnf?](https://russianfedora.github.io/FAQ/package-manager.html#dnf-transactions-cleanup)
+    - [Как сохранить список установленных пакетов, чтобы легко установить их после переустановки системы?](https://russianfedora.github.io/FAQ/package-manager.html#dnf-list-export)
+    - [Можно ли скачать, но не устанавливать пакет из репозитория?](https://russianfedora.github.io/FAQ/package-manager.html#dnf-download-only)
+    - [Как правильно включать или отключать репозитории?](https://russianfedora.github.io/FAQ/package-manager.html#dnf-manage-repo)
+    - [Что такое модульные репозитории?](https://russianfedora.github.io/FAQ/package-manager.html#dnf-modular)
+    - [Мне не нужна поддержка модулей. Как их можно отключить?](https://russianfedora.github.io/FAQ/package-manager.html#dnf-disable-modules)
+    - [Можно ли устанавливать обновления через dnf из графического режима?](https://russianfedora.github.io/FAQ/package-manager.html#dnf-gui-updates)
+    - [Безопасно ли использовать основанные на PackageKit модули обновления из графического режима?](https://russianfedora.github.io/FAQ/package-manager.html#packagekit)
+    - [Как правильно тестировать новые версии пакетов в Fedora?](https://russianfedora.github.io/FAQ/package-manager.html#fedora-bodhi)
+    - [Как проще установить определённое обновление из тестового репозитория?](https://russianfedora.github.io/FAQ/package-manager.html#dnf-advisory)
+    - [Как скачать определённую сборку пакета из Koji?](https://russianfedora.github.io/FAQ/package-manager.html#koji)
+    - [Почему некоторые пакеты в Fedora не обновляют до новейших версий?](https://russianfedora.github.io/FAQ/package-manager.html#package-version)
+    - [Какие пакеты разрешено обновлять до новых версий в пределах стабильного выпуска?](https://russianfedora.github.io/FAQ/package-manager.html#upgrades-allowed)
+    - [При запуске dnf без прав суперпользователя он заново загружает и обновляет кэши. Это нормально?](https://russianfedora.github.io/FAQ/package-manager.html#dnf-user)
+    - [Как удалить все установленные в системе 32-битные пакеты?](https://russianfedora.github.io/FAQ/package-manager.html#dnf-remove-32bit)
+    - [Как вывести список установленных пакетов, от которых никто не зависит?](https://russianfedora.github.io/FAQ/package-manager.html#dnf-leaves)
+    - [Можно ли создать собственное зеркало репозиториев Fedora?](https://russianfedora.github.io/FAQ/package-manager.html#dnf-mirror)
+    - [Безопасно ли устанавливать обновления через небезопасные соединения?](https://russianfedora.github.io/FAQ/package-manager.html#dnf-signatures)
+    - [Безопасно ли использовать COPR репозитории?](https://russianfedora.github.io/FAQ/package-manager.html#copr)
+    - [Можно ли использовать в Fedora Snap пакеты?](https://russianfedora.github.io/FAQ/package-manager.html#fedora-snap)
+    - [Безопасно ли устанавливать и удалять пакеты группами?](https://russianfedora.github.io/FAQ/package-manager.html#dnf-groups)
+    - [Как установить группу пакетов?](https://russianfedora.github.io/FAQ/package-manager.html#dnf-group-install)
+    - [Как удалить группу пакетов?](https://russianfedora.github.io/FAQ/package-manager.html#dnf-group-remove)
+    - [Как автоматически удалить не нужные более пакеты?](https://russianfedora.github.io/FAQ/package-manager.html#dnf-autoremove)
+    - [Как отметить пакет в качестве установленного пользователем?](https://russianfedora.github.io/FAQ/package-manager.html#dnf-mark)
+    - [Как запретить автоматически удалять не нужные более зависимости?](https://russianfedora.github.io/FAQ/package-manager.html#dnf-noautoremove)
+    - [Как однократно передать dnf параметр?](https://russianfedora.github.io/FAQ/package-manager.html#dnf-param)
+    - [Как dnf определяет зеркала, с которых будет загружать пакеты?](https://russianfedora.github.io/FAQ/package-manager.html#dnf-mirrors)
+    - [Как включить в dnf использование плагина fastestmirror?](https://russianfedora.github.io/FAQ/package-manager.html#dnf-fastestmirror)
+    - [Как очистить кэш плагина dnf fastestmirror?](https://russianfedora.github.io/FAQ/package-manager.html#fastestmirror-clear)
+    - [Почему dnf не проверяет подписи локально устанавливаемых пакетов?](https://russianfedora.github.io/FAQ/package-manager.html#dnf-local-verify)
+    - [Как включить проверку подписей для локально устанавливаемых пакетов?](https://russianfedora.github.io/FAQ/package-manager.html#dnf-local-enable)
+    - [Какой вид самодостаточных пакетов является лучшим?](https://russianfedora.github.io/FAQ/package-manager.html#flatpak-vs-snap)
+    - [Как вывести список пакетов из другой установки?](https://russianfedora.github.io/FAQ/package-manager.html#rpm-packages-other)
+    - [Как мне переустановить пакет?](https://russianfedora.github.io/FAQ/package-manager.html#rpm-reinstall-package)
+    - [Как определить какому пакету принадлежит файл?](https://russianfedora.github.io/FAQ/package-manager.html#rpm-check-file)
+    - [Как проверить какие файлы в системе были изменены?](https://russianfedora.github.io/FAQ/package-manager.html#rpm-check-system)
+    - [Что такое fedora-cisco-openh264?](https://russianfedora.github.io/FAQ/package-manager.html#fedora-cisco-openh264)
+    - [Как запретить цвета в выводе dnf?](https://russianfedora.github.io/FAQ/package-manager.html#dnf-no-color)
+    - [Как отключить использование zchunk в dnf?](https://russianfedora.github.io/FAQ/package-manager.html#zchunk-dnf)
+    - [Как отключить телеметрию в dnf?](https://russianfedora.github.io/FAQ/package-manager.html#dnf-disable-telemetry)
+    - [Как вывести список пакетов, использующих при сборке определённый?](https://russianfedora.github.io/FAQ/package-manager.html#check-build-deps)
+    - [Как удалить все пакеты из определённого репозитория?](https://russianfedora.github.io/FAQ/package-manager.html#dnf-remove-packages-repository)
+    - [Как удалить все пакеты с отладочной информацией?](https://russianfedora.github.io/FAQ/package-manager.html#dnf-remove-debuginfo)
+    - [Как изменить количество одновременно загружаемых пакетов?](https://russianfedora.github.io/FAQ/package-manager.html#dnf-parallel-downloads)
+    - [Как установить порог скорости до выбора другого зеркала?](https://russianfedora.github.io/FAQ/package-manager.html#dnf-download-threshold)
+    - [GNOME Software при установке выбирает Flatpak вместо RPM. Как исправить?](https://russianfedora.github.io/FAQ/package-manager.html#gnome-software-flatpak-rpm)
+    - [Как извлечь файлы из RPM-пакета без его установки?](https://russianfedora.github.io/FAQ/package-manager.html#rpm-extract)
+- [Системное администрирование](https://russianfedora.github.io/FAQ/administration.html)
+- [Сетевое администрирование](https://russianfedora.github.io/FAQ/networking.html)
+- [Виртуализация](https://russianfedora.github.io/FAQ/virtualization.html)
+- [Безопасность](https://russianfedora.github.io/FAQ/security.html)
+- [Работа в системе](https://russianfedora.github.io/FAQ/using-system.html)
+- [Сторонние приложения](https://russianfedora.github.io/FAQ/using-applications.html)
+- [Оборудование](https://russianfedora.github.io/FAQ/hardware.html)
+- [Разработка и сборка пакетов](https://russianfedora.github.io/FAQ/development.html)
+- [Оптимизация и тонкая настройка](https://russianfedora.github.io/FAQ/tips-and-tricks.html)
+- [Правовая информация](https://russianfedora.github.io/FAQ/legal-info.html)
