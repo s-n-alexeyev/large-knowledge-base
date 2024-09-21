@@ -37,14 +37,18 @@ sudo systemctl enable --now grub-btrfsd.service
 sudo dnf install snapper inotify-tools btrfs-assistant python3-dnf-plugin-snapper
 ```
 
->Настраиваем `snapper`
+>Настраиваем `snapper`, добавляем конфигурации
 ```bash
-sudo snapper create-config /
+# система
+sudo snapper -c root create-config /
+
+# если нужно добавляем каталог пользоватеей
+sudo snapper -c home create-config /home
 ```
 
 >Делаем снимок системы из консоли
 ```bash
-sudo snapper create --description "spapshot from console"
+sudo snapper create --description "test snapshot from console"
 ```
 
 >Генерируем загрузчик
