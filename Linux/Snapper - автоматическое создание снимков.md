@@ -24,20 +24,20 @@ debugInConsole: false # Print debug info in Obsidian console
 Мы будем использовать Snapper - инструмент, упрощающий и автоматизирующий работу со снимками. Он позволяет удобно создать снимок subvolume как вручную, так и автоматически. Автоматически снимки создаются по таймеру, при загрузке и при работе пакетного менеджера APT. Начнём.
 
 ```bash
-apt install snapper
+sudo apt install snapper
 ```
 
 Если мы работаем в графическом режиме, ставим GUI
 
 ```bash
-apt install snapper-gui
+sudo apt install snapper-gui
 ```
 
 Надо создать начальную конфигурацию под каждый subvolume
 
 ```bash
-snapper -c root create-config /
-snapper -c home create-config /home
+sudo snapper -c root create-config /
+sudo snapper -c home create-config /home
 ```
 
 ## Использование
@@ -50,13 +50,13 @@ snapper -c home create-config /home
 
 Например я установлю Midnight Commander:
 
-```
+```bash
 sudo apt install mc
 ```
 
 После чего просмотрю снимки:
 
-```
+```bash
 sudo snapper list
 ```
 
@@ -69,7 +69,7 @@ Snapper-Gui надо запускать через sudo, иначе снимко
 ### Просмотр изменений
 Увидеть что изменилось можно командой сравнения двух снимков. Для этого надо указать номера снимков.
 
-```
+```bash
 snapper status 1..2
 ```
 
@@ -83,7 +83,7 @@ snapper status 1..2
 
 Можно увидеть и разницу в файлах:
 
-```
+```bash
 sudo snapper diff 1..2
 ```
 
