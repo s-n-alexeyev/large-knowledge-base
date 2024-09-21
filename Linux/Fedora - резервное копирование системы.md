@@ -1,4 +1,30 @@
-### Устанавливаем и конфигурируем `Grub-Btrfs`
+
+
+### Устанавливаем приложение и зависимости
+```bash
+sudo dnf install snapper inotify-tools btrfs-assistant python3-dnf-plugin-snapper
+```
+### Snapper
+
+>Настраиваем `snapper`, добавляем конфигурации
+```bash
+# система
+sudo snapper -c root create-config /
+
+# если нужно добавляем каталог пользоватеей
+sudo snapper -c home create-config /home
+```
+
+>Делаем снимок системы из консоли
+```bash
+sudo snapper create --description "test snapshot from console"
+```
+
+>Генерируем загрузчик
+```bash
+sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+```
+### Grub-Btrfs
 
 >Клонируем репозиторий
 ```bash
@@ -25,6 +51,7 @@ config
 ```bash
 sudo make install
 ```
+- *не забываем удалить* каталог с исходными файлами
 
 >Обновляем `grub.cfg` включаем сервис `grub-btrfsd.service.`
 ```bash
@@ -32,26 +59,3 @@ sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 sudo systemctl enable --now grub-btrfsd.service
 ```
 
-### Устанавливаем остальные приложения
-```bash
-sudo dnf install snapper inotify-tools btrfs-assistant python3-dnf-plugin-snapper
-```
-
->Настраиваем `snapper`, добавляем конфигурации
-```bash
-# система
-sudo snapper -c root create-config /
-
-# если нужно добавляем каталог пользоватеей
-sudo snapper -c home create-config /home
-```
-
->Делаем снимок системы из консоли
-```bash
-sudo snapper create --description "test snapshot from console"
-```
-
->Генерируем загрузчик
-```bash
-sudo grub2-mkconfig -o /boot/grub2/grub.cfg
-```
