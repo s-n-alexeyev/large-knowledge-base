@@ -303,8 +303,27 @@ sudo dnf copr enable coder966/postman
 sudo dnf install postman
 ```
 
-# Skype
+---
+# tsocks
 
+>установка
 ```bash
-sudo dnf config-manager --add-repo=https://repo.skype.com/rpm/stable/skype-stable.repo
+sudo dnf copr enable davidjwbbc/tsocks
+sudo dnf install tsocks
+```
+
+>конфигурация
+```bash
+sudo nano /etc/tsocks.conf
+```
+
+>пример с TOR
+```
+local = 192.168.0.0/255.255.255.0
+local = 10.0.0.0/255.0.0.0
+
+
+server = 127.0.0.1
+server_type = 4
+server_port = 9050
 ```
