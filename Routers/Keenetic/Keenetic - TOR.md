@@ -31,6 +31,7 @@ bridge obfs4 142.132.228.40:26712 6C9239B5F684285E6561F0EE680997112163D0C2 cert=
 >Редактируем файл `/opt/etc/polipo/config` (пример базовой настройки)
 ```
 proxyAddress = "0.0.0.0"    # IPv4 only
+proxyPort = 8123
 allowedClients = 127.0.0.1, 192.168.1.0/24
 socksParentProxy = "localhost:9050"
 socksProxyType = socks5
