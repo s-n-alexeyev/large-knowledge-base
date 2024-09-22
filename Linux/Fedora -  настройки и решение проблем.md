@@ -322,7 +322,6 @@ sudo nano /etc/tsocks.conf
 local = 192.168.0.0/255.255.255.0
 local = 10.0.0.0/255.0.0.0
 
-
 server = 127.0.0.1
 server_type = 4
 server_port = 9050
