@@ -189,3 +189,35 @@ exec fish
 ```
 
 Результат будет точно таким же, как и при использовании первого способа.
+
+## Пример
+
+ Создаем алиас`ls` 
+
+>устанавливаем `eza`
+```bash
+#arch
+yay -S eza
+
+#debian
+sudo apt install eza
+
+#fedora
+sudo dnf install eza
+```
+
+>редактируем `config.fish`
+```bash
+sudo nano ~/.congig/fish/config.fish
+```
+
+```
+if status is-interactive
+    # Commands to run in interactive sessions can go here
+end
+
+alias ls="eza --tree --level=1 --icons=always"
+```
+
+>так теперь выглядит команда `ls`
+![Размещение алиасов сразу в основном конфиге](/Media/Fish/eza.png)
