@@ -50,7 +50,7 @@ set -U fish_greeting
 
 ---
 ## Tide plugin
-![|400](/Media/Fish/image_1.png)
+![|400](/Media/Fish/tide.png)
 
 >Устанавливаем plugin менеджер `fisher` и шрифты
 ```shell
