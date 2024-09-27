@@ -8,7 +8,6 @@ maxLevel: 0 # Include headings up to the specified level
 includeLinks: true # Make headings clickable
 debugInConsole: false # Print debug info in Obsidian console
 ```
-
 # Установка
 
 >Устанавливаем оболочку
@@ -220,4 +219,4 @@ alias ls="eza --tree --level=1 --icons=always"
 ```
 
 >так теперь выглядит команда `ls`
-![Размещение алиасов сразу в основном конфиге](/Media/Fish/eza.png)
+![eza|600](/Media/Fish/eza.png)
