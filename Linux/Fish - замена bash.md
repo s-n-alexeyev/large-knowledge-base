@@ -218,5 +218,10 @@ end
 alias ls="eza --tree --level=1 --icons=always"
 ```
 
+>перегружаем оболочку
+```bash
+exec fish
+```
+
 >так теперь выглядит команда `ls`
 ![eza|600](/Media/Fish/eza.png)
