@@ -1,4 +1,4 @@
-s```table-of-contents
+```table-of-contents
 title: Содержание:
 style: nestedList # TOC style (nestedList|inlineFirstLevel)
 minLevel: 0 # Include headings from the specified level
@@ -861,6 +861,7 @@ systemctl restart systemd-journald
 `journalctl -k -b -2` - предыдущая предыдущая
 `journalctl -k -b -n` - и т. д.
 
+---
 # Узнаем количество строк в файле.
 
 Команда wc, которая считает количество переходов на новую строку, ранее упоминалась (https://t.me/os_linux_ru/228). 
@@ -881,4 +882,26 @@ sed -n \$= file_name
 awk 'END{ print NR }' file_name
 ```
 
-large-knowledge-base
+# Считаем контрольные суммы файлов
+
+Подсчитать контрольные суммы файлов можно с помощью нескольких команд: cksum, md5sum, sha1sum и sha256sum.
+
+Контрольная сумма - последовательность цифр и букв, используемых для проверки целостности данных на наличие ошибок.
+
+Синтаксис команд прост, как никогда:
+
+```bash
+cksum <filename>
+```
+
+```bash
+md5sum <filename>
+```
+
+```bash
+sha1sum <filename>
+```
+
+```bash
+sha256sum <filename>
+```
