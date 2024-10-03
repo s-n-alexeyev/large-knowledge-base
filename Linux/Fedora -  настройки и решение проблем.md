@@ -325,3 +325,14 @@ server = 127.0.0.1
 server_type = 4
 server_port = 9050
 ```
+
+---
+# Yandex Browser
+
+```bash
+sudo dnf config-manager --add-rep https://raw.githubusercontent.com/RussianFedora/fedora-extra-repos/refs/heads/master/yandex-browser-stable.repo
+```
+
+```bash
+sudo dnf install yandex-browser-stable
+```
