@@ -154,7 +154,7 @@ chmod +x ~/.docker/cli-plugins/docker-compose
 
 > Проверяем как все работает:
 ```bash
-docker-compose version
+docker compose version
 ```
 
 >[!summary] Увидим примерно такое:
