@@ -690,6 +690,14 @@ system configuration save
 ```
 
 ![|800](/Media/Vless/Keenetic7.png)
+
+>DNS-over-HTTPS
+
+OpenDNS - https://doh.opendns.com/dns-query
+Quad9 - https://dns.quad9.net/dns-query
+Cloudflare  - https://cloudflare-dns.com/dns-query
+Google Public DNS - https://dns.google/dns-query
+
 Все готово! Проверяем наш внешний IP-адрес.
 ```q
 ifconfig.co
@@ -700,5 +708,8 @@ ifconfig.me
 # или
 browserleaks.com/ip
 ```
+
+
+
 
 ![|600](/Media/Vless/ifconfig.png)
