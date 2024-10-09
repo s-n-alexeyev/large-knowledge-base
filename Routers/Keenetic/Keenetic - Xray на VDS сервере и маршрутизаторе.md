@@ -706,6 +706,9 @@ ifconfig.co
 ifconfig.me
 
 # или
+whoer.net
+
+# или
 browserleaks.com/ip
 ```
 
