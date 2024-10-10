@@ -49,15 +49,15 @@ sudo su -c "bash <(wget -qO- <https://raw.githubusercontent.com/mozaroc/x-ui-pro
 2. По окончанию работы скрипт выдаст три ссылки на вход, две на http - по IPv4 и по IPv6 и одну по https по домену, а так же логин и пароль, сохраняем все это.
 3. Далее заходим на ссылку панели, авторизуемся, идем в настройки панели и меняем адрес прослушивания на 127.0.0.1 - что бы панель не светила ни одним портом в свет на голом http
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/ca0acbdd-acee-43cc-8827-86b2e901bd89/1c32c32c-fda1-41a1-ae41-1901551a69b8/image.png)
+![](/Media/3X-UI-Pro/image1.webp)
 
 1. Далее идем в подключения и создаем новый с типом vless транспортом tcp и безопасностью REALITY
 
-![11.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/ca0acbdd-acee-43cc-8827-86b2e901bd89/31f5bc7b-d447-4e83-8db9-4ec9a22201d4/11.png)
+![](/Media/3X-UI-Pro/image2.webp)
 
 Вот тут внимательно, указываем порт обязательно 8443, ни какой другой, nginx все запросы со SNI домена который вы указали как для reality будет перенаправлять только на этот порт
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/ca0acbdd-acee-43cc-8827-86b2e901bd89/8243497a-e16b-4c1b-8c93-b6de39d07aa6/image.png)
+![](/Media/3X-UI-Pro/image3.webp)
 
 Вклюаем Proxy Protocol - это нужно для того что бы заработали лимиты по IP адресам если в будущем вы захотите их настроить. Конфиги nginx уже подготовлены для этого, поэтому он нужен, без него подключение не заработает
 
