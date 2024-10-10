@@ -83,7 +83,7 @@ ufw enable && ufw reload && ufw status
 
 _**!!! Если вы переносили ssh на другой порт, вместо ufw allow ssh сделайте ufw allow ВАШ_ПОРТ/tcp !!!**_
 
-Как настроить vless и trojan на вебсокетах и grpc вот с этим же скриптом я рассказывал здесь [](https://www.notion.so/1081666462e48069b35edf17d22894dc?pvs=21)[https://scarce-hole-1e2.notion.site/X-UI-pro-script-1081666462e48069b35edf17d22894dc](https://scarce-hole-1e2.notion.site/X-UI-pro-script-1081666462e48069b35edf17d22894dc)
+Как настроить vless и trojan на вебсокетах и grpc вот с этим же скриптом я рассказывал [здесь](https://scarce-hole-1e2.notion.site/X-UI-pro-script-1081666462e48069b35edf17d22894dc)
 
 ### Подписка
 
