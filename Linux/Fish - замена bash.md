@@ -205,7 +205,7 @@ sudo dnf install eza
 
 >редактируем `config.fish`
 ```bash
-sudo nano ~/.congig/fish/config.fish
+sudo nano ~/.config/fish/config.fish
 ```
 
 ```
