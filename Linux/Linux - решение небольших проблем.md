@@ -498,3 +498,9 @@ npm config set fund false
 удалить файл(ы) `SingletonLock` /home/юзер/.config/chromium/SingletonLock
 
 ---
+## Virtualbox - Out of memory condition when allocating memory with low physical backing. (VERR_NO_LOW_MEMORY)
+
+```bash
+sudo su
+echo 3 > /proc/sys/vm/drop_caches
+```
