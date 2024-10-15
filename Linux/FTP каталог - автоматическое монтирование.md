@@ -11,9 +11,12 @@ yay -S curlftpfs-ng
 ```
 
 >Остальные
-
-
-
+ [Скачиваем архив](http://ikn.org.uk/tool/curlftpfs-ng/) распаковываем, выполняем команды
+```bash
+./configure
+make
+make install
+```
 ## Создаем файл паролей
 
 >возможно предварительно нужно будет войти в оболочку root (`sudo su`)
