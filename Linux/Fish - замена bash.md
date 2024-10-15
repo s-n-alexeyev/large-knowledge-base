@@ -30,7 +30,7 @@ sudo dnf install fish
 ```shell
 chsh -s /bin/fish $USER
 # или
-usermod -s /bin/fish $USER
+sudo usermod -s /bin/fish $USER
 ```
 
 >Перегружаем
