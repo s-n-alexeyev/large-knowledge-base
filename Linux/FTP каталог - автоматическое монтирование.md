@@ -9,6 +9,11 @@ sudo pacman -S curlftpfs
 ```shell
 yay -S curlftpfs-ng
 ```
+
+>Остальные
+
+
+
 ## Создаем файл паролей
 
 >возможно предварительно нужно будет войти в оболочку root (`sudo su`)

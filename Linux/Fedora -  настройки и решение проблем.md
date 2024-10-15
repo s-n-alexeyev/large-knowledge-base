@@ -336,3 +336,6 @@ sudo dnf config-manager --add-rep https://raw.githubusercontent.com/RussianFedor
 ```bash
 sudo dnf install yandex-browser-stable
 ```
+
+--- 
+# 
