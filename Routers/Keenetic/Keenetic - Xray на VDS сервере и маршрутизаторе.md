@@ -696,13 +696,8 @@ system configuration save
 OpenDNS - https://doh.opendns.com/dns-query  
 Quad9 - https://dns.quad9.net/dns-query  
 Cloudflare  - https://cloudflare-dns.com/dns-query  
-Google Public DNS - https://dns.google/dns-query  ```table-of-contents
-title: 
-style: nestedList # TOC style (nestedList|nestedOrderedList|inlineFirstLevel)
-minLevel: 0 # Include headings from the specified level
-maxLevel: 0 # Include headings up to the specified level
-includeLinks: true # Make headings clickable
-debugInConsole: false # Print debug info in Obsidian console
+Google Public DNS - https://dns.google/dns-query 
+
 ```
 
 Все готово! Проверяем наш внешний IP-адрес.
