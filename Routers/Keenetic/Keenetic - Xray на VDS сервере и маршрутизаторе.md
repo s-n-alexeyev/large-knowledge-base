@@ -698,8 +698,6 @@ Quad9 - https://dns.quad9.net/dns-query
 Cloudflare  - https://cloudflare-dns.com/dns-query  
 Google Public DNS - https://dns.google/dns-query 
 
-```
-
 Все готово! Проверяем наш внешний IP-адрес.
 ```q
 ifconfig.co
