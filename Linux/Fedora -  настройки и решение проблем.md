@@ -338,4 +338,12 @@ sudo dnf install yandex-browser-stable
 ```
 
 --- 
-# 
+# element-desktop
+
+```bash
+sudo dnf config-manager --add-repo https://download.opensuse.org/repositories/devel:languages:nodejs/Fedora_40/devel:languages:nodejs.repo && sudo dnf install element-desktop
+```
+
+```bash
+sudo
+```
