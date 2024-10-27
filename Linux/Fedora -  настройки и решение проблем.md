@@ -233,7 +233,7 @@ sudo dnf install --refresh librewolf
 ```
 
 ---
-# WhatSie
+# WhatSie (whatsapp client)
 
 ```bash
 sudo dnf install qt5-qtbase-devel qt5-qtwebengine-devel 
@@ -248,6 +248,13 @@ sudo make install
 ```
 
 ---
+# ZapZap (whatsapp client)
+
+```bash
+sudo dnf copr enable rafatosta/zapzap
+sudo dnf install zapzap
+```
+
 # Videomass
 
 ```bash
