@@ -31,7 +31,7 @@ EOF
 
 >выполняем следующие команды
 ```shell
-sudo mkdir /run/media/$USER/ftp
+sudo mkdir /run/media/user/ftp
 sudo curlftpfs -o allow_other 192.168.1.1 /run/media/user/ftp  
 sudo ls /run/media/user/ftp
 sudo fusermount -u /run/media/user/ftp
@@ -50,7 +50,7 @@ ExecStartPre=/bin/mkdir -p /run/media/user/ftp
 
 [Mount]
 What=curlftpfs#192.168.1.1
-Where=run/media/user/ftp
+Where=/run/media/user/ftp
 Type=fuse
 Options=rw,nosuid,uid=1000,gid=1000,allow_other
 
