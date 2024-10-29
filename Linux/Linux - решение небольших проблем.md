@@ -506,7 +506,7 @@ echo 3 > /proc/sys/vm/drop_caches
 ```
 
 ---
-# VirtualBox - свой значок
+## VirtualBox - свой значок
 
 ```bash
 VBoxManage modifyvm "имя_вашей_виртуальной_машины" --iconfile <путь_к_значку>
