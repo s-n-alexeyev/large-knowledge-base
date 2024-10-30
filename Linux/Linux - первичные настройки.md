@@ -197,6 +197,11 @@ sudo apt install variet
 sudo apt install plasma-wallpapers-addons
 ```
 
+>KDE Arch
+```bash
+sudo pacman -S kdeplasma-addons
+```
+
 ---
 # Расширение Discord (Vencord)
 ```shell
