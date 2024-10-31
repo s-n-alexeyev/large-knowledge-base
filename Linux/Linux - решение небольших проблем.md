@@ -501,6 +501,7 @@ npm config set fund false
 ## Virtualbox - Out of memory condition when allocating memory with low physical backing. (VERR_NO_LOW_MEMORY)
 
 ```bash
+# Для полной очистки (PageCache, dentries и inodes)
 sudo su
 echo 3 > /proc/sys/vm/drop_caches
 ```
