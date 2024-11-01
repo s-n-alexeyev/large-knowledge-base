@@ -211,37 +211,7 @@ sh -c "$(curl -sS https://raw.githubusercontent.com/Vendicated/VencordInstaller/
 ---
 # Список трекеров для торрентов
 ```text
-http://7ece.co.uk:6969/announce
-http://bt.poletracker.org:2710/announce
-http://craiovatracker.com:80/announce
-http://kubanmedia.org:2710/announce
-http://p4p.arenabg.com:1337/announce
-http://retracker.spark-rostov.ru:80/announce
-http://tr.kxmp.cf:80/announce
-http://tracker.blazing.de:6969/announce
-http://tracker.blazing.de:80/announce
-http://tracker.glotorrents.pw:6969/announce
-http://tracker4.infohash.org:6969/announce
-udp://atrack.pow7.com:80/announce
 udp://bt.e-burg.org:2710/announce
-udp://bulkpeers.com:2710/announce
-udp://craiovatracker.com:80/announce
-udp://explodie.org:6969
-udp://kubanmedia.org:2710/announce
-udp://open.demonii.com:1337/announce
-udp://open.demonii.com:6969/announce
-udp://pow7.com:80/announce
-udp://t2.pow7.com:80/announce
-udp://tracker.bittor.pw:1337/announce
-udp://tracker.dler.org:6969/announce
-udp://tracker.glotorrents.pw:6969/announce
-udp://tracker.openbittorrent.com:6969/announce
-udp://tracker.seedceo.vn:2710/announce
-udp://tracker.torrent.eu.org:451/announce
-udp://tracker.vanitycore.co:6969/announce
-udp://tracker3.dler.com:2710/announce
-udp://tracker4.infohash.org:6969/announce
-udp://tracker4.infohash.org:80/announce
 ```
 
 ---
