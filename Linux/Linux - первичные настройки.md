@@ -212,6 +212,12 @@ sh -c "$(curl -sS https://raw.githubusercontent.com/Vendicated/VencordInstaller/
 # Список трекеров для торрентов
 ```text
 udp://bt.e-burg.org:2710/announce
+udp://tracker.opentrackr.org:1337/announce
+udp://open.stealth.si:80/announce
+udp://exodus.desync.com:6969/announce
+udp://www.torrent.eu.org:451/announce
+udp://tracker.torrent.eu.org:451/announce
+udp://open.demonii.com:1337/announce
 ```
 
 ---
