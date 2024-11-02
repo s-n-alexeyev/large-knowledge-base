@@ -48,3 +48,13 @@ sudo filefrag /swapfile
 ```
 /swapfile: 2 extents found
 ```
+
+>просмотр swap файла
+```bash
+sudo swapon --show
+```
+
+```
+NAME       TYPE       SIZE USED PRIO  
+/swapfile  file        64G   0B   -2
+```
