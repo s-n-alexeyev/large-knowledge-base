@@ -49,7 +49,9 @@ debugInConsole: false # Print debug info in Obsidian console
 ![](/media/VPN1Click/image65.png)
 ![](/media/VPN1Click/image3.png)
 
-### 15. Нажимаем "создать" и через QR коды можно переносить конфигурации на клиентов (телефоны, компьютеры, телевизоры). Скачать клиентов можно [[# Устанавливаем клиента vless для телефона / компьютера / планшета / приставки:  Android NekoBox:  ]]
+### 15. Нажимаем "создать" и через QR коды можно переносить конфигурации на клиентов (телефоны, компьютеры, телевизоры). 
+
+Скачать клиентов можно [[# Устанавливаем клиента vless для телефона / компьютера / планшета / приставки:  Android NekoBox:  ]]
 
 ![](/media/VPN1Click/image34.png)
 # Установка VPN Marzban
@@ -259,29 +261,22 @@ Android TV / Google TV:
 [VPN для ChatGPT от ChatGPT](https://youtu.be/p1xxdR4MDLM)
 (ручная установка 3X-UI VLESS)
 
-1.  Качаем программу для SSH Termius:
-    > [https://termius.com/download](https://termius.com/download)
+1.  Качаем программу для SSH [Termius](https://termius.com/download)
+2.  Команды копируем и вводим в терминале `ctrl + shift + v` или `ctrl + cmd + v`:
 
-2.  Команды копируем и вводим в терминале (ctrl + shift + v) или
-    > (ctrl + cmd) + v:
+>диспетчер задач:
+```bash
+htop
+```
+выход из диспетчера `ctrl + c`
 
-> диспетчер задач:
->
-> htop
->
-> *выход из диспетчера (ctrl + c)*
->
-> установить 3x-ui:
->
-> sudo apt install curl
->
-> 
-> 
-bash <(curl -Ls> [https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh](https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh))
-> 
+>установить 3x-ui:
+```bash
+sudo apt install curl
+bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
+```
 
 Настраиваем параметры как в видео и заходим к себе на сервер для окончательной настройки (в [видео](https://youtu.be/p1xxdR4MDLM) рассказываю всё  подробно)
-
 ## Устанавливаем клиента vless для телефона / компьютера / планшета / приставки:  Android NekoBox:  
 
 [https://github.com/MatsuriDayo/NekoBoxForAndroid/releases](https://github.com/MatsuriDayo/NekoBoxForAndroid/releases)
@@ -358,7 +353,9 @@ height="3.5961898512685915in"}
 ### 1.7 Оплачиваем
 
 ![](/media/VPN1Click/image23.png)
-### 1.8 Ждём установку и сообщение на электронную почту, с данными сервера.![](/media/VPN1Click/image2.png)
+### 1.8 Ждём установку и сообщение на электронную почту, с данными сервера.
+
+![](/media/VPN1Click/image2.png)
 
 ### 2. Идём на сайт [https://amnezia.org/ru](https://amnezia.org/ru) и качаем программу
 
@@ -426,9 +423,12 @@ system configuration save
 ![](/media/VPN1Click/image33.png)
 
 ![](/media/VPN1Click/image8.png)
-### 13. Открываем наш файл, который получили от Wireguard и заполняем шаблон данными из файла.![](/media/VPN1Click/image10.png)
+### 13. Открываем наш файл, который получили от Wireguard и заполняем шаблон данными из файла.
+
+![](/media/VPN1Click/image10.png)
 
 ### 14. Копируем подготовленную строку и отправляем в командную строку роутера и получаем ответ.
+
 ![](/media/VPN1Click/image77.png)
 
 ![](/media/VPN1Click/image66.png)
@@ -455,8 +455,9 @@ system configuration save
 ![](/media/VPN1Click/image1.png)
 
 ![](/media/VPN1Click/image47.png)
-### 16. Создаём отдельный Wi-Fi под VPN![](/media/VPN1Click/image43.png)
+### 16. Создаём отдельный Wi-Fi под VPN
 
+![](/media/VPN1Click/image43.png)
 ### 17. Вводим название сегмента, название SSID, защиту, пароль к Wi-Fi, ключаем 5 Ггц, проверяем NAT сервер, и выбираем нашу WG политику доступа.
 
 ![](/media/VPN1Click/image44.png)
@@ -592,6 +593,7 @@ height="2.5972222222222223in"}
 ### 1.5 Кликаем на "виртуальный сервер"
 
 ### 1.6 Выбираем параметры
+
 ![](/media/VPN1Click/image92.png)
 
 ![](/media/VPN1Click/image71.png)
@@ -600,7 +602,9 @@ height="2.5972222222222223in"}
 ### 1.7 Оплачиваем
 
 ![](/media/VPN1Click/image23.png)
-### 1.8 Ждём установку и сообщение на электронную почту, с данными сервера.![](/media/VPN1Click/image2.png)
+### 1.8 Ждём установку и сообщение на электронную почту, с данными сервера.
+
+![](/media/VPN1Click/image2.png)
 
 ### 2. Идём на сайт [https://amnezia.org/ru](https://amnezia.org/ru) или на [зеркало](https://hurgaknc-bsccljbcrq-ez.a.run.app/en/downloads) и качаем программу
 ![](/media/VPN1Click/image16.png)
