@@ -2,17 +2,9 @@
 
 [Оригинальная документация]()
 
-![](https://docs.amnezia.org/ru/img/logo-with-a-w-glow.svg)
+![](/Media/Keenetic_AmneziaWG/logo-with-a-w-glow.svg)
 # Установка VPN с AmneziaWG на роутеры Keenetic
 
-```table-of-contents
-title: Содержание
-style: nestedList # TOC style (nestedList|nestedOrderedList|inlineFirstLevel)
-minLevel: 0 # Include headings from the specified level
-maxLevel: 0 # Include headings up to the specified level
-includeLinks: true # Make headings clickable
-debugInConsole: false # Print debug info in Obsidian console
-```
 
 Создание подключения WireGuard с дополнительными параметрами asc в обновлённом интерфейсе роутеров KeeneticOS 4.2.
 
