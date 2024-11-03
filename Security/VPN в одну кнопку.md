@@ -49,7 +49,7 @@ debugInConsole: false # Print debug info in Obsidian console
 ![](/media/VPN1Click/image65.png)
 ![](/media/VPN1Click/image3.png)
 
-### 15. Нажимаем "создать" и через QR коды можно переносить конфигурации на клиентов (телефоны, компьютеры, телевизоры). Скачать клиентов можно [тут.](#устанавливаем-клиента-vless-для-телефона-компьютера-планшета-приставки-android-httpsgithub.commatsuridayonekoboxforandroidreleases)
+### 15. Нажимаем "создать" и через QR коды можно переносить конфигурации на клиентов (телефоны, компьютеры, телевизоры). Скачать клиентов можно [[# Устанавливаем клиента vless для телефона / компьютера / планшета / приставки:  Android NekoBox:  ]]
 
 ![](/media/VPN1Click/image34.png)
 # Установка VPN Marzban
@@ -295,7 +295,9 @@ Android TV / Google TV:
 > [видео](https://youtu.be/p1xxdR4MDLM) рассказываю всё
 > подробно)
 
-## Устанавливаем клиента vless для телефона / компьютера / планшета / приставки:  Android NekoBox: [https://github.com/MatsuriDayo/NekoBoxForAndroid/releases](https://github.com/MatsuriDayo/NekoBoxForAndroid/releases)
+## Устанавливаем клиента vless для телефона / компьютера / планшета / приставки:  Android NekoBox:  
+
+[https://github.com/MatsuriDayo/NekoBoxForAndroid/releases](https://github.com/MatsuriDayo/NekoBoxForAndroid/releases)
 
 Android V2RayNG:
 [https://play.google.com/store/apps/details?id=com.v2ray.ang](https://play.google.com/store/apps/details?id=com.v2ray.ang)
