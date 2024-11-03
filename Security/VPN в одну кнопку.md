@@ -254,19 +254,7 @@ Android TV / Google TV:
 
 Скачать приложение:  
 [https://github.com/2dust/v2rayNG/releases/tag/1.8.35](https://github.com/2dust/v2rayNG/releases/tag/1.8.35)
-
 ## [VPN для ChatGPT от ChatGPT](https://youtu.be/p1xxdR4MDLM) (ручная установка 3X-UI VLESS)
-
-Переходя по ссылкам, вы меня поддерживаете, а я стараюсь делать для вас
-понятные инструкции ♥️
-
-Хостинг #1 [**[vk.cc/ct29NQ]![]**](https://vk.cc/ct29NQ)
-
-(промокод **off60** для 60% скидки на первый месяц)
-
-Хостинг #2 [**[vk.cc/czDwwy]![]**](http://vk.cc/czDwwy) **[\
-]![]\
-**(после перехода будет действовать 15% бонус! В течении 24 часов!
 
 [VPN для ChatGPT от ChatGPT](https://youtu.be/p1xxdR4MDLM)
 (ручная установка 3X-UI VLESS)
@@ -287,13 +275,12 @@ Android TV / Google TV:
 >
 > sudo apt install curl
 >
-> bash \<(curl -Ls
-> [https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh](https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh))
->
-> Настраиваем параметры как в видео и заходим к себе на сервер для
-> окончательной настройки (в
-> [видео](https://youtu.be/p1xxdR4MDLM) рассказываю всё
-> подробно)
+> 
+> 
+bash <(curl -Ls> [https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh](https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh))
+> 
+
+Настраиваем параметры как в видео и заходим к себе на сервер для окончательной настройки (в [видео](https://youtu.be/p1xxdR4MDLM) рассказываю всё  подробно)
 
 ## Устанавливаем клиента vless для телефона / компьютера / планшета / приставки:  Android NekoBox:  
 
