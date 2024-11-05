@@ -66,7 +66,7 @@ sudo ntpdate pool.ntp.org
 ```
 
 ---
-## Установка репозиторя yandex browser
+## Установка репозитория yandex browser
 
 > заходим от администратора
 ```shell
