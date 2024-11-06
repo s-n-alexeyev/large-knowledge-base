@@ -35,6 +35,17 @@ maxretry = 3
 bantime = 3600
 ```
 
+ubuntu
+```
+[sshd]
+enabled = true
+port = ssh
+filter = sshd
+logpath = %(sshd_log)s
+backend = systemd
+bantime = 3600
+```
+
 - `enabled = true`: Включает защиту для SSH.  
 - `port = ssh`: Указывает порт, на котором работает SSH. Если вы используете другой порт, укажите его здесь.  
 - `filter = sshd`: Указывает фильтр, который будет использоваться для анализа логов.  
