@@ -6,7 +6,7 @@ git clone https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports
 >Устанавливаем язык GO
 ```bash
 #arch/manjaro
-sudo pacman -S golang
+sudo pacman -S go
 
 #debian/ubuntu
 sudo apt install golang
