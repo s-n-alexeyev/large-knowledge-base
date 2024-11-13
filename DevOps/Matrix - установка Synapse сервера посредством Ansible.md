@@ -214,8 +214,8 @@ matrix_homeserver_generic_secret_key: 'большой ключ'
 # matrix_coturn_turn_static_auth_secret: 'большой ключ'
 # matrix_synapse_macaroon_secret_key: 'большой ключ'
 matrix_playbook_reverse_proxy_type: playbook-managed-traefik
-devture_traefik_config_certificatesResolvers_acme_email: 'ssl@example.ru'
-devture_postgres_connection_password: 'любой безопасный пароль для базы данных'
+traefik_config_certificatesResolvers_acme_email: 'ssl@example.ru'
+postgres_connection_password: 'любой безопасный пароль для базы данных'
 
 
 #Регистрация по приглашению
