@@ -370,7 +370,7 @@ ansible-playbook -i inventory/hosts setup.yml --tags=setup-all,start
 [![Установка Matrix сервера с помощью playbook 2021](/Media/Synapse/Установка_Matrix_сервера_с_помощью_playbook_2021.webp)](https://vipadmin.club/uploads/posts/2022-02/-.webp)
 ### Регистрация по приглашению
 
-Данная функция уже включена в шаблоне вашей конфигурации. Для создания ссылки-приглашениявоспользуйтесь следующей командой:
+Данная функция уже включена в шаблоне вашей конфигурации. Для создания ссылки-приглашения воспользуйтесь следующей командой:
 
 ```bash
 ansible-playbook -i inventory/hosts setup.yml \
