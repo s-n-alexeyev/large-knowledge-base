@@ -45,7 +45,8 @@ port = ssh
 filter = sshd
 logpath = %(sshd_log)s
 backend = systemd
-bantime = 3600
+maxretry = 3
+bantime = 7h
 ```
 
 - `enabled = true`: Включает защиту для SSH.  
