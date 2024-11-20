@@ -163,6 +163,7 @@ make INSTALL_ROOT="$pkgdir" install
 Остались вопросы пишите в комментариях  
 Всем удачи, [арчвики](https://wiki.archlinux.org/index.php/PKGBUILD_(Русский)#install) в помощь!)
 
+---
 
 Памятка:
 
