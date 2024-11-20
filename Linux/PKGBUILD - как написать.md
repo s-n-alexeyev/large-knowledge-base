@@ -162,3 +162,26 @@ make INSTALL_ROOT="$pkgdir" install
 Эта програма давно не поддерживается, PKGBUILD выложен просто как пример  
 Остались вопросы пишите в комментариях  
 Всем удачи, [арчвики](https://wiki.archlinux.org/index.php/PKGBUILD_(Русский)#install) в помощь!)
+
+
+Памятка:
+
+>создаем .SRCINFO
+```bash
+makepkg --printsrcinfo > .SRCINFO
+```
+
+>добавляем все необходимые файлы
+```bash
+git add PKGBUILD .SRCINFO
+```
+
+>коммитим
+```bash
+git commit -m "v1.2"
+```
+
+>загружаем в AUR
+```bash
+git push
+```
