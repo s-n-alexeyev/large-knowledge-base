@@ -17,6 +17,8 @@ sudo pacman-key --lsign-key F3B607488DB35A47
 
 >или
 ```bash
+sudo su
+
 sudo rm -rf /etc/pacman.d/gnupg/
 sudo pacman-key --init
 sudo pacman-key --populate
