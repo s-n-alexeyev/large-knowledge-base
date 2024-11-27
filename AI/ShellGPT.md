@@ -1,3 +1,14 @@
+2024-11-27  
+[Источник](https://github.com/TheR1D/shell_gpt)
+```table-of-contents
+title: Содержание
+style: nestedList # TOC style (nestedList|nestedOrderedList|inlineFirstLevel)
+minLevel: 0 # Include headings from the specified level
+maxLevel: 0 # Include headings up to the specified level
+includeLinks: true # Make headings clickable
+hideWhenEmpty: false # Hide TOC if no headings are found
+debugInConsole: false # Print debug info in Obsidian console
+```
 ## Установка
 
 ```bash
@@ -11,11 +22,7 @@ pip install shell-gpt
 >Альтернативно вы можете использовать локально размещенные модели с открытым исходным кодом, которые доступны бесплатно. Чтобы использовать локальные модели, вам потребуется запустить собственный сервер LLM, например [Ollama](https://github.com/ollama/ollama) . Чтобы настроить ShellGPT с помощью Ollama, следуйте этому подробному [руководству](https://github.com/TheR1D/shell_gpt/wiki/Ollama) .
 >
 **❗️Обратите внимание, что ShellGPT не оптимизирован для локальных моделей и может работать не так, как ожидалось.**
-
-
-## Конфигурация ShellGPT
-
-[](https://github.com/TheR1D/shell_gpt/wiki/Ollama#shellgpt-configuration)
+## Конфигурация ShellGPT + Ollama
 
 Теперь, когда у нас запущен бэкэнд Ollama, нам нужно настроить ShellGPT для его использования. Для связи с локальными серверами LLM ShellGPT использует [LiteLLM](https://github.com/BerriAI/litellm) . Чтобы установить его, запустите:
 
@@ -23,32 +30,36 @@ pip install shell-gpt
 pip install shell-gpt[litellm]
 ```
 
-Проверьте, работает ли серверная часть Ollama и доступна ли она:
+Вариант установки для Ollama минуя VENV 
 
-```shell
-sgpt --model ollama/mistral:7b-instruct  "Who are you?"
-# -> I'm ShellGPT, your OS and shell assistant...
-```
-
-Если вы запускаете ShellGPT впервые, вам будет предложено ввести ключ API OpenAI. Укажите любую **случайную строку** , чтобы пропустить этот шаг (не просто нажимайте Enter с пустым вводом). Если у вас возникла ошибка, вы можете обратиться [за помощью к сообществу](https://github.com/TheR1D/shell_gpt/discussions) ShellGPT .
-
-Теперь нам нужно изменить несколько настроек в `~/.config/shell_gpt/.sgptrc`. Откройте файл в редакторе и измените `DEFAULT_MODEL` к `ollama/mistral:7b-instruct`. Также убедитесь, что `OPENAI_USE_FUNCTIONS` установлено на `false` и `USE_LITELLM` установлено на `true`. Вот и все, теперь вы можете использовать ShellGPT с бэкэндом Ollama.
-
-```shell
-sgpt "Hello Ollama"
-```
-
-
-
-Вариант установки для Ollama
 ```bash
 pip install shell-gpt[litellm] --break-system-packages --no-warn-script-location
 ```
 
 По умолчанию `sgpt` устанавливается в ~/.local/bin, можно добавить в переменную $PATH этот путь (зависит от оболочки). 
 Или скопировать `sgpt` в /usr/bin
+
 ```bash
 sudo cp ~/.local/bin/sgpt /usr/bin
+```
+
+Проверьте, работает ли серверная часть Ollama и доступна ли она (модель qwen2.5-coder:14b должна уже присутствовать):
+
+```shell
+sgpt --model ollama/mistral:qwen2.5-coder:14b  "Who are you?"
+# -> I'm ShellGPT, your OS and shell assistant...
+```
+
+Если вы запускаете ShellGPT впервые, вам будет предложено ввести ключ API OpenAI. Укажите любую **случайную строку** , чтобы пропустить этот шаг (не просто нажимайте Enter с пустым вводом). Если у вас возникла ошибка, вы можете обратиться [за помощью к сообществу](https://github.com/TheR1D/shell_gpt/discussions) ShellGPT .
+
+Теперь нам нужно изменить несколько настроек в `~/.config/shell_gpt/.sgptrc`.  
+- Откройте файл в редакторе и измените `DEFAULT_MODEL` со значением `ollama/qwen2.5-coder:14b`. (для примера)
+- Также убедитесь, что `OPENAI_USE_FUNCTIONS` установлено на `false` и `USE_LITELLM` установлено на `true`.
+ 
+ Вот и все, теперь вы можете использовать ShellGPT с бэкэндом Ollama.
+
+```shell
+sgpt "Hello Ollama"
 ```
 ## Использование
 
@@ -92,7 +103,6 @@ EOF
 sgpt <<< "What is the best way to learn shell redirects?"
 # -> The best way to learn shell redirects is through...
 ```
-
 ### Команды оболочки
 
 Вы когда-нибудь забывали общие команды оболочки, такие как `find`и вам нужно поискать синтаксис в Интернете? С `--shell` или ярлык `-s` вариант, вы можете быстро генерировать и выполнять нужные вам команды прямо в терминале.
@@ -150,7 +160,6 @@ sgpt -s "ffmpeg combine $(ls -m) into one video file without audio."
 ```shell
 sgpt -s "find all json files in current folder" --no-interaction | pbcopy
 ```
-
 ### Интеграция с оболочкой
 
 Это **очень удобная функция** , которая позволяет использовать `sgpt` завершения оболочки прямо в вашем терминале, без необходимости вводить `sgpt` с подсказкой и аргументами. Интеграция с оболочкой позволяет использовать ShellGPT с горячими клавишами в вашем терминале, поддерживаемыми оболочками Bash и ZSH. Эта функция ставит `sgpt` завершения непосредственно в буфер терминала (строка ввода), что позволяет немедленно редактировать предлагаемые команды.
@@ -158,10 +167,7 @@ sgpt -s "find all json files in current folder" --no-interaction | pbcopy
 Shell_GPT_Integration.mp4
 
 Чтобы установить интеграцию оболочки, запустите `sgpt --install-integration` и перезагрузите терминал, чтобы применить изменения. Это добавит несколько строк в ваш `.bashrc` или `.zshrc` файл. После этого вы можете использовать `Ctrl+l` (по умолчанию) для вызова ShellGPT. Когда вы нажимаете `Ctrl+l` он заменит текущую строку ввода (буфер) предложенной командой. Затем вы можете отредактировать его и просто нажать `Enter` выполнить.
-
 ### Генерация кода
-
-[](https://github.com/TheR1D/shell_gpt#generating-code)
 
 С помощью `--code` или `-c` параметр, вы можете специально запросить вывод чистого кода, например:
 
@@ -169,6 +175,7 @@ Shell_GPT_Integration.mp4
 sgpt --code "solve fizz buzz problem using python"
 ```
 
+```python
 for i in range(1, 101):
     if i % 3 == 0 and i % 5 == 0:
         print("FizzBuzz")
@@ -178,6 +185,7 @@ for i in range(1, 101):
         print("Buzz")
     else:
         print(i)
+```
 
 Поскольку это действительный код Python, мы можем перенаправить вывод в файл:
 
@@ -198,6 +206,7 @@ python fizz_buzz.py
 cat fizz_buzz.py | sgpt --code "Generate comments for each line of my code"
 ```
 
+```python
 # Loop through numbers 1 to 100
 for i in range(1, 101):
     # Check if number is divisible by both 3 and 5
@@ -215,10 +224,8 @@ for i in range(1, 101):
     # If number is not divisible by 3 or 5, print the number itself
     else:
         print(i)
-
+```
 ### Режим чата
-
-[](https://github.com/TheR1D/shell_gpt#chat-mode)
 
 Часто важно сохранить и вспомнить разговор. `sgpt` создает диалоговый диалог при каждом запрошенном завершении LLM. Диалог может развиваться один за другим (режим чата) или интерактивно, в цикле REPL (режим REPL). Оба способа основаны на одном и том же базовом объекте, называемом сеансом чата. Сеанс находится в [настраиваемом](https://github.com/TheR1D/shell_gpt#runtime-configuration-file) `CHAT_CACHE_PATH`.
 
@@ -227,6 +234,7 @@ for i in range(1, 101):
 ```shell
 sgpt --chat conversation_1 "please remember my favorite number: 4"
 # -> I will remember that your favorite number is 4.
+
 sgpt --chat conversation_1 "what would be my favorite number + 4?"
 # -> Your favorite number is 4, so if we add 4 to it, the result would be 8.
 ```
@@ -237,10 +245,12 @@ sgpt --chat conversation_1 "what would be my favorite number + 4?"
 sgpt --chat conversation_2 --code "make a request to localhost using python"
 ```
 
+```python
 import requests
 
 response = requests.get('http://localhost')
 print(response.text)
+```
 
 Попросим LLM добавить к нашему запросу кэширование:
 
@@ -248,6 +258,7 @@ print(response.text)
 sgpt --chat conversation_2 --code "add caching"
 ```
 
+```python
 import requests
 from cachecontrol import CacheControl
 
@@ -256,16 +267,20 @@ cached_sess = CacheControl(sess)
 
 response = cached_sess.get('http://localhost')
 print(response.text)
+```
 
 То же самое относится и к командам оболочки:
 
 ```shell
 sgpt --chat conversation_3 --shell "what is in current folder"
 # -> ls
+
 sgpt --chat conversation_3 "Sort by name"
 # -> ls | sort
+
 sgpt --chat conversation_3 "Concatenate them using FFMPEG"
 # -> ffmpeg -i "concat:$(ls | sort | tr '\n' '|')" -codec copy output.mp4
+
 sgpt --chat conversation_3 "Convert the resulting file into an MP3"
 # -> ffmpeg -i output.mp4 -vn -acodec libmp3lame -ac 2 -ab 160k -ar 48000 final_output.mp3
 ```
@@ -287,12 +302,9 @@ sgpt --show-chat conversation_1
 # user: what would be my favorite number + 4?
 # assistant: Your favorite number is 4, so if we add 4 to it, the result would be 8.
 ```
-
 ### Режим REPL
 
 Существует очень удобный режим REPL (цикл чтения-оценки-печати), который позволяет вам в интерактивном режиме общаться с моделями GPT. Чтобы начать сеанс чата в режиме REPL, используйте команду `--repl` параметр, за которым следует уникальное имя сеанса. Вы также можете использовать «temp» в качестве имени сеанса, чтобы запустить временный сеанс REPL. Обратите внимание, что `--chat` и `--repl` используют один и тот же базовый объект, поэтому вы можете использовать `--chat` чтобы начать сеанс чата, а затем продолжить его с помощью `--repl` чтобы продолжить разговор в режиме REPL.
-
-[](https://camo.githubusercontent.com/5b8a19b3237608123e411382cf6ef11d215f319263cc5136371ddffd84a93c47/68747470733a2f2f7331302e67696679752e636f6d2f696d616765732f7265706c2d64656d6f2e676966)
 
 ```
 sgpt --repl temp
@@ -346,10 +358,7 @@ print(f"Hello {name}")
 The snippet of code you've provided is written in Python. It prompts the user...
 >>> Follow up questions...
 ```
-
 ### Вызов функции
-
-[](https://github.com/TheR1D/shell_gpt#function-calling)
 
 [Вызовы функций](https://platform.openai.com/docs/guides/function-calling) — это мощная функция, предоставляемая OpenAI. Это позволяет LLM выполнять функции в вашей системе, которые можно использовать для выполнения различных задач. Чтобы установить [функции по умолчанию,](https://github.com/TheR1D/shell_gpt/tree/main/sgpt/llm_functions/) выполните:
 
@@ -413,10 +422,7 @@ sgpt "Play music and open hacker news"
 ```
 
 Это всего лишь простой пример того, как можно использовать вызовы функций. Это действительно мощная функция, которую можно использовать для выполнения множества сложных задач. У нас есть специальная [категория](https://github.com/TheR1D/shell_gpt/discussions/categories/functions) в обсуждениях GitHub для обмена и обсуждения функций. LLM может выполнять деструктивные команды, поэтому используйте его на свой страх и риск❗️
-
 ### Роли
-
-[](https://github.com/TheR1D/shell_gpt#roles)
 
 ShellGPT позволяет вам создавать собственные роли, которые можно использовать для генерации кода, команд оболочки или для удовлетворения ваших конкретных потребностей. Чтобы создать новую роль, используйте команду `--create-role` вариант, за которым следует имя роли. Вам будет предложено предоставить описание роли, а также другие сведения. Это создаст файл JSON в `~/.config/shell_gpt/roles` с именем роли. Внутри этого каталога вы также можете редактировать значения по умолчанию. `sgpt` роли, такие как **Shell** , **Code** и **default** . Используйте `--list-roles` возможность вывести список всех доступных ролей и `--show-role` возможность отображения сведений о конкретной роли. Вот пример пользовательской роли:
 
@@ -439,10 +445,7 @@ sgpt --role json_generator "random: user, password, email, address"
 }
 
 Если в описании роли есть слова «APPLY MARKDOWN» (с учетом регистра), то чаты будут отображаться с использованием форматирования markdown.
-
-### Запросить кеш
-
-[](https://github.com/TheR1D/shell_gpt#request-cache)
+### Запрос кеша
 
 Управление кешем с помощью `--cache` (по умолчанию) и `--no-cache` параметры. Это кэширование применимо ко всем `sgpt` запросы к OpenAI API:
 
@@ -454,51 +457,62 @@ sgpt "what are the colors of a rainbow"
 В следующий раз тот же самый запрос мгновенно получит результаты из локального кэша. Обратите внимание, что `sgpt "what are the colors of a rainbow" --temperature 0.5` сделаю новый запрос, так как мы не предоставили `--temperature` (то же самое относится и к `--top-probability`) по предыдущему запросу.
 
 Это всего лишь несколько примеров того, что мы можем сделать с помощью моделей OpenAI GPT. Я уверен, что вы найдете это полезным для ваших конкретных случаев использования.
-
-### Файл конфигурации времени выполнения
+### Файл конфигурации
 
 Вы можете настроить некоторые параметры в файле конфигурации времени выполнения. `~/.config/shell_gpt/.sgptrc`:
 
 ```
-# API key, also it is possible to define OPENAI_API_KEY env.
+# API ключ, также можно определить OPENAI_API_KEY через переменную окружения.
 OPENAI_API_KEY=your_api_key
-# Base URL of the backend server. If "default" URL will be resolved based on --model.
+
+# Базовый URL сервера бэкенда. Если задано значение "default", URL будет разрешен на основе --model.
 API_BASE_URL=default
-# Max amount of cached message per chat session.
+
+# Максимальное количество кэшированных сообщений в сессии чата.
 CHAT_CACHE_LENGTH=100
-# Chat cache folder.
+
+# Папка для кэша чата.
 CHAT_CACHE_PATH=/tmp/shell_gpt/chat_cache
-# Request cache length (amount).
+
+# Длина кэша запросов (количество).
 CACHE_LENGTH=100
-# Request cache folder.
+
+# Папка для кэша запросов.
 CACHE_PATH=/tmp/shell_gpt/cache
-# Request timeout in seconds.
+
+# Время ожидания ответа в секундах.
 REQUEST_TIMEOUT=60
-# Default OpenAI model to use.
+
+# По умолчанию используемая модель OpenAI.
 DEFAULT_MODEL=gpt-4o
-# Default color for shell and code completions.
+
+# Цвет по умолчанию для завершений шелла и кода.
 DEFAULT_COLOR=magenta
-# When in --shell mode, default to "Y" for no input.
+
+# При работе в режиме --shell, значение по умолчанию "Y" при отсутствии ввода.
 DEFAULT_EXECUTE_SHELL_CMD=false
-# Disable streaming of responses
+
+# Отключить потоковый вывод ответов.
 DISABLE_STREAMING=false
-# The pygment theme to view markdown (default/describe role).
+
+# Тема для просмотра markdown (по умолчанию/описание роли).
 CODE_THEME=default
-# Path to a directory with functions.
+
+# Путь к каталогу с функциями.
 OPENAI_FUNCTIONS_PATH=/Users/user/.config/shell_gpt/functions
-# Print output of functions when LLM uses them.
+
+# Показывать вывод функций, когда LLM их использует.
 SHOW_FUNCTIONS_OUTPUT=false
-# Allows LLM to use functions.
+
+# Разрешить LLM использовать функции.
 OPENAI_USE_FUNCTIONS=true
-# Enforce LiteLLM usage (for local LLMs).
+
+# Принудительно использовать LiteLLM (для локальных моделей LLM).
 USE_LITELLM=false
 ```
 
 Возможные варианты `DEFAULT_COLOR`: черный, красный, зеленый, желтый, синий, пурпурный, голубой, белый, ярко-черный, ярко-красный, ярко-зеленый, ярко-желтый, ярко-синий, ярко-пурпурный, ярко-голубой, ярко-белый. Возможные варианты `CODE_THEME`: [https://pygments.org/styles/](https://pygments.org/styles/)
-
 ### Полный список аргументов
-
-[](https://github.com/TheR1D/shell_gpt#full-list-of-arguments)
 
 ```
 ╭─ Arguments ──────────────────────────────────────────────────────────────────────────────────────────────╮
@@ -534,10 +548,7 @@ USE_LITELLM=false
 │ --list-roles   -lr            List roles.                                                                │
 ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
-
-## Докер
-
-[](https://github.com/TheR1D/shell_gpt#docker)
+## Docker
 
 Запустите контейнер с помощью `OPENAI_API_KEY` переменная среды и том Docker для хранения кеша. Рассмотрите возможность установки переменных среды `OS_NAME` и `SHELL_NAME` согласно вашим предпочтениям.
 
@@ -565,10 +576,7 @@ sgpt --chat rainbow "translate your last answer in french"
 ```shell
 docker build -t sgpt .
 ```
-
-### Докер + Оллама
-
-[](https://github.com/TheR1D/shell_gpt#docker--ollama)
+### Docker + Ollama
 
 Если вы хотите отправлять запросы на экземпляр Ollama и запускать ShellGPT внутри контейнера Docker, вам необходимо настроить Dockerfile и собрать контейнер самостоятельно: необходим пакет Litellm и правильно установлены переменные env.
 
@@ -596,10 +604,7 @@ VOLUME /tmp/shell_gpt
 
 ENTRYPOINT ["sgpt"]
 ```
-
 ## Дополнительная документация
 
-[](https://github.com/TheR1D/shell_gpt#additional-documentation)
-
 - [Интеграция с Azure](https://github.com/TheR1D/shell_gpt/wiki/Azure)
-- [Интеграция Оллама](https://github.com/TheR1D/shell_gpt/wiki/Ollama)
+- [Интеграция Ollama](https://github.com/TheR1D/shell_gpt/wiki/Ollama)
