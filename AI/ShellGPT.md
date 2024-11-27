@@ -12,6 +12,34 @@ pip install shell-gpt
 >
 **❗️Обратите внимание, что ShellGPT не оптимизирован для локальных моделей и может работать не так, как ожидалось.**
 
+
+## Конфигурация ShellGPT
+
+[](https://github.com/TheR1D/shell_gpt/wiki/Ollama#shellgpt-configuration)
+
+Теперь, когда у нас запущен бэкэнд Ollama, нам нужно настроить ShellGPT для его использования. Для связи с локальными серверами LLM ShellGPT использует [LiteLLM](https://github.com/BerriAI/litellm) . Чтобы установить его, запустите:
+
+```shell
+pip install shell-gpt[litellm]
+```
+
+Проверьте, работает ли серверная часть Ollama и доступна ли она:
+
+```shell
+sgpt --model ollama/mistral:7b-instruct  "Who are you?"
+# -> I'm ShellGPT, your OS and shell assistant...
+```
+
+Если вы запускаете ShellGPT впервые, вам будет предложено ввести ключ API OpenAI. Укажите любую **случайную строку** , чтобы пропустить этот шаг (не просто нажимайте Enter с пустым вводом). Если у вас возникла ошибка, вы можете обратиться [за помощью к сообществу](https://github.com/TheR1D/shell_gpt/discussions) ShellGPT .
+
+Теперь нам нужно изменить несколько настроек в `~/.config/shell_gpt/.sgptrc`. Откройте файл в редакторе и измените `DEFAULT_MODEL` к `ollama/mistral:7b-instruct`. Также убедитесь, что `OPENAI_USE_FUNCTIONS` установлено на `false` и `USE_LITELLM` установлено на `true`. Вот и все, теперь вы можете использовать ShellGPT с бэкэндом Ollama.
+
+```shell
+sgpt "Hello Ollama"
+```
+
+
+
 Вариант установки для Ollama
 ```bash
 pip install shell-gpt[litellm] --break-system-packages --no-warn-script-location
@@ -260,9 +288,7 @@ sgpt --show-chat conversation_1
 # assistant: Your favorite number is 4, so if we add 4 to it, the result would be 8.
 ```
 
-### Режим РЕПЛ
-
-[](https://github.com/TheR1D/shell_gpt#repl-mode)
+### Режим REPL
 
 Существует очень удобный режим REPL (цикл чтения-оценки-печати), который позволяет вам в интерактивном режиме общаться с моделями GPT. Чтобы начать сеанс чата в режиме REPL, используйте команду `--repl` параметр, за которым следует уникальное имя сеанса. Вы также можете использовать «temp» в качестве имени сеанса, чтобы запустить временный сеанс REPL. Обратите внимание, что `--chat` и `--repl` используют один и тот же базовый объект, поэтому вы можете использовать `--chat` чтобы начать сеанс чата, а затем продолжить его с помощью `--repl` чтобы продолжить разговор в режиме REPL.
 
@@ -430,8 +456,6 @@ sgpt "what are the colors of a rainbow"
 Это всего лишь несколько примеров того, что мы можем сделать с помощью моделей OpenAI GPT. Я уверен, что вы найдете это полезным для ваших конкретных случаев использования.
 
 ### Файл конфигурации времени выполнения
-
-[](https://github.com/TheR1D/shell_gpt#runtime-configuration-file)
 
 Вы можете настроить некоторые параметры в файле конфигурации времени выполнения. `~/.config/shell_gpt/.sgptrc`:
 
