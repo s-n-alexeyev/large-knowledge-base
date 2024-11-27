@@ -432,6 +432,7 @@ sgpt --create-role json_generator
 sgpt --role json_generator "random: user, password, email, address"
 ```
 
+```json
 {
   "user": "JohnDoe",
   "password": "p@ssw0rd",
@@ -443,6 +444,7 @@ sgpt --role json_generator "random: user, password, email, address"
     "zip": "12345"
   }
 }
+```
 
 Если в описании роли есть слова «APPLY MARKDOWN» (с учетом регистра), то чаты будут отображаться с использованием форматирования markdown.
 ### Запрос кеша
