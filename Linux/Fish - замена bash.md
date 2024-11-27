@@ -213,7 +213,7 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
-alias ls="eza --tree --level=1 --icons=always"
+alias ls="eza --tree --level=1 --icons=always --group-directories-first"
 ```
 
 >перегружаем оболочку

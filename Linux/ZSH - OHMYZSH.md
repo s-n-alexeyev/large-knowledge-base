@@ -95,7 +95,7 @@ sudo nano ~/.zshrc
 >Добавьте в самый низ эти строки
 ```shell
 if [ -x "$(command -v eza)" ]; then
-    alias ls="eza --long --group"
+    alias ls="eza --tree --level=1 --icons=always --group-directories-first"
 fi
 ```
 ## cat - установите пакет `bat`
