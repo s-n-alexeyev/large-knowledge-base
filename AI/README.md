@@ -1,8 +1,5 @@
 # ShellGPT
 A command-line productivity tool powered by AI large language models (LLM). This command-line tool offers streamlined generation of **shell commands, code snippets, documentation**, eliminating the need for external resources (like Google search). Supports Linux, macOS, Windows and compatible with all major Shells like PowerShell, CMD, Bash, Zsh, etc.
-
-https://github.com/TheR1D/shell_gpt/assets/16740832/9197283c-db6a-4b46-bfea-3eb776dd9093
-
 ## Installation
 ```shell
 pip install shell-gpt
@@ -105,6 +102,8 @@ sgpt -s "find all json files in current folder" --no-interaction | pbcopy
 
 ### Shell integration
 This is a **very handy feature**, which allows you to use `sgpt` shell completions directly in your terminal, without the need to type `sgpt` with prompt and arguments. Shell integration enables the use of ShellGPT with hotkeys in your terminal, supported by both Bash and ZSH shells. This feature puts `sgpt` completions directly into terminal buffer (input line), allowing for immediate editing of suggested commands.
+
+![](/media/ShellGPT/Integration.mp4)
 
 https://github.com/TheR1D/shell_gpt/assets/16740832/bead0dab-0dd9-436d-88b7-6abfb2c556c1
 
