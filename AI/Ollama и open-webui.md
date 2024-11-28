@@ -1,5 +1,4 @@
 
-
 Устанавливаем окружение и активируем его
 ```bash
 python3 -m venv /opt/open-webui-env
@@ -10,7 +9,6 @@ source /opt/open-webui-env/bin/activate
 ```bash
 sh -c 'source ~/.venv/open-webui-env/bin/activate && { ollama serve & ollama_pid=$!; open-webui serve; wait $ollama_pid; } && xdg-open http://0.0.0.0:8080/'
 ```
-
 
 Перенос VENV замена содержимого скриптов в bin
 ```bash
