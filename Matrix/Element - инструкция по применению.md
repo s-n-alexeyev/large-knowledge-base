@@ -35,13 +35,13 @@ Element — бесплатный децентрализованный мессе
 - Откройте в браузере [страницу регистрации на официальном сайте Element](https://app.element.io/#/register).
 - Анонимная сеть Matrix служит основой для работы мессенджера Element. Вы увидите слова «Ваша учетная запись обслуживается» и адрес matrix.org по умолчанию. Если у вас нет своего или иного доверенного сервера Matrix на примете, выбирайте сервер по умолчанию. 
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXcLLpIYgqtnO7qwiRIgsTns4QGBeICx71qwwaWF1jEX3krGjKkJs_VJEtCSQwWuvOQVycmNJ-_XuV5oTAAiY0Ps5J2tjmdehKnm5hVXPNqOh42_dtCuxc7B0pNTij0sbMBEwLhp3L4uRi2soY0YK_db_vFO?key=iVFnh4BjUT6_PcgY2HJNpg)
+![[../Media/Pictures/Element - инструкция по применению/110a95db97dbb2118278481f0923ec98_MD5.png]]
 
 - Придумайте никнейм (псевдоним). Руководствуйтесь советами для анонимной почты выше. 
 - После заполнения остальных полей и политики использования Matrix нажмите кнопку «Зарегистрироваться».
 - На указанный email придет письмо от Matrix Notifications с названием «Validate your email». Подтвердите регистрацию по ссылке в письме («Verify Your Email Address»).
-
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXe5xlOwi1MT97ZltM9pdXp-qoKZ0nN4XOpazevmAMMt8OWy-huy8DDUlvJWYxYRNyORp_4slPi3b8XPO8NKYppUhT4AW6qEe3iHKo-K3GaQ9I9gzCAD1vCV-kCcsFV5FDdPyKrjjOiIEv9AexwhMBdrJ4zy?key=iVFnh4BjUT6_PcgY2HJNpg)
+    
+    ![[../Media/Pictures/Element - инструкция по применению/df7dcc86cc36243e76c4523e27adfb29_MD5.png]]
     
 
 - В отдельном окне браузера Matrix сообщит, что аккаунт создан и окно можно закрыть.
@@ -49,7 +49,7 @@ Element — бесплатный децентрализованный мессе
 
 Ваш аккаунт Element создан! Вы находитесь в главном окне Element. Слева видны разделы «Люди» и «Комнаты», пока там пусто.
 
-![](/Media/Pictures/Element_Matrix/bez-zagolovka1-760x351.jpeg.jpg)
+![[../Media/Pictures/Element - инструкция по применению/5e2a218d13701b26bbf93c7fde94c12d_MD5.jpg]]
 
 ### 3. Необходимые настройки безопасности
 
@@ -57,17 +57,17 @@ Element — бесплатный децентрализованный мессе
 
 - Зайдите в раздел настроек резервного копирования. Вы увидите такое окно:
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXcWUSPoFXKQd3YXyJ2ZTYtDHTqS-OCtbW9r1a84GUPwpG6v30tqV8__4Q3upPIghqGiIEkd85DlcWQbrN6saRnknuF2vki-NNoKVEFCT2RdGQJqAfpe6n7jt4X8NTBhNWhKwopr9cuUA1w2EgVH_cXOcX3f?key=iVFnh4BjUT6_PcgY2HJNpg)
+![[../Media/Pictures/Element - инструкция по применению/1921eb6345395a1fddb42edd69eb953a_MD5.png]]
 
 Если окна нет, зайдите в настройки. В панели слева нажмите на круг с первой буквой логина и перейдите в раздел «‎Безопасность». Вам нужен первый раздел — шифрование, и в нем «‎Настроить»‎.
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXciZVSC_3u5aqcXfh4oTWO7X8E6M0QBdl-51JDoFtf6OkiH2eqiGiN5fgk7-ZVo9NIeWF0A0d1lUyZ4Zg8d7qlLOIzunvPdDgh6H6-fnOoys9jv4ieeXVGHO2Wu4StqvB5hQWQCPcTv3Azgby6ipgV5dMIL?key=iVFnh4BjUT6_PcgY2HJNpg)
+![[../Media/Pictures/Element - инструкция по применению/cc811eddb7ac6eba6f3df6c755bb535c_MD5.png]]
 
 - Выберите один из способов резервного копирования: ключ (это случайный набор символов, который генерирует Element) или секретную фразу (ее вы можете задать сами, чтобы было проще запомнить).
 - Сохраните его в надежном месте, можно в том же менеджере паролей. 
 - После сохранения фразы вам предложат сохранить ключи безопасности. Ключи — резервный способ доступа к аккаунту на случай потери фразы. Рекомендуем не копировать их, а ‎скачать‎. Скачанный файл переназовите, чтобы не потерять, но не храните его в текстовом формате на рабочем столе.
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXfjW1pdiFPoIGIl-1UHAykV6cV0WptK2yzZHKvTxhmp6spEUfBRzAMr9wBe7pkAz-cJ_ENcX1qq3v6N6h3uF2HTAH9mxsG5wck0f6reURIfwK_fUHt4xg3vhtJ0qg1z6E1hquQhZ911IFs9-UAjl6V_BeK9?key=iVFnh4BjUT6_PcgY2HJNpg)
+![[../Media/Pictures/Element - инструкция по применению/44dfb3ebabaebbaf10c5b9ae25521f76_MD5.png]]
 
 **Фраза или ключ безопасности потребуются (наряду с логином и паролем) при повторном входе в аккаунт (если нет активной сессии на другом устройстве, например, компьютере). Без них все переписки будут отображаться как зашифрованные.** 
 
@@ -98,23 +98,23 @@ _*При определенной модели угроз быть постоя�
 - Узнайте у собеседников их имена в Element или сообщите им свое по другому безопасному каналу связи. 
 - Если хотите сами начать беседу, найдите собеседника в Element. В разделе «‎Люди» нажмите «‎Отправить личное сообщение»:
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXduay0DlTGK6m0r2p_tlNyEmCwYamzbwslCIv-bjLvOwfQlVDz8Gbn7ovwnT-_s95VVWUh42VTnn7zPgr8jXTxryoKP3HllgO4ykGDP0JiHgj023CxRWFvAeWvNII74BZPDuRhJlhwe_W1pt2tZK_M6o__D?key=iVFnh4BjUT6_PcgY2HJNpg)
+![[../Media/Pictures/Element - инструкция по применению/22c9e4995215e4a720efa9cd80ddad3b_MD5.png]]
 
 - Введите данные собеседника. Выберите из выпадающего списка нужного человека.
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXdjcSZYXYwGtlO8hHCEtikAWy03ibabvnxdj1FtGhKG5Sh6hz6_3nLQbq16zFgxv4kRNMjci2Wr5vHtDM3Svd6rwneDUXxYeGhtgjYYDuuAfD1YPSwjp0xq0aeySsJGd0Rgx37hhcMTUWz47zcY7FXX2h0?key=iVFnh4BjUT6_PcgY2HJNpg)
+![[../Media/Pictures/Element - инструкция по применению/5302b79bd2bbb22aa8b572bdbbbdd40a_MD5.png]]
 
 - Пригласите человека и начните общение.
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXf4Kkl_4-Aej0QRzQP2W3BSlVuQedqGNvSKYf522ne9ueygliRnDaHQ7EbPyEL7dZVHpR7eeqjhPbY-_nvCwWk0-NiCl7tJnGKiHxoz3gdqwDpbH2OVK9R0v0g7PyBsXeRtXjlC1Ex7RIiMYmIQgN-bQiKz?key=iVFnh4BjUT6_PcgY2HJNpg)
+![[../Media/Pictures/Element - инструкция по применению/4df773608bcda3daa131059d4a0f963a_MD5.png]]
 
 - Чтобы автоматически расшифровывать, что пишет человек, когда вы не в системе, верифицируйте собеседника. Для этого нажмите на иконку собеседника.
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXcPqv3Kd1a0vdF2UNuUOhm5vKhLD2hsDoL03ooglC-3LKhykIZcJspyDU5CSJr-j-Xyprs5Nas51r_wYB9tRa65T36GzYSUzns292qTzfZI3dBM33Oy9t_AzP1aKTAF-WOnnPsbO4XlxhTdLEyNdMnRJ0AB?key=iVFnh4BjUT6_PcgY2HJNpg)
+![[../Media/Pictures/Element - инструкция по применению/2034c07987a3bc437e827bff9fbcf116_MD5.png]]
 
 - Откроется окно с деталями переписки. Нажмите «‎Заверить»‎, сравните одноразовый код или эмодзи с собеседником.
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXe2s0GnSXYzmHyx6TNKGQWhqlyZvcpHp9bcemWTPOjienG1HVjSktjoEXUI8y9KUdzoZxTiObZ1seGMgW6KWb9ErrSv_GI9pDeLzlsgmkL3idCsm2MXSpNfsK77jRiZYaM3_eKv98NHGSevhY_xo5CKG2iz?key=iVFnh4BjUT6_PcgY2HJNpg)
+![[../Media/Pictures/Element - инструкция по применению/0f6fcbbd29e1405255fc6bc77493dadc_MD5.png]]
 
 Если не верифицировать собеседника и выйти из аккаунта, все отправленные вам сообщения будут зашифрованы, и вы их не прочитаете. Чтобы этого не произошло, см. пункт выше «‎Важные настройки, чтобы не терять сообщения при выходе из аккаунта»‎.
 
@@ -132,7 +132,7 @@ Element — непривычный мессенджер. Поэтому в пе�
 
 Нажмите на аватарку → «‎Настройки» → «‎Уведомления». Выберите настройки, которые соответствуют вашей модели угроз.
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXdSLa8Btl4oJMUPWloTQpxJqP8ebWaIbL0-evat7L8ly0a3buK0za9gjvy0LlWtJuCXqRBlHbeqsHb5kCfpMPCqWj4K_fxSk1W0rQjoVOe38WLlGs_1J1BKf5OQMakJd8NjRPUMFsbzon99dg28Kqqu7RnL?key=iVFnh4BjUT6_PcgY2HJNpg)
+![[../Media/Pictures/Element - инструкция по применению/93acecb2ef1f93d067472d3ebcfb049e_MD5.png]]
 
 Мы рекомендуем выключить функцию «‎Показать расшифрованное содержимое»‎.
 
@@ -142,7 +142,7 @@ Element — непривычный мессенджер. Поэтому в пе�
 
 Выберите «Настройки» → «Общие» → «Отображаемое имя». Например: 
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXc5od5hSwlk_2JbsqcpQpdXMq9apJVTXIFxX7eCvtizsFYiSp97Pxr7aq0KNuWJMTCQ8hFz00fmRe5Y2CuMSomtpXzKbemwo_0POTtV_R_SCtpPLFRMO1JtSrN65IqE2oFoVSzksZgtylWteK5oVg7MH4k_?key=iVFnh4BjUT6_PcgY2HJNpg)
+![[../Media/Pictures/Element - инструкция по применению/85159a7d4af42e9d4732b72164b58e03_MD5.png]]
 
 Также это поле можно использовать для обозначения временного статуса, например, «‎не на связи». Не добавляйте сюда информацию о своем местонахождении или привычках.
 
@@ -211,24 +211,24 @@ Element сможет защитить вашу переписку при усл�
 
 - Нажмите на «‎Проверка с помощью ключа безопасности или фразы» 
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXeyME1hT1-5QHbcV8PNUJ-uFEkE1V1ZCvpMJdA9jDgwDuwTmMfzzTCwPpboMCD1azYh2j8AhI6gnSis5BMhZYWL1M1bi8JKd-jU6JDAjWdP9wp6URr2a9k2SLU5EQTnst_coH613zXNtIPRYZ1QIXJlIuLG?key=iVFnh4BjUT6_PcgY2HJNpg)
+![[../Media/Pictures/Element - инструкция по применению/39e95fcbf52389c3079f9a34177d5286_MD5.png]]
 
 Если у вас не была задана мнемоническая фраза, картинка выше будет отличаться: вам сразу предложат ввести ключ.
 
 - Вместо фразы или ключа нажмите на «‎используйте секретный ключ» ‎
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXcEyxIZ_fk0_BVnS8qjExWDL8tMUNoaj_JjqeuxItl06pkaH8vydCBLmFXEKZQrvtkdRVr5VEPRwAwOxRDvqSzZyDw0fi5vhxGm0X6nCaN6ZcVE20mb0yTgbaN-BSSkc-UMKF-PAF4NlkUC-WDKXmz5oOAO?key=iVFnh4BjUT6_PcgY2HJNpg)
+![[../Media/Pictures/Element - инструкция по применению/de8e0951536a3bc7bbff8e586b23b0d5_MD5.png]]
 
 - В новом окне вам предложат ввести «бумажный» ключ. Скопируйте сохраненный ключ копипастом или загрузите файл с ключом в формате txt, который сохранили при регистрации аккаунта (кнопка «Загрузить»).
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXfy80626My_SyJkSgUIY7MBNeXvwnWqEaUglnAG8AIPCtv6E4YsTkQBtr8roVacjEr8kBwwLw19zKUiDOWd1SBJT4nuxLPaoHyBxMWwJihCuhstm4TWxe2BnuPlp5ztwkOwZntvPc_quH_KzKfSNBfaCRU?key=iVFnh4BjUT6_PcgY2HJNpg)
+![[../Media/Pictures/Element - инструкция по применению/5dd683cd43a6c880dea1bd0ab7033715_MD5.png]]
 
 Если скачанные ключи потеряны, придется сбросить ключ и создать новый по той же схеме, что и при первоначальных настройках безопасности. 
 
 При настройке новых ключей подтверждения вы увидите следующие экраны:  
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXdfWEEDyMMTDRyRSfn6c8ZlhPU8cme8immaB0dXNnCaqXWme5ZCpwVXynzn_As32ejub9gqQjX4t5ZFOS3UO3eCXLcBYXe7wF1vmAz-RhTMTefbcWBOzg7TOa3u7lPhJWwsfC5EstN-2UAFdvpp3ltxqEo8?key=iVFnh4BjUT6_PcgY2HJNpg)![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXf47uCN5KB9dcYfWCDP8ayr0CFY7GRcYutJVDMT6o2UgZGDJa6rTooUpv17WLzekh4zz9wifZDis1HjO2gyvhFQDuAojJFgAcu8PxlpaRZLfYKWIrjtQmrmAXZFeNkcUjw31bI7My29Qd5PfDDj2mliSf45?key=iVFnh4BjUT6_PcgY2HJNpg)
+![[../Media/Pictures/Element - инструкция по применению/8f15e57f112cf011d8a5fdd83cd733a6_MD5.png]]![[../Media/Pictures/Element - инструкция по применению/1dcfa60c634b866b8d3aedfd5e323284_MD5.png]]
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXcWUSPoFXKQd3YXyJ2ZTYtDHTqS-OCtbW9r1a84GUPwpG6v30tqV8__4Q3upPIghqGiIEkd85DlcWQbrN6saRnknuF2vki-NNoKVEFCT2RdGQJqAfpe6n7jt4X8NTBhNWhKwopr9cuUA1w2EgVH_cXOcX3f?key=iVFnh4BjUT6_PcgY2HJNpg)
+![[../Media/Pictures/Element - инструкция по применению/1921eb6345395a1fddb42edd69eb953a_MD5.png]]
 
 Обязательно сохраните новые ключи и/или секретную фразу. 
 
@@ -240,21 +240,21 @@ Element сможет защитить вашу переписку при усл�
 
 В первом случае вы увидите такой запрос: 
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXdyJjqHpqPbuLZvHVovi42cqryL_AaZ393ihlqp1AwbuzAaRNGsX1OlbJJATA5K19a-B7rqetLjKb3wTNSeROAlzdTnR_SkGLP5X7XaQwIYuFUhlub_41AFeE-23aKfRDS-AVZ2A-jsAvox6MkFsA2igqXy?key=iVFnh4BjUT6_PcgY2HJNpg)
+![[../Media/Pictures/Element - инструкция по применению/ad21489c9554247327e77bc14b03a813_MD5.jpg]]
 
 А на устройстве с активной сессией — такое окно:
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXd39T0TThAHrG0KH3rvNVXXXVocOc26Jgb2fzset_6IiSf6W-v36DJ6mTDF39T41iCfn6FnKAfjYdm7g8EDWXz7zKZ29AWJK1nK4iW8bbPBwq3oabWxmHHs5WFsRdhcpPNnbKHkAjBK_LHVF0OIs5_XG2AK?key=iVFnh4BjUT6_PcgY2HJNpg)
+![[../Media/Pictures/Element - инструкция по применению/14d7c0da792e7a40185dea46062118d1_MD5.png]]
 
 Нажмите «‎Verify Session» («‎Подтвердить сессию») и введите секретную фразу или ключ подтверждения. Все сообщения, пришедшие в то время, когда вы были разлогинены, останутся зашифрованными. 
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXevAxLFiH1cVgXCa3-41zJ9Qy2yNLNFnvxlLh2B3FUEtR-KN2hcUMl2wxXUM3o-3PLYE4VTLvd-XY_ISWPhjCs-JjHY-Lt1rHA_L-ccLgRQk9bogn5GBmVYxFAvpvJlm4t91wn2yG6e2wbHboCYOwkia59S?key=iVFnh4BjUT6_PcgY2HJNpg)
+![[../Media/Pictures/Element - инструкция по применению/d6aa6936b629e5490ab656cf09184acc_MD5.png]]
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXcEsYyl4LOvgaHdktoqhVhElz2aFsI-AWcwF7q0_7-4pJpxD4aCjIYbnjzpkFzn_R_1AsqcRJORMg6xutg-Gd3PBe9DXyeHSyRFv5EdWJXyPVG29toR8s_Q4JH0fhlLPPG090_9St0KRBNDWeMEzLRyMKhN?key=iVFnh4BjUT6_PcgY2HJNpg)
+![[../Media/Pictures/Element - инструкция по применению/f21e40f381c921bb9a0ee804126e06c3_MD5.png]]
 
 Вот как будут выглядеть зашифрованные переписки:
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXeYjSxsvKTtH3lzppfn7PHvrDDIy4xFBYH31whYbOvll3piPreGi2Zwbc4OX92LGuuHsIkjYR8w5cD-zIFdgnohv3S0tuajCdut1H1wlkVQbmOBc_le7-jeZdVvCA0DZsJXFtxpNmhfeq6SPcH_AxPisprA?key=iVFnh4BjUT6_PcgY2HJNpg)
+![[../Media/Pictures/Element - инструкция по применению/e01dd272949de257c0f094ecb091c0e9_MD5.png]]
 
 4. Счетчик сообщений работает некорректно. Как это поправить?
 
@@ -264,7 +264,7 @@ Element сможет защитить вашу переписку при усл�
 
 Если вы только зашли в чат и видите, что все предыдущие сообщения зашифрованы, вероятно, это скрытая история сообщений. В таком случае, вам будут видны только последующие сообщения. Если вы не видите сообщения конкретного человека, необходимо заверить сеанс аккаунта. 
 
-![](/Media/Pictures/Element_Matrix/bez-zagolovka-1.png)
+![[../Media/Pictures/Element - инструкция по применению/f84894e768edaa41aafaed793e2e5b31_MD5.png]]
 
 Важно это делать в тот момент, когда и вы, и владелец аккаунта находитесь в сети.
 

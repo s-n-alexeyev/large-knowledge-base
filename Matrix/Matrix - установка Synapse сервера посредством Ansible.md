@@ -81,7 +81,7 @@ SRV _matrix-identity._tcp 10 0 443 matrix.example.ru
 
 **Пример настройки записей DNS домена в панели управления Hostland.ru:**
 
-[![](https://kiberlis.ru/wp-content/uploads/2023/02/nastrojka-dns-1024x471.jpg)](https://kiberlis.ru/wp-content/uploads/2023/02/nastrojka-dns.jpg)
+[![[../Media/Pictures/Matrix - установка Synapse сервера посредством Ansible/e17c88607f6d343a1bdeadef853ec19e_MD5.jpg]]](https://kiberlis.ru/wp-content/uploads/2023/02/nastrojka-dns.jpg)
 Проверку обновления записей DNS для домена можно провести тут [https://2ip.ru/dig/](https://2ip.ru/dig/)
 
 ## Подготовка системы
@@ -367,7 +367,7 @@ ansible-playbook -i inventory/hosts setup.yml --tags=setup-all,start
 
 Откройте клиент Element, откройте любой чат, любую комнату и нажмите на инфу о ней справа вверху. Там будет ссылка добавить виджеты>Откроется экран Widgets жмакайте на шестеренку справа вверху>Widgets>Jitsi Conference карандашек>тут замените домен на свой jitsi.example.ru в обоих окошках не стирая остального на счёт рубилнька не уверен, может глючить. Сохраните. Данный пункт повзаимствовал [тут](https://vipadmin.club/22191-ustanovka-matrix-servera-s-pomoschju-playbook-2021.html), сам не тестировал так как на моем сервере не хватает характеристик для Jitsi.
 
-[![Установка Matrix сервера с помощью playbook 2021](/Media/Pictures/Synapse/Установка_Matrix_сервера_с_помощью_playbook_2021.webp)](https://vipadmin.club/uploads/posts/2022-02/-.webp)
+[![[../Media/Pictures/Matrix - установка Synapse сервера посредством Ansible/e6ce275750eb98e1dd67c0215089d86b_MD5.webp]]
 ### Регистрация по приглашению
 
 Данная функция уже включена в шаблоне вашей конфигурации. Для создания ссылки-приглашения воспользуйтесь следующей командой:
