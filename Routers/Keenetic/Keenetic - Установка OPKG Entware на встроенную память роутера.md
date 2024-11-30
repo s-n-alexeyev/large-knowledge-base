@@ -10,11 +10,11 @@
 
 Для поддержки данной возможности вам потребуется установить пакеты:
 
-![opkg-stor-01.png|500](/Media/Entware_Memory/image_1.png)
+![opkg-stor-01.png|500](/Media/Pictures/Entware_Memory/image_1.png)
 
 На странице "Приложения" в разделе "Диски и принтеры" нажмите на "Встроенное хранилище" и затем на встроенном разделе **storage** создайте папку _install_:
 
-![opkg-stor-02.png|500](/Media/Entware_Memory/image_2.png)
+![opkg-stor-02.png|500](/Media/Pictures/Entware_Memory/image_2.png)
 
 В данный раздел записываете файл установки _mipsel-installer.tar.gz_ или _mips-installer.tar.gz_, в зависимости от устройства: 
 
@@ -23,7 +23,7 @@
 Для моделей Giga SE (KN-2410), Ultra SE (KN-2510), DSL (KN-2010), Launcher DSL (KN-2012), Duo (KN-2110), Skipper DSL (KN-2112), Hopper DSL (KN-3610) используйте для установки архив **mips** — [mips-installer.tar.gz](https://bin.entware.net/mipssf-k3.4/installer/mips-installer.tar.gz)  
 Для моделей Peak (KN-2710), Ultra (KN-1811) используйте для установки архив **aarch64** — [aarch64-installer.tar.gz](https://bin.entware.net/aarch64-k3.10/installer/aarch64-installer.tar.gz)
 
-![opkg-stor-03.png|500](/Media/Entware_Memory/image_3.png)
+![opkg-stor-03.png|500](/Media/Pictures/Entware_Memory/image_3.png)
 
 В [интерфейсе командной строки](https://help.keenetic.com/hc/ru/articles/213965889?source=search&auth_token=eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjoxMjE4MzY0LCJ1c2VyX2lkIjozODI5OTgzMzczODAsInRpY2tldF9pZCI6NTQ0MzUzLCJjaGFubmVsX2lkIjo2MywidHlwZSI6IlNFQVJDSCIsImV4cCI6MTYyNDQ2ODg2NX0.YUYdPm77dCcwZE56s4vFeTQ1reqbFkfs_tJ1v0iZ780) (CLI) интернет-центра выбираем системный раздел **storage:/**  для установки OPKG Entware:
 ```

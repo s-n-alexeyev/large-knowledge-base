@@ -2,7 +2,7 @@
 
 [Автор](https://github.com/s-n-alexeyev/)
 
-![|400](/Media/Arch/image_1.png)
+![|400](/Media/Pictures/Arch/image_1.png)
 
 ```table-of-contents
 title: Содержание:
@@ -158,7 +158,7 @@ fdisk -l
 - *в качестве примера будем использовать диск `sda`*
 ## План разделов GPT для UEFI на SSD 240 GB
 
-![|500](/Media/Arch/image_2.png)
+![|500](/Media/Pictures/Arch/image_2.png)
 
 | Раздел | Название | Формат |   Размер | Назначение      |
 | -----: | -------- | ------ | -------: | --------------- |
@@ -172,7 +172,7 @@ fdisk -l
 *`GRUB_SAVEDEFAULT=true`*
 ## План разделов GPT для BIOS на SSD 240 GB
 
-![|500](/Media/Arch/image_3.png)
+![|500](/Media/Pictures/Arch/image_3.png)
 
 | Раздел | Название | Формат |   Размер | Назначение       |
 | -----: | -------- | ------ | -------: | ---------------- |

@@ -267,5 +267,5 @@ kate /etc/fonts/conf.d/75-apple-color-emoji.conf
 👍 Thumbs Up
 ```
 
-![](/Media/Color_Icons/image_1.png)
+![](/Media/Pictures/Color_Icons/image_1.png)
 

@@ -240,7 +240,7 @@ xkeen -i
 
 Как выглядит установка в PuTTy
 
-![Putty|800](/Media/Xray_Keenetic/image_1.gif)
+![Putty|800](/Media/Pictures/Xray_Keenetic/image_1.gif)
 # Полезные ссылки для настройки
 
 [GitHub репозиторий Xray](https://github.com/XTLS/Xray-core)  
@@ -386,7 +386,7 @@ xkeen -i
      * Вероятно, особенность реализации прокси-клиента
 5. На прошивках ниже 4.× через созданное прокси-подключение нужно проложить маршрут, как на скриншоте ниже. Спасибо [Artem Laptev](https://t.me/Leshiyart).
 
-![Настройки маршрута в Web роутера|400](/Media/Xray_Keenetic/image_2.png)
+![Настройки маршрута в Web роутера|400](/Media/Pictures/Xray_Keenetic/image_2.png)
 
 Настройки маршрута в Web роутера
 
@@ -433,7 +433,7 @@ opkg remove xray
 /opt/etc/init.d/rc.unslung
 ```
 
-![Сценарий initrc|400](/Media/Xray_Keenetic/image_3.png)
+![Сценарий initrc|400](/Media/Pictures/Xray_Keenetic/image_3.png)
 # Часто задаваемые вопросы
 
 Можно организовать соединение через warp?*

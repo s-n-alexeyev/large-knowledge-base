@@ -292,7 +292,7 @@ sh -c "yarn install && yarn run dev"
 ```
 ## Variables
 
-![|600](/Media/Docker/image_1.png)  
+![|600](/Media/Pictures/Docker/image_1.png)  
 *.env* файл это только для Docker Compose  
 *ARG* используются только во время билда в Dockerfile, контейнеры не имеют доступа к ним, но значения ARG можно присвоить в ENV переменные в Dockerfile  
 *ENV* переменные доступны и в билде и в контейнере

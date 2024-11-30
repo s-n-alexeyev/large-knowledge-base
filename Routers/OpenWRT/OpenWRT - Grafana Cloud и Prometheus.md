@@ -33,11 +33,11 @@ debugInConsole: false # Print debug info in Obsidian console
 Существует два способа взаимодействия с OpenWrt для установки пакетов. Вы можете войти в маршрутизатор напрямую с помощью ssh или, если он у вас установлен, вы можете использовать веб-интерфейс Luci. Подключение ssh предоставляет вам оболочку [Busybox](https://busybox.net/about.html) , которая включает полезный подмножество стандартных утилит UNIX.
 
 
-![](/Media/OpenWrt_Grafana/openwrt1.png)
+![](/Media/Pictures/OpenWrt_Grafana/openwrt1.png)
 
 Если вы предпочитаете использовать графический интерфейс, [Luci](https://openwrt.org/docs/guide-user/luci/luci.essentials) предоставляет интерфейс, аналогичный стандартной прошивке и простой в навигации.
 
-![](/Media/OpenWrt_Grafana/openwrt2.png)
+![](/Media/Pictures/OpenWrt_Grafana/openwrt2.png)
 ## Предоставление метрик с маршрутизатора OpenWrt 
 
 Первое, что нужно выяснить, — как экспортировать полезные метрики с маршрутизатора. Я хочу их в  формате [Prometheus](http://grafana.com/oss/prometheus/) , чтобы упростить визуализацию в Grafana Cloud. К счастью, в менеджере пакетов OpenWrt есть пакеты экспортера узлов Prometheus.
@@ -97,7 +97,7 @@ config prometheus-node-exporter-lua 'main'
 
 IP-адрес моего маршрутизатора в моей локальной сети — 192.168.1.1. Метрики теперь доступны всем в моей локальной сети по адресу 192.168.1.1:9100/metrics. Вот отрывок того, как это выглядит в моем браузере:
 
-![](/Media/OpenWrt_Grafana/openwrt3.png)
+![](/Media/Pictures/OpenWrt_Grafana/openwrt3.png)
 ## Сбор метрик OpenWrt с помощью Prometheus
 
 В конечном итоге нам нужно отправить метрики в Grafana Cloud. Для этого нам нужно сначала извлечь метрики из внутреннего URL-адреса, доступного в локальной сети. Как я уже упоминал [в своем личном блоге](https://matthewhelmke.net/2020/12/monitoring-my-ups-with-grafana-cloud/) , я уже запускаю Prometheus на рабочей станции Linux в своей локальной сети и использую его для отправки других метрик в свой экземпляр Grafana Cloud.
@@ -125,7 +125,7 @@ Prometheus можно настроить для отправки метрик в
 
 Это фрагмент этой панели в действии.
 
-![](/Media/OpenWrt_Grafana/openwrt4.png)
+![](/Media/Pictures/OpenWrt_Grafana/openwrt4.png)
 
 ## Постскриптум
 

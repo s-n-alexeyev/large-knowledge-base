@@ -60,11 +60,11 @@ sudo apt install mc
 sudo snapper list
 ```
 
-![Alt text](/Media/Snapper/Alt_text.webp)
+![Alt text](/Media/Pictures/Snapper/Alt_text.webp)
 
 Snapper-Gui надо запускать через sudo, иначе снимков не видно. Вот снимки после установки MC:
 
-![Alt text](/Media/Snapper/Alt_text-4.webp)
+![Alt text](/Media/Pictures/Snapper/Alt_text-4.webp)
 
 ### Просмотр изменений
 Увидеть что изменилось можно командой сравнения двух снимков. Для этого надо указать номера снимков.
@@ -75,11 +75,11 @@ snapper status 1..2
 
 Вывод команды покажет изменения в снимках:
 
-![Alt text](/Media/Snapper/Alt_text-1.webp)
+![Alt text](/Media/Pictures/Snapper/Alt_text-1.webp)
 
 В Snapper-Gui выделяем два снимка и нажимаем кнопку Changes:
 
-![Alt text](/Media/Snapper/Alt_text-5.webp)
+![Alt text](/Media/Pictures/Snapper/Alt_text-5.webp)
 
 Можно увидеть и разницу в файлах:
 
@@ -87,7 +87,7 @@ snapper status 1..2
 sudo snapper diff 1..2
 ```
 
-![Alt text](/Media/Snapper/Alt_text.webp)
+![Alt text](/Media/Pictures/Snapper/Alt_text.webp)
 
 В Snapper-Gui всё это удобнее и тоже хорошо видно на скриншоте выше.
 
@@ -99,10 +99,10 @@ sudo snapper undochange 1..2
 
 Секунда и APT не знает ни про какой MC.
 
-![Alt text](/Media/Snapper/Alt_text-3.webp)
+![Alt text](/Media/Pictures/Snapper/Alt_text-3.webp)
 
 В снимок можно зайти с правами суперпользователя как в каталог и забрать руками нужные файлы.
 
-![Alt text](/Media/Snapper/Alt_text-2.webp)
+![Alt text](/Media/Pictures/Snapper/Alt_text-2.webp)
 
 Это простые BTRFS снимки и в случае невозможности загрузиться в систему можно можно загрузиться с флешки и восстановить систему из снимка.

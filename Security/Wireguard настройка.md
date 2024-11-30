@@ -120,7 +120,7 @@ PersistentKeepalive = 20
 
 ## Установка своего VPN-сервера WireGuard на VPS-хостинге
 
-![|300](/Media/Wireguard/image_1.png)
+![|300](/Media/Pictures/Wireguard/image_1.png)
 
 [WireGuard](https://www.wireguard.com/) – самый актуальный и быстрый VPN-протокол на сегодняшний день. Обеспечивает максимальную скорость работы и надежную криптографическую защиту.
 ## 1. VPS-хостинг и клиенты
@@ -172,19 +172,19 @@ chmod +x wireguard-install.sh
 
 3. Появится строка ./wireguard-install.sh, жмем Enter.
 
-![|800](/Media/Wireguard/image_2.png)
+![|800](/Media/Pictures/Wireguard/image_2.png)
 4. Отвечаем на все вопросы утвердительно, попросит нажать любую клавишу для начала установки, затем попросит ввести имя клиента (**Client name**) пишем **wireguard,** соглашаемся с предложенными IP-адресами.
 
-![|800](/Media/Wireguard/image_3.png)
+![|800](/Media/Pictures/Wireguard/image_3.png)
 
 После чего будет отображен QR-код.
-![|800](/Media/Wireguard/image_4.png)
+![|800](/Media/Pictures/Wireguard/image_4.png)
 
 Далее определимся с клиентом WireGuard:
 
 1. Для смартфонов открываем мобильный клиент WireGuard, выбираем «**Создать из QR-кода**» и пробуем подключиться к VPN.
 
-![|300](/Media/Wireguard/image_5.gif)
+![|300](/Media/Pictures/Wireguard/image_5.gif)
 
 2. Для компьютеров открываем конфигурационный файл командой:
 
@@ -202,7 +202,7 @@ nano ./wg0-client-wireguard.conf
 ```
 bash ./wireguard-install.sh
 ```
-![|800](/Media/Wireguard/image_6.png)
+![|800](/Media/Pictures/Wireguard/image_6.png)
 
 2. Выбираем 1-й пункт «**Add a new user**», далее пишем имя например для клиента в Windows **wireguard-win** (не более 15 символов), соглашаемся с предложенными IP-адресами. Появится QR-код, а под ним путь к конфигурационному файлу. Открываем содержимое файла следующей командой:
 

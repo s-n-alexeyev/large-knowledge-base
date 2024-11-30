@@ -16,7 +16,7 @@ deb http://mirror.truenetwork.ru/mxlinux/mx/repo/ bullseye main non-free
 deb http://mirror.truenetwork.ru/mxlinux/mx/repo/ bullseye ahs
 ```
 
-![репозитории от MX Linux к Debian 11 1|600](/Media/Debian11_Repo_Mx_Linux/image_1.png)
+![репозитории от MX Linux к Debian 11 1|600](/Media/Pictures/Debian11_Repo_Mx_Linux/image_1.png)
 
 Если у вас при выполнении команд выдает ошибку, что ваш пользователь не добавлен в sudo, то как его добавить, описано в [этой статье](https://cyber-x.ru/%d1%83%d1%81%d1%82%d0%b0%d0%bd%d0%b0%d0%b2%d0%bb%d0%b8%d0%b2%d0%b0%d0%b5%d0%bc-sudo-%d0%b2-debian/). Теперь нужно скачать и добавить в Debian GPG ключи для этих репозиториев. Скачиваем GPG ключи и добавляем в систему, скачать ключи можно [утилитой “wget”](https://cyber-x.ru/wget-%d0%ba%d0%be%d0%bd%d1%81%d0%be%d0%bb%d1%8c%d0%bd%d0%b0%d1%8f-%d1%83%d1%82%d0%b8%d0%bb%d0%b8%d1%82%d0%b0-%d0%b4%d0%bb%d1%8f-%d1%81%d0%ba%d0%b0%d1%87%d0%b8%d0%b2%d0%b0%d0%bd%d0%b8%d1%8f-%d1%84/):
 
@@ -25,7 +25,7 @@ wget https://cyber-x.ru/wp-content/upload/mx21/mx/antix-archive-keyring.gpg
 wget https://cyber-x.ru/wp-content/upload/mx21/mx/mx21-archive-keyring.gpg
 ```
 
-![репозитории от MX Linux к Debian 11 2|600](/Media/Debian11_Repo_Mx_Linux/image_2.png)
+![репозитории от MX Linux к Debian 11 2|600](/Media/Pictures/Debian11_Repo_Mx_Linux/image_2.png)
 
 Затем добавляем PGP ключи командами:
 
@@ -33,7 +33,7 @@ wget https://cyber-x.ru/wp-content/upload/mx21/mx/mx21-archive-keyring.gpg
 sudo apt-key add antix-archive-keyring.gpg
 sudo apt-key add mx21-archive-keyring.gpg
 ```
-![репозитории от MX Linux к Debian 11 3|600](/Media/Debian11_Repo_Mx_Linux/image_3.png)
+![репозитории от MX Linux к Debian 11 3|600](/Media/Pictures/Debian11_Repo_Mx_Linux/image_3.png)
 
 Осталось обновить систему:
 
@@ -41,7 +41,7 @@ sudo apt-key add mx21-archive-keyring.gpg
 sudo apt update
 sudo apt dist-upgrade
 ```
-![репозитории от MX Linux к Debian 11 4|600](/Media/Debian11_Repo_Mx_Linux/image_4.png)
+![репозитории от MX Linux к Debian 11 4|600](/Media/Pictures/Debian11_Repo_Mx_Linux/image_4.png)
 
 ## Заключение
 

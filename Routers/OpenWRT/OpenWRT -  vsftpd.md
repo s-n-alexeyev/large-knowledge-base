@@ -97,9 +97,9 @@ vim /etc/passwd
 
 Итак, перейдём в веб-интерфейсе 'Сеть' -> 'Межсетевой экран' -> вкладка 'Правила для трафика'
 
-![|600](/Media/OpenWRT_vsftpd/image_1.png)
+![|600](/Media/Pictures/OpenWRT_vsftpd/image_1.png)
 
 Создадим правила для FTP открыв порты 20 и 21.
 
-![|600](/Media/OpenWRT_vsftpd/image_2.png)
+![|600](/Media/Pictures/OpenWRT_vsftpd/image_2.png)
 

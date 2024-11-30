@@ -20,7 +20,7 @@ debugInConsole: false # Print debug info in Obsidian console
 
 Вывод команды будет примерно такой:
 
-![qemu-img информация о диске виртуальной машины|350](/Media/KVM_Resize_Volume/image_1.png)
+![qemu-img информация о диске виртуальной машины|350](/Media/Pictures/KVM_Resize_Volume/image_1.png)
 
 Мы видим, что у нас есть два поля которые указывают на размер, это virtual_size и disk_size:
 
@@ -65,7 +65,7 @@ df -h
 fdisk -l
 ```
 
-![добавление места в гостевой linux|500](/Media/KVM_Resize_Volume/image_2.png)
+![добавление места в гостевой linux|500](/Media/Pictures/KVM_Resize_Volume/image_2.png)
 
 На скриншоте видно, раздел /dev/vda2 имеет размер 20Gb, а доступное место на диске у нас больше.
 
@@ -165,16 +165,16 @@ resize2fs /dev/vda2
 1. Откройте Server Manager -> Tools -> Computer Management;
 
 2. В открывшемся окне выбираем в меню **Disk Management**, после чего у вас должны отобразиться все ваши диски и неразмеченное пространство, которые мы добавили со стороны гипервизора KVM;
-![windows неразмеченное пространство|800](/Media/KVM_Resize_Volume/image_3.png)
+![windows неразмеченное пространство|800](/Media/Pictures/KVM_Resize_Volume/image_3.png)
 
 3. Выбираем нужный диск и нажимаем Extended Volume;
- ![extend volume|800](/Media/KVM_Resize_Volume/image_4.png)
+ ![extend volume|800](/Media/Pictures/KVM_Resize_Volume/image_4.png)
 
 4. По умолчанию для увеличения размера диска будет предложено все доступное место;
- ![расширить диск в windows server|500](/Media/KVM_Resize_Volume/image_5.png)
+ ![расширить диск в windows server|500](/Media/Pictures/KVM_Resize_Volume/image_5.png)
 
 5. Нажимаем «далее» и завершаем расширение. После данной процедуры, ваш раздел в системе должен будет расшириться;
-![диск успешно увеличен|800](/Media/KVM_Resize_Volume/image_6.png)
+![диск успешно увеличен|800](/Media/Pictures/KVM_Resize_Volume/image_6.png)
 
 Хотелось бы добавить, что перед процедурой расширения диска для виртуальной машины, я советую выполнять [резервное копирование](https://winitpro.ru/index.php/2020/03/04/backup-virtualnyx-mashin-v-kvm/) самого диска. Остановите виртуальную машину и скопируйте образ диска в директорию для бэкапа или в любую директорию, в которой есть [свободное место](https://winitpro.ru/index.php/2021/02/20/svobodnoe-mesta-na-diske-v-linux/). Если в ходе работ, что-то пойдет не так, вы всегда сможете вернуть образ виртуального диска из бэкапа.
 ## Уменьшение диска виртуальной машины KVM
@@ -199,7 +199,7 @@ qemu-img resize /путь_до_диска 25G
 
 Что происходит после выполнения данной команды? Запускаем сервер и конечно система не грузится:
 
-![qemu-img resize уменьшение диска в kvm ломает файловую систему|800](/Media/KVM_Resize_Volume/image_7.png)
+![qemu-img resize уменьшение диска в kvm ломает файловую систему|800](/Media/Pictures/KVM_Resize_Volume/image_7.png)
 
 Я пробовал сначала уменьшить раздел из-под системы с помощью утилиты fdisk, но в таком случае, система так же перестает загружаться, даже если вы пропустите шаг уменьшения диска с физического сервера и это логично. Раздел который мы уменьшаем, системный и соответственно ОС перестает загружаться, так как при уменьшении диска, информация по всей видимости уничтожается.
 ### Уменьшение виртуального диска с подменой образа
@@ -228,7 +228,7 @@ dd if=/dev/zero of=/mytempfile
 rm -rf /mytempfile
 ```
 
-![уменьшение размера диска в kvm через qemu-img convert|600](/Media/KVM_Resize_Volume/image_8.png)
+![уменьшение размера диска в kvm через qemu-img convert|600](/Media/Pictures/KVM_Resize_Volume/image_8.png)
 
 При проверке с сервера, образ диска сначала весил 2.4G после чего расширился до 5.9G:
 ```shell

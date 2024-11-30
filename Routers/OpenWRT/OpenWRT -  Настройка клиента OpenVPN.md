@@ -107,7 +107,7 @@ opkg install luci-app-openvpn
 Зайти в **VPN - OpenVPN**. В **OVPN configuration file upload** нажать кнопку **Choose file** и выбрать свой конфиг, ввести какое-нибудь имя для него в поле **Instance name** и нажать кнопку **Upload**.  
 Этот конфиг должен появиться в **OpenVPN instances**. Включить его галочкой **Enabled** и Save & Apply.
 
-![openvpn-zone|800](/Media/OpenWRT_OpenVPN/image_1.png)
+![openvpn-zone|800](/Media/Pictures/OpenWRT_OpenVPN/image_1.png)
 
 В столбце **Started** должен появиться статус **yes**. С помощью Stop/Start можно останавливать и стартовать туннель.  
 Чтоб редактировать конфиг, нужно нажать **Edit**, внести изменения и нажать Save.
@@ -126,7 +126,7 @@ opkg install luci-app-openvpn
 **MSS clamping** - проставить галочку  
 **Allow forward from source zones** - lan
 
-![openvpn-zone|800](/Media/OpenWRT_OpenVPN/image_2.png)
+![openvpn-zone|800](/Media/Pictures/OpenWRT_OpenVPN/image_2.png)
 
 Save - Save & Apply
 

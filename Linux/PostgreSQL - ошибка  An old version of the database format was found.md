@@ -28,7 +28,7 @@ sudo systemctl status postgresql.service
 *апр 20 12:23:08 HackWare systemd[1]: postgresql.service: Failed with result 'exit-code'.*
 *апр 20 12:23:08 HackWare systemd[1]: Failed to start PostgreSQL database server.*
 
-[![|800](/Media/PostgreSQL_error_An_old_version/image_1.png)](https://blackarch.ru/wp-content/uploads/2020/04/postgresql.service-error.png)
+[![|800](/Media/Pictures/PostgreSQL_error_An_old_version/image_1.png)](https://blackarch.ru/wp-content/uploads/2020/04/postgresql.service-error.png)
 
 Ключевой в этом выводе является строка:
 
@@ -100,7 +100,7 @@ sudo systemctl start postgresql.service
 sudo systemctl status postgresql.service
 ```
 
-[![|800](/Media/PostgreSQL_error_An_old_version/image_2.png)](https://blackarch.ru/wp-content/uploads/2020/04/postgresql.service-running.png)
+[![|800](/Media/Pictures/PostgreSQL_error_An_old_version/image_2.png)](https://blackarch.ru/wp-content/uploads/2020/04/postgresql.service-running.png)
 
 Больше информации вы найдёте в официальной Вики: [https://wiki.archlinux.org/index.php/PostgreSQL#Upgrading_PostgreSQL](https://wiki.archlinux.org/index.php/PostgreSQL#Upgrading_PostgreSQL)
 ### Возможные ошибки и их исправление  

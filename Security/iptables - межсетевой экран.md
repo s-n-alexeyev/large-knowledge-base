@@ -66,7 +66,7 @@ iptables -A INPUT -p tcp --destination-port 80 -m iprange --src-range 192.168.15
 
 Таблицей является множество цепочек, объединенных по одному функционалу. В iptables имеется 5 стандартных таблиц: _raw, mangle, nat, filter, security._
 
-![|800](/Media/iptables/iptables1-1-1024x252.png)
+![|800](/Media/Pictures/iptables/iptables1-1-1024x252.png)
 ### Состояние
 
 Также в iptables пакет, проходящий через цепочки, имеет определенное состояние (conntrack). Перечислим их:

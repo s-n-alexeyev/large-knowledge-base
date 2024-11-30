@@ -75,11 +75,11 @@ Bridge obfs4 207.188.129.151:9339 C16DA5F7C8FDC6BF2F3C3ABF59E8E3677914F172 cert=
 
 Мосты (Bridges) берутся со страницы [BridgeDB](https://bridges.torproject.org/bridges?transport=obfs4&lang=ru)
 
-![|400](/Media/Torctl/image_1.png)
+![|400](/Media/Pictures/Torctl/image_1.png)
 
-![|400](/Media/Torctl/image_2.png)
+![|400](/Media/Pictures/Torctl/image_2.png)
 
-Для автоматизации смены мостов (если их заблокировали или перестали работать) можно воспользоваться утилитой `Tor Bridges Updater` ![Tor Bridges Updater](/Media/Files/TorBridgesUpdater_v0.1.6_Windows.zip)  
+Для автоматизации смены мостов (если их заблокировали или перестали работать) можно воспользоваться утилитой `Tor Bridges Updater` ![Tor Bridges Updater](/Media/Pictures/Files/TorBridgesUpdater_v0.1.6_Windows.zip)  
 - В настройках указываем путь к файлу конфигурации `torrc`.
 
 

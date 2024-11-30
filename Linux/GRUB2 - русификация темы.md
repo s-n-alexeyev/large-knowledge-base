@@ -70,10 +70,10 @@ yay -S grub-theme-msi
 
 >Редактируем удобным для вас способом картинку заднего фона, который располагается по адресу `/boot/grub/themes/Msi/background.png`, (необходимы права администратора),
 стираем все надписи на картинке на английском языке, можно воспользоваться GIMP:
-![|800](/Media/Grub2_Theme/image_1.png)
+![|800](/Media/Pictures/Grub2_Theme/image_1.png)
 
 >Получаем такое:
-![|800](/Media/Grub2_Theme/image_2.png)
+![|800](/Media/Pictures/Grub2_Theme/image_2.png)
 
 - Не забываем сохранить под тем же именем по тому же пути `/boot/grub/themes/Msi/background.png`
 

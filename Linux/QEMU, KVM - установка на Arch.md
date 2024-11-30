@@ -187,11 +187,11 @@ sudo systemctl restart libvirtd
 
 1. Щелкните меню Правка -> Свойства подключения в приложении virt-manager.
 
-![|400](/Media/QEMU/image_1.png)
+![|400](/Media/Pictures/QEMU/image_1.png)
 
 2. На вкладке «Обзор» вы увидите, что virt-manager автоматически подключится к «qemu:///system».
 
-![|600](/Media/QEMU/image_2.png)
+![|600](/Media/Pictures/QEMU/image_2.png)
 
 3. Перейдите на вкладки «Виртуальные сети», и вы увидите конфигурацию сети «по умолчанию».
 
@@ -201,7 +201,7 @@ sudo systemctl restart libvirtd
 - Диапазон IP-адресов DHCP: 192.168.122.2 - 192.168.122.254
 - Тип сети: NAT
 
-![|600](/Media/QEMU/image_3.png)
+![|600](/Media/Pictures/QEMU/image_3.png)
 
 4. Теперь перейдите на вкладку «Пространство данных», и вы увидите конфигурацию хранилища пула «default».
 
@@ -212,7 +212,7 @@ sudo systemctl restart libvirtd
 
 Все образы виртуальных машин будут доступны в этом хранилище по умолчанию, в каталоге \/var/lib/libvirt/images\.
 
-![|600](/Media/QEMU/image_4.png)
+![|600](/Media/Pictures/QEMU/image_4.png)
 
 5. Затем нажмите кнопку \+\, чтобы создать новое хранилище пула для файлов образов ISO. Все файлы ISO операционных систем будут доступны в этом пуле.
 
@@ -222,7 +222,7 @@ sudo systemctl restart libvirtd
 - Тип: dir: Каталог в файловой системе
 - Целевой путь: /path/directory/to/your/iso/
 
-![|350](/Media/QEMU/image_5.png)
+![|350](/Media/Pictures/QEMU/image_5.png)
 
 Нажмите кнопку «Готово», чтобы завершить процесс. После этого вы готовы создавать новые виртуальные машины.
 
@@ -230,38 +230,38 @@ sudo systemctl restart libvirtd
 
 1. В приложении virt-manager нажмите кнопку «+», чтобы создать новую виртуальную машину.
 
-![|400](/Media/QEMU/image_6.png)
+![|400](/Media/Pictures/QEMU/image_6.png)
 
 2. Выберите «Локальный ISO или CD-ROM», чтобы использовать образ ISO для установки, и нажмите кнопку «Вперед», чтобы продолжить.
 
-![|400](/Media/QEMU/image_7.png)
+![|400](/Media/Pictures/QEMU/image_7.png)
 
 3. Нажмите кнопку «Обзор», чтобы выбрать файл ISO.
 
-![|400](/Media/QEMU/image_8.png)
+![|400](/Media/Pictures/QEMU/image_8.png)
 
 Теперь выберите хранилище пула \ISO\ и выберите файл iso для установки (в данном примере это \Debian 10\), затем нажмите \Выбрать том\.
 
-![|600](/Media/QEMU/image_9.png)
+![|600](/Media/Pictures/QEMU/image_9.png)
 
 Снимите флажок «Автоматически определять по носителю», введите операционную систему, которую вы хотите установить (в данном примере это «Debian 10»), затем снова нажмите кнопку «Вперед», чтобы продолжить.
 
-![|400](/Media/QEMU/image_10.png)
+![|400](/Media/Pictures/QEMU/image_10.png)
 
 4. Выберите объем памяти и ЦП для виртуальной машины, затем нажмите «Вперед».
 
-![|400](/Media/QEMU/image_11.png)
+![|400](/Media/Pictures/QEMU/image_11.png)
 
 5. Выберите объем диска для виртуальной машины и нажмите «Вперед».
 
-![|400](/Media/QEMU/image_12.png)
+![|400](/Media/Pictures/QEMU/image_12.png)
 
 6. Дважды проверьте конфигурацию и нажмите кнопку «Готово» для установки.
 
-![|400](/Media/QEMU/image_13.png)
+![|400](/Media/Pictures/QEMU/image_13.png)
 
 7. Теперь виртуальная машина запущена и работает с виртуализацией QEMU/KVM, и вы можете продолжить установку ОС.
 
-![|800](/Media/QEMU/image_14.png)
+![|800](/Media/Pictures/QEMU/image_14.png)
 ## Заключение
 
