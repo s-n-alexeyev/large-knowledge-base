@@ -7,7 +7,7 @@ source /opt/open-webui-env/bin/activate
 
 Скрипт для запуска Ollama и Open WebUI
 ```bash
-sh -c 'source ~/.venv/open-webui-env/bin/activate && { ollama serve & ollama_pid=$!; open-webui serve; wait $ollama_pid; } && xdg-open http://0.0.0.0:8080/'
+sh -c 'source /opt/open-webui-env/bin/activate && { ollama serve & ollama_pid=$!; open-webui serve; wait $ollama_pid; } && xdg-open http://0.0.0.0:8080/'
 ```
 
 Перенос VENV замена содержимого скриптов в bin
