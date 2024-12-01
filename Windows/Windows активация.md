@@ -1,4 +1,3 @@
-
 2024-12-01  
 [Ссылка на ресурс ](https://github.com/massgravel/Microsoft-Activation-Scripts)
 
