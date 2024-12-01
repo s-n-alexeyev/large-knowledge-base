@@ -1,4 +1,3 @@
-
 ```table-of-contents
 title: Содержание
 style: nestedList # TOC style (nestedList|nestedOrderedList|inlineFirstLevel)
@@ -53,7 +52,6 @@ kate ~/.config/fontconfig/fonts.conf
 
  <alias>
 ```
-
 # Значки от macOS
 
 >Альтернатива для ARCH 
