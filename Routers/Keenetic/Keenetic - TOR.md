@@ -6,12 +6,14 @@ opkg install tor obfs4 polipo
 ```
 
 >Редактируем файл `/opt/etc/tor/torrc` (пример базовой настройки)
-```
+```r
 DataDirectory /opt/var/lib/tor
 
 SOCKSPort 9050
 HTTPTunnelPort 8118
-SOCKSPort 192.168.0.1:9111
+
+# Меняем на IP своего роутера
+SOCKSPort 192.168.1.1:9111
 ExcludeNodes {ru}, {ua}, {by}, {kz}  
 
 RunAsDaemon 1
@@ -29,9 +31,11 @@ bridge obfs4 142.132.228.40:26712 6C9239B5F684285E6561F0EE680997112163D0C2 cert=
 - *вместо `obfs4proxy` можно использовать [`lyrebird`](https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/lyrebird) , будут доступны мосты `webtunnel`*
 
 >Редактируем файл `/opt/etc/polipo/config` (пример базовой настройки)
-```
+```r
 proxyAddress = "0.0.0.0"    # IPv4 only
 proxyPort = 8123
+
+# Меняем на IP подсети своего роутера, например 192.168.50.0
 allowedClients = 127.0.0.1, 192.168.1.0/24
 socksParentProxy = "localhost:9050"
 socksProxyType = socks5
@@ -45,6 +49,10 @@ dnsUseGethostbyname = yes
 /opt/etc/init.d/S35tor start
 ```
 
->Настраиваем браузер (в примере FireFox)
+Для точечной настройки в браузере рекомендую использовать прокси-свитчер плагин `Proxy SwitchyOmega 3`:
+- Для [Chromium](https://chromewebstore.google.com/detail/proxy-switchyomega-3-zero/pfnededegaaopdmhkdmcofjmoldfiped?pli=1)  
+- Для [Firefox](https://addons.mozilla.org/ru/firefox/addon/zeroomega/)  
 
-![tor_003.png](https://content.invisioncic.com/r270260/monthly_2016_06/tor_003.png.1800b2c02ca993b2bc45ce76119a5754.png "Unavailable")
+
+
+
