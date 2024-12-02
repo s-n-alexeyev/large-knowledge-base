@@ -49,7 +49,7 @@ dnsUseGethostbyname = yes
 /opt/etc/init.d/S35tor start
 ```
 
-Для точечной настройки в браузере рекомендую использовать прокси-свитчер плагин `Proxy SwitchyOmega 3`:
+Для точечной настройки в браузере, рекомендую использовать прокси-свитчер плагин `Proxy SwitchyOmega 3`:
 - Для [Chromium](https://chromewebstore.google.com/detail/proxy-switchyomega-3-zero/pfnededegaaopdmhkdmcofjmoldfiped?pli=1)  
 - Для [Firefox](https://addons.mozilla.org/ru/firefox/addon/zeroomega/)  
 
