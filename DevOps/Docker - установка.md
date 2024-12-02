@@ -136,7 +136,7 @@ docker run hello-world
 ```bash
 docker rmi -f hello-world
 ```
-## Устанавливаем Docker-compose
+## Устанавливаем Docker Compose
 
 >Запускаем эту команду для установки последней версии docker-compose, проверить какая версия является последней можно [тут](https://github.com/docker/compose/releases):
 ```bash
