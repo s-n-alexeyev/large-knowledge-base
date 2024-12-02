@@ -146,6 +146,6 @@ alias ping="gping"
 sudo nano ~/.nanorc
 ```
 
-```shell
+```
 include /usr/share/nano/*.nanorc
 ```
