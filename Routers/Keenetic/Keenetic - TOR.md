@@ -22,6 +22,7 @@ UseBridges 1
 ClientTransportPlugin obfs4,webtunnel exec /opt/sbin/obfs4proxy managed
 #ClientTransportPlugin obfs4,webtunnel exec /opt/sbin/lyrebird managed
 
+# Эти бриджи в кочестве примера, необходимо получить свои
 bridge obfs4 85.215.50.238:10009 CA38DC17CBC7BF8651D9FD0EE42D297F728B2027 cert=f0u6PaGdUpTPd//H6QPVIjgjjL037lLbKz8u9/WYiF3/d43sW/FhDXM9pNFdO9NS7hWUBg iat-mode=0
 bridge obfs4 45.133.192.226:5443 93729C1C9965F5D3D20704991030AB212417FC2F cert=ODzkvKxbwFQJXGeAUcSvnOr060w6qRz/rbLQUx65SpNzd3IgZAAX552PIOzsMV8vCe7kTA iat-mode=0
 bridge obfs4 65.109.172.40:26101 B2313F3150F1D17C438C9A450B39720BC142E694 cert=4o+I2rET2wZwhm0z5S5a/tOP8Q3IN6KfgASXNcvIqceeBKn75bawiQWTCwNrGSksaLtcEg iat-mode=0
