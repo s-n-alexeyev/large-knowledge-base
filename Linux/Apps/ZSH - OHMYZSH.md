@@ -143,7 +143,7 @@ alias ping="gping"
 ## Включить подсветку в `nano`
 
 ```shell
-nano ~/.nanorc
+sudo nano ~/.nanorc
 ```
 
 ```shell
