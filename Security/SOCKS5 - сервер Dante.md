@@ -69,18 +69,16 @@ sudo passwd proxyuser
 # Автозагрузка сервиса
 
 >Добавляем сервис в автозагрузку и запускаем его
-```bsh
+```bash
 sudo systemctl enable --now danted
 ```
 
-Проверка (с локального Linux хоста; 
-PASSWORD - пароль пользователя `proxyuser` HOST - IP адрес или доменное имя VPS/VDS)
-
-curl --socks5 proxyuser:PASSWORD@HOST:1080 check-host.net/ip
-curl --socks5 proxyuser:PASSWORD@HOST:1080 ifconfig.co
-curl --socks5 proxyuser:PASSWORD@HOST:1080 2ip.ru
-
-
+>Проверка с локального xocnf Linux. **PASSWORD** - пароль пользователя `proxyuser`, **HOSTNAME** - ip адрес или доменное имя VPS/VDS
+```bash
+curl --socks5 proxyuser:PASSWORD@HOSTNAME:1080 2ip.ru
+curl --socks5 proxyuser:PASSWORD@HOSTNAME:1080 ifconfig.co
+curl --socks5 proxyuser:PASSWORD@HOSTNAME:1080 check-host.net/ip
+```
 
 Хабр подсказал, что можно создать для удобства `~/.curlrc`
 
