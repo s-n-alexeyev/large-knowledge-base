@@ -153,7 +153,6 @@ sudo dnf install yandex-browser-stable -y
 ```
 
 ---
-
 #  PortProton
 
 >установка универсальная
