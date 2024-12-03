@@ -4,6 +4,15 @@
 - [Github](https://github.com/notpeter/dante "https://github.com/notpeter/dante")  
 - [Документация](https://www.inet.no/dante/doc/ "https://www.inet.no/dante/doc/")  
 
+```table-of-contents
+title: Содержание
+style: nestedList # TOC style (nestedList|nestedOrderedList|inlineFirstLevel)
+minLevel: 0 # Include headings from the specified level
+maxLevel: 0 # Include headings up to the specified level
+includeLinks: true # Make headings clickable
+hideWhenEmpty: false # Hide TOC if no headings are found
+debugInConsole: false # Print debug info in Obsidian console
+```
 
 >[!info] Заметка:
 > Dante это только SOCKS сервер. Если дополнительна нужна поддержка HTTP-прокси, то используйте [3proxy](https://rtfm.wiki/linux/3proxy "linux:3proxy")  
@@ -16,14 +25,11 @@
 sudo apt install dante-server
 ```
 
-Версия **1.4.1+dfsg-5** содержит ошибку (подробности в [багтрекере Debian](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=862988 "https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=862988"))
-
->[!error] При старте будет что-то такое
+>[!error] Версия **1.4.1+dfsg-5** содержит ошибку (подробности в [багтрекере Debian](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=862988 "https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=862988"))
 warning: checkconfig(): no socks authentication methods enabled.  This means all socks requests will be blocked
 error: checkconfig(): no internal address given for server to listen for clients
 
 Можно смело пропустить эту ошибку
-
 # Основные настройки
 
 Конфигурационный файл `/etc/danted.conf`
@@ -32,14 +38,14 @@ error: checkconfig(): no internal address given for server to listen for clients
 ```ini
 logoutput: syslog
 
+# Ваш сетевой интерфейс (Обычно eth0, но может отличатся, например ens3, см. # ip addr)
 internal: eth0 port = 1080
 external: eth0
-
 
 # Авторизация по локальным/системным пользователям
 socksmethod: username
 
-# Мы используем системных пользователей, поэтому нужны права на чтение passwd
+# Используем системных пользователей, поэтому нужны права на чтение passwd
 user.privileged: root
 user.unprivileged: nobody
 user.libwrap: nobody
@@ -56,10 +62,10 @@ socks pass {
 }
 ```
 
-Подробнее об уровнях логированиях на сайте Dante смотрите в разделе [Server logging](https://www.inet.no/dante/doc/1.4.x/config/logging.html "https://www.inet.no/dante/doc/1.4.x/config/logging.html")
+Подробнее об уровнях логирования на сайте Dante смотрите в разделе [Server logging](https://www.inet.no/dante/doc/1.4.x/config/logging.html "https://www.inet.no/dante/doc/1.4.x/config/logging.html")
 # Логины/пароли
 
->Добавим нового пользователя **rootwelt** для работы с socks сервером.
+>Добавим нового пользователя `proxyuser` для работы с socks сервером.
 ```bash
 sudo useradd --shell /usr/sbin/nologin proxyuser
 sudo passwd proxyuser
@@ -77,15 +83,16 @@ sudo systemctl enable --now danted
 ```bash
 curl --socks5 proxyuser:PASSWORD@HOSTNAME:1080 2ip.ru
 curl --socks5 proxyuser:PASSWORD@HOSTNAME:1080 ifconfig.co
+curl --socks5 proxyuser:PASSWORD@HOSTNAME:1080 ifconfig.ru
 curl --socks5 proxyuser:PASSWORD@HOSTNAME:1080 check-host.net/ip
 ```
 
-Хабр подсказал, что можно создать для удобства `~/.curlrc`
-
-socks5 = A.C.A.B:1080
-proxy-user = rootwelt:password
+>Для конфигурации `curl` ,  можно использовать файл `~/.curlrc`
+```
+socks5 = HOSTNAME:1080
+proxy-user = proxyuser:PASSWORD
 user-agent = "Mozilla/5.0 (X11; Linux i686; rv:7.0.1) Gecko/20100101 Firefox/7.0.1"
-
+```
 ## Немного о безопасности
 
 Вместо системных пользователей можно использовать [PAM файл](https://www.inet.no/dante/doc/1.4.x/config/auth_pam.html "https://www.inet.no/dante/doc/1.4.x/config/auth_pam.html") с логинами и паролями (похоже на htpasswd).
