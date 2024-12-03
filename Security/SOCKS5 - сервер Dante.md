@@ -148,4 +148,4 @@ user-agent = "Mozilla/5.0 (X11; Linux i686; rv:7.0.1) Gecko/20100101 Firefox/7.0
 
 Так как браузеры не поддерживают авторизацию на socks-сервере, то необходима установка дополнительных плагинов.  
 Для Firefox можно использовать [Proxy SwitchyOmega 3](https://addons.mozilla.org/ru/firefox/addon/zeroomega/)  или [FoxyProxy](https://addons.mozilla.org/ru/firefox/addon/foxyproxy-standard).  
-Для Google Chrome в сети рекомендуют использовать [Proxy Helper](https://chrome.google.com/webstore/detail/proxy-helper/ "https://chrome.google.com/webstore/detail/proxy-helper/"), но к сожалению он не работает - [SOCKS Authentication is not implemented in Chrome](https://bugs.chromium.org/p/chromium/issues/detail?id=256785 "https://bugs.chromium.org/p/chromium/issues/detail?id=256785").  
+Для Google Chrome в сети рекомендуют использовать [Proxy Helper](https://chrome.google.com/webstore/detail/proxy-helper/ "https://chrome.google.com/webstore/detail/proxy-helper/"), но к сожалению он не работает - [SOCKS Authentication is not implemented in Chrome](https://bugs.chromium.org/p/chromium/issues/detail?id=256785 "https://bugs.chromium.org/p/chromium/issues/detail?id=256785"). 
