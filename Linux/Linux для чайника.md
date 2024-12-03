@@ -1026,3 +1026,14 @@ date | xclip
 ```bash
  cat textfile.txt | xclip
 ```
+
+---
+# Генерация пароля
+
+>Будет сгенерирован пароль 32 символа
+```bash
+openssl rand -base64 32 | tr -dc 'A-Za-z0-9%$#*'
+```
+
+---
+
