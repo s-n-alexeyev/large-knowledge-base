@@ -99,21 +99,33 @@ echo $?
 ---
 # Цветной вывод в консоли
 
-После установки:
-`sudo apt install lolcat`
+Установка Debiam/Ubuntu
+```bash
+sudo apt install lolcat
+```
 
 Смотрим имеющиеся возможности:
-`lolcat -h`
+```bash
+lolcat -h
+```
 
 Можем использовать утилиту в комплекте с любой другой командой. К примеру:
-`ping google.com | lolcat`
+```bash
+ping google.com | lolcat
+```
 
-`ps | lolcat`
+```bash
+ps | lolcat
+```
 
-`cal | lolcat`
+```bsh
+cal | lolcat
+```
 
 или выдать анимированный текст:
-`echo Hello World | lolcat -a -d 500`
+```bash
+echo Hello World | lolcat -a -d 500
+```
 
 Пользы никакой, для развлечения, получается
 
