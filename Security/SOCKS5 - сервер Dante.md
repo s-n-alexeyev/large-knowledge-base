@@ -75,8 +75,8 @@ sudo systemctl enable --now danted
 
 Проверка (с локального Linux хоста; A.C.A.B здесь это IP адрес VPS)
 
-curl --socks5 rootwelt:[[email protected]](https://rtfm.wiki/cdn-cgi/l/email-protection):1080 check-host.net/ip
-curl --socks5 rootwelt:[[email protected]](https://rtfm.wiki/cdn-cgi/l/email-protection):1080 ident.me; echo
+curl --socks5 proxyuser:ПАРОЛЬ:1080 check-host.net/ip
+curl --socks5 proxyuser:ПАРОЛЬ:1080 ident.me; echo
 
 Хабр подсказал, что можно создать для удобства `~/.curlrc`
 
