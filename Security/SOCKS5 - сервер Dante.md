@@ -97,18 +97,22 @@ user-agent = "Mozilla/5.0 (X11; Linux i686; rv:7.0.1) Gecko/20100101 Firefox/7.0
 
 Вместо системных пользователей можно использовать [PAM файл](https://www.inet.no/dante/doc/1.4.x/config/auth_pam.html "https://www.inet.no/dante/doc/1.4.x/config/auth_pam.html") с логинами и паролями (похоже на htpasswd).
 
-Для этого необходимо дополнительно установить пакет **libpam-pwdfile**, а также заменить строку
-
+>Для этого необходимо дополнительно установить пакет **libpam-pwdfile**, а также заменить строку
+```
 socksmethod: username
+```
 
-на эту
-
+>на эту
+```
 socksmethod: pam.username
+```
 
 В файл `/etc/pam.d/sockd` добавляем
 
+```
 auth required pam_pwdfile.so pwdfile /etc/dante.passwd
 account required pam_permit.so
+```
 
 В некоторых howto также советуют установить **apache2-utils** и создавать логин/пароль через утилиту **htpasswd**
 
