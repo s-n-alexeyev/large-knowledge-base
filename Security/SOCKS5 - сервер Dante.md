@@ -73,10 +73,14 @@ sudo passwd proxyuser
 sudo systemctl enable --now danted
 ```
 
-Проверка (с локального Linux хоста; A.C.A.B здесь это IP адрес VPS)
+Проверка (с локального Linux хоста; 
+PASSWORD - пароль пользователя `proxyuser` HOST - IP адрес или доменное имя VPS/VDS)
 
-curl --socks5 proxyuser:ПАРОЛЬ:1080 check-host.net/ip
-curl --socks5 proxyuser:ПАРОЛЬ:1080 ident.me; echo
+curl --socks5 proxyuser:PASSWORD@HOST:1080 check-host.net/ip
+curl --socks5 proxyuser:PASSWORD@HOST:1080 ifconfig.co
+curl --socks5 proxyuser:PASSWORD@HOST:1080 2ip.ru
+
+
 
 Хабр подсказал, что можно создать для удобства `~/.curlrc`
 
