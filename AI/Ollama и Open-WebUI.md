@@ -61,8 +61,10 @@ help         Помощь
 
 >[!tip] все настройки и модели хранятся в `~/.ollama/`
 
+## Дополнительно
+
 >[!example]- Скрипт для запуска/остановки сервиса Ollama
->```
+>```bash
 >#!/bin/bash
 >
 ># Очищаем неудачные попытки входа
@@ -111,11 +113,12 @@ help         Помощь
 >  --text "$message" \
 >  --button=Да:0 \
 >  --button=Нет:1
+>
 ># Проверяем response
 >response=$?
 >if [ $response -eq 0 ]; then
 >  if [ "$status" = "active" ]; then
->    # Останавливаем сервис Ollama
+>    # Останавливаем службу
 >    echo "$password" | sudo -S systemctl stop $SERVICE
 >    if [ $? -eq 0 ]; then
 >      notify_show "Сервис $SERVICE успешно остановлен." "Успех"
@@ -123,7 +126,7 @@ help         Помощь
 >      notify_show "Не удалось остановить сервис $SERVICE." "Ошибка"
 >    fi
 >  else
->    # Запускаем сервис Ollama
+>    # Запускаем службу
 >    echo "$password" | sudo -S systemctl start $SERVICE
 >    if [ $? -eq 0 ]; then
 >      notify_show "Сервис $SERVICE успешно запущен." "Успех"
@@ -141,6 +144,7 @@ help         Помощь
 >
 >```
 
+---
 # Open WebUI
 
 >Установка open-webui окружения и его активация
@@ -180,6 +184,84 @@ sudo systemctl start open-webui.service
 ## Дополнительно
 
 >[!example]- Скрипт для запуска/остановки сервиса Open-WebUI
+>```bash
+#!/bin/bash
+>
+># Очищаем неудачные попытки входа
+>faillock --user $USER --reset
+>
+># Просим пароль root
+>password=$(yad --entry --title="Авторизация" \
+>  --window-icon="lock" --image "lock" \
+>  --width=300 --fixed \
+>  --text="Введите root пароль:" --hide-text)
+>if [ -z "$password" ]; then
+>  exit 0
+>fi
+>
+># Функция для отображения сообщений
+>notify_show() {
+>  notify-send "$1" --icon=$ICON --app-name="$2 " --expire-time=4000
+>}
+>
+># Проверка пароля с использованием sudo
+>ICON="state-error"
+>echo "$password" | sudo -S ls >/dev/null 2>&1
+>if [ $? -ne 0 ]; then
+>  notify_show $'Неверный пароль!\nЗавершение работы.' "Ошибка"
+>  exit 1
+>fi
+>
+>SERVICE="open-webui"
+>ICON="/tmp/open-webui_icon.svg"
+>
+># Сохраняем картинку в SVG
+>echo '<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="64" height="64" viewBox="0 0 176.972 176.971"><g style="display:inline" transform="translate(-21.195 -64.587)"><circle cx="109.681" cy="153.073" r="88.486" style="display:inline;fill:#ccc;fill-opacity:1;stroke:none;stroke-width:.264583"/><path d="M143.584 113.444h16.034v78.242h-16.034z" style="display:inline;fill:#000;fill-opacity:1;stroke:none;stroke-width:.264583"/><circle cx="92.371" cy="152.131" r="39.145" style="display:inline;fill:#000;fill-opacity:1;stroke:none;stroke-width:.276124;stroke-opacity:1"/><circle cx="92.428" cy="152.101" r="23.388" style="display:inline;fill:#ccc;fill-opacity:1;stroke:none;stroke-width:.280487"/></g></svg>' > $ICON
+>
+># Проверка состояния службы
+>status=$(echo "$password" | sudo -S systemctl is-active --quiet $SERVICE && echo "active" || echo "inactive")
+>
+># Формируем сообщение на основе состояния службы
+>if [ "$status" = "active" ]; then
+>    message="<span foreground='green'><b>Сервис $SERVICE активен.</b></span>\nХотите его остановить?"
+>else
+>    message="<span foreground='red'><b>Сервис $SERVICE остановлен.</b></span>\nХотите его запустить?"
+>fi
+>
+># Запрашиваем ответ пользователя
+>yad --title "Управление Ollama" --image $ICON --window-icon=$ICON --fixed \
+>  --text "$message" \
+>  --button=Да:0 \
+>  --button=Нет:1
+>
+># Проверяем response
+>response=$?
+>if [ $response -eq 0 ]; then
+>  if [ "$status" = "active" ]; then
+>    # Останавливаем службу
+>    echo "$password" | sudo -S systemctl stop $SERVICE
+>    if [ $? -eq 0 ]; then
+>      notify_show "Сервис $SERVICE успешно остановлен." "Успех"
+>    else
+>      notify_show "Не удалось остановить сервис $SERVICE." "Ошибка"
+>    fi
+>  else
+>    # Запускаем службу
+>    echo "$password" | sudo -S systemctl start $SERVICE
+>    if [ $? -eq 0 ]; then
+>      notify_show "Сервис $SERVICE успешно запущен." "Успех"
+>    else
+>      notify_show "Не удалось запустить сервис $SERVICE." "Ошибка"
+>    fi
+>  fi
+>else
+>  # Пользователь выбрал "Нет" или закрыл диалог
+>  notify_show "Действие отменено." "Информация"
+>fi
+>
+># Удаляем временный SVG файл
+>rm -f $ICON
+>```
 
 >Перенос VENV замена содержимого скриптов в bin
 ```bash
