@@ -11,7 +11,7 @@ debugInConsole: false # Print debug info in Obsidian console
 ```
 ## Установка
 
-```bash
+```shell
 pip install shell-gpt
 ```
 
@@ -32,14 +32,14 @@ pip install shell-gpt[litellm]
 
 Вариант установки для Ollama минуя VENV 
 
-```bash
+```shell
 pip install shell-gpt[litellm] --break-system-packages --no-warn-script-location
 ```
 
 По умолчанию `sgpt` устанавливается в ~/.local/bin, можно добавить в переменную $PATH этот путь (зависит от оболочки). 
 Или скопировать `sgpt` в /usr/bin
 
-```bash
+```shell
 sudo cp ~/.local/bin/sgpt /usr/bin
 ```
 
@@ -306,7 +306,7 @@ sgpt --show-chat conversation_1
 
 Существует очень удобный режим REPL (цикл чтения-оценки-печати), который позволяет вам в интерактивном режиме общаться с моделями GPT. Чтобы начать сеанс чата в режиме REPL, используйте команду `--repl` параметр, за которым следует уникальное имя сеанса. Вы также можете использовать «temp» в качестве имени сеанса, чтобы запустить временный сеанс REPL. Обратите внимание, что `--chat` и `--repl` используют один и тот же базовый объект, поэтому вы можете использовать `--chat` чтобы начать сеанс чата, а затем продолжить его с помощью `--repl` чтобы продолжить разговор в режиме REPL.
 
-```
+```shell
 sgpt --repl temp
 Entering REPL mode, press Ctrl+C to exit.
 >>> What is REPL?
@@ -317,7 +317,7 @@ To use Python with REPL, you can simply open a terminal or command prompt ...
 
 Режим REPL может работать с `--shell` и `--code` options, что делает его очень удобным для интерактивных команд оболочки и генерации кода:
 
-```
+```shell
 sgpt --repl temp --shell
 Entering shell REPL mode, type [e] to execute commands or press Ctrl+C to exit.
 >>> What is in current folder?
@@ -331,7 +331,7 @@ ls -lhS
 
 Чтобы обеспечить многострочное приглашение, используйте тройные кавычки. `"""`:
 
-```
+```shell
 sgpt --repl temp
 Entering REPL mode, press Ctrl+C to exit.
 >>> """
@@ -463,7 +463,7 @@ sgpt "what are the colors of a rainbow"
 
 Вы можете настроить некоторые параметры в файле конфигурации времени выполнения. `~/.config/shell_gpt/.sgptrc`:
 
-```
+```r
 # API ключ, также можно определить OPENAI_API_KEY через переменную окружения.
 OPENAI_API_KEY=your_api_key
 
@@ -516,7 +516,7 @@ USE_LITELLM=false
 Возможные варианты `DEFAULT_COLOR`: черный, красный, зеленый, желтый, синий, пурпурный, голубой, белый, ярко-черный, ярко-красный, ярко-зеленый, ярко-желтый, ярко-синий, ярко-пурпурный, ярко-голубой, ярко-белый. Возможные варианты `CODE_THEME`: [https://pygments.org/styles/](https://pygments.org/styles/)
 ### Полный список аргументов
 
-```
+```r
 ╭─ Аргументы ──────────────────────────────────────────────────────────────────────────────────────────────╮
 │   prompt          [PROMPT]   Текст для генерации ответов.                                                │
 ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────╯
@@ -584,7 +584,7 @@ docker build -t sgpt .
 
 Пример файла Docker:
 
-```
+```r
 FROM python:3-slim
 
 ENV DEFAULT_MODEL=ollama/mistral:7b-instruct-v0.2-q4_K_M
