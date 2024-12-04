@@ -1,9 +1,11 @@
+# Ollama
+
 >Установка/обновление ollama
 ```bash
 sudo curl -fsSL https://ollama.com/install.sh | sh
 ```
 
-Сервис для Ollama
+>Сервис для Ollama
 ```
 sudo nano /etc/systemd/system/ollama.service
 ```
@@ -57,6 +59,9 @@ help         Помощь
   -v, --version  Показать информацию о версии
 ```
 
+>[!tip] все настройки и модели хранятся в `~/.ollama/`
+
+# Open WebUI
 
 >Установка open-webui окружения и его активация
 ```bash
