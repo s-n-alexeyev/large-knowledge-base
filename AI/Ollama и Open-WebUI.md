@@ -1,5 +1,9 @@
+>Установка ollama
+```bash
+sudo curl -fsSL https://ollama.com/install.sh | sh
+```
 
->Установка окружения и его активация
+>Установка open-webui окружения и его активация
 ```bash
 python3 -m venv /opt/open-webui-env
 source /opt/open-webui-env/bin/activate
