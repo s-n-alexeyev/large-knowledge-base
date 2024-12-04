@@ -185,7 +185,7 @@ sudo systemctl start open-webui.service
 
 >[!example]- Скрипт для запуска/остановки сервиса Open-WebUI
 >```bash
-#!/bin/bash
+>#!/bin/bash
 >
 ># Очищаем неудачные попытки входа
 >faillock --user $USER --reset
