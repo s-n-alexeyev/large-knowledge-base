@@ -71,3 +71,5 @@ find /opt/open-webui-env/bin -type f -exec sed -i 's|#!/home/user/.venv/open-web
 source /opt/open-webui-env/bin/activate  
 pip install --upgrade open-webui
 ```
+
+[Модели Ollama](https://ollama.com/search)
