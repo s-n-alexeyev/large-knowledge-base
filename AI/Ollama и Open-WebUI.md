@@ -1,4 +1,4 @@
->Установка ollama
+>Установка/обновление ollama
 ```bash
 sudo curl -fsSL https://ollama.com/install.sh | sh
 ```
@@ -22,6 +22,6 @@ find /opt/open-webui-env/bin -type f -exec sed -i 's|#!/home/user/.venv/open-web
 
 >Обновление open-webui
 ```bash
-❯ source /opt/open-webui-env/bin/activate  
-❯ pip install --upgrade open-webui
+source /opt/open-webui-env/bin/activate  
+pip install --upgrade open-webui
 ```
