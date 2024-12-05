@@ -149,6 +149,7 @@ help         Помощь
 
 >Установка open-webui окружения и его активация
 ```bash
+mkdir /opt/open-webui-env
 python3 -m venv /opt/open-webui-env
 source /opt/open-webui-env/bin/activate
 pip install open-webui
