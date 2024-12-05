@@ -220,7 +220,7 @@ sudo systemctl start open-webui.service
 >ICON="/tmp/open-webui_icon.svg"
 >
 ># Сохраняем картинку в SVG
->echo '<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" transform="translate(-21 -65)" viewBox="0 0 177 177"><circle cx="109.7" cy="153.1" r="88.5" fill="#ccc"/><path d="M144 113h16v79h-16z"/><circle cx="92.4" cy="152.1" r="39.1"/><circle cx="92.4" cy="152.1" r="23.4" fill="#ccc"/></svg>' > $ICON
+>echo '<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 177 177"><circle cx="88.5" cy="88.5" r="88.5" fill="#ccc"/><path d="M122.8 48.4h16v79h-16z"/><circle cx="71.2" cy="87.5" r="39.1"/><circle cx="71.2" cy="87.5" r="23.4" fill="#ccc"/></svg>' > $ICON
 >
 ># Проверка состояния службы
 >status=$(echo "$password" | sudo -S systemctl is-active --quiet $SERVICE && echo "active" || echo "inactive")
