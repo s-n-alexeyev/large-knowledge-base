@@ -24,9 +24,16 @@ sudo mv ./svgomg /opt
 cd /opt/svgomg/  
 npm run dev
 ```
-# Настройка автозапуска
+# Настройка сервиса
 
-Для того чтобы приложение запускалось автоматически при старте системы, вы можете создать системный сервис с помощью `systemd`. Создайте файл `/etc/systemd/system/svgomg.service` со следующим содержимым:
+Для того чтобы приложение запускалось в виде сервиса а не в консоли, можно создать системный сервис с помощью `systemd`.
+
+Создайте файл `/etc/systemd/system/svgomg.service`
+```bash
+sudo nano `/etc/systemd/system/svgomg.service`
+```
+
+со следующим содержимым:
 ```ini
 [Unit]  
 Description=SVGOMG Development Server  
@@ -49,6 +56,9 @@ sudo systemctl daemon-reload
 sudo systemctl start svgomg.service
 ```
 
+Далее открываем страницу в браузере по адресу [http://localhost:8080](http://localhost:8080)
+![](/Media/Pictures/SVGOMG/screenshot1.png)
+
 Остановка сервиса:
 ```bash
 sudo systemctl stop svgomg.service
@@ -58,9 +68,6 @@ sudo systemctl stop svgomg.service
 ```bash
 sudo systemctl enable svgomg.service
 ```
-
-Далее открываем страницу в браузере по адресу [http://localhost:8080](http://localhost:8080)
-![](/Media/Pictures/SVGOMG/screenshot1.png)
 
 При необходимости порт можно поменять, если порт уже занят. Открываем файл `gulpfile.js`, найдя строчку `port: 8080` и заменив порт на желаемый, после чего нужно перезапустить сервис и открыть страницу в браузере уже с новым портом.
 # Дополнительно
