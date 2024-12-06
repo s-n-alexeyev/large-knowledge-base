@@ -4,6 +4,7 @@
 
 SVGOMG предоставляет несколько опций для очистки и сжатия ваших файлов SVG.
 # Установка SVGOMG
+
 Клонируем svgomg
 ```bash
 git clone https://github.com/jakearchibald/svgomg
