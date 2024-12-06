@@ -5,7 +5,7 @@
 SVGOMG предоставляет несколько опций для очистки и сжатия ваших файлов SVG.
 # Установка SVGOMG
 
-Клонируем svgomg
+Клонирование svgomg
 ```bash
 git clone https://github.com/jakearchibald/svgomg
 ```
@@ -29,7 +29,7 @@ npm run dev
 
 Для того чтобы приложение запускалось в виде сервиса, а не в консоли, его можно создать с помощью `systemd`.
 
-Создайте файл `/etc/systemd/system/svgomg.service`
+Создание файла `/etc/systemd/system/svgomg.service`
 ```bash
 sudo nano `/etc/systemd/system/svgomg.service`
 ```
@@ -51,7 +51,7 @@ Restart=on-failure
 WantedBy=multi-user.target
 ```
 
-Затем активируйте и запустите сервис:
+Активация и запуск сервиса:
 ```bash
 sudo systemctl daemon-reload
 sudo systemctl start svgomg.service
