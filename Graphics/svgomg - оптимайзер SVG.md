@@ -58,6 +58,9 @@ sudo systemctl enable svgomg.service
 ```
 
 Далее открываем страницу в браузере по адресу [http://localhost:8080](http://localhost:8080)
+![](/Media/Pictures/SVGOMG/screenshot1.png)
+
+
 
 При необходимости порт можно поменять в файле `gulpfile.js`, найдя строчку `port: 8080` и заменив порт на желаемый, после чего нужно перезапустить сервис.
 # Дополнительно
