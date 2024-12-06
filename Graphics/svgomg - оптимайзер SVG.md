@@ -25,6 +25,9 @@ sudo mv ./svgomg /opt
 cd /opt/svgomg/  
 npm run dev
 ```
+
+Страница SVGOMG в браузере по адресу [http://localhost:8080](http://localhost:8080)
+![](/Media/Pictures/SVGOMG/screenshot1.png)
 # Настройка сервиса
 
 Для того чтобы приложение запускалось в виде сервиса, а не в консоли, его можно создать с помощью `systemd`.
@@ -56,9 +59,6 @@ WantedBy=multi-user.target
 sudo systemctl daemon-reload
 sudo systemctl start svgomg.service
 ```
-
-Далее открываем страницу в браузере по адресу [http://localhost:8080](http://localhost:8080)
-![](/Media/Pictures/SVGOMG/screenshot1.png)
 
 Остановка сервиса:
 ```bash
