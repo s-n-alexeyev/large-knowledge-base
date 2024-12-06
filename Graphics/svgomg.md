@@ -28,7 +28,7 @@ This command requires superuser privileges, hence the use of `sudo`. It moves th
 Once you have moved the SVGOMG directory to `/opt`, you can proceed with setting up and configuring the application according to your needs. This may involve installing dependencies, configuring environment variables, or setting up any necessary services.
 
 For detailed instructions on how to set up and use SVGOMG after moving it to `/opt`, please refer to the official documentation provided in the repository.
-```
+
 
 
 Ключевые моменты текста:
@@ -123,4 +123,3 @@ sudo systemctl start svgomg.service
 ## Заключение
 
 Следуя приведенным выше инструкциям, вы сможете успешно установить, настроить и запустить SVGOMG после перемещения его в директорию `/opt`. Не забудьте ознакомиться с официальной документацией для получения более подробной информации и возможных дополнительных настроек.
-```
