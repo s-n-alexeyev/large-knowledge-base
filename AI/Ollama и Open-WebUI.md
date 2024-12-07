@@ -12,7 +12,7 @@ debugInConsole: false # Print debug info in Obsidian console
   
 # Ollama
 
-![](/Media/Pictures/Ollama/Ollama_icon.png)
+![](/Media/Pictures/Ollama/Ollama_icon.png) [Ссылка на источник](https://ollama.com/)
 ## Установка и обновление
 
 >Установка/обновление Ollama
@@ -257,7 +257,9 @@ sudo groupdel ollama
 
 # Open WebUI 
 
- ![](/Media/Pictures/Ollama/Open-WebUI_icon.png) 
+![](/Media/Pictures/Ollama/Open-WebUI_icon.png) [Ссылка на источник](https://github.com/open-webui/open-webui)
+
+Open WebUI — это расширяемый, богатый функциями и дружественный пользователю самодостаточный веб-интерфейс, предназначенный для работы полностью в оффлайне.  Он поддерживает различные языковые модели LLM, включая Ollama и OpenAI-совместимые API.  Чтобы получить дополнительную информацию, смотрите документацию по [Open WebUI](https://docs.openwebui.com/).
 ## Установка
 
 >[!warning] Необходимо иметь установленную версию python 3.11 
