@@ -132,7 +132,7 @@ sudo systemctl enable svgomg.service
 >ICON="/tmp/svgomg_icon.svg"
 >
 ># Сохраняем картинку в SVG
->echo '<svg width="48" height="48" viewBox="0 0 600 600"><path fill="#0097a7" d="M0 1.995h600V600H0z"/> <path fill="#00bcd4" d="M0 0h600v395.68H0z"/><path d="M269.224 530.33 519 395.485H269.224V530.33zM214.35 91.847H519v303.638H214.35V91.847z" opacity=".22"/><path fill="#fff" d="M80 341.735h189.224V530.33H80z"/></svg>' > $ICON
+>echo '<svg width="48" height="48" viewBox="0 0 600 600"><path fill="#0097a7" d="M0 2h600v598H0z"/><path fill="#00bcd4" d="M0 0h600v395.7H0z"/><path d="M269.2 530.3 519 395.5H269.2v134.8zM214.4 91.8H519v303.7H214.4V91.8z" opacity=".2"/><path fill="#fff" d="M80 341.7h189.2v188.6H80z"/></svg>' > $ICON
 >
 ># Проверка состояния службы
 >status=$(echo "$password" | sudo -S systemctl is-active --quiet $SERVICE && echo "active" || echo "inactive")
