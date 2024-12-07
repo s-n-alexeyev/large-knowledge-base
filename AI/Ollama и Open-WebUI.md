@@ -3,7 +3,7 @@
 
 >Установка/обновление Ollama
 ```bash
-sudo curl -fsSL https://ollama.com/install.sh | sh
+sudo curl -fsSL [[https://ollama.com/]]install.sh | sh
 ```
 
 >Скрипт создает службу `ollama`, можем в в этом убедиться
