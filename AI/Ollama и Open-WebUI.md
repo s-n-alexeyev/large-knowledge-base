@@ -61,14 +61,14 @@ sudo systemctl stop ollama.service
 
 ## Использование
 
-Ссылка на модели [Ollama](https://ollama.com/search)
+>[!info] Ссылка на модели [Ollama](https://ollama.com/search)
 
 >Пример загрузки модели [qwen2.5](https://ollama.com/library/qwen2.5)
 ```bash
 ollama run qwen2.5
 ```
 
->[!info] Команды Ollama
+>[!nine] Команды Ollama
 ```
 Использование:
   ollama [флаги]
@@ -93,7 +93,7 @@ help         Помощь
   -v, --version  Показать информацию о версии
 ```
 
->[!tip] все настройки и данные хранятся в `/usr/share/ollama/`
+>[!info] все настройки и данные хранятся в `/usr/share/ollama/`
 
 >Для ручных манипуляций с файлами `ollama` делаем следующее
 ```bash
@@ -298,7 +298,7 @@ WantedBy=multi-user.target
 sudo systemctl start open-webui
 ```
 
-Адрес веб интерфейса Open-WebUI в браузере [0.0.0.0:8080](http://0.0.0.0:8080)
+>[!info] Адрес веб интерфейса Open-WebUI в браузере [0.0.0.0:8080](http://0.0.0.0:8080)
 
 ## Обновление
 
