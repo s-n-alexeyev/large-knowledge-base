@@ -183,7 +183,7 @@ pip install open-webui
 sudo nano /etc/systemd/system/open-webui.service
 ```
 
-```
+```ini
 [Unit]
 Description=Open Web UI Service
 After=network.target
