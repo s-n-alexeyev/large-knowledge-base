@@ -310,7 +310,7 @@ pip install --upgrade open-webui
 
 ## Удаление
 
-Удаление службы `open-webui`
+>Удаление службы `open-webui`
 ```bash
 sudo systemctl stop open-webui
 sudo systemctl disable open-webui
