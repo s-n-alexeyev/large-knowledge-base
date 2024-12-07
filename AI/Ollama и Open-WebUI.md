@@ -31,7 +31,7 @@ sudo curl -fsSL https://ollama.com/install.sh | sh
 sudo nano /etc/systemd/system/ollama
 ```
 
-```ini
+```unit
 [Unit]
 Description=Ollama Service
 After=network-online.target
@@ -285,7 +285,7 @@ pip install open-webui
 sudo nano /etc/systemd/system/open-webui.service
 ```
 
-```ini
+```unit
 [Unit]
 Description=Open Web UI Service
 After=network.target
