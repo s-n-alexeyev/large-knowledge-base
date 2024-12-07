@@ -414,6 +414,9 @@ sudo rm -rf /opt/open-webui-env
 >   echo "$password" | sudo -S systemctl start $SERVICE
 >   if [ $? -eq 0 ]; then
 >     notify_show "Сервис $SERVICE успешно запущен." "Успех"
+>      # Открываем браузер
+>      sleep 4
+>      xdg-open "http://0.0.0.0:8080"
 >   else
 >     notify_show "Не удалось запустить сервис $SERVICE." "Ошибка"
 >   fi
@@ -425,7 +428,6 @@ sudo rm -rf /opt/open-webui-env
 >
 ># Удаляем временный SVG файл
 >rm -f $ICON
->
 >```
 
 >Скрипт после переноса окружение (VENV) из одного каталога в другой с заменой скриптов в bin
