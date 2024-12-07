@@ -3,7 +3,7 @@
 
 >Установка/обновление Ollama
 ```bash
-sudo curl -fsSL [[https://ollama.com/]]install.sh | sh
+sudo curl -fsSL https://ollama.com/install.sh | sh
 ```
 
 ![](/Media/Pictures/Ollama/Ollama_Install.png)
@@ -85,6 +85,42 @@ sudo chmod -R g+s /var/lib/ollama
 sudo usermod -aG ollama $USER
 ```
 
+## Промсотр журнала
+
+To view logs of Ollama running as a startup service, run:
+
+```shell
+journalctl -e -u ollama
+```
+
+## Удаление Ollama
+
+Remove the ollama service:
+
+```shell
+sudo systemctl stop ollama
+sudo systemctl disable ollama
+sudo rm /etc/systemd/system/ollama.service
+```
+
+Remove the ollama binary from your bin directory (either `/usr/local/bin`, `/usr/bin`, or `/bin`):
+
+```shell
+sudo rm $(which ollama)
+```
+
+Remove the downloaded models and Ollama service user and group:
+
+```bash
+sudo rm -r /usr/share/ollama
+sudo userdel ollama
+
+for user in $(getent group ollama | cut -d: -f4 | tr ',' ' '); do
+   sudo gpasswd -d "$user" ollama
+done
+sudo groupdel ollama
+
+```
 ## Дополнительно
 
 >[!example]- Скрипт для запуска/остановки сервиса Ollama
