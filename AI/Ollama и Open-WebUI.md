@@ -22,7 +22,7 @@ sudo curl -fsSL https://ollama.com/install.sh | sh
 
 ![](/Media/Pictures/Ollama/Ollama_install.png)
 
->Скрипт создает службу `ollama`, можем в в этом убедиться
+>Скрипт создает службу `ollama`, можем в этом убедиться
 ```
 sudo nano /etc/systemd/system/ollama.service
 ```
