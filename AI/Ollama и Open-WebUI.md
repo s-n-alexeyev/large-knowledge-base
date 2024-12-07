@@ -28,7 +28,7 @@ sudo curl -fsSL https://ollama.com/install.sh | sh
 
 >Скрипт создает службу `ollama`, можем в этом убедиться
 ```
-sudo nano /etc/systemd/system/ollama.service
+sudo nano /etc/systemd/system/ollama
 ```
 
 ```ini
@@ -50,17 +50,17 @@ WantedBy=default.target
 
 >Скрип включает в автозагрузку службу `ollama`, можем выключить, если хотим контролировать вручную
 ```bash
-sudo systemctl disable ollama.service
+sudo systemctl disable ollama
 ```
 
 >Запуск службы `ollama`
 ```bash
-sudo systemctl start ollama.service
+sudo systemctl start ollama
 ```
 
 >Остановка службы `ollama`
 ```bash
-sudo systemctl stop ollama.service
+sudo systemctl stop ollama
 ```
 
 ## Использование
