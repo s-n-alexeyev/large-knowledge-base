@@ -6,31 +6,41 @@
 sudo curl -fsSL https://ollama.com/install.sh | sh
 ```
 
->Создание службы Ollama
+>Скрипт создает службу `ollama`, можем в в этом убедиться
 ```
 sudo nano /etc/systemd/system/ollama.service
 ```
 
-```
-[Unit]  
-Description=Ollama Service  
-After=network-online.target  
-  
-[Service]  
-ExecStart=/usr/local/bin/ollama serve  
-User=user  
-Group=user  
-Restart=always  
-RestartSec=3  
-Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/bin"  
-  
-[Install]  
+```ini
+[Unit]
+Description=Ollama Service
+After=network-online.target
+
+[Service]
+ExecStart=/usr/local/bin/ollama serve
+User=ollama
+Group=ollama
+Restart=always
+RestartSec=3
+Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/bin"
+
+[Install]
 WantedBy=default.target
 ```
 
->Запуск службы Ollama
+>Скрип включает в автозагрузку службу `ollama`, можем выключить, если хотим контролировать вручную
+```bash
+sudo systemctl disable ollama.service
+```
+
+>Запуск службы `ollama`
 ```bash
 sudo systemctl start ollama.service
+```
+
+>Остановка службы `ollama`
+```bash
+sudo systemctl stop ollama.service
 ```
 
 Ссылка на модели [Ollama](https://ollama.com/search)
@@ -60,7 +70,18 @@ help         Помощь
   -v, --version  Показать информацию о версии
 ```
 
->[!tip] все настройки и модели хранятся в `~/.ollama/`
+>[!tip] все настройки и модели хранятся в `/var/lib/ollama/.ollama/`
+
+>Для ручных манипуляций с файлами `ollama` делаем следующее
+```bash
+# Даем доступ к директории и вложенным поддиркеториям группе ollama
+sudo chgrp -R ollama /var/lib/ollama
+sudo chmod -R g+rwx /var/lib/ollama
+sudo chmod -R g+s /var/lib/ollama
+
+# Добавляем себя в группу ollama
+sudo usermod -aG ollama $USER
+```
 
 ## Дополнительно
 
