@@ -436,4 +436,3 @@ sudo rm -rf /opt/open-webui-env
 ># Удаляем временный SVG файл
 >rm -f $ICON
 >```
-
