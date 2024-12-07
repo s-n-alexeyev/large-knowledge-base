@@ -145,6 +145,26 @@ sudo groupdel ollama
 >[!example]- Скрипт для запуска/остановки сервиса Ollama
 >```bash
 >#!/bin/bash
+>
+># Функция проверки зависимостей
+>check_dependencies() {
+>    local dependencies=("yad" "ollama" "faillock" "notify-send" "systemctl" "sudo")
+>    local missing_dependencies=()
+>
+>    for dep in "${dependencies[@]}"; do
+>        if ! command -v "$dep" > /dev/null 2>&1; then
+>            missing_dependencies+=("$dep")
+>        fi
+>    done
+>
+>    if [ ${#missing_dependencies[@]} -ne 0 ]; then
+>        echo "Отсутствующие зависимости: ${missing_dependencies[*]}"
+>        exit 1
+>    fi
+>}
+>
+>check_dependencies
+>
 ># Очищаем неудачные попытки входа
 >faillock --user $USER --reset
 >
