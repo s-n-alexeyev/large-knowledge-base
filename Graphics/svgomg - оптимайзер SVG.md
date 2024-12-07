@@ -74,7 +74,7 @@ sudo systemctl enable svgomg.service
 Чтобы изменить порт открываем файл `gulpfile.js`, найдя строчку `port: 8080` и заменив порт на желаемый, после чего нужно перезапустить сервис и открыть страницу в браузере уже с новым портом.
 # Дополнительно
 
-Можно создать ярлык на рабочем столе, добавив в него путь на файл со скриптом, для того чтобы не пользоваться консолью для старта/остановки сервиса:
+Можно создать ярлык на рабочем столе, добавив в него путь на файл со скриптом, для того чтобы не пользоваться консолью для старта/остановки сервиса, в качестве аргумента командной строки можно указать пароль для `root`
 >[!example]- Скрипт для запуска/остановки сервиса svgomg
 >```bash
 >#!/bin/bash
@@ -101,13 +101,18 @@ sudo systemctl enable svgomg.service
 ># Очищаем неудачные попытки входа
 >faillock --user $USER --reset
 >
-># Просим пароль root
->password=$(yad --entry --title="Авторизация" \
->  --window-icon="lock" --image "lock" \
->  --width=300 --fixed \
->  --text="Введите root пароль:" --hide-text)
->if [ -z "$password" ]; then
->  exit 0
+># Используем пароль из командной строки, если он передан
+>if [ -n "$1" ]; then
+>    password="$1"
+>else
+>    # Если пароль не передан, просим пароль root
+>    password=$(yad --entry --title="Авторизация" \
+>        --window-icon="lock" --image "lock" \
+>        --width=300 --fixed \
+>        --text="Введите root пароль:" --hide-text)
+>    if [ -z "$password" ]; then
+>        exit 0
+>    fi
 >fi
 >
 ># Функция для отображения сообщений
@@ -127,7 +132,7 @@ sudo systemctl enable svgomg.service
 >ICON="/tmp/svgomg_icon.svg"
 >
 ># Сохраняем картинку в SVG
->echo '<svg width="48" height="48" viewBox="0 0 600 600"><path fill="#0097a7" d="M0 1.995h600V600H0z"/><path fill="#00bcd4" d="M0 0h600v395.68H0z"/><path d="M269.224 530.33 519 395.485H269.224V530.33zM214.35 91.847H519v303.638H214.35V91.847z" opacity=".22"/><path fill="#fff" d="M80 341.735h189.224V530.33H80z"/></svg>' > $ICON
+>echo '<svg width="48" height="48" viewBox="0 0 600 600"><path fill="#0097a7" d="M0 1.995h600V600H0z"/> <path fill="#00bcd4" d="M0 0h600v395.68H0z"/><path d="M269.224 530.33 519 395.485H269.224V530.33zM214.35 91.847H519v303.638H214.35V91.847z" opacity=".22"/><path fill="#fff" d="M80 341.735h189.224V530.33H80z"/></svg>' > $ICON
 >
 ># Проверка состояния службы
 >status=$(echo "$password" | sudo -S systemctl is-active --quiet $SERVICE && echo "active" || echo "inactive")
@@ -160,6 +165,10 @@ sudo systemctl enable svgomg.service
 >    echo "$password" | sudo -S systemctl start $SERVICE
 >    if [ $? -eq 0 ]; then
 >      notify_show "Сервис $SERVICE успешно запущен. Адрес http://localhost:8808" "Успех"
+>
+>      # Открываем браузер по адресу
+>      sleep 4
+>      xdg-open "http://localhost:8808"
 >    else
 >      notify_show "Не удалось запустить сервис $SERVICE." "Ошибка"
 >    fi
