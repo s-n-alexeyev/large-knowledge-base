@@ -34,7 +34,7 @@ npm run dev
 
 Создание файла `/etc/systemd/system/svgomg.service`
 ```bash
-sudo nano `/etc/systemd/system/svgomg.service`
+sudo nano /etc/systemd/system/svgomg.service
 ```
 
 со следующим содержимым:
