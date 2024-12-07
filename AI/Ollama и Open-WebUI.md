@@ -68,7 +68,7 @@ sudo systemctl stop ollama.service
 ollama run qwen2.5
 ```
 
->[!nine] Команды Ollama
+>[!note] Команды Ollama
 ```
 Использование:
   ollama [флаги]
