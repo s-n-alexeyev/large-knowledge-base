@@ -11,7 +11,7 @@ debugInConsole: false # Print debug info in Obsidian console
 ```
 # <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#ccc"/><path fill-rule="evenodd" d="M27.2 16.9a10.1 10.1 0 0 1 4.2-1.3 9 9 0 0 1 5.5 1.3c.3-3.6 2.3-7.5 5-6.7 3.9 1 3.7 7.7 3.4 11.3 5 3.8 4.1 10.8 2.2 13a12 12 0 0 1 1.4 4.9c.2 2.3-.5 4.4-1.6 6.4a13 13 0 0 1 .9 7.1 1.3 1.3 0 0 1-1.5 1 1.3 1.3 0 0 1-1.1-1.4c.3-2 0-4.1-1-6.2a1.3 1.3 0 0 1 .1-1.3 9 9 0 0 0 1.6-5.4c0-1.6-.6-3.1-1.6-4.6a1.3 1.3 0 0 1 .4-1.8c.8-.5 1.9-3 1-6.2-1.3-4.2-5-4.7-7-4.5a1.3 1.3 0 0 1-1.3-.8c-2.6-5.6-10.2-3.8-11.6-.1a1.3 1.3 0 0 1-1.2.8c-2.5 0-6 .7-7.1 4.6-.8 3 .3 5.7 1 6.3a1.3 1.3 0 0 1 .3 1.6c-.8 1.2-1.3 3-1.4 4.9a7 7 0 0 0 1.5 5c.3.5.4 1 .2 1.5-1.2 2.4-1.5 4.5-1.1 6 .3 1.7-2.2 2.3-2.6.7a12 12 0 0 1 1-7.1 10 10 0 0 1-1.6-6.3c.1-2.4.9-4.3 1.3-5.2-2.1-3-2.4-9.7 2.3-13-.3-3.5-.5-10.2 3.4-11.3 2-.7 4.6 2 5 6.8M32 28.4c4 0 7 2.8 7 5.6 0 3.2-2.8 5.1-7.1 5.1-4.4 0-7-2.4-7-5.1 0-2.8 3.2-5.6 7.1-5.6m0 1.8c-2.8 0-5.2 2-5.2 3.8 0 1.7 1.8 3.3 5 3.3 2 0 5.3-.4 5.3-3.3 0-1.8-2-3.8-5-3.8m1.3 2.4c.2.3.2.7-.1 1l-.6.4v1a.8.8 0 0 1-.8.7.8.8 0 0 1-.7-.8v-1l-.6-.3a.7.7 0 0 1 0-1 .7.7 0 0 1 1-.1l.3.3.5-.3a.7.7 0 0 1 1 0m-10.1-3.8a1.7 1.7 0 0 1 1.7 1.8 1.7 1.7 0 0 1-1.7 1.7 1.7 1.7 0 0 1-1.8-1.7 1.7 1.7 0 0 1 1.8-1.8zm17.4 0c1 0 1.7.8 1.7 1.8a1.7 1.7 0 0 1-1.7 1.7 1.7 1.7 0 0 1-1.7-1.7 1.7 1.7 0 0 1 1.7-1.8M22.9 12.6c-2 .9-1.6 6.9-1.5 7.7.9-.3 1.8-.4 2.8-.5 1-1.9 0-6.4-1.3-7.2zm18.3 0c-1.4 1-2.2 6-1.4 7.3 1 0 2 .1 3 .4 0-.9.4-6.8-1.6-7.6z"/></svg> Ollama
 
-## Установка Ollama
+## Установка и обновление
 >Установка/обновление Ollama
 ```bash
 sudo curl -fsSL https://ollama.com/install.sh | sh
@@ -55,6 +55,8 @@ sudo systemctl start ollama.service
 ```bash
 sudo systemctl stop ollama.service
 ```
+
+## Использование
 
 Ссылка на модели [Ollama](https://ollama.com/search)
 
@@ -111,7 +113,7 @@ newgrp ollama
 ```shell
 journalctl -e -u ollama
 ```
-## Удаление Ollama
+## Удаление
 
 >Удаление службы `ollama`
 ```shell
@@ -245,7 +247,7 @@ sudo groupdel ollama
 
 # <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 177 177"><circle cx="88.5" cy="88.5" r="88.5" fill="#ccc"/><path d="M122.8 48.4h16v79h-16z"/><circle cx="71.2" cy="87.5" r="39.1"/><circle cx="71.2" cy="87.5" r="23.4" fill="#ccc"/></svg> Open WebUI 
 
-## Установка Open WebUI 
+## Установка
 
 >[!warning] Необходимо иметь установленную версию python 3.11 
 
@@ -285,7 +287,15 @@ WantedBy=multi-user.target
 sudo systemctl start open-webui
 ```
 
-Адрес на фронтэнд Open-WebUI в браузере [0.0.0.0:8080](http://0.0.0.0:8080)
+Адрес веб интерфейса Open-WebUI в браузере [0.0.0.0:8080](http://0.0.0.0:8080)
+
+## Обновление Open WebUI
+
+>Обновление open-webui
+```bash
+source /opt/open-webui-env/bin/activate  
+pip install --upgrade open-webui
+```
 
 ## Удаление Open WebUI
 
@@ -402,18 +412,7 @@ sudo rm -rf /opt/open-webui-env
 >rm -f $ICON
 >```
 
->Перенос VENV замена содержимого скриптов в bin
+>Скрипт после переноса окружение (VENV) из одного каталога в другой с заменой скриптов в bin
 ```bash
 find /opt/open-webui-env/bin -type f -exec sed -i 's|#!/home/user/.venv/open-webui-env/bin/python3.11|#!/usr/bin/env python3|' {} +
 ```
-
->Обновление open-webui
-```bash
-source /opt/open-webui-env/bin/activate  
-pip install --upgrade open-webui
-```
-
-
-
-
-
