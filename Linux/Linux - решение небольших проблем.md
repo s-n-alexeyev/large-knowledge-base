@@ -512,3 +512,14 @@ echo 3 > /proc/sys/vm/drop_caches
 ```bash
 VBoxManage modifyvm "имя_вашей_виртуальной_машины" --iconfile <путь_к_значку>
 ```
+
+---
+# Pythton - перенос окружения
+
+>Скрипт после переноса окружение (VENV) из одного каталога в другой с заменой скриптов в bin
+```bash
+find /opt/open-webui-env/bin -type f -exec sed -i 's|#!/home/user/.venv/open-webui-env/bin/python3.11|#!/usr/bin/env python3|' {} +
+```
+
+---
+

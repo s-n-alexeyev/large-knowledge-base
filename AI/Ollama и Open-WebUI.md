@@ -430,7 +430,3 @@ sudo rm -rf /opt/open-webui-env
 >rm -f $ICON
 >```
 
->Скрипт после переноса окружение (VENV) из одного каталога в другой с заменой скриптов в bin
-```bash
-find /opt/open-webui-env/bin -type f -exec sed -i 's|#!/home/user/.venv/open-webui-env/bin/python3.11|#!/usr/bin/env python3|' {} +
-```
