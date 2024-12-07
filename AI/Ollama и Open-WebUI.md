@@ -319,46 +319,48 @@ sudo rm -rf /opt/open-webui-env
 >
 ># Функция проверки зависимостей
 >check_dependencies() {
->    local dependencies=("yad" "ollama" "faillock" "notify-send" "systemctl" "sudo")
->    local missing_dependencies=()
+>   local dependencies=("yad" "ollama" "faillock" "notify-send" "systemctl" "sudo")
+>   local missing_dependencies=()
 >
->    for dep in "${dependencies[@]}"; do
->        if ! command -v "$dep" > /dev/null 2>&1; then
->            missing_dependencies+=("$dep")
->        fi
->    done
+>   for dep in "${dependencies[@]}"; do
+>       if ! command -v "$dep" > /dev/null 2>&1; then
+>           missing_dependencies+=("$dep")
+>       fi
+>   done
 >
->    if [ ${#missing_dependencies[@]} -ne 0 ]; then
->        echo "Отсутствующие зависимости: ${missing_dependencies[*]}"
->        exit 1
->    fi
+>   if [ ${#missing_dependencies[@]} -ne 0 ]; then
+>       echo "Отсутствующие зависимости: ${missing_dependencies[*]}"
+>       exit 1
+>   fi
 >}
 >
 >check_dependencies
 >
-># Очищаем неудачные попытки входа
->faillock --user $USER --reset
->
-># Просим пароль root
->password=$(yad --entry --title="Авторизация" \
->  --window-icon="lock" --image "lock" \
->  --width=300 --fixed \
->  --text="Введите root пароль:" --hide-text)
->if [ -z "$password" ]; then
->  exit 0
+># Используем пароль из командной строки, если он передан
+>if [ -n "$1" ]; then
+>    password="$1"
+>else
+>    # Если пароль не передан, просим пароль root
+>    password=$(yad --entry --title="Авторизация" \
+>        --window-icon="lock" --image "lock" \
+>        --width=300 --fixed \
+>        --text="Введите root пароль:" --hide-text)
+>    if [ -z "$password" ]; then
+>        exit 0
+>    fi
 >fi
 >
 ># Функция для отображения сообщений
 >notify_show() {
->  notify-send "$1" --icon=$ICON --app-name="$2 " --expire-time=4000
+> notify-send "$1" --icon=$ICON --app-name="$2 " --expire-time=4000
 >}
 >
 ># Проверка пароля с использованием sudo
 >ICON="state-error"
 >echo "$password" | sudo -S ls >/dev/null 2>&1
 >if [ $? -ne 0 ]; then
->  notify_show $'Неверный пароль!\nЗавершение работы.' "Ошибка"
->  exit 1
+> notify_show $'Неверный пароль!\nЗавершение работы.' "Ошибка"
+> exit 1
 >fi
 >
 >SERVICE="open-webui"
@@ -372,44 +374,45 @@ sudo rm -rf /opt/open-webui-env
 >
 ># Формируем сообщение на основе состояния службы
 >if [ "$status" = "active" ]; then
->    message="<span foreground='green'><b>Сервис $SERVICE активен.</b></span>\nХотите его остановить?"
+>   message="<span foreground='green'><b>Сервис $SERVICE активен.</b></span>\nХотите его остановить?"
 >else
->    message="<span foreground='red'><b>Сервис $SERVICE остановлен.</b></span>\nХотите его запустить?"
+>   message="<span foreground='red'><b>Сервис $SERVICE остановлен.</b></span>\nХотите его запустить?"
 >fi
 >
 ># Запрашиваем ответ пользователя
 >yad --title "Управление $SERVICE" --image $ICON --window-icon=$ICON --fixed \
->  --text "$message" \
->  --button=Да:0 \
->  --button=Нет:1
+> --text "$message" \
+> --button=Да:0 \
+> --button=Нет:1
 >
 ># Проверяем response
 >response=$?
 >if [ $response -eq 0 ]; then
->  if [ "$status" = "active" ]; then
->    # Останавливаем службу
->    echo "$password" | sudo -S systemctl stop $SERVICE
->    if [ $? -eq 0 ]; then
->      notify_show "Сервис $SERVICE успешно остановлен." "Успех"
->    else
->      notify_show "Не удалось остановить сервис $SERVICE." "Ошибка"
->    fi
->  else
->    # Запускаем службу
->    echo "$password" | sudo -S systemctl start $SERVICE
->    if [ $? -eq 0 ]; then
->      notify_show "Сервис $SERVICE успешно запущен." "Успех"
->    else
->      notify_show "Не удалось запустить сервис $SERVICE." "Ошибка"
->    fi
->  fi
+> if [ "$status" = "active" ]; then
+>   # Останавливаем службу
+>   echo "$password" | sudo -S systemctl stop $SERVICE
+>   if [ $? -eq 0 ]; then
+>     notify_show "Сервис $SERVICE успешно остановлен." "Успех"
+>   else
+>     notify_show "Не удалось остановить сервис $SERVICE." "Ошибка"
+>   fi
+> else
+>   # Запускаем службу
+>   echo "$password" | sudo -S systemctl start $SERVICE
+>   if [ $? -eq 0 ]; then
+>     notify_show "Сервис $SERVICE успешно запущен." "Успех"
+>   else
+>     notify_show "Не удалось запустить сервис $SERVICE." "Ошибка"
+>   fi
+> fi
 >else
->  # Пользователь выбрал "Нет" или закрыл диалог
->  notify_show "Действие отменено." "Информация"
+> # Пользователь выбрал "Нет" или закрыл диалог
+> notify_show "Действие отменено." "Информация"
 >fi
 >
 ># Удаляем временный SVG файл
 >rm -f $ICON
+>
 >```
 
 >Скрипт после переноса окружение (VENV) из одного каталога в другой с заменой скриптов в bin
