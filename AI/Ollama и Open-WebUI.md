@@ -20,7 +20,7 @@ debugInConsole: false # Print debug info in Obsidian console
 sudo curl -fsSL https://ollama.com/install.sh | sh
 ```
 
-![](/Media/Pictures/Ollama/Ollama_Install.png)
+![](/Media/Pictures/Ollama/Ollama_install.png)
 
 >Скрипт создает службу `ollama`, можем в в этом убедиться
 ```
@@ -257,7 +257,7 @@ sudo groupdel ollama
 
 # Open WebUI 
 
- ![](/Media/Pictures/Ollama/open-WebUI_icon.png) 
+ ![](/Media/Pictures/Ollama/Open-WebUI_icon.png) 
 ## Установка
 
 >[!warning] Необходимо иметь установленную версию python 3.11 
