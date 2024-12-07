@@ -112,7 +112,7 @@ journalctl -e -u ollama
 ```
 ## Удаление Ollama
 
->Удаление службы ollama
+>Удаление службы `ollama`
 ```shell
 sudo systemctl stop ollama
 sudo systemctl disable ollama
@@ -244,6 +244,8 @@ sudo groupdel ollama
 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 177 177"><circle cx="88.5" cy="88.5" r="88.5" fill="#ccc"/><path d="M122.8 48.4h16v79h-16z"/><circle cx="71.2" cy="87.5" r="39.1"/><circle cx="71.2" cy="87.5" r="23.4" fill="#ccc"/></svg>
 # Open WebUI 
 
+## Установка Open WebUI 
+
 >Установка open-webui окружения и его активация
 ```bash
 mkdir /opt/open-webui-env
@@ -277,10 +279,24 @@ WantedBy=multi-user.target
 
 >Запуск службы Open-WebUI
 ```bash
-sudo systemctl start open-webui.service
+sudo systemctl start open-webui
 ```
 
 Адрес на фронтэнд Open-WebUI в браузере [0.0.0.0:8080](http://0.0.0.0:8080)
+
+## Удаление Open WebUI
+
+Удаление службы `open-webui`
+```bash
+sudo systemctl stop open-webui
+sudo systemctl disable open-webui
+sudo rm /etc/systemd/system/open-webui.service
+```
+
+>Удаление директории с виртуальным окружением
+```bash
+sudo rm -rf /opt/open-webui-env
+```
 
 ## Дополнительно
 
