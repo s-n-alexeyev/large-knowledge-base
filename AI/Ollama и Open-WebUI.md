@@ -72,14 +72,14 @@ help         Помощь
   -v, --version  Показать информацию о версии
 ```
 
->[!tip] все настройки и модели хранятся в `/var/lib/ollama/.ollama/`
+>[!tip] все настройки и модели хранятся в `/usr/share/ollama/.ollama/`
 
 >Для ручных манипуляций с файлами `ollama` делаем следующее
 ```bash
 # Даем доступ к директории и вложенным поддиркеториям группе ollama
-sudo chgrp -R ollama /var/lib/ollama
-sudo chmod -R g+rwx /var/lib/ollama
-sudo chmod -R g+s /var/lib/ollama
+sudo chgrp -R ollama /usr/share/ollama
+sudo chmod -R g+rwx /usr/share/ollama
+sudo chmod -R g+s /usr/share/ollama
 
 # Добавляем себя в группу ollama
 sudo usermod -aG ollama $USER
