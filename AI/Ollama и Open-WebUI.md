@@ -1,6 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#ccc"/><path fill-rule="evenodd" d="M27.2 16.9a10.1 10.1 0 0 1 4.2-1.3 9 9 0 0 1 5.5 1.3c.3-3.6 2.3-7.5 5-6.7 3.9 1 3.7 7.7 3.4 11.3 5 3.8 4.1 10.8 2.2 13a12 12 0 0 1 1.4 4.9c.2 2.3-.5 4.4-1.6 6.4a13 13 0 0 1 .9 7.1 1.3 1.3 0 0 1-1.5 1 1.3 1.3 0 0 1-1.1-1.4c.3-2 0-4.1-1-6.2a1.3 1.3 0 0 1 .1-1.3 9 9 0 0 0 1.6-5.4c0-1.6-.6-3.1-1.6-4.6a1.3 1.3 0 0 1 .4-1.8c.8-.5 1.9-3 1-6.2-1.3-4.2-5-4.7-7-4.5a1.3 1.3 0 0 1-1.3-.8c-2.6-5.6-10.2-3.8-11.6-.1a1.3 1.3 0 0 1-1.2.8c-2.5 0-6 .7-7.1 4.6-.8 3 .3 5.7 1 6.3a1.3 1.3 0 0 1 .3 1.6c-.8 1.2-1.3 3-1.4 4.9a7 7 0 0 0 1.5 5c.3.5.4 1 .2 1.5-1.2 2.4-1.5 4.5-1.1 6 .3 1.7-2.2 2.3-2.6.7a12 12 0 0 1 1-7.1 10 10 0 0 1-1.6-6.3c.1-2.4.9-4.3 1.3-5.2-2.1-3-2.4-9.7 2.3-13-.3-3.5-.5-10.2 3.4-11.3 2-.7 4.6 2 5 6.8M32 28.4c4 0 7 2.8 7 5.6 0 3.2-2.8 5.1-7.1 5.1-4.4 0-7-2.4-7-5.1 0-2.8 3.2-5.6 7.1-5.6m0 1.8c-2.8 0-5.2 2-5.2 3.8 0 1.7 1.8 3.3 5 3.3 2 0 5.3-.4 5.3-3.3 0-1.8-2-3.8-5-3.8m1.3 2.4c.2.3.2.7-.1 1l-.6.4v1a.8.8 0 0 1-.8.7.8.8 0 0 1-.7-.8v-1l-.6-.3a.7.7 0 0 1 0-1 .7.7 0 0 1 1-.1l.3.3.5-.3a.7.7 0 0 1 1 0m-10.1-3.8a1.7 1.7 0 0 1 1.7 1.8 1.7 1.7 0 0 1-1.7 1.7 1.7 1.7 0 0 1-1.8-1.7 1.7 1.7 0 0 1 1.8-1.8zm17.4 0c1 0 1.7.8 1.7 1.8a1.7 1.7 0 0 1-1.7 1.7 1.7 1.7 0 0 1-1.7-1.7 1.7 1.7 0 0 1 1.7-1.8M22.9 12.6c-2 .9-1.6 6.9-1.5 7.7.9-.3 1.8-.4 2.8-.5 1-1.9 0-6.4-1.3-7.2zm18.3 0c-1.4 1-2.2 6-1.4 7.3 1 0 2 .1 3 .4 0-.9.4-6.8-1.6-7.6z"/></svg>
+```table-of-contents
+title: Содержание
+style: nestedList # TOC style (nestedList|nestedOrderedList|inlineFirstLevel)
+minLevel: 0 # Include headings from the specified level
+maxLevel: 0 # Include headings up to the specified level
+includeLinks: true # Make headings clickable
+hideWhenEmpty: false # Hide TOC if no headings are found
+debugInConsole: false # Print debug info in Obsidian console
+```
 # Ollama
 
+## Установка Ollama
 >Установка/обновление Ollama
 ```bash
 sudo curl -fsSL https://ollama.com/install.sh | sh
@@ -47,6 +57,11 @@ sudo systemctl stop ollama.service
 
 Ссылка на модели [Ollama](https://ollama.com/search)
 
+>Пример загрузки модели [qwen2.5](https://ollama.com/library/qwen2.5)
+```bash
+ollama run qwen2.5
+```
+
 >[!info] Команды Ollama
 ```
 Использование:
@@ -85,41 +100,45 @@ sudo chmod -R g+s /usr/share/ollama
 sudo usermod -aG ollama $USER
 ```
 
-## Промсотр журнала
+>Чтобы права вступили в силу нужно завершить текущую сессию или перегрузить компьютер или выполнить следующую команду
+```bash
+newgrp ollama
+```
+## Просмотр журнала
 
-To view logs of Ollama running as a startup service, run:
-
+>Просмотр журналы работы `ollama`
 ```shell
 journalctl -e -u ollama
 ```
-
 ## Удаление Ollama
 
-Remove the ollama service:
-
+>Удаление службы ollama
 ```shell
 sudo systemctl stop ollama
 sudo systemctl disable ollama
 sudo rm /etc/systemd/system/ollama.service
 ```
 
-Remove the ollama binary from your bin directory (either `/usr/local/bin`, `/usr/bin`, or `/bin`):
-
+>Удаление файлов `ollama` из каталога `/usr/local/bin`, `/usr/bin`, `/bin`
 ```shell
 sudo rm $(which ollama)
 ```
 
-Remove the downloaded models and Ollama service user and group:
-
+>Удаление загруженных моделей и пользователя и группы сервиса `ollama`
 ```bash
+# Удаляем директорию с данными
 sudo rm -r /usr/share/ollama
+
+# Удаляем пользователя
 sudo userdel ollama
 
+# Удаляем пользователей из груупы ollama
 for user in $(getent group ollama | cut -d: -f4 | tr ',' ' '); do
    sudo gpasswd -d "$user" ollama
 done
-sudo groupdel ollama
 
+# Удаляем группу
+sudo groupdel ollama
 ```
 ## Дополнительно
 
