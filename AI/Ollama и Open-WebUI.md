@@ -97,7 +97,7 @@ help         Помощь
 
 >Для ручных манипуляций с файлами `ollama` делаем следующее
 ```bash
-# Даем доступ к директории и вложенным поддиркеториям группе ollama
+# Даем доступ к директории и вложенным поддиректориям группе ollama
 sudo chgrp -R ollama /usr/share/ollama
 sudo chmod -R g+rwx /usr/share/ollama
 sudo chmod -R g+s /usr/share/ollama
