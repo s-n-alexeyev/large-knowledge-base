@@ -273,6 +273,7 @@ reboot
 ```bash
 rm -rf roles/galaxy &&
 ansible-galaxy install -r requirements.yml -p roles/galaxy/ --force
+make roles
 ```
 
 Установите модули Ansible Galaxy community.general, ansible.posix и community.docker:
