@@ -248,7 +248,12 @@ auth strong
 users "proxyuser:CR:87beeef3f4ee4661ac1897eca216fc26"
 ```
 
-Вместо «87beeef3f4ee4661ac1897eca216fc26» необходимо указать хэш MD5 пароля для пользователя proxyuser. Узнать хэш MD5 можно с помощью онлайн генераторов.
+Вместо «87beeef3f4ee4661ac1897eca216fc26» необходимо указать хэш MD5 пароля для пользователя proxyuser.
+ 
+Узнать хэш MD5 можно с помощью команды.
+```bash
+echo -n "password" | openssl dgst -md5 | awk '{print $2}'
+```
 
 Запустим 3proxy с помощью docker-compose. Для этого потребуется создать файл конфигурации в формате .yml:
 
