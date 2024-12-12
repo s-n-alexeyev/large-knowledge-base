@@ -198,33 +198,45 @@ mkdir /var/log/3proxy ; chown nobody /var/log/3proxy
 
 Для AlmaLinux и CentOS:
 
-# yum install docker docker-compose
+```bash
+yum install docker docker-compose
+```
 
 для Ubuntu и Debian:
 
-# apt install docker docker.io docker-compose
+```bash
+apt install docker docker.io docker-compose
+```
 
 Скачиваем образ:
 
-# docker pull 3proxy/3proxy
+```bash
+docker pull 3proxy/3proxy
+```
 
 По умолчанию 3proxy использует безопасную среду chroot в /usr/local/3proxy с uid 65535 и gid 65535, и ожидает, что конфигурационный файл 3proxy будет помещен в /usr/local/etc/3proxy. Пути в конфигурационном файле должны указываться относительно /usr/local/3proxy, т.е. должно быть /logs вместо /usr/local/3proxy/logs. В chroot требуется разрешение для nserver.
 
 Для этого создадим директорию и конфигурационный файл 3proxy:
 
-# mkdir -p /etc/dockerapp/3proxy
-# touch /etc/dockerapp/3proxy/3poxy.conf
+```bash
+mkdir -p /etc/dockerapp/3proxy
+touch /etc/dockerapp/3proxy/3poxy.conf
+```
 
 Далее с помощью любого удобного для вас текстового редактора необходимо отредактировать созданный конфигурационный файл 3proxy.conf. Для запуска 3proxy в Docker достаточно минимальной конфигурации:
 
+```ini
 nserver 8.8.8.8
 socks -p3129
+```
 
 Для того чтобы добавить логирование и пользователя, необходимо в файл конфигурации 3proxy добавить:
 
+```ini
 log /logs/3proxy.log
 auth strong
 users "proxyuser:CR:87beeef3f4ee4661ac1897eca216fc26"
+```
 
 Вместо «87beeef3f4ee4661ac1897eca216fc26» необходимо указать хэш MD5 пароля для пользователя proxyuser. Узнать хэш MD5 можно с помощью онлайн генераторов.
 
