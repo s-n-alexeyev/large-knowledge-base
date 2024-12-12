@@ -80,6 +80,7 @@ id proxyuser
 
 ```ini
 # Настройка запуска сервера от пользователя proxyuser и заданным паролем password
+auth strong
 users proxyuser:CL:password
 
 # Вставляем uid и gid нашего пользователя, которые мы узнали ранее
@@ -162,10 +163,13 @@ systemctl enable 3proxy
 
 Решение: поменять порты. 
 
-proxy -n -p7834
+```ini
 # на http proxy слушать порт 7834 
-socks -p7835   
+proxy -n -p7834
+
 # на socks слушать порт 7835
+socks -p7835   
+```
 
 Но их тоже могут найти. Поэтому можно в фаерволе разрешить доступ с определённых адресов, а остальным — запретить. Довольно негибкое (так как у вас может и не быть статического IP), но железное решение.
 Проблема 3
@@ -177,6 +181,7 @@ socks -p7835
 Лучше предусмотреть всё заранее.
 Упрощенный конфиг анонимного http(s) proxy сервера на порту 3128
 
+```ini
 users proxyuser:CL:password
 daemon
 log /var/log/3proxy/3proxy.log D
@@ -185,10 +190,13 @@ auth strong
 proxy -n -a
 setgid 65534
 setuid 65534
+```
 
 Также нужно создать директорию под логи и выставить права (мы запускаем сервер с минимальными правами nobody в системе используя директивы setgid/setud):
 
+```bash
 mkdir /var/log/3proxy ; chown nobody /var/log/3proxy
+```
 
 Установка 3proxy в Docker
 
@@ -242,10 +250,13 @@ users "proxyuser:CR:87beeef3f4ee4661ac1897eca216fc26"
 
 Запустим 3proxy с помощью docker-compose. Для этого потребуется создать файл конфигурации в формате .yml:
 
-# touch /etc/dockerapp/3proxy/docker-compose.yml
+```bash
+touch /etc/dockerapp/3proxy/docker-compose.yml
+```
 
 Вставляем туда с помощью текстового редактора следующий текст:
 
+```yml
 version: "2.1"
 services:
   3proxysvc:
@@ -256,16 +267,23 @@ volumes:
 ports:
    - 8080:3129
 restart: unless-stopped
+```
 
 Сохраняем. В данном файле мы указали внешний порт 8080. Теперь можем запускать:
 
-# docker-compose -f /etc/dockerapp/3proxy/docker-compose.yml up -d
+```bash
+docker-compose -f /etc/dockerapp/3proxy/docker-compose.yml up -d
+```
 
 Получим примерно такой ответ:
 
+```
 Creating network "3proxy_default" with the default driver
 Creating 3proxy ... done
+```
 
 Проверяем:
 
-# docker ps
+```bash
+docker ps
+```
