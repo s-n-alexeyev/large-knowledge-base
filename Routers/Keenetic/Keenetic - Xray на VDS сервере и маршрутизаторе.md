@@ -658,22 +658,7 @@ xkeen -restart
 - `Адрес` - ip адрес вашего роутера : `порт` тот что указан `03_inbounds.json` 2080
 
 ![|500](/Media/Pictures/Vless/Keenetic2.png)
-
-3. Добавляем политику `Xkeen`
-
-Путь: `Интернет` -> `Приоритеты подключений` -> `Добавить политику` -> `Xkeen`
-
-![|500](/Media/Pictures/Vless/Keenetic3.png)
-
-4. Добавляем в политику `Xkeen` прокси `Xray`, нажимаем `сохранить`
-
-![|500](/Media/Pictures/Vless/Keenetic4.png)
-
-5. Добавляем клиента в политику `Xkeen` путем перетаскивания на него мышкой
-
-![|500](/Media/Pictures/Vless/Keenetic5.png)
-
-6.  Проброс UDP через TUN
+3.  Проброс UDP через TUN
 
 Подключившись к веб-конфигуратору в адресной строке браузера вы увидите адрес вида **http://192.168.1.1/dashboard**  
 Сотрите слово **dashboard** и после символа косой черты **/** добавьте маленькую строчную букву **a** английского алфавита **http://192.168.1.1/a**
@@ -690,6 +675,22 @@ system configuration save
 ```
 
 ![|800](/Media/Pictures/Vless/Keenetic7.png)
+
+4. Добавляем политику `Xkeen`
+
+Путь: `Интернет` -> `Приоритеты подключений` -> `Добавить политику` -> `Xkeen`
+
+![|500](/Media/Pictures/Vless/Keenetic3.png)
+
+5. Добавляем в политику `Xkeen` прокси `Xray`, нажимаем `сохранить`
+
+![|500](/Media/Pictures/Vless/Keenetic4.png)
+
+6. Добавляем клиента в политику `Xkeen` путем перетаскивания на него мышкой
+
+![|500](/Media/Pictures/Vless/Keenetic5.png)
+
+
 
 >DNS-over-HTTPS
 
