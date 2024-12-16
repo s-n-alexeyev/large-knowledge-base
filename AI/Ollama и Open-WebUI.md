@@ -390,7 +390,7 @@ sudo rm -rf /opt/open-webui-env
 > notify_show $'Неверный пароль!\nЗавершение работы.' "Ошибка"
 > exit 1
 >fi
->
+>START_TIME=$(date +"%Y-%m-%d %H:%M:%S")
 >SERVICE="open-webui"
 >ICON="/tmp/open-webui_icon.svg"
 >
@@ -420,7 +420,7 @@ sudo rm -rf /opt/open-webui-env
 >   # Останавливаем службу
 >   echo "$password" | sudo -S systemctl stop $SERVICE
 >   if [ $? -eq 0 ]; then
->     notify_show "Сервис $SERVICE успешно остановлен." "Успех"
+>     notify_show "Сервис $SERVICE успешно остановлен."
 >   else
 >     notify_show "Не удалось остановить сервис $SERVICE." "Ошибка"
 >   fi
@@ -428,17 +428,37 @@ sudo rm -rf /opt/open-webui-env
 >   # Запускаем службу
 >   echo "$password" | sudo -S systemctl start $SERVICE
 >   if [ $? -eq 0 ]; then
->     notify_show "Сервис $SERVICE успешно запущен." "Успех"
->      # Открываем браузер
->      sleep 4
->      xdg-open "http://0.0.0.0:8080"
+>       # Ожидаем, пока в лог не появится сообщение о запуске Uvicorn или время ожидания истечет
+>    MAX_WAIT=360  # Максимальное время ожидания в секундах
+>    elapsed_time=0
+>
+>    while true; do
+>        if sudo journalctl --since "$START_TIME" -u $SERVICE | grep -qE "INFO:     Uvicorn running on http://0.0.0.0"; then
+>            notify_show "Сервис $SERVICE успешно запущен."
+>            xdg-open "http://0.0.0.0:8080"
+>            break
+>        fi
+>
+>        if [ $elapsed_time -ge $MAX_WAIT ]; then
+>            notify_show "Не удалось запустить сервис $SERVICE за время ожидания." "Ошибка"
+>        echo "$password" | sudo -S systemctl stop $SERVICE
+>        break
+>        fi
+>
+>        elapsed_time=$((elapsed_time + 5))
+>        sleep 5
+>
+>        if [ $elapsed_time -gt 5 ]; then  # Проверка, чтобы не выводить сообщение при времени <= 5 секунд
+>          notify_show "Ожидание запуска службы... (прошло ${elapsed_time} секунд)" "Старт $SERVICE"
+>        fi
+>    done
 >   else
 >     notify_show "Не удалось запустить сервис $SERVICE." "Ошибка"
 >   fi
 > fi
 >else
 > # Пользователь выбрал "Нет" или закрыл диалог
-> notify_show "Действие отменено." "Информация"
+> notify_show "Действие отменено."
 >fi
 >
 ># Удаляем временный SVG файл
