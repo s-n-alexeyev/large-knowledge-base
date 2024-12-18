@@ -2,11 +2,21 @@
 
 [Источник](https://github.com/Acenotass/vps-audit?tab=readme-ov-file#vps-security-audit-script)
 
+```table-of-contents
+title: Содержание
+style: nestedList # TOC style (nestedList|nestedOrderedList|inlineFirstLevel)
+minLevel: 0 # Include headings from the specified level
+maxLevel: 0 # Include headings up to the specified level
+includeLinks: true # Make headings clickable
+hideWhenEmpty: false # Hide TOC if no headings are found
+debugInConsole: false # Print debug info in Obsidian console
+```
+
+
 Полноценный скрипт на Bash для аудита безопасности и производительности вашего VPS (Виртуального частного сервера). Этот инструмент проводит различные проверки безопасности и предоставляет подробный отчет с рекомендациями по улучшению.
 
 [![Sample Output](../Media/Pictures/VPS_Security/3451c787ce455a7bd39ceb6174e3de8a_MD5.png)](https://github.com/Acenotass/vps-audit/blob/main/screenshot.png)
-
-## Features
+## Функции
 
 ### Проверки безопасности
 
@@ -66,7 +76,7 @@ chmod +x vps-audit.sh
 sudo ./vps-audit.sh
 ```
 
-Скрипт будет...:
+Скрипт будет:
 
 1. Выполнять все проверки безопасности.
 2. Показывать результаты в реальном времени с цветным кодированием:
@@ -79,7 +89,7 @@ sudo ./vps-audit.sh
 
 Скрипт обеспечивает два типа вывода:
 
-1. Real-time console output with color coding:
+1. В реальном времени консольный вывод с цветным кодированием.:
 
 ```
 [PASS] SSH Root Login - Root login is properly disabled in SSH configuration
@@ -87,44 +97,37 @@ sudo ./vps-audit.sh
 [FAIL] Firewall Status - UFW firewall is not active - your system is exposed
 ```
 
-2. A detailed report file containing:
-    - All check results
-    - Specific recommendations for failed checks
-    - System resource usage statistics
-    - Timestamp of the audit
+2. Детальный журнал, содержит:
 
-## Thresholds
+- Все результаты проверок
+- Специальные рекомендации для неудачных проверок
+- Статистику использования системных ресурсов
+- Время отметки аудита
 
-[](https://github.com/Acenotass/vps-audit?tab=readme-ov-file#thresholds)
+## Пороги
 
-### Resource Usage Thresholds
-
-[](https://github.com/Acenotass/vps-audit?tab=readme-ov-file#resource-usage-thresholds)
+### Требования к использованию ресурсов
 
 - PASS: < 50% usage
 - WARN: 50-80% usage
 - FAIL: > 80% usage
 
-### Security Thresholds
+### Требования безопасности
 
-[](https://github.com/Acenotass/vps-audit?tab=readme-ov-file#security-thresholds)
-
-- Failed Logins:
+- Недавние попытки входа:
     - PASS: < 10 attempts
     - WARN: 10-50 attempts
     - FAIL: > 50 attempts
-- Running Services:
+- Безопасность и управление.
     - PASS: < 20 services
     - WARN: 20-40 services
     - FAIL: > 40 services
-- Open Ports:
+- Открытые порты (англ. Open ports):
     - PASS: < 10 ports
     - WARN: 10-20 ports
     - FAIL: > 20 ports
 
-## Customization
-
-[](https://github.com/Acenotass/vps-audit?tab=readme-ov-file#customization)
+## Настройка
 
 You can modify the thresholds by editing the following variables in the script:
 
@@ -133,44 +136,34 @@ You can modify the thresholds by editing the following variables in the script:
 - Service count thresholds
 - Open port thresholds
 
-## Best Practices
+## Лучшие практики
 
-[](https://github.com/Acenotass/vps-audit?tab=readme-ov-file#best-practices)
+1. Регулярно проводите аудит (например, еженедельно), чтобы поддерживать безопасность.
+2. Оцените тщательно сгенерированный отчет.
+3. Обратите внимание на статус FAIL как можно скорее.
+4. Проверьте статус WARN во время обслуживания.
+5. Обновляйте скрипт согласно вашим политикам безопасности.
 
-1. Run the audit regularly (e.g., weekly) to maintain security
-2. Review the generated report thoroughly
-3. Address any FAIL status immediately
-4. Investigate WARN status during maintenance
-5. Keep the script updated with your security policies
+## Ограничения
 
-## Limitations
+- Для систем на основе Debian/Ubuntu
+- Обязателен доступ администратора (root или sudo)
+- Некоторые проверки могут требовать настройки для конкретной среды
+- Не является заменой профессионального аудита безопасности.
 
-[](https://github.com/Acenotass/vps-audit?tab=readme-ov-file#limitations)
+## Вклад
 
-- Designed for Debian/Ubuntu-based systems
-- Requires root/sudo access
-- Some checks may need customization for specific environments
-- Not a replacement for professional security audit
+Всегда готовы принять заявки на ошибки и улучшения!
 
-## Contributing
+## Лицензия
 
-[](https://github.com/Acenotass/vps-audit?tab=readme-ov-file#contributing)
+Этот проект лицензируется по условиям лицензии MIT - смотрите файл LICENSE для подробной информации.
 
-Feel free to submit issues and enhancement requests!
+## Предупреждение о безопасности
 
-## License
+Хотя этот скрипт помогает выявить общие проблемы безопасности, он не должен быть единственным мерой безопасности. Всегда:
 
-[](https://github.com/Acenotass/vps-audit?tab=readme-ov-file#license)
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Security Notice
-
-[](https://github.com/Acenotass/vps-audit?tab=readme-ov-file#security-notice)
-
-While this script helps identify common security issues, it should not be your only security measure. Always:
-
-- Keep your system updated
-- Monitor logs regularly
-- Follow security best practices
-- Consider professional security audits for critical systems
+- Обновляйте систему.
+- Регулярно проверяйте журналы.
+- Следуйте лучшим практикам безопасности.
+- Рассчитайте на профессиональные аудиты безопасности для критических систем.
