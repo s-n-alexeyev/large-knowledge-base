@@ -4,7 +4,7 @@
 
 Полноценный скрипт на Bash для аудита безопасности и производительности вашего VPS (Виртуального частного сервера). Этот инструмент проводит различные проверки безопасности и предоставляет подробный отчет с рекомендациями по улучшению.
 
-[![Sample Output](https://github.com/Acenotass/vps-audit/raw/main/screenshot.png)](https://github.com/Acenotass/vps-audit/blob/main/screenshot.png)
+[![Sample Output](../Media/Pictures/VPS_Security/3451c787ce455a7bd39ceb6174e3de8a_MD5.png)](https://github.com/Acenotass/vps-audit/blob/main/screenshot.png)
 
 ## Features
 
@@ -33,20 +33,18 @@
 
 ## Требования
 
-- Ubuntu/Debian-based Linux system
-- Root access or sudo privileges
-- Basic packages (most are pre-installed):
+- Система на основе Ubuntu/Debian (Linux)
+- Права администратора или привилегии sudo
+- Основные пакеты (большинство из которых предустановлены):
     - ufw
     - systemd
     - netstat
     - grep
     - awk
 
-## Installation
+## Установка
 
-[](https://github.com/Acenotass/vps-audit?tab=readme-ov-file#installation)
-
-1. Download the script:
+1. Скачать скрипт:
 
 ```shell
 wget https://raw.githubusercontent.com/vernu/vps-audit/main/vps-audit.sh
@@ -54,36 +52,32 @@ wget https://raw.githubusercontent.com/vernu/vps-audit/main/vps-audit.sh
 curl -O https://raw.githubusercontent.com/vernu/vps-audit/main/vps-audit.sh
 ```
 
-2. Make the script executable:
+2. Сделать скрипт исполняемым:
 
 ```shell
 chmod +x vps-audit.sh
 ```
 
-## Usage
+## Использование
 
-[](https://github.com/Acenotass/vps-audit?tab=readme-ov-file#usage)
-
-Run the script with sudo privileges:
+Запустите скрипт с правами суперпользователя (sudo).:
 
 ```shell
 sudo ./vps-audit.sh
 ```
 
-The script will:
+Скрипт будет...:
 
-1. Perform all security checks
-2. Display results in real-time with color coding:
-    - 🟢 [PASS] - Check passed successfully
-    - 🟡 [WARN] - Potential issues detected
-    - 🔴 [FAIL] - Critical issues found
-3. Generate a detailed report file: `vps-audit-report-[TIMESTAMP].txt`
+1. Выполнять все проверки безопасности.
+2. Показывать результаты в реальном времени с цветным кодированием:
+    - 🟢 [PASS] - проверка прошла успешно
+    - 🟡 [WARN] - потенциальные проблемы обнаружены
+    - 🔴 [FAIL] - критические проблемы найдены
+3. Создавать подробный журнал: `vps-audit-report-[TIMESTAMP].txt`
 
-## Output Format
+## Формат вывода
 
-[](https://github.com/Acenotass/vps-audit?tab=readme-ov-file#output-format)
-
-The script provides two types of output:
+Скрипт обеспечивает два типа вывода:
 
 1. Real-time console output with color coding:
 
