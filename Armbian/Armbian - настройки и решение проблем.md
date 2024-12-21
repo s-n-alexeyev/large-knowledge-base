@@ -102,3 +102,6 @@ wpa_passphrase "SSID" "пароль" | sudo tee /etc/wpa_supplicant.conf
 sudo wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant.conf
 sudo dhclient wlan0
 ```
+
+HACS 2.0
+https://my.home-assistant.io/redirect/supervisor_addon/?repository_url=https%3A%2F%2Fgithub.com%2Fhacs%2Faddons&addon=cb646a50_get
