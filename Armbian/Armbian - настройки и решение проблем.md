@@ -49,3 +49,56 @@ FR_net_static_gateway='192.168.0.1'
 FR_net_static_dns='8.8.8.8 8.8.4.4' #2 entries max, seperated by a space.  
 #-----------------------------------------------------------------
 ```
+
+Чтобы включить беспроводной интерфейс на вашем устройстве с использованием командной строки в Linux, выполните следующие действия:
+1. Проверьте доступные интерфейсы
+
+Используйте команду ip link для отображения всех сетевых интерфейсов и их состояния.
+
+```
+ip link
+```
+
+Вывод будет содержать список интерфейсов. Например:
+
+1: lo: <LOOPBACK,UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
+2: wlan0: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN mode DEFAULT group default qlen 1000
+
+Здесь wlan0 — это имя беспроводного интерфейса.
+2. Включите интерфейс
+
+Чтобы включить интерфейс (например, wlan0), выполните команду:
+
+```
+sudo ip link set wlan0 up
+```
+
+3. Проверьте состояние
+
+Снова выполните ip link, чтобы убедиться, что интерфейс включён. Его состояние должно быть state UP.
+4. Подключитесь к Wi-Fi сети
+
+Если вы хотите подключиться к Wi-Fi сети, используйте один из следующих инструментов:
+Через nmcli (если используется NetworkManager):
+
+```
+# Список доступных сетей
+nmcli device wifi list
+nmcli device wifi connect "Ace" password "PvBsPvBy" ifname wlan0
+```
+
+Через iw и wpa_supplicant:
+
+    Найдите сеть:
+
+```
+sudo iw dev wlan0 scan | grep SSID
+```
+
+Подключитесь:
+
+```
+wpa_passphrase "SSID" "пароль" | sudo tee /etc/wpa_supplicant.conf
+sudo wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant.conf
+sudo dhclient wlan0
+```
