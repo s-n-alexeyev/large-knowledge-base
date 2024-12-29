@@ -16,8 +16,14 @@ fdisk -l <path_to_image.img>
 Если в образе есть таблица разделов, вам нужно рассчитать смещение для нужного раздела. Например, если вывод `fdisk` показывает:
 
 ```
-Device      Boot    Start     End     Sectors  Size  Id  Type 
-image.img   1       2048    206847    204800   100M  83  Linux
+Units: sectors of 1 * 512 = 512 bytes  
+Sector size (logical/physical): 512 bytes / 512 bytes  
+I/O size (minimum/optimal): 512 bytes / 512 bytes  
+Disklabel type: dos  
+Disk identifier: 0xdd8330d9
+
+Device      Boot    Start   End     Sectors  Size  Id  Type 
+image.img   1       2048    206847  204800   100M  83  Linux
 ````
 
 Значение `Start` (в секторах) нужно умножить на размер сектора (обычно 512 байт):
