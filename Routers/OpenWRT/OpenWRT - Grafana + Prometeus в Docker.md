@@ -2,7 +2,7 @@
 
 2020-12-28
 
-![|400](/media/OpenWRT_Grafana_Prometeus_Docker/openwrt_prometheus.png)
+![|400](/Media/Pictures/OpenWRT_Grafana_Prometeus_Docker/openwrt_prometheus.png)
 
 
 ```table-of-contents
@@ -19,19 +19,19 @@ debugInConsole: false # Print debug info in Obsidian console
 
 Если Вы приверженец консоли, то можете пропустить установку пакетов через web-интерфейс, перейдя непосредственно к пункту [[#Вход в консоль OpenWrt]].
 
-![|400](/media/OpenWRT_Grafana_Prometeus_Docker/pacman.png)
+![|400](/Media/Pictures/OpenWRT_Grafana_Prometeus_Docker/pacman.png)
 
 Как не сложно догадаться откроется страница **Software**, на ней нас для начала интересует кнопка **Update lists...**, нажимаем на неё.
 
-![800](/media/OpenWRT_Grafana_Prometeus_Docker/paclist.png)
+![800](/Media/Pictures/OpenWRT_Grafana_Prometeus_Docker/paclist.png)
 
 Появится модальное окно, а в нём отладочные данные о процессе обновления списка пакетов, смотрим что всё хорошо, далее справа снизу жмём кнопку **Dismiss**.
 
-![800](/media/OpenWRT_Grafana_Prometeus_Docker/modal.png)
+![800](/Media/Pictures/OpenWRT_Grafana_Prometeus_Docker/modal.png)
 
 Теперь найдём необходимые пакеты, для этого в поле **Filter** пишем слово **exporter** и смотрим что получилось.
 
-![800](/media/OpenWRT_Grafana_Prometeus_Docker/filter.png)
+![800](/Media/Pictures/OpenWRT_Grafana_Prometeus_Docker/filter.png)
 
 Тут нам потребуется установить несколько пакетов:
 
@@ -46,7 +46,7 @@ debugInConsole: false # Print debug info in Obsidian console
 |prometheus-node-exporter-lua-wifi_stations |инорфмация о пользователях подключенных по wi-fi|
 Нажимаем **Install...** возле каждого пакета из списка выше.
 
-![800](/media/OpenWRT_Grafana_Prometeus_Docker/pacset.png)
+![800](/Media/Pictures/OpenWRT_Grafana_Prometeus_Docker/pacset.png)
 
 ## Вход в консоль OpenWrt
 
@@ -226,11 +226,11 @@ docker compose up -d
 ```
 
 Контейнер запущен и поэтому теперь можно зайти на web-интерфейс и убедиться в том, что Prometheus корректно работает, откроем следующую страницу в браузере по вашему IP например http://192.168.1.35:9090
-![|700](/media/OpenWRT_Grafana_Prometeus_Docker/prometheus.png)
+![|700](/Media/Pictures/OpenWRT_Grafana_Prometeus_Docker/prometheus.png)
 
 Выбрав `status` -> `targets` видим что наш node имеет статус `UP`
 
-![|800](/media/OpenWRT_Grafana_Prometeus_Docker/targets.png)
+![|800](/Media/Pictures/OpenWRT_Grafana_Prometeus_Docker/targets.png)
 
 # Настройка Grafana
 
@@ -303,26 +303,26 @@ docker compose up -d
 
 Теперь давайте подождём пару минут и откроем в браузере страницу по нашему IP адресу, например http://192.168.1.35:3000
 
-![|800](/media/OpenWRT_Grafana_Prometeus_Docker/grafana.png)
+![|800](/Media/Pictures/OpenWRT_Grafana_Prometeus_Docker/grafana.png)
 
 ## Добавляем источник данных Prometheus
 
 Подключаем Prometheus: `Connections` -> `Data source` -> `Add data source` =-> `Prometheus` => `URL` <- `адрес устройства и порт` -> `Save & test`
 
-![|700](/media/OpenWRT_Grafana_Prometeus_Docker/grafana_data_sources.png)
+![|700](/Media/Pictures/OpenWRT_Grafana_Prometeus_Docker/grafana_data_sources.png)
 
 ## Добавляем Dashboard OpenWRT
 
 Теперь добавим Dashboard, на котором будут собраны все графики о нашем роутере, для этого в меню выберем блок `Dashboards`, на этой странице справа сверху будет кнопка `New`, после нажмём кнопку `Import`.
 
-![|700](/media/OpenWRT_Grafana_Prometeus_Docker/dashboard_import.jpg)
+![|700](/Media/Pictures/OpenWRT_Grafana_Prometeus_Docker/dashboard_import.jpg)
 
 В поле `Dashboard ID` пишем число **11147** (это идентификатор Dashboard [OpenWRT](https://dzen.ru/away?to=https%3A%2F%2Fgrafana.com%2Fgrafana%2Fdashboards%2F11147-openwrt%2F)), далее жмём кнопку `Load`, система подгрузит Dashboard с серверов Grafana, далее в секции `Prometheus` выберем `prometheus` который мы добавляли ранее.
 
-![|700](/media/OpenWRT_Grafana_Prometeus_Docker/dashboard_import_confirm.jpg)
+![|700](/Media/Pictures/OpenWRT_Grafana_Prometeus_Docker/dashboard_import_confirm.jpg)
 
 И после нажатия на кнопку Import мы попадём на этот самый Dashboard.
 
-![|1000](/media/OpenWRT_Grafana_Prometeus_Docker/dashboard.jpg)
+![|1000](/Media/Pictures/OpenWRT_Grafana_Prometeus_Docker/dashboard.jpg)
 
 Всё готово!
