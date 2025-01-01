@@ -52,3 +52,4 @@ ls -lh /path/to/image.iso
 sudo dd if=/dev/sdb bs=4M | gzip > /path/to/image.gz
 ```
 
+Шаг 5. 
