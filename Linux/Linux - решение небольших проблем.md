@@ -526,11 +526,23 @@ find /opt/open-webui-env/bin -type f -exec sed -i 's|#!/home/user/.venv/open-web
 
 В steam возникает проблема при наборе текста на русском языке, - вместо букв появляются знаки вопроса
 
->Решение  - запустить Steaem с переменными окружения:
-```
-GDK_BACKEND=x11 LANG=ru_RU.UTF-8 LC_ALL=ru_RU.UTF-8
+>Решение  - запустить Steam с переменными окружения:
+```bash
+GDK_BACKEND=x11 LANG=ru_RU.UTF-8 LC_ALL=ru_RU.UTF-8 steam
 ```
 
 ---
 ## Steam - в игре очень маленький указатель мыши
 
+>Решение  - софтверный курсор для X11
+```bash
+git clone https://github.com/andykitchen/swcursor
+
+cd swcursor
+
+make
+./swcursor
+
+# You can display any transparent PNG image you like for the cursor
+./swcursor cursor.png
+```
