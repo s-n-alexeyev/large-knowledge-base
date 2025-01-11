@@ -380,22 +380,22 @@ Based on the YAML.org [refcard](https://yaml.org/refcard.html).
 
 ### Document indicators
 
-|   |   |
-|---|---|
-|`%`|Directive indicator|
-|`---`|Document header|
-|`...`|Document terminator|
+|       |                     |
+| ----- | ------------------- |
+| `%`   | Directive indicator |
+| `---` | Document header     |
+| `...` | Document terminator |
 
 ### Collection indicators
 
-|   |   |
-|---|---|
-|`?`|Key indicator|
-|`:`|Value indicator|
-|`-`|Nested series entry indicator|
-|`,`|Separate in-line branch entries|
-|`[]`|Surround in-line series branch|
-|`{}`|Surround in-line keyed branch|
+|      |                                 |
+| ---- | ------------------------------- |
+| `?`  | Key indicator                   |
+| `:`  | Value indicator                 |
+| `-`  | Nested series entry indicator   |
+| `,`  | Separate in-line branch entries |
+| `[]` | Surround in-line series branch  |
+| `{}` | Surround in-line keyed branch   |
 
 ### Alias indicators
 
@@ -413,15 +413,15 @@ Based on the YAML.org [refcard](https://yaml.org/refcard.html).
 
 ### Scalar indicators
 
-|   |   |
-|---|---|
-|`''`|Surround in-line unescaped scalar|
-|`"`|Surround in-line escaped scalar|
-|`\|`|Block scalar indicator|
-|`>`|Folded scalar indicator|
-|`-`|Strip chomp modifier (`\|-` or `>-`)|
-|`+`|Keep chomp modifier (`\|+` or `>+`)|
-|`1-9`|Explicit indentation modifier (`\|1` or `>2`).  <br>Modifiers can be combined (`\|2-`, `>+1`)|
+|       |                                                                                               |
+| ----- | --------------------------------------------------------------------------------------------- |
+| `''`  | Surround in-line unescaped scalar                                                             |
+| `"`   | Surround in-line escaped scalar                                                               |
+| `\|`  | Block scalar indicator                                                                        |
+| `>`   | Folded scalar indicator                                                                       |
+| `-`   | Strip chomp modifier (`\|-` or `>-`)                                                          |
+| `+`   | Keep chomp modifier (`\|+` or `>+`)                                                           |
+| `1-9` | Explicit indentation modifier (`\|1` or `>2`).  <br>Modifiers can be combined (`\|2-`, `>+1`) |
 
 ### Tag Property (usually unspecified)
 
