@@ -15,7 +15,34 @@
 - YAML является супермножеством JSON
 - Аниме плейбуки являются файлами YAML
 
-Скалярные типы перевести на русский язык.
+>[!multi-column]
+>>[!blank]
+>>### Скалярные типы
+>>```yaml
+>>n1: 1            # integer          
+>>n2: 1.234        # float      
+>>s1: 'abc'        # string        
+>>s2: "abc"        # string           
+>>s3: abc          # string           
+>>b: false         # boolean type 
+>>d: 2015-04-05    # date type
+>>```
+>
+>>[!blank]
+>>### Эквивалент JSON
+>>```json
+>>{
+>>  "n1": 1,
+>>  "n2": 1.234,
+>>  "s1": "abc",
+>>  "s2": "abc",
+>>  "s3": "abc",
+>>  "b": false,
+>>  "d": "2015-04-05"
+>>}
+>>```
+
+### Скалярные типы
 
 ```yaml
 n1: 1            # integer          
@@ -74,6 +101,7 @@ other_thing: *VAR_NAME
 ```
 
 >[!multi-column]
+>>[!blank]
 >>### Многострочие
 >>```yaml
 description: |
@@ -81,7 +109,8 @@ description: |
   world
 >>```
 >
->>2
+>>[!blank]
+>>### Эквивалент JSON
 >>```json
 >>{"description": "hello\nworld\n"}>
 >>```
