@@ -73,6 +73,18 @@ other_thing: *VAR_NAME
 # comment line 3
 ```
 
+>[!multi-column]
+>>### Многострочие
+>>```yaml
+description: |
+  hello
+  world
+>>```
+>
+>>2
+>>```json
+>>{"description": "hello\nworld\n"}>
+>>```
 ### Многострочие
 
 ```yaml
@@ -81,33 +93,7 @@ description: |
   world
 ```
 
-
---- start-multi-column: ID_msml
-```column-settings
-Number of Columns: 2
-Largest Column: standard
-```
-
-```yaml
-description: |
-  hello
-  world
-```
-
---- column-break ---
-
-```json
-{"description": "hello\nworld\n"}
-```
-
---- end-multi-column
-
-
-
-
-
-
-#### ↓ Эквивалентный JSON
+#### ↓ Эквивалент JSON
 
 ```json
 {"description": "hello\nworld\n"}
