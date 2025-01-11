@@ -187,7 +187,7 @@ YAML uses `---` to separate directives from document content.
 ]
 ```
 
-### Mapping
+### Словарь
 
 ```yaml
 hr:  65       # Home runs
@@ -195,7 +195,7 @@ avg: 0.278    # Batting average
 rbi: 147      # Runs Batted In
 ```
 
-#### ↓ Equivalent JSON
+#### ↓ Эквивалент JSON
 
 ```json
 {
