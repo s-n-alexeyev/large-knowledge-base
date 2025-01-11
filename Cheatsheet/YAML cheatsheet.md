@@ -42,22 +42,22 @@
 >>}
 >>```
 
-### Переменые
-
-```yaml
-some_thing: &VAR_NAME foobar
-other_thing: *VAR_NAME
-```
-
-#### ↓Эквивалент JSON
-
-```json
-{
-  "some_thing": "foobar",
-  "other_thing": "foobar"
-}
-```
-
+>[!multi-column]
+>>[!blank]
+>>### Переменые
+>>```yaml
+>>some_thing: &VAR_NAME foobar
+>>other_thing: *VAR_NAME
+>>```
+>
+>>[!blank]
+>>### Эквивалент JSON
+>>```json
+>>{
+  >>"some_thing": "foobar",
+  >>"other_thing": "foobar"
+>>}
+>>```
 ### Комментарии
 
 ```yaml
@@ -83,46 +83,34 @@ description: |
 >>```json
 >>{"description": "hello\nworld\n"}>
 >>```
-### Многострочие
 
-```yaml
-description: |
-  hello
-  world
-```
-
-#### ↓ Эквивалент JSON
-
-```json
-{"description": "hello\nworld\n"}
-```
-
-### Наследие
-
-```yaml
-parent: &defaults
-  a: 2
-  b: 3
-
-child:
-  <<: *defaults
-  b: 4
-```
-
-#### ↓ Эквивалент JSON
-
-```json
-{
-  "parent": {
-    "a": 2,
-    "b": 3
-  },
-  "child": {
-    "a": 2,
-    "b": 4
-  }
-}
-```
+>[!multi-column]
+>>[!blank]
+>>### Наследие
+>>```yaml
+>>parent: &defaults
+  >>a: 2
+  >>b: 3
+>>
+>>child:
+>> <<: *defaults
+>>b: 4
+>>```
+>
+>>### Эквивалент JSON
+>>[!blank]
+>>```json
+>>{
+  >>"parent": {
+>>    "a": 2,
+>>    "b": 3
+  >>},
+  >>"child": {
+>>    "a": 2,
+>>    "b": 4
+  >>}
+>>}
+>>```
 
 ### Ссылки
 
