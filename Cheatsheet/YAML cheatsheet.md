@@ -46,17 +46,17 @@ d: 2015-04-05    # date type
 >>[!blank]
 >>### Переменые
 >>```yaml
->>some_thing: &VAR_NAME foobar
->>other_thing: *VAR_NAME
+some_thing: &VAR_NAME foobar
+other_thing: *VAR_NAME
 >>```
 >
 >>[!blank]
 >>### Эквивалент JSON
 >>```json
->>{
->>  "some_thing": "foobar",
->>  "other_thing": "foobar"
->>}
+{
+  "some_thing": "foobar",
+  "other_thing": "foobar"
+}
 >>```
 ### Комментарии
 
