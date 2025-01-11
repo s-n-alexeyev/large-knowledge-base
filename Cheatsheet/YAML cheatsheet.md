@@ -2,7 +2,7 @@
 
 Это быстрый справочник для понимания и написания файлов конфигурации в формате YAML.
 
-## [#](https://quickref.me/yaml.html#getting-started)Начало работы
+## Начало работы
 
 ### Введение
 
@@ -30,7 +30,7 @@ b: false         # boolean type
 d: 2015-04-05    # date type
 ```
 
-#### ↓ Equivalent JSON
+#### ↓ Эквивалент JSON
 
 ```json
 {
@@ -46,14 +46,14 @@ d: 2015-04-05    # date type
 
 Use spaces to indent. There must be space between the element parts.
 
-### Variables
+### Переменые
 
 ```yaml
 some_thing: &VAR_NAME foobar
 other_thing: *VAR_NAME
 ```
 
-#### ↓ Equivalent JSON
+#### ↓Эквивалент JSON
 
 ```json
 {
@@ -62,7 +62,7 @@ other_thing: *VAR_NAME
 }
 ```
 
-### Comments
+### Комментарии
 
 ```yaml
 # A single line comment example
@@ -73,7 +73,7 @@ other_thing: *VAR_NAME
 # comment line 3
 ```
 
-### Multiline strings
+### Многострочие
 
 ```yaml
 description: |
@@ -81,13 +81,13 @@ description: |
   world
 ```
 
-#### ↓ Equivalent JSON
+#### ↓ Эквивалентный JSON
 
 ```json
 {"description": "hello\nworld\n"}
 ```
 
-### Inheritance
+### Наследие
 
 ```yaml
 parent: &defaults
@@ -99,7 +99,7 @@ child:
   b: 4
 ```
 
-#### ↓ Equivalent JSON
+#### ↓ Эквивалент JSON
 
 ```json
 {
@@ -114,7 +114,7 @@ child:
 }
 ```
 
-### Reference
+### Ссылки
 
 ```yaml
 values: &ref
@@ -125,7 +125,7 @@ other_values:
   i_am_ref: *ref
 ```
 
-#### ↓ Equivalent JSON
+#### ↓ Эквивалент JSON
 
 ```json
 {
@@ -142,7 +142,7 @@ other_values:
 }
 ```
 
-### Folded strings
+### Длинные стоки
 
 ```yaml
 description: >
@@ -150,13 +150,13 @@ description: >
   world
 ```
 
-#### ↓ Equivalent JSON
+#### ↓ Эквивалент JSON
 
 ```json
 {"description": "hello world\n"}
 ```
 
-### Two Documents
+### Два Документа
 
 ```yaml
 ---
@@ -167,9 +167,9 @@ document: this is doc 2
 
 YAML uses `---` to separate directives from document content.
 
-## [#](https://quickref.me/yaml.html#yaml-collections)YAML Collections
+## Коллекции YAML
 
-### Sequence
+### Списки
 
 ```yaml
 - Mark McGwire
@@ -177,7 +177,7 @@ YAML uses `---` to separate directives from document content.
 - Ken Griffey
 ```
 
-#### ↓ Equivalent JSON
+#### ↓ Эквивалент JSON
 
 ```json
 [
