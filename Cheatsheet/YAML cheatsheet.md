@@ -81,10 +81,23 @@ description: |
   world
 ```
 
+<div style="display: flex; gap: 10px;">
 
-|                                                                                                    |     |
-| -------------------------------------------------------------------------------------------------- | --- |
-| ```yaml<br>parent: &defaults<br>  a: 2<br>  b: 3<br><br>child:<br>  <<: *defaults<br>  b: 4<br>``` |     |
+<div style="flex: 1;">
+<h3>Колонка 1</h3>
+<p>Текст в первой колонке.</p>
+</div>
+
+<div style="flex: 1;">
+<h3>Колонка 2</h3>
+<pre><code class="language-python">
+print("Hello, world!")
+</code></pre>
+</div>
+
+</div>
+
+
 
 
 #### ↓ Эквивалентный JSON
