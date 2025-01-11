@@ -84,14 +84,18 @@ description: |
 <div style="display: flex; gap: 10px;">
 
 <div style="flex: 1;">
-<h3>Колонка 1</h3>
-<p>Текст в первой колонке.</p>
+<h3>Многострочие</h3>
+<pre><code class="language-yaml">
+description: |
+  hello
+  world
+</code></pre>
 </div>
 
 <div style="flex: 1;">
-<h3>Колонка 2</h3>
-<pre><code class="language-python">
-print("Hello, world!")
+<h3>Эквивалентный JSON</h3>
+<pre><code class="language-json">
+{"description": "hello\nworld\n"}
 </code></pre>
 </div>
 
