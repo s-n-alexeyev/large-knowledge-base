@@ -19,27 +19,27 @@
 >>[!blank]
 >>### Скалярные типы
 >>```yaml
->>n1: 1            # integer          
->>n2: 1.234        # float      
->>s1: 'abc'        # string        
->>s2: "abc"        # string           
->>s3: abc          # string           
->>b: false         # boolean type 
->>d: 2015-04-05    # date type
+n1: 1            # integer          
+n2: 1.234        # float      
+s1: 'abc'        # string        
+s2: "abc"        # string           
+s3: abc          # string           
+b: false         # boolean type 
+d: 2015-04-05    # date type
 >>```
 >
 >>[!blank]
 >>### Эквивалент JSON
 >>```json
->>{
->>  "n1": 1,
->>  "n2": 1.234,
->>  "s1": "abc",
->>  "s2": "abc",
->>  "s3": "abc",
->>  "b": false,
->>  "d": "2015-04-05"
->>}
+{
+  "n1": 1,
+  "n2": 1.234,
+  "s1": "abc",
+  "s2": "abc",
+  "s3": "abc",
+  "b": false,
+  "d": "2015-04-05"
+}
 >>```
 
 >[!multi-column]
@@ -54,8 +54,8 @@
 >>### Эквивалент JSON
 >>```json
 >>{
-  >>"some_thing": "foobar",
-  >>"other_thing": "foobar"
+>>  "some_thing": "foobar",
+>>  "other_thing": "foobar"
 >>}
 >>```
 ### Комментарии
@@ -81,35 +81,35 @@ description: |
 >>[!blank]
 >>### Эквивалент JSON
 >>```json
->>{"description": "hello\nworld\n"}>
+{"description": "hello\nworld\n"}>
 >>```
 
 >[!multi-column]
 >>[!blank]
 >>### Наследие
 >>```yaml
->>parent: &defaults
->>a: 2
->>b: 3
+parent: &defaults
+  a: 2
+  b: 3
 >>
->>child:
->> <<: *defaults
->>b: 4
+child:
+   <<: *defaults
+  b: 4
 >>```
 >
 >>### Эквивалент JSON
 >>[!blank]
 >>```json
->>{
->>  "parent": {
->>    "a": 2,
->>    "b": 3
->>  },
->>  "child": {
->>    "a": 2,
->>    "b": 4
->>  }
->>}
+{
+  "parent": {
+    "a": 2,
+    "b": 3
+  },
+  "child": {
+    "a": 2,
+    "b": 4
+  }
+}
 >>```
 
 ### Ссылки
