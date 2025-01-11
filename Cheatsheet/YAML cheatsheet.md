@@ -13,50 +13,50 @@
 - YAML чувствителен к регистру
 - Завершайте файл YAML расширением `.yaml` или `.yml`
 - YAML является супермножеством JSON
-- Аниме плейбуки являются файлами YAML
+- Ansible плейбуки являются файлами YAML
 
 >[!multi-column]
 >>[!blank]
 >>### Скалярные типы
 >>```yaml
-n1: 1            # integer          
-n2: 1.234        # float      
-s1: 'abc'        # string        
-s2: "abc"        # string           
-s3: abc          # string           
-b: false         # boolean type 
-d: 2015-04-05    # date type
+>>n1: 1            # integer          
+>>n2: 1.234        # float      
+>>s1: 'abc'        # string        
+>>s2: "abc"        # string           
+>>s3: abc          # string           
+>>b: false         # boolean type 
+>>d: 2015-04-05    # date type
 >>```
 >
 >>[!blank]
 >>### Эквивалент JSON
 >>```json
-{
-  "n1": 1,
-  "n2": 1.234,
-  "s1": "abc",
-  "s2": "abc",
-  "s3": "abc",
-  "b": false,
-  "d": "2015-04-05"
-}
+>>{
+>>  "n1": 1,
+>>  "n2": 1.234,
+>>  "s1": "abc",
+>>  "s2": "abc",
+>>  "s3": "abc",
+>>  "b": false,
+>>  "d": "2015-04-05"
+>>}
 >>```
 
 >[!multi-column]
 >>[!blank]
 >>### Переменые
 >>```yaml
-some_thing: &VAR_NAME foobar
-other_thing: *VAR_NAME
+>>some_thing: &VAR_NAME foobar
+>>other_thing: *VAR_NAME
 >>```
 >
 >>[!blank]
->>### Эквивалент JSON
+>>**Эквивалент JSON**
 >>```json
-{
-  "some_thing": "foobar",
-  "other_thing": "foobar"
-}
+>>{
+>>  "some_thing": "foobar",
+>>  "other_thing": "foobar"
+>>}
 >>```
 ### Комментарии
 
@@ -86,59 +86,61 @@ description: |
 
 >[!multi-column]
 >>[!blank]
->>### Наследие
+>>### Наследование
 >>```yaml
-parent: &defaults
-  a: 2
-  b: 3
+>>parent: &defaults
+>>  a: 2
+>>  b: 3
 >>
-child:
-  <<: *defaults
-  b: 4
+>>child:
+>>  <<: *defaults
+>>  b: 4
 >>```
 >
 >>[!blank]
 >>### Эквивалент JSON
 >>```json
-{
-  "parent": {
-      "a": 2,
-      "b": 3
-  },
-  "child": {
-      "a": 2,
-      "b": 4
-  }
-}
+>>{
+>>  "parent": {
+>>    "a": 2,
+>>    "b": 3
+>>  },
+>>  "child": {
+>>    "a": 2,
+>>    "b": 4
+>>  }
+>>}
 >>```
 
-### Ссылки
 
-```yaml
-values: &ref
-  - Will be
-  - reused below
-  
-other_values:
-  i_am_ref: *ref
-```
-
-#### ↓ Эквивалент JSON
-
-```json
-{
-  "values": [
-    "Will be",
-    "reused below"
-  ],
-  "other_values": {
-    "i_am_ref": [
-      "Will be",
-      "reused below"
-    ]
-  }
-}
-```
+>[!multi-column]
+>>[!blank]
+>>### Ссылки
+>>```yaml
+>>values: &ref
+>>  - Will be
+>>  - reused below
+>>  
+>>other_values:
+>>  i_am_ref: *ref
+>>```
+>
+>>[!blank]
+>>###  Эквивалент JSON
+>>```json
+>>{
+>>  "values": [
+>>    "Will be",
+>>    "reused below"
+>>  ],
+>>  "other_values": {
+>>    "i_am_ref": [
+>>      "Will be",
+>>      "reused below"
+>>    ]
+>>  }
+>>}
+>>```
 
 ### Длинные стоки
 
