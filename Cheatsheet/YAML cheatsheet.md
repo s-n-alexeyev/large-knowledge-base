@@ -81,25 +81,28 @@ description: |
   world
 ```
 
-<div style="display: flex; gap: 10px;">
 
-<div style="flex: 1;">
-<h3>Многострочие</h3>
-<pre><code class="language-yaml">
+--- start-multi-column: ID_msml
+```column-settings
+Number of Columns: 2
+Largest Column: standard
+```
+
+```yaml
 description: |
   hello
   world
-</code></pre>
-</div>
+```
 
-<div style="flex: 1;">
-<h3>Эквивалентный JSON</h3>
-<pre><code class="language-json">
+--- column-break ---
+
+```json
 {"description": "hello\nworld\n"}
-</code></pre>
-</div>
+```
 
-</div>
+--- end-multi-column
+
+
 
 
 
