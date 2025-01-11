@@ -89,8 +89,8 @@ description: |
 >>### Наследие
 >>```yaml
 >>parent: &defaults
-  >>a: 2
-  >>b: 3
+>>a: 2
+>>b: 3
 >>
 >>child:
 >> <<: *defaults
@@ -101,14 +101,14 @@ description: |
 >>[!blank]
 >>```json
 >>{
-  >>"parent": {
+>>  "parent": {
 >>    "a": 2,
 >>    "b": 3
-  >>},
-  >>"child": {
+>>  },
+>>  "child": {
 >>    "a": 2,
 >>    "b": 4
-  >>}
+>>  }
 >>}
 >>```
 
