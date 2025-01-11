@@ -93,12 +93,12 @@ parent: &defaults
   b: 3
 >>
 child:
-   <<: *defaults
+  <<: *defaults
   b: 4
 >>```
 >
->>### Эквивалент JSON
 >>[!blank]
+>>### Эквивалент JSON
 >>```json
 {
   "parent": {
