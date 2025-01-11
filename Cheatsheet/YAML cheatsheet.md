@@ -42,37 +42,6 @@
 >>}
 >>```
 
-### Скалярные типы
-
-```yaml
-n1: 1            # integer          
-n2: 1.234        # float      
-
-s1: 'abc'        # string        
-s2: "abc"        # string           
-s3: abc          # string           
-
-b: false         # boolean type 
-
-d: 2015-04-05    # date type
-```
-
-#### ↓ Эквивалент JSON
-
-```json
-{
-  "n1": 1,
-  "n2": 1.234,
-  "s1": "abc",
-  "s2": "abc",
-  "s3": "abc",
-  "b": false,
-  "d": "2015-04-05"
-}
-```
-
-Use spaces to indent. There must be space between the element parts.
-
 ### Переменые
 
 ```yaml
