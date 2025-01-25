@@ -311,8 +311,7 @@ sudo systemctl start open-webui
 
 >Обновление open-webui
 ```bash
-source /opt/open-webui-env/bin/activate
-pip install --upgrade open-webui
+source /opt/open-webui-env/bin/activate && pip install --upgrade open-webui
 ```
 
 >Ручное обновление, скачиваем с [github.com/open-webui](https://github.com/open-webui/open-webui) архив, распаковываем
