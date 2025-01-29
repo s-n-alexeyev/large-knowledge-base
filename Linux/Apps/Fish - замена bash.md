@@ -63,9 +63,9 @@ https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish
 source && fisher install jorgebucaran/fisher
 ```
 
-```
+```bash
 # шрифты со значками, подойдут любые на вкус
-ttf-firacode-nerd
+yay -S ttf-firacode-nerd
 # или
 yay -S ttf-meslo-nerd-font-powerlevel10k
 # или
