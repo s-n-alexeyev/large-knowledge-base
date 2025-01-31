@@ -287,7 +287,7 @@ sudo pacman -S kio-admin
 ```
 
 ---
-		## Поддержка темных тем gnome 4 в KDE
+## Поддержка темных тем gnome 4 в KDE
 ```bash
 yay -S gsettings-desktop-schemas
 ```
