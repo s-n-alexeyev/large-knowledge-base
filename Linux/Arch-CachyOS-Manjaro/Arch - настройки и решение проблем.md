@@ -291,3 +291,51 @@ sudo pacman -S kio-admin
 ```bash
 yay -S gsettings-desktop-schemas
 ```
+
+---
+## Скрипт обновления системы через yay
+
+В поле `Программа` помещаем ссылку на скрипт
+В поле `Аргументы` в указываем пароль от root
+
+![|400](/Media/Pictures/Arch_Tips/image1.png)
+
+```bash
+#!/bin/bash
+
+# Очищаем неудачные попытки входа
+faillock --user $USER --reset
+
+# Проверка наличия аргумента (пароля)
+if [ -z "$1" ]; then
+    echo "Ошибка: укажите пароль в качестве аргумента."
+    echo "Использование: $0 <пароль>"
+    exit 1
+fi
+
+PASSWORD="$1"
+
+# Проверка наличия yay
+if ! command -v yay &>/dev/null; then
+    echo "Ошибка: yay не установлен. Установите его и попробуйте снова."
+    exit 1
+fi
+
+# Кешируем sudo-пароль на 1 час (3600 секунд)
+echo "$PASSWORD" | sudo -S true
+(sleep 3600; sudo -K) &
+
+# Запуск обновления через yay (без sudo)
+echo "Начинается обновление системы..."
+yay -Syudd --overwrite "*" --noconfirm
+
+# Проверка успешности обновления
+if [ $? -eq 0 ]; then
+    notify-send "Обновление успешно завершено" --app-name="Обновление системы" --expire-time=5000 --icon=dialog-information
+    echo "Обновление успешно завершено."
+else
+    notify-send "Обновление завершилось с ошибками" --app-name="Обновление системы" --expire-time=5000 --icon=dialog-error
+    echo "Обновление завершилось с ошибками."
+    exit 1
+fi
+```
