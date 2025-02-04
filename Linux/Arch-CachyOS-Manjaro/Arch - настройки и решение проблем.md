@@ -83,7 +83,9 @@ sudo nano /etc/pacman.d/mirrorlist
 
 Комментируем существующие зеркала, добавляем ниже в нее ранее скопированную строку  
 
-`Server = https://archive.archlinux.org/repos/2019/10/02/$repo/os/$arch`
+```
+Server = https://archive.archlinux.org/repos/2019/10/02/$repo/os/$arch
+```
 
 >Приступаем к обновлению (откату системы):
 ```bash
