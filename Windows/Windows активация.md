@@ -4,6 +4,10 @@
 >Запускаем Powershell, выбираем необходимое
 ```powershell
 irm https://get.activated.win | iex
+
+# или
+irm https://massgrave.dev/get | iex
+
 ```
 
 ```
