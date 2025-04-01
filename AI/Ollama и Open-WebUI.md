@@ -463,3 +463,18 @@ sudo rm -rf /opt/open-webui-env
 ># Удаляем временный SVG файл
 >rm -f $ICON
 >```
+
+## Решение проблем
+
+При использовании пакета Python для open-webui - faster-whisper не работает, точнее, пока он записывает микрофон, после этого что-то ломается.
+
+На данный момент это можно исправить с помощью **patchelf** вместо execstack, так как у меня это не сработало.
+
+Оригинальное решение здесь: [OpenNMT/CTranslate2#1849 (комментарий)](https://github.com/OpenNMT/CTranslate2/issues/1849#issuecomment-2664106316)
+
+Я использовал следующую команду, чтобы решить эту проблему самостоятельно:
+```bash
+patchelf --clear-execstack /home/USERNAME/OpenWebUI/venv/lib/python3.11/site-packages/ctranslate2.libs/libctranslate2-bc15bf3f.so.4.5.0
+```
+
+Просто найдите путь к вашему неправильно работающему файлу и используйте его вместо моей команды.
