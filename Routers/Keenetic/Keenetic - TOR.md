@@ -8,6 +8,7 @@ opkg install tor obfs4 privoxy lyrebird
 >Редактируем файл `/opt/etc/tor/torrc` (пример базовой настройки)
 ```r
 DataDirectory /opt/var/lib/tor
+User tor
 
 SOCKSPort 9050
 HTTPTunnelPort 8118
@@ -35,56 +36,107 @@ bridge obfs4 142.132.228.40:26712 6C9239B5F684285E6561F0EE680997112163D0C2 cert=
 ```shell
 #!/bin/sh
 
-# Жёстко заданный LAN-интерфейс
-interface="br0"
+# === Поиск bridge-интерфейса с IP в локальной сети ===
+bridge_iface=$(ip -o -4 addr show | awk '$2 ~ /^br/ && $4 ~ /^192\.168\./ {print $2; exit}')
+if [ -z "$bridge_iface" ]; then
+    echo "❌ Не удалось найти bridge-интерфейс с локальным IP (192.168.x.x)"
+    exit 1
+fi
 
-# Получаем CIDR (например, 192.168.1.100/24)
-cidr=$(ip -o -4 addr show dev "$interface" | awk '{print $4}')
-[ -z "$cidr" ] && { echo "❌ Не удалось получить IP с интерфейса $interface"; exit 1; }
+echo "🔍 Обнаружен bridge-интерфейс: $bridge_iface"
+
+# === Получаем CIDR ===
+cidr=$(ip -o -4 addr show dev "$bridge_iface" | awk '{print $4}')
+[ -z "$cidr" ] && { echo "❌ Не удалось получить IP с интерфейса $bridge_iface"; exit 1; }
 
 ip_address=${cidr%/*}
 prefix_len=${cidr#*/}
 
-# Преобразуем префикс в маску
-prefix_to_netmask() {
-    local p=$1
-    local mask=""
-    for i in 1 2 3 4; do
-        if [ "$p" -ge 8 ]; then
-            mask="${mask}255"
-            p=$((p - 8))
-        else
-            mask="${mask}$((256 - 2 ** (8 - p)))"
-            p=0
-        fi
-        [ "$i" -lt 4 ] && mask="${mask}."
-    done
-    echo "$mask"
+# === Преобразуем IP и префикс в адрес сети ===
+ip_to_dec() {
+    IFS=. read -r o1 o2 o3 o4 <<< "$1"
+    echo $(( (o1 << 24) + (o2 << 16) + (o3 << 8) + o4 ))
 }
 
-netmask=$(prefix_to_netmask "$prefix_len")
+dec_to_ip() {
+    dec=$1
+    echo "$(( (dec >> 24) & 255 )).$(( (dec >> 16) & 255 )).$(( (dec >> 8) & 255 )).$(( dec & 255 ))"
+}
 
-# Получаем подсеть
-network=$(ipcalc -n "$ip_address" "$netmask" | awk -F= '/NETWORK/ {print $2}')
+netmask=$(( 0xFFFFFFFF << (32 - prefix_len) & 0xFFFFFFFF ))
+ip_dec=$(ip_to_dec "$ip_address")
+network_dec=$(( ip_dec & netmask ))
+network=$(dec_to_ip "$network_dec")
 subnet="${network}/${prefix_len}"
 
-echo "✅ Подсеть br0: $subnet"
+echo "✅ Подсеть $bridge_iface: $subnet"
 
-# Обновляем конфиг Privoxy
-PRIVOXY_CONFIG="/opt/etc/privoxy/config"
-sed -i '/^permit-access /d' "$PRIVOXY_CONFIG"
-echo "permit-access $subnet" >> "$PRIVOXY_CONFIG"
-echo "✅ permit-access $subnet добавлен в $PRIVOXY_CONFIG"
+# === Определение окружения по имени хоста ===
+hostname=$(uname -n)
 
-# Перезапуск Privoxy
-if pidof privoxy >/dev/null; then
-    killall privoxy
-    sleep 1
+if echo "$hostname" | grep -iqE 'entware|keenetic'; then
+    ENVIRONMENT="entware"
+    PRIVOXY_CONFIG="/opt/etc/privoxy/config"
+    PRIVOXY_INIT=$(find /opt/etc/init.d/ -type f -name 'S??privoxy' | head -n1)
+    if [ -z "$PRIVOXY_INIT" ]; then
+        echo "❌ Не удалось найти init-скрипт privoxy в Entware"
+        exit 1
+    fi
+    RESTART_CMD="$PRIVOXY_INIT restart"
+    AUTOSTART_CMD="ln -sf $PRIVOXY_INIT /opt/etc/init.d/rc.custom"
+elif echo "$hostname" | grep -iq "openwrt"; then
+    ENVIRONMENT="openwrt"
+    RESTART_CMD="/etc/init.d/privoxy restart"
+    AUTOSTART_CMD="/etc/init.d/privoxy enable"
+else
+    echo "❌ Не удалось определить окружение по имени хоста"
+    exit 1
 fi
-/opt/etc/init.d/Sxxprivoxy start 2>/dev/null || /opt/sbin/privoxy "$PRIVOXY_CONFIG" &
 
-echo "✅ Privoxy перезапущен"
+echo "📦 Обнаружено окружение: $ENVIRONMENT"
 
+# === Обновление конфигурации ===
+if [ "$ENVIRONMENT" = "entware" ]; then
+    if [ ! -f "$PRIVOXY_CONFIG" ]; then
+        echo "❌ Конфигурационный файл Privoxy не найден: $PRIVOXY_CONFIG"
+        exit 1
+    fi
+
+    sed -i '/^permit-access /d' "$PRIVOXY_CONFIG"
+    echo "permit-access $subnet" >> "$PRIVOXY_CONFIG"
+    echo "✅ permit-access $subnet добавлен в $PRIVOXY_CONFIG"
+
+    sed -i '/^forward-socks5 /d' "$PRIVOXY_CONFIG"
+    echo "forward-socks5 / 127.0.0.1:9050 ." >> "$PRIVOXY_CONFIG"
+    echo "✅ forward-socks5 добавлен для Tor"
+else
+    # OpenWRT: конфигурация через UCI
+    echo "🛠 Обновление конфигурации через UCI..."
+
+    uci -q delete privoxy.@privoxy[0].permit_access
+    uci add_list privoxy.@privoxy[0].permit_access="$subnet"
+
+    uci -q delete privoxy.@privoxy[0].forward_socks5
+    uci add_list privoxy.@privoxy[0].forward_socks5="/ 127.0.0.1:9050 ."
+
+    uci commit privoxy
+    echo "✅ Конфигурация обновлена через UCI"
+fi
+
+# === Перезапуск ===
+echo "♻ Перезапуск Privoxy..."
+eval "$RESTART_CMD" || {
+    echo "⚠ Не удалось перезапустить privoxy, пробуем вручную..."
+    killall privoxy 2>/dev/null
+    sleep 1
+    privoxy "$PRIVOXY_CONFIG" &
+}
+
+# === Автозапуск ===
+echo "🔄 Добавление в автозапуск..."
+eval "$AUTOSTART_CMD"
+
+echo "✅ Готово!"
 ```
 
 
