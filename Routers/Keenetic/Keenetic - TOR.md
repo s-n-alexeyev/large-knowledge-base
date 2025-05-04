@@ -44,6 +44,31 @@ dnsQueryIPv6 = no
 dnsUseGethostbyname = yes
 ```
 
+
+```shell
+# Изменить слушаемый адрес и порт
+sed -i 's/^listen-address .*/listen-address 0.0.0.0:8123/' /opt/etc/privoxy/config
+
+# Разрешить доступ с localhost и подсети 192.168.1.0/24
+sed -i '/^permit-access 127.0.0.1/d' /opt/etc/privoxy/config
+sed -i '/^permit-access 192.168.1.0\/24/d' /opt/etc/privoxy/config
+echo 'permit-access 127.0.0.1' >> /opt/etc/privoxy/config
+echo 'permit-access 192.168.1.0/24' >> /opt/etc/privoxy/config
+
+# Добавить SOCKS-прокси
+sed -i '/^forward-socks5/d' /opt/etc/privoxy/config
+echo 'forward-socks5 / 127.0.0.1:9050 .' >> /opt/etc/privoxy/config
+
+# Отключить удалённое редактирование и блокировки
+sed -i 's/^toggle .*/toggle 1/' /opt/etc/privoxy/config
+sed -i 's/^enable-remote-toggle .*/enable-remote-toggle 0/' /opt/etc/privoxy/config
+sed -i 's/^enable-edit-actions .*/enable-edit-actions 0/' /opt/etc/privoxy/config
+sed -i 's/^enforce-blocks .*/enforce-blocks 0/' /opt/etc/privoxy/config
+sed -i 's/^forwarded-connect-retries .*/forwarded-connect-retries 1/' /opt/etc/privoxy/config
+```
+
+
+
 >Стартуем сервисы
 ```bash
 /opt/etc/init.d/S28polipo start
