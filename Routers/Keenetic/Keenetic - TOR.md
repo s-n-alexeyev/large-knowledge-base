@@ -44,27 +44,60 @@ dnsQueryIPv6 = no
 dnsUseGethostbyname = yes
 ```
 
-
+> Скрип для настройки privoxy
 ```shell
-# Изменить слушаемый адрес и порт
-sed -i 's/^listen-address .*/listen-address 0.0.0.0:8123/' /opt/etc/privoxy/config
+#!/bin/sh
 
-# Разрешить доступ с localhost и подсети 192.168.1.0/24
-sed -i '/^permit-access 127.0.0.1/d' /opt/etc/privoxy/config
-sed -i '/^permit-access 192.168.1.0\/24/d' /opt/etc/privoxy/config
-echo 'permit-access 127.0.0.1' >> /opt/etc/privoxy/config
-echo 'permit-access 192.168.1.0/24' >> /opt/etc/privoxy/config
+# Жёстко заданный LAN-интерфейс
+interface="br0"
 
-# Добавить SOCKS-прокси
-sed -i '/^forward-socks5/d' /opt/etc/privoxy/config
-echo 'forward-socks5 / 127.0.0.1:9050 .' >> /opt/etc/privoxy/config
+# Получаем CIDR (например, 192.168.1.100/24)
+cidr=$(ip -o -4 addr show dev "$interface" | awk '{print $4}')
+[ -z "$cidr" ] && { echo "❌ Не удалось получить IP с интерфейса $interface"; exit 1; }
 
-# Отключить удалённое редактирование и блокировки
-sed -i 's/^toggle .*/toggle 1/' /opt/etc/privoxy/config
-sed -i 's/^enable-remote-toggle .*/enable-remote-toggle 0/' /opt/etc/privoxy/config
-sed -i 's/^enable-edit-actions .*/enable-edit-actions 0/' /opt/etc/privoxy/config
-sed -i 's/^enforce-blocks .*/enforce-blocks 0/' /opt/etc/privoxy/config
-sed -i 's/^forwarded-connect-retries .*/forwarded-connect-retries 1/' /opt/etc/privoxy/config
+ip_address=${cidr%/*}
+prefix_len=${cidr#*/}
+
+# Преобразуем префикс в маску
+prefix_to_netmask() {
+    local p=$1
+    local mask=""
+    for i in 1 2 3 4; do
+        if [ "$p" -ge 8 ]; then
+            mask="${mask}255"
+            p=$((p - 8))
+        else
+            mask="${mask}$((256 - 2 ** (8 - p)))"
+            p=0
+        fi
+        [ "$i" -lt 4 ] && mask="${mask}."
+    done
+    echo "$mask"
+}
+
+netmask=$(prefix_to_netmask "$prefix_len")
+
+# Получаем подсеть
+network=$(ipcalc -n "$ip_address" "$netmask" | awk -F= '/NETWORK/ {print $2}')
+subnet="${network}/${prefix_len}"
+
+echo "✅ Подсеть br0: $subnet"
+
+# Обновляем конфиг Privoxy
+PRIVOXY_CONFIG="/opt/etc/privoxy/config"
+sed -i '/^permit-access /d' "$PRIVOXY_CONFIG"
+echo "permit-access $subnet" >> "$PRIVOXY_CONFIG"
+echo "✅ permit-access $subnet добавлен в $PRIVOXY_CONFIG"
+
+# Перезапуск Privoxy
+if pidof privoxy >/dev/null; then
+    killall privoxy
+    sleep 1
+fi
+/opt/etc/init.d/Sxxprivoxy start 2>/dev/null || /opt/sbin/privoxy "$PRIVOXY_CONFIG" &
+
+echo "✅ Privoxy перезапущен"
+
 ```
 
 
