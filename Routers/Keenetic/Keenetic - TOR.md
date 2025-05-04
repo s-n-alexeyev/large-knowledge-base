@@ -2,7 +2,7 @@
 > Обновляем, устанавливаем необходимые пакеты
 ```bash
 opkg update
-opkg install tor obfs4 polipo
+opkg install tor obfs4 privoxy lyrebird
 ```
 
 >Редактируем файл `/opt/etc/tor/torrc` (пример базовой настройки)
@@ -30,19 +30,6 @@ bridge obfs4 142.132.228.40:26712 6C9239B5F684285E6561F0EE680997112163D0C2 cert=
 ```
 
 - *вместо `obfs4proxy` можно использовать [`lyrebird`](https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/lyrebird) , будут доступны мосты `webtunnel`*
-
->Редактируем файл `/opt/etc/polipo/config` (пример базовой настройки)
-```r
-proxyAddress = "0.0.0.0"    # IPv4 only
-proxyPort = 8123
-
-# Меняем на IP подсети своего роутера, например 192.168.50.0
-allowedClients = 127.0.0.1, 192.168.1.0/24
-socksParentProxy = "localhost:9050"
-socksProxyType = socks5
-dnsQueryIPv6 = no
-dnsUseGethostbyname = yes
-```
 
 > Скрип для настройки privoxy
 ```shell
