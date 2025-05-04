@@ -102,25 +102,66 @@ if [ "$ENVIRONMENT" = "entware" ]; then
         exit 1
     fi
 
+    # Очистка старых параметров
+    sed -i '/^listen-address /d' "$PRIVOXY_CONFIG"
     sed -i '/^permit-access /d' "$PRIVOXY_CONFIG"
-    echo "permit-access $subnet" >> "$PRIVOXY_CONFIG"
-    echo "✅ permit-access $subnet добавлен в $PRIVOXY_CONFIG"
-
     sed -i '/^forward-socks5 /d' "$PRIVOXY_CONFIG"
-    echo "forward-socks5 / 127.0.0.1:9050 ." >> "$PRIVOXY_CONFIG"
-    echo "✅ forward-socks5 добавлен для Tor"
+    sed -i '/^toggle /d' "$PRIVOXY_CONFIG"
+    sed -i '/^enable-remote-toggle /d' "$PRIVOXY_CONFIG"
+    sed -i '/^enable-edit-actions /d' "$PRIVOXY_CONFIG"
+    sed -i '/^enforce-blocks /d' "$PRIVOXY_CONFIG"
+    sed -i '/^forwarded-connect-retries /d' "$PRIVOXY_CONFIG"
+
+    # Добавление новых параметров
+    cat <<EOF >> "$PRIVOXY_CONFIG"
+
+listen-address  0.0.0.0:8123
+permit-access 127.0.0.1
+permit-access $subnet
+forward-socks5 / 127.0.0.1:9050 .
+toggle 1
+enable-remote-toggle 0
+enable-edit-actions 0
+enforce-blocks 0
+forwarded-connect-retries 1
+EOF
+
+    echo "✅ Конфигурация Privoxy обновлена в $PRIVOXY_CONFIG"
+
 else
-    # OpenWRT: конфигурация через UCI
     echo "🛠 Обновление конфигурации через UCI..."
 
+    uci -q delete privoxy.@privoxy[0].listen_address
     uci -q delete privoxy.@privoxy[0].permit_access
-    uci add_list privoxy.@privoxy[0].permit_access="$subnet"
-
     uci -q delete privoxy.@privoxy[0].forward_socks5
-    uci add_list privoxy.@privoxy[0].forward_socks5="/ 127.0.0.1:9050 ."
+
+    uci add_list privoxy.@privoxy[0].listen_address='0.0.0.0:8123'
+    uci add_list privoxy.@privoxy[0].permit_access='127.0.0.1'
+    uci add_list privoxy.@privoxy[0].permit_access="$subnet"
+    uci add_list privoxy.@privoxy[0].forward_socks5='/ 127.0.0.1:9050 .'
 
     uci commit privoxy
-    echo "✅ Конфигурация обновлена через UCI"
+
+    # Ручное добавление нестандартных параметров
+    PRIVOXY_CONFIG="/etc/privoxy/config"
+    [ -f "$PRIVOXY_CONFIG" ] && {
+        sed -i '/^toggle /d' "$PRIVOXY_CONFIG"
+        sed -i '/^enable-remote-toggle /d' "$PRIVOXY_CONFIG"
+        sed -i '/^enable-edit-actions /d' "$PRIVOXY_CONFIG"
+        sed -i '/^enforce-blocks /d' "$PRIVOXY_CONFIG"
+        sed -i '/^forwarded-connect-retries /d' "$PRIVOXY_CONFIG"
+
+        cat <<EOF >> "$PRIVOXY_CONFIG"
+
+toggle 1
+enable-remote-toggle 0
+enable-edit-actions 0
+enforce-blocks 0
+forwarded-connect-retries 1
+EOF
+    }
+
+    echo "✅ Конфигурация обновлена через UCI и вручную"
 fi
 
 # === Перезапуск ===
@@ -137,6 +178,7 @@ echo "🔄 Добавление в автозапуск..."
 eval "$AUTOSTART_CMD"
 
 echo "✅ Готово!"
+
 ```
 
 
