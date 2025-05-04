@@ -342,3 +342,18 @@ else
     exit 1
 fi
 ```
+
+---
+## Отображение eng и rus вместо us и ru
+
+>Откройте файл конфигурации `kdeglobals` или `kxkbrc`:
+```bash
+kate ~/.config/kxkbrc
+```
+
+```
+[Layout]
+DisplayNames=eng,rus
+LayoutList=us,ru
+
+```
