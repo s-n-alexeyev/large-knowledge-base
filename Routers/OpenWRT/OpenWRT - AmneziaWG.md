@@ -1,23 +1,8 @@
 # Установка AmneziaWG на OpenWRT-устройстве
 
-[](https://github.com/openwrt-xiaomi/awg-openwrt/wiki/AmneziaWG-installing#установка-amneziawg-на-openwrt-устройстве)
-
-На VDS-сервере создайте новый конфиг под ваш OpenWRT-роутер (если ранее этого не сделали):
-
-```
-python3 awgcfg.py -a "my_router" -c -q
-```
-
-И перезапустите AWG на VDS-сервере (если создали новый клиентский конфиг):
-
-```
-systemctl restart awg-quick@awg0.service
-```
-
-Скопируйте файл `~/awg/my_router.conf` куда-либо (этот файл содержит настройки для OpenWRT).
+Подразумевается что у вас уже есть сервер AmneziaVPN 
 
 **Если у вас на роутере установлена версия OpenWrt ниже чем 23.05, то следует обновиться!**
-
 Скачайте необходимые IPK-пакеты по любой из ссылок:
 
 1. [https://github.com/lolo6oT/awg-openwrt/releases](https://github.com/lolo6oT/awg-openwrt/releases)
@@ -43,15 +28,11 @@ luci-proto-amneziawg.ipk (либо luci-app-amneziawg.ipk)
 
 ## `Network/Interfaces`
 
-[](https://github.com/openwrt-xiaomi/awg-openwrt/wiki/AmneziaWG-installing#networkinterfaces)
-
 Переходим в раздел `Network/Interfaces` и нажимаем кнопку `Add new interface...`
 
 В появившемся окне указываем название `AWG` и тип `AmneziaWG VPN`. После нажатия кнопки `Create Interface` появится окно `Interfaces/AWG`.
 
 ### `Interfaces/AWG/General Settings`
-
-[](https://github.com/openwrt-xiaomi/awg-openwrt/wiki/AmneziaWG-installing#interfacesawggeneral-settings)
 
 В окне `Interfaces/AWG` перейдите на закладку `General Settings`.
 
@@ -67,8 +48,6 @@ luci-proto-amneziawg.ipk (либо luci-app-amneziawg.ipk)
 
 ### `Interfaces/AWG/Advanced Settings`
 
-[](https://github.com/openwrt-xiaomi/awg-openwrt/wiki/AmneziaWG-installing#interfacesawgadvanced-settings)
-
 Переходим на вкладку `Advanced Settings`.
 
 - Значение "MTU" = 1420
@@ -76,8 +55,6 @@ luci-proto-amneziawg.ipk (либо luci-app-amneziawg.ipk)
 - Значение "Use custom DNS servers" = "8.8.8.8" (будем работать в обход провайдерского DNS).
 
 ### `Interfaces/AWG/AmneziaWG Settings`
-
-[](https://github.com/openwrt-xiaomi/awg-openwrt/wiki/AmneziaWG-installing#interfacesawgamneziawg-settings)
 
 Переходим на вкладку `AmneziaWG Settings`.
 
@@ -92,8 +69,6 @@ luci-proto-amneziawg.ipk (либо luci-app-amneziawg.ipk)
 - Значение "H4" возьмите из файла `my_router.conf` (параметр "Interfaces/H4").
 
 ### `Interfaces/AWG/Peers`
-
-[](https://github.com/openwrt-xiaomi/awg-openwrt/wiki/AmneziaWG-installing#interfacesawgpeers)
 
 Переходим на вкладку `Peer` и нажимаем кнопку `Add Peer`, что бы появилось окно `Interfaces/AWG/Peers`.
 
@@ -117,27 +92,23 @@ luci-proto-amneziawg.ipk (либо luci-app-amneziawg.ipk)
 
 В текущем окне `Network/Interfaces` нажмите кнопку `Save & Apply`, что бы ваши настройки сохранились и применились.
 
-![image](https://private-user-images.githubusercontent.com/9350115/381397134-80323e8a-ab7a-46cd-88e1-4696b9486ba2.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDY3OTYxOTYsIm5iZiI6MTc0Njc5NTg5NiwicGF0aCI6Ii85MzUwMTE1LzM4MTM5NzEzNC04MDMyM2U4YS1hYjdhLTQ2Y2QtODhlMS00Njk2Yjk0ODZiYTIucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDUwOSUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTA1MDlUMTMwNDU2WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9ZDhhYjA4MjkyNWRjN2FhZjYwMTBmMDQxNDM3MmU4NDk0MzljYzNlZjUxMTYzZjFiODY3OGRmMzZmMmU1NWFhZiZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.wuimspP3M2lIg-nyL2saj5j3zzXt1JTvDww9K37gR9w)
+![[../../Media/Pictures/OpenWRT_AmneziaWG/a4053d4c749473542a983948da4edb06_MD5.png]]
 
 После добавления нового интерфейса AWG на страничке `Status/AmneziaWG` (либо на `VPN/AmneziaWG`) появится новое соединение с именем "my_router".
 
 При правильной настройке и работающем VDS-сервере сражу же должны появиться удачные рукопожатия (Latest handshake).
 
-![image](https://private-user-images.githubusercontent.com/9350115/381399388-b543f2c2-7d6f-449f-ab87-85461d250fab.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDY3OTYxOTYsIm5iZiI6MTc0Njc5NTg5NiwicGF0aCI6Ii85MzUwMTE1LzM4MTM5OTM4OC1iNTQzZjJjMi03ZDZmLTQ0OWYtYWI4Ny04NTQ2MWQyNTBmYWIucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDUwOSUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTA1MDlUMTMwNDU2WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9MDNmOGY1N2E5NGMwMmQ2NWExMTlhZjJiM2VjYjE0YTk5Y2UzZTdiZTZmNDhjMWRkYjU5MGE2NjQzNzk2OGIyMSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.ryZGL-YrrbwGh_DpHwYwZicdthp-8W9fqQv70XJU1Uw)
+![[../../Media/Pictures/OpenWRT_AmneziaWG/ea1f45f786ca686154823ea71de050db_MD5.png]]
 
 Для проверки работоспособности можно в терминале ввести команду `ping -I AWG facebook.com`
 
-![image](https://private-user-images.githubusercontent.com/9350115/381403415-7e8b48cc-1a3c-4d21-b0bf-b72b322c5795.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDY3OTYxOTYsIm5iZiI6MTc0Njc5NTg5NiwicGF0aCI6Ii85MzUwMTE1LzM4MTQwMzQxNS03ZThiNDhjYy0xYTNjLTRkMjEtYjBiZi1iNzJiMzIyYzU3OTUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDUwOSUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTA1MDlUMTMwNDU2WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NmRkMjAwZWVjNzY3MGZjODMzYTg3NWY2MDU2OTAxM2VmZjMyMTk1OTE2YjhlNThjZTlkMjA2ODBjMGE0MjMzMyZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.At2C-fnOiw6ZU9rTfWhJ_UoAKKUxsqwa7PTN1mNAYB0)
+![[../../Media/Pictures/OpenWRT_AmneziaWG/6fc8af2d0b08f076e84c4013d36e81da_MD5.png]]
 
 ## `Network/Firewall/General Settings`
-
-[](https://github.com/openwrt-xiaomi/awg-openwrt/wiki/AmneziaWG-installing#networkfirewallgeneral-settings)
 
 Теперь нужно перейти на вкладку `Network/Firewall/General Settings` и нажать кнопку "Add" (в разделе `Zones`).
 
 ### `Firewall - Zone settings`
-
-[](https://github.com/openwrt-xiaomi/awg-openwrt/wiki/AmneziaWG-installing#firewall---zone-settings)
 
 В появившемся окне `Firewall - Zone settings` нужно заполнить поля на вкладке `General Settings`:
 
@@ -157,31 +128,6 @@ luci-proto-amneziawg.ipk (либо luci-app-amneziawg.ipk)
 
 Теперь в разделе `Zones` можно наблюдать новые правила для трафика.
 
-![image](https://private-user-images.githubusercontent.com/9350115/381396971-6cd00072-d72d-419a-8797-9ac41dcd7d69.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDY3OTYxOTYsIm5iZiI6MTc0Njc5NTg5NiwicGF0aCI6Ii85MzUwMTE1LzM4MTM5Njk3MS02Y2QwMDA3Mi1kNzJkLTQxOWEtODc5Ny05YWM0MWRjZDdkNjkucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDUwOSUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTA1MDlUMTMwNDU2WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9ZGFmYmJmM2NiMTI2MmRhZTQ4ODM1NGUyYWY3ODk1OTdiMjVmNGMxNGI3NDZiZWE5ZjVhMzUzNjEyMDY0MWU0YiZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ._mXlIaf6BBJEvFdgJpv7O18zSjQr7Eu3dYjvddabrLw)
+![[../../Media/Pictures/OpenWRT_AmneziaWG/4d0c191f28ccef264772fc85a9759ec3_MD5.png]]
 
 **После этого можно приступать к настройке `RuAntiBlock`, либо к настройке [podkop](https://podkop.net/docs/install/)'а.**
-
-### Pages 2
-
-- [Home](https://github.com/openwrt-xiaomi/awg-openwrt/wiki)
-    
-
-- [AmneziaWG installing](https://github.com/openwrt-xiaomi/awg-openwrt/wiki/AmneziaWG-installing)
-    
-    - [Установка AmneziaWG и других нужных утилит на VDS-сервере](https://github.com/openwrt-xiaomi/awg-openwrt/wiki/AmneziaWG-installing#установка-amneziawg-и-других-нужных-утилит-на-vds-сервере)
-    - [Установка AmneziaWG на Android-устройстве](https://github.com/openwrt-xiaomi/awg-openwrt/wiki/AmneziaWG-installing#установка-amneziawg-на-android-устройстве)
-    - [Установка AmneziaWG на OpenWRT-устройстве](https://github.com/openwrt-xiaomi/awg-openwrt/wiki/AmneziaWG-installing#установка-amneziawg-на-openwrt-устройстве)
-    - [Network/Interfaces](https://github.com/openwrt-xiaomi/awg-openwrt/wiki/AmneziaWG-installing#networkinterfaces)
-    - [Interfaces/AWG/General Settings](https://github.com/openwrt-xiaomi/awg-openwrt/wiki/AmneziaWG-installing#interfacesawggeneral-settings)
-    - [Interfaces/AWG/Advanced Settings](https://github.com/openwrt-xiaomi/awg-openwrt/wiki/AmneziaWG-installing#interfacesawgadvanced-settings)
-    - [Interfaces/AWG/AmneziaWG Settings](https://github.com/openwrt-xiaomi/awg-openwrt/wiki/AmneziaWG-installing#interfacesawgamneziawg-settings)
-    - [Interfaces/AWG/Peers](https://github.com/openwrt-xiaomi/awg-openwrt/wiki/AmneziaWG-installing#interfacesawgpeers)
-    - [Network/Firewall/General Settings](https://github.com/openwrt-xiaomi/awg-openwrt/wiki/AmneziaWG-installing#networkfirewallgeneral-settings)
-    - [Firewall - Zone settings](https://github.com/openwrt-xiaomi/awg-openwrt/wiki/AmneziaWG-installing#firewall---zone-settings)
-    
-
-##### Clone this wiki locally
-
-## Footer
-
-[](https://github.com "GitHub")
