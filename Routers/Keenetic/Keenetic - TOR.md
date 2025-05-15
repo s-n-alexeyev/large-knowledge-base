@@ -184,7 +184,7 @@ echo "✅ Готово!"
 
 >Стартуем сервисы
 ```bash
-/opt/etc/init.d/S28polipo start
+/opt/etc/init.d/S24privoxy start
 /opt/etc/init.d/S35tor start
 ```
 
