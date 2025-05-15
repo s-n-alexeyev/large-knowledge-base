@@ -194,5 +194,106 @@ echo "✅ Готово!"
 - Для [Firefox](https://addons.mozilla.org/ru/firefox/addon/zeroomega/)  
 
 
+```#!/bin/sh  
+  
+# === Поиск bridge-интерфейса с IP в локальной сети ===  
+bridge_iface=$(ip -o -4 addr show | awk '$2 ~ /^br/ && $4 ~ /^192\.168\./ {print $2; exit}')  
+if [ -z "$bridge_iface" ]; then  
+echo "❌ Не удалось найти bridge-интерфейс с локальным IP (192.168.x.x)"  
+exit 1  
+fi  
+  
+echo "🔍 Обнаружен bridge-интерфейс: $bridge_iface"  
+  
+# === Получаем CIDR ===  
+cidr=$(ip -o -4 addr show dev "$bridge_iface" | awk '{print $4}')  
+[ -z "$cidr" ] && { echo "❌ Не удалось получить IP с интерфейса $bridge_iface"; exit 1; }  
+  
+ip_address=${cidr%/*}  
+prefix_len=${cidr#*/}  
+  
+# === Преобразуем IP и префикс в адрес сети ===  
+ip_to_dec() {  
+oct1=$(echo "$1" | cut -d. -f1)  
+oct2=$(echo "$1" | cut -d. -f2)  
+oct3=$(echo "$1" | cut -d. -f3)  
+oct4=$(echo "$1" | cut -d. -f4)  
+echo $(( (oct1 << 24) + (oct2 << 16) + (oct3 << 8) + oct4 ))  
+}  
+  
+dec_to_ip() {  
+dec=$1  
+oct1=$(( (dec >> 24) & 255 ))  
+oct2=$(( (dec >> 16) & 255 ))  
+oct3=$(( (dec >> 8) & 255 ))  
+oct4=$(( dec & 255 ))  
+echo "$oct1.$oct2.$oct3.$oct4"  
+}  
+  
+netmask=$(( 0xFFFFFFFF << (32 - prefix_len) & 0xFFFFFFFF ))  
+ip_dec=$(ip_to_dec "$ip_address")  
+network_dec=$(( ip_dec & netmask ))  
+network=$(dec_to_ip "$network_dec")  
+subnet="${network}/${prefix_len}"  
+  
+echo "✅ Подсеть $bridge_iface: $subnet"  
+  
+# === Определение окружения по имени хоста ===  
+hostname=$(uname -n)  
+  
+if echo "$hostname" | grep -iqE 'entware|keenetic'; then  
+ENVIRONMENT="entware"  
+PRIVOXY_CONFIG="/opt/etc/privoxy/config"  
+RESTART_CMD="/opt/etc/init.d/Sxxprivoxy restart"  
+AUTOSTART_CMD="ln -sf /opt/etc/init.d/Sxxprivoxy /opt/etc/init.d/rc.custom"  
+elif echo "$hostname" | grep -iq "openwrt"; then  
+ENVIRONMENT="openwrt"  
+PRIVOXY_CONFIG="/etc/config/privoxy"  
+RESTART_CMD="/etc/init.d/privoxy restart"  
+AUTOSTART_CMD="/etc/init.d/privoxy enable"  
+else  
+echo "❌ Не удалось определить окружение по имени хоста"  
+exit 1  
+fi  
+  
+echo "📄 Конфигурационный файл: $PRIVOXY_CONFIG"  
+  
+# === Обновление конфигурации ===  
+if [ ! -f "$PRIVOXY_CONFIG" ]; then  
+echo "❌ Конфигурационный файл Privoxy не найден: $PRIVOXY_CONFIG"  
+exit 1  
+fi  
+  
+# Удаление старых permit-access и добавление нового  
+sed -i '/^permit-access /d' "$PRIVOXY_CONFIG"  
+echo "permit-access $subnet" >> "$PRIVOXY_CONFIG"  
+echo "✅ permit-access $subnet добавлен в $PRIVOXY_CONFIG"  
+  
+# Добавляем forward-socks5 для Tor, если отсутствует  
+  
+# Удаляем все старые строки forward-socks5  
+sed -i '/^forward-socks5 /d' "$PRIVOXY_CONFIG"  
+  
+# Добавляем единственный правильный вариант для Tor  
+echo "forward-socks5 / 127.0.0.1:9050 ." >> "$PRIVOXY_CONFIG"  
+echo "✅ forward-socks5 добавлен для Tor"  
+  
+  
+# === Перезапуск ===  
+echo "♻ Перезапуск Privoxy..."  
+eval "$RESTART_CMD" || {  
+echo "⚠ Не удалось перезапустить privoxy, пробуем вручную..."  
+killall privoxy 2>/dev/null  
+sleep 1  
+privoxy "$PRIVOXY_CONFIG" &  
+}  
+  
+# === Автозапуск ===  
+echo "🔄 Добавление в автозапуск..."  
+eval "$AUTOSTART_CMD"  
+  
+echo "✅ Готово!"
+```
+
 
 
