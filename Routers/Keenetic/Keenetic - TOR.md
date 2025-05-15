@@ -11,10 +11,8 @@ DataDirectory /opt/var/lib/tor
 User tor
 
 SOCKSPort 9050
-HTTPTunnelPort 8118
+#HTTPTunnelPort 8118
 
-# Меняем на IP своего роутера
-# SOCKSPort 192.168.1.1:9111
 ExcludeNodes {ru}, {ua}, {by}, {kz}  
 
 RunAsDaemon 1
@@ -179,8 +177,6 @@ eval "$AUTOSTART_CMD"
 echo "✅ Готово!"
 
 ```
-
-
 
 >Стартуем сервисы
 ```bash
