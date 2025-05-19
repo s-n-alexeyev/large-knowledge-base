@@ -306,6 +306,12 @@ https://hoofsandhorns.freemyip.com:65456/pusti
 ![|1000](/Media/Pictures/Vless/3X-UI6.png)
 Готово!  
 Для проверки работоспособности можно воспользоваться телефоном установив на Android приложение [v2rayNG](https://play.google.com/store/apps/details?id=com.v2ray.ang&hl=ru), а на iOS [V2BOX](https://apps.apple.com/us/app/v2box-v2ray-client/id6446814690)  
+
+>[!info] Репозиторий для f-droid для разных VPN клиентов
+```
+fdroidrepos://fdroid.noql.net/fdroid/repo?fingerprint=0C00898126DF6E2BAAE76ED58D0269B8FBB42FE3DE4B3627DF28ED27CC5E7A02
+```
+
 Нажимаем значок с QR-кодом и показываем его приложению в телефоне.
 
 
