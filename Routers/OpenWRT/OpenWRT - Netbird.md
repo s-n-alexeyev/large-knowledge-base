@@ -1,16 +1,4 @@
-2025-01-05
-
-[Источник](https://openwrt.org/docs/guide-user/services/vpn/tailscale/)
-
-```table-of-contents
-title: Содержание
-style: nestedList # TOC style (nestedList|nestedOrderedList|inlineFirstLevel)
-minLevel: 0 # Include headings from the specified level
-maxLevel: 0 # Include headings up to the specified level
-includeLinks: true # Make headings clickable
-hideWhenEmpty: false # Hide TOC if no headings are found
-debugInConsole: false # Print debug info in Obsidian console
-```
+2025-05-23
 
 >Скрипт для установки/настройки/обновления netbird
 ```shell
