@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#Author: user
+#windowsdesktop-runtime-6.0.36-win-x64.exe
+#Rating=1-5
+export PW_VULKAN_USE="2"
+export PW_WINE_USE="PROTON_LG_9-27"
+export PW_PREFIX_NAME="DEFAULT"
+export PORTPROTON_NAME="Microsoft Windows Desktop Runtime - 6.0.36 (x64)"
+export FILE_DESCRIPTION="Microsoft Windows Desktop Runtime - 6.0.36 (x64)"
+export FILE_SHA256SUM="0d20debb26fc8b2bc84f25fbd9d4596a6364af8517ebf012e8b871127b798941"
