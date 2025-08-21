@@ -35,6 +35,28 @@ sudo cachyos-rate-mirrors
 ```
 
 ---
+
+# Зеркало на chaotic.cx
+```bash
+# Скачиваем пакеты
+wget https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar
+wget https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst
+
+# Распаковываем gpg ключ из пакета
+bsdtar -xvf chaotic-keyring.pkg.tar.zst ./usr/share/pacman/keyrings/chaotic-aur.gpg
+
+# Копируем ключ в систему
+sudo cp usr/share/pacman/keyrings/chaotic-aur.gpg /usr/share/pacman/keyrings/
+
+# Импортируем ключ и подписываем локально
+sudo pacman-key --add /usr/share/pacman/keyrings/chaotic-aur.gpg
+sudo pacman-key --lsign-key 3A40CB5E7E5CBC30
+
+# Теперь можно ставить пакеты нормально
+sudo pacman -U chaotic-keyring.pkg.tar.zst chaotic-mirrorlist.pkg.tar.zst
+```
+
+---
 # Понижение версии
 
 Чтобы понизить версию приложения  в Arch Linux, выполните следующие шаги:
