@@ -149,7 +149,7 @@ if [ ! -f "$file_path" ]; then
 fi
 
 # Удаление строки из файла
-sed -i "/$search_string/d" "$file_path"
+sudo sed -i "/$search_string/d" "$file_path"
 
 echo "Строка '$search_string' удалена из файла $file_path."
 ```
