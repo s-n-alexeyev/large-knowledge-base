@@ -1,6 +1,6 @@
 # Как добавить в OpenWebUI генерацию изображений через ComfyUI
 
-![server one](https://hostkey.ru/storage/11_art101-00_ec4a3aa4.png)
+![[../Media/Pictures/Open-WebUI_gen_pic/7b3199a4692c8b071ace26dc3154a85d_MD5.png]]
 
 OpenWebUI как хороший медиакомбайн для работы с нейросетями умеет и в генерацию изображений. Не своими силами, конечно, но позволяет даже неподготовленному пользователю написать промт и получить картинку, как если бы вы работали в ChatGPT или GigaChat. Сделать это можно через API OpenAI или используя интерфейсы доступа к моделям StableDiffusion или Flux типа stable-diffusion-webui (она же Automatic1111) или ComfyUI.
 
@@ -55,7 +55,7 @@ python3 main.py --listen 248.255.56.23
 
 Далее необходимо добавить workflow для модели SD3.5. Поиском оно находится на ура, но в OpenWebUI лучше работает немного другое, чем предлагаемое разработчиками ComfyUI. Поэтому качаем данный workflow по [этой ссылке](https://hostkey.ru/documentation/assets/sd3.5-t2i-fp8-scaled-workflow.json), а затем просто перетаскиваем данный json файл на открытый веб-интерфейс ComfyUI.
 
-![](https://hostkey.ru/storage/art101-01_8863ba23.png)
+![[../Media/Pictures/Open-WebUI_gen_pic/24d2a332c3e23f96aa558883da917c36_MD5.png]]
 
 Проверяем генерацию, и если все работает, приступаем к добавлению ComfyUI в OpenWebUI.
 
@@ -67,23 +67,24 @@ python3 main.py --listen 248.255.56.23
     
 - Далее необходимо запомнить ID нод с разными элементами (нас интересует сам промт, модель, размер изображения и нода с параметрами генерации). Для этого заходим в Настройки и там включаем в подменю **LiteGraph** настройку **Режим значка ID ноды** в **Показать все**.
     
-    ![](https://hostkey.ru/storage/art101-02_70d2f526.png)
+    ![[../Media/Pictures/Open-WebUI_gen_pic/b34a11876007a43a1f4238d316242471_MD5.png]]
 
-Теперь у нод будет отображаться их ID как #<ID>. Нам достаточно запомнить только ноду с Positive Promt, в нашем случае ее ID равен 16.
+Теперь у нод будет отображаться их ID как `#<ID>`. Нам достаточно запомнить только ноду с Positive Promt, в нашем случае ее ID равен 16.
 
-![](https://hostkey.ru/storage/art101-03_0fdfed05.png)
+![[../Media/Pictures/Open-WebUI_gen_pic/f7809d56c0a9be83e15f581e78a2d833_MD5.png]]
+
 
 Открываем веб-интерфейс OpenWebUI и переходим в него. Заходим в **Settings** (вызывается кликом по имени пользователя в левом нижнем углу), далее в **Admin Setting** и затем в **Images**. Ставим **Image Generation Engine** в **ComfyUI**.
 
 В поле **ComfyUI Base URL** заносим IP адрес с портом, по которому вы открыли до этого ComfyUI. Нажмите на значок со стрелочками «туда-сюда», чтобы проверить соединение с сервером.
 
-![](https://hostkey.ru/storage/art101-04_537ef900.png)
+![[../Media/Pictures/Open-WebUI_gen_pic/76d9f2ecb83e38c34b17c7fad93f0b5f_MD5.png]]
 
 Далее нажимаем на кнопку **Click here to upload workflow.json** file и загружаем наш экспортированный API workflow. Не перепутайте, именно API, а не первоначальный!
 
 После в таблице **ComfyUI Workflow Nodes** вводим для **prompt*** значение нашего ID равное 16. Вверху включаем **Image Generation (Experimental)** и ниже сразу же **Image Prompt Generation**.
 
-![](https://hostkey.ru/storage/art101-05_2e830184.png)
+![[../Media/Pictures/Open-WebUI_gen_pic/ad58e952902114e03bc84389999b1977_MD5.png]]
 
 Возвращаемся вниз. В **Set Default Model** выбираем нашу модель **sd3.5_medium_incl_clips_t5xxlfp8scaled.safetensors**. В **Set Image Size** ставим 1024x1024 или другой кратный размер генерации:
 
@@ -94,7 +95,7 @@ python3 main.py --listen 248.255.56.23
 
 В **Set Steps** устанавливаем число проходов генерации. Рекомендуем его поставить от 20 до 40, в зависимости от мощности вашего видеоадаптера. Обязательно нажимаем на Save в правом нижнем углу, чтобы сохранить наши настройки!
 
-![](https://hostkey.ru/storage/art101-06_4e70b3e6.png)
+![[../Media/Pictures/Open-WebUI_gen_pic/56291f1da8333f0803c19a40f5411215_MD5.png]]
 
 ### Проверяем работу генерации картинок
 
@@ -102,21 +103,21 @@ python3 main.py --listen 248.255.56.23
 
 **1 способ. Генерация картинок сразу же по введенному промту**. Для этого необходимо в строке запроса к нейросети нажати внизу строки чата кнопку Image и ввести промт для картинки. Сверху строки чата появится предупреждение, что вы находитесь в режиме генерации изображений **Generate an Image**.
 
-![](https://hostkey.ru/storage/art101-07_4963be06.png)
+![[../Media/Pictures/Open-WebUI_gen_pic/2aaabbd46f6bd399338a2038126657d2_MD5.png]]
 
 Отправив запрос вы через некоторое время получите изображение от ComfyUI.
 
-![](https://hostkey.ru/storage/art101-08_bfc2b898.png)
+![[../Media/Pictures/Open-WebUI_gen_pic/a1704adc290631943cdae2e5fedbeb7e_MD5.png]]
 
 Пока вы снова не нажмете кнопку **Image**, вы будете находиться в режиме непосредственной генерации картинок по промту.
 
 **2 способ. Генерация по ответу нейросети.** В этом режиме вы, как обычно, общаетесь с моделью в чате. Например, вы можете попросить ее написать промт или улучшить его. Получив ответ от нейросети, нажмите на значок **Generate Image** в строке значков внизу ответа.
 
-![](https://hostkey.ru/storage/art101-09_9a5af869.png)
+![[../Media/Pictures/Open-WebUI_gen_pic/c9d90da1bc736e5ef2a6fc615cc07172_MD5.png]]
 
 OpenWebUI также пошлет запрос в ComfyUI и выведет вам изображение.
 
-![](https://hostkey.ru/storage/art101-10_a96b91d2.png)
+![[../Media/Pictures/Open-WebUI_gen_pic/adfb36d4e82aae83d879f43e28e3dfd8_MD5.png]]
 
 ### Что мы забыли?
 
@@ -148,8 +149,6 @@ service comfyui restart
 service comfyui status
 ```
 
-![](https://hostkey.ru/storage/art101-11_9c7c4ab7.png)
+![[../Media/Pictures/Open-WebUI_gen_pic/590653fef4f56c1327e634f9d929f808_MD5.png]]
 
 Как видите, добавить поддержку генерации изображений в OpenWebUI не очень сложно, если правильно выполнить всю необходимую последовательность действий. Аналогично вы можете добавить и другие модели или использовать Automatic1111 вместо ComfyUI. В результате вы расширите возможности работы с нейросетевыми моделями и получите замену с открытым кодом проприетарным решениям.
-
-### Другие статьи
