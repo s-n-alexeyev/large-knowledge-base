@@ -83,3 +83,25 @@ sudo systemctl start run-media-user-ftp.automount
 sudo ls /run/media/user/ftp
 sudo mount | grep /run/media/user/ftp
 ```
+
+## Решение ошибки "Error setting curl" в curlftpfs
+
+```bash
+# 1. Установите утилиту downgrade (если не установлена)
+yay -S downgrade
+
+# 2. Запустите откат curl
+sudo downgrade curl
+
+# 3. Выберите версию 8.16.0 из списка
+#    - В появившемся меню найдите и выберите `curl 8.16.0-1`
+#    - Подтвердите установку
+
+# 4. Заблокируйте обновление curl
+sudo nano /etc/pacman.conf
+# Добавьте строку: IgnorePkg = curl
+
+# 5. Проверьте результат
+curl --version
+# Должна отображаться версия 8.16.0
+```
