@@ -21,3 +21,32 @@ REG ADD HKLM\SYSTEM\Setup\LabConfig /v BypassRAMCheck /t REG_DWORD /d 1
 ### Вариант 2
 
 Можно исправить *appraiserres.dll* обычным блокнотом (notepad), необходимо найти строки содержащие значение *tpm* и/или *UEFI* и удалить их.
+
+### Вариант 3
+
+- На экране первоначальной настройки (OOBE) во время установки Windows 11 нажмите Shift+F10, чтобы открыть командную строку.
+- Введите `regedit` и нажмите **Enter** для запуска редактора реестра.
+
+- Перейдите в раздел:
+
+```reg
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\OOBE
+```
+
+#### Отключить требование учетной записи Microsoft
+
+- Создайте новый параметр, выбрав **Правка > Создать > Параметр DWORD (32-бита)**, и назовите его **HideOnlineAccountScreens**.
+- Откройте созданный параметр и присвойте ему значение **1**.
+
+#### Отключить требование наличия Интернета
+
+- Создайте новый параметр, выбрав **Правка > Создать > Параметр DWORD (32-бита)**, и назовите его **HideWirelessSetupInOOBE**.
+- Откройте созданный параметр и присвойте ему значение **1**.
+
+- Закройте редактор реестра и перезагрузите компьютер.
+
+Вы также можете сразу выполнить команду в Командной строке, которая добавит запись в реестр и перезагрузит компьютер:
+
+```cmd
+reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OOBE /v HideOnlineAccountScreens /t REG_DWORD /d 1 /f && reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OOBE /v HideWirelessSetupInOOBE /t REG_DWORD /d 1 /f && shutdown /r /t 0
+```
