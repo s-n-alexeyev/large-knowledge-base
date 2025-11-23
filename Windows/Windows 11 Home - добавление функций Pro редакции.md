@@ -16,4 +16,4 @@ pause
 Скачиваем стороннюю утилиту для управления пользователями и группами  
 https://github.com/akruhler/AccountManagement/releases/download/1.6.3/lusrmgr.exe  
 или  
- ![Local User and Group Management](../Files/lusrmgr.exe)
+ ![Local User and Group Management](../Media/Files/lusrmgr.exe)

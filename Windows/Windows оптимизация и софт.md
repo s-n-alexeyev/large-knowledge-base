@@ -7,4 +7,4 @@ irm "https://christitus.com/win" | iex
 
 ```
 
-![](/Media/Pictures/Windows_Optimize/winutil.png)
+![](../../Media/Pictures/Windows_Optimize/winutil.png)

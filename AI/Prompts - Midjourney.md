@@ -16,7 +16,7 @@ _
 
 Все генерации для статьи сделаны [тут](https://api.vc.ru/v2.8/redirect?to=https%3A%2F%2Ft.me%2Fyes_ai_bot%3Fstart%3D5424119773_mj&postId=1408946).
 
-![Готовые промты для нейросети Миджорни](/Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-6.jpg)
+![Готовые промты для нейросети Миджорни](../../Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-6.jpg)
 
 **Prompt:** A mesmerizing water art installation, captured from a low angle, showcasing cascading waterfalls with crystal-clear droplets, vibrant blue and turquoise hues reflecting sunlight, surrounded by lush greenery, creating a serene atmosphere, soft ripples in the water enhancing the tranquil scene, illuminated by golden hour lighting, photographed in the ethereal style of fine art photography, using a Nikon D850 with a 24-70mm lens, emphasizing the fluidity and movement of water, designed by artist Olafur Eliasson, highlighting the interplay of light and water as the main detail.
 
@@ -35,7 +35,7 @@ _
 - "designed by artist Olafur Eliasson": добавляет авторский контекст, подчеркивающий уникальность работы.
 - "highlighting the interplay of light and water as the main detail": указывает на ключевой элемент, который должен быть в центре внимания.
 
-![Готовые промты для нейросети Миджорни](/Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-8.jpg)
+![Готовые промты для нейросети Миджорни](../../Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-8.jpg)
 
 **Prompt:** A mesmerizing fire art installation, showcasing vibrant flames dancing in intricate patterns, captured from a low angle to emphasize the height and movement of the fire, glowing embers swirling around, set against a dark night sky, with soft ambient lighting illuminating the surrounding area, creating a magical atmosphere, photographed in the dramatic style of a fine art photographer, using a Nikon D850 with a 24-70mm lens, focusing on the dynamic interplay of light and shadow, designed by a contemporary [artist], highlighting the fluidity and energy of the flames.
 
@@ -52,7 +52,7 @@ _
 - "designed by a contemporary [artist]": указывает на автора.
 - "highlighting the fluidity and energy of the flames": акцентирует внимание на главной детали, которая делает изображение уникальным.
 
-![Готовые промты для нейросети Миджорни](/Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-10.jpg)
+![Готовые промты для нейросети Миджорни](../../Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-10.jpg)
 
 **Prompt:** A stunning display of body art on a muscular male torso, showcasing intricate tribal patterns in bold black ink, captured in a dramatic low-angle shot, the skin glistening under bright studio lights, emphasizing the contrast between the vibrant designs and the natural skin tone, set against a dark, textured background that enhances the artwork's details, photographed in a high-contrast style reminiscent of fashion photography, using a Nikon D850 with a 85mm lens, focusing on the sharpness and clarity of the ink, designed by a renowned tattoo [artist], highlighting the cultural significance and personal expression of body art.
 
@@ -70,7 +70,7 @@ _
 - "designed by a renowned tattoo [artist]": добавляет элемент авторства и профессионализма.
 - "highlighting the cultural significance and personal expression of body art": акцентирует внимание на глубоком значении и индивидуальности татуировок.
 
-![Готовые промты для нейросети Миджорни](/Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-13.jpg)
+![Готовые промты для нейросети Миджорни](../../Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-13.jpg)
 
 **Prompt:** A vibrant pixel art scene depicting a bustling medieval marketplace, colorful stalls filled with fruits and vegetables, pixelated characters engaging in trade, a castle in the background, bright blue sky with fluffy clouds, warm sunlight casting playful shadows.
 
@@ -83,7 +83,7 @@ _
 - "a castle in the background": добавляет элемент глубины и контекста к сцене.
 - "bright blue sky with fluffy clouds, warm sunlight casting playful shadows": описывает освещение и атмосферу, создавая ощущение радости и активности.
 
-![Готовые промты для нейросети Миджорни](/Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-3.jpg)
+![Готовые промты для нейросети Миджорни](../../Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-3.jpg)
 
 **Prompt:** A stunning floral art composition featuring vibrant peonies and delicate daisies, arranged in a harmonious bouquet, captured from a top-down angle, showcasing the intricate textures of the petals and leaves, illuminated by soft natural light filtering through a nearby window, creating gentle shadows and highlights, presented in a modern botanical illustration style, emphasizing the vivid colors and details of each flower, with a focus on the rich pinks and whites of the peonies against a subtle pastel background.
 
@@ -100,7 +100,7 @@ _
 - "emphasizing the vivid colors and details of each flower": акцентирует внимание на цветах и деталях.
 - "with a focus on the rich pinks and whites of the peonies against a subtle pastel background": добавляет конкретные цветовые акценты и фон, что делает изображение более привлекательным.
 
-![Готовые промты для нейросети Миджорни](/Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-3.jpg)
+![Готовые промты для нейросети Миджорни](../../Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-3.jpg)
 
 **Prompt:** A stunning display of culinary art featuring an intricately plated gourmet dish, vibrant colors of fresh vegetables and herbs, captured from a top-down angle, showcasing the delicate arrangement and textures, soft natural lighting enhancing the freshness, set against a rustic wooden table background, evoking a sense of warmth and homeliness, photographed in the style of a high-end food magazine, using a Nikon D850 with a 50mm lens, emphasizing the vivid colors and fine details of the ingredients, designed by a renowned [chef], highlighting the artistry and creativity in modern gastronomy.
 
@@ -118,7 +118,7 @@ _
 - "designed by a renowned [chef]": добавляет элемент авторства и профессионализма.
 - "highlighting the artistry and creativity in modern gastronomy": акцентирует внимание на художественном аспекте кулинарии.
 
-![Готовые промты для нейросети Миджорни](/Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-9.jpg)
+![Готовые промты для нейросети Миджорни](../../Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-9.jpg)
 
 **Prompt:** A Polaroid art piece featuring a serene landscape at sunset, soft pastel colors blending in the sky, a tranquil lake reflecting the vibrant hues, delicate silhouettes of trees framing the scene, a vintage Polaroid border adding a nostalgic touch, captured with a slight vignette effect to enhance the dreamy atmosphere.
 
@@ -132,7 +132,7 @@ _
 - "vintage Polaroid border adding a nostalgic touch": подчеркивает стиль полароидной фотографии, добавляя элемент ностальгии.
 - "captured with a slight vignette effect to enhance the dreamy atmosphere": описывает технический аспект, который улучшает общее восприятие изображения.
 
-![Готовые промты для нейросети Миджорни](/Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни.jpg)
+![Готовые промты для нейросети Миджорни](../../Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни.jpg)
 
 **Prompt:** A breathtaking scene of wild life in a lush jungle, featuring a majestic tiger prowling through vibrant green foliage, colorful birds soaring above, and a serene waterfall in the background, hyper-detailed, vivid colors, dynamic composition.
 
@@ -145,7 +145,7 @@ _
 - "serene waterfall in the background": создает дополнительный визуальный интерес и атмосферу спокойствия.
 - "hyper-detailed, vivid colors, dynamic composition": указывает на желаемый уровень детализации, яркость цветов и динамичное расположение элементов в кадре.
 
-![Готовые промты для нейросети Миджорни](/Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-3.jpg)
+![Готовые промты для нейросети Миджорни](../../Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-3.jpg)
 
 **Prompt:** A beautifully arranged still life featuring a vintage vase filled with vibrant flowers, a rustic wooden table, soft natural lighting, and intricate details on the petals and leaves.
 
@@ -157,7 +157,7 @@ _
 - "soft natural lighting": указывает на желаемое освещение, которое придаст изображению мягкость и гармонию.
 - "intricate details on the petals and leaves": подчеркивает важность детализации, что сделает изображение более реалистичным и привлекательным.
 
-![Готовые промты для нейросети Миджорни](/Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-1.jpg)
+![Готовые промты для нейросети Миджорни](../../Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-1.jpg)
 
 **Prompt:** A stunning depiction of religious art featuring a serene angel with intricate wings, surrounded by ethereal light, in the style of Renaissance painting, rich colors, detailed textures, and a sense of divine tranquility.
 
@@ -169,7 +169,7 @@ _
 - "in the style of Renaissance painting": явно указывает на желаемый художественный стиль, что поможет нейросети понять, как именно следует интерпретировать изображение.
 - "rich colors, detailed textures, and a sense of divine tranquility": дополнительно описывает желаемые визуальные элементы, такие как насыщенные цвета и текстуры, а также общее настроение картины.
 
-![Готовые промты для нейросети Миджорни](/Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-5.jpg)
+![Готовые промты для нейросети Миджорни](../../Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-5.jpg)
 
 **Prompt:** A stunning environmental art piece depicting a lush forest with vibrant flora and fauna, intricate details of leaves and flowers, soft sunlight filtering through the trees, a serene river flowing through the scene, and a sense of harmony with nature.
 
@@ -182,7 +182,7 @@ _
 - "a serene river flowing through the scene": вводит элемент воды, который часто ассоциируется с природой и гармонией.
 - "a sense of harmony with nature": подчеркивает общую идею экологического искусства, где природа и человек находятся в согласии.
 
-![Готовые промты для нейросети Миджорни](/Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-12.jpg)
+![Готовые промты для нейросети Миджорни](../../Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-12.jpg)
 
 **Prompt:** A stunning bio art installation featuring intricate patterns of living cells and vibrant colors, illuminated under soft lighting, showcasing the beauty of nature and science intertwined, with a focus on organic shapes and textures.
 
@@ -194,7 +194,7 @@ _
 - "showcasing the beauty of nature and science intertwined": подчеркивает концептуальную основу работы, соединяющую природу и науку.
 - "focus on organic shapes and textures": указывает на желаемые визуальные элементы, которые должны быть выражены в произведении.
 
-![Готовые промты для нейросети Миджорни](/Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-2.jpg)
+![Готовые промты для нейросети Миджорни](../../Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-2.jpg)
 
 **Prompt:** A stunning fashion art illustration featuring a model in an avant-garde outfit, surrounded by abstract geometric shapes, vibrant colors, and intricate patterns, inspired by high fashion magazines.
 
@@ -206,7 +206,7 @@ _
 - "vibrant colors, and intricate patterns": описывает желаемую палитру и текстуры, которые делают изображение более привлекательным и динамичным.
 - "inspired by high fashion magazines": указывает на источник вдохновения, что помогает нейросети лучше понять контекст и стиль.
 
-![Готовые промты для нейросети Миджорни](/Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-4.jpg)
+![Готовые промты для нейросети Миджорни](../../Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-4.jpg)
 
 **Prompt:** A vibrant and colorful food art composition featuring an array of beautifully arranged fruits and vegetables, intricate patterns, and artistic plating, inspired by modern culinary trends.
 
@@ -217,7 +217,7 @@ _
 - "intricate patterns, and artistic plating": добавляет детали о том, как еда должна быть оформлена, подчеркивая креативность и сложность.
 - "inspired by modern culinary trends": указывает на современный стиль, который должен быть отражен в генерации.
 
-![Готовые промты для нейросети Миджорни](/Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-11.jpg)
+![Готовые промты для нейросети Миджорни](../../Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-11.jpg)
 
 **Prompt:** A stunning historical art scene depicting a grand medieval banquet, rich colors, intricate details, characters in period-appropriate attire, illuminated by candlelight, capturing the essence of the Renaissance.
 
@@ -230,7 +230,7 @@ _
 - "illuminated by candlelight": добавляет атмосферу и создает определенное настроение, характерное для эпохи Ренессанса.
 - "capturing the essence of the Renaissance": уточняет, что стиль и содержание должны отражать дух этого исторического периода.
 
-![Готовые промты для нейросети Миджорни](/Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-7.jpg)
+![Готовые промты для нейросети Миджорни](../../Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-7.jpg)
 
 **Prompt:** A mesmerizing light art installation in a dark urban environment, featuring colorful neon lights, intricate patterns, and dynamic movement, creating an immersive experience.
 
@@ -242,7 +242,7 @@ _
 - "intricate patterns, and dynamic movement": добавляет детали о сложности и динамичности, что делает изображение более интересным и живым.
 - "creating an immersive experience": подчеркивает, что результат должен вызывать ощущение погружения, что важно для светового искусства.
 
-![Готовые промты для нейросети Миджорни](/Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-19.jpg)
+![Готовые промты для нейросети Миджорни](../../Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-19.jpg)
 
 **Prompt:** A stunning eco art installation in a lush green forest, featuring intricate sculptures made from recycled materials, vibrant colors, and harmonious integration with nature, showcasing the beauty of sustainability.
 
@@ -254,7 +254,7 @@ _
 - "vibrant colors, and harmonious integration with nature": добавляет детали о цветах и о том, как искусство должно сочетаться с окружающей природой, создавая единое целое.
 - "showcasing the beauty of sustainability": подчеркивает основную идею работы — красоту устойчивого развития и заботы о природе.
 
-![Готовые промты для нейросети Миджорни](/Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-15.jpg)
+![Готовые промты для нейросети Миджорни](../../Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-15.jpg)
 
 **Prompt:** A stunning collection of tattoo art featuring intricate designs, bold colors, and a variety of styles including tribal, floral, and geometric patterns, displayed on a textured female skin background on face.
 
@@ -265,7 +265,7 @@ _
 - "a variety of styles including tribal, floral, and geometric patterns": уточняет, какие стили татуировок должны быть представлены, что помогает нейросети понять разнообразие.
 - "displayed on a textured female skin background on face": добавляет контекст, указывая, что татуировки должны быть изображены на фоне кожи лица девушки, что делает генерацию более реалистичной.
 
-![Готовые промты для нейросети Миджорни](/Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-18.jpg)
+![Готовые промты для нейросети Миджорни](../../Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-18.jpg)
 
 **Prompt:** A dreamy retro futurism art scene featuring a sleek, vintage car under a pastel-colored sky, soft gradients, whimsical shapes, and a serene landscape.
 
@@ -276,7 +276,7 @@ _
 - "under a pastel-colored sky": описывает цветовую палитру, подчеркивая мягкие цвета.
 - "soft gradients, whimsical shapes, and a serene landscape": добавляет детали о визуальных элементах, таких как плавные градиенты и игривые формы, создавая общую гармонию и спокойствие в изображении.
 
-![Готовые промты для нейросети Миджорни](/Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-14.jpg)
+![Готовые промты для нейросети Миджорни](../../Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-14.jpg)
 
 **Prompt:** A retro art piece featuring a serene landscape with rolling hills and a sunset, using natural colors like soft greens, warm oranges, and gentle blues, with a vintage texture and a nostalgic feel.
 
@@ -287,7 +287,7 @@ _
 - "using natural colors like soft greens, warm oranges, and gentle blues": конкретизирует цветовую палитру, акцентируя внимание на естественных оттенках.
 - "with a vintage texture and a nostalgic feel": добавляет желаемые визуальные эффекты, создавая атмосферу ностальгии и старинности.
 
-![Готовые промты для нейросети Миджорни](/Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-20.jpg)
+![Готовые промты для нейросети Миджорни](../../Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-20.jpg)
 
 **Prompt:** A futuristic landscape featuring robotic art, smooth colors blending harmoniously, intricate mechanical structures, and a serene atmosphere.
 
@@ -299,7 +299,7 @@ _
 - "intricate mechanical structures": добавляет элемент сложности и детализации, указывая на то, что механические элементы должны быть детально проработаны.
 - "serene atmosphere": создает общее настроение, указывая на то, что сцена должна быть спокойной и умиротворяющей.
 
-![Готовые промты для нейросети Миджорни](/Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-22.jpg)
+![Готовые промты для нейросети Миджорни](../../Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-22.jpg)
 
 **Prompt:** An abstract composition showcasing augmented art with smooth colors, featuring flowing shapes and gradients that blend harmoniously, evoking a sense of movement and depth, inspired by modern digital aesthetics.
 
@@ -312,7 +312,7 @@ _
 - "evoking a sense of movement and depth": добавляет эмоциональный аспект, который должен быть передан через изображение.
 - "inspired by modern digital aesthetics": указывает на современный стиль, что помогает нейросети лучше понять контекст.
 
-![Готовые промты для нейросети Миджорни](/Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-21.jpg)
+![Готовые промты для нейросети Миджорни](../../Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-21.jpg)
 
 **Prompt:** A futuristic landscape depicting virtual reality art, featuring smooth colors and abstract shapes, immersing the viewer in a digital dreamscape, with glowing elements and fluid forms.
 
@@ -324,7 +324,7 @@ _
 - "immersing the viewer in a digital dreamscape": добавляет ощущение погружения и мечтательной атмосферы.
 - "with glowing elements and fluid forms": дополнительно уточняет визуальные детали, подчеркивая яркость и текучесть форм.
 
-![Готовые промты для нейросети Миджорни](/Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-17.jpg)
+![Готовые промты для нейросети Миджорни](../../Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-17.jpg)
 
 **Prompt:** A vibrant mural art on the exterior wall of a house, featuring smooth colors and abstract shapes, showcasing a harmonious blend of nature and urban life.
 
@@ -335,7 +335,7 @@ _
 - "featuring smooth colors": акцентирует внимание на желаемой текстуре цветов, что подразумевает отсутствие резких переходов и градиентов.
 - "abstract shapes, showcasing a harmonious blend of nature and urban life": добавляет элементы, которые должны быть изображены, и определяет тематику, создавая образ, который соединяет природу с городской средой.
 
-![Готовые промты для нейросети Миджорни](/Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-16.jpg)
+![Готовые промты для нейросети Миджорни](../../Media/Pictures/Prompts_Midjourney/Готовые_промты_для_нейросети_Миджорни-16.jpg)
 
 **Prompt:** A futuristic sculpture made with 3D printing technology, featuring smooth colors and intricate patterns, set against a minimalist background, showcasing the beauty of modern art.
 
