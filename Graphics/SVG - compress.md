@@ -11,14 +11,14 @@
 
   Для сравнения результатов приложений, я взял следующее [изображение](http://rghost.ru/47113149).  
   
-![|700](/Media/Pictures/SVG/image_1.png)
+![|700](../Media/Pictures/SVG/image_1.png)
 
   
 Изображение сохранено с помощью Adobe Illustrator CS6.  
   
 **Параметры SVG**
 
-![|700](/Media/Pictures/SVG/image_2.png)
+![|700](../Media/Pictures/SVG/image_2.png)
   
 Размер изображения — **6 279 219 байт**  
 

@@ -13,18 +13,18 @@ sudo apt install plasma-wallpapers-addons
 
 >Если появится запрос на настройку SDDM, нажмите ENTER или OK, как показано на картинке.
 
-[![Диспетчер KDE|800](/Media/Pictures/Kali_KDE/image_1.png)](https://spy-soft.net/wp-content/uploads/configuring-kde-.png)
+[![Диспетчер KDE|800](../../Media/Pictures/Kali_KDE/image_1.png)](https://spy-soft.net/wp-content/uploads/configuring-kde-.png)
 
 >Следующее окно предлагает сделать SDDM менеджером отображения по умолчанию. Выберите SDDM и нажмите ENTER.
 
-[![Настройка sddm в качестве среды рабочего стола по умолчанию|800](/Media/Pictures/Kali_KDE/image_2.png)](https://spy-soft.net/wp-content/uploads/configuring-ssdm-on-kde.png)
+[![Настройка sddm в качестве среды рабочего стола по умолчанию|800](../../Media/Pictures/Kali_KDE/image_2.png)](https://spy-soft.net/wp-content/uploads/configuring-ssdm-on-kde.png)
 
 >Затем необходимо выполнить команду:
 ```shell
 sudo update-alternatives --config x-session-manager
 ```
 
-[![Установка KDE Kali Linux. X менеджер сеансов|800](/Media/Pictures/Kali_KDE/image_3.png)](https://spy-soft.net/wp-content/uploads/x-session-manager.png)
+[![Установка KDE Kali Linux. X менеджер сеансов|800](../../Media/Pictures/Kali_KDE/image_3.png)](https://spy-soft.net/wp-content/uploads/x-session-manager.png)
 На приведенном выше скрине видно, что выбран менеджер сеансов (*), то есть XFCE. Выбираем 1 и жмем ENTER.
 
 >Теперь надо перезагрузить систему. Сделать это можно и с помощью команды:
@@ -34,7 +34,7 @@ sudo reboot
 
 >После перезагрузки мы окажемся в среде рабочего стола KDE.
 
-[![Среда рабочего стола KDE Kali Linux|800](/Media/Pictures/Kali_KDE/image_4.jpeg)](https://spy-soft.net/wp-content/uploads/kde-desktop-environment-on-kali-linux.jpg)
+[![Среда рабочего стола KDE Kali Linux|800](../../Media/Pictures/Kali_KDE/image_4.jpeg)](https://spy-soft.net/wp-content/uploads/kde-desktop-environment-on-kali-linux.jpg)
 
 Вот как просто мы можем установить KDE на [Kali Linux](https://spy-soft.net/kali-linux-live-usb-persistence/). Это настолько просто, что с этим легко справится каждый. Хотя KDE очень продвинутый по сравнению с XFCE, он не такой легкий, как XFCE, из-за этого вы можете почувствовать проседание в производительности.
 

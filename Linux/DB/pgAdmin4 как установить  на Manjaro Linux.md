@@ -11,7 +11,7 @@ ssss**pgAdmin4** - это клиент для баз данных PostgreSQL, в
 sudo pacman -S postgresql
 ```
 
-![|500](/Media/Pictures/pgAdmin4/image_1.png)
+![|500](../../Media/Pictures/pgAdmin4/image_1.png)
 
 **Шаг 2:** Войдите в систему как пользователь postgres с помощью команды, приведенной ниже.
 
@@ -19,7 +19,7 @@ sudo pacman -S postgresql
 sudo -u postgres -i
 ```
 
-![400](/Media/Pictures/pgAdmin4/image_2.png)
+![400](../../Media/Pictures/pgAdmin4/image_2.png)
 
 После входа в postgres вам необходимо создать кластер PostgreSQL, выполнив приведенную ниже команду.
 
@@ -27,7 +27,7 @@ sudo -u postgres -i
 initdb --locale $LANG -E UTF8 -D '/var/lib/postgres/data/'
 ```
 
-![|500](/Media/Pictures/pgAdmin4/image_3.png)
+![|500](../../Media/Pictures/pgAdmin4/image_3.png)
 
 **Шаг 3:** Перезагрузите свой терминал, а затем используйте следующую команду, чтобы включить службу postgres.
 
@@ -35,7 +35,7 @@ initdb --locale $LANG -E UTF8 -D '/var/lib/postgres/data/'
 sudo systemctl enable postgresql
 ```
 
-![|500](/Media/Pictures/pgAdmin4/image_4.png)
+![|500](../../Media/Pictures/pgAdmin4/image_4.png)
 
 После включения проверьте статус службы, чтобы убедиться, запущена она или нет.
 
@@ -43,7 +43,7 @@ sudo systemctl enable postgresql
 sudo systemctl status postgresql
 ```
 
-![|500](/Media/Pictures/pgAdmin4/image_5.png)
+![|500](../../Media/Pictures/pgAdmin4/image_5.png)
 
 **Шаг 4:** Этот шаг содержит несколько команд, которые связаны с настройками безопасности postgres.
 
@@ -51,7 +51,7 @@ sudo systemctl status postgresql
 psql -U postgres
 ```
 
-![|300](/Media/Pictures/pgAdmin4/image_6.png)
+![|300](../../Media/Pictures/pgAdmin4/image_6.png)
 
 После доступа к оболочке postgres введите “**\password**”, чтобы установить пароль. Выберите пароль и введите его еще раз для подтверждения:
 
@@ -59,11 +59,11 @@ psql -U postgres
 \password
 ```
 
-![250](/Media/Pictures/pgAdmin4/image_7.png)
+![250](../../Media/Pictures/pgAdmin4/image_7.png)
 
 Теперь выйдите из оболочки postgres, набрав «**\\q**». Рекомендуется записать имя пользователя и пароль, поскольку они потребуются при подключении к pgAdmin4.
 
-![250](/Media/Pictures/pgAdmin4/image_8.png)
+![250](../../Media/Pictures/pgAdmin4/image_8.png)
 
 ## Установка pgAdmin4 Manjaro Linux
 
@@ -76,7 +76,7 @@ sudo mkdir /var/lib/pgadmin
 sudo mkdir /var/log/pgadmin
 ```
 
-![|350](/Media/Pictures/pgAdmin4/image_9.png)
+![|350](../../Media/Pictures/pgAdmin4/image_9.png)
 
 **Шаг 2 :** Измените владельца файлов с помощью приведенных ниже команд.
 
@@ -86,7 +86,7 @@ sudo chown $USER /var/lib/pgadmin
 sudo chown $USER /var/log/pgadmin
 ```
 
-![|350](/Media/Pictures/pgAdmin4/image_10.png)
+![|350](../../Media/Pictures/pgAdmin4/image_10.png)
 
 **Шаг 3.** Создайте виртуальную среду на основе Python, введя команду, описанную ниже.
 
@@ -94,7 +94,7 @@ sudo chown $USER /var/log/pgadmin
 python3 -m venv pgadmin4
 ```
 
-![|300](/Media/Pictures/pgAdmin4/image_11.png)
+![|300](../../Media/Pictures/pgAdmin4/image_11.png)
 
 Активируйте среду с помощью команды, написанной ниже.
 
@@ -102,7 +102,7 @@ python3 -m venv pgadmin4
 source pgadmin4/bin/activate
 ```
 
-![600](/Media/Pictures/pgAdmin4/image_12.png)
+![600](../../Media/Pictures/pgAdmin4/image_12.png)
 
 **Шаг 4 :** Теперь выполните следующую команду, чтобы установить pgAdmin4.
 
@@ -110,7 +110,7 @@ source pgadmin4/bin/activate
 pip install pgadmin4
 ```
 
-![|600](/Media/Pictures/pgAdmin4/image_13.png)
+![|600](../../Media/Pictures/pgAdmin4/image_13.png)
 
 **Шаг 5 :** Перейдите к pgAdmin4 и запустите службу pgAdmin4 с помощью приведенной ниже команды.
 
@@ -118,7 +118,7 @@ pip install pgadmin4
 cd pgadmin4
 ```
 
-![|300](/Media/Pictures/pgAdmin4/image_14.png)
+![|300](../../Media/Pictures/pgAdmin4/image_14.png)
 
 После выполнения указанной ниже команды вам будет предложено ввести адрес электронной почты и пароль, которые будут использоваться для входа в веб-интерфейс.
 
@@ -126,19 +126,19 @@ cd pgadmin4
 pgadmin4
 ```
 
-![|600](/Media/Pictures/pgAdmin4/image_15.png)
+![|600](../../Media/Pictures/pgAdmin4/image_15.png)
 
 Обратите внимание, что вывод уведомляет вас о переходе по адресу [**https://127.0.0.1:5050**](https://127.0.0.1:5050)**.** Введите адрес в любом браузере и вы увидите следующий интерфейс. Где появится приглашение для входа. Используйте адрес электронной почты и пароль, которые вы выбрали в предыдущих шагах.
 
-![|700](/Media/Pictures/pgAdmin4/image_16.png)
+![|700](../../Media/Pictures/pgAdmin4/image_16.png)
 
 После успешного входа интерфейс представлен ниже. Нажмите «**Add New Server**», чтобы добавить новый сервер для ваших баз данных postgres.
 
-![|700](/Media/Pictures/pgAdmin4/image_17.png)
+![|700](../../Media/Pictures/pgAdmin4/image_17.png)
 
 На вкладке «**General**» введите имя сервера, например, мы установили его на «**linuxhint**».
 
-![|400](/Media/Pictures/pgAdmin4/image_18.png)
+![|400](../../Media/Pictures/pgAdmin4/image_18.png)
 
 Для дальнейших конфигураций перейдите на следующую вкладку под названием «**Connection**», здесь вы должны ввести следующие параметры:
 
@@ -147,38 +147,38 @@ pgadmin4
 
 После этого перейдите к опции «**Save**»;
 
-![|400](/Media/Pictures/pgAdmin4/image_19.png)
+![|400](../../Media/Pictures/pgAdmin4/image_19.png)
 
 После сохранения сервер «**linuxhint**» можно увидеть на «**Dashboard**» pgAdmin4. На вкладке «**linuxhint**» вы увидите базы данных по умолчанию, роли входа для пользователей.
 
-![|700](/Media/Pictures/pgAdmin4/image_20.png)
+![|700](../../Media/Pictures/pgAdmin4/image_20.png)
 
 **Создайте базу данных с помощью pgAdmin4 :** Чтобы создать базу данных, щелкните правой кнопкой мыши «**Databases**», а затем перейдите к «**Create**», а затем к опции «**Databases…**».
 
-![|400](/Media/Pictures/pgAdmin4/image_21.png)
+![|400](../../Media/Pictures/pgAdmin4/image_21.png)
 
 Выберите имя и нажмите «**Save**», чтобы создать базу данных.
 
-![|500](/Media/Pictures/pgAdmin4/image_22.png)
+![|500](../../Media/Pictures/pgAdmin4/image_22.png)
 
 Вы увидите, что «**linux_db**» создан, но еще не подключен:
 
-![|350](/Media/Pictures/pgAdmin4/image_23.png)
+![|350](../../Media/Pictures/pgAdmin4/image_23.png)
 
 Чтобы подключить базу данных к серверу, щелкните имя базы данных, и вы получите сообщение о подключении к базе данных, которое показывает, что ваша база данных подключена.
 
-![|600](/Media/Pictures/pgAdmin4/image_24.png)
+![|600](../../Media/Pictures/pgAdmin4/image_24.png)
 
 **Создайте таблицу в базе данных с помощью pgAdmin :** Для создания таблиц вы должны найти опцию таблиц в этой базе данных. Для этого выполните следующие действия:
 
 - Нажмите на базу данных, а затем найдите «**Schemas**» в этом раскрывающемся меню.
 - В схемах откройте схему «**public**» и прокрутите вниз, вы увидите параметр «**Tables**» и щелкните его правой кнопкой мыши, чтобы создать новую таблицу.
 
-![|400](/Media/Pictures/pgAdmin4/image_25.png)
+![|400](../../Media/Pictures/pgAdmin4/image_25.png)
 
 После этого вам нужно выбрать имя для этой таблицы (**distributions** в нашем случае):
 
-![|500](/Media/Pictures/pgAdmin4/image_26.png)
+![|500](../../Media/Pictures/pgAdmin4/image_26.png)
 
 Чтобы добавить столбцы, необходимо перейти на вкладку «**Columns**» и выполнить следующие шаги.
 
@@ -186,11 +186,11 @@ pgadmin4
 - (**Необязательно**) Установите переключатель во включенное положение, если столбец является первичным ключом.
 - После этого нажмите **Save**, чтобы успешно создать столбцы и таблицы.
 
-![|500](/Media/Pictures/pgAdmin4/image_27.png)
+![|500](../../Media/Pictures/pgAdmin4/image_27.png)
 
 После создания таблиц и столбцов вы можете просмотреть их, перейдя к «**Schemas**», а затем в схеме «**public**» вы можете просмотреть таблицу «**distributions**».
 
-![|250](/Media/Pictures/pgAdmin4/image_28.png)
+![|250](../../Media/Pictures/pgAdmin4/image_28.png)
 
 ## Заключение
 

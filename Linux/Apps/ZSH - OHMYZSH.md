@@ -8,7 +8,7 @@ debugInConsole: false # Print debug info in Obsidian console
 ```
 ---
 
-![|800](/Media/Pictures/ZSH/image_1.png)
+![|800](../../Media/Pictures/ZSH/image_1.png)
 ## Шрифты
 
 >Для ARCH подходят

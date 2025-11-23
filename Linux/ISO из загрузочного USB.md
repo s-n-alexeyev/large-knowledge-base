@@ -10,7 +10,7 @@ df -hT
 ```
 ##### Пример вывода:
 
-[![df|800](/Media/Pictures/ISO_From_USB/image_1.png)](https://blog.sedicomm.com/wp-content/uploads/2019/05/izobrazhenie_2021-02-08_193704.png)
+[![df|800](../../Media/Pictures/ISO_From_USB/image_1.png)](https://blog.sedicomm.com/wp-content/uploads/2019/05/izobrazhenie_2021-02-08_193704.png)
 Из приведенного выше вывода видно, что имя подключенного **USB**-устройства — **/dev/sdb1**.
 
 >Теперь вы можете выполнить следующую **команду, чтобы создать **ISO-образ** с загрузочного **USB**-накопителя, как показано ниже. Обязательно замените **/dev/sdb1** на ваш **USB**-накопитель и **/home/user/windows.iso** на полное имя нового образа **ISO:**
@@ -44,6 +44,6 @@ sudo pacman -S gnome-disk-utility   #Arch/Manjaro
 
 После успешной установки **Gnome Disks** найдите и откройте его из системного меню. Затем в интерфейсе по умолчанию выберите загрузочное устройство из списка подключенных устройств на панели слева, щелкнув по нему и выбрав параметры диска. Затем нажмите кнопку «**Create Disk Image**», как показано на следующем рисунке:
 
-[![|800](/Media/Pictures/ISO_From_USB/image_2.png)](https://blog.sedicomm.com/wp-content/uploads/2019/05/izobrazhenie_2021-02-08_194103.png)
+[![|800](../../Media/Pictures/ISO_From_USB/image_2.png)](https://blog.sedicomm.com/wp-content/uploads/2019/05/izobrazhenie_2021-02-08_194103.png)
 
 В диалоговом окне укажите имя **ISO**-файла, его местоположение и нажмите «**Start creating**». Затем введите свой пароль, чтобы открыть загрузочное устройство, и если аутентификация прошла успешно, то процесс создания образа должен начаться.

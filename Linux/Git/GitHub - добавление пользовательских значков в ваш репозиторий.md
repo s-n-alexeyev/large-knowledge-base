@@ -12,17 +12,17 @@ debugInConsole: false # Print debug info in Obsidian console
 
 Если вы потратили время на просмотр репозиториев с открытым исходным кодом на GitHub, вы, вероятно, заметили, что большинство из них используют значки в своих файлах README. Возьмем, к примеру, официальный репозиторий React. По всему файлу README есть значки GitHub, которые сообщают важную динамическую информацию, например о последней выпущенной версии и о том, проходит ли текущая сборка.
 
-![|500](/Media/Pictures/GitHub_Badges/image_1.png)
+![|500](../../Media/Pictures/GitHub_Badges/image_1.png)
 
 Подобные значки предоставляют хороший способ выделить ключевую информацию о репозитории. Вы даже можете использовать свои собственные ресурсы в качестве значков, как это делает Next.js в своем репозитории.
 
-![|500](/Media/Pictures/GitHub_Badges/image_2.png)
+![|500](../../Media/Pictures/GitHub_Badges/image_2.png)
 
 Но самое полезное в значках GitHub — это то, что они обновляются _сами по себе_ . Вместо жесткого кодирования значений в вашем README значки в GitHub могут автоматически получать изменения с удаленного сервера.
 
 Давайте обсудим, как добавить динамические значки GitHub в файл README вашего собственного проекта. Мы начнем с использования онлайн-генератора [badgen.net](http://badgen.net/) для создания базовых значков. Затем мы сделаем наши значки динамическими, подключив их к нашей собственной бессерверной функции через [Napkin](http://napkin.io/) . Наконец, мы сделаем еще один шаг вперед, используя наши собственные файлы SVG.
 
-![|500](/Media/Pictures/GitHub_Badges/image_3.png)
+![|500](../../Media/Pictures/GitHub_Badges/image_3.png)
 
 ### Прежде всего: как работают значки?
 
@@ -57,7 +57,7 @@ https://badgen.net/badge/:subject/:status/:color?icon=github
 https://badgen.net/badge/hello/world/red?icon=twitter
 ```
 
-![|100](/Media/Pictures/GitHub_Badges/image_4.png)
+![|100](../../Media/Pictures/GitHub_Badges/image_4.png)
 
 ### Добавление значка GitHub в файл README
 
@@ -67,7 +67,7 @@ https://badgen.net/badge/hello/world/red?icon=twitter
 ![мой значок](https://badgen.net/badge/hello/world/red?icon=twitter)
 ```
 
-![|500](/Media/Pictures/GitHub_Badges/image_5.png)
+![|500](../../Media/Pictures/GitHub_Badges/image_5.png)
 
 Badgen предлагает множество различных опций, поэтому я советую вам зайти на их сайт и поиграть! Например, один из шаблонов позволяет вам показать, сколько раз был помечен определенный репозиторий GitHub. Вот , например, [значок stars GitHub для репозитория Next.js :](https://badgen.net/github/stars/vercel/next.js)
 
@@ -75,7 +75,7 @@ Badgen предлагает множество различных опций, п
 https://badgen.net/github/stars/vercel/next.js
 ```
 
-![|100](/Media/Pictures/GitHub_Badges/image_6.png)
+![|100](../../Media/Pictures/GitHub_Badges/image_6.png)
 
 Довольно круто! Но что, если вы хотите, чтобы на вашем значке отображалась информация, которую Badgen изначально не поддерживает? К счастью, у Badgen есть шаблон URL-адреса для использования ваших собственных конечных точек HTTPS для получения данных:
 
@@ -99,7 +99,7 @@ https://badgen.net/https/url/to/your/endpoint
 https://badgen.net/https/some-endpoint.example.com/bitcoin
 ```
 
-![|200](/Media/Pictures/GitHub_Badges/image_7.png)
+![|200](../../Media/Pictures/GitHub_Badges/image_7.png)
 
 Данные о стоимости биткойнов передаются прямо на значок GitHub.
 ### Badgen + Napkin
@@ -108,7 +108,7 @@ https://badgen.net/https/some-endpoint.example.com/bitcoin
 
 [Перейдите к примеру значка Bitcoin от Napkin,](https://napkin.io/examples/bitcoin-badge) чтобы увидеть пример конечной точки. Вы можете увидеть код для получения текущей цены биткойнов и возврата ее в формате JSON в редакторе. Вы можете запустить код самостоятельно из редактора или напрямую использовать конечную точку.
 
-![|700](/Media/Pictures/GitHub_Badges/image_8.png)
+![|700](../../Media/Pictures/GitHub_Badges/image_8.png)
 
 Чтобы использовать конечную точку с Badgen, работайте с той же схемой URL-адресов, описанной выше, только на этот раз с конечной точкой Napkin:
 
@@ -121,7 +121,7 @@ https://badgen.net/https/napkin-examples.npkn.net/bitcoin-badge
 ### Дополнительные способы настройки значков GitHub
 
 Далее давайте [разветвим эту функцию](https://napkin.io/examples/bitcoin-badge) , чтобы добавить к ней собственный код. Для этого нажмите кнопку «Вилка» в правом верхнем углу. Вам будет предложено создать учетную запись в Napkin, если вы еще не вошли в систему.
-![|700](/Media/Pictures/GitHub_Badges/image_9.png)
+![|700](../../Media/Pictures/GitHub_Badges/image_9.png)
 
 После успешного разветвления функции мы можем добавить любой код, какой захотим, используя любые модули npm. Давайте добавим [пакет npm Moment.js](https://www.npmjs.com/package/moment/v/1.1.0) и обновим ответ конечной точки, чтобы показать время последнего обновления цены биткойнов прямо в нашем значке GitHub:
 
@@ -151,12 +151,12 @@ export default async (req, res) => {
 }
 ```
 
-![|250](/Media/Pictures/GitHub_Badges/image_10.png)
+![|250](../../Media/Pictures/GitHub_Badges/image_10.png)
 
 Разверните функцию, обновите URL-адрес, и вот что мы получим.  
 Вы можете заметить, что обновление значка занимает некоторое время при следующей загрузке файла README на GitHub. Это связано с тем, что GitHub использует механизм прокси для предоставления изображений бейджей.
 
-![|700](/Media/Pictures/GitHub_Badges/image_11.png)
+![|700](../../Media/Pictures/GitHub_Badges/image_11.png)
 
 GitHub предоставляет изображения значков таким образом, чтобы предотвратить злоупотребления, такие как большой объем запросов или внедрение кода JavaScript. Мы не можем контролировать прокси-сервер GitHub, но, к счастью, он не кэширует слишком агрессивно (иначе это как бы противоречит цели значков). По моему опыту, TTL составляет около 5-10 минут.
 
@@ -165,11 +165,11 @@ GitHub предоставляет изображения значков таки
 Для нашего последнего трюка давайте воспользуемся Napkin, чтобы отправить обратно совершенно новый SVG, чтобы мы могли использовать собственные изображения, как мы видели в репозитории Next.js.  
 Распространенным вариантом использования значков GitHub является отображение текущего статуса веб-сайта. Давайте сделаем это. Вот два штата, которые будет поддерживать наш значок:
 
-![|150](/Media/Pictures/GitHub_Badges/image_12.png)
+![|150](../../Media/Pictures/GitHub_Badges/image_12.png)
 
 Badgen не поддерживает пользовательские SVG, поэтому вместо этого наш значок будет напрямую обращаться к нашей конечной точке Napkin. Давайте создадим для этого новую функцию Napkin под названием `site-status-badge`.
 
-![|700](/Media/Pictures/GitHub_Badges/image_13.png)
+![|700](../../Media/Pictures/GitHub_Badges/image_13.png)
 
 Код этой функции выполняет запрос к `example.com`. Если статус запроса равен 200, он возвращает зеленый значок в виде файла SVG; в противном случае возвращается красный значок. Вы можете [проверить функцию](https://napkin.io/examples/site-status-badge) , ниже видите этот код:
 
@@ -209,5 +209,5 @@ export default async (req, res) => {
 
 ![status up](https://napkin-examples.npkn.net/site-status-badge/) ![status down](https://napkin-examples.npkn.net/site-status-badge/400) 
 
-![|500](/Media/Pictures/GitHub_Badges/image_14.png)
+![|500](../../Media/Pictures/GitHub_Badges/image_14.png)
 

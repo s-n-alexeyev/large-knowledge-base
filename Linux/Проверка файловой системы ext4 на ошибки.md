@@ -4,7 +4,7 @@
 
 Далее находим нужный нам раздел, и видим, что корень диска находится в /dev/sda7 (Смотрите точку монтирования, она д.б. **/**)
 
-![pic 1|600](/Media/Pictures/Check_Filesystem/image_1.png)
+![pic 1|600](../../Media/Pictures/Check_Filesystem/image_1.png)
 
 Далее запускаем терминал и используем команду:
 
@@ -12,7 +12,7 @@
 sudo fsck.ext4 -p /dev/sda7
 ```
 
-![pic 2|600](/Media/Pictures/Check_Filesystem/image_2.png)
+![pic 2|600](../../Media/Pictures/Check_Filesystem/image_2.png)
 
 Да кстати, учтите, что нужный раздел не должен быть примонтирован. Если программа говорит что **filesytem is clean**, то используйте ключ **-f** (force). Если все пройдет ОК, система начнет загружаться.
 

@@ -15,7 +15,7 @@ debugInConsole: false # Print debug info in Obsidian console
   
 На схеме изображены основные этапы поднятия ApplicationContext. В этом посте мы остановимся на каждом из этих этапов. Какой-то этап будет рассмотрен подробно, а какой-то будет описан в общих чертах.  
  
-![Pic 1|500](/Media/Pictures/Spring_Inside/image_1.png)
+![Pic 1|500](../../Media/Pictures/Spring_Inside/image_1.png)
 
 #### 1. Парсирование конфигурации и создание BeanDefinition
 
@@ -122,7 +122,7 @@ public interface BeanFactoryPostProcessor {
   
 Давайте разберем одну из родных реализаций интерфейса _BeanFactoryPostProcessor_. Обычно, настройки подключения к базе данных выносятся в отдельный property файл, потом при помощи _PropertySourcesPlaceholderConfigurer_ они загружаются и делается inject этих значений в нужное поле. Так как inject делается по ключу, то до создания экземпляра бина нужно заменить этот ключ на само значение из property файла. Эта замена происходит в классе, который реализует интерфейс _BeanFactoryPostProcessor_. Название этого класса — _PropertySourcesPlaceholderConfigurer_. Весь этот процесс можно увидеть на рисунке ниже.  
   
-![Pic 2|800](/Media/Pictures/Spring_Inside/image_2.png)
+![Pic 2|800](../../Media/Pictures/Spring_Inside/image_2.png)
   
 Давайте еще раз разберем что же у нас тут происходит. У нас имеется _BeanDefinition_ для класса ClassName. Код класса приведен ниже.  
   
@@ -324,7 +324,7 @@ public class ColorFactory implements FactoryBean<Color> {
   
 Созданием экземпляров бинов занимается _BeanFactory_ при этом, если нужно, делегирует это кастомным _FactoryBean_. Экземпляры бинов создаются на основе ранее созданных _BeanDefinition_.  
   
-![Pic 3|600](/Media/Pictures/Spring_Inside/image_3.png)  
+![Pic 3|600](../../Media/Pictures/Spring_Inside/image_3.png)  
   
 
 #### 5. Настройка созданных бинов
@@ -351,7 +351,7 @@ public interface BeanPostProcessor {
   
 Процесс донастройки показан на рисунке ниже. Порядок в котором будут вызваны _BeanPostProcessor_ не известен, но мы точно знаем что выполнены они будут последовательно.  
   
-![Pic 4|700](/Media/Pictures/Spring_Inside/image_4.png)
+![Pic 4|700](../../Media/Pictures/Spring_Inside/image_4.png)
   
 Для того, что бы лучше понять для чего это нужно, давайте разберемся на каком-нибудь примере.  
   
