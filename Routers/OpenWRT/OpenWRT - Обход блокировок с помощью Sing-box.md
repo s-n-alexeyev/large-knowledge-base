@@ -864,7 +864,7 @@ exit 0
 
 при помощи текстового редактора, либо через Luci
 
-![|800](/Media/Pictures/OpenWRT_Sing-box/image_1.png)
+![|800](../..../../Media/Pictures/OpenWRT_Sing-box/image_1.png)
 
 Сохраняем изменения и создаём службу автозапуска для **sing-box**.
 

@@ -38,7 +38,7 @@ torctl ip
 sudo torctl start
 ```
 
-[![|500](/Media/Pictures/Torctl/torctl.png)
+[![|500](../../Media/Pictures/Torctl/torctl.png)
 
 >Для проверки статуса служб:
 ```shell

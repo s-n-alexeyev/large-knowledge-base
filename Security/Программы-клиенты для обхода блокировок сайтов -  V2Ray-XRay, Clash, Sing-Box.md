@@ -80,17 +80,17 @@ Github: [https://github.com/SagerNet/sing-box/](https://github.com/SagerNet/sin
 [https://github.com/2dust/v2rayN](https://github.com/2dust/v2rayN)  
 Наверное, самый олдовый и известный графический клиент под Windows. Написан на .NET 6 и WPF. На Гитхабе на странице релизов можно скачать архивы только с самим GUI, либо же GUI+ядра (“-With-Core”).
 
-![](/Media/Pictures/Clients-Obfuscation/824b4d235b9598e733d12683ef435fe3.png)
+![](../../Media/Pictures/Clients-Obfuscation/824b4d235b9598e733d12683ef435fe3.png)
 
 В качестве ядра по умолчанию используется последняя версия XRay, то есть поддерживаются Shadowsocks (включая 2022), VMess, VLESS, Trojan, и все фичи XTLS и uTLS. v2rayN может еще работать с  V2Ray, Clash, ClashMeta, hysteria, naiveproxy в качестве ядра клиента - правда, для ядер отличных от V2Ray/XRay редактировать конфиги в GUI-окошках не получится, можно только подсунуть готовый текстовый конфиг.
 
 Изначально клиент запускается на китайском языке, и нужно изловчиться переключить его на английский или русский:
 
-![](/Media/Pictures/Clients-Obfuscation/d7225374f1ba0eb0fee1d1775e8a6c98.png)
+![](../../Media/Pictures/Clients-Obfuscation/d7225374f1ba0eb0fee1d1775e8a6c98.png)
 
 Активация или деактивация прокси осуществляется выбором режима в нижней части окна или при щелчке правой кнопкой мыши на иконке в трее: Set system proxy - активирует доступ через прокси, Clear system proxy - деактивирует:
 
-![](/Media/Pictures/Clients-Obfuscation/aa915f86a4f18ac5d36ae5a7a5fa4e2b.png)
+![](../../Media/Pictures/Clients-Obfuscation/aa915f86a4f18ac5d36ae5a7a5fa4e2b.png)
 
 В TUN клиент, судя по всему, не умеет (если только вы не подсунете ему специально сгенерированный конфиг для Clash/ClashMeta/Sing-box). **Upd**: Комментарий от читателя: "Умеет TUN — для этого надо запускать его от имени Администратора и внизу окна программы появится переключатель Enable TUN"
 
@@ -102,7 +102,7 @@ Github: [https://github.com/SagerNet/sing-box/](https://github.com/SagerNet/sin
 
 Клиент под Windows на базе XRay ориентированный на простоту: минимум настроек, но можно подсунуть любой конфиг XRay, просто положив его в папочку с конфигами, и он появится в списке - после этого достаточно нажать кнопочку "~~Сделать~~ ~~зашибись~~" "Подключиться" и все работает. Активно развивается.
 
-![](/Media/Pictures/Clients-Obfuscation/6bd788ae9115f485be0ca44f8072b872.png)
+![](../../Media/Pictures/Clients-Obfuscation/6bd788ae9115f485be0ca44f8072b872.png)
 
 #### v2rayU
 
@@ -111,7 +111,7 @@ Github: [https://github.com/SagerNet/sing-box/](https://github.com/SagerNet/sin
 
 Основное взаимодействие с ним осуществляется через менюшку иконки в трее:
 
-![](/Media/Pictures/Clients-Obfuscation/7f0516cc4548dbad1630b82a4f65b0b1.png)
+![](../../Media/Pictures/Clients-Obfuscation/7f0516cc4548dbad1630b82a4f65b0b1.png)
 
 Поддерживает Shadowsocks (но не 2022!), VMess, VLESS, XTLS (но только старых версий, vision и reality в пролете), судя по всему не умеет менять TLS identity, TUN-режима тоже нет.
 
@@ -126,11 +126,11 @@ Github: [https://github.com/SagerNet/sing-box/](https://github.com/SagerNet/sin
 
 В одной Github-репе ([https://github.com/Qv2ray/Qv2ray](https://github.com/Qv2ray/Qv2ray)) лежит версия 2.7.0, в другой Github-репележит версия 2.7.0 и release candidate версии 3.0.0, и автор жалуется, что какие-то злые люди украли у него доступ от старой репы.
 
-![](/Media/Pictures/Clients-Obfuscation/827b57a116e6c45012cbb11ae2f051b3.png)
+![](../../Media/Pictures/Clients-Obfuscation/827b57a116e6c45012cbb11ae2f051b3.png)
 
 Клиент выглядит неплохо, если бы не одно НО - во-первых он поддерживает только то, что поддерживает классический V2Ray, а про XRay автор пишет “...No Such Word In My Dictionary”. А во-вторых, у меня он так и не заработал.
 
-![](/Media/Pictures/Clients-Obfuscation/aeb80d6f0a554786466b48e4d475fb55.png)
+![](../../Media/Pictures/Clients-Obfuscation/aeb80d6f0a554786466b48e4d475fb55.png)
 
 Для версии 2.7.0 нужно подсунуть по определенному пути бинарник v2ray, для версии 3.0.0 уже не надо (там есть встроенный V2Ray-плагин), но результат одинаковый - при настройке подключения (что ShadowSocks, что VLess) и попытке запустить прокси, клиент выплевывает ошибку, мол, извини, не получилось - причем вообще без каких-либо подробностей. Каких-дибо информации об ошибке не выводится, логов в окне не отображается, логов в файлах в папке с программой нет, включить логгирование в настройках каким-то образом нельзя. Тупик. Короче, не рекомендую.
 
@@ -141,11 +141,11 @@ Github: [https://github.com/SagerNet/sing-box/](https://github.com/SagerNet/sin
 
 Clash for Windows - как следует из названия, работает на базе Clash, но как не следует из названия, работает не только под Windows, но и под macOS и Linux.
 
-![](/Media/Pictures/Clients-Obfuscation/368e604bb97cae4521c1af267bc1a450.png)
+![](../../Media/Pictures/Clients-Obfuscation/368e604bb97cae4521c1af267bc1a450.png)
 
 Конфиги принимает только в формате Clash, настроить сервер ручками через интерфейс нельзя, только вручную писать YAML-код.
 
-![](/Media/Pictures/Clients-Obfuscation/9d13dbcb70b5cddfea25eb6dab269983.png)
+![](../../Media/Pictures/Clients-Obfuscation/9d13dbcb70b5cddfea25eb6dab269983.png)
 
 Clash for Windows написан на Electron, поэтому один только его дистрибутив в распакованном виде на диске занимает 277 мегабайт, и памяти жрет соответствующе.
 
@@ -167,9 +167,9 @@ Clash for Windows написан на Electron, поэтому один толь
 
 **NekoRay**, он же **NekoBox**. В качестве ядра может использовать сразу и v2ray и sing-box - нужную опцию можно выбрать в настройках, после этого клиент перезапускается, меняет свое имя в заголовке окна и немного изменяется интерфейс настроек в зависимости от выбранного ядра.
 
-![](/Media/Pictures/Clients-Obfuscation/2dfa77a2556d13742afaeb4561c30beb.png)
+![](../../Media/Pictures/Clients-Obfuscation/2dfa77a2556d13742afaeb4561c30beb.png)
 
-![](/Media/Pictures/Clients-Obfuscation/7d4de60daa83ebc0315c1a5afc405dc3.png)
+![](../../Media/Pictures/Clients-Obfuscation/7d4de60daa83ebc0315c1a5afc405dc3.png)
 
 Написан на Qt, поэтому компактен, быстр и приятно выглядит, кроссплатформенный (Windows, MacOS, Linux).
 
@@ -179,7 +179,7 @@ Clash for Windows написан на Electron, поэтому один толь
 
 Поддерживает все то что поддерживают  V2Ray и Sing-box (Shadowsocks-2022, VMess, VLESS, Trojan, XTLS, uTLS, Hysteria и даже Wireguard и SSH). Даже если каких-то опций нет в интерфейсе, можно докидывать конфигурационные параметры ручками, например, чтобы активировать XTLS Vision, можно в настройках сервера нажать на “Custom JSON Settings” и добавить там соответствующую строчку "flow": "xtls-rprx-vision" (**Upd**: в новой версии поддержку опции запилили в интерфейсе, хак больше не нужен)
 
-![](/Media/Pictures/Clients-Obfuscation/d37e9746fbd32cba2f714cc496a1886b.png)
+![](../../Media/Pictures/Clients-Obfuscation/d37e9746fbd32cba2f714cc496a1886b.png)
 
 Благодаря этому можно использовать даже протоколы и фичи, которые не перечислены в UI Nekobox, но поддерживаются ядром Sing-box, например, можно [настроить подключение по SSH](https://github.com/MatsuriDayo/nekoray/issues/373#issuecomment-1426950636) и оно будет отображаться и работать точно так же как и другие сервера. Ещё можно подключать дополнительные cores, например, Naiveproxy.
 
@@ -199,7 +199,7 @@ Clash for Windows написан на Electron, поэтому один толь
 
 Одно НО - вручную вбивать настройки сервера нельзя, только импорт по ссылке или по подписке (можно вбить в Nekobox, сгенерить ссылку, и потом скопипастить в Hiddify-Next).
 
-![](/Media/Pictures/Clients-Obfuscation/5289820ffca3a2d5a45d8f1a4444ad4b.png)
+![](../../Media/Pictures/Clients-Obfuscation/5289820ffca3a2d5a45d8f1a4444ad4b.png)
 
 #### Что использовать на десктопе?
 
@@ -220,7 +220,7 @@ Clash for Windows написан на Electron, поэтому один толь
 
 Один из самых популярных Android-клиентов. XRay в качестве ядра. Соответственно, может быть клиентом Shadowsocks, VMess, VLESS, Trojan и все остальное что умеет XRay, в том числе uTLS и  XTLS. Версии в Google Play немного отстают, на Github лежат самые свежие APK - например, версия из Google Play пока еще не поддерживает XTLS-Reality, а APK-шка с гитхаба - уже да.
 
-![](/Media/Pictures/Clients-Obfuscation/ee9b4eb972cc6c63b097d3ec0e30ca69.png)
+![](../../Media/Pictures/Clients-Obfuscation/ee9b4eb972cc6c63b097d3ec0e30ca69.png)
 
 Единственная проблема: у меня v2rayNG почему-то не смог соединиться с сервером через VLESS + XTLS-Vision (и версия из стора, и самая новая с гитхаба). Без Vision все окей, с Vision - не работает. Причем наврядли проблема в настройках или в сервере, потому что другие клиенты с использоваием той же самой ссылки и того же QR-кода подключились к тому же серверу вполне нормально. **Upd**: Я еще немного покопал, и кажется понял. При установке uTLS как "android" подключение фейлится, при установке uTLS как "chrome" - все работает. Не совсем понятно, это баг на стороне v2RayNG или на стороне XRay, но баг интересный.
 
@@ -253,7 +253,7 @@ Matsuri - форк SagerNet (в чем именно различия не раз
 Тот самый Nekobox, про который уже писали выше в главе про десктопные клиенты, только под Android. Sing-box в качестве ядра, поддерживает все что нужно на сегодняшний день, в том числе XTLS-Vision (работает без проблем) и XTLS-Reality.  
 Интерфейс очень похож на SagerNet (автор до этого разрабатывал его форк Matsuri), все что надо под рукой и все работает.
 
-![](/Media/Pictures/Clients-Obfuscation/45934de0dea20b71a88df1f110b0057d.png)
+![](../../Media/Pictures/Clients-Obfuscation/45934de0dea20b71a88df1f110b0057d.png)
 
 #### Hiddify-Next
 
@@ -263,7 +263,7 @@ Matsuri - форк SagerNet (в чем именно различия не раз
 
 Как и на десктопе, одно НО - вручную вбивать настройки сервера нельзя, только импорт по QR-коду, ссылке или по подписке (можно вбить в Nekobox, сгенерить QR или ссылку, и потом использовать в Hiddify-Next).
 
-![](/Media/Pictures/Clients-Obfuscation/e7dbdb3b81a360885448a3211bca9a92.png)
+![](../../Media/Pictures/Clients-Obfuscation/e7dbdb3b81a360885448a3211bca9a92.png)
 
 #### Что использовать на Android?
 
@@ -282,12 +282,12 @@ Matsuri - форк SagerNet (в чем именно различия не раз
 [https://apps.apple.com/us/app/shadowrocket/id932747118](https://apps.apple.com/us/app/shadowrocket/id932747118)   
 Один из старейших клиентов до сих пор на коне.
 
-![](/Media/Pictures/Clients-Obfuscation/74ae3623a57b1774ee6dddbdc828363f.png)
+![](../../Media/Pictures/Clients-Obfuscation/74ae3623a57b1774ee6dddbdc828363f.png)
 
   
 На каком ядре основан - не понятно, но поддерживает Shadowsocks (включая 2022), VMess, VLESS, Trojan, TUIC, Hysteria, WireGuard, XTLS-Vision (Reality пока еще нет, но будем надеяться что скоро). В отличие от многих других клиентов, настройки TLS fingerprint в окне параметров сервера нет, и можно подумать, что он клиент не поддерживает uTLS - но нет, все в порядке, просто оно настраивается там не индивидуально для каждого сервера, а в общих настройках приложения (и это даже логично). Позволяет довольно гибко настраивать правила маршрутизации ([пример](https://habr.com/ru/articles/735536/comments/#comment_25585720)).
 
-![](/Media/Pictures/Clients-Obfuscation/2a71c583b26ebcfb174dbe8241a2a2d7.png)
+![](../../Media/Pictures/Clients-Obfuscation/2a71c583b26ebcfb174dbe8241a2a2d7.png)
 
 Работает даже на старых устройствах (с iOS <16). Работает без проблем. Своих денег (2.99$) однозначно стоит, но если хочется бесплатно - читайте дальше.
 
@@ -312,16 +312,16 @@ Matsuri - форк SagerNet (в чем именно различия не раз
 
 В теории должен работать и на десктопной macOS, я не проверял.
 
-![](/Media/Pictures/Clients-Obfuscation/3a68abccae971233f2d05723818ca904.png)
+![](../../Media/Pictures/Clients-Obfuscation/3a68abccae971233f2d05723818ca904.png)
 
 #### Wings X / FoXray
 
 А вот это отличный клиент под iOS (версии не ниже 16) на базе XRay-core.  
 Умеет всё то, что поддерживает свежий XRay-core: VLESS, Socks, VMess, Shadowsocks, Trojan поверх TCP, TLS, WebSocket, mKCP, gRPC, HTTP/2, QUIC. И да, свежая версия поддерживает XTLS, в том числе Reality. 
 
-![](/Media/Pictures/Clients-Obfuscation/94be19c65eb63c28be002d027ae47de5.png)
+![](../../Media/Pictures/Clients-Obfuscation/94be19c65eb63c28be002d027ae47de5.png)
 
-![](/Media/Pictures/Clients-Obfuscation/0f76a1282be4043168592cb9071e4fe6.png)
+![](../../Media/Pictures/Clients-Obfuscation/0f76a1282be4043168592cb9071e4fe6.png)
 
 Заявлена поддержка форматов подписок v2rayN и Clash, поддержка формата QR-кодов v2rayNG, а также своего варианта для шэринга серверов со всеми настройками (включая правила и маршруты).
 
@@ -335,7 +335,7 @@ Matsuri - форк SagerNet (в чем именно различия не раз
 Новый клиент для macOS и iOS на базе XRay.  
 [https://apps.apple.com/us/app/streisand/id6450534064?platform=iphone](https://apps.apple.com/us/app/streisand/id6450534064?platform=iphone)
 
-![](/Media/Pictures/Clients-Obfuscation/24537857f31ed21677b4dc60259289b4.png)
+![](../../Media/Pictures/Clients-Obfuscation/24537857f31ed21677b4dc60259289b4.png)
 
 Я еще не пользовался, но люди пишут, что все что надо есть, и работает более стабильно чем FoxRay.
 

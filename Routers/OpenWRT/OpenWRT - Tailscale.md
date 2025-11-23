@@ -115,9 +115,9 @@ tailscale up --advertise-routes=10.0.0.0/24,10.0.1.0/24 --accept-routes --advert
 
 - Open the [Machines](https://login.tailscale.com/admin/machines "https://login.tailscale.com/admin/machines") page in the Tailscale admin interface. Once you've found the machine from the ellipsis icon menu, open the `Edit route settings..` panel, and approve exported routes and or enable the `Use as exit node` option.
 
-![|200](/Media/Pictures/OpenWRT_Tailscale/d5ed117ab6ce0c0a9aa84a58495a2e45_MD5.png)
+![|200](../../Media/Pictures/OpenWRT_Tailscale/d5ed117ab6ce0c0a9aa84a58495a2e45_MD5.png)
 
-![|400](/Media/Pictures/OpenWRT_Tailscale/ddc755ae943b13551472b17a4fbd7d0b_MD5.png)
+![|400](../../Media/Pictures/OpenWRT_Tailscale/ddc755ae943b13551472b17a4fbd7d0b_MD5.png)
 
 - Устройства на любом подсети должны иметь возможность маршрутизировать трафик через VPN. Если вы настроили это устройство как выходной узел, оно теперь будет доступно в вашем приложении Tailscale как `Выходной Узел`. Вы можете проверить подключение с помощью инструментов типа `ping` или `traceroute`.
 

@@ -100,17 +100,17 @@ luci-proto-amneziawg.ipk (либо luci-app-amneziawg.ipk)
 
 В текущем окне `Network/Interfaces` нажмите кнопку `Save & Apply`, что бы ваши настройки сохранились и применились.
 
-![](/Media/Pictures/OpenWRT_AmneziaWG/a4053d4c749473542a983948da4edb06_MD5.png)
+![](../../Media/Pictures/OpenWRT_AmneziaWG/a4053d4c749473542a983948da4edb06_MD5.png)
 
 После добавления нового интерфейса AWG на страничке `Status/AmneziaWG` (либо на `VPN/AmneziaWG`) появится новое соединение с именем "my_router".
 
 При правильной настройке и работающем VDS-сервере сражу же должны появиться удачные рукопожатия (Latest handshake).
 
-![](/Media/Pictures/OpenWRT_AmneziaWG/ea1f45f786ca686154823ea71de050db_MD5.png)
+![](../../Media/Pictures/OpenWRT_AmneziaWG/ea1f45f786ca686154823ea71de050db_MD5.png)
 
 Для проверки работоспособности можно в терминале ввести команду `ping -I AWG facebook.com`
 
-![](/Media/Pictures/OpenWRT_AmneziaWG/6fc8af2d0b08f076e84c4013d36e81da_MD5.png)
+![](../../Media/Pictures/OpenWRT_AmneziaWG/6fc8af2d0b08f076e84c4013d36e81da_MD5.png)
 
 ## Network/Firewall/General Settings
 
@@ -136,7 +136,7 @@ luci-proto-amneziawg.ipk (либо luci-app-amneziawg.ipk)
 
 Теперь в разделе `Zones` можно наблюдать новые правила для трафика.
 
-![](/Media/Pictures/OpenWRT_AmneziaWG/4d0c191f28ccef264772fc85a9759ec3_MD5.png)
+![](../../Media/Pictures/OpenWRT_AmneziaWG/4d0c191f28ccef264772fc85a9759ec3_MD5.png)
 
 **После этого можно приступать к настройке `RuAntiBlock`, либо к настройке [podkop](https://podkop.net/docs/install/)'а.**
 
