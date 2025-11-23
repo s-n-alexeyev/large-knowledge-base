@@ -2,7 +2,7 @@
 
 [Оригинальная документация]()
 
-![](/Media/Pictures/Keenetic_AmneziaWG/logo-with-a-w-glow.svg)
+![](../../Media/Pictures/Keenetic_AmneziaWG/logo-with-a-w-glow.svg)
 # Установка VPN с AmneziaWG на роутеры Keenetic
 
 
@@ -15,37 +15,37 @@
 Имя пользователя по умолчанию: admin.  
 Если вам не известен пароль, в некоторых случаях он может быть указан на обратной стороне роутера. Часто встречаются простые пароли по-умолчанию, например, admin или 1234.
 
-![](/Media/Pictures/Keenetic_AmneziaWG/01_Enter_old-274c2c30c6edd21cef8edeca824f6f64.png)
+![](../../Media/Pictures/Keenetic_AmneziaWG/01_Enter_old-274c2c30c6edd21cef8edeca824f6f64.png)
 
 **Шаг 2**
 
 Сразу после авторизации, перейдите в раздел "Управление", далее "Параметры системы", разверните пункт "startup-config" и сохраните резервную копию нынешних настроек вашего роутера.
 
-![](/Media/Pictures/Keenetic_AmneziaWG/02_Backup-ec8bf7d03165a8bb6525db34f1b6c880.png)
+![](../../Media/Pictures/Keenetic_AmneziaWG/02_Backup-ec8bf7d03165a8bb6525db34f1b6c880.png)
 
 **Шаг 3**
 
 Проверьте какая версия KeeneticOS установлена на роутере, и предлагается ли обновление KeeneticOS до версии 4.2., так как поддержка WireGuard с параметрами asc, в KeeneticOS, появилась начиная с версии 4.2 Alpha 2. Если для вашего роутера ещё не вышел релиз KeeneticOS 4.2, попробуйте переключить канал обновления, на "Предварительный".
 
-![](/Media/Pictures/Keenetic_AmneziaWG/03_Check_FW-4a6283d016636bddebf02299c802a7d9.png)
+![](../../Media/Pictures/Keenetic_AmneziaWG/03_Check_FW-4a6283d016636bddebf02299c802a7d9.png)
 
 **Шаг 4**
 
 Если уже установлена версия KeeneticOS 4.2, или предлагается обновление до 4.2, нужно проверить наличие необходимого компонента системы. Нажмите кнопку "Изменить набор компонентов".
 
-![](/Media/Pictures/Keenetic_AmneziaWG/04_Check_components-d6eb3b5147063f991dc2a21ece575594.png)
+![](../../Media/Pictures/Keenetic_AmneziaWG/04_Check_components-d6eb3b5147063f991dc2a21ece575594.png)
 
 **Шаг 5**
 
 На открывшейся странице "Компоненты операционной системы", в секции "Сетевые функции", проверьте наличие установленного компонента "WireGuard VPN" Если компонент "WireGuard VPN" не установлен, отметьте соответствующий чек-бокс для установки, и нажмите появившуюся снизу кнопку "Обновить KeeneticOS". Дождитесь, пока роутер обновится и перезагрузится.
 
-![](/Media/Pictures/Keenetic_AmneziaWG/05_Install_components_and_ugrade_FW-d431fdcfbb36b94976aad6c55850d1fc.png)
+![](../../Media/Pictures/Keenetic_AmneziaWG/05_Install_components_and_ugrade_FW-d431fdcfbb36b94976aad6c55850d1fc.png)
 
 **Шаг 6**
 
 Если компонент "WireGuard VPN" уже установлен, но нуждается в обновлении, закройте список компонентов, чтобы вернуться на страницу "Параметры системы".
 
-![](/Media/Pictures/Keenetic_AmneziaWG/06_Back_to_settings-95a131464eedfd2c0b9efd6cfa2f0ff9.png)
+![](../../Media/Pictures/Keenetic_AmneziaWG/06_Back_to_settings-95a131464eedfd2c0b9efd6cfa2f0ff9.png)
 
 **Шаг 7**
 
@@ -53,19 +53,19 @@
 
 Если обновление прерывается с сообщением "Недостаточно места", нужно в списке компонентов отключить ненужные, чтобы уменьшить размер обновления.
 
-![](/Media/Pictures/Keenetic_AmneziaWG/07_Upgrade_FW-7f2be1d249e0857a44fdf088194ac0f3.png)
+![](../../Media/Pictures/Keenetic_AmneziaWG/07_Upgrade_FW-7f2be1d249e0857a44fdf088194ac0f3.png)
 
 **Шаг 8**
 
 После обновления и перезагрузки роутера, нужно заново авторизоваться на странице управления роутером.
 
-![](/Media/Pictures/Keenetic_AmneziaWG/08_Enter_new-6997c1a6d41dbe4b42d64340d64f99d9.png)
+![](../../Media/Pictures/Keenetic_AmneziaWG/08_Enter_new-6997c1a6d41dbe4b42d64340d64f99d9.png)
 
 **Шаг 9**
 
 Убедитесь, что KeeneticOS обновилась до версии 4.2, и что необходимый компонент "WireGuard VPN", установлен.
 
-![](/Media/Pictures/Keenetic_AmneziaWG/09_Check_new_FW-5ec6454cd4ca173c6f8e71d1426298b0.png)
+![](../../Media/Pictures/Keenetic_AmneziaWG/09_Check_new_FW-5ec6454cd4ca173c6f8e71d1426298b0.png)
 
 **Шаг 10**
 
@@ -73,49 +73,49 @@
 
 Один файл одновременно можно использовать только на одном устройстве! При наличии подписки Amnezia Premium, файл в нативном формате, можно запросить в боте поддержки для Premium. При использовании self-hosted решения, файл можно сгенерировать в приложении AmneziaVPN, в разделе "Поделиться" (Второй слева значок нижней панели), выбрав в качестве формата подключения - "Оригинальный формат AmneziaWG", и нажав кнопку "Поделиться", в самом низу.
 
-![](/Media/Pictures/Keenetic_AmneziaWG/10_Create_AWG_conf-36fa063cf52870468a3ce72b8ee0af23.png)
+![](../../Media/Pictures/Keenetic_AmneziaWG/10_Create_AWG_conf-36fa063cf52870468a3ce72b8ee0af23.png)
 
 **Шаг 11**
 
 После генерации нового подключения AmneziaWG нужно сохранить его в виде файла. Для этого, на следующем отобразившемся экране AmneziaVPN, нажмите ещё одну кнопку "Поделиться", расположенную сверху.
 
-![](/Media/Pictures/Keenetic_AmneziaWG/11_Save_AWG_conf-609b4672ae7e23f87b403c8287faf198.png)
+![](../../Media/Pictures/Keenetic_AmneziaWG/11_Save_AWG_conf-609b4672ae7e23f87b403c8287faf198.png)
 
 **Шаг 12**
 
 В появившемся окне файлового менеджера, выберите папку, куда сохранится созданный файл, и укажите название самого файла. Запомните место сохранения файла, нажмите кнопку "Сохранить конфигурацию AmneziaWG"
 
-![](/Media/Pictures/Keenetic_AmneziaWG/12_Select_dir-3c478f9f9d1b7a6e8578857462e93501.png)
+![](../../Media/Pictures/Keenetic_AmneziaWG/12_Select_dir-3c478f9f9d1b7a6e8578857462e93501.png)
 
 **Шаг 13**
 
 Найдите и откройте только что сохранённый файл конфигурации в какой-нибудь текстовой программе, например в "Блокноте".
 
-![](/Media/Pictures/Keenetic_AmneziaWG/13_Notepad_open-9f7a87b4cd676b628c3be62134e4adf3.png)
+![](../../Media/Pictures/Keenetic_AmneziaWG/13_Notepad_open-9f7a87b4cd676b628c3be62134e4adf3.png)
 
 **Шаг 14**
 
 Из данного файла Вам понадобятся значения параметров Jc, Jmin, Jmax, S1, S2, H1, H2, H3, H4 - это asc параметры.
 
-![](/Media/Pictures/Keenetic_AmneziaWG/14_Notepad_conf-47fa5ea148256578413bac3eac7a5432.png)
+![](../../Media/Pictures/Keenetic_AmneziaWG/14_Notepad_conf-47fa5ea148256578413bac3eac7a5432.png)
 
 **Шаг 15**
 
 Теперь, Вам нужно вернуться к настройкам роутера, и перейти в раздел Интернет и выбрать "Другие подключения".
 
-![](/Media/Pictures/Keenetic_AmneziaWG/15_Other_connections-5e775613a3fba0f8140bff0701a29fc7.png)
+![](../../Media/Pictures/Keenetic_AmneziaWG/15_Other_connections-5e775613a3fba0f8140bff0701a29fc7.png)
 
 **Шаг 16**
 
 Выберите секцию Wireguard, в ней создайте новое подключения, импортировав сохранённый файл конфигурации AmneziaWG. Для этого нажмите на ссылку "Загрузить из файла"
 
-![](/Media/Pictures/Keenetic_AmneziaWG/16_Add_new_wireguard-970ae9b093c406d66ed9b909ea56e39c.png)
+![](../../Media/Pictures/Keenetic_AmneziaWG/16_Add_new_wireguard-970ae9b093c406d66ed9b909ea56e39c.png)
 
 **Шаг 17**
 
 В появившемся окне файлового менеджера, перейдите в папку, где Вы сохранили файл конфигурации AmneziaWG, выберите его, и нажмите кнопку "Открыть".
 
-![](/Media/Pictures/Keenetic_AmneziaWG/17_Import_file-5899003b6b845adc96c13fb89f8a224a.png)
+![](../../Media/Pictures/Keenetic_AmneziaWG/17_Import_file-5899003b6b845adc96c13fb89f8a224a.png)
 
 **Шаг 18**
 
@@ -123,7 +123,7 @@
 
 Внутренний IP-адрес созданного подключения, должен быть уникальным, среди других имеющихся соединений Wireguard. Иначе, эти соединения, будут конфликтовать. В такой ситуации, для одного из конфликтующих соединений, потребуется создать другой (новый) файл конфигурации, с другим IP-адресом.
 
-![](/Media/Pictures/Keenetic_AmneziaWG/18_Check_new_wireguard-ad751521454e63b8185a814e9172acd1.png)
+![](../../Media/Pictures/Keenetic_AmneziaWG/18_Check_new_wireguard-ad751521454e63b8185a814e9172acd1.png)
 
 **Шаг 19**
 
@@ -131,25 +131,25 @@
 
 Если у Вас есть несколько соединений, с одинаковым названием, стоит переименовать их так, чтобы название только что созданного подключения WireGuard, стало уникальным.
 
-![](/Media/Pictures/Keenetic_AmneziaWG/19_Checkbox_Internet-68ef8772ec0126c6edc051b21c160ede.png)
+![](../../Media/Pictures/Keenetic_AmneziaWG/19_Checkbox_Internet-68ef8772ec0126c6edc051b21c160ede.png)
 
 **Шаг 20**
 
 Теперь Вам нужно, перейти в веб-версию командной строки роутера Keenetic, для выполнения ряда команд. Для этого необходимо перейти в настройки, нажать на изображение шестеренки, в правом верхнем углу веб-страницы, и перейти по ссылке "Командная строка".
 
-![](/Media/Pictures/Keenetic_AmneziaWG/20_Command_line-10a9718bc3d21281c5220b8043969b6c.png)
+![](../../Media/Pictures/Keenetic_AmneziaWG/20_Command_line-10a9718bc3d21281c5220b8043969b6c.png)
 
 **Шаг 21**
 
 Введите команду show interface и нажмите кнопку "Отправить запрос". Ниже, отобразится информация обо всех имеющихся интерфейсах.
 
-![](/Media/Pictures/Keenetic_AmneziaWG/21_Show_interfaces-e4405f5b1b345d473398dd0844e4fbd8.png)
+![](../../Media/Pictures/Keenetic_AmneziaWG/21_Show_interfaces-e4405f5b1b345d473398dd0844e4fbd8.png)
 
 **Шаг 22**
 
 Теперь нужно узнать имя нужного интерфейса, по названию созданного ранее подключения. Для этого, откройте поиск по странице (это можно сделать, одновременно нажав две клавиши, Ctrl+F). Введите для поиска, название созданного ранее подключения. В данном примере, это amnezia_for_awg . Должно быть найдено одно, уникальное название в поле "description". А рядом с ним, будет находится другое поле, "interface-name", в котором отображается имя нужного интерфейса. В данном примере, это Wireguard1 .
 
-![](/Media/Pictures/Keenetic_AmneziaWG/22_Search_interface-a47f4d2c2d1ddac3a0e86f07caa1290d.png)
+![](../../Media/Pictures/Keenetic_AmneziaWG/22_Search_interface-a47f4d2c2d1ddac3a0e86f07caa1290d.png)
 
 **Шаг 23**
 
@@ -163,13 +163,13 @@
 
 Получившуюся строку, нужно вставить в вэб-версии командной строки роутера, и нажать кнопку "Отправить запрос". Если Вы ввели правильную команду, ниже будет выведен результат обработки запроса, как на приведённом скриншоте.
 
-![](/Media/Pictures/Keenetic_AmneziaWG/23_Enter_asc-cf1fe5611fb9940bdac74c324fe71ca1.png)
+![](../../Media/Pictures/Keenetic_AmneziaWG/23_Enter_asc-cf1fe5611fb9940bdac74c324fe71ca1.png)
 
 **Шаг 24**
 
 Теперь, следует сохранить изменения в конфигурации роутера. Введите команду **system configuration save**, и нажмите "Отправить запрос". Если всё введено верно, ниже будет выведен результат обработки запроса, как на приведённом скриншоте.
 
-![](/Media/Pictures/Keenetic_AmneziaWG/24_Save_settings-68a858eeca48348b252186520645a5fa.png)
+![](../../Media/Pictures/Keenetic_AmneziaWG/24_Save_settings-68a858eeca48348b252186520645a5fa.png)
 
 **Шаг 25**
 
@@ -177,75 +177,75 @@
 
 В случае каких либо проблем с подключением, ещё раз проверьте все проделанные действия и введённые параметры. Также, можно прейти в раздел Управление -> Диагностика -> Показать журнал.
 
-![](/Media/Pictures/Keenetic_AmneziaWG/25_Switch_on_wg-e01f8e218eeab0a87830f22b0b923c0f.png)
+![](../../Media/Pictures/Keenetic_AmneziaWG/25_Switch_on_wg-e01f8e218eeab0a87830f22b0b923c0f.png)
 
 **Шаг 26** Не забудьте поставть галочки в Общих настройках сиситемы рядом с Проски-сервер DNS-over-TLS и Прокси-сервер DNS-over-HTTPS
 
-![](/Media/Pictures/Keenetic_AmneziaWG/0-f480aa72a68d312b61d333ec6cd213ac.png)
+![](../../Media/Pictures/Keenetic_AmneziaWG/0-f480aa72a68d312b61d333ec6cd213ac.png)
 
 **Шаг 27** Перейдите в раздел "Интернет"
 
-![](/Media/Pictures/Keenetic_AmneziaWG/1-8f2df3eb4108573caa413672bbcdb2af.png)
+![](../../Media/Pictures/Keenetic_AmneziaWG/1-8f2df3eb4108573caa413672bbcdb2af.png)
 
 **Шаг 28** Далее - Кабель "Ethernet"
 
-![](/Media/Pictures/Keenetic_AmneziaWG/2-f5c87913a40e560c4455ec233c9abbbf.png)
+![](../../Media/Pictures/Keenetic_AmneziaWG/2-f5c87913a40e560c4455ec233c9abbbf.png)
 
 **Шаг 29**
 
 В разделе "Порты и VLANы" поставьте галочку "Игнорировать DNSv4 интернет-провайдера"
 
-![](/Media/Pictures/Keenetic_AmneziaWG/3-28f7bbe0e8c2e355befd1df623480df3.png)
+![](../../Media/Pictures/Keenetic_AmneziaWG/3-28f7bbe0e8c2e355befd1df623480df3.png)
 
 **Шаг 30**
 
 далее - "Сохранить"
 
-![](/Media/Pictures/Keenetic_AmneziaWG/3-4-295a5dd4888cbb110a093400416a883d.png)
+![](../../Media/Pictures/Keenetic_AmneziaWG/3-4-295a5dd4888cbb110a093400416a883d.png)
 
 **Шаг 31**
 
 выберите "Интернет-фильтры"
 
-![](/Media/Pictures/Keenetic_AmneziaWG/5-1e8b666b0230d1555a2c05bafc953f7f.png)
+![](../../Media/Pictures/Keenetic_AmneziaWG/5-1e8b666b0230d1555a2c05bafc953f7f.png)
 
 **Шаг 32**
 
 выберите вкладку "Настройка DNS"
 
-![](/Media/Pictures/Keenetic_AmneziaWG/6-d5515247e1bac90e06a9005b6b029509.png)
+![](../../Media/Pictures/Keenetic_AmneziaWG/6-d5515247e1bac90e06a9005b6b029509.png)
 
 **Шаг 33**
 
 Далее "Добавить Сервер"
 
-![](/Media/Pictures/Keenetic_AmneziaWG/7-f1119ebf4bb085373c4407926eeb8bad.png)
+![](../../Media/Pictures/Keenetic_AmneziaWG/7-f1119ebf4bb085373c4407926eeb8bad.png)
 
 **Шаг 34**
 
 Добавьте два dns как указано на скриншотах
 
-![](/Media/Pictures/Keenetic_AmneziaWG/8-47ca92eb55ab47dcf2d2765167702570.png)
+![](../../Media/Pictures/Keenetic_AmneziaWG/8-47ca92eb55ab47dcf2d2765167702570.png)
 
 **Шаг 35**
 
-![](/Media/Pictures/Keenetic_AmneziaWG/9-4629f39c8e98bfcd1dd8321e31d2e411.png)
+![](../../Media/Pictures/Keenetic_AmneziaWG/9-4629f39c8e98bfcd1dd8321e31d2e411.png)
 
 **Шаг 36** Должно получиться как на скриншоте ниже
 
-![](/Media/Pictures/Keenetic_AmneziaWG/10-cd1576cf66306d7762eceb8ff829f6cf.png)
+![](../../Media/Pictures/Keenetic_AmneziaWG/10-cd1576cf66306d7762eceb8ff829f6cf.png)
 
 **Шаг 37**
 
 В общих настройках системы обязательно проставьте компоненты сиситемы - Прокси-сервер DNS-over-TLS, Проки-сервер DNS-over-HTTPS
 
-![](/Media/Pictures/Keenetic_AmneziaWG/26_Open_policies-eae933dbe06bd629aed46f0a8d6b4315.png)
+![](../../Media/Pictures/Keenetic_AmneziaWG/26_Open_policies-eae933dbe06bd629aed46f0a8d6b4315.png)
 
 **Шаг 38**
 
 В настройках Политик доступа в Политике по умолчанию созданное VPN-подключение (amnezia_for_awg) должно идти ниже вашего основного интернет-подключения, чтобы избежать проблем с переподключением роутера при обрыве основного интернет-соединения.
 
-![](/Media/Pictures/Keenetic_AmneziaWG/27_Check_default_policy-40a184624490023d52537a97c71e403f.png)
+![](../../Media/Pictures/Keenetic_AmneziaWG/27_Check_default_policy-40a184624490023d52537a97c71e403f.png)
 
 **Шаг 39**
 
@@ -255,7 +255,7 @@
 
 При создании политики, ненужно включать "Многопутевой режим"
 
-![](/Media/Pictures/Keenetic_AmneziaWG/28_Create_vpn_policy-657316e84168cbaf9eb152cf271525a2.png)
+![](../../Media/Pictures/Keenetic_AmneziaWG/28_Create_vpn_policy-657316e84168cbaf9eb152cf271525a2.png)
 
 **Шаг 40**
 
@@ -267,7 +267,7 @@
 
 Настройки маршрутизации роутера, могут переопределять направления трафика всех устройств. Если прописать в маршрутизации роутера необходимые маршруты для инстаграм через подключение amnezia_for_awg, то все устройства, во всех политиках (кроме политики Без доступа в интернет) получат доступ к инстаграм через amnezia_for_awg. Также работает и обратный пример: Если прописать все необходимые маршруты до гос.услуг через подключение Ethernet, то все устройства во всех политиках (кроме политики Без доступа в интернет) получат доступ к гос.услугам через Ethernet. (Основная проблема, это узнать необходимые для прописывания маршруты и производительность роутера).
 
-![](/Media/Pictures/Keenetic_AmneziaWG/29_Edit_vpn_policy-2842869f2a70665b47c28ee6aee76eb9.png)
+![](../../Media/Pictures/Keenetic_AmneziaWG/29_Edit_vpn_policy-2842869f2a70665b47c28ee6aee76eb9.png)
 
 **Шаг 41**
 
@@ -283,7 +283,7 @@
 
 В настройках Гостевой сети, можно настроить и включить дополнительную WiFi сеть. Таким образом, роутер Keenetic, будет раздавать сразу две WiFi сети: 1-я с обычным интернет подключением, 2-я с подключением через vpn.
 
-![](/Media/Pictures/Keenetic_AmneziaWG/30_Move_devices-9f87a9f63a2f8892a5086ff8bc7ff023.png)
+![](../../Media/Pictures/Keenetic_AmneziaWG/30_Move_devices-9f87a9f63a2f8892a5086ff8bc7ff023.png)
 
 **Шаг 42**
 
@@ -291,13 +291,13 @@
 
 Чуть ниже, вы можете выбрать пункт: "Показать все объекты", чтобы сразу увидеть все Политики, Сегменты, и все Зарегистрированные устройства одновременно, а также перемещать устройства и сегменты между политиками простым перетаскиванием.
 
-![](/Media/Pictures/Keenetic_AmneziaWG/31_Check_vpn_devices-3c87e7f78023988b2df0ff830f9b1de9.png)
+![](../../Media/Pictures/Keenetic_AmneziaWG/31_Check_vpn_devices-3c87e7f78023988b2df0ff830f9b1de9.png)
 
 **Шаг 43**
 
 Теперь Вы можете выйти из настроек роутера. Нажмите на шестерню в правом верхнем углу страницы, а затем нажать кнопку Выйти в правом нижнем углу страницы.
 
-![](/Media/Pictures/Keenetic_AmneziaWG/32_Exit-534805b7483507af0d7d0bcaf6a1c02d.png)
+![](../../Media/Pictures/Keenetic_AmneziaWG/32_Exit-534805b7483507af0d7d0bcaf6a1c02d.png)
 
 
 

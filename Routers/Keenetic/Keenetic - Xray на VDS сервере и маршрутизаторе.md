@@ -15,7 +15,7 @@ debugInConsole: false # Print debug info in Obsidian console
 
 >Адрес 45.89.67.100 выбран для примера
 
-![450](/Media/Pictures/Vless/Putty1.png)
+![450](../../Media/Pictures/Vless/Putty1.png)
 
 >Альтернативно на Windows начиная с Windows 8, можно подключатся из консоли Powershell, также как и на Linux/macOS
 ```powershell
@@ -90,15 +90,15 @@ x-ui uninstall    - Uninstall x-ui
 
 >Регистрируем наши "рога и копыта", разумеется это для примера
 
-![|600](/Media/Pictures/Vless/freemyip1.png)
+![|600](../../Media/Pictures/Vless/freemyip1.png)
 
 >Убеждаемся что имя не занято, занимаем его `CLAIM IT!`
 
-![|600](/Media/Pictures/Vless/freemyip2.png)
+![|600](../../Media/Pictures/Vless/freemyip2.png)
 
 >Обязательно сохраняем строку с токеном!
 
-![|600](/Media/Pictures/Vless/freemyip3.png)
+![|600](../..../../Media/Pictures/Vless/freemyip3.png)
 
 >Возвращаемся на наш VDS и вводим полученную строку через `curl`
 ```shell
@@ -120,11 +120,11 @@ hoofsandhorns.freemyip.com:2053/mBDNYtiG
 
 >Выбираем русский язык и тему, вводим записанный наш логин и пароль
 
-![|700](/Media/Pictures/Vless/3X-UI1.png)
+![|700](../../Media/Pictures/Vless/3X-UI1.png)
 
 >Появляется страница со статусом
 
-![|1000](/Media/Pictures/Vless/3X-UI2.png)
+![|1000](../../Media/Pictures/Vless/3X-UI2.png)
 ## Настройка безопасности в 3X-UI
 
 Чтобы исчезла плашка о предупреждении безопасности необходимо получить SSL сертификат, после чего мы сможем безопасно входить в панель администрирования 3X-UI.
@@ -273,7 +273,7 @@ drwxr-xr-x 3 root root 4.0K Jun  2 00:23 ..
 - В поле `Путь к файлу приватного ключа сертификата панели` соответственно путь `/root/.acme.sh/hoofsandhorns.freemyip.com_ecc/hoofsandhorns.freemyip.com.key`
 - Поле `Корневой путь URL адреса панели` для большей безопасности, меняем на какое-нибудь секретное слово, например `/pusti`
 
-![|1100](/Media/Pictures/Vless/3X-UI3.png)
+![|1100](../../Media/Pictures/Vless/3X-UI3.png)
 
 >Сохраняем и перезапускаем панель 3X-UI, теперь наш адрес для входа в панель
 ```http
@@ -283,7 +283,7 @@ https://hoofsandhorns.freemyip.com:65456/pusti
 
 >Далее необходимо создать подключение, выбираем `Добавть подключение`, на вкладке `Подключения`
 
-![|900](/Media/Pictures/Vless/3X-UI4.png)
+![|900](../../Media/Pictures/Vless/3X-UI4.png)
 
 Заполняем подключение:  
 - Пишем название в поле `Примечание`, например **Ausweis**
@@ -295,7 +295,7 @@ https://hoofsandhorns.freemyip.com:65456/pusti
 - Генерируем пару ключей путем нажатия на `Get New Cert`
 - Сохраняем подключение кнопкой `Создать`
 
-![|380](/Media/Pictures/Vless/3X-UI5.png)
+![|380](../../Media/Pictures/Vless/3X-UI5.png)
 
 Усилим маскировку нашего соединения:  
 - Разворачиваем меню нашего соединения `+`
@@ -303,7 +303,7 @@ https://hoofsandhorns.freemyip.com:65456/pusti
 - В поле `Flow` выбираем **xtls-rprx-vision**
 - Сохраняем изменения
 
-![|1000](/Media/Pictures/Vless/3X-UI6.png)
+![|1000](../../Media/Pictures/Vless/3X-UI6.png)
 Готово!  
 Для проверки работоспособности можно воспользоваться телефоном установив на Android приложение [v2rayNG](https://play.google.com/store/apps/details?id=com.v2ray.ang&hl=ru), а на iOS [V2BOX](https://apps.apple.com/us/app/v2box-v2ray-client/id6446814690)  
 
@@ -315,7 +315,7 @@ fdroidrepos://fdroid.noql.net/fdroid/repo?fingerprint=0C00898126DF6E2BAAE76ED58D
 Нажимаем значок с QR-кодом и показываем его приложению в телефоне.
 
 
-![|1000](/Media/Pictures/Vless/3X-UI7.png)
+![|1000](../../Media/Pictures/Vless/3X-UI7.png)
 # Установка OPKG Entware на маршрутизатор Keenetic
 
 **Для справки**  
@@ -333,7 +333,7 @@ fdroidrepos://fdroid.noql.net/fdroid/repo?fingerprint=0C00898126DF6E2BAAE76ED58D
 
 >На Windows используем Putty, заходим на ваш роутер, ip-адрес может отличаться, порт 222, если задействован SSH компонент в Keenetic OS, если нет, то стандартный 22
 
-![450](/Media/Pictures/Vless/Putty2.png)
+![450](../../Media/Pictures/Vless/Putty2.png)
 
 >На Linux/macOS по `ssh`
 ```
@@ -348,7 +348,7 @@ curl -s -L https://github.com/Skrill0/XKeen/releases/latest/download/xkeen.tar -
 xkeen -i
 ```
 
-![|800](/Media/Pictures/Vless/install.gif)
+![|800](../../Media/Pictures/Vless/install.gif)
 
 >Выбираем `1. Установить отсутствующие GeoIP`
 ```
@@ -594,7 +594,7 @@ nano /opt/etc/xray/configs/04_outbounds.json
 
 Нажимаем сохранение `CRTL+O`, затем выходим из редактора `CTRL+X` 
 
-![|400](/Media/Pictures/Vless/3X-UI8.png)
+![|400](../../Media/Pictures/Vless/3X-UI8.png)
 
 Данные еще можно посмотреть в настройке подключения, выбрав в меню с тремя точками пункт `Изменить`
 
@@ -653,7 +653,7 @@ xkeen -restart
 
 Нажимаем `Обновить KeeneticOS`, маршрутизатор перезагрузиться
 
-![|1000](/Media/Pictures/Vless/Keenetic1.png)
+![|1000](../../Media/Pictures/Vless/Keenetic1.png)
 
 2. Настраиваем прокси подключение
 
@@ -663,7 +663,7 @@ xkeen -restart
 - `Протокол` - SOCKS v5  или http, если выбирали его в `03_inbounds.json`
 - `Адрес` - ip адрес вашего роутера : `порт` тот что указан `03_inbounds.json` 2080
 
-![|500](/Media/Pictures/Vless/Keenetic2.png)
+![|500](../../Media/Pictures/Vless/Keenetic2.png)
 3.  Проброс UDP через TUN
 
 Подключившись к веб-конфигуратору в адресной строке браузера вы увидите адрес вида **http://192.168.1.1/dashboard**  
@@ -674,27 +674,27 @@ xkeen -restart
 interface Proxy0 proxy socks5-udp
 ```
 
-![|800](/Media/Pictures/Vless/Keenetic6.png)
+![|800](../../Media/Pictures/Vless/Keenetic6.png)
 
 ```
 system configuration save 
 ```
 
-![|800](/Media/Pictures/Vless/Keenetic7.png)
+![|800](../../Media/Pictures/Vless/Keenetic7.png)
 
 4. Добавляем политику `Xkeen`
 
 Путь: `Интернет` -> `Приоритеты подключений` -> `Добавить политику` -> `Xkeen`
 
-![|500](/Media/Pictures/Vless/Keenetic3.png)
+![|500](../../Media/Pictures/Vless/Keenetic3.png)
 
 5. Добавляем в политику `Xkeen` прокси `Xray`, нажимаем `сохранить`
 
-![|500](/Media/Pictures/Vless/Keenetic4.png)
+![|500](../../Media/Pictures/Vless/Keenetic4.png)
 
 6. Добавляем клиента в политику `Xkeen` путем перетаскивания на него мышкой
 
-![|500](/Media/Pictures/Vless/Keenetic5.png)
+![|500](../../Media/Pictures/Vless/Keenetic5.png)
 
 
 
@@ -720,4 +720,4 @@ browserleaks.com/ip
 ```
 
 
-![|600](/Media/Pictures/Vless/ifconfig.png)
+![|600](../../Media/Pictures/Vless/ifconfig.png)

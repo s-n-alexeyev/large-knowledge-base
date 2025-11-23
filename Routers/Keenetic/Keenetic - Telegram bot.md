@@ -43,39 +43,39 @@ debugInConsole: false # Print debug info in Obsidian console
 - Создаём папку install:
 
 
-![|400](/Media/Pictures/Telegram_Bot/3d755e07f304a0a2150d390e9e1595af.png)
+![|400](../../Media/Pictures/Telegram_Bot/3d755e07f304a0a2150d390e9e1595af.png)
 
 - Ставим курсор на новую папку и импортируем туда файл mipsel с компьютера с помощью третьей иконки:
 
-![|300](/Media/Pictures/Telegram_Bot/b71806385c67d6577dff7990a5a50289.png)
+![|300](../../Media/Pictures/Telegram_Bot/b71806385c67d6577dff7990a5a50289.png)
 
 - В настройках роутера заходим в раздел Управление – OPKG, выбираем нашу флешку и удаляем сценарий, если он есть и нажимаем кнопку Сохранить:
 
-![|500](/Media/Pictures/Telegram_Bot/6312b2016b1e47daba0a472a372c7c21.png)
+![|500](../../Media/Pictures/Telegram_Bot/6312b2016b1e47daba0a472a372c7c21.png)
 
 - Примерно спустя минуту заходим обратно в Управление – Приложения и выбираем нашу флешку. Видим, что у нас установился entware по наличию некоторого количества папок. Можно также в Диагностике посмотреть ход установки:
 
-![|500](/Media/Pictures/Telegram_Bot/b1877e1b2a5a55fd3e8b19a3ae529b0a.png)
+![|500](../../Media/Pictures/Telegram_Bot/b1877e1b2a5a55fd3e8b19a3ae529b0a.png)
 
 3. Установим необходимые компоненты роутера. В настройках роутера заходим в Общие настройки -> Изменить набор компоненты:
 
-![|500](/Media/Pictures/Telegram_Bot/815aec88d281fde9df1e15c554c230d1.png)
+![|500](../../Media/Pictures/Telegram_Bot/815aec88d281fde9df1e15c554c230d1.png)
 
 - Поиском ищем следующие компоненты "Прокси-сервер DNS-over-TLS", "Прокси-сервер DNS-over-HTTPS", "Протокол IPv6", "SSTP VPN-сервер", "Подготовка открытых пакетов OPKG" и "Сервер SSH" затем, после обновления и перезагрузки роутера ещё следующие компоненты: "Модули ядра подсистемы Netfilter", "Пакет расширения Xtables-addons для Netfilter" и ещё раз перезагружаем роутер.
 - Заходим в "Сетевые правила" --> "Интернет-фильтр" и добавляем серверы DNS-over-TLS и DNS-over-HTTPS. У TLS адрес сервера **8.8.8.8:853**, доменное имя TLS **dns.google.** У HTTPS сервер dns **https://dns.google/dns-query**. Должно получиться как на картинке:
 
-![|800](/Media/Pictures/Telegram_Bot/98cc156dbaa4ac0c01f4a24e751d828e.png)
+![|800](../../Media/Pictures/Telegram_Bot/98cc156dbaa4ac0c01f4a24e751d828e.png)
 
 - **UPD 02.01.2022:** я рекомендую добавить все dns-over-http и *-tls, указанные в [этой](https://help.keenetic.com/hc/ru/articles/360007687159-DNS-over-TLS-and-DNS-over-HTTPS-proxy-servers-for-DNS-requests-encryption) статье
 - Скачиваем [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) (на данный момент актуально putty-64bit-0.76-installer.msi) и запускаем её. Простенькие настроечки (если что их можно сохранить кнопкой Save):
 
-![|400](/Media/Pictures/Telegram_Bot/ba0906165d4ec16c894e8b8b2f6583e0.png)
+![|400](../../Media/Pictures/Telegram_Bot/ba0906165d4ec16c894e8b8b2f6583e0.png)
 
 При возможных предупреждениях соглашаемся (кнопка Accept).
 
 - Вводим логин «root» (без кавычек), нажимаем Enter, пароль «keenetic» (также без кавычек) (при вводе пароля курсор не двигается – это нормально), также Enter. Должно отобразиться:
 
-![|500](/Media/Pictures/Telegram_Bot/e972eaafb3a737a125454758c516adfd.png)
+![|500](../../Media/Pictures/Telegram_Bot/e972eaafb3a737a125454758c516adfd.png)
 
 > P.S. здесь и далее - для копирование команды в командную строку необходимо скопировать текст на этом сайте и вставить в командную строку с помощью правой кнопкой мыши
 
@@ -91,7 +91,7 @@ passwd
 opkg update
 ```
 
-![|500](/Media/Pictures/Telegram_Bot/da5490258cbef8fc8fb30bdc2ffb231d.png)
+![|500](../../Media/Pictures/Telegram_Bot/da5490258cbef8fc8fb30bdc2ffb231d.png)
 ## Установка необходимых компонентов
 
 1. Начинаем установку необходимых компонентов.
@@ -117,20 +117,20 @@ mcedit /opt/etc/bot_config.py
 
 - Установить api ключ, который даст вам бот BotFather (в поиске телеграма его можно найти), спросить его команду /newbot, выбрать свободное имя и скопировать необходимый ключ в поле token
 
-![|300](/Media/Pictures/Telegram_Bot/68d789b10ca57329e5db1e1660581126.png)
+![|300](../../Media/Pictures/Telegram_Bot/68d789b10ca57329e5db1e1660581126.png)
 
 - Копируем Username (логин) телеграма. Он будет использоваться для администрирования. Можно добавить несколько администраторов:
 
-![|300](/Media/Pictures/Telegram_Bot/3559831bbac5d20e3e72aadc166d9735.png)
+![|300](../../Media/Pictures/Telegram_Bot/3559831bbac5d20e3e72aadc166d9735.png)
 
 - И последние две обязательные настроечки берутся с сайта [https://my.telegram.org/apps](https://my.telegram.org/apps):
 
-![|600](/Media/Pictures/Telegram_Bot/b28e1a884806a988a9158e8538d9dfda.png)
+![|600](../../Media/Pictures/Telegram_Bot/b28e1a884806a988a9158e8538d9dfda.png)
 
 - Обратите внимание, все свои настройки Вы вбиваете и сохраняете на своём роутере. В конце концов код можете посмотреть сами, если умеете это делать.
 - Все данные записываем в файл в нужные места:
 
-![|700](/Media/Pictures/Telegram_Bot/5c8847aa57ada300c555272815de6061.png)
+![|700](../../Media/Pictures/Telegram_Bot/5c8847aa57ada300c555272815de6061.png)
 
 - Это были необходимые минимальные настройки. Дело в том, что бот за Вас будет запрашивать мосты для ТОРа. Вам в телеграм будут лишь приходить уведомления (отключите звук и другие оповещения, чтоб они Вас не раздражали).
 - Ключи для Shadowsocks, Vmess и Trojan необходимо устанавливать будет вручную
@@ -144,7 +144,7 @@ python /opt/etc/bot.py
 
 - Заходим в свой телеграм-бот, если необходимо нажимаем /start и выбираем сначала _Установку и удаление_, а затем _Установку \ переустановку_:
 
-![|700](/Media/Pictures/Telegram_Bot/54963bb4d49e7f79d64ec1dc143d117c.png)
+![|700](../../Media/Pictures/Telegram_Bot/54963bb4d49e7f79d64ec1dc143d117c.png)
 
 - В программе Putty можете наблюдать внутренние команды, а в телеграм-боте ход установки, а также полученные ключи от двух ботов. **ВНИМАНИЕ**: при включенной двухфакторной авторизации телеграма, Вам необходимо будет ввести данные в Putty. Не пугайтесь, всё работает исключительно на Вашем роутере.
 - После фразы, что установка завершена нам необходимо чуть-чуть донастроить роутер.
@@ -183,11 +183,11 @@ system reboot
 4. В пункте меню "Списки обхода" создаются кнопки, соответствующие названием файла и папки /opt/etc/unblock/. При изначальной установке там находятся 4 файла shadowsocks.txt, trojan.txt, vmess.txt и tor.txt, поэтому у нас будет 4 кнопки
 5. При нажатии на любую из них будет возможность показать конкретный список разблокировок, добавить сайт или ip адрес в список, либо его удалить оттуда.
 
-![|700](/Media/Pictures/Telegram_Bot/f594d6ee8aaf798ebaf1f8f50a2a2789.png)
+![|700](../../Media/Pictures/Telegram_Bot/f594d6ee8aaf798ebaf1f8f50a2a2789.png)
 
 6. При добавлении существует возможность ЛИБО добавить обход блокировок соцсетей (скачивается вот [отсюда](https://github.com/tas-unn/bypass_keenetic/blob/main/socialnet.txt) и может редактироваться в случае необходимости), ЛИБО написать доменное имя сайта, либо IP-адрес боту:
 
-![|700](/Media/Pictures/Telegram_Bot/f7ff52dca76bc2f1d43ec9203c07e93e.png)
+![|700](../../Media/Pictures/Telegram_Bot/f7ff52dca76bc2f1d43ec9203c07e93e.png)
 
 7. Для удаления просто вписываете необходимый адрес и отправляете его боту.
 ## Подключение к своему роутеру, используя его как собственный VPN
@@ -256,7 +256,7 @@ ss:/password@serverip:port/?outline=1
 
 Есть 2 способа создать файл настроек. Первый через [python](https://onlinegdb.com/XKqOqf9Ho), вставив полученный ключ в переменную k. Второй "ручками":
 
-![|700](/Media/Pictures/Telegram_Bot/bdb4f64bca041447496934e707263694.png)
+![|700](../../Media/Pictures/Telegram_Bot/bdb4f64bca041447496934e707263694.png)
 
 - В данном ключе есть **3 позиции**, которые нам интересны: первая часть до значка собачки (красная), вторая - после собачки до двоеточия (синяя), третья цифры после двоеточия (зелёная).
 - Первая часть это пароль, который закодирован в кодировке base64, поэтому нам нужно её раскодировать. Можем использовать [этот](https://www.base64decode.org/) сайт. В верхнее поле вставляем первую ("красную") часть нашей ссылки и нажимаем кнопку Decode. Появится декодированная строка. Нас будет интересовать пароль, который находится после двоеточия.
@@ -291,7 +291,7 @@ mcedit /opt/etc/init.d/S22shadowsocks
 
 - Меняем ss-local на ss-redir:
 
-![|300](/Media/Pictures/Telegram_Bot/31c65c45e2d0bfaf73c25ef0355faaa5.png)
+![|300](../../Media/Pictures/Telegram_Bot/31c65c45e2d0bfaf73c25ef0355faaa5.png)
 
 Сохраняем и выходим.
 
@@ -694,7 +694,7 @@ cat /opt/etc/unblock.dnsmasq
 
 Картина будет примерно такая:
 
-![|400](/Media/Pictures/Telegram_Bot/4511db2ba92d2bc0b2721758f82f9bd8.png)
+![|400](../../Media/Pictures/Telegram_Bot/4511db2ba92d2bc0b2721758f82f9bd8.png)
 
 6. Скрипт ручного принудительного обновления системы после редактирования списка доменов (unblock_update.sh). [Создаём его](https://github.com/tas-unn/bypass_keenetic/edit/main/unblock_update.sh):
 
@@ -754,7 +754,7 @@ ifconfig
 
 - Список будет большим (может потребоваться прокрутка), но по тем параметрам, которые видны, Вы должны догадаться какой выбрать. У меня это **ppp1**, поэтому в следующем файле будем использовать его.
 
-![|500](/Media/Pictures/Telegram_Bot/2da6e62958e0fbc6fe27fdf0cfaa8d91.png)
+![|500](../../Media/Pictures/Telegram_Bot/2da6e62958e0fbc6fe27fdf0cfaa8d91.png)
 
 - Здесь будут отображаться все созданные Вами vpn (кроме shadowsocks и tor).
 - Создаём ещё один [файл](https://github.com/tas-unn/bypass_keenetic/blob/main/100-redirect.sh), который будет перенаправлять пакеты с адресатами:
