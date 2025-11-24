@@ -74,7 +74,7 @@ Fatal server error:
 
 Выберем дату на которую хотим откатиться и копируем ссылку из браузера
 
-![|400](https://mascloud.ru/wp-content/uploads/2019/10/archiver.png)
+![|400](../../Media/Pictures/Arch_Tips/image0.png)
 
 >Теперь нам нужно отредактировать **mirrorlist** 
 ```bash
