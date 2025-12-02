@@ -546,3 +546,19 @@ make
 # You can display any transparent PNG image you like for the cursor
 ./swcursor cursor.png
 ```
+
+---
+## Не работает клавиатура (на наутбуке) после сна
+
+Добавить параметры для контроллера клавиатуры / PS/2 в загрузчик
+`i8042.reset i8042.nomux i8042.nopnp i8042.noloop`
+
+>Для этого нужно отредактировать `/etc/default/grub`, например:
+```
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash i8042.reset i8042.nomux i8042.nopnp i8042.noloop"
+```
+
+>Обновляем GRUB
+```bash
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+```
