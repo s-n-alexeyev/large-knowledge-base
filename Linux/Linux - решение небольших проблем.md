@@ -455,7 +455,9 @@ ln -s /usr/lib/x86_64-linux-gnu/libexec/kf5/kdesu /usr/bin/kdesu
 При загрузке GRUB жмете `E` на пункте arch/manjaro  
 добавляете к опциям ядра после rw  
 `systemd.unit=rescue.target`
+`init`
 грузитесь и получите  root с пустым паролем, можете поменять пароль если надо
+
 
 ---
 ## Снятие блокировки после неудачных попыток ввода пароля
