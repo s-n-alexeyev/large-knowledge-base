@@ -80,7 +80,7 @@ sudo dnf install --refresh librewolf
 | Canvas Blocker               | [блокировщик холста](https://addons.mozilla.org/en-US/firefox/addon/canvasblocker/)                                  |
 | Hacktools                    | [инструменты хакера](https://addons.mozilla.org/en-US/firefox/addon/hacktools/)                                      |
 | Zero Omega                   | [переключатель прокси](https://addons.mozilla.org/en-US/firefox/addon/zeroomega/)<br>для TOR - SOCKS5 127.0.0.1:9050 |
-| Tampermonkey                 | [пользовательские скрипты JS](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/)                          |
+| Violentmonkey                | [пользовательские скрипты JS](https://addons.mozilla.org/en-US/firefox/addon/violentmonkey/)                         |
 - для правильной работы Plasma Integration
 ```bash
 ln -s ~/.mozilla/native-messaging-hosts ~/.librewolf/native-messaging-hosts
