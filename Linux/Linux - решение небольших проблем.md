@@ -454,8 +454,13 @@ ln -s /usr/lib/x86_64-linux-gnu/libexec/kf5/kdesu /usr/bin/kdesu
 
 При загрузке GRUB жмете `E` на пункте arch/manjaro  
 добавляете к опциям ядра после rw  
+
+arch
 `systemd.unit=rescue.target`
-`init`
+
+debian/proxmox
+ `rw init=/bin/bash`
+
 грузитесь и получите  root с пустым паролем, можете поменять пароль если надо
 
 
