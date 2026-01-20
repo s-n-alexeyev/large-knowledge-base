@@ -44,7 +44,7 @@ enabled = true
 port = ssh
 filter = sshd
 logpath = %(sshd_log)s
-backend = systemd
+backend = %(sshd_backend)s
 maxretry = 3
 bantime = 7h
 ```
