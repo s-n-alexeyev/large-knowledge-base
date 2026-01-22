@@ -16,15 +16,6 @@ sudo nano /etc/davfs2/secrets
 ```
 /run/media/user/webdav   YOUR_LOGIN   YOUR_PASSWORD
 ```
-## Тестируем монтирование файловой системы
-
->выполняем следующие команды
-```shell
-sudo mkdir /run/media/user/ftp
-sudo curlftpfs -o allow_other 192.168.1.1 /run/media/user/ftp  
-sudo ls /run/media/user/ftp
-sudo fusermount -u /run/media/user/ftp
-```
 ## Настраиваем автомонтирование
 
 >Создаем файл с точкой монтирования для systemd:
