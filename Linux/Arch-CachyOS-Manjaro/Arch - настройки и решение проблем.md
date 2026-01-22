@@ -241,7 +241,7 @@ sudo pacman -S pacman-contrib
 sudo su
 
 # при повторном ранжировании зеркал резевную копию делать не нужно, просто переходим к следующей команде
-cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
+sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
 
 # команда может быть долгой, может показаться что терминал завис, просто ждите окончания
 sudo rankmirrors -n 6 /etc/pacman.d/mirrorlist.bak > /etc/pacman.d/mirrorlist
