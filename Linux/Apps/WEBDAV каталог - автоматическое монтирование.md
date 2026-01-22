@@ -1,13 +1,9 @@
-## Устанавливаем curlftpfs
+## Устанавливаем davfs2
 
 >ARCH
 ```shell
 sudo pacman -S davfs2
 ```
-
-
-
-
 ## Создаем файл паролей
 
 >возможно предварительно нужно будет войти в оболочку root (`sudo su`)
@@ -15,7 +11,7 @@ sudo pacman -S davfs2
 sudo nano /etc/davfs2/secrets
 ```
 
-Добавляем наш пароль в конц файла
+>Добавляем наш пароль в конц файла
 
 ```
 /run/media/user/webdav   YOUR_LOGIN   YOUR_PASSWORD
@@ -32,6 +28,7 @@ sudo fusermount -u /run/media/user/ftp
 ## Настраиваем автомонтирование
 
 >Создаем файл с точкой монтирования для systemd:
+>нужно будет войти в оболочку root (`sudo su`)
 ```shell
 sudo cat<<'EOF'>/etc/systemd/system/run-media-user-webdav.mount
 [Unit]
@@ -52,6 +49,7 @@ EOF
 ```
 
 >Создаем сервис для автомонтирования:
+>нужно будет войти в оболочку root (`sudo su`)
 ```shell
 sudo cat<<'EOF'> /etc/systemd/system/run-media-user-webdav.automount
 [Unit]
@@ -71,30 +69,6 @@ EOF
 ## Включаем и проверяем автомонтирование
 ```shell
 sudo systemctl daemon-reload
-sudo systemctl enable run-media-user-ftp.automount
-sudo systemctl start run-media-user-ftp.automount
-sudo ls /run/media/user/ftp
-sudo mount | grep /run/media/user/ftp
-```
-
-## Решение ошибки "Error setting curl" в curlftpfs
-
-```bash
-# 1. Установите утилиту downgrade (если не установлена)
-yay -S downgrade
-
-# 2. Запустите откат curl
-sudo downgrade curl
-
-# 3. Выберите версию 8.16.0 из списка
-#    - В появившемся меню найдите и выберите `curl 8.16.0-1`
-#    - Подтвердите установку
-
-# 4. Заблокируйте обновление curl
-sudo nano /etc/pacman.conf
-# Добавьте строку: IgnorePkg = curl
-
-# 5. Проверьте результат
-curl --version
-# Должна отображаться версия 8.16.0
+sudo systemctl enable --now run-media-user-webdav-mkdir.service
+sudo systemctl enable --now run-media-user-webdav.automount
 ```
