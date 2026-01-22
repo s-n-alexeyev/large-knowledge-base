@@ -242,7 +242,8 @@ sudo su
 
 # при повторном ранжировании зеркал резевную копию делать не нужно, просто переходим к следующей команде
 sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
-
+# выполните следующую команду `sed`, чтобы раскомментировать все зеркала:
+sudo sed -i 's/^#Server/Server/' /etc/pacman.d/mirrorlist.backup
 # команда может быть долгой, может показаться что терминал завис, просто ждите окончания
 sudo rankmirrors -n 6 /etc/pacman.d/mirrorlist.bak > /etc/pacman.d/mirrorlist
 exit
