@@ -371,7 +371,7 @@ sudo ntfsfix -d /dev/sdb2
 ---
 ## Использование iPhone как USB-модема (DEB)
  в Ubuntu. Для настройки работу iPhone в качестве модема через USB, необходимо установить свежие версии libimobiledevice, ipheth (iPhone USB Ethernet Driver) и gvfs из PPA-репозитория
- ```shell
+```shell
 pmcenery sudo add-apt-repository ppa:pmcenery/ppa
 sudo aptitude update
 sudo aptitude install libimobiledevice libimobiledevice-utils ipheth-utils gvfs
