@@ -6,22 +6,28 @@
 - Подключение обычно: Protocol NX, Port 4000
 
 ## 2. Узнать IP Windows
-На Windows в cmd:
+На Windows в `cmd`:
 
-`ipconfig`
+```cmd
+ipconfig
+```
 
 Нужен IPv4, например: `192.168.1.25`
 
 ## 3. Проверить порт с Linux
 
-`nc -zv 192.168.1.25 4000`
+```bash
+nc -zv 192.168.1.25 4000
+```
 
 Если видишь `open`, порт доступен.
 
 ## 4. Если порт закрыт — открыть firewall на Windows
 PowerShell от администратора:
 
-`New-NetFirewallRule -DisplayName "NoMachine TCP 4000" -Direction Inbound -Protocol TCP -LocalPort 4000 -Action Allow`
+```powershell
+New-NetFirewallRule -DisplayName "NoMachine TCP 4000" -Direction Inbound -Protocol TCP -LocalPort 4000 -Action Allow
+```
 
 ## 5. Подключение с Linux
 В клиенте NoMachine:
@@ -42,38 +48,50 @@ PowerShell от администратора:
 ## 7. Включить отдельную базу пользователей NoMachine
 Открыть от администратора файл:
 
-`C:\Program Files\NoMachine\etc\server.cfg`
+```text
+C:\Program Files\NoMachine\etc\server.cfg
+```
 
 Убедиться, что есть строки:
 
-`EnableUserDB 1`  
-`EnablePasswordDB 1`
+```text
+EnableUserDB 1
+EnablePasswordDB 1
+```
 
 Если строки закомментированы через `#`, убрать `#`.
 
 ## 8. Перезапустить NoMachine
-В cmd от администратора:
+В `cmd` от администратора:
 
-`cd C:\ProgramData\NoMachine\nxserver`  
-`nxserver.exe --restart`
+```cmd
+cd C:\ProgramData\NoMachine\nxserver
+nxserver.exe --restart
+```
 
 ## 9. Добавить пользователя в NoMachine DB
-В cmd от администратора:
+В `cmd` от администратора:
 
-`cd C:\ProgramData\NoMachine\nxserver`  
-`nxserver.exe --useradd Usert`
+```cmd
+cd C:\ProgramData\NoMachine\nxserver
+nxserver.exe --useradd Usert
+```
 
 Где `Usert` — имя локального пользователя Windows.
 
 ## 10. Задать пароль только для NoMachine
 
-`nxserver.exe --passwd Usert`
+```cmd
+nxserver.exe --passwd Usert
+```
 
 Это пароль для входа через NoMachine, не пароль Windows.
 
 ## 11. Проверить, включилась ли NX-аутентификация
 
-`nxserver.exe --userauth Usert`
+```cmd
+nxserver.exe --userauth Usert
+```
 
 Правильный результат должен показывать, что:
 - `NX user DB: on`
@@ -94,14 +112,23 @@ PowerShell от администратора:
 ## 13. Полезные команды
 
 ### Проверить пользователя Windows
-`echo %USERNAME%`  
-`whoami`
+
+```cmd
+echo %USERNAME%
+whoami
+```
 
 ### Посмотреть список NX-пользователей
-`nxserver.exe --userlist`
+
+```cmd
+nxserver.exe --userlist
+```
 
 ### Проверить доступность порта с Linux
-`nc -zv IP_WINDOWS 4000`
+
+```bash
+nc -zv IP_WINDOWS 4000
+```
 
 ## 14. Частые проблемы
 
@@ -122,19 +149,25 @@ PowerShell от администратора:
 
 ## 15. Минимальная рабочая последовательность
 
-`notepad "C:\Program Files\NoMachine\etc\server.cfg"`
+```cmd
+notepad "C:\Program Files\NoMachine\etc\server.cfg"
+```
 
 Проверить строки:
 
-`EnableUserDB 1`  
-`EnablePasswordDB 1`
+```text
+EnableUserDB 1
+EnablePasswordDB 1
+```
 
 Потом выполнить:
 
-`cd C:\ProgramData\NoMachine\nxserver`  
-`nxserver.exe --restart`  
-`nxserver.exe --useradd Usert`  
-`nxserver.exe --passwd Usert`  
-`nxserver.exe --userauth Usert`
+```cmd
+cd C:\ProgramData\NoMachine\nxserver
+nxserver.exe --restart
+nxserver.exe --useradd Usert
+nxserver.exe --passwd Usert
+nxserver.exe --userauth Usert
+```
 
 После этого подключаться с Linux.
