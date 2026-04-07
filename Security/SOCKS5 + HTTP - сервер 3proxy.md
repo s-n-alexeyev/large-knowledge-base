@@ -21,7 +21,8 @@ apt install -y build-essential wget tar
 
 ```bash
 wget https://github.com/3proxy/3proxy/releases/download/0.9.5/3proxy-0.9.5-x64.zip
-tar -xvzf 3proxy-0.9.5-x64.zip
+mkdir 3proxy && cd 3proxy
+unzip ../3proxy-0.9.5-x64.zip
 ```
 
 Переходим в распакованную директорию и компилируем:
