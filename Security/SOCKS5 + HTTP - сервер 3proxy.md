@@ -147,8 +147,7 @@ systemctl daemon-reload
 Запускаем 3proxy и добавляем его в автозагрузку:
 
 ```bash
-systemctl start 3proxy
-systemctl enable 3proxy
+systemctl enable --now 3proxy
 ```
 
 Не забудьте открыть порт http proxy в firewalld или iptables.
