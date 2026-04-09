@@ -55,9 +55,14 @@ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys <ключ>
 ```
 
 ---
-## При отправки картинки в Librewolf дает полосатую картинку
+## Librewolf - при отправки картинки в  дает полосатую картинку
 отключить параметр 
 - [ ] Enable ResistFingerprinting
+
+## Librewolf - невозможно включить `Don’t enable HTTPS-Only Mode`
+nable HTTPS-Only Mode in all windows
+Enable HTTPS-Only Mode in private windows only
+Don’t enable HTTPS-Only Mode
 
 ---
 ## Синхронизация времени
