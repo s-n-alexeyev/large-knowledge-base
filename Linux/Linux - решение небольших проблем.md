@@ -60,9 +60,10 @@ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys <ключ>
 - [ ] Enable ResistFingerprinting
 
 ## Librewolf - невозможно включить `Don’t enable HTTPS-Only Mode`
-nable HTTPS-Only Mode in all windows
-Enable HTTPS-Only Mode in private windows only
-Don’t enable HTTPS-Only Mode
+
+```bash
+sudo sed -i 's|^\([[:space:]]*\)lockPref("dom\.security\.https_only_mode", true);|\1// lockPref("dom.security.https_only_mode", true);|' /usr/lib/librewolf/librewolf.cfg
+```
 
 ---
 ## Синхронизация времени
