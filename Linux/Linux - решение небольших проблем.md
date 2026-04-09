@@ -65,6 +65,12 @@ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys <ключ>
 sudo sed -i 's|^\([[:space:]]*\)lockPref("dom\.security\.https_only_mode", true);|\1// lockPref("dom.security.https_only_mode", true);|' /usr/lib/librewolf/librewolf.cfg
 ```
 
+## Librewolf - проблемы с отображением темной темы (Website appearance)
+
+```bash
+sudo sed -i 's|^defaultPref("privacy\.resistFingerprinting", true);|// defaultPref("privacy.resistFingerprinting", true);|' /usr/lib/librewolf/librewolf.cfg
+```
+
 ---
 ## Синхронизация времени
 ```shell
