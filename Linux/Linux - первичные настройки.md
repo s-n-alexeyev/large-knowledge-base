@@ -91,7 +91,7 @@ sudo ln -s /usr/lib/mozilla/native-messaging-hosts /usr/lib/librewolf/native-mes
 | Название                                         | Ссылка                                                                                                                           |
 | ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------- |
 | голосовой перевод от Яндекс                      | https://raw.githubusercontent.com/ilyhalight/voice-over-translation/master/dist/vot.user.js                                      |
-| блокировка об отключении рекламодавки на Youtube | https://greasyfork.org/en/scripts/459541-youtube%E5%8E%BB%E5%B9%BF%E5%91%8A-youtube-ad-blocker                                   |
+| блокировка об отключении рекламодавки на Youtube | https://greasyfork.org/en/scripts/459541-youtube-adb                                                                             |
 | возвращение дизлайков Youtube                    | https://greasyfork.org/en/scripts/436115-return-youtube-dislike/code                                                             |
 | отключение Ambient для Youtube                   | https://greasyfork.org/scripts/453801-disable-youtube-glow-ambilight/code/Disable%20YouTube%20GlowAmbilight.user.js              |
 | запрет возрастных ограничений Youtube            | https://github.com/zerodytrash/Simple-YouTube-Age-Restriction-Bypass/raw/main/dist/Simple-YouTube-Age-Restriction-Bypass.user.js |
