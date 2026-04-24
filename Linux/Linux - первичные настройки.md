@@ -62,6 +62,7 @@ sudo dnf install --refresh librewolf
 
 | Название                     | Перевод/ссылка                                                                                                       |
 | ---------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| uBlock Origin                | [блокировщик рекламы](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/)                                 |
 | Plasma Integration           | [воспроизведение в трее](https://addons.mozilla.org/en-US/firefox/addon/plasma-integration/)                         |
 | Dark Reader                  | [страницы в тёмных тонах](https://addons.mozilla.org/en-US/firefox/addon/darkreader/)                                |
 | Control Panel for YouTube    | [управление youtube](https://addons.mozilla.org/en-US/firefox/addon/control-panel-for-youtube/)                      |
