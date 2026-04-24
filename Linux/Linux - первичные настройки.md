@@ -87,7 +87,7 @@ sudo dnf install --refresh librewolf
 ln -s ~/.mozilla/native-messaging-hosts ~/.librewolf/native-messaging-hosts
 sudo ln -s /usr/lib/mozilla/native-messaging-hosts /usr/lib/librewolf/native-messaging-hosts
 ```
-#### Скрипты для Tampermonkey
+#### Скрипты для Tampermonkey/Violentmonkey
 
 | Название                                         | Ссылка                                                                                                                           |
 | ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------- |
