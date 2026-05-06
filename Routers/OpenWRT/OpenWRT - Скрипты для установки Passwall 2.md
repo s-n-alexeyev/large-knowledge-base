@@ -1,5 +1,5 @@
 
-> установка репозитория и обновление
+> установка репозитория и обновление для любой версии и архитектуры
 ```bash
 cat > /tmp/add-passwall-repo.sh <<'EOF'
 #!/bin/sh
@@ -222,7 +222,15 @@ chmod +x /tmp/add-passwall-repo.sh
 sh /tmp/add-passwall-repo.sh
 ```
 
-> еще один скрипт взят [Отсюда](https://gist.githubusercontent.com/zonetx/15ca9f18ec2a44a24b034dca28375857/raw/install.sh?t=$(date%20+%s))
+> скрипт для установки на 25 версию OpenWrt
+
+```bash
+rm -f /tmp/pw.sh  
+wget -qO /tmp/pw.sh "[https://gist.githubusercontent.com/zonetx/15ca9f18ec2a44a24b034dca28375857/raw/install.sh?t=$(date](https://gist.githubusercontent.com/zonetx/15ca9f18ec2a44a24b034dca28375857/raw/install.sh?t=$\(date) +%s)"  
+sh /tmp/pw.sh
+```
+
+>сам скрипт, взят по [ссылке](https://gist.githubusercontent.com/zonetx/15ca9f18ec2a44a24b034dca28375857/raw/install.sh?t=$(date%20+%s))
 ```bash
 #!/bin/sh
 # ==============================================================================
