@@ -1,3 +1,5 @@
+
+> установка репозитория и обновление
 ```bash
 cat > /tmp/add-passwall-repo.sh <<'EOF'
 #!/bin/sh
