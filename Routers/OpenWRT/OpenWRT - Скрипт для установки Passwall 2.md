@@ -4,6 +4,9 @@
 cat > /tmp/add-passwall-repo.sh <<'EOF'
 #!/bin/sh
 
+SF_BASE="https://downloads.sourceforge.net/project/openwrt-passwall-build"
+DL_BASE="$SF_BASE/releases"
+
 echo "== OpenWrt info =="
 [ -f /etc/openwrt_release ] && cat /etc/openwrt_release
 echo
@@ -14,22 +17,22 @@ ARCH="${DISTRIB_ARCH:-}"
 VERSION="${DISTRIB_RELEASE:-}"
 
 if [ -z "$ARCH" ]; then
-  echo "ОШИБКА: не удалось определить DISTRIB_ARCH"
+  echo "ERROR: DISTRIB_ARCH not found"
   exit 1
 fi
 
 if [ -z "$VERSION" ]; then
-  echo "ОШИБКА: не удалось определить DISTRIB_RELEASE"
+  echo "ERROR: DISTRIB_RELEASE not found"
   exit 1
 fi
 
 MAJOR_MINOR="$(echo "$VERSION" | cut -d. -f1,2)"
-BASE="https://downloads.sourceforge.net/project/openwrt-passwall-build/releases/packages-$MAJOR_MINOR"
+BASE="$DL_BASE/packages-$MAJOR_MINOR"
 
-echo "Версия OpenWrt: $VERSION"
-echo "Ветка репозитория: packages-$MAJOR_MINOR"
-echo "Архитектура: $ARCH"
-echo "BASE: $BASE"
+echo "Version: $VERSION"
+echo "Arch: $ARCH"
+echo "Repo branch: packages-$MAJOR_MINOR"
+echo "Base: $BASE"
 echo
 
 if command -v apk >/dev/null 2>&1; then
@@ -37,11 +40,11 @@ if command -v apk >/dev/null 2>&1; then
 elif command -v opkg >/dev/null 2>&1; then
   PM="opkg"
 else
-  echo "ОШИБКА: не найден ни apk, ни opkg"
+  echo "ERROR: neither apk nor opkg found"
   exit 1
 fi
 
-echo "Менеджер пакетов: $PM"
+echo "Package manager: $PM"
 echo
 
 check_url() {
@@ -49,20 +52,18 @@ check_url() {
 }
 
 if [ "$PM" = "apk" ]; then
-  echo "== APK feed =="
+  echo "== APK mode =="
 
-  KEY_URL="https://downloads.sourceforge.net/project/openwrt-passwall-build/apk.pub"
+  KEY_URL="$SF_BASE/apk.pub"
   KEY_FILE="/etc/apk/keys/openwrt-passwall-build.apk.pub"
 
   mkdir -p /etc/apk/keys
 
-  echo "Скачиваю ключ:"
-  echo "$KEY_URL"
-
+  echo "Downloading apk key..."
   if wget -q -O "$KEY_FILE" "$KEY_URL"; then
-    echo "Ключ скачан: $KEY_FILE"
+    echo "Key saved: $KEY_FILE"
   else
-    echo "ПРЕДУПРЕЖДЕНИЕ: ключ не скачался"
+    echo "WARNING: apk key download failed: $KEY_URL"
     rm -f "$KEY_FILE"
   fi
 
@@ -70,21 +71,20 @@ if [ "$PM" = "apk" ]; then
 
   for section in passwall_packages passwall_luci passwall2; do
     URL="$BASE/$ARCH/$section/packages.adb"
-    echo "Проверка: $URL"
+    echo "Checking: $URL"
 
     if check_url "$URL"; then
       APK_FEEDS="$APK_FEEDS
 $URL"
     else
-      echo "Нет: $URL"
+      echo "Not found: $URL"
     fi
   done
 
   if [ -z "$APK_FEEDS" ]; then
     echo
-    echo "НЕ ДОБАВЛЕНО."
-    echo "Для apk не найден packages.adb."
-    echo "Проверенный путь: $BASE/$ARCH/"
+    echo "NOT ADDED: no packages.adb found"
+    echo "Checked path: $BASE/$ARCH/"
     exit 2
   fi
 
@@ -96,53 +96,87 @@ $URL"
   echo "$APK_FEEDS" | sed '/^$/d' > "$FILE"
 
   echo
-  echo "Добавлен APK feed:"
+  echo "APK feed added:"
   cat "$FILE"
   echo
 
-  apk update
+  LOG="/tmp/passwall-apk-update.log"
+
+  echo "Running apk update..."
+  apk update 2>&1 | tee "$LOG"
+
+  if grep -q "UNTRUSTED signature" "$LOG"; then
+    echo
+    echo "RESULT: repo added, but apk reports UNTRUSTED signature."
+    echo "Normal apk search/add will NOT work for this feed."
+    echo
+    echo "Working commands for this feed:"
+    echo "apk update --allow-untrusted"
+    echo "apk search --allow-untrusted passwall"
+    echo "apk add --allow-untrusted luci-app-passwall2"
+    echo
+    echo "Optional:"
+    echo "apk add --allow-untrusted luci-app-passwall"
+    echo "apk add --allow-untrusted luci-i18n-passwall2-ru"
+    echo
+    echo "Without --allow-untrusted this apk feed cannot be used until the repo signature/key is fixed."
+    exit 5
+  fi
 
   echo
-  echo "Проверить:"
+  echo "RESULT: apk repo added and trusted."
+  echo
+  echo "Working commands:"
   echo "apk search passwall"
-  echo
-  echo "Установить PassWall:"
-  echo "apk add luci-app-passwall"
-  echo
-  echo "Установить PassWall2:"
   echo "apk add luci-app-passwall2"
+  echo "apk add luci-app-passwall"
+  echo "apk add luci-i18n-passwall2-ru"
 
   exit 0
 fi
 
 if [ "$PM" = "opkg" ]; then
-  echo "== OPKG feed =="
+  echo "== OPKG mode =="
+
+  KEY_URL="$SF_BASE/ipk.pub"
+
+  if [ -d /etc/opkg/keys ]; then
+    echo "Downloading ipk key..."
+    mkdir -p /tmp/passwall-key
+    if wget -q -O /tmp/passwall-key/ipk.pub "$KEY_URL"; then
+      FINGERPRINT="$(usign -F -p /tmp/passwall-key/ipk.pub 2>/dev/null | awk '{print $1}')"
+      if [ -n "$FINGERPRINT" ]; then
+        cp /tmp/passwall-key/ipk.pub "/etc/opkg/keys/$FINGERPRINT"
+        echo "Key saved: /etc/opkg/keys/$FINGERPRINT"
+      else
+        echo "WARNING: cannot calculate ipk key fingerprint"
+      fi
+    else
+      echo "WARNING: ipk key download failed: $KEY_URL"
+    fi
+    rm -rf /tmp/passwall-key
+  fi
 
   OPKG_FEEDS=""
 
   for section in passwall_packages passwall_luci passwall2; do
     URL="$BASE/$ARCH/$section"
+    INDEX="$URL/Packages.gz"
 
-    echo "Проверка каталога: $URL"
+    echo "Checking: $INDEX"
 
-    if check_url "$URL/Packages.gz"; then
-      echo "Найден Packages.gz"
-      OPKG_FEEDS="$OPKG_FEEDS
-src/gz passwall_$section $URL"
-    elif check_url "$URL/Packages"; then
-      echo "Найден Packages"
+    if check_url "$INDEX"; then
       OPKG_FEEDS="$OPKG_FEEDS
 src/gz passwall_$section $URL"
     else
-      echo "Нет Packages.gz / Packages: $URL"
+      echo "Not found: $INDEX"
     fi
   done
 
   if [ -z "$OPKG_FEEDS" ]; then
     echo
-    echo "НЕ ДОБАВЛЕНО."
-    echo "Для opkg не найден Packages.gz или Packages."
-    echo "Проверенный путь: $BASE/$ARCH/"
+    echo "NOT ADDED: no Packages.gz found"
+    echo "Checked path: $BASE/$ARCH/"
     exit 3
   fi
 
@@ -152,27 +186,33 @@ src/gz passwall_$section $URL"
   cp "$FILE" "$FILE.bak.$(date +%Y%m%d-%H%M%S)" 2>/dev/null
 
   grep -v 'openwrt-passwall-build/releases/packages-' "$FILE" 2>/dev/null > /tmp/customfeeds.conf.new
-
   echo "$OPKG_FEEDS" | sed '/^$/d' >> /tmp/customfeeds.conf.new
-
   mv /tmp/customfeeds.conf.new "$FILE"
 
   echo
-  echo "Добавлен OPKG feed:"
+  echo "OPKG feed added:"
   echo "$OPKG_FEEDS" | sed '/^$/d'
   echo
 
-  opkg update
+  LOG="/tmp/passwall-opkg-update.log"
+
+  echo "Running opkg update..."
+  opkg update 2>&1 | tee "$LOG"
+
+  if grep -qi "signature check failed\|failed to verify\|public key" "$LOG"; then
+    echo
+    echo "RESULT: repo added, but opkg signature verification failed."
+    echo "Check key/signature for this repo."
+    exit 6
+  fi
 
   echo
-  echo "Проверить:"
+  echo "RESULT: opkg repo added."
+  echo
+  echo "Working commands:"
   echo "opkg list | grep -i passwall"
-  echo
-  echo "Установить PassWall:"
-  echo "opkg install luci-app-passwall"
-  echo
-  echo "Установить PassWall2:"
   echo "opkg install luci-app-passwall2"
+  echo "opkg install luci-app-passwall"
 
   exit 0
 fi
