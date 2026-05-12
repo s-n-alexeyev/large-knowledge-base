@@ -256,3 +256,4 @@ EOF
 chmod +x /tmp/install_argon_only.sh
 sh /tmp/install_argon_only.sh
 ```
+
