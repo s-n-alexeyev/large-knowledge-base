@@ -1115,5 +1115,5 @@ exit 0
 
 >обновление неподписанных пакетов
 ```bash
-apk update verify --allow-untrusted && apk upgrade  --allow-untrusted
+apk update verify --allow-untrusted && apk upgrade --allow-untrusted
 ```
