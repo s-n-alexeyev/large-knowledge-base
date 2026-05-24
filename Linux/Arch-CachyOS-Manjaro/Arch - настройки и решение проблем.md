@@ -358,3 +358,11 @@ DisplayNames=eng,rus
 LayoutList=us,ru
 
 ```
+
+---
+
+## KDE Dolphin  - подключается к SFTP через ТNetbird
+
+```bash
+sudo netbird service reconfigure --service-env NB_DISABLE_SSH_CONFIG=true
+```
