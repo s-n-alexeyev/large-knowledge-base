@@ -8,3 +8,10 @@ irm "https://christitus.com/win" | iex
 ```
 
 ![](../../Media/Pictures/Windows_Optimize/winutil.png)
+
+## GTweak
+
+
+Ссылка на [GTweak](https://github.com/Greedeks/GTweak)
+
+![](../../Media/Pictures/Gtweak/gtweak.gif)
