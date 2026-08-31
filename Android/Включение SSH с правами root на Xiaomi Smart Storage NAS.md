@@ -12,8 +12,7 @@
 Сертификаты обычно находятся по адресу:
 
 ```text
-小米智能存储.app/Contents/Resources/extraResources/cert/
-
+Xiaomi Smart Storage.app/Contents/Resources/extraResources/cert/
 ```
 
 ### Windows
