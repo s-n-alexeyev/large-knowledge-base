@@ -27,7 +27,7 @@ sudo nano /etc/fail2ban/jail.local
 ### 3. Настройка защиты SSH
 
 Найдите раздел `[sshd]` и убедитесь, что он включен:
-```
+```ini
 [sshd]
 enabled = true
 port = ssh
@@ -38,7 +38,7 @@ bantime = 3600
 ```
 
 ubuntu
-```
+```ini
 [sshd]
 enabled = true
 port = ssh
